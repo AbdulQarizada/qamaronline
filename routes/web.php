@@ -35,4 +35,8 @@ Route::get('/root', [App\Http\Controllers\HomeController:: class, 'root'])->name
 
 
 // Qamar Care Card
-Route::get('/QamarCareCard', [App\Http\Controllers\QamarCareCardController:: class, 'Index'])->name('QamarCareCard');;
+Route::get('/QamarCareCard', [App\Http\Controllers\QamarCareCardController:: class, 'Index'])->name('QamarCareCard');
+
+
+// for educations
+Route::get('/QamarCareCard', [App\Http\Controllers\QamarCareCardController:: class, 'Index'])->name('QamarCareCard');
