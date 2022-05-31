@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
+use App\Http\Controllers\QamarCareCardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,7 +25,14 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('roo
 Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
 Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('updatePassword');
 
-Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+//  Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
 //Language Translation
 Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang']);
+
+// Dashvoard
+Route::get('/root', [App\Http\Controllers\HomeController:: class, 'root'])->name('root');;
+
+
+// Qamar Care Card
+Route::get('/QamarCareCard', [App\Http\Controllers\QamarCareCardController:: class, 'Index'])->name('QamarCareCard');;

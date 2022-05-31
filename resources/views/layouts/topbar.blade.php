@@ -35,10 +35,10 @@
         </form>
 
         <div class="dropdown dropdown-mega d-none d-lg-block ms-2">
-            <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+            <!-- <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
                 <span key="t-megamenu">@lang('translation.Mega_Menu')</span>
                 <i class="mdi mdi-chevron-down"></i>
-            </button>
+            </button> -->
             <div class="dropdown-menu dropdown-megamenu">
                 <div class="row">
                     <div class="col-sm-8">
@@ -189,7 +189,7 @@
         </div>
 
         <div class="dropdown d-inline-block">
-            <button type="button" class="btn header-item waves-effect"
+            <!-- <button type="button" class="btn header-item waves-effect"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 @switch(Session::get('lang'))
                     @case('ru')
@@ -207,7 +207,7 @@
                     @default
                         <img src="{{ URL::asset('/assets/images/flags/us.jpg')}}" alt="Header Language" height="16">
                 @endswitch
-            </button>
+            </button> -->
             <div class="dropdown-menu dropdown-menu-end">
 
                 <!-- item-->
@@ -236,7 +236,7 @@
             </div>
         </div>
 
-        <div class="dropdown d-none d-lg-inline-block ms-1">
+        <!-- <div class="dropdown d-none d-lg-inline-block ms-1">
             <button type="button" class="btn header-item noti-icon waves-effect"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="bx bx-customize"></i>
@@ -286,12 +286,14 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="dropdown d-none d-lg-inline-block ms-1">
+        </div> -->
+
+
+        <!-- <div class="dropdown d-none d-lg-inline-block ms-1">
             <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
                 <i class="bx bx-fullscreen"></i>
             </button>
-        </div>
+        </div> -->
         <div class="dropdown d-inline-block">
             <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -311,7 +313,23 @@
                     </div>
                 </div>
                 <div data-simplebar style="max-height: 230px;">
-                    <a href="" class="text-reset notification-item">
+                <a href="" class="text-reset notification-item">
+                        <div class="d-flex">
+                            <div class="avatar-xs me-3">
+                                <span class="avatar-title bg-primary rounded-circle font-size-16">
+                                <i class="bx bx-bell bx-tada"></i>
+                                </span>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h6 class="mt-0 mb-1" key="t-your-order">No New Notifications</h6>
+                                <div class="font-size-12 text-muted">
+                                    <p class="mb-1" key="t-grammer">You have got no new notifications</p>
+                                    <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">Now</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- <a href="" class="text-reset notification-item">
                         <div class="d-flex">
                             <div class="avatar-xs me-3">
                                 <span class="avatar-title bg-primary rounded-circle font-size-16">
@@ -369,7 +387,7 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </a> -->
                 </div>
                 <div class="p-2 border-top d-grid">
                     <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
@@ -401,9 +419,9 @@
             </div>
         </div>
         <div class="dropdown d-inline-block">
-            <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+            <!-- <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
                 <i class="bx bx-cog bx-spin"></i>
-            </button>
+            </button> -->
         </div>
     </div>
 </div>
