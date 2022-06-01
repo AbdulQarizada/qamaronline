@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('title'); ?> Qamar Care List <?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?> Approved Cards <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
     <!-- DataTables -->
@@ -11,15 +11,11 @@
 
     <?php $__env->startComponent('components.breadcrumb'); ?>
         <?php $__env->slot('li_1'); ?> Qamar Online <?php $__env->endSlot(); ?>
-        <?php $__env->slot('title'); ?> Qamar Care Card <?php $__env->endSlot(); ?>
+        <?php $__env->slot('title'); ?> Approved Card <?php $__env->endSlot(); ?>
     <?php echo $__env->renderComponent(); ?>
 
 
     <div class="row">
-    <div style="float:right">
-                    <a href="CreateQamarCareCard" class="btn btn-primary btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-plus-circle  font-size-16 label-icon"></i> Add Care Card</a>
-                    <a href="ViewApprovedList" class="btn btn-success btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-list-ul  font-size-16 label-icon"></i> Approved Cards</a>
-                    </div>
         <div class="col-12">
             
             <div class="card">
@@ -31,8 +27,8 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
+                                <th>Name</th>
+                                <th>Father Name</th>
                                 <th>Province</th>
                                 <th>District</th>
                                 <th>Phone Number</th>
@@ -43,14 +39,14 @@
 
 
                         <tbody>
-                            <?php $__currentLoopData = $qamarcarecards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qamarcarecard): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = $approveds; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $approved): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                <td><?php echo e($qamarcarecard -> id); ?></td>
-                                <td><?php echo e($qamarcarecard -> FirstName); ?></td>
-                                <td><?php echo e($qamarcarecard -> LastName); ?></td>
-                                <td><?php echo e($qamarcarecard -> Province); ?></td>
-                                <td><?php echo e($qamarcarecard -> District); ?></td>
-                                <td><?php echo e($qamarcarecard -> PNumber); ?></td>
+                                <td><?php echo e($approved -> id); ?></td>
+                                <td><?php echo e($approved -> Name); ?></td>
+                                <td><?php echo e($approved -> Father_Name); ?></td>
+                                <td><?php echo e($approved -> Province); ?></td>
+                                <td><?php echo e($approved -> District); ?></td>
+                                <td><?php echo e($approved -> Phone_Number); ?></td>
                                 <td>
                        <div class="d-flex flex-wrap gap-2">
                     <a href="button" class="btn btn-secondary waves-effect waves-light">
@@ -84,4 +80,4 @@
     <script src="<?php echo e(URL::asset('/assets/js/pages/datatables.init.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/Index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/Approved.blade.php ENDPATH**/ ?>

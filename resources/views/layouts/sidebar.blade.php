@@ -169,7 +169,7 @@
                                 </ul>
                             </li>
 
-                            <li class="menu-title" key="t-menu">-----------------------------</li>
+                            <li class="menu-title" key="t-menu">Beneficiaries Services</li>
 
                       
                             <li >
@@ -191,16 +191,11 @@
 
                             
                             <li>
-                                <a href="javascript: void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bx-id-card"></i>
-                                    <span key="t-ecommerce">Qamar Care Cards</span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="register_card_holder" key="t-products">Register Card Holder</a></li>
-                                    <li><a href="pending_card_holders" key="t-products">Pending List</a></li>
-                                    <li><a href="view_card_holders" key="t-products">Approved List</a></li>
-                                </ul>
-                            </li>
+                        <a href="QamarCareCard" class="waves-effect">
+                        <i class="bx bx-credit-card "></i>
+                        <span key="t-dashboards">Qamar Care Card</span>
+                         </a>
+                         </li>
 
                         
                             <li>

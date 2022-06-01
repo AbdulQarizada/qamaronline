@@ -36,7 +36,9 @@ Route::get('/root', [App\Http\Controllers\HomeController:: class, 'root'])->name
 
 // Qamar Care Card
 Route::get('/QamarCareCard', [App\Http\Controllers\QamarCareCardController:: class, 'Index'])->name('QamarCareCard');
-
+Route::get('/ViewApprovedList', [App\Http\Controllers\QamarCareCardController:: class, 'Approved'])->name('ViewApprovedList');
+Route::get('/CreateQamarCareCard', [App\Http\Controllers\QamarCareCardController:: class, 'Create'])->name('CreateQamarCareCard');
+Route::post('/CreateQamarCareCard', [App\Http\Controllers\QamarCareCardController:: class, 'Store']);
 
 // for educations
 Route::get('/QamarCareCard', [App\Http\Controllers\QamarCareCardController:: class, 'Index'])->name('QamarCareCard');

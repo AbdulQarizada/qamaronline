@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('qamar_care_cards', function (Blueprint $table) {
+        Schema::create('provinces', function (Blueprint $table) {
             $table->id();
-            $table -> string('FirstName');
-            $table -> string('LastName');
-            $table -> string('Email');
-            $table -> string('Province');
-            $table -> string('District');
-            $table -> integer('PNumber');
-            $table -> integer('SNumber');
+            $table->string('Name');
+
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('qamar_care_cards');
+        Schema::dropIfExists('provinces');
     }
 };
