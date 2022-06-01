@@ -15,10 +15,10 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6 col-xl-5">
                         <div class="card overflow-hidden">
-                            <div class="bg-primary bg-soft">
+                            <div class="bg-white bg-soft">
                                 <div class="row">
                                     <div class="col-7">
-                                        <div class="text-primary p-4">
+                                        <div class="text-black p-4">
                                             <h5 class="text-primary">Qamar Foundation</h5>
                                             <p>Sign in to continue to Qamar Online Systems.</p>
                                         </div>
@@ -43,9 +43,11 @@
                                     <a href="index" class="auth-logo-dark">
                                         <div class="avatar-md profile-user-wid mb-4">
                                             <span class="avatar-title rounded-circle bg-light">
-                                                <img src="{{ URL::asset('/assets/images/logo.svg') }}" alt=""
+                                                <img src="{{ URL::asset('/assets/images/logo.png') }}" alt=""
                                                     class="rounded-circle" height="34">
+                                                    
                                             </span>
+                                            
                                         </div>
                                     </a>
                                 </div>
