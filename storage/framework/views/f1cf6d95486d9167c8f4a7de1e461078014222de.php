@@ -16,7 +16,7 @@
 
     <div class="row">
         <div class="col-12">
-           <a href="QamarCareCard" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+           <a href="<?php echo e(route('IndexQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         </div>
      </div>
     <div class="row">
@@ -32,8 +32,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Father Name</th>
+                                <th>Full Name</th>
                                 <th>Province</th>
                                 <th>District</th>
                                 <th>Phone Number</th>
@@ -47,21 +46,14 @@
                             <?php $__currentLoopData = $approveds; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $approved): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
                                 <td><?php echo e($approved -> id); ?></td>
-                                <td><?php echo e($approved -> Name); ?></td>
-                                <td><?php echo e($approved -> Father_Name); ?></td>
+                                <td><?php echo e($approved -> FirstName); ?> <?php echo e($approved -> LastName); ?></td>
                                 <td><?php echo e($approved -> Province); ?></td>
                                 <td><?php echo e($approved -> District); ?></td>
-                                <td><?php echo e($approved -> Phone_Number); ?></td>
+                                <td><?php echo e($approved -> PNumber); ?></td>
                                 <td>
                        <div class="d-flex flex-wrap gap-2">
-                    <a href="button" class="btn btn-secondary waves-effect waves-light">
-                        <i class="bx bx-cog font-size-16 align-middle"></i>
-                    </a>
-                    <a href="button" class="btn btn-warning waves-effect waves-light">
-                        <i class="bx bx-edit  font-size-16 align-middle"></i>
-                    </a>
-                    <a href="button" class="btn btn-danger waves-effect waves-light">
-                        <i class=" bx bx-trash-alt font-size-16 align-middle"></i> 
+                       <a href="<?php echo e(route('PrintQamarCareCard', ['data' => $approved -> id])); ?>" class="btn btn-secondary waves-effect waves-light">
+                        <i class="bx bx-show-alt font-size-16 align-middle"></i>
                     </a>
                 </div></td>
                             </tr>

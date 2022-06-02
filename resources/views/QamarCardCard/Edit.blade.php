@@ -1,34 +1,35 @@
+@extends('layouts.master-layouts')
 
+@section('title') Add Qamar Care Card @endsection
 
-<?php $__env->startSection('title'); ?> Add Qamar Care Card <?php $__env->stopSection(); ?>
+@section('content')
 
-<?php $__env->startSection('content'); ?>
-
-<?php $__env->startComponent('components.breadcrumb'); ?>
-<?php $__env->slot('li_1'); ?> Qamar Care / Add Qamar Care Card <?php $__env->endSlot(); ?>
-<?php $__env->slot('title'); ?>   <?php $__env->endSlot(); ?>
-<?php echo $__env->renderComponent(); ?>
+@component('components.breadcrumb')
+@slot('li_1') Qamar Care / Add Qamar Care Card @endslot
+@slot('title')   @endslot
+@endcomponent
 
 <div class="row">
         <div class="col-12">
-           <a href="<?php echo e(route('IndexQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+           <a href="{{route('IndexQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         </div>
      </div>
 <div class="row">
     <div class="col-lg-12">
     <div class="card">
-    <h4 class="card-header bg-primary text-white ">Add Qamar Care Card</h4>
+    <h4 class="card-header bg-dark text-white ">Edit Qamar Care Card</h4>
 
                 <div class="card-body">
                     <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
                     </p> -->
-                    <form class="needs-validation"  action="<?php echo e(route('CreateQamarCareCard')); ?>" method="POST" novalidate>
-                    <?php echo csrf_field(); ?>
+                    <form class="needs-validation"  action="{{route('UpdateQamarCareCard', [$data -> id])}}" method="POST" novalidate>
+                        @method('PUT')
+                        @csrf
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="validationTooltip01" class="form-label">First name</label>
-                                    <input type="text" class="form-control" id="validationTooltip01" name="FirstName"
+                                    <input type="text" class="form-control" id="validationTooltip01"  name="FirstName" value="{{ $data -> FirstName}}"
                                         placeholder="First name"  required>
                                     <div class="valid-tooltip">
                                         Looks good!
@@ -38,7 +39,7 @@
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="validationTooltip02" class="form-label">Last name</label>
-                                    <input type="text" class="form-control" id="validationTooltip02" placeholder="Last name" name="LastName"
+                                    <input type="text" class="form-control" id="validationTooltip02" placeholder="Last name" name="LastName" value="{{ $data -> LastName}}"
                                          required>
                                     <div class="valid-tooltip">
                                         Looks good!
@@ -50,7 +51,7 @@
                                     <label for="validationTooltipUsername" class="form-label">Email</label>
                                     <div class="input-group">
                                       
-                                        <input type="email" class="form-control" id="validationTooltipUsername" name="Email"
+                                        <input type="email" class="form-control" id="validationTooltipUsername" name="Email" value="{{ $data -> Email}}"
                                             placeholder="Email" aria-describedby="validationTooltipUsernamePrepend"
                                             required>
                                         <div class="invalid-tooltip">
@@ -67,7 +68,7 @@
                                     <label for="validationTooltipUsername" class="form-label">Primary Number</label>
                                     <div class="input-group">
                                       
-                                        <input type="number" class="form-control" id="validationTooltipUsername" name="PNumber"
+                                        <input type="number" class="form-control" id="validationTooltipUsername" name="PNumber" value="{{ $data -> PNumber}}"
                                             placeholder="Primary Number" aria-describedby="validationTooltipUsernamePrepend"
                                             required>
                                         <div class="invalid-tooltip">
@@ -82,7 +83,7 @@
                                     <label for="validationTooltipUsername" class="form-label">Secondary Number</label>
                                     <div class="input-group">
                                       
-                                        <input type="number" class="form-control" id="validationTooltipUsername" name="SNumber"
+                                        <input type="number" class="form-control" id="validationTooltipUsername" name="SNumber" value="{{ $data -> SNumber}}"
                                             placeholder="Secondary Number" aria-describedby="validationTooltipUsernamePrepend"
                                             required>
                                         <div class="invalid-tooltip">
@@ -96,11 +97,11 @@
                             <div class="col-md-6">
                                 <div class="mb-3 position-relative">
                                     <label for="validationTooltip03" class="form-label">Province</label>
-                                    <select class="form-select" required name="Province">
+                                    <select class="form-select" required name="Province" value="{{ $data -> Province}}">
                             <option>Select</option>
-                            <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <option value="<?php echo e($province -> Name); ?>"><?php echo e($province -> Name); ?></option>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            @foreach($provinces as $province)
+                            <option value="{{$province -> Name}}">{{$province -> Name}}</option>
+                            @endforeach
                            </select>
                                     <div class="invalid-tooltip">
                                         Please provide a valid Province.
@@ -110,7 +111,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3 position-relative">
                                     <label for="validationTooltip04" class="form-label">District</label>
-                                    <input type="text" class="form-control" id="validationTooltip04" placeholder="District" name="District"
+                                    <input type="text" class="form-control" id="validationTooltip04" placeholder="District" name="District" value="{{ $data -> District}}"
                                         required>
                                     <div class="invalid-tooltip">
                                         Please provide a valid state.
@@ -121,7 +122,7 @@
                         <div>
 
                             <button class="btn btn-success btn-lg" type="submit">Save </button>
-                            <a class="btn btn-danger btn-lg" href="<?php echo e(route('IndexQamarCareCard')); ?>">Cancel</a>
+                            <a class="btn btn-danger btn-lg" href="{{route('IndexQamarCareCard')}}">Cancel</a>
                         </div>
                     </form>
                 </div>
@@ -132,10 +133,9 @@
 </div>
 <!-- end row -->
 
-<?php $__env->stopSection(); ?>
-<?php $__env->startSection('script'); ?>
-<script src="<?php echo e(URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js')); ?>"></script>
+@endsection
+@section('script')
+<script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
 
-<script src="<?php echo e(URL::asset('/assets/js/pages/form-validation.init.js')); ?>"></script>
-<?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/Create.blade.php ENDPATH**/ ?>
+<script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
+@endsection

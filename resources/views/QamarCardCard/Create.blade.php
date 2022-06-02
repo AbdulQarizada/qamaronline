@@ -11,18 +11,18 @@
 
 <div class="row">
         <div class="col-12">
-           <a href="QamarCareCard" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+           <a href="{{route('IndexQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         </div>
      </div>
 <div class="row">
     <div class="col-lg-12">
     <div class="card">
-    <h4 class="card-header bg-primary text-white ">Add Qamar Care Card Beneficiary</h4>
+    <h4 class="card-header bg-primary text-white ">Add Qamar Care Card</h4>
 
                 <div class="card-body">
                     <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
                     </p> -->
-                    <form class="needs-validation"  action="/CreateQamarCareCard" method="POST" novalidate>
+                    <form class="needs-validation"  action="{{route('CreateQamarCareCard')}}" method="POST" novalidate>
                     @csrf
                         <div class="row">
                             <div class="col-md-4">
@@ -121,7 +121,7 @@
                         <div>
 
                             <button class="btn btn-success btn-lg" type="submit">Save </button>
-                            <a class="btn btn-danger btn-lg" href="QamarCareCard">Cancel</a>
+                            <a class="btn btn-danger btn-lg" href="{{route('IndexQamarCareCard')}}">Cancel</a>
                         </div>
                     </form>
                 </div>

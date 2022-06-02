@@ -1,6 +1,6 @@
 @extends('layouts.master-layouts')
 
-@section('title') Approved Cards @endsection
+@section('title') Rejected Cards @endsection
 
 @section('css')
     <!-- DataTables -->
@@ -23,7 +23,7 @@
         <div class="col-12">
             
             <div class="card">
-            <h3 class="card-header bg-success text-white">Approved Qamar Care Cards</h3>
+            <h3 class="card-header bg-danger text-white">Rejected Qamar Care Cards</h3>
 
                 <div class="card-body">
 

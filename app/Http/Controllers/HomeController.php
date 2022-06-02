@@ -34,10 +34,52 @@ class HomeController extends Controller
         return abort(404);
     }
 
+
+
+
+
+
+
     public function root()
     {
         return view('index');
     }
+
+    public function Projects()
+    {
+        return view('Projects');
+    } 
+    
+    public function BeneficiariesServices()
+    {
+        return view('BeneficiariesServices');
+    } 
+    
+    public function Reports()
+    {
+        return view('Reports');
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /*Language Translation*/
     public function lang($locale)

@@ -3,7 +3,7 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="index" class="logo logo-dark">
+                <a href="<?php echo e(route('root')); ?>" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="<?php echo e(URL::asset ('/assets/images/logo.svg')); ?>" alt="" height="22">
                     </span>
@@ -12,7 +12,7 @@
                     </span>
                 </a>
 
-                <a href="index" class="logo logo-light">
+                <a href="<?php echo e(route('root')); ?>" class="logo logo-light">
                     <span class="logo-sm">
                     <img src="<?php echo e(URL::asset('/assets/images/logo.png')); ?>" alt="" height="22">
                     </span>
@@ -191,7 +191,7 @@
                 <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="bx bx-bell bx-tada"></i>
-                    <span class="badge bg-danger rounded-pill">3</span>
+                    <span class="badge bg-danger rounded-pill">0</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
                     aria-labelledby="page-header-notifications-dropdown">
@@ -214,14 +214,15 @@
                                     </span>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h6 class="mt-0 mb-1" key="t-your-order"><?php echo app('translator')->get('translation.Your_order_is_placed'); ?></h6>
+                                    <h6 class="mt-0 mb-1" key="t-your-order">No New Notification</h6>
                                     <div class="font-size-12 text-muted">
-                                        <p class="mb-1" key="t-grammer"><?php echo app('translator')->get('translation.If_several_languages_coalesce_the_grammar'); ?></p>
-                                        <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago"><?php echo app('translator')->get('translation.3_min_ago'); ?></span></p>
+                                        <p class="mb-1" key="t-grammer">No New Notification</p>
+                                        <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">Now</span></p>
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </a> 
+                        <!--
                         <a href="" class="text-reset notification-item">
                             <div class="d-flex">
                                 <img src="<?php echo e(URL::asset ('/assets/images/users/avatar-3.jpg')); ?>"
@@ -264,7 +265,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </a> -->
                     </div>
                     <div class="p-2 border-top d-grid">
                         <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
@@ -309,14 +310,14 @@
                 <ul class="navbar-nav">
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="root" id="topnav-dashboard"
+                        <a class="nav-link dropdown-toggle arrow-none" href="<?php echo e(route('root')); ?>" id="topnav-dashboard"
                             >
                             <i class="bx bx-home-circle me-2"></i><span key="t-dashboards">Home</span>
                         </a>
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-uielement" role="button"
+                        <a class="nav-link dropdown-toggle arrow-none" href="<?php echo e(route('Projects')); ?>" id="topnav-uielement" role="button"
                             >
                             <i class="bx bx-tone me-2"></i>
                             <span key="t-ui-elements"> Projects</span> 
@@ -366,7 +367,7 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button"
+                        <a class="nav-link dropdown-toggle arrow-none" href="<?php echo e(route('BeneficiariesServices')); ?>" id="topnav-pages" role="button"
                             >
                             <i class="bx bx-customize me-2"></i><span key="t-apps">Beneficiaries Services</span> 
                             <!-- <div class="arrow-down"></div> -->
@@ -490,7 +491,7 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-components" role="button"
+                        <a class="nav-link dropdown-toggle arrow-none" href="<?php echo e(route('Reports')); ?>" id="topnav-components" role="button"
                             >
                             <i class="bx bx-collection me-2"></i><span key="t-components">Reports</span> 
                             <!-- <div class="arrow-down"></div> -->
@@ -568,10 +569,10 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button"
+                        <!-- <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button"
                             >
                             <i class="bx bx-file me-2"></i><span key="t-extra-pages">User Management</span> 
-                            <!-- <div class="arrow-down"></div> -->
+                            <div class="arrow-down"></div> -->
                         </a>
                         <!-- <div class="dropdown-menu" aria-labelledby="topnav-more">
                             <div class="dropdown">

@@ -15,7 +15,7 @@
     @endcomponent
     <div class="row">
         <div class="col-12">
-           <a href="QamarCareCard" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+           <a href="{{route('IndexQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         </div>
      </div>
     <div class="row">
@@ -31,8 +31,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
+                                <th>Full Name</th>
                                 <th>Province</th>
                                 <th>District</th>
                                 <th>Phone Number</th>
@@ -46,22 +45,26 @@
                             @foreach($qamarcarecards as $qamarcarecard)
                                 <tr>
                                 <td>{{$qamarcarecard -> id}}</td>
-                                <td>{{$qamarcarecard -> FirstName}}</td>
-                                <td>{{$qamarcarecard -> LastName}}</td>
+                                <td>{{$qamarcarecard -> FirstName}} {{$qamarcarecard -> LastName}}</td>
                                 <td>{{$qamarcarecard -> Province}}</td>
                                 <td>{{$qamarcarecard -> District}}</td>
                                 <td>{{$qamarcarecard -> PNumber}}</td>
                                 <td>
                        <div class="d-flex flex-wrap gap-2">
-                    <a href="button" class="btn btn-secondary waves-effect waves-light">
-                        <i class="bx bx-cog font-size-16 align-middle"></i>
+                    <a href="{{route('GetOneQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-secondary waves-effect waves-light">
+                        <i class="bx bx-show-alt font-size-16 align-middle"></i>
                     </a>
-                    <a href="button" class="btn btn-warning waves-effect waves-light">
+                    <a href="{{route('EditQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-warning waves-effect waves-light">
                         <i class="bx bx-edit  font-size-16 align-middle"></i>
                     </a>
-                    <a href="button" class="btn btn-danger waves-effect waves-light">
+                    <form action="{{route('DeleteQamarCareCard' , ['data' => $qamarcarecard -> id])}}" method="POST">
+                    @csrf     
+                    @method('DELETE')
+                        
+                    <button type="submit"  class="btn btn-danger waves-effect waves-light">
                         <i class=" bx bx-trash-alt font-size-16 align-middle"></i> 
-                    </a>
+                    </button> 
+                    </form>
                 </div></td>
                             </tr>
                             @endforeach

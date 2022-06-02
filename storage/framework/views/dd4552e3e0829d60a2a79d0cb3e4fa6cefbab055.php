@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('title'); ?> Qamar Care List <?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?> Rejected Cards <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
     <!-- DataTables -->
@@ -10,9 +10,10 @@
 <?php $__env->startSection('content'); ?>
 
     <?php $__env->startComponent('components.breadcrumb'); ?>
-        <?php $__env->slot('li_1'); ?> Qamar Care Card <?php $__env->endSlot(); ?>
-        <?php $__env->slot('title'); ?> Qamar Care Card List <?php $__env->endSlot(); ?>
+        <?php $__env->slot('li_1'); ?> Qamar Online <?php $__env->endSlot(); ?>
+        <?php $__env->slot('title'); ?> Approved Card <?php $__env->endSlot(); ?>
     <?php echo $__env->renderComponent(); ?>
+
     <div class="row">
         <div class="col-12">
            <a href="<?php echo e(route('IndexQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
@@ -22,10 +23,10 @@
         <div class="col-12">
             
             <div class="card">
-            <h3 class="card-header bg-warning text-white">Qamar Care Cards</h3>
+            <h3 class="card-header bg-danger text-white">Rejected Qamar Care Cards</h3>
+
                 <div class="card-body">
 
-                    
               
                     <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>
@@ -42,29 +43,18 @@
 
 
                         <tbody>
-                            <?php $__currentLoopData = $qamarcarecards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qamarcarecard): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = $approveds; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $approved): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                <td><?php echo e($qamarcarecard -> id); ?></td>
-                                <td><?php echo e($qamarcarecard -> FirstName); ?> <?php echo e($qamarcarecard -> LastName); ?></td>
-                                <td><?php echo e($qamarcarecard -> Province); ?></td>
-                                <td><?php echo e($qamarcarecard -> District); ?></td>
-                                <td><?php echo e($qamarcarecard -> PNumber); ?></td>
+                                <td><?php echo e($approved -> id); ?></td>
+                                <td><?php echo e($approved -> FirstName); ?> <?php echo e($approved -> LastName); ?></td>
+                                <td><?php echo e($approved -> Province); ?></td>
+                                <td><?php echo e($approved -> District); ?></td>
+                                <td><?php echo e($approved -> PNumber); ?></td>
                                 <td>
                        <div class="d-flex flex-wrap gap-2">
-                    <a href="<?php echo e(route('GetOneQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-secondary waves-effect waves-light">
+                       <a href="<?php echo e(route('PrintQamarCareCard', ['data' => $approved -> id])); ?>" class="btn btn-secondary waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
                     </a>
-                    <a href="<?php echo e(route('EditQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-warning waves-effect waves-light">
-                        <i class="bx bx-edit  font-size-16 align-middle"></i>
-                    </a>
-                    <form action="<?php echo e(route('DeleteQamarCareCard' , ['data' => $qamarcarecard -> id])); ?>" method="POST">
-                    <?php echo csrf_field(); ?>     
-                    <?php echo method_field('DELETE'); ?>
-                        
-                    <button type="submit"  class="btn btn-danger waves-effect waves-light">
-                        <i class=" bx bx-trash-alt font-size-16 align-middle"></i> 
-                    </button> 
-                    </form>
                 </div></td>
                             </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -87,4 +77,4 @@
     <script src="<?php echo e(URL::asset('/assets/js/pages/datatables.init.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/List.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/Rejected.blade.php ENDPATH**/ ?>
