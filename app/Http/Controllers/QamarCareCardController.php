@@ -17,7 +17,13 @@ class QamarCareCardController extends Controller
       return view('QamarCardCard.Index', compact('qamarcarecards'));
     }
 
-
+  
+    public function List()
+    {
+      
+      $qamarcarecards =   QamarCareCard::all();
+      return view('QamarCardCard.List', compact('qamarcarecards'));
+    }
 
     public function Approved()
     {

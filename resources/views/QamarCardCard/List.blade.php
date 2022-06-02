@@ -1,6 +1,6 @@
 @extends('layouts.master-layouts')
 
-@section('title') Approved Cards @endsection
+@section('title') Qamar Care List @endsection
 
 @section('css')
     <!-- DataTables -->
@@ -10,10 +10,9 @@
 @section('content')
 
     @component('components.breadcrumb')
-        @slot('li_1') Qamar Online @endslot
-        @slot('title') Approved Card @endslot
+        @slot('li_1') Qamar Care Card @endslot
+        @slot('title') Qamar Care Card List @endslot
     @endcomponent
-
     <div class="row">
         <div class="col-12">
            <a href="QamarCareCard" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
@@ -23,17 +22,17 @@
         <div class="col-12">
             
             <div class="card">
-            <h3 class="card-header bg-success text-white">Approved Qamar Care Cards</h3>
-
+            <h3 class="card-header bg-warning text-white">Qamar Care Cards</h3>
                 <div class="card-body">
 
+                    
               
                     <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Father Name</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
                                 <th>Province</th>
                                 <th>District</th>
                                 <th>Phone Number</th>
@@ -44,14 +43,14 @@
 
 
                         <tbody>
-                            @foreach($approveds as $approved)
+                            @foreach($qamarcarecards as $qamarcarecard)
                                 <tr>
-                                <td>{{$approved -> id}}</td>
-                                <td>{{$approved -> Name}}</td>
-                                <td>{{$approved -> Father_Name}}</td>
-                                <td>{{$approved -> Province}}</td>
-                                <td>{{$approved -> District}}</td>
-                                <td>{{$approved -> Phone_Number}}</td>
+                                <td>{{$qamarcarecard -> id}}</td>
+                                <td>{{$qamarcarecard -> FirstName}}</td>
+                                <td>{{$qamarcarecard -> LastName}}</td>
+                                <td>{{$qamarcarecard -> Province}}</td>
+                                <td>{{$qamarcarecard -> District}}</td>
+                                <td>{{$qamarcarecard -> PNumber}}</td>
                                 <td>
                        <div class="d-flex flex-wrap gap-2">
                     <a href="button" class="btn btn-secondary waves-effect waves-light">

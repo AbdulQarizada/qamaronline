@@ -1,7 +1,10 @@
 
 
 <?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.Dashboards'); ?> <?php $__env->stopSection(); ?>
-
+<?php $__env->startSection('css'); ?>
+    
+    <link href="<?php echo e(URL::asset('/assets/css/mystyle/tabstyle.css')); ?>" rel="stylesheet" type="text/css" />
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 
 <?php $__env->startComponent('components.breadcrumb'); ?>
@@ -204,14 +207,14 @@
 <div class="row">
 <h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">Projects</h1>
 <div class="col-xl-12">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card mini-stats-wid border border-secondary">
+    <div class="row mb-4">
+        <div class="col-md-4 ">
+            <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="my-0 text-dark card-title fw-semibold">Orphans Relief</p>
+                            <p class="my-0 text-primary card-title fw-semibold">Orphans Relief</p>
                             <h6 class="text-muted mb-0">Orphans Relief</h4>
                         </div>
 
@@ -225,19 +228,19 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="OrphansRelief" class="btn btn-primary btn-lg">Enter</a>
+                         <a href="OrphansRelief" class="btn btn-info btn-lg">Enter</a>
                     </div>
                     </blockquote>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card mini-stats-wid border border-secondary">
+            <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote  font-size-14 mb-0">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="my-0 text-dark card-title fw-semibold">Aid and Relief</p>
+                            <p class="my-0 text-primary card-title fw-semibold">Aid and Relief</p>
                             <h6 class="text-muted mb-0">Aid and Relief</h4>
                         </div>
 
@@ -251,19 +254,19 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="AidAndRelief" class="btn btn-primary btn-lg">Enter</a>
+                         <a href="AidAndRelief" class="btn btn-info btn-lg">Enter</a>
                     </div>
                     </blockquote>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card mini-stats-wid border border-secondary">
+            <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote  font-size-14 mb-0">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="my-0 text-dark card-title fw-semibold">Wash</p>
+                            <p class="my-0 text-primary card-title fw-semibold">Wash</p>
                             <h6 class="text-muted mb-0">Wash</h4>
                         </div>
 
@@ -277,7 +280,7 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="Wash" class="btn btn-primary btn-lg">Enter</a>
+                         <a href="Wash" class="btn btn-info btn-lg">Enter</a>
                     </div>
                     </blockquote>
                 </div>
@@ -292,12 +295,12 @@
 <div class="col-xl-12">
     <div class="row">
         <div class="col-md-4">
-            <div class="card mini-stats-wid border border-secondary">
+            <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="my-0 text-dark card-title fw-semibold">Education</p>
+                            <p class="my-0 text-primary card-title fw-semibold">Education</p>
                             <h6 class="text-muted mb-0">Education</h4>
                         </div>
 
@@ -311,19 +314,19 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="Education" class="btn btn-primary btn-lg">Enter</a>
+                         <a href="Education" class="btn btn-info btn-lg">Enter</a>
                     </div>
                     </blockquote>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card mini-stats-wid border border-secondary">
+            <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote  font-size-14 mb-0">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="my-0 text-dark card-title fw-semibold">Initiative</p>
+                            <p class="my-0 text-primary card-title fw-semibold">Initiative</p>
                             <h6 class="text-muted mb-0">Initiative</h4>
                         </div>
 
@@ -337,19 +340,19 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="Initiative" class="btn btn-primary btn-lg">Enter</a>
+                         <a href="Initiative" class="btn btn-info btn-lg">Enter</a>
                     </div>
                     </blockquote>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card mini-stats-wid border border-secondary">
+            <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote  font-size-14 mb-0">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="my-0 text-dark card-title fw-semibold">Medical Sector</p>
+                            <p class="my-0 text-primary card-title fw-semibold">Medical Sector</p>
                             <h6 class="text-muted mb-0">Medical Sector</h4>
                         </div>
 
@@ -363,7 +366,7 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="MedicalSector" class="btn btn-primary btn-lg">Enter</a>
+                         <a href="MedicalSector" class="btn btn-info btn-lg">Enter</a>
                     </div>
                     </blockquote>
                 </div>
@@ -380,14 +383,14 @@
     <div class="row ">
 <h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">Benef. Services</h1>
 <div class="col-xl-12">
-    <div class="row">
+    <div class="row mb-4">
         <div class="col-md-4">
-            <div class="card mini-stats-wid border border-secondary">
+            <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="my-0 text-dark card-title fw-semibold">Food Appeal</p>
+                            <p class="my-0 text-primary card-title fw-semibold">Food Appeal</p>
                             <h6 class="text-muted mb-0">Food Appeal</h4>
                         </div>
 
@@ -401,19 +404,19 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="FoodAppeal" class="btn btn-primary btn-lg">Enter</a>
+                         <a href="FoodAppeal" class="btn btn-info btn-lg">Enter</a>
                     </div>
                     </blockquote>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card mini-stats-wid border border-secondary">
+            <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote  font-size-14 mb-0">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="my-0 text-dark card-title fw-semibold">Qamar Care Card</p>
+                            <p class="my-0 text-primary card-title fw-semibold">Qamar Care Card</p>
                             <h6 class="text-muted mb-0">Qamar Care Card</h4>
                         </div>
 
@@ -427,19 +430,19 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="QamarCareCard" class="btn btn-primary btn-lg">Enter</a>
+                         <a href="QamarCareCard" class="btn btn-info btn-lg">Enter</a>
                     </div>
                     </blockquote>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card mini-stats-wid border border-secondary">
+            <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote  font-size-14 mb-0">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="my-0 text-dark card-title fw-semibold">Appeals' Distributions</p>
+                            <p class="my-0 text-primary card-title fw-semibold">Appeals' Distributions</p>
                             <h6 class="text-muted mb-0">Appeals' Distributions</h4>
                         </div>
 
@@ -453,7 +456,7 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="AppealsDistributions" class="btn btn-primary btn-lg">Enter</a>
+                         <a href="AppealsDistributions" class="btn btn-info btn-lg">Enter</a>
                     </div>
                     </blockquote>
                 </div>
@@ -469,12 +472,12 @@
 <div class="col-xl-12">
     <div class="row">
         <div class="col-md-4">
-            <div class="card mini-stats-wid border border-secondary">
+            <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="my-0 text-dark card-title fw-semibold">Donors & Donor Boxes</p>
+                            <p class="my-0 text-primary card-title fw-semibold">Donors & Donor Boxes</p>
                             <h6 class="text-muted mb-0">Donors & Donor Boxes</h4>
                         </div>
 
@@ -488,7 +491,7 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="Donors&DonorBoxes" class="btn btn-primary btn-lg">Enter</a>
+                         <a href="Donors&DonorBoxes" class="btn btn-info btn-lg">Enter</a>
                     </div>
                     </blockquote>
                 </div>
@@ -560,12 +563,12 @@
 <div class="col-xl-12">
     <div class="row">
         <div class="col-md-4">
-            <div class="card mini-stats-wid border border-secondary">
+            <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="my-0 text-dark card-title fw-semibold">Monthly Reports</p>
+                            <p class="my-0 text-primary card-title fw-semibold">Monthly Reports</p>
                             <h6 class="text-muted mb-0">Monthly Reports</h4>
                         </div>
 
@@ -579,19 +582,19 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="MonthlyReports" class="btn btn-primary btn-lg">Enter</a>
+                         <a href="MonthlyReports" class="btn btn-info btn-lg">Enter</a>
                     </div>
                     </blockquote>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card mini-stats-wid border border-secondary">
+            <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote  font-size-14 mb-0">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="my-0 text-dark card-title fw-semibold">Quartly Reports</p>
+                            <p class="my-0 text-primary card-title fw-semibold">Quartly Reports</p>
                             <h6 class="text-muted mb-0">Quartly Reports</h4>
                         </div>
 
@@ -605,19 +608,19 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="QuartlyReports" class="btn btn-primary btn-lg">Enter</a>
+                         <a href="QuartlyReports" class="btn btn-info btn-lg">Enter</a>
                     </div>
                     </blockquote>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card mini-stats-wid border border-secondary">
+            <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote  font-size-14 mb-0">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="my-0 text-dark card-title fw-semibold">Yearly Reports</p>
+                            <p class="my-0 text-primary card-title fw-semibold">Yearly Reports</p>
                             <h6 class="text-muted mb-0">Yearly Reports</h4>
                         </div>
 
@@ -631,7 +634,7 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="YearlyReports" class="btn btn-primary btn-lg">Enter</a>
+                         <a href="YearlyReports" class="btn btn-info btn-lg">Enter</a>
                     </div>
                     </blockquote>
                 </div>

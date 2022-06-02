@@ -309,7 +309,7 @@
                 <ul class="navbar-nav">
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboard" role="button"
+                        <a class="nav-link dropdown-toggle arrow-none" href="root" id="topnav-dashboard"
                             >
                             <i class="bx bx-home-circle me-2"></i><span key="t-dashboards">Home</span>
                         </a>

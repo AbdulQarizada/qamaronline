@@ -9,23 +9,17 @@
 @slot('title')   @endslot
 @endcomponent
 
-
-
-<!-- 
 <div class="row">
-    <div class="col-md-12">
-<div class="card">
-        <div class="card-body">
-        <h2 class="">Add Qamar Care Card</h2>
+        <div class="col-12">
+           <a href="QamarCareCard" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         </div>
-    </div>
-    </div>
-    </div> -->
+     </div>
 <div class="row">
     <div class="col-lg-12">
     <div class="card">
+    <h4 class="card-header bg-primary text-white ">Add Qamar Care Card Beneficiary</h4>
+
                 <div class="card-body">
-                    <h4 class="card-header mb-4">Add Qamar Care Card Beneficiary</h4>
                     <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
                     </p> -->
                     <form class="needs-validation"  action="/CreateQamarCareCard" method="POST" novalidate>
