@@ -149,7 +149,7 @@
                 </div>
                 <div class="card-body">
                     <blockquote class="card-blockquote mb-0">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
+                        <p> ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
                             erat a ante.</p>
                         <footer class="blockquote-footer font-size-12 mt-0">
                             Someone famous in <cite title="Source Title">Source Title</cite>

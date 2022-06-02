@@ -29,6 +29,10 @@
                     @yield('content')
                 </div> <!-- content -->
             </div>
+            <br />
+            <br />
+            <br />
+            <br />
             @include('layouts.footer')
         </div>
         <!-- ============================================================== -->

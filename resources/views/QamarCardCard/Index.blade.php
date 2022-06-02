@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master-layouts')
 
 @section('title') Qamar Care List @endsection
 
@@ -13,66 +13,119 @@
         @slot('li_1') Qamar Online @endslot
         @slot('title') Qamar Care Card @endslot
     @endcomponent
-
-
     <div class="row">
-    <div style="float:right">
-                    <a href="CreateQamarCareCard" class="btn btn-primary btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-plus-circle  font-size-16 label-icon"></i> Add Care Card</a>
-                    <a href="ViewApprovedList" class="btn btn-success btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-list-ul  font-size-16 label-icon"></i> Approved Cards</a>
-                    </div>
-        <div class="col-12">
-            
-            <div class="card">
-                <div class="card-body">
 
-                    <!-- <h3 class="card-title">Qamar Care Card Operations</h3>  -->
-              
-                    <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Province</th>
-                                <th>District</th>
-                                <th>Phone Number</th>
-                                <th>Actions</th>
-                                
-                            </tr>
-                        </thead>
+    <div class="col-xl-12">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mini-stats-wid border border-warning">
+                    <div class="card-body">
+                      <blockquote class="blockquote border-warning font-size-14 mb-0">
+                        <div class="d-flex">
+                            <div class="flex-grow-1">
+                                <p class="my-0 text-warning card-title fw-medium font-size-24">Qamar Care Cards</p>
+                                <h6 class="text-muted mb-0">Here you can add qamar care card for beneficiaries</h4>
+                            </div>
 
-
-                        <tbody>
-                            @foreach($qamarcarecards as $qamarcarecard)
-                                <tr>
-                                <td>{{$qamarcarecard -> id}}</td>
-                                <td>{{$qamarcarecard -> FirstName}}</td>
-                                <td>{{$qamarcarecard -> LastName}}</td>
-                                <td>{{$qamarcarecard -> Province}}</td>
-                                <td>{{$qamarcarecard -> District}}</td>
-                                <td>{{$qamarcarecard -> PNumber}}</td>
-                                <td>
-                       <div class="d-flex flex-wrap gap-2">
-                    <a href="button" class="btn btn-secondary waves-effect waves-light">
-                        <i class="bx bx-cog font-size-16 align-middle"></i>
-                    </a>
-                    <a href="button" class="btn btn-warning waves-effect waves-light">
-                        <i class="bx bx-edit  font-size-16 align-middle"></i>
-                    </a>
-                    <a href="button" class="btn btn-danger waves-effect waves-light">
-                        <i class=" bx bx-trash-alt font-size-16 align-middle"></i> 
-                    </a>
-                </div></td>
-                            </tr>
-                            @endforeach
-                
+                            <div class="flex-shrink-0 align-self-center">
+                                <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                    <span class="avatar-title bg-warning">
+                                        <i class="bx bx-plus-circle font-size-24"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                        
-                        </tbody>
-                    </table>
+                        <div class="d-flex mt-4">
+                             <a href="CreateQamarCareCard" class="btn btn-warning btn-lg">Enter</a>
+                        </div>
+                        </blockquote>
+                    </div>
                 </div>
             </div>
-        </div> <!-- end col -->
-    </div> <!-- end row -->
+            <div class="col-md-4">
+                <div class="card mini-stats-wid border border-primary">
+                    <div class="card-body">
+                      <blockquote class="blockquote border-primary font-size-14 mb-0">
+                        <div class="d-flex">
+                            <div class="flex-grow-1">
+                                <p class="my-0 text-primary card-title fw-medium font-size-24">Qamar Care Cards</p>
+                                <h6 class="text-muted mb-0">Here you can add qamar care card for beneficiaries</h4>
+                            </div>
+
+                            <div class="flex-shrink-0 align-self-center">
+                                <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
+                                    <span class="avatar-title bg-primary">
+                                        <i class="bx bx-plus-circle font-size-24"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="d-flex mt-4">
+                             <a href="CreateQamarCareCard" class="btn btn-primary btn-lg">Enter</a>
+                        </div>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mini-stats-wid border border-success">
+                    <div class="card-body">
+                      <blockquote class="blockquote border-success  font-size-14 mb-0">
+                        <div class="d-flex">
+                            <div class="flex-grow-1">
+                                <p class="my-0 text-success card-title fw-medium font-size-24">Qamar Care Cards</p>
+                                <h6 class="text-muted mb-0">Here you can add qamar care card for beneficiaries</h4>
+                            </div>
+
+                            <div class="flex-shrink-0 align-self-center">
+                                <div class="mini-stat-icon avatar-sm rounded-circle bg-success">
+                                    <span class="avatar-title bg-success">
+                                        <i class="bx bx-plus-circle font-size-24 "></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="d-flex mt-4">
+                             <a href="CreateQamarCareCard" class="btn btn-success btn-lg">Enter</a>
+                        </div>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- end row -->
+
+        <!-- <div class="card">
+            <div class="card-body">
+                <div class="d-sm-flex flex-wrap">
+                    <h4 class="card-title mb-4">Email Sent</h4>
+                    <div class="ms-auto">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Week</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Month</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Year</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="stacked-column-chart" class="apex-charts" dir="ltr"></div>
+            </div>
+        </div> -->
+    </div>
+</div>
+<!-- end row -->
+
+  
 
 @endsection
 @section('script')

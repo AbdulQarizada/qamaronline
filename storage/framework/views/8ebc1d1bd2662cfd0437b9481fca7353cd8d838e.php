@@ -14,10 +14,10 @@
 
                 <a href="index" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="<?php echo e(URL::asset ('/assets/images/logo-light.svg')); ?>" alt="" height="22">
+                    <img src="<?php echo e(URL::asset('/assets/images/logo.png')); ?>" alt="" height="22">
                     </span>
                     <span class="logo-lg">
-                        <img src="<?php echo e(URL::asset ('/assets/images/logo-light.png')); ?>" alt="" height="19">
+                    <img src="<?php echo e(URL::asset('/assets/images/side_logo.png')); ?>" alt="" height="45">
                     </span>
                 </a>
             </div>
@@ -35,10 +35,7 @@
             </form>
 
             <div class="dropdown dropdown-mega d-none d-lg-block ml-2">
-                <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-                    <span key="t-megamenu"><?php echo app('translator')->get('translation.Mega_Menu'); ?></span>
-                    <i class="mdi mdi-chevron-down"></i> 
-                </button>
+       
                 <div class="dropdown-menu dropdown-megamenu">
                     <div class="row">
                         <div class="col-sm-8">
@@ -188,111 +185,7 @@
                 </div>
             </div>
 
-            <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item waves-effect"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <?php switch(Session::get('lang')):
-                        case ('ru'): ?>
-                            <img src="<?php echo e(URL::asset('/assets/images/flags/russia.jpg')); ?>" alt="Header Language" height="16"> <span class="align-middle">Russian</span>
-                        <?php break; ?>
-                        <?php case ('it'): ?>
-                            <img src="<?php echo e(URL::asset('/assets/images/flags/italy.jpg')); ?>" alt="Header Language" height="16"> <span class="align-middle">Italian</span>
-                        <?php break; ?>
-                        <?php case ('de'): ?>
-                            <img src="<?php echo e(URL::asset('/assets/images/flags/germany.jpg')); ?>" alt="Header Language" height="16"> <span class="align-middle">German</span>
-                        <?php break; ?>
-                        <?php case ('es'): ?>
-                            <img src="<?php echo e(URL::asset('/assets/images/flags/spain.jpg')); ?>" alt="Header Language" height="16"> <span class="align-middle">Spanish</span>
-                        <?php break; ?>
-                        <?php default: ?>
-                            <img src="<?php echo e(URL::asset('/assets/images/flags/us.jpg')); ?>" alt="Header Language" height="16"> <span class="align-middle">English</span>
-                    <?php endswitch; ?>
-                </button>
-                <div class="dropdown-menu dropdown-menu-end">
-    
-                    <!-- item-->
-                    <a href="<?php echo e(url('index/en')); ?>" class="dropdown-item notify-item language" data-lang="eng">
-                        <img src="<?php echo e(URL::asset ('/assets/images/flags/us.jpg')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">English</span>
-                    </a>
-                    <!-- item-->
-                    <a href="<?php echo e(url('index/es')); ?>" class="dropdown-item notify-item language" data-lang="sp">
-                        <img src="<?php echo e(URL::asset ('/assets/images/flags/spain.jpg')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">Spanish</span>
-                    </a>
-    
-                    <!-- item-->
-                    <a href="<?php echo e(url('index/de')); ?>" class="dropdown-item notify-item language" data-lang="gr">
-                        <img src="<?php echo e(URL::asset ('/assets/images/flags/germany.jpg')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">German</span>
-                    </a>
-    
-                    <!-- item-->
-                    <a href="<?php echo e(url('index/it')); ?>" class="dropdown-item notify-item language" data-lang="it">
-                        <img src="<?php echo e(URL::asset ('/assets/images/flags/italy.jpg')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">Italian</span>
-                    </a>
-    
-                    <!-- item-->
-                    <a href="<?php echo e(url('index/ru')); ?>" class="dropdown-item notify-item language" data-lang="ru">
-                        <img src="<?php echo e(URL::asset ('/assets/images/flags/russia.jpg')); ?>" alt="user-image" class="me-1" height="12"> <span class="align-middle">Russian</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="dropdown d-none d-lg-inline-block ml-1">
-                <button type="button" class="btn header-item noti-icon waves-effect"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="bx bx-customize"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
-                    <div class="px-lg-2">
-                        <div class="row g-0">
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="<?php echo e(URL::asset ('/assets/images/brands/github.png')); ?>" alt="Github">
-                                    <span>GitHub</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="<?php echo e(URL::asset ('/assets/images/brands/bitbucket.png')); ?>" alt="bitbucket">
-                                    <span>Bitbucket</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="<?php echo e(URL::asset ('/assets/images/brands/dribbble.png')); ?>" alt="dribbble">
-                                    <span>Dribbble</span>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="row no-gutters">
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="<?php echo e(URL::asset ('/assets/images/brands/dropbox.png')); ?>" alt="dropbox">
-                                    <span>Dropbox</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="<?php echo e(URL::asset ('/assets/images/brands/mail_chimp.png')); ?>" alt="mail_chimp">
-                                    <span>Mail Chimp</span>
-                                </a>
-                            </div>
-                            <div class="col">
-                                <a class="dropdown-icon-item" href="#">
-                                    <img src="<?php echo e(URL::asset ('/assets/images/brands/slack.png')); ?>" alt="slack">
-                                    <span>Slack</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dropdown d-none d-lg-inline-block ml-1">
-                <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
-                    <i class="bx bx-fullscreen"></i>
-                </button>
-            </div>
+         
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
@@ -382,32 +275,27 @@
             </div>
 
             <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="<?php echo e(isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-1.jpg')); ?>"
-                        alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ms-1" key="t-henry"><?php echo e(ucfirst(Auth::user()->name)); ?></span>
-                    <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-end">
-                    <!-- item-->
-                    <a class="dropdown-item" href="contacts-profile"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile"><?php echo app('translator')->get('translation.Profile'); ?></span></a>
-                    <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet"><?php echo app('translator')->get('translation.My_Wallet'); ?></span></a>
-                    <a class="dropdown-item d-block" href="#" data-bs-toggle="modal" data-bs-target=".change-password"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings"><?php echo app('translator')->get('translation.Settings'); ?></span></a>
-                    <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen"><?php echo app('translator')->get('translation.Lock_screen'); ?></span></a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout"><?php echo app('translator')->get('translation.Logout'); ?></span></a>
-                    <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
-                        <?php echo csrf_field(); ?>
-                    </form>
-                </div>
+            <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img class="rounded-circle header-profile-user" src="<?php echo e(isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-1.png')); ?>"
+                    alt="Header Avatar">
+                <span class="d-none d-xl-inline-block ms-1" key="t-henry"><?php echo e(ucfirst(Auth::user()->name)); ?></span>
+                <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end">
+                <!-- item-->
+                <!-- <a class="dropdown-item" href="contacts-profile"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile"><?php echo app('translator')->get('translation.Profile'); ?></span></a>
+                <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet"><?php echo app('translator')->get('translation.My_Wallet'); ?></span></a>
+                <a class="dropdown-item d-block" href="#" data-bs-toggle="modal" data-bs-target=".change-password"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings"><?php echo app('translator')->get('translation.Settings'); ?></span></a>
+               -->
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".change-password"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Change Password</span></a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-danger" href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout"><?php echo app('translator')->get('translation.Logout'); ?></span></a>
+                <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                    <?php echo csrf_field(); ?>
+                </form>
             </div>
-
-            <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
-                    <i class="bx bx-cog bx-spin"></i>
-                </button>
-            </div>
+        </div>
             
         </div>
     </div>
@@ -423,25 +311,18 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboard" role="button"
                             >
-                            <i class="bx bx-home-circle me-2"></i><span key="t-dashboards"><?php echo app('translator')->get('translation.Dashboards'); ?></span> <div class="arrow-down"></div>
+                            <i class="bx bx-home-circle me-2"></i><span key="t-dashboards">Home</span>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
-
-                            <a href="index" class="dropdown-item" key="t-default"><?php echo app('translator')->get('translation.Default'); ?></a>
-                            <a href="dashboard-saas" class="dropdown-item" key="t-saas"><?php echo app('translator')->get('translation.Saas'); ?></a>
-                            <a href="dashboard-crypto" class="dropdown-item" key="t-crypto"><?php echo app('translator')->get('translation.Crypto'); ?></a>
-                            <a href="dashboard-blog" class="dropdown-item" key="t-blog"><?php echo app('translator')->get('translation.Blog'); ?></a>
-                        </div>
                     </li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-uielement" role="button"
                             >
                             <i class="bx bx-tone me-2"></i>
-                            <span key="t-ui-elements"> <?php echo app('translator')->get('translation.UI_Elements'); ?></span> 
-                            <div class="arrow-down"></div>
+                            <span key="t-ui-elements"> Projects</span> 
+                            <!-- <div class="arrow-down"></div> -->
                         </a>
-
+<!-- 
                         <div class="dropdown-menu mega-dropdown-menu px-2 dropdown-mega-menu-xl"
                             aria-labelledby="topnav-uielement">
                             <div class="row">
@@ -481,15 +362,16 @@
                                 </div>
                             </div>
 
-                        </div>
+                        </div> -->
                     </li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button"
                             >
-                            <i class="bx bx-customize me-2"></i><span key="t-apps"><?php echo app('translator')->get('translation.Apps'); ?></span> <div class="arrow-down"></div>
+                            <i class="bx bx-customize me-2"></i><span key="t-apps">Beneficiaries Services</span> 
+                            <!-- <div class="arrow-down"></div> -->
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="topnav-pages">
+                    <!-- <div class="dropdown-menu" aria-labelledby="topnav-pages">
                         <div class="dropdown">
                             <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-calendar"
                                 role="button" >
@@ -604,15 +486,16 @@
                                     <a href="blog-details" class="dropdown-item" key="t-blog-details"><?php echo app('translator')->get('translation.Blog_Details'); ?></a>
                                 </div>
                             </div>
-                        </div>
+                    </div> -->
                     </li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-components" role="button"
                             >
-                            <i class="bx bx-collection me-2"></i><span key="t-components"><?php echo app('translator')->get('translation.Components'); ?></span> <div class="arrow-down"></div>
+                            <i class="bx bx-collection me-2"></i><span key="t-components">Reports</span> 
+                            <!-- <div class="arrow-down"></div> -->
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="topnav-components">
+                        <!-- <div class="dropdown-menu" aria-labelledby="topnav-components">
                             <div class="dropdown">
                                 <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-form"
                                     role="button" >
@@ -681,15 +564,16 @@
                                     <a href="maps-leaflet" class="dropdown-item" key="t-l-maps"><?php echo app('translator')->get('translation.Leaflet_Maps'); ?></a>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button"
                             >
-                            <i class="bx bx-file me-2"></i><span key="t-extra-pages"><?php echo app('translator')->get('translation.Extra_Pages'); ?></span> <div class="arrow-down"></div>
+                            <i class="bx bx-file me-2"></i><span key="t-extra-pages">User Management</span> 
+                            <!-- <div class="arrow-down"></div> -->
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="topnav-more">
+                        <!-- <div class="dropdown-menu" aria-labelledby="topnav-more">
                             <div class="dropdown">
                                 <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-invoice"
                                     role="button" >
@@ -738,9 +622,9 @@
                                     <a href="pages-500" class="dropdown-item" key="t-error-500"><?php echo app('translator')->get('translation.Error_500'); ?></a>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </li>
-
+<!-- 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-layout" role="button"
                             >
@@ -778,7 +662,7 @@
                                 </div>
                             </div>
                         </div>
-                    </li>
+                    </li> -->
 
                 </ul>
             </div>

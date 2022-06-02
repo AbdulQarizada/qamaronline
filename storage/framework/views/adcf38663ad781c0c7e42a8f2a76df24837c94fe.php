@@ -5,7 +5,7 @@
 <?php $__env->startSection('content'); ?>
 
 <?php $__env->startComponent('components.breadcrumb'); ?>
-<?php $__env->slot('li_1'); ?> Dashboards <?php $__env->endSlot(); ?>
+<?php $__env->slot('li_1'); ?> Home <?php $__env->endSlot(); ?>
 <?php $__env->slot('title'); ?> Dashboard <?php $__env->endSlot(); ?>
 <?php echo $__env->renderComponent(); ?>
 
@@ -16,8 +16,7 @@
                 <div class="row">
                     <div class="col-7">
                         <div class="text-primary p-3">
-                            <h5 class="text-primary">Welcome Back !</h5>
-                            <p><?php echo e(Str::ucfirst(Auth::user()->name)); ?></p>
+                            <h5 class="text-dark">Welcome Back !</h5>
                         </div>
                     </div>
                     <div class="col-5 align-self-end">
@@ -31,54 +30,26 @@
                         <div class="avatar-md profile-user-wid mb-4">
                             <img src="<?php echo e(isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-1.jpg')); ?>" alt="" class="img-thumbnail rounded-circle">
                         </div>
-                        <h5 class="font-size-15 text-truncate"><?php echo e(Str::ucfirst(Auth::user()->name)); ?></h5>
-                        <p class="text-muted mb-0 text-truncate"><?php echo e(Str::ucfirst(Auth::user()->Role)); ?></p>
                     </div>
 
                     <div class="col-sm-8">
                         <div class="pt-4">
 
                             <div class="row">
-                                <div class="col-6">
-                                    <h5 class="font-size-15">125</h5>
-                                    <p class="text-muted mb-0">Projects</p>
+                                <div class="col-8">
+                                <h5 class="font-size-15 text-truncate"><?php echo e(Str::ucfirst(Auth::user()->name)); ?></h5>
+                        <p class="text-muted mb-0 text-truncate"><?php echo e(Str::ucfirst(Auth::user()->name)); ?></p>
                                 </div>
-                                <div class="col-6">
-                                    <h5 class="font-size-15">$1245</h5>
-                                    <p class="text-muted mb-0">Revenue</p>
-                                </div>
+                            
                             </div>
-                            <div class="mt-4">
+                            <!-- <div class="mt-4">
                                 <a href="" class="btn btn-primary waves-effect waves-light btn-sm">View Profile <i class="mdi mdi-arrow-right ms-1"></i></a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- <div class="card">
-            <div class="card-body">
-                <h4 class="card-title mb-4">Monthly Earning</h4>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <p class="text-muted">This month</p>
-                        <h3>$34,252</h3>
-                        <p class="text-muted"><span class="text-success me-2"> 12% <i class="mdi mdi-arrow-up"></i>
-                            </span> From previous period</p>
-
-                        <div class="mt-4">
-                            <a href="" class="btn btn-primary waves-effect waves-light btn-sm">View More <i class="mdi mdi-arrow-right ms-1"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="mt-4 mt-sm-0">
-                            <div id="radialBar-chart" class="apex-charts"></div>
-                        </div>
-                    </div>
-                </div>
-                <p class="text-muted mb-0">We craft digital, graphic and dimensional thinking.</p>
-            </div>
-        </div> -->
     </div>
     <div class="col-xl-8">
         <div class="row">
@@ -87,14 +58,14 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">Orders</p>
-                                <h4 class="mb-0">1,235</h4>
+                                <p class="text-muted fw-medium">Date</p>
+                                <h4 class="mb-0"><script>document.write(new Date().getFullYear())</script></h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
-                                <div class="mini-stat-icon avatar-sm rounded-circle bg-primary">
-                                    <span class="avatar-title">
-                                        <i class="bx bx-copy-alt font-size-24"></i>
+                                <div class="mini-stat-icon avatar-sm rounded-circle bg-dark">
+                                    <span class="avatar-title bg-dark">
+                                        1
                                     </span>
                                 </div>
                             </div>
@@ -107,14 +78,14 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">Revenue</p>
-                                <h4 class="mb-0">$35, 723</h4>
+                                <p class="text-muted fw-medium">Last Login</p>
+                                <h4 class="mb-0"><script>document.write(new Date().getFullYear())</script></h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center ">
                                 <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                    <span class="avatar-title rounded-circle bg-primary">
-                                        <i class="bx bx-archive-in font-size-24"></i>
+                                    <span class="avatar-title rounded-circle bg-dark">
+                                        2
                                     </span>
                                 </div>
                             </div>
@@ -133,8 +104,66 @@
 
                             <div class="flex-shrink-0 align-self-center">
                                 <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                    <span class="avatar-title rounded-circle bg-primary">
-                                        <i class="bx bx-purchase-tag-alt font-size-24"></i>
+                                    <span class="avatar-title rounded-circle bg-dark">
+                                        3
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mini-stats-wid">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="flex-grow-1">
+                                <p class="text-muted fw-medium">Average Price</p>
+                                <h4 class="mb-0">$16.2</h4>
+                            </div>
+
+                            <div class="flex-shrink-0 align-self-center">
+                                <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+                                    <span class="avatar-title rounded-circle bg-dark">
+                                       4
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            <div class="col-md-4">
+                <div class="card mini-stats-wid">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="flex-grow-1">
+                                <p class="text-muted fw-medium">Average Price</p>
+                                <h4 class="mb-0">$16.2</h4>
+                            </div>
+
+                            <div class="flex-shrink-0 align-self-center">
+                                <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+                                    <span class="avatar-title rounded-circle bg-dark">
+                                        5
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>            <div class="col-md-4">
+                <div class="card mini-stats-wid">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="flex-grow-1">
+                                <p class="text-muted fw-medium">Average Price</p>
+                                <h4 class="mb-0">$16.2</h4>
+                            </div>
+
+                            <div class="flex-shrink-0 align-self-center">
+                                <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+                                    <span class="avatar-title rounded-circle bg-dark">
+                                       6
                                     </span>
                                 </div>
                             </div>
@@ -170,96 +199,450 @@
     </div>
 </div>
 <!-- end row -->
+<br />
+ <br />
+<div class="row">
+<h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">Projects</h1>
+<div class="col-xl-12">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mini-stats-wid border border-secondary">
+                <div class="card-body">
+                  <blockquote class="blockquote font-size-14 mb-0">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="my-0 text-dark card-title fw-semibold">Orphans Relief</p>
+                            <h6 class="text-muted mb-0">Orphans Relief</h4>
+                        </div>
 
-
-
-<!-- end row -->
-
-<!-- Transaction Modal -->
-<div class="modal fade transaction-detailModal" tabindex="-1" role="dialog" aria-labelledby="transaction-detailModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="transaction-detailModalLabel">Order Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p class="mb-2">Product id: <span class="text-primary">#SK2540</span></p>
-                <p class="mb-4">Billing Name: <span class="text-primary">Neal Matthews</span></p>
-
-                <div class="table-responsive">
-                    <table class="table align-middle table-nowrap">
-                        <thead>
-                            <tr>
-                                <th scope="col">Product</th>
-                                <th scope="col">Product Name</th>
-                                <th scope="col">Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <div>
-                                        <img src="<?php echo e(URL::asset('/assets/images/product/img-7.png')); ?>" alt="" class="avatar-sm">
-                                    </div>
-                                </th>
-                                <td>
-                                    <div>
-                                        <h5 class="text-truncate font-size-14">Wireless Headphone (Black)</h5>
-                                        <p class="text-muted mb-0">$ 225 x 1</p>
-                                    </div>
-                                </td>
-                                <td>$ 255</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <div>
-                                        <img src="<?php echo e(URL::asset('/assets/images/product/img-4.png')); ?>" alt="" class="avatar-sm">
-                                    </div>
-                                </th>
-                                <td>
-                                    <div>
-                                        <h5 class="text-truncate font-size-14">Phone patterned cases</h5>
-                                        <p class="text-muted mb-0">$ 145 x 1</p>
-                                    </div>
-                                </td>
-                                <td>$ 145</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <h6 class="m-0 text-right">Sub Total:</h6>
-                                </td>
-                                <td>
-                                    $ 400
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <h6 class="m-0 text-right">Shipping:</h6>
-                                </td>
-                                <td>
-                                    Free
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <h6 class="m-0 text-right">Total:</h6>
-                                </td>
-                                <td>
-                                    $ 400
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                        <div class="flex-shrink-0 align-self-center">
+                            <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                <span class="avatar-title bg-dark">
+                                    <i class="bx bx-smile font-size-24"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="d-flex mt-4">
+                         <a href="OrphansRelief" class="btn btn-primary btn-lg">Enter</a>
+                    </div>
+                    </blockquote>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+        <div class="col-md-4">
+            <div class="card mini-stats-wid border border-secondary">
+                <div class="card-body">
+                  <blockquote class="blockquote  font-size-14 mb-0">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="my-0 text-dark card-title fw-semibold">Aid and Relief</p>
+                            <h6 class="text-muted mb-0">Aid and Relief</h4>
+                        </div>
+
+                        <div class="flex-shrink-0 align-self-center">
+                            <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                <span class="avatar-title bg-dark">
+                                    <i class="bx bx-briefcase-alt-2 font-size-24"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="d-flex mt-4">
+                         <a href="AidAndRelief" class="btn btn-primary btn-lg">Enter</a>
+                    </div>
+                    </blockquote>
+                </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="card mini-stats-wid border border-secondary">
+                <div class="card-body">
+                  <blockquote class="blockquote  font-size-14 mb-0">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="my-0 text-dark card-title fw-semibold">Wash</p>
+                            <h6 class="text-muted mb-0">Wash</h4>
+                        </div>
+
+                        <div class="flex-shrink-0 align-self-center">
+                            <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                <span class="avatar-title bg-dark">
+                                    <i class="bx bx-gas-pump font-size-24"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="d-flex mt-4">
+                         <a href="Wash" class="btn btn-primary btn-lg">Enter</a>
+                    </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        
+
     </div>
-</div>
-<!-- end modal -->
+    <!-- end row -->
+
+    <div class="row">
+<div class="col-xl-12">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mini-stats-wid border border-secondary">
+                <div class="card-body">
+                  <blockquote class="blockquote font-size-14 mb-0">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="my-0 text-dark card-title fw-semibold">Education</p>
+                            <h6 class="text-muted mb-0">Education</h4>
+                        </div>
+
+                        <div class="flex-shrink-0 align-self-center">
+                            <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                <span class="avatar-title bg-dark">
+                                    <i class="bx bxs-graduation font-size-24"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="d-flex mt-4">
+                         <a href="Education" class="btn btn-primary btn-lg">Enter</a>
+                    </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mini-stats-wid border border-secondary">
+                <div class="card-body">
+                  <blockquote class="blockquote  font-size-14 mb-0">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="my-0 text-dark card-title fw-semibold">Initiative</p>
+                            <h6 class="text-muted mb-0">Initiative</h4>
+                        </div>
+
+                        <div class="flex-shrink-0 align-self-center">
+                            <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                <span class="avatar-title bg-dark">
+                                    <i class="bx bx-bulb font-size-24"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="d-flex mt-4">
+                         <a href="Initiative" class="btn btn-primary btn-lg">Enter</a>
+                    </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mini-stats-wid border border-secondary">
+                <div class="card-body">
+                  <blockquote class="blockquote  font-size-14 mb-0">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="my-0 text-dark card-title fw-semibold">Medical Sector</p>
+                            <h6 class="text-muted mb-0">Medical Sector</h4>
+                        </div>
+
+                        <div class="flex-shrink-0 align-self-center">
+                            <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                <span class="avatar-title bg-dark">
+                                    <i class="bx bxs-ambulance font-size-24"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="d-flex mt-4">
+                         <a href="MedicalSector" class="btn btn-primary btn-lg">Enter</a>
+                    </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+    <!-- end row -->
+
+    <br />
+    <br />
+
+    <div class="row ">
+<h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">Benef. Services</h1>
+<div class="col-xl-12">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mini-stats-wid border border-secondary">
+                <div class="card-body">
+                  <blockquote class="blockquote font-size-14 mb-0">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="my-0 text-dark card-title fw-semibold">Food Appeal</p>
+                            <h6 class="text-muted mb-0">Food Appeal</h4>
+                        </div>
+
+                        <div class="flex-shrink-0 align-self-center">
+                            <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                <span class="avatar-title bg-dark">
+                                    <i class="bx bx-fingerprint  font-size-24"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="d-flex mt-4">
+                         <a href="FoodAppeal" class="btn btn-primary btn-lg">Enter</a>
+                    </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mini-stats-wid border border-secondary">
+                <div class="card-body">
+                  <blockquote class="blockquote  font-size-14 mb-0">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="my-0 text-dark card-title fw-semibold">Qamar Care Card</p>
+                            <h6 class="text-muted mb-0">Qamar Care Card</h4>
+                        </div>
+
+                        <div class="flex-shrink-0 align-self-center">
+                            <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                <span class="avatar-title bg-dark">
+                                    <i class="bx bx-credit-card font-size-24"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="d-flex mt-4">
+                         <a href="QamarCareCard" class="btn btn-primary btn-lg">Enter</a>
+                    </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mini-stats-wid border border-secondary">
+                <div class="card-body">
+                  <blockquote class="blockquote  font-size-14 mb-0">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="my-0 text-dark card-title fw-semibold">Appeals' Distributions</p>
+                            <h6 class="text-muted mb-0">Appeals' Distributions</h4>
+                        </div>
+
+                        <div class="flex-shrink-0 align-self-center">
+                            <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                <span class="avatar-title bg-dark">
+                                    <i class="bx bx-task font-size-24"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="d-flex mt-4">
+                         <a href="AppealsDistributions" class="btn btn-primary btn-lg">Enter</a>
+                    </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+    <!-- end row -->
+
+
+    <div class="row">
+<div class="col-xl-12">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mini-stats-wid border border-secondary">
+                <div class="card-body">
+                  <blockquote class="blockquote font-size-14 mb-0">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="my-0 text-dark card-title fw-semibold">Donors & Donor Boxes</p>
+                            <h6 class="text-muted mb-0">Donors & Donor Boxes</h4>
+                        </div>
+
+                        <div class="flex-shrink-0 align-self-center">
+                            <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                <span class="avatar-title bg-dark">
+                                    <i class="bx bxs-box font-size-24"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="d-flex mt-4">
+                         <a href="Donors&DonorBoxes" class="btn btn-primary btn-lg">Enter</a>
+                    </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-md-4">
+            <div class="card mini-stats-wid border border-secondary">
+                <div class="card-body">
+                  <blockquote class="blockquote  font-size-14 mb-0">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="my-0 text-dark card-title fw-semibold">Quartly Reports</p>
+                            <h6 class="text-muted mb-0">Quartly Reports</h4>
+                        </div>
+
+                        <div class="flex-shrink-0 align-self-center">
+                            <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                <span class="avatar-title bg-dark">
+                                    <i class="bx bx-briefcase-alt-2 font-size-24"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="d-flex mt-4">
+                         <a href="QuartlyReports" class="btn btn-primary btn-lg">Enter</a>
+                    </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mini-stats-wid border border-secondary">
+                <div class="card-body">
+                  <blockquote class="blockquote  font-size-14 mb-0">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="my-0 text-dark card-title fw-semibold">Yearly Reports</p>
+                            <h6 class="text-muted mb-0">Yearly Reports</h4>
+                        </div>
+
+                        <div class="flex-shrink-0 align-self-center">
+                            <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                <span class="avatar-title bg-dark">
+                                    <i class="bx bx-gas-pump font-size-24"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="d-flex mt-4">
+                         <a href="YearlyReports" class="btn btn-primary btn-lg">Enter</a>
+                    </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div> -->
+        
+
+    </div>
+    <!-- end row -->
+
+
+    <br />
+    <br />
+
+    <div class="row">
+<h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">Reports</h1>
+<div class="col-xl-12">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mini-stats-wid border border-secondary">
+                <div class="card-body">
+                  <blockquote class="blockquote font-size-14 mb-0">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="my-0 text-dark card-title fw-semibold">Monthly Reports</p>
+                            <h6 class="text-muted mb-0">Monthly Reports</h4>
+                        </div>
+
+                        <div class="flex-shrink-0 align-self-center">
+                            <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                <span class="avatar-title bg-dark">
+                                    <i class="bx bxs-report  font-size-24"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="d-flex mt-4">
+                         <a href="MonthlyReports" class="btn btn-primary btn-lg">Enter</a>
+                    </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mini-stats-wid border border-secondary">
+                <div class="card-body">
+                  <blockquote class="blockquote  font-size-14 mb-0">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="my-0 text-dark card-title fw-semibold">Quartly Reports</p>
+                            <h6 class="text-muted mb-0">Quartly Reports</h4>
+                        </div>
+
+                        <div class="flex-shrink-0 align-self-center">
+                            <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                <span class="avatar-title bg-dark">
+                                    <i class="bx bxs-report  font-size-24"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="d-flex mt-4">
+                         <a href="QuartlyReports" class="btn btn-primary btn-lg">Enter</a>
+                    </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mini-stats-wid border border-secondary">
+                <div class="card-body">
+                  <blockquote class="blockquote  font-size-14 mb-0">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="my-0 text-dark card-title fw-semibold">Yearly Reports</p>
+                            <h6 class="text-muted mb-0">Yearly Reports</h4>
+                        </div>
+
+                        <div class="flex-shrink-0 align-self-center">
+                            <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                <span class="avatar-title bg-dark">
+                                    <i class="bx bxs-report  font-size-24"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="d-flex mt-4">
+                         <a href="YearlyReports" class="btn btn-primary btn-lg">Enter</a>
+                    </div>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+    <!-- end row -->
+
+
 
 <!-- subscribeModal -->
 <!-- <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
@@ -308,4 +691,4 @@
 <!-- dashboard init -->
 <script src="<?php echo e(URL::asset('/assets/js/pages/dashboard.init.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/index.blade.php ENDPATH**/ ?>
