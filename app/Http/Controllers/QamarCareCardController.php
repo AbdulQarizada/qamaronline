@@ -188,7 +188,7 @@ class QamarCareCardController extends Controller
      {
        
           $data->delete();
-          return back()->with('success','Post deleted successfully');
+          return back()->with('success','Record deleted successfully');
 
      }
 

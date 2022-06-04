@@ -156,7 +156,9 @@
     <script src="{{ URL::asset('/assets/libs/datatables/datatables.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/libs/jszip/jszip.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/libs/pdfmake/pdfmake.min.js') }}"></script>
-    <!-- Datatable init js -->
+ 
+    
+    
     <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
 
 <script>
