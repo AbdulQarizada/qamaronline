@@ -60,7 +60,7 @@
                                 <div class="mb-3 position-relative">
                                     <label for="FirstName" class="form-label ">First Name</label>
                                     <input type="text" class="form-control form-control-lg" id="FirstName" name="FirstName"
-                                          >
+                                          required>
                               
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                 <div class="mb-3 position-relative">
                                     <label for="LastName" class="form-label ">Last Name</label>
                                     <input type="text" class="form-control form-control-lg" id="LastName" name="LastName"
-                                          >
+                                          required>
                                
                                 </div>
                             </div>
@@ -76,7 +76,7 @@
                                 <div class="mb-3 position-relative">
                                     <label for="TazkiraID" class="form-label ">Tazkira ID</label>
                                     <input type="number" class="form-control form-control-lg" id="TazkiraID" name="TazkiraID"
-                                          >
+                                          required>
                                   
                                 </div>
                             </div>
@@ -110,7 +110,7 @@
                                       
                                     <input type="text" class="form-control form-control-lg" 
                                     data-date-format="dd M, yyyy" data-date-container='#datepicker2'
-                                    data-provide="datepicker" data-date-autoclose="true" name="DOB" id="DOB" >
+                                    data-provide="datepicker" data-date-autoclose="true" name="DOB" id="DOB" required>
                                    
                                     </div>
                                 </div>
@@ -118,7 +118,7 @@
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Gender" class="form-label">Gender</label>
-                                    <select class="form-select  form-select-lg" id="Gender"  name="Gender" >
+                                    <select class="form-select  form-select-lg" id="Gender"  name="Gender" required>
                                     <option value="Male">Male</option>
                                     <option>Female</option>
                                  </select>
@@ -127,7 +127,7 @@
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Language" class="form-label">Language</label>
-                                    <select class="form-select  form-select-lg"  id="Language" name="Language">
+                                    <select class="form-select  form-select-lg" required id="Language" name="Language">
                                     <option value="Pashto">Pashto</option>
                                     <option value="Dari">Dari</option>
 
@@ -142,20 +142,20 @@
                                 <div class="mb-3 position-relative">
                                     <label for="CurrentJob" class="form-label">Current Job</label>
                                     <input type="text" class="form-control  form-control-lg" id="CurrentJob" name="CurrentJob"
-                                          >
+                                          required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="FutureJob" class="form-label">What type of job you can do?</label>
                                     <input type="text" class="form-control  form-control-lg" id="FutureJob"  name="FutureJob"
-                                         >
+                                         required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="EducationLevel" class="form-label">Education Level</label>
-                                    <select class="form-select  form-select-lg"  name="EducationLevel"  id="EducationLevel">
+                                    <select class="form-select  form-select-lg" required name="EducationLevel"  id="EducationLevel">
                                     <option value="NoEducation">No Education</option>
                                     <option value="Bachularate">Bachularate</option>
                                      <option value="University">University Graduate</option>
@@ -194,7 +194,7 @@
                                       
                                         <input type="number" class="form-control  form-control-lg" id="PrimaryNumber" name="PrimaryNumber"
                                              aria-describedby="PrimaryNumber"
-                                            >
+                                            required>
                                     </div>
                                 </div>
                             </div>
@@ -206,7 +206,7 @@
                                       
                                         <input type="number" class="form-control  form-control-lg" id="SecondaryNumber" name="SecondaryNumber"
                                             aria-describedby="SecondaryNumber"
-                                            >
+                                            required>
                                     </div>
                                 </div>
                             </div>
@@ -217,7 +217,7 @@
                                       
                                         <input type="number" class="form-control  form-control-lg" id="EmergencyNumber" name="EmergencyNumber"
                                              aria-describedby="EmergencyNumber"
-                                            >
+                                            required>
                                     </div>
                                 </div>
                             </div>
@@ -226,7 +226,7 @@
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Province" class="form-label">Province</label>
-                                    <select class="form-select  form-select-lg"  name="Province" id="Province">
+                                    <select class="form-select  form-select-lg" required name="Province" id="Province">
                                     <option value="Kabul">Kabul</option>
                                     </select>
                                 </div>
@@ -235,14 +235,14 @@
                                 <div class="mb-3 position-relative">
                                     <label for="District" class="form-label">District</label>
                                     <input type="text" class="form-control  form-control-lg" id="District"  name="District"
-                                        >
+                                        required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Village" class="form-label">Village</label>
                                     <input type="text" class="form-control  form-control-lg" id="Village"  name="Village"
-                                        >
+                                        required>
                                 </div>
                             </div>
                         </div>
@@ -255,7 +255,7 @@
                                       
                                         <input type="email" class="form-control  form-control-lg" id="Email" name="Email"
                                             aria-describedby="Email"
-                                            >
+                                            required>
                                     </div>
                                 </div>
                             </div>
@@ -288,14 +288,14 @@
                                 <div class="mb-3 position-relative">
                                     <label for="FatherName" class="form-label">Father's Name</label>
                                     <input type="text" class="form-control  form-control-lg" id="FatherName" name="FatherName"
-                                          >
+                                          required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="SpuoseName" class="form-label">Spuose's Name</label>
                                     <input type="text" class="form-control  form-control-lg" id="SpuoseName"  name="SpuoseName"
-                                         >
+                                         required>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -305,7 +305,7 @@
                                       
                                         <input type="number" class="form-control form-control-lg" id="EldestSonAge" name="EldestSonAge"
                                              aria-describedby="EldestSonAge"
-                                            >
+                                            required>
                                     </div>
                                 </div>
                             </div>
@@ -320,7 +320,7 @@
                                       
                                         <input type="number" class="form-control form-control-lg" id="MonthlyFamilyIncome" name="MonthlyFamilyIncome"
                                             aria-describedby="MonthlyFamilyIncome"
-                                            >
+                                            required>
                                     </div>
                                 </div>
                             </div>
@@ -332,7 +332,7 @@
                                       
                                         <input type="number" class="form-control form-control-lg" id="MonthlyFamilyExpenses" name="MonthlyFamilyExpenses"
                                              aria-describedby="MonthlyFamilyExpenses"
-                                            >
+                                            required>
                                     </div>
                                 </div>
                             </div>
@@ -343,7 +343,7 @@
                                       
                                         <input type="number" class="form-control form-control-lg" id="NumberFamilyMembers" name="NumberFamilyMembers"
                                              aria-describedby="NumberFamilyMembers"
-                                            >
+                                            required>
                                     </div>
                                 </div>
                             </div>
@@ -356,14 +356,14 @@
                                       
                                         <input type="text" class="form-control form-control-lg" id="IncomeStreem" name="IncomeStreem"
                                              aria-describedby="IncomeStreem"
-                                            >
+                                            required>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="LevelPoverty" class="form-label">Level Of Poverty</label>
-                                    <select class="form-select form-select-lg"  name="LevelPoverty" id="LevelPoverty">
+                                    <select class="form-select form-select-lg" required name="LevelPoverty" id="LevelPoverty">
                                    <option value="Poorest">Poorest</option>
                            </select>
                                 </div>
@@ -372,7 +372,7 @@
                                 <div class="mb-3 position-relative">
                                     <label for="validationTooltip04" class="form-label">District</label>
                                     <input type="text" class="form-control" id="validationTooltip04" placeholder="District" name="District"
-                                        >
+                                        required>
                                     <div class="invalid-tooltip">
                                         Please provide a valid state.
                                     </div>
