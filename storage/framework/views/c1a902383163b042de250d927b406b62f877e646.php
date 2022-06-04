@@ -5,6 +5,7 @@
 <?php $__env->startSection('css'); ?>
     <!-- DataTables -->
     <link href="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.css')); ?>" rel="stylesheet" type="text/css" />
+    
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -81,8 +82,8 @@
                                 <div>
 
 
-                                <?php if($qamarcarecard -> Status == 'InProgress'): ?>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary">Under Review</a></h5>
+                                <?php if($qamarcarecard -> Status == 'Pending'): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary"><?php echo e($qamarcarecard -> Status); ?></a></h5>
                                  <?php endif; ?>
 
                                 <?php if($qamarcarecard -> Status == 'Approved'): ?>
@@ -100,27 +101,41 @@
 
 
                                  <?php if($qamarcarecard -> Status == 'ReInitiated'): ?>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Under Review </a></h5>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info"><?php echo e($qamarcarecard -> Status); ?></a></h5>
                                  <?php endif; ?>
 
                                     </div>
                                 </td>
                                 <td>
                        <div class="d-flex flex-wrap gap-2">
-                    <a href="<?php echo e(route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-secondary waves-effect waves-light">
+                    <a href="<?php echo e(route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-warning waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
                     </a>
-                    <a href="<?php echo e(route('EditQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-warning waves-effect waves-light">
+                    <a href="<?php echo e(route('EditQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-info waves-effect waves-light">
                         <i class="bx bx-edit  font-size-16 align-middle"></i>
                     </a>
+                    <?php if($qamarcarecard -> Status == 'Approved' || $qamarcarecard ->Status == 'Printed'  ): ?>
+                    <a href="<?php echo e(route('PrintQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-dark waves-effect waves-light">
+                        <i class="bx bx-printer  font-size-16 align-middle"></i>
+                    </a>
+                     <?php endif; ?>
+                   
                     <form action="<?php echo e(route('DeleteQamarCareCard' , ['data' => $qamarcarecard -> id])); ?>" method="POST">
                     <?php echo csrf_field(); ?>     
                     <?php echo method_field('DELETE'); ?>
                         
-                    <button type="submit"  class="btn btn-danger waves-effect waves-light">
+                    <button type="button"  class="btn btn-danger waves-effect waves-light" id="sa-params">
                         <i class=" bx bx-trash-alt font-size-16 align-middle"></i> 
                     </button> 
                     </form>
+
+
+
+
+                   
+
+
+
                 </div></td>
                             </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -143,4 +158,4 @@
     <script src="<?php echo e(URL::asset('/assets/js/pages/datatables.init.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/List.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/All.blade.php ENDPATH**/ ?>

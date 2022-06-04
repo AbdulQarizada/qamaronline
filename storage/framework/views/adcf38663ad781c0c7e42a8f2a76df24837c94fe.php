@@ -45,9 +45,9 @@
                                 </div>
                             
                             </div>
-                            <!-- <div class="mt-4">
+                             <div class="mt-4">
                                 <a href="" class="btn btn-primary waves-effect waves-light btn-sm">View Profile <i class="mdi mdi-arrow-right ms-1"></i></a>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -207,8 +207,9 @@
 <div class="row">
 <h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">Projects</h1>
 <div class="col-xl-12">
-    <div class="row mb-4">
-        <div class="col-md-4 ">
+    <div class="row">
+        <div class="col-md-4 mb-2">
+           <a href="OrphansRelief">
             <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">
@@ -228,13 +229,15 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="OrphansRelief" class="btn btn-info btn-lg">Enter</a>
+                        
                     </div>
                     </blockquote>
                 </div>
             </div>
+            </a>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mb-2">
+            <a href="AidAndRelief">
             <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote  font-size-14 mb-0">
@@ -254,13 +257,15 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="AidAndRelief" class="btn btn-info btn-lg">Enter</a>
+                        
                     </div>
                     </blockquote>
                 </div>
             </div>
+            </a>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mb-2">
+            <a href="Wash">
             <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote  font-size-14 mb-0">
@@ -280,11 +285,12 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="Wash" class="btn btn-info btn-lg">Enter</a>
+                         
                     </div>
                     </blockquote>
                 </div>
             </div>
+            </a>
         </div>
         
 
@@ -294,7 +300,8 @@
     <div class="row">
 <div class="col-xl-12">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 mb-2">
+           <a href="Education">
             <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">
@@ -314,13 +321,15 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="Education" class="btn btn-info btn-lg">Enter</a>
+                         
                     </div>
                     </blockquote>
                 </div>
             </div>
+            </a>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mb-2">
+            <a href="Initiative">
             <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote  font-size-14 mb-0">
@@ -340,13 +349,15 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="Initiative" class="btn btn-info btn-lg">Enter</a>
+                        
                     </div>
                     </blockquote>
                 </div>
             </div>
+            </a>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mb-2">
+            <a href="MedicalSector">
             <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote  font-size-14 mb-0">
@@ -366,11 +377,12 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="MedicalSector" class="btn btn-info btn-lg">Enter</a>
+                         
                     </div>
                     </blockquote>
                 </div>
             </div>
+            </a>
         </div>
         
 
@@ -383,8 +395,9 @@
     <div class="row ">
 <h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">Benef. Services</h1>
 <div class="col-xl-12">
-    <div class="row mb-4">
-        <div class="col-md-4">
+    <div class="row">
+        <div class="col-md-4 mb-2">
+            <a href="FoodAppeal">
             <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">
@@ -404,13 +417,15 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="FoodAppeal" class="btn btn-info btn-lg">Enter</a>
+                       
                     </div>
                     </blockquote>
                 </div>
             </div>
+            </a>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mb-2">
+            <a href="QamarCareCard" >
             <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote  font-size-14 mb-0">
@@ -430,13 +445,15 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="QamarCareCard" class="btn btn-info btn-lg">Enter</a>
+                       
                     </div>
                     </blockquote>
                 </div>
             </div>
+            </a>
         </div>
         <div class="col-md-4">
+            <a href="AppealsDistributions">
             <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote  font-size-14 mb-0">
@@ -456,11 +473,12 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="AppealsDistributions" class="btn btn-info btn-lg">Enter</a>
+                        
                     </div>
                     </blockquote>
                 </div>
             </div>
+            </a>
         </div>
         
 
@@ -471,7 +489,8 @@
     <div class="row">
 <div class="col-xl-12">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 mb-2">
+            <a href="Donors&DonorBoxes">
             <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">
@@ -491,11 +510,12 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="Donors&DonorBoxes" class="btn btn-info btn-lg">Enter</a>
+                        
                     </div>
                     </blockquote>
                 </div>
             </div>
+            </a>
         </div>
         <!-- <div class="col-md-4">
             <div class="card mini-stats-wid border border-secondary">
@@ -562,7 +582,8 @@
 <h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">Reports</h1>
 <div class="col-xl-12">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 mb-2">
+            <a href="MonthlyReports">
             <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">
@@ -582,13 +603,15 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="MonthlyReports" class="btn btn-info btn-lg">Enter</a>
+                         
                     </div>
                     </blockquote>
                 </div>
             </div>
+            </a>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mb-2">
+            <a href="QuartlyReports">
             <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote  font-size-14 mb-0">
@@ -608,13 +631,15 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="QuartlyReports" class="btn btn-info btn-lg">Enter</a>
+                        
                     </div>
                     </blockquote>
                 </div>
             </div>
+            </a>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mb-2">
+            <a href="YearlyReports">
             <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote  font-size-14 mb-0">
@@ -634,11 +659,12 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                         <a href="YearlyReports" class="btn btn-info btn-lg">Enter</a>
+                        
                     </div>
                     </blockquote>
                 </div>
             </div>
+            </a>
         </div>
         
 

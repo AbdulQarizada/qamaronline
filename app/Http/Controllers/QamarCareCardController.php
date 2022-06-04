@@ -32,42 +32,6 @@ class QamarCareCardController extends Controller
 
 
 
-
-
-
-
-
-
-    // list
-    public function List()
-    {
-      
-      $qamarcarecards =   QamarCareCard::all();
-      return view('QamarCardCard.List', compact('qamarcarecards'));
-    }
-
-
-     // get one
-     public function GetOne(QamarCareCard $data)
-     {
-      $provinces =   Province::all();
-      
-      return view('QamarCardCard.GetOne', compact('provinces'), ['data' => $data]);
-     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // create
     public function Create()
     {
@@ -81,17 +45,39 @@ class QamarCareCardController extends Controller
       QamarCareCard::create([
              'FirstName' => request('FirstName'),
              'LastName' => request('LastName'),
-             'Email' => request('Email'),
-             'PNumber' => request('PNumber'),
-             'SNumber' => request('SNumber'),
+             'TazkiraID' => request('TazkiraID'),
+             'QCC' => request('QCC'),
+             'Profile' => request('Profile'),
+             'DOB' => request('DOB'),
+             'Gender' => request('Gender'),
+             'Language' => request('Language'),
+             'CurrentJob' => request('CurrentJob'),
+             'FutureJob' => request('FutureJob'),
+             'EducationLevel' => request('EducationLevel'),
+             'PrimaryNumber' => request('PrimaryNumber'),
+             'SecondaryNumber' => request('SecondaryNumber'),
+             'EmergencyNumber' => request('EmergencyNumber'),
              'Province' => request('Province'),
-             'District' => request('District')
+             'District' => request('District'),
+             'Village' => request('Village'),
+             'Email' => request('Email'),
+             'FatherName' => request('FatherName'),
+             'SpuoseName' => request('SpuoseName'),
+             'EldestSonAge' => request('EldestSonAge'),
+             'MonthlyFamilyIncome' => request('MonthlyFamilyIncome'),
+             'MonthlyFamilyExpenses' => request('MonthlyFamilyExpenses'),
+             'NumberFamilyMembers' => request('NumberFamilyMembers'),
+             'IncomeStreem' => request('IncomeStreem'),
+             'LevelPoverty' => request('LevelPoverty'),
+             'Tazkira' => request('Tazkira'),
+             'Status' => 'Pending',
+             'Created_By' => auth()->user()->name
 
 
 
       ]);
       $qamarcarecards =   QamarCareCard::all();
-      return view('QamarCardCard.List', compact('qamarcarecards'));
+      return view('QamarCardCard.All', compact('qamarcarecards'));
     }
 
 
@@ -133,7 +119,7 @@ class QamarCareCardController extends Controller
 
       ]);
       $qamarcarecards =   QamarCareCard::all();
-      return view('QamarCardCard.List', compact('qamarcarecards'));
+      return view('QamarCardCard.All', compact('qamarcarecards'));
     }
 
 
@@ -156,7 +142,7 @@ class QamarCareCardController extends Controller
        
           $data->delete();
           $qamarcarecards =   QamarCareCard::all();
-          return view('QamarCardCard.List', compact('qamarcarecards'));
+          return view('QamarCardCard.All', compact('qamarcarecards'));
 
      }
 
@@ -169,30 +155,135 @@ class QamarCareCardController extends Controller
 
 
 
+  
 
-  // arppoved
+   // list
+   public function All()
+   {
+     
+     $qamarcarecards =   QamarCareCard::all();
+     return view('QamarCardCard.All', compact('qamarcarecards'));
+   }
+
+
+
     public function Approved()
     {
       
-      $approveds =   QamarCareCard::all();
-      return view('QamarCardCard.Approved', compact('approveds'));
+      $qamarcarecards =   QamarCareCard::where("Status", "=", 'Approved')->get();
+
+      return view('QamarCardCard.Approved', compact('qamarcarecards'));
     }
 
-      // print
-      public function Print(QamarCareCard $data)
-      {
-        
-        return view('QamarCardCard.Print',  ['data' => $data]);
-      }
-  
 
-       // reject
-    public function Reject()
+    public function Rejected()
     {
       
-      $approveds =   QamarCareCard::all();
-      return view('QamarCardCard.Rejected', compact('approveds'));
+      $qamarcarecards =   QamarCareCard::where("Status", "=", 'Rejected')->get();
+      return view('QamarCardCard.Rejected', compact('qamarcarecards'));
     }
 
+       
+    public function Printed()
+     {
+         
+         $qamarcarecards =   QamarCareCard::where("Status", "=", 'Printed')->get();
+         return view('QamarCardCard.Printed', compact('qamarcarecards'));
+    }
+
+         
+    public function Pending()
+    {
+      
+      $qamarcarecards =   QamarCareCard::where("Status", "=", 'Pending')->get();
+      return view('QamarCardCard.Pending', compact('qamarcarecards'));
+    }
+
+
+
+
+
+  
+
+
+    // status
+    public function Status(QamarCareCard $data)
+    {
+      
+      return view('QamarCardCard.Status',  ['data' => $data]);
+    }
+
+    public function Approve(QamarCareCard $data )
+    {
+      
+      $data -> update([
+
+        'Status' => 'Approved'
+
+      ]);
+      $qamarcarecards =   QamarCareCard::all();
+      return view('QamarCardCard.All', compact('qamarcarecards'));
+    }
+
+    public function Reject(QamarCareCard $data )
+    {
+      
+      $data -> update([
+
+        'Status' => 'Rejected'
+
+      ]);
+      $qamarcarecards =   QamarCareCard::all();
+      return view('QamarCardCard.All', compact('qamarcarecards'));
+    }
+
+
+    public function ReInitiate(QamarCareCard $data )
+    {
+      
+      $data -> update([
+
+        'Status' => 'Pending'
+
+      ]);
+      $qamarcarecards =   QamarCareCard::all();
+      return view('QamarCardCard.All', compact('qamarcarecards'));
+    }
+
+    
+
+
+
+
+
+
+
+
+
+
+  // print
+  public function Print(QamarCareCard $data)
+  {
+          
+          return view('QamarCardCard.Print',  ['data' => $data]);
+   }
+
+   // Verify
+   public function Verify()
+   {
+            $qamarcarecards = null;
+            return view('QamarCardCard.Verify', compact('qamarcarecards'));
+   }
+  
+   
+   public function Search()
+   {
+      
+      $qamarcarecards =   QamarCareCard::where("QCC", "=",  request('ID'))->get();
+      return view('QamarCardCard.Verify', compact('qamarcarecards'));
+   }
+
+
+   
 
 }

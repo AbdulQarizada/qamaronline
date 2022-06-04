@@ -12,13 +12,35 @@ class QamarCareCard extends Model
     protected $fillable =
      [    
     
-        'FirstName',
-        'LastName',
-        'Email',
-        'PNumber',
-        'SNumber',
-        'Province',
-        'District'
+      'FirstName',
+      'LastName',
+      'TazkiraID',
+      'QCC',
+      'Profile',
+      'DOB',
+      'Gender',
+      'Language',
+      'CurrentJob',
+      'FutureJob',
+      'EducationLevel',
+      'PrimaryNumber',
+      'SecondaryNumber',
+      'EmergencyNumber',
+      'Province',
+      'District',
+      'Village',
+      'Email',
+      'FatherName',
+      'SpuoseName',
+      'EldestSonAge',
+      'MonthlyFamilyIncome',
+      'MonthlyFamilyExpenses',
+      'NumberFamilyMembers',
+      'IncomeStreem',
+      'LevelPoverty',
+      'Tazkira',
+      'Status',
+      'Created_By'
 
 
      ];

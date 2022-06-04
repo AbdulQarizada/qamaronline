@@ -41,6 +41,11 @@ Route::get('/Reports', [App\Http\Controllers\HomeController:: class, 'Reports'])
 
 Route::get('/UserManagement', [App\Http\Controllers\HomeController:: class, 'UserManagement'])->name('UserManagement');
 
+// uploads
+Route::post('/Upload_Tazkira', [App\Http\Controllers\HomeController:: class, 'Upload_Tazkira'])->name('Upload_Tazkira');
+Route::post('/Upload_Profile', [App\Http\Controllers\HomeController:: class, 'Upload_Profile'])->name('Upload_Profile');
+
+
 
 
 
@@ -54,12 +59,7 @@ Route::get('/UserManagement', [App\Http\Controllers\HomeController:: class, 'Use
 // Qamar Care Card
     Route::get('/QamarCareCard', [App\Http\Controllers\QamarCareCardController:: class, 'Index'])->name('IndexQamarCareCard');
      
-    //List
-    Route::get('/QamarCareCard/List', [App\Http\Controllers\QamarCareCardController:: class, 'List'])->name('ListQamarCareCard');
-
-    // Get One
-    Route::get('/QamarCareCard/List/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'GetOne'])->name('GetOneQamarCareCard');
-
+   
     // Create
     Route::get('/QamarCareCard/Create', [App\Http\Controllers\QamarCareCardController:: class, 'Create'])->name('CreateQamarCareCard');
     Route::post('/QamarCareCard/Create', [App\Http\Controllers\QamarCareCardController:: class, 'Store'])->name('CreateQamarCareCard');
@@ -72,16 +72,33 @@ Route::get('/UserManagement', [App\Http\Controllers\HomeController:: class, 'Use
     Route::delete('/QamarCareCard/List/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'Delete'])->name('DeleteQamarCareCard');
 
 
-    // Other Operations
-
-    // approve
+    // qamar care list
+    Route::get('/QamarCareCard/All', [App\Http\Controllers\QamarCareCardController:: class, 'All'])->name('AllQamarCareCard');
     Route::get('/QamarCareCard/Approved', [App\Http\Controllers\QamarCareCardController:: class, 'Approved'])->name('ApprovedQamarCareCard');
-    Route::post('/QamarCareCard/Approved', [App\Http\Controllers\QamarCareCardController:: class, 'Approved'])->name('ApprovedQamarCareCard');
+    Route::get('/QamarCareCard/Rejected', [App\Http\Controllers\QamarCareCardController:: class, 'Rejected'])->name('RejectedQamarCareCard');
+    Route::get('/QamarCareCard/Printed', [App\Http\Controllers\QamarCareCardController:: class, 'Printed'])->name('PrintedQamarCareCard');
+    Route::get('/QamarCareCard/Pending', [App\Http\Controllers\QamarCareCardController:: class, 'Pending'])->name('PendingQamarCareCard');
 
-    // reject
-    Route::get('/QamarCareCard/Reject', [App\Http\Controllers\QamarCareCardController:: class, 'Reject'])->name('RejectedQamarCareCard');
+
+
+
+    // status list and change status
+    Route::get('/QamarCareCard/Status/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'Status'])->name('StatusQamarCareCard');
+
+    Route::put('/QamarCareCard/Approve/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'Approve'])->name('ApproveQamarCareCard');
+
+    Route::put('/QamarCareCard/Reject/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'Reject'])->name('RejectQamarCareCard');
+
+    Route::put('/QamarCareCard/ReInitiate/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'ReInitiate'])->name('ReInitiateQamarCareCard');
+
+
+
     // print
-    Route::get('/QamarCareCard/Approved/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'Print'])->name('PrintQamarCareCard');
+    Route::get('/QamarCareCard/Print/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'Print'])->name('PrintQamarCareCard');
+
+    // verify qamar card that is avalibe to all
+    Route::get('/QamarCareCard/Verify', [App\Http\Controllers\QamarCareCardController:: class, 'Verify'])->name('VerifyQamarCareCard');
+    Route::post('/QamarCareCard/Verify', [App\Http\Controllers\QamarCareCardController:: class, 'Search'])->name('SearchQamarCareCard');
 
 
 

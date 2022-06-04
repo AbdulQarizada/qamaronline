@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -63,8 +64,49 @@ class HomeController extends Controller
 
 
 
+    public function Upload_Tazkira(Request $request)
+    {
+        if($request -> hasFile('Tazkira'))
+        {
+ 
+       
+             $Tazkira = $request->file('Tazkira');
+ 
+             $Tazkiraname = $Tazkira -> getClientOriginalName();
+ 
+             $Tazkiruniquename = uniqid().'_'.$Tazkiraname;
+ 
+             $Tazkira -> storeAs('/assets/uploads/Tazkiras', $Tazkiruniquename);
+ 
+             return $Tazkiruniquename;
+ 
+         }
+         return '';
+    }
 
 
+    public function Upload_Profile(Request $request)
+    {
+       
+       if($request -> hasFile('Profile'))
+       {
+
+      
+            $profile = $request->file('Profile');
+
+            $profilename = $profile -> getClientOriginalName();
+
+            $profileuniquename = uniqid().'_'.$profilename;
+
+            $profile -> storeAs('/assets/uploads/Profiles', $profileuniquename);
+
+            return $profileuniquename;
+
+        }
+        return '';
+
+        
+    }
 
 
 

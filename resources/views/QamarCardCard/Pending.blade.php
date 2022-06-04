@@ -23,8 +23,8 @@
         <div class="col-12">
         <div class="card border border-3">
                     <div class="card-header">
-                      <blockquote class="blockquote border-success  font-size-14 mb-0">
-                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">APPROVED CARE CARD</p>
+                      <blockquote class="blockquote border-secondary  font-size-14 mb-0">
+                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">Pending CARE CARD</p>
                         
                         </blockquote>
                     </div>
@@ -36,7 +36,7 @@
         <div class="col-12">
             
             <div class="card">
-            <h3 class="card-header bg-success text-white"></h3>
+            <h3 class="card-header bg-secondary text-white"></h3>
                 <div class="card-body">
 
                     
@@ -76,6 +76,7 @@
                                          <p class="text-muted mb-0 badge badge-soft-danger">{{$qamarcarecard -> EmergencyNumber}}</p>
                                         </div>
                                </td> 
+                               
                                 <td>
                        <div class="d-flex flex-wrap gap-2">
                     <a href="{{route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-secondary waves-effect waves-light">

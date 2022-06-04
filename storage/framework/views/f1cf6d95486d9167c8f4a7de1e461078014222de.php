@@ -19,23 +19,35 @@
            <a href="<?php echo e(route('IndexQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         </div>
      </div>
+     <div class="row">
+        <div class="col-12">
+        <div class="card border border-3">
+                    <div class="card-header">
+                      <blockquote class="blockquote border-success  font-size-14 mb-0">
+                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">APPROVED CARE CARD</p>
+                        
+                        </blockquote>
+                    </div>
+                </div>
+      
+        </div>
+     </div>
     <div class="row">
         <div class="col-12">
             
             <div class="card">
-            <h3 class="card-header bg-success text-white">Approved Qamar Care Cards</h3>
-
+            <h3 class="card-header bg-success text-white"></h3>
                 <div class="card-body">
 
+                    
               
                     <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Full Name</th>
-                                <th>Province</th>
-                                <th>District</th>
-                                <th>Phone Number</th>
+                                <th>Address</th>
+                                <th>Phone Numbers</th>
                                 <th>Actions</th>
                                 
                             </tr>
@@ -43,19 +55,34 @@
 
 
                         <tbody>
-                            <?php $__currentLoopData = $approveds; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $approved): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = $qamarcarecards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qamarcarecard): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                <td><?php echo e($approved -> id); ?></td>
-                                <td><?php echo e($approved -> FirstName); ?> <?php echo e($approved -> LastName); ?></td>
-                                <td><?php echo e($approved -> Province); ?></td>
-                                <td><?php echo e($approved -> District); ?></td>
-                                <td><?php echo e($approved -> PNumber); ?></td>
+                                <td><?php echo e($qamarcarecard -> id); ?></td>
+                                <td>
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> FirstName); ?> <?php echo e($qamarcarecard -> LastName); ?></a></h5>
+                                        <p class="text-muted mb-0">QCC-<?php echo e($qamarcarecard -> QCC); ?></p>
+                                </td>
+                                <td>
+                                <div>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> Province); ?></a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($qamarcarecard -> District); ?></p> 
+                               
+                                    </div>
+                                </td>
+                                <td>    
+                                      <div>
+                                      <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($qamarcarecard -> PrimaryNumber); ?></a></h5>
+                                        <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($qamarcarecard -> SecondaryNumber); ?></p>
+                                         <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($qamarcarecard -> EmergencyNumber); ?></p>
+                                        </div>
+                               </td> 
                                 <td>
                        <div class="d-flex flex-wrap gap-2">
-                       <a href="<?php echo e(route('PrintQamarCareCard', ['data' => $approved -> id])); ?>" class="btn btn-secondary waves-effect waves-light">
+                    <a href="<?php echo e(route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-secondary waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
                     </a>
-                </div></td>
+                </div>
+            </td>
                             </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 
