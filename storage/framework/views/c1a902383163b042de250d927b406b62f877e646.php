@@ -119,15 +119,17 @@
                         <i class="bx bx-printer  font-size-16 align-middle"></i>
                     </a>
                      <?php endif; ?>
-                   
-                    <form action="<?php echo e(route('DeleteQamarCareCard' , ['data' => $qamarcarecard -> id])); ?>" method="POST">
+                     <a href="<?php echo e(route('DeleteQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-danger waves-effect waves-light delete-confirm">
+                        <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
+                    </a>
+                    <!-- <form action="<?php echo e(route('DeleteQamarCareCard' , ['data' => $qamarcarecard -> id])); ?>" method="POST">
                     <?php echo csrf_field(); ?>     
                     <?php echo method_field('DELETE'); ?>
                         
                     <button type="button"  class="btn btn-danger waves-effect waves-light" id="sa-params">
                         <i class=" bx bx-trash-alt font-size-16 align-middle"></i> 
                     </button> 
-                    </form>
+                    </form> -->
 
 
 
@@ -155,7 +157,24 @@
     <script src="<?php echo e(URL::asset('/assets/libs/jszip/jszip.min.js')); ?>"></script>
     <script src="<?php echo e(URL::asset('/assets/libs/pdfmake/pdfmake.min.js')); ?>"></script>
     <!-- Datatable init js -->
-    <script src="<?php echo e(URL::asset('/assets/js/pages/datatables.init.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
+
+<script>
+    $('.delete-confirm').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Are you sure?',
+        text: 'This record and it`s details will be permanantly deleted!',
+        icon: 'warning',
+        buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
+</script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/All.blade.php ENDPATH**/ ?>

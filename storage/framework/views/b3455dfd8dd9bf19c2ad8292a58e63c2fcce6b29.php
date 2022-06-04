@@ -23,6 +23,7 @@
 <?php $__env->startSection('body'); ?>
     <body data-topbar="dark" data-layout="horizontal">
 <?php echo $__env->yieldSection(); ?>
+<?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     <!-- Begin page -->
     <div id="layout-wrapper">

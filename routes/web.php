@@ -69,7 +69,7 @@ Route::post('/Upload_Profile', [App\Http\Controllers\HomeController:: class, 'Up
     Route::put('/QamarCareCard/Edit/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'Update'])->name('UpdateQamarCareCard');
 
     // delete
-    Route::delete('/QamarCareCard/List/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'Delete'])->name('DeleteQamarCareCard');
+    Route::get('/QamarCareCard/Delete/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'Delete'])->name('DeleteQamarCareCard');
 
 
     // qamar care list

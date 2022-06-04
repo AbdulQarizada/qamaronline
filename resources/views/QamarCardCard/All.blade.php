@@ -119,15 +119,17 @@
                         <i class="bx bx-printer  font-size-16 align-middle"></i>
                     </a>
                      @endif
-                   
-                    <form action="{{route('DeleteQamarCareCard' , ['data' => $qamarcarecard -> id])}}" method="POST">
+                     <a href="{{route('DeleteQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-danger waves-effect waves-light delete-confirm">
+                        <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
+                    </a>
+                    <!-- <form action="{{route('DeleteQamarCareCard' , ['data' => $qamarcarecard -> id])}}" method="POST">
                     @csrf     
                     @method('DELETE')
                         
                     <button type="button"  class="btn btn-danger waves-effect waves-light" id="sa-params">
                         <i class=" bx bx-trash-alt font-size-16 align-middle"></i> 
                     </button> 
-                    </form>
+                    </form> -->
 
 
 
@@ -155,5 +157,22 @@
     <script src="{{ URL::asset('/assets/libs/jszip/jszip.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/libs/pdfmake/pdfmake.min.js') }}"></script>
     <!-- Datatable init js -->
-    <script src="{{ URL::asset('/assets/js/pages/datatables.init.js') }}"></script>
+    <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
+
+<script>
+    $('.delete-confirm').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Are you sure?',
+        text: 'This record and it`s details will be permanantly deleted!',
+        icon: 'warning',
+        buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
+</script>
 @endsection

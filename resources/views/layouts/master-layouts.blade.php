@@ -23,6 +23,7 @@
 @section('body')
     <body data-topbar="dark" data-layout="horizontal">
 @show
+@include('sweetalert::alert')
 
     <!-- Begin page -->
     <div id="layout-wrapper">

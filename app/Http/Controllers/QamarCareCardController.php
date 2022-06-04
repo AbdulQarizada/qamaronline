@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Models\QamarCareCard;
 use App\Models\Province;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+
 
 class QamarCareCardController extends Controller
 {
@@ -40,44 +45,86 @@ class QamarCareCardController extends Controller
       return view('QamarCardCard.Create', compact('provinces'));
     }
 
-    public function Store()
+    public function Store(Request $request)
     {
-      QamarCareCard::create([
-             'FirstName' => request('FirstName'),
-             'LastName' => request('LastName'),
-             'TazkiraID' => request('TazkiraID'),
-             'QCC' => request('QCC'),
-             'Profile' => request('Profile'),
-             'DOB' => request('DOB'),
-             'Gender' => request('Gender'),
-             'Language' => request('Language'),
-             'CurrentJob' => request('CurrentJob'),
-             'FutureJob' => request('FutureJob'),
-             'EducationLevel' => request('EducationLevel'),
-             'PrimaryNumber' => request('PrimaryNumber'),
-             'SecondaryNumber' => request('SecondaryNumber'),
-             'EmergencyNumber' => request('EmergencyNumber'),
-             'Province' => request('Province'),
-             'District' => request('District'),
-             'Village' => request('Village'),
-             'Email' => request('Email'),
-             'FatherName' => request('FatherName'),
-             'SpuoseName' => request('SpuoseName'),
-             'EldestSonAge' => request('EldestSonAge'),
-             'MonthlyFamilyIncome' => request('MonthlyFamilyIncome'),
-             'MonthlyFamilyExpenses' => request('MonthlyFamilyExpenses'),
-             'NumberFamilyMembers' => request('NumberFamilyMembers'),
-             'IncomeStreem' => request('IncomeStreem'),
-             'LevelPoverty' => request('LevelPoverty'),
-             'Tazkira' => request('Tazkira'),
-             'Status' => 'Pending',
-             'Created_By' => auth()->user()->name
+      
+       $validator = $request->validate([
+      'FirstName' => 'bail|required|max:255',
+      'LastName' => 'required|max:255',
+      'TazkiraID' => 'required|integer|digits_between:1,30',
+      'QCC' => 'required|unique:qamar_care_cards|max:255',
+      'Profile' => 'required|max:255',
+      'DOB' => 'required|max:255',
+      'Gender' => 'required|max:255',
+      'Language' => 'required|max:255',
+      'CurrentJob' => 'required|max:255',
+      'FutureJob' => 'required|max:255',
+      'EducationLevel' => 'required|max:255',
+      'PrimaryNumber' => 'required|integer|digits_between:1,12',
+      'SecondaryNumber' => 'required|integer|digits_between:1,12',
+      'EmergencyNumber' => 'required|integer|digits_between:1,12',
+      'Province' => 'required|max:255',
+      'District' => 'required|max:255',
+      'Village' => 'required|max:255',
+      'Email' => 'required|max:255',
+      'FatherName' => 'required|max:255',
+      'SpuoseName' => 'required|max:255',
+      'EldestSonAge' => 'required|integer|digits_between:1,3',
+      'MonthlyFamilyIncome' => 'required|integer|digits_between:1,5',
+      'MonthlyFamilyExpenses' => 'required|integer|digits_between:1,5',
+      'NumberFamilyMembers' => 'required|integer|digits_between:1,5',
+      'IncomeStreem' => 'required|max:255',
+      'LevelPoverty' => 'required|max:255',
+      'Tazkira' => 'required|max:255',
+       ]);
+
+  
+       
+     
+
+     
+        QamarCareCard::create([
+          'FirstName' => request('FirstName'),
+          'LastName' => request('LastName'),
+          'TazkiraID' => request('TazkiraID'),
+          'QCC' => request('QCC'),
+          'Profile' => request('Profile'),
+          'DOB' => request('DOB'),
+          'Gender' => request('Gender'),
+          'Language' => request('Language'),
+          'CurrentJob' => request('CurrentJob'),
+          'FutureJob' => request('FutureJob'),
+          'EducationLevel' => request('EducationLevel'),
+          'PrimaryNumber' => request('PrimaryNumber'),
+          'SecondaryNumber' => request('SecondaryNumber'),
+          'EmergencyNumber' => request('EmergencyNumber'),
+          'Province' => request('Province'),
+          'District' => request('District'),
+          'Village' => request('Village'),
+          'Email' => request('Email'),
+          'FatherName' => request('FatherName'),
+          'SpuoseName' => request('SpuoseName'),
+          'EldestSonAge' => request('EldestSonAge'),
+          'MonthlyFamilyIncome' => request('MonthlyFamilyIncome'),
+          'MonthlyFamilyExpenses' => request('MonthlyFamilyExpenses'),
+          'NumberFamilyMembers' => request('NumberFamilyMembers'),
+          'IncomeStreem' => request('IncomeStreem'),
+          'LevelPoverty' => request('LevelPoverty'),
+          'Tazkira' => request('Tazkira'),
+          'Status' => 'Pending',
+          'Created_By' => auth()->user()->name
 
 
 
-      ]);
-      $qamarcarecards =   QamarCareCard::all();
-      return view('QamarCardCard.All', compact('qamarcarecards'));
+          ]);
+
+         return redirect()->route('AllQamarCareCard')->with('toast_success', 'Record Created Successfully!')->autoClose(5000);
+
+      
+
+
+  
+
     }
 
 
@@ -141,8 +188,7 @@ class QamarCareCardController extends Controller
      {
        
           $data->delete();
-          $qamarcarecards =   QamarCareCard::all();
-          return view('QamarCardCard.All', compact('qamarcarecards'));
+          return back()->with('success','Post deleted successfully');
 
      }
 

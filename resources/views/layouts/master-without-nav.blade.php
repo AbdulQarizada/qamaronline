@@ -17,8 +17,9 @@
     <link href="{{ URL::asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ URL::asset('/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+    @include('sweetalert::alert')
   </head>
-
+  
     @yield('body')
     
     @yield('content')
