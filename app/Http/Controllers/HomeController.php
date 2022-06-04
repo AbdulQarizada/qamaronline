@@ -76,7 +76,7 @@ class HomeController extends Controller
  
              $Tazkiruniquename = uniqid().'_'.$Tazkiraname;
  
-             $Tazkira -> storeAs('/assets/uploads/Tazkiras', $Tazkiruniquename);
+             $Tazkira -> storeAs('/public/uploads/Tazkiras', $Tazkiruniquename);
  
              return $Tazkiruniquename;
  
@@ -98,7 +98,7 @@ class HomeController extends Controller
 
             $profileuniquename = uniqid().'_'.$profilename;
 
-            $profile -> storeAs('/assets/uploads/Profiles', $profileuniquename);
+            $profile -> storeAs('/public/uploads/Profiles', $profileuniquename);
 
             return $profileuniquename;
 

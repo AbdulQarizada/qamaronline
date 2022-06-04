@@ -25,7 +25,7 @@
                                         <div class="table-responsive">
                                    
                                             
-                                            <img src="<?php echo e(URL::asset('storage/assets/uploads/Profiles/'.$data -> Profile)); ?>" style="width: 130px; height: 135px;">
+                                            <img src="<?php echo e(URL::asset('storage/uploads/Profiles/'.$data -> Profile)); ?>" style="width: 130px; height: 135px;">
                                             <br /><br />
                                             
                                             <table class="table table-nowrap">
