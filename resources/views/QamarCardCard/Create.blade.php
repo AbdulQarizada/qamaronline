@@ -364,7 +364,7 @@
                                 <div class="mb-3 position-relative">
                                     <label for="LevelPoverty" class="form-label">Level Of Poverty</label>
                                     <select class="form-select form-select-lg" required name="LevelPoverty" id="LevelPoverty">
-                                   <option value="Poorest">Poorest</option>
+                                   <option value="1">1</option>
                            </select>
                                 </div>
                             </div>
