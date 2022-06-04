@@ -118,7 +118,7 @@ class QamarCareCardController extends Controller
 
           ]);
 
-         return redirect()->route('AllQamarCareCard')->with('toast_success', 'Record Created Successfully!')->autoClose(5000);
+         return redirect()->route('AllQamarCareCard')->with('toast_success', 'Record Created Successfully!');
 
       
 
@@ -267,8 +267,8 @@ class QamarCareCardController extends Controller
         'Status' => 'Approved'
 
       ]);
-      $qamarcarecards =   QamarCareCard::all();
-      return view('QamarCardCard.All', compact('qamarcarecards'));
+      return redirect()->route('AllQamarCareCard')->with('toast_success', 'Record Approved Successfully!');
+
     }
 
     public function Reject(QamarCareCard $data )
@@ -279,8 +279,7 @@ class QamarCareCardController extends Controller
         'Status' => 'Rejected'
 
       ]);
-      $qamarcarecards =   QamarCareCard::all();
-      return view('QamarCardCard.All', compact('qamarcarecards'));
+      return redirect()->route('AllQamarCareCard')->with('toast_error', 'Record Rejected Successfully!');
     }
 
 
@@ -292,8 +291,7 @@ class QamarCareCardController extends Controller
         'Status' => 'Pending'
 
       ]);
-      $qamarcarecards =   QamarCareCard::all();
-      return view('QamarCardCard.All', compact('qamarcarecards'));
+      return redirect()->route('AllQamarCareCard')->with('toast_warning', 'Record Re-Initiated Successfully!');
     }
 
     
