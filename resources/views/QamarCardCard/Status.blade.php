@@ -86,7 +86,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Emergency Number</td>
-                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> EmergencyNumber}}</td>
+                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> RelativeName}}</td>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Province</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> Province}}</td>
                                                     </tr>

@@ -70,7 +70,7 @@
                                     <div>
                                       <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$qamarcarecard -> PrimaryNumber}}</a></h5>
                                         <p class="text-muted mb-0 badge badge-soft-warning">{{$qamarcarecard -> SecondaryNumber}}</p>
-                                         <p class="text-muted mb-0 badge badge-soft-danger">{{$qamarcarecard -> EmergencyNumber}}</p>
+                                         <p class="text-muted mb-0 badge badge-soft-danger">{{$qamarcarecard -> RelativeName}}</p>
                                         </div>
                                     </td>
                                     <td>
