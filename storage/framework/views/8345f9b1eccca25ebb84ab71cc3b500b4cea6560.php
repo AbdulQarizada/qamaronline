@@ -25,7 +25,7 @@
                                         <div class="table-responsive">
                                    
                                             
-                                            <img src="<?php echo e(URL::asset('storage/uploads/Profiles/'.$data -> Profile)); ?>" style="width: 130px; height: 135px;">
+                                            <img src="<?php echo e(URL::asset('/uploads/Profiles/'.$data -> Profile)); ?>" style="width: 130px; height: 135px;">
                                             <br /><br />
                                             
                                             <table class="table table-nowrap">
@@ -86,7 +86,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Emergency Number</td>
-                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> EmergencyNumber); ?></td>
+                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> RelativeName); ?></td>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Province</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> Province); ?></td>
                                                     </tr>
