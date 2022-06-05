@@ -131,7 +131,53 @@
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Income Streem</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> IncomeStreem); ?></td>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Level Of Poverty</td>
-                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> LevelPoverty); ?></td>
+                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;">
+                                                        
+                                                        
+                                                        
+                                <div>
+                                       <?php if( $data -> LevelPoverty == 1): ?>
+                                         <i class="bx bxs-star text-warning font-size-12"></i>
+                                         <i class="bx bxs-star text-secondary font-size-14"></i>
+                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+
+                                       <?php endif; ?>
+                                       <?php if( $data -> LevelPoverty == 2): ?>
+                                       <i class="bx bxs-star text-warning font-size-12"></i>
+                                         <i class="bx bxs-star text-warning font-size-14"></i>
+                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+                                       <?php endif; ?>
+                                       <?php if( $data -> LevelPoverty == 3): ?>
+                                       <i class="bx bxs-star text-warning font-size-12"></i>
+                                         <i class="bx bxs-star text-warning font-size-14"></i>
+                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+                                       <?php endif; ?>
+                                       <?php if( $data -> LevelPoverty == 4): ?>
+                                       <i class="bx bxs-star text-warning font-size-12"></i>
+                                         <i class="bx bxs-star text-warning font-size-14"></i>
+                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+                                       <?php endif; ?>
+                                       <?php if( $data -> LevelPoverty == 5): ?>
+                                       <i class="bx bxs-star text-warning font-size-12"></i>
+                                         <i class="bx bxs-star text-warning font-size-14"></i>
+                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+                                       <?php endif; ?>
+                                    </div>
+                                
+                                                    
+                                                    
+                                                    
+                                                    </td>
                                                     </tr>
                                                   
                                                   

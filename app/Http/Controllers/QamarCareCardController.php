@@ -62,7 +62,7 @@ class QamarCareCardController extends Controller
       'EducationLevel' => 'required|max:255',
       'PrimaryNumber' => 'required|max:10',
       'SecondaryNumber' => 'required|max:10',
-      'EmergencyNumber' => 'required|max:10',
+      'RelativeNumber' => 'required|max:10',
       'Province' => 'required|max:255',
       'District' => 'required|max:255',
       'Village' => 'required|max:255',
@@ -76,6 +76,14 @@ class QamarCareCardController extends Controller
       'IncomeStreem' => 'required|max:255',
       'LevelPoverty' => 'required|max:255',
       'Tazkira' => 'required|max:255',
+
+      'RelativeNumber' => 'required|max:10',
+      'RelativeRelationship' => 'required|max:255',
+      'RelativeName' => 'required|max:255',
+      'FamilyStatus' => 'required|max:255',
+      'Country' => 'required|max:255',
+      'Tribe' => 'required|max:255',
+
        ]);
 
   
@@ -112,7 +120,15 @@ class QamarCareCardController extends Controller
           'LevelPoverty' => request('LevelPoverty'),
           'Tazkira' => request('Tazkira'),
           'Status' => 'Pending',
-          'Created_By' => auth()->user()->name
+          'Created_By' => auth()->user()->name,
+
+          'RelativeNumber' => request('RelativeNumber'),
+          'RelativeRelationship' => request('RelativeRelationship'),
+          'RelativeName' => request('RelativeName'),
+          'FamilyStatus' => request('FamilyStatus'),
+          'Country' => request('Country'),
+          'Tribe' => request('Tribe'),
+          'Owner' => 1,
 
 
 

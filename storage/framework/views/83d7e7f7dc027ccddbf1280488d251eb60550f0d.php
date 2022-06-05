@@ -103,25 +103,36 @@
                 </div>
 
                         <div class="row">
-                        <div class="col-md-4">
+                            <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="DOB" class="form-label">Date of Birth</label>
-                                    <div class="input-group" id="datepicker2">
-                                      
-                                    <input type="text" class="form-control form-control-lg" 
-                                    data-date-format="dd M, yyyy" data-date-container='#datepicker2'
-                                    data-provide="datepicker" data-date-autoclose="true" name="DOB" id="DOB" required>
-                                   
-                                    </div>
+                                    <label for="Country" class="form-label">Country</label>
+                                    <select class="form-select  form-select-lg" required id="Country" name="Country">
+                                    <option value="Afghanistan">Afghanistan</option>
+                                    <option value="Pakistan">Pakistan</option>
+                                    <option value="Iran">Iran</option>
+                                    <option value="Turkey">Turkey</option>
+                                    <option value="Sudan">Sudan</option>
+                                    <option value="Somalie">Somalie</option>
+                                    <option value="Tajikistan">Tajikistan</option>
+                                    
+
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="Gender" class="form-label">Gender</label>
-                                    <select class="form-select  form-select-lg" id="Gender"  name="Gender" required>
-                                    <option value="Male">Male</option>
-                                    <option>Female</option>
-                                 </select>
+                                    <label for="Tribe" class="form-label">Tribe</label>
+                                    <select class="form-select  form-select-lg" required id="Tribe" name="Tribe">
+                                    <option value="Pashtoon">Pashtoon</option>
+                                    <option value="Tajik">Tajik</option>
+                                    <option value="Hazara">Hazara</option>
+                                    <option value="Nooristani">Nooristani</option>
+                                    <option value="Uzbak">Uzbak</option>
+                                    <option value="Turkman">Turkman</option>
+                                    <option value="Baloch">Baloch</option>
+                                    
+
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -130,26 +141,87 @@
                                     <select class="form-select  form-select-lg" required id="Language" name="Language">
                                     <option value="Pashto">Pashto</option>
                                     <option value="Dari">Dari</option>
+                                    <option value="Pashai">Pashai</option>
+                                    <option value="Nooristani">Nooristani</option>
+                                    <option value="Uzbaki">Uzbaki</option>
+                                    <option value="Turkmani">Turkmani</option>
+                                    <option value="Balochi">Balochi</option>
+                                    
 
                                     </select>
                                 </div>
                             </div>
+                      
                    
                         </div>
                     
                         <div class="row">
+                        <!-- <div class="col-md-4">
+                                <div class="mb-3 position-relative">
+                                    <label for="GOBType" class="form-label">Date of Birth Type</label>
+                                    <select class="form-select  form-select-lg" id="GOBType"  name="GOBType">
+                                    <option value="Age">Age</option>
+                                    <option value="ShamsiDate">Shamsi Date</option>
+                                    <option value="Gorogoin Date">Grogorian Date</option>
+
+                                 </select>
+                                </div>
+                            </div> -->
+                        <div class="col-md-4">
+                                <div class="mb-3 position-relative">
+                                    <label for="DOB" class="form-label">Date of Birth</label>
+                                    <div class="input-group " id="example-date-input">
+                                      
+                                    <input class="form-control form-select-lg" type="date"  id="example-date-input" name="DOB" id="DOB" required>
+
+                                   
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="mb-3 position-relative">
+                                    <label for="Gender" class="form-label">Gender</label>
+                                    <select class="form-select  form-select-lg" id="Gender"  name="Gender" required>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                 </select>
+                                </div>
+                            </div>
+                      
+                   
+                        </div>
+                        <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="CurrentJob" class="form-label">Current Job</label>
-                                    <input type="text" class="form-control  form-control-lg" id="CurrentJob" name="CurrentJob"
-                                          required>
+                                    <select class="form-select  form-select-lg" required name="CurrentJob"  id="CurrentJob">
+                                    <option value="Jobless">Jobless</option>
+                                    <option value="Cooking">Cooking</option>
+                                    <option value="SecurityGuard">Security Guard</option>
+                                     <option value="Driving">Driving</option>
+                                     <option value="Cleaning">Cleaning</option>
+                                     <option value="ShopKeeping">Shop Keeping</option>
+                                     <option value="HouseWife">House Wife</option>
+
+
+
+                               </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="FutureJob" class="form-label">What type of job you can do?</label>
-                                    <input type="text" class="form-control  form-control-lg" id="FutureJob"  name="FutureJob"
-                                         required>
+                                    <select class="form-select  form-select-lg" required name="FutureJob"  id="FutureJob">
+                                    <option value="Cooking">Cooking</option>
+                                    <option value="SecurityGuard">Security Guard</option>
+                                     <option value="Driving">Driving</option>
+                                     <option value="Cleaning">Cleaning</option>
+                                     <option value="ShopKeeping">Shop Keeping</option>
+
+
+                               </select>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -159,6 +231,10 @@
                                     <option value="NoEducation">No Education</option>
                                     <option value="Bachularate">Bachularate</option>
                                      <option value="University">University Graduate</option>
+                                     <option value="Master">Master</option>
+                                     <option value="PhD">PhD</option>
+
+
 
                                </select>
                                 </div>
@@ -212,16 +288,17 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="EmergencyNumber" class="form-label">Emergency Number</label>
+                                    <label for="Email" class="form-label">Email</label>
                                     <div class="input-group">
                                       
-                                        <input type="number" class="form-control  form-control-lg" id="EmergencyNumber" name="EmergencyNumber"
-                                             aria-describedby="EmergencyNumber"
+                                        <input type="email" class="form-control  form-control-lg" id="Email" name="Email"
+                                            aria-describedby="Email"
                                             required>
                                     </div>
                                 </div>
                             </div>
                         </div>
+           
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
@@ -246,22 +323,46 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+
+                    <div class="row">
                                                        
                         <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="Email" class="form-label">Email</label>
+                                    <label for="RelativeName" class="form-label">Relative Name</label>
                                     <div class="input-group">
                                       
-                                        <input type="email" class="form-control  form-control-lg" id="Email" name="Email"
+                                        <input type="text" class="form-control  form-control-lg" id="RelativeName" name="RelativeName"
                                             aria-describedby="Email"
                                             required>
                                     </div>
                                 </div>
-                            </div>
+                        </div>
+                        <div class="col-md-4">
+                                <div class="mb-3 position-relative">
+                                    <label for="RelativeRelationship" class="form-label">Relationship</label>
+                                    <select class="form-select  form-select-lg" required name="RelativeRelationship"  id="RelativeRelationship">
+                                    <option value="Father">Father</option>
+                                    <option value="Mother">Mother</option>
+                                     <option value="Brother">Brother</option>
+                                     <option value="Sister">Sister</option>
+                                     <option value="Uncle">Uncle</option>
+                                     <option value="Aunt">Aunt</option>
+                                  </select>
+                                </div>
+                        </div>
+                        <div class="col-md-4">
+                                <div class="mb-3 position-relative">
+                                    <label for="RelativeNumber" class="form-label">Relative Number</label>
+                                    <div class="input-group">
+                                      
+                                        <input type="number" class="form-control  form-control-lg" id="RelativeNumber" name="RelativeNumber"
+                                             aria-describedby="RelativeNumber"
+                                            required>
+                                    </div>
+                                </div>
                         </div>
                     
-                  
+                    </div>
                 </div>
             </div>
         <!-- end card -->
@@ -364,20 +465,29 @@
                                 <div class="mb-3 position-relative">
                                     <label for="LevelPoverty" class="form-label">Level Of Poverty</label>
                                     <select class="form-select form-select-lg" required name="LevelPoverty" id="LevelPoverty">
-                                   <option value="Poorest">1</option>
-                           </select>
+                                   <option value="1">1</option>
+                                   <option value="2">2</option>
+                                   <option value="3">3</option>
+                                   <option value="4">4</option>
+                                   <option value="5">5</option>
+
+                              </select>
                                 </div>
                             </div>
-                            <!-- <div class="col-md-4">
+                            <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="validationTooltip04" class="form-label">District</label>
-                                    <input type="text" class="form-control" id="validationTooltip04" placeholder="District" name="District"
-                                        required>
-                                    <div class="invalid-tooltip">
-                                        Please provide a valid state.
-                                    </div>
+                                    <label for="FamilyStatus" class="form-label">Family Status</label>
+                                    <select class="form-select form-select-lg" required name="FamilyStatus" id="FamilyStatus">
+                                    <option>Select Family Status</option>
+                                    <option value="Poor">Poor</option>
+                                    <option value="Orphan">Orphan</option>
+                                    <option value="Widow">Widow</option>
+                                    <option value="Handicap">Handicap</option>
+                                    <option value="In debt">In debt</option>
+                                    <option value="Low Income">Low Income</option>
+                              </select>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                 </div>
             </div>

@@ -25,7 +25,12 @@ class QamarCareCard extends Model
       'EducationLevel',
       'PrimaryNumber',
       'SecondaryNumber',
-      'EmergencyNumber',
+      'RelativeNumber',
+      'RelativeRelationship',
+      'RelativeName',
+      'FamilyStatus',
+      'Country',
+      'Tribe',
       'Province',
       'District',
       'Village',
@@ -40,7 +45,10 @@ class QamarCareCard extends Model
       'LevelPoverty',
       'Tazkira',
       'Status',
-      'Created_By'
+      'Created_By',
+      'Owner'
+
+
 
 
      ];

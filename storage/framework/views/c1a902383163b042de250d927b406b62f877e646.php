@@ -49,6 +49,7 @@
                                 <th>Full Name</th>
                                 <th>Address</th>
                                 <th>Phone Numbers</th>
+                                <th>Family Status</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                                 
@@ -80,6 +81,48 @@
                                </td> 
                                <td>
                                 <div>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> FamilyStatus); ?></a></h5>
+                                       <?php if( $qamarcarecard -> LevelPoverty == 1): ?>
+                                         <i class="bx bxs-star text-warning font-size-12"></i>
+                                         <i class="bx bxs-star text-secondary font-size-14"></i>
+                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+
+                                       <?php endif; ?>
+                                       <?php if( $qamarcarecard -> LevelPoverty == 2): ?>
+                                       <i class="bx bxs-star text-warning font-size-12"></i>
+                                         <i class="bx bxs-star text-warning font-size-14"></i>
+                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+                                       <?php endif; ?>
+                                       <?php if( $qamarcarecard -> LevelPoverty == 3): ?>
+                                       <i class="bx bxs-star text-warning font-size-12"></i>
+                                         <i class="bx bxs-star text-warning font-size-14"></i>
+                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+                                       <?php endif; ?>
+                                       <?php if( $qamarcarecard -> LevelPoverty == 4): ?>
+                                       <i class="bx bxs-star text-warning font-size-12"></i>
+                                         <i class="bx bxs-star text-warning font-size-14"></i>
+                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+                                       <?php endif; ?>
+                                       <?php if( $qamarcarecard -> LevelPoverty == 5): ?>
+                                       <i class="bx bxs-star text-warning font-size-12"></i>
+                                         <i class="bx bxs-star text-warning font-size-14"></i>
+                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+                                       <?php endif; ?>
+                                    </div>
+                                </td>
+                              
+                               <td>
+                                <div>
 
 
                                 <?php if($qamarcarecard -> Status == 'Pending'): ?>
@@ -106,7 +149,7 @@
 
                                     </div>
                                 </td>
-                                <td>
+                    <td>
                        <div class="d-flex flex-wrap gap-2">
                     <a href="<?php echo e(route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-warning waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
@@ -158,7 +201,9 @@
     <script src="<?php echo e(URL::asset('/assets/libs/pdfmake/pdfmake.min.js')); ?>"></script>
  
     
-    
+        <!-- Datatable init js -->
+        <script src="<?php echo e(URL::asset('/assets/js/pages/datatables.init.js')); ?>"></script>
+        
     <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
 
 <script>

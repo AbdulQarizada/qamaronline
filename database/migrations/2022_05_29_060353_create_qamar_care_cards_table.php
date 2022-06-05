@@ -28,11 +28,15 @@ return new class extends Migration
             $table -> string('EducationLevel');
             $table -> integer('PrimaryNumber');
             $table -> integer('SecondaryNumber');
-            $table -> integer('EmergencyNumber');
+            $table -> integer('RelativeNumber');
+            $table -> string('Country');
             $table -> string('Province');
             $table -> string('District');
             $table -> string('Village');
+            $table -> string('Tribe');
             $table -> string('Email');
+            $table -> string('RelativeRelationship');
+            $table -> string('RelativeName');
             $table -> string('FatherName');
             $table -> string('SpuoseName');
             $table -> integer('EldestSonAge');
@@ -41,9 +45,12 @@ return new class extends Migration
             $table -> integer('NumberFamilyMembers');
             $table -> string('IncomeStreem');
             $table -> string('LevelPoverty');
+            $table -> string('FamilyStatus');
             $table -> string('Tazkira');
             $table -> string('Status');
             $table -> string('Created_By');
+            $table -> integer('Owner');
+
             $table->timestamps();
         });
     }
