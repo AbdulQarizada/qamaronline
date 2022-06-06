@@ -8,16 +8,18 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-
+<?php if(Auth::check()): ?> 
     <?php $__env->startComponent('components.breadcrumb'); ?>
         <?php $__env->slot('li_1'); ?> Qamar Care Card <?php $__env->endSlot(); ?>
         <?php $__env->slot('title'); ?> Qamar Care Card Verify <?php $__env->endSlot(); ?>
     <?php echo $__env->renderComponent(); ?>
+   
     <div class="row">
         <div class="col-12">
            <a href="<?php echo e(route('IndexQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         </div>
      </div>
+     <?php endif; ?>
         <div class="row justify-content-center">
      <div class="col-lg-8 ">
      <h5 class="display-6 mb-4">Verify Your Qamar Care Card</h5>
@@ -71,7 +73,7 @@
                                     <div>
                                       <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($qamarcarecard -> PrimaryNumber); ?></a></h5>
                                         <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($qamarcarecard -> SecondaryNumber); ?></p>
-                                         <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($qamarcarecard -> EmergencyNumber); ?></p>
+                                         <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($qamarcarecard -> RelativeNumber); ?></p>
                                         </div>
                                     </td>
                                     <td>

@@ -15,21 +15,44 @@
     <?php echo $__env->renderComponent(); ?>
     <div class="row">
         <div class="col-12">
-           <a href="<?php echo e(route('AllQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+           <a href="<?php echo e(route('IndexQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+           <a href="javascript:window.print()" class="btn btn-dark  waves-effect waves-light"><i class=" bx bxs-printer   font-size-18"></i></a>
+       
         </div>
      </div>
                        <div class="row">
                             <div class="col-lg-12">
-                                <div class="card">
-                                    <div class="card-body">
+                                <div>
+                                    <div >
+                                    <div class="table-responsive">
+                                    <table class="table table-nowrap">
+                                             <tr>
+                                                <td>
+                                                     <img src="<?php echo e(URL::asset('/uploads/Profiles/'.$data -> Profile)); ?>" style="width: 130px; height: 135px;" class="rounded-circle">
+                                                </td>
+                                                <td style="text-align: center;">
+                                                     <!-- <img src="<?php echo e(URL::asset('/assets/images/letterhead.png')); ?>" style="width: 400px; height: 100%;" class="rounded-circle"> -->
+
+                                                </td>
+                                                 <td  style="float:right;">
+                                                    <div class="">
+                                                         <div class="">
+                                                            <div class="mb-3" class="rounded-circle avatar-xs">
+                                                                 <?php echo DNS2D::getBarcodeSVG(''.$data->QCC,  'QRCODE', 6, 6, true); ?>
+
+                                                                 
+                                                            </div>     
+
+                                                         </div>
+                                                     </div>
+                                                </td>
+                                               </tr>
+                                             </table>
+                                        </div>
                                         <div class="table-responsive">
-                                   
-                                            
-                                            <img src="<?php echo e(URL::asset('/uploads/Profiles/'.$data -> Profile)); ?>" style="width: 130px; height: 135px;">
-                                            <br /><br />
-                                            
                                             <table class="table table-nowrap">
-                                                <h5 style="font-weight: bold;" class="card-header bg-primary text-white">PEROSNAL INFORMATION</h5>
+                                                
+                                                <h5 style="font-weight: bold;" class="card-header  text-dark">PEROSNAL INFORMATION</h5>
                                                     <tr>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">First Name</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> FirstName); ?> </td>
@@ -74,10 +97,9 @@
                                                     </tr> -->
                                                   
                                             </table>
-                                            <br />
 
                                             <table class="table table-nowrap">
-                                                <h5 style="font-weight: bold;" class="card-header bg-primary text-white">ADDRESS AND CONTACT</h5>
+                                                <h5 style="font-weight: bold;" class="card-header  text-dark">ADDRESS AND CONTACT</h5>
                                                     <tr>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Primary Number</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> PrimaryNumber); ?></td>
@@ -86,7 +108,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Emergency Number</td>
-                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> RelativeName); ?></td>
+                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> RelativeNumber); ?></td>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Province</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> Province); ?></td>
                                                     </tr>
@@ -105,10 +127,8 @@
                                                   
                                             </table>
 
-                                            <br />
-
                                             <table class="table table-nowrap">
-                                                <h5 style="font-weight: bold;" class="card-header bg-primary text-white">FAMILY AND INCOME INFORMATION</h5>
+                                                <h5 style="font-weight: bold;" class="card-header  text-dark">FAMILY AND INCOME INFORMATION</h5>
                                                     <tr>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Father's Name</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> FatherName); ?></td>
@@ -182,24 +202,33 @@
                                                   
                                                   
                                             </table>
-
-                                            <br />
                                             <table class="table table-nowrap">
-                                                <h5 style="font-weight: bold;" class="card-header bg-primary text-white">DOCUMENTS</h5>
                                                     <tr>
-                                                        <td style="width: 20%; border: 2px solid #000; padding: 5px;">Tazkira</td>
-                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> Tazkira); ?></td>
-                                                        <td style="width: 20%; border: 2px solid #000; padding: 5px;">Other</td>
-                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> Other); ?></td>
+                                                        <td style="width: 20%;  padding: 5px;">    
+                                                        <input class="form-check-input font-size-18" type="checkbox" id="formCheck1">
+                                                        <label class="form-check-label font-size-18 text-success" for="formCheck1">
+                                                           Approve
+                                                        </label>
+                                                        </td>
+                                                        <td style="width: 20%;  padding: 5px;">    
+                                                        <input class="form-check-input font-size-18" type="checkbox" id="formCheck1">
+                                                        <label class="form-check-label font-size-18 text-danger" for="formCheck1">
+                                                           Reject
+                                                        </label>
+                                                        </td>
+                                                        <td style="width: 20%;  padding: 5px;">    
+                                                        <label class="form-check-label font-size-18" for="formCheck1">
+                                                           Signature
+                                                        </label>
+                                                        </td>
                                                     </tr>
-                                         
                                                   
                                                   
                                             </table>
                                             
 
                                         </div>
-                             <div class="d-print-none">
+                             <!-- <div class="d-print-none">
                                     
                                     <div class="float-right">
 
@@ -267,8 +296,15 @@
 
                                         <?php endif; ?>
                                     </div>
-                                </div>
+                                </div> -->
                                         </div>
+                                        <br />
+                                        <div>
+                                        <p class="font-size-18 card-header  text-dark" >Tazkira </p>
+                                        <br />
+                                        <img src="<?php echo e(URL::asset('/uploads/Tazkiras/'.$data -> Tazkira)); ?>" style="width: 600px; height:100%" >
+                                        <div>
+
                                     </div>
                                 </div>
                             </div>

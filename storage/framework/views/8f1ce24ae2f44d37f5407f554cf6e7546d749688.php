@@ -95,7 +95,7 @@
                     </div>
                     <div class="col-md-2 justify-content-center">
                                <label for="Profile" class="form-label"></label>
-                                <input type="file" class="my-pond" id="Profile" name="Profile" value="<?php echo e(asset('/assets/uploads/Profiles/', $data -> Profile)); ?>"  />
+                                <input type="file" class="my-pond" id="Profile" name="Profile" value="<?php echo e($data -> Profile); ?>"  />
                           
                     </div>
                 </div>

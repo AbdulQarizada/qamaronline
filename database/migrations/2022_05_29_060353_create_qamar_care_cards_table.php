@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table -> string('FirstName');
             $table -> string('LastName');
-            $table -> integer('TazkiraID');
+            $table -> string('TazkiraID');
             $table -> integer('QCC');
             $table -> string('Profile');
             $table -> string('DOB');

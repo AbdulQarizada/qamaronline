@@ -59,25 +59,80 @@
                             <div class="col-md-6">
                                 <div class="mb-3 position-relative">
                                     <label for="FirstName" class="form-label ">First Name</label>
-                                    <input type="text" class="form-control form-control-lg" id="FirstName" name="FirstName"
+                                    <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['FirstName'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FirstName')); ?>"  id="FirstName" name="FirstName"
                                           required>
-                              
+                                          <?php $__errorArgs = ['FirstName'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                                           <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3 position-relative">
                                     <label for="LastName" class="form-label ">Last Name</label>
-                                    <input type="text" class="form-control form-control-lg" id="LastName" name="LastName"
+                                    <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['LastName'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('LastName')); ?>" id="LastName" name="LastName"
                                           required>
+                                          <?php $__errorArgs = ['LastName'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                                           <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3 position-relative">
                                     <label for="TazkiraID" class="form-label ">Tazkira ID</label>
-                                    <input type="number" class="form-control form-control-lg" id="TazkiraID" name="TazkiraID"
+                                    <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['TazkiraID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('TazkiraID')); ?>" id="TazkiraID" name="TazkiraID" max="999999999"
                                           required>
-                                  
+                                          <?php $__errorArgs = ['TazkiraID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                                           <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -85,9 +140,27 @@
                                     <label for="QCC" class="form-label ">Qamar Care Card Number</label>
                                     <div class="hstack gap-3">
                                     <label class="form-label ">QCC-</label>
-                                    <input class="form-control form-control-lg me-auto" type="text"  name="QCC" id="QCC" readonly>
+                                    <input class="form-control form-control-lg me-auto <?php $__errorArgs = ['QCC'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('QCC')); ?>" type="text"  name="QCC" id="QCC" readonly>
                                     <!-- <button type="button" class="btn btn-lg btn-outline-danger" onclick="Random();"><i class=" bx bxs-magic-wand  font-size-16 align-middle"></i> </button> -->
-                                
+                                    <?php $__errorArgs = ['QCC'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                                           <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                  </div>
                                 </div>
                             </div>
@@ -97,8 +170,26 @@
                     </div>
                     <div class="col-md-2 justify-content-center">
                                <label for="Profile" class="form-label"></label>
-                                <input type="file" class="my-pond" id="Profile" name="Profile"  />
-                          
+                                <input type="file" class="my-pond <?php $__errorArgs = ['Profile'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Profile')); ?>" id="Profile" name="Profile"  />
+                                <?php $__errorArgs = ['Profile'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                     </div>
                 </div>
 
@@ -106,23 +197,45 @@
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Country" class="form-label">Country</label>
-                                    <select class="form-select  form-select-lg" required id="Country" name="Country">
+                                    <select class="form-select  form-select-lg  <?php $__errorArgs = ['Country'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Country')); ?>" required id="Country" name="Country">
                                     <option value="Afghanistan">Afghanistan</option>
-                                    <option value="Pakistan">Pakistan</option>
-                                    <option value="Iran">Iran</option>
-                                    <option value="Turkey">Turkey</option>
-                                    <option value="Sudan">Sudan</option>
-                                    <option value="Somalie">Somalie</option>
-                                    <option value="Tajikistan">Tajikistan</option>
-                                    
+                                 
 
                                     </select>
+                                    <?php $__errorArgs = ['Country'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                                   <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Tribe" class="form-label">Tribe</label>
-                                    <select class="form-select  form-select-lg" required id="Tribe" name="Tribe">
+                                    <select class="form-select  form-select-lg <?php $__errorArgs = ['Tribe'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Tribe')); ?>" required id="Tribe" name="Tribe">
+                                    <option>Select Option</option>
+                                    
                                     <option value="Pashtoon">Pashtoon</option>
                                     <option value="Tajik">Tajik</option>
                                     <option value="Hazara">Hazara</option>
@@ -133,12 +246,33 @@
                                     
 
                                     </select>
+                                    <?php $__errorArgs = ['Tribe'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Language" class="form-label">Language</label>
-                                    <select class="form-select  form-select-lg" required id="Language" name="Language">
+                                    <select class="form-select  form-select-lg <?php $__errorArgs = ['Language'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Language')); ?>" required id="Language" name="Language">
+                                    <option>Select Option</option>
+                                    
                                     <option value="Pashto">Pashto</option>
                                     <option value="Dari">Dari</option>
                                     <option value="Pashai">Pashai</option>
@@ -149,6 +283,18 @@
                                     
 
                                     </select>
+                                    <?php $__errorArgs = ['Language'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                       
@@ -172,8 +318,26 @@
                                     <label for="DOB" class="form-label">Date of Birth</label>
                                     <div class="input-group " id="example-date-input">
                                       
-                                    <input class="form-control form-select-lg" type="date"  id="example-date-input" name="DOB" id="DOB" required>
-
+                                    <input class="form-control form-select-lg <?php $__errorArgs = ['DOB'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('DOB')); ?>" type="date"  id="example-date-input" name="DOB" id="DOB" required>
+                                    <?php $__errorArgs = ['DOB'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                    
                                     </div>
                                 </div>
@@ -183,10 +347,29 @@
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Gender" class="form-label">Gender</label>
-                                    <select class="form-select  form-select-lg" id="Gender"  name="Gender" required>
+                                    <select class="form-select  form-select-lg <?php $__errorArgs = ['Gender'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Gender')); ?>" id="Gender"  name="Gender" required>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                  </select>
+                                 <?php $__errorArgs = ['Gender'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                       
@@ -196,7 +379,16 @@
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="CurrentJob" class="form-label">Current Job</label>
-                                    <select class="form-select  form-select-lg" required name="CurrentJob"  id="CurrentJob">
+                                    <select class="form-select  form-select-lg <?php $__errorArgs = ['CurrentJob'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('CurrentJob')); ?>" required name="CurrentJob"  id="CurrentJob">
+                                    <option>Select Option</option>
+                                    
                                     <option value="Jobless">Jobless</option>
                                     <option value="Cooking">Cooking</option>
                                     <option value="SecurityGuard">Security Guard</option>
@@ -208,12 +400,33 @@
 
 
                                </select>
+                               <?php $__errorArgs = ['CurrentJob'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="FutureJob" class="form-label">What type of job you can do?</label>
-                                    <select class="form-select  form-select-lg" required name="FutureJob"  id="FutureJob">
+                                    <select class="form-select  form-select-lg <?php $__errorArgs = ['FutureJob'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FutureJob')); ?>" required name="FutureJob"  id="FutureJob">
+                                    <option>Select Option</option>
+                                    
                                     <option value="Cooking">Cooking</option>
                                     <option value="SecurityGuard">Security Guard</option>
                                      <option value="Driving">Driving</option>
@@ -222,14 +435,36 @@
 
 
                                </select>
+                               <?php $__errorArgs = ['FutureJob'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="EducationLevel" class="form-label">Education Level</label>
-                                    <select class="form-select  form-select-lg" required name="EducationLevel"  id="EducationLevel">
+                                    <select class="form-select  form-select-lg <?php $__errorArgs = ['EducationLevel'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('EducationLevel')); ?>" required name="EducationLevel"  id="EducationLevel">
+                                    <option>Select Option</option>
+                                    
                                     <option value="NoEducation">No Education</option>
-                                    <option value="Bachularate">Bachularate</option>
+                                    <option value="NoEducation">Only Read and Write</option>
+                                    <option value="Bachularate">School</option>
                                      <option value="University">University Graduate</option>
                                      <option value="Master">Master</option>
                                      <option value="PhD">PhD</option>
@@ -237,6 +472,18 @@
 
 
                                </select>
+                               <?php $__errorArgs = ['EducationLevel'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                         </div>
@@ -268,9 +515,28 @@
                                     <label for="PrimaryNumber" class="form-label">Primary Number</label>
                                     <div class="input-group">
                                       
-                                        <input type="number" class="form-control  form-control-lg" id="PrimaryNumber" name="PrimaryNumber"
+                                        <input type="number" class="form-control  form-control-lg <?php $__errorArgs = ['PrimaryNumber'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('PrimaryNumber')); ?>" id="PrimaryNumber" name="PrimaryNumber" max="999999999"
                                              aria-describedby="PrimaryNumber"
                                             required>
+                                            <?php $__errorArgs = ['PrimaryNumber'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
                             </div>
@@ -280,9 +546,28 @@
                                     <label for="SecondaryNumber" class="form-label">Secondary Number</label>
                                     <div class="input-group">
                                       
-                                        <input type="number" class="form-control  form-control-lg" id="SecondaryNumber" name="SecondaryNumber"
+                                        <input type="number" class="form-control  form-control-lg <?php $__errorArgs = ['SecondaryNumber'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SecondaryNumber')); ?>" id="SecondaryNumber" name="SecondaryNumber" 
                                             aria-describedby="SecondaryNumber"
                                             required>
+                                            <?php $__errorArgs = ['SecondaryNumber'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
                             </div>
@@ -291,9 +576,28 @@
                                     <label for="Email" class="form-label">Email</label>
                                     <div class="input-group">
                                       
-                                        <input type="email" class="form-control  form-control-lg" id="Email" name="Email"
+                                        <input type="email" class="form-control  form-control-lg <?php $__errorArgs = ['Email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Email')); ?>" id="Email" name="Email"
                                             aria-describedby="Email"
                                             required>
+                                            <?php $__errorArgs = ['Email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
                             </div>
@@ -303,23 +607,115 @@
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Province" class="form-label">Province</label>
-                                    <select class="form-select  form-select-lg" required name="Province" id="Province">
-                                    <option value="Kabul">Kabul</option>
+                                    <select class="form-select  form-select-lg <?php $__errorArgs = ['Province'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" required name="Province" value="<?php echo e(old('Province')); ?>" id="Province">
+                                    <option>Select Option</option>
+                                     <option value="Badakhshan"> Badakhshan</option>
+    <option value="Badghis"> Badghis</option>
+    <option value="Baghlan"> Baghlan</option>
+    <option value="Balkh"> Balkh</option>
+    <option value="Bamyan"> Bamyan</option>
+   <option value="Daykundi">  Daykundi</option>
+   <option value="Farah">  Farah</option>
+    <option value="Faryab"> Faryab</option>
+    <option value="Ghazni"> Ghazni</option>
+    <option value="Ghor"> Ghor</option>
+    <option value="Helmand"> Helmand</option>
+    <option value="Herat"> Herat</option>
+   <option value="Jowzjan">  Jowzjan</option>
+    <option value="Kabul"> Kabul</option>
+    <option value="Kandahar"> Kandahar</option>
+   <option value="Kapisa">  Kapisa</option>
+   <option value="Khost">  Khost</option>
+  <option value="Kunar">   Kunar</option>
+  <option value="Kunduz">   Kunduz</option>
+   <option value="Laghman">  Laghman</option>
+    <option value="Logar"> Logar</option>
+   <option value="Nangarhar">  Nangarhar</option>
+    <option value="Nimruz"> Nimruz</option>
+    <option value="Nuristan"> Nuristan</option>
+   <option value="Paktia">  Paktia</option>
+    <option value="Paktika"> Paktika</option>
+    <option value="Panjshir"> Panjshir</option>
+    <option value="Parwan"> Parwan</option>
+   <option value="Samangan">  Samangan</option>
+   <option value="Sar-e Pol">  Sar-e Pol</option>
+    <option value="Takhar"> Takhar</option>
+   <option value="Urozgan"> Urozgan</option>
+    <option value="Wardak"> Wardak</option>
+    <option value="Zabul"> Zabul</option>
+
                                     </select>
+                                    <?php $__errorArgs = ['Province'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="District" class="form-label">District</label>
-                                    <input type="text" class="form-control  form-control-lg" id="District"  name="District"
+                                    <input type="text" class="form-control  form-control-lg" id="District <?php $__errorArgs = ['District'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('District')); ?>"  name="District"
                                         required>
+                                        <?php $__errorArgs = ['District'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Village" class="form-label">Village</label>
-                                    <input type="text" class="form-control  form-control-lg" id="Village"  name="Village"
+                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['Village'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Village')); ?>" id="Village"  name="Village"
                                         required>
+                                        <?php $__errorArgs = ['Village'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                         </div>
@@ -331,16 +727,43 @@
                                     <label for="RelativeName" class="form-label">Relative Name</label>
                                     <div class="input-group">
                                       
-                                        <input type="text" class="form-control  form-control-lg" id="RelativeName" name="RelativeName"
+                                        <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['RelativeName'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('RelativeName')); ?>" id="RelativeName" name="RelativeName"
                                             aria-describedby="Email"
                                             required>
+                                            <?php $__errorArgs = ['RelativeName'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
                         </div>
                         <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="RelativeRelationship" class="form-label">Relationship</label>
-                                    <select class="form-select  form-select-lg" required name="RelativeRelationship"  id="RelativeRelationship">
+                                    <select class="form-select  form-select-lg <?php $__errorArgs = ['RelativeRelationship'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('RelativeRelationship')); ?>" required name="RelativeRelationship"  id="RelativeRelationship">
+                                    <option>Select Option</option>
                                     <option value="Father">Father</option>
                                     <option value="Mother">Mother</option>
                                      <option value="Brother">Brother</option>
@@ -348,6 +771,18 @@
                                      <option value="Uncle">Uncle</option>
                                      <option value="Aunt">Aunt</option>
                                   </select>
+                                  <?php $__errorArgs = ['RelativeRelationship'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                         </div>
                         <div class="col-md-4">
@@ -355,9 +790,28 @@
                                     <label for="RelativeNumber" class="form-label">Relative Number</label>
                                     <div class="input-group">
                                       
-                                        <input type="number" class="form-control  form-control-lg" id="RelativeNumber" name="RelativeNumber"
+                                        <input type="number" class="form-control  form-control-lg <?php $__errorArgs = ['RelativeNumber'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('RelativeNumber')); ?>" id="RelativeNumber" name="RelativeNumber" max="999999999"
                                              aria-describedby="RelativeNumber"
                                             required>
+                                            <?php $__errorArgs = ['RelativeNumber'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
                         </div>
@@ -388,15 +842,53 @@
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="FatherName" class="form-label">Father's Name</label>
-                                    <input type="text" class="form-control  form-control-lg" id="FatherName" name="FatherName"
+                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['FatherName'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FatherName')); ?>" id="FatherName" name="FatherName"
                                           required>
+                                          <?php $__errorArgs = ['FatherName'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="SpuoseName" class="form-label">Spuose's Name</label>
-                                    <input type="text" class="form-control  form-control-lg" id="SpuoseName"  name="SpuoseName"
+                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['SpuoseName'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SpuoseName')); ?>" id="SpuoseName"  name="SpuoseName"
                                          required>
+                                         <?php $__errorArgs = ['SpuoseName'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -404,9 +896,28 @@
                                     <label for="EldestSonAge" class="form-label">Eldest Son Age</label>
                                     <div class="input-group">
                                       
-                                        <input type="number" class="form-control form-control-lg" id="EldestSonAge" name="EldestSonAge"
+                                        <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['EldestSonAge'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('EldestSonAge')); ?>" id="EldestSonAge" name="EldestSonAge" max="150"
                                              aria-describedby="EldestSonAge"
                                             required>
+                                            <?php $__errorArgs = ['EldestSonAge'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
                             </div>
@@ -418,10 +929,29 @@
                                 <div class="mb-3 position-relative">
                                     <label for="MonthlyFamilyIncome" class="form-label">Monthly Family Income</label>
                                     <div class="input-group">
-                                      
-                                        <input type="number" class="form-control form-control-lg" id="MonthlyFamilyIncome" name="MonthlyFamilyIncome"
+                                    <div class="input-group-text">&#1547;</div>
+                                       <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['MonthlyFamilyIncome'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('MonthlyFamilyIncome')); ?>" id="MonthlyFamilyIncome" name="MonthlyFamilyIncome" max="999999"
                                             aria-describedby="MonthlyFamilyIncome"
                                             required>
+                                            <?php $__errorArgs = ['MonthlyFamilyIncome'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
                             </div>
@@ -430,10 +960,29 @@
                                 <div class="mb-3 position-relative">
                                     <label for="MonthlyFamilyExpenses" class="form-label">Monthly Family Expenses</label>
                                     <div class="input-group">
-                                      
-                                        <input type="number" class="form-control form-control-lg" id="MonthlyFamilyExpenses" name="MonthlyFamilyExpenses"
+                                    <div class="input-group-text">&#1547;</div>
+                                        <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['MonthlyFamilyExpenses'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('MonthlyFamilyExpenses')); ?>" id="MonthlyFamilyExpenses" name="MonthlyFamilyExpenses" max="999999"
                                              aria-describedby="MonthlyFamilyExpenses"
                                             required>
+                                            <?php $__errorArgs = ['MonthlyFamilyExpenses'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
                             </div>
@@ -442,9 +991,28 @@
                                     <label for="NumberFamilyMembers" class="form-label">Number of  Family Members</label>
                                     <div class="input-group">
                                       
-                                        <input type="number" class="form-control form-control-lg" id="NumberFamilyMembers" name="NumberFamilyMembers"
+                                        <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['NumberFamilyMembers'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('NumberFamilyMembers')); ?>" id="NumberFamilyMembers" name="NumberFamilyMembers" max="40"
                                              aria-describedby="NumberFamilyMembers"
                                             required>
+                                            <?php $__errorArgs = ['NumberFamilyMembers'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
                             </div>
@@ -454,31 +1022,45 @@
                                 <div class="mb-3 position-relative">
                                     <label for="IncomeStreem" class="form-label">Income Streem</label>
                                     <div class="input-group">
-                                      
-                                        <input type="text" class="form-control form-control-lg" id="IncomeStreem" name="IncomeStreem"
-                                             aria-describedby="IncomeStreem"
-                                            required>
+                                    <select class="form-select form-select-lg <?php $__errorArgs = ['IncomeStreem'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('IncomeStreem')); ?>" required name="IncomeStreem" id="IncomeStreem">
+                                    <option>Select Option</option>
+                                    <option value="Shop">Shop</option>
+                                    <option value="Orphan">Fields</option>
+                              </select>
+                                            <?php $__errorArgs = ['IncomeStreem'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="LevelPoverty" class="form-label">Level Of Poverty</label>
-                                    <select class="form-select form-select-lg" required name="LevelPoverty" id="LevelPoverty">
-                                   <option value="1">1</option>
-                                   <option value="2">2</option>
-                                   <option value="3">3</option>
-                                   <option value="4">4</option>
-                                   <option value="5">5</option>
-
-                              </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-3 position-relative">
                                     <label for="FamilyStatus" class="form-label">Family Status</label>
-                                    <select class="form-select form-select-lg" required name="FamilyStatus" id="FamilyStatus">
-                                    <option>Select Family Status</option>
+                                    <select class="form-select form-select-lg <?php $__errorArgs = ['FamilyStatus'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FamilyStatus')); ?>" required name="FamilyStatus" id="FamilyStatus">
+                                    <option>Select Option</option>
                                     <option value="Poor">Poor</option>
                                     <option value="Orphan">Orphan</option>
                                     <option value="Widow">Widow</option>
@@ -486,8 +1068,48 @@
                                     <option value="In debt">In debt</option>
                                     <option value="Low Income">Low Income</option>
                               </select>
+                              <?php $__errorArgs = ['FamilyStatus'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
+                                                <label for="LevelPoverty" class="form-label">Level Of Poverty</label>
+                                                    <div class="rating-star">
+                                                        <input type="hidden" class="rating <?php $__errorArgs = ['LevelPoverty'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('LevelPoverty')); ?>" data-filled="mdi mdi-star text-warning" data-empty="mdi mdi-star-outline text-muted" name="LevelPoverty" id="LevelPoverty"/>
+                                                        <?php $__errorArgs = ['LevelPoverty'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                    </div>
+                                                </div>
+                            </div>
+                  
                         </div>
                 </div>
             </div>
@@ -512,7 +1134,26 @@
                         <div class="row">
                           <div class="col-md-4">
                                <label for="Tazkira" class="form-label">Tazkira</label>
-                                <input type="file" class="my-pond" name="Tazkira" id="Tazkira" />
+                                <input type="file" class="my-pond <?php $__errorArgs = ['Tazkira'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Tazkira')); ?>" name="Tazkira" id="Tazkira" />
+                                <?php $__errorArgs = ['Tazkira'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                          </div>
                          
                     </div>
@@ -550,8 +1191,10 @@
 
 <script src="<?php echo e(URL::asset('/assets/js/pages/form-validation.init.js')); ?>"></script>
 
+<!-- Bootstrap rating js -->
+<script src="<?php echo e(URL::asset('/assets/libs/bootstrap-rating/bootstrap-rating.min.js')); ?> "></script>
 
-
+<script src="<?php echo e(URL::asset('/assets/js/pages/rating-init.js')); ?>"></script>
 
 
 <script>

@@ -76,7 +76,7 @@
                                       <div>
                                       <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($qamarcarecard -> PrimaryNumber); ?></a></h5>
                                         <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($qamarcarecard -> SecondaryNumber); ?></p>
-                                         <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($qamarcarecard -> RelativeName); ?></p>
+                                         <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($qamarcarecard -> RelativeNumber); ?></p>
                                         </div>
                                </td> 
                                <td>
@@ -100,23 +100,23 @@
                                        <?php if( $qamarcarecard -> LevelPoverty == 3): ?>
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-warning font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
                                        <?php endif; ?>
                                        <?php if( $qamarcarecard -> LevelPoverty == 4): ?>
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-warning font-size-16"></i>
+                                         <i class="bx bxs-star text-warning font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
                                        <?php endif; ?>
                                        <?php if( $qamarcarecard -> LevelPoverty == 5): ?>
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+                                         <i class="bx bxs-star text-warning font-size-16"></i>
+                                         <i class="bx bxs-star text-warning font-size-18"></i>
+                                         <i class="bx bxs-star text-warning font-size-20"></i>
                                        <?php endif; ?>
                                     </div>
                                 </td>
@@ -147,6 +147,14 @@
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info"><?php echo e($qamarcarecard -> Status); ?></a></h5>
                                  <?php endif; ?>
 
+                                 <?php if($qamarcarecard -> Status == 'Released'): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success"><?php echo e($qamarcarecard -> Status); ?></a></h5>
+                                 <?php endif; ?>
+
+                                 <?php if($qamarcarecard -> Status == 'Printed'): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark"><?php echo e($qamarcarecard -> Status); ?></a></h5>
+                                 <?php endif; ?>
+
                                     </div>
                                 </td>
                     <td>
@@ -154,27 +162,15 @@
                     <a href="<?php echo e(route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-warning waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
                     </a>
+                    <?php if($qamarcarecard -> Status == 'Pending' || $qamarcarecard -> Status == 'Rejected'): ?>
                     <a href="<?php echo e(route('EditQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-info waves-effect waves-light">
                         <i class="bx bx-edit  font-size-16 align-middle"></i>
                     </a>
-                    <?php if($qamarcarecard -> Status == 'Approved' || $qamarcarecard ->Status == 'Printed'  ): ?>
-                    <a href="<?php echo e(route('PrintQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-dark waves-effect waves-light">
-                        <i class="bx bx-printer  font-size-16 align-middle"></i>
-                    </a>
-                     <?php endif; ?>
                      <a href="<?php echo e(route('DeleteQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-danger waves-effect waves-light delete-confirm">
                         <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
                     </a>
-                    <!-- <form action="<?php echo e(route('DeleteQamarCareCard' , ['data' => $qamarcarecard -> id])); ?>" method="POST">
-                    <?php echo csrf_field(); ?>     
-                    <?php echo method_field('DELETE'); ?>
-                        
-                    <button type="button"  class="btn btn-danger waves-effect waves-light" id="sa-params">
-                        <i class=" bx bx-trash-alt font-size-16 align-middle"></i> 
-                    </button> 
-                    </form> -->
 
-
+                    <?php endif; ?>
 
 
                    

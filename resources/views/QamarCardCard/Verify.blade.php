@@ -8,16 +8,18 @@
 @endsection
 
 @section('content')
-
+@if (Auth::check()) 
     @component('components.breadcrumb')
         @slot('li_1') Qamar Care Card @endslot
         @slot('title') Qamar Care Card Verify @endslot
     @endcomponent
+   
     <div class="row">
         <div class="col-12">
            <a href="{{route('IndexQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         </div>
      </div>
+     @endif
         <div class="row justify-content-center">
      <div class="col-lg-8 ">
      <h5 class="display-6 mb-4">Verify Your Qamar Care Card</h5>
@@ -70,7 +72,7 @@
                                     <div>
                                       <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$qamarcarecard -> PrimaryNumber}}</a></h5>
                                         <p class="text-muted mb-0 badge badge-soft-warning">{{$qamarcarecard -> SecondaryNumber}}</p>
-                                         <p class="text-muted mb-0 badge badge-soft-danger">{{$qamarcarecard -> RelativeName}}</p>
+                                         <p class="text-muted mb-0 badge badge-soft-danger">{{$qamarcarecard -> RelativeNumber}}</p>
                                         </div>
                                     </td>
                                     <td>

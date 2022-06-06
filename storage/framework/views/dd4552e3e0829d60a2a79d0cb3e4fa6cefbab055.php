@@ -48,6 +48,7 @@
                                 <th>Full Name</th>
                                 <th>Address</th>
                                 <th>Phone Numbers</th>
+                                <th>Family Status</th>
                                 <th>Actions</th>
                                 
                             </tr>
@@ -73,9 +74,50 @@
                                       <div>
                                       <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($qamarcarecard -> PrimaryNumber); ?></a></h5>
                                         <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($qamarcarecard -> SecondaryNumber); ?></p>
-                                         <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($qamarcarecard -> EmergencyNumber); ?></p>
+                                         <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($qamarcarecard -> RelativeNumber); ?></p>
                                         </div>
                                </td> 
+                               <td>
+                                <div>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> FamilyStatus); ?></a></h5>
+                                       <?php if( $qamarcarecard -> LevelPoverty == 1): ?>
+                                         <i class="bx bxs-star text-warning font-size-12"></i>
+                                         <i class="bx bxs-star text-secondary font-size-14"></i>
+                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+
+                                       <?php endif; ?>
+                                       <?php if( $qamarcarecard -> LevelPoverty == 2): ?>
+                                       <i class="bx bxs-star text-warning font-size-12"></i>
+                                         <i class="bx bxs-star text-warning font-size-14"></i>
+                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+                                       <?php endif; ?>
+                                       <?php if( $qamarcarecard -> LevelPoverty == 3): ?>
+                                       <i class="bx bxs-star text-warning font-size-12"></i>
+                                         <i class="bx bxs-star text-warning font-size-14"></i>
+                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+                                       <?php endif; ?>
+                                       <?php if( $qamarcarecard -> LevelPoverty == 4): ?>
+                                       <i class="bx bxs-star text-warning font-size-12"></i>
+                                         <i class="bx bxs-star text-warning font-size-14"></i>
+                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+                                       <?php endif; ?>
+                                       <?php if( $qamarcarecard -> LevelPoverty == 5): ?>
+                                       <i class="bx bxs-star text-warning font-size-12"></i>
+                                         <i class="bx bxs-star text-warning font-size-14"></i>
+                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+                                       <?php endif; ?>
+                                    </div>
+                                </td>
                                 <td>
                        <div class="d-flex flex-wrap gap-2">
                     <a href="<?php echo e(route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-secondary waves-effect waves-light">

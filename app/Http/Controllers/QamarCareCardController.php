@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\QamarCareCard;
-use App\Models\Province;
+use App\Models\Location;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
@@ -19,7 +19,10 @@ class QamarCareCardController extends Controller
 
 
 
-
+public function __construct()
+{
+  $this-> middleware('auth', ['except' => ['Verify', 'Search']]);
+}
 
 
 
@@ -40,9 +43,8 @@ class QamarCareCardController extends Controller
     // create
     public function Create()
     {
-      $provinces =   Province::all();
       
-      return view('QamarCardCard.Create', compact('provinces'));
+      return view('QamarCardCard.Create');
     }
 
     public function Store(Request $request)
@@ -87,7 +89,9 @@ class QamarCareCardController extends Controller
        ]);
 
   
-       
+    //    if ($validator->fails()) {
+    //     $error = $validator->errors()->first();
+    //  }
      
 
      
@@ -162,9 +166,9 @@ class QamarCareCardController extends Controller
     // update
     public function Edit(QamarCareCard $data)
     {
-      $provinces =   Province::all();
+     
       
-      return view('QamarCardCard.Edit', compact('provinces'), ['data' => $data]);
+      return view('QamarCardCard.Edit', ['data' => $data]);
     }
 
     public function Update(QamarCareCard $data )
@@ -246,12 +250,7 @@ class QamarCareCardController extends Controller
     }
 
        
-    public function Printed()
-     {
-         
-         $qamarcarecards =   QamarCareCard::where("Status", "=", 'Printed')->get();
-         return view('QamarCardCard.Printed', compact('qamarcarecards'));
-    }
+ 
 
          
     public function Pending()
@@ -262,6 +261,12 @@ class QamarCareCardController extends Controller
     }
 
 
+    public function Released()
+    {
+      
+      $qamarcarecards =   QamarCareCard::where("Status", "=", 'Released')->get();
+      return view('QamarCardCard.Released', compact('qamarcarecards'));
+    }
 
 
 
@@ -283,7 +288,7 @@ class QamarCareCardController extends Controller
         'Status' => 'Approved'
 
       ]);
-      return redirect()->route('AllQamarCareCard')->with('toast_success', 'Record Approved Successfully!');
+      return redirect()->route('ApprovedQamarCareCard')->with('toast_success', 'Record Approved Successfully!');
 
     }
 
@@ -295,7 +300,7 @@ class QamarCareCardController extends Controller
         'Status' => 'Rejected'
 
       ]);
-      return redirect()->route('AllQamarCareCard')->with('toast_error', 'Record Rejected Successfully!');
+      return redirect()->route('RejectedQamarCareCard')->with('toast_error', 'Record Rejected Successfully!');
     }
 
 
@@ -307,26 +312,57 @@ class QamarCareCardController extends Controller
         'Status' => 'Pending'
 
       ]);
-      return redirect()->route('AllQamarCareCard')->with('toast_warning', 'Record Re-Initiated Successfully!');
+      return redirect()->route('PendingQamarCareCard')->with('toast_warning', 'Record Re-Initiated Successfully!');
     }
+
 
     
 
+    public function Release(QamarCareCard $data )
+    {
+      
+      $data -> update([
+
+        'Status' => 'Released'
+
+      ]);
+      return redirect()->route('ReleasedQamarCareCard')->with('toast_warning', 'The card has been Printed!');
+    }
 
 
 
 
+    // print
 
+    public function Printing(QamarCareCard $data )
+    {
+      
+     
+      return view('QamarCardCard.Printing', compact('data'));
+    }
 
+    public function Print(QamarCareCard $data )
+    {
+      
+      $data -> update([
 
+        'Status' => 'Printed'
 
+      ]);
+      return redirect()->route('PrintedQamarCareCard')->with('toast_warning', 'The card has been Printed!');
+    }
 
-  // print
-  public function Print(QamarCareCard $data)
-  {
-          
-          return view('QamarCardCard.Print',  ['data' => $data]);
+    public function Printed()
+    {
+        
+        $qamarcarecards =   QamarCareCard::where("Status", "=", 'Printed')->get();
+        return view('QamarCardCard.Printed', compact('qamarcarecards'));
    }
+
+
+   
+
+
 
    // Verify
    public function Verify()

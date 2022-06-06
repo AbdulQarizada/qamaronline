@@ -78,6 +78,8 @@ Route::post('/Upload_Profile', [App\Http\Controllers\HomeController:: class, 'Up
     Route::get('/QamarCareCard/Rejected', [App\Http\Controllers\QamarCareCardController:: class, 'Rejected'])->name('RejectedQamarCareCard');
     Route::get('/QamarCareCard/Printed', [App\Http\Controllers\QamarCareCardController:: class, 'Printed'])->name('PrintedQamarCareCard');
     Route::get('/QamarCareCard/Pending', [App\Http\Controllers\QamarCareCardController:: class, 'Pending'])->name('PendingQamarCareCard');
+    Route::get('/QamarCareCard/Released', [App\Http\Controllers\QamarCareCardController:: class, 'Released'])->name('ReleasedQamarCareCard');
+
 
 
 
@@ -85,16 +87,22 @@ Route::post('/Upload_Profile', [App\Http\Controllers\HomeController:: class, 'Up
     // status list and change status
     Route::get('/QamarCareCard/Status/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'Status'])->name('StatusQamarCareCard');
 
-    Route::put('/QamarCareCard/Approve/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'Approve'])->name('ApproveQamarCareCard');
+    Route::get('/QamarCareCard/Approve/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'Approve'])->name('ApproveQamarCareCard');
 
-    Route::put('/QamarCareCard/Reject/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'Reject'])->name('RejectQamarCareCard');
+    Route::get('/QamarCareCard/Reject/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'Reject'])->name('RejectQamarCareCard');
 
-    Route::put('/QamarCareCard/ReInitiate/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'ReInitiate'])->name('ReInitiateQamarCareCard');
+    Route::get('/QamarCareCard/ReInitiate/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'ReInitiate'])->name('ReInitiateQamarCareCard');
+
+    
+    Route::get('/QamarCareCard/Release/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'Release'])->name('ReleaseQamarCareCard');
 
 
 
     // print
+    Route::get('/QamarCareCard/Printing/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'Printing'])->name('PrintingQamarCareCard');
+
     Route::get('/QamarCareCard/Print/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'Print'])->name('PrintQamarCareCard');
+
 
     // verify qamar card that is avalibe to all
     Route::get('/QamarCareCard/Verify', [App\Http\Controllers\QamarCareCardController:: class, 'Verify'])->name('VerifyQamarCareCard');

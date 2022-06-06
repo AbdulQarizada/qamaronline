@@ -27,7 +27,7 @@
                 <span class="bx bx-search-alt"></span>
             </div>
         </form>
-
+        @if (Auth::check()) 
         <div class="dropdown dropdown-mega d-none d-lg-block ms-2">
             <!-- <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
                 <span key="t-megamenu">@lang('translation.Mega_Menu')</span>
@@ -288,6 +288,7 @@
                 <i class="bx bx-fullscreen"></i>
             </button>
         </div> -->
+        
         <div class="dropdown d-inline-block">
             <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -390,7 +391,7 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="dropdown d-inline-block">
             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -413,6 +414,7 @@
                 </form>
             </div>
         </div>
+        @endif
         <div class="dropdown d-inline-block">
             <!-- <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
                 <i class="bx bx-cog bx-spin"></i>

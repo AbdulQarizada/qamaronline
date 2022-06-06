@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'a1284aed60d2a6baf1f7eceb5d6c0db8fb7b12c6',
+        'reference' => 'e1ad20c6398bedbd087dd3466c229854bd9934d0',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -397,7 +397,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'a1284aed60d2a6baf1f7eceb5d6c0db8fb7b12c6',
+            'reference' => 'e1ad20c6398bedbd087dd3466c229854bd9934d0',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -479,6 +479,15 @@
             'install_path' => __DIR__ . '/../league/mime-type-detection',
             'aliases' => array(),
             'reference' => 'ff6248ea87a9f116e78edd6002e39e5128a0d4dd',
+            'dev_requirement' => false,
+        ),
+        'milon/barcode' => array(
+            'pretty_version' => '9.0.0',
+            'version' => '9.0.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../milon/barcode',
+            'aliases' => array(),
+            'reference' => '6859fe19808380a0b40916d0009d7b4b5e04cc25',
             'dev_requirement' => false,
         ),
         'mockery/mockery' => array(

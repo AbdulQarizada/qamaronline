@@ -27,7 +27,10 @@
 
     <!-- Begin page -->
     <div id="layout-wrapper">
+    
+
         <?php echo $__env->make('layouts.horizontal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->

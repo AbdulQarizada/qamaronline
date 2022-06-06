@@ -76,7 +76,7 @@
                                       <div>
                                       <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$qamarcarecard -> PrimaryNumber}}</a></h5>
                                         <p class="text-muted mb-0 badge badge-soft-warning">{{$qamarcarecard -> SecondaryNumber}}</p>
-                                         <p class="text-muted mb-0 badge badge-soft-danger">{{$qamarcarecard -> RelativeName}}</p>
+                                         <p class="text-muted mb-0 badge badge-soft-danger">{{$qamarcarecard -> RelativeNumber}}</p>
                                         </div>
                                </td> 
                                <td>
@@ -100,23 +100,23 @@
                                        @if( $qamarcarecard -> LevelPoverty == 3)
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-warning font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
                                        @endif
                                        @if( $qamarcarecard -> LevelPoverty == 4)
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-warning font-size-16"></i>
+                                         <i class="bx bxs-star text-warning font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
                                        @endif
                                        @if( $qamarcarecard -> LevelPoverty == 5)
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+                                         <i class="bx bxs-star text-warning font-size-16"></i>
+                                         <i class="bx bxs-star text-warning font-size-18"></i>
+                                         <i class="bx bxs-star text-warning font-size-20"></i>
                                        @endif
                                     </div>
                                 </td>
@@ -147,6 +147,14 @@
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info">{{$qamarcarecard -> Status}}</a></h5>
                                  @endif
 
+                                 @if($qamarcarecard -> Status == 'Released')
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">{{$qamarcarecard -> Status}}</a></h5>
+                                 @endif
+
+                                 @if($qamarcarecard -> Status == 'Printed')
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark">{{$qamarcarecard -> Status}}</a></h5>
+                                 @endif
+
                                     </div>
                                 </td>
                     <td>
@@ -154,27 +162,15 @@
                     <a href="{{route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-warning waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
                     </a>
+                    @if($qamarcarecard -> Status == 'Pending' || $qamarcarecard -> Status == 'Rejected')
                     <a href="{{route('EditQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-info waves-effect waves-light">
                         <i class="bx bx-edit  font-size-16 align-middle"></i>
                     </a>
-                    @if($qamarcarecard -> Status == 'Approved' || $qamarcarecard ->Status == 'Printed'  )
-                    <a href="{{route('PrintQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-dark waves-effect waves-light">
-                        <i class="bx bx-printer  font-size-16 align-middle"></i>
-                    </a>
-                     @endif
                      <a href="{{route('DeleteQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-danger waves-effect waves-light delete-confirm">
                         <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
                     </a>
-                    <!-- <form action="{{route('DeleteQamarCareCard' , ['data' => $qamarcarecard -> id])}}" method="POST">
-                    @csrf     
-                    @method('DELETE')
-                        
-                    <button type="button"  class="btn btn-danger waves-effect waves-light" id="sa-params">
-                        <i class=" bx bx-trash-alt font-size-16 align-middle"></i> 
-                    </button> 
-                    </form> -->
 
-
+                    @endif
 
 
                    

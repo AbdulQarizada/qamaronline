@@ -74,7 +74,7 @@
                                       <div>
                                       <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($qamarcarecard -> PrimaryNumber); ?></a></h5>
                                         <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($qamarcarecard -> SecondaryNumber); ?></p>
-                                         <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($qamarcarecard -> EmergencyNumber); ?></p>
+                                         <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($qamarcarecard -> RelativeNumber); ?></p>
                                         </div>
                                </td> 
                                <td>
@@ -120,8 +120,15 @@
                                 </td>
                                 <td>
                        <div class="d-flex flex-wrap gap-2">
-                    <a href="<?php echo e(route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-secondary waves-effect waves-light">
+                       <a href="<?php echo e(route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-warning waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
+                    </a>
+               
+                    <a href="<?php echo e(route('ReInitiateQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-info waves-effect waves-light reinitiate">
+                        <i class="bx bx-time-five  font-size-16 align-middle"></i>
+                    </a>
+                    <a href="<?php echo e(route('PrintingQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-dark waves-effect waves-light print">
+                        <i class="bx bxs-printer   font-size-16 align-middle"></i>
                     </a>
                 </div>
             </td>
@@ -144,6 +151,45 @@
     <script src="<?php echo e(URL::asset('/assets/libs/pdfmake/pdfmake.min.js')); ?>"></script>
     <!-- Datatable init js -->
     <script src="<?php echo e(URL::asset('/assets/js/pages/datatables.init.js')); ?>"></script>
+
+    
+    <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
+
+<script>
+    $('.reinitiate').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Are you sure?',
+        text: 'This record and it`s details will be re initiated!',
+        icon: 'warning',
+        buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
+
+// $('.print').on('click', function (event) {
+//     event.preventDefault();
+//     const url = $(this).attr('href');
+//     swal({
+//         title: 'Are you sure?',
+//         text: 'Are you sure that this record is printed!',
+//         icon: 'warning',
+//         buttons: ["Cancel", "Yes!"],
+//     }).then(function(value) {
+//         if (value) {
+//             window.location.href = url;
+//         }
+//     });
+// });
+
+
+</script>
+
+
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/Approved.blade.php ENDPATH**/ ?>
