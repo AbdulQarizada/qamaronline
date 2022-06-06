@@ -24,13 +24,43 @@
         <div class="card border border-3">
                     <div class="card-header">
                       <blockquote class="blockquote border-primary  font-size-14 mb-0">
-                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">Assign To Services</p>
+                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">CARE CARD SERVICES</p>
                         
                         </blockquote>
                     </div>
                 </div>
       
         </div>
+     </div>
+     <div class="row">
+        <div class="col-4">
+        <select class="form-select  form-select-lg mb-3 <?php $__errorArgs = ['Country'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;" 
+>
+                                   <option value="">Please Filter Your Choices</option>
+
+                                    <!-- <option value="<?php echo e(route('AllQamarCareCard')); ?>">All</option>
+                                    <option value="<?php echo e(route('PendingQamarCareCard')); ?>">Pending</option>
+                                    <option value="<?php echo e(route('ApprovedQamarCareCard')); ?>">Approved</option>
+                                    <option value="<?php echo e(route('PrintedQamarCareCard')); ?>">Printed</option>
+                                    <option value="<?php echo e(route('ReleasedQamarCareCard')); ?>">Released</option>
+                                    <option value="<?php echo e(route('RejectedQamarCareCard')); ?>">Rejected</option> -->
+
+
+
+                                 
+
+                                    </select>
+        </div>
+        <!-- <div class="col-8 ">
+           <a href="<?php echo e(route('CreateQamarCareCard')); ?>" class="btn btn-primary btn-lg waves-effect btn-label waves-light m-3 float-end"><i class="bx bx-plus-circle  font-size-24 label-icon"></i>ADD CARE CARD</a>
+        </div> -->
      </div>
     <div class="row">
         <div class="col-12">

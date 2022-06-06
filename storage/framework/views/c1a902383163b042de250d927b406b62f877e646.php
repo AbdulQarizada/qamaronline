@@ -21,10 +21,10 @@
      </div>
 
      <div class="row">
-        <div class="col-12">
+        <div class="col-12 ">
         <div class="card border border-3">
                     <div class="card-header">
-                      <blockquote class="blockquote border-warning  font-size-14 mb-0">
+                      <blockquote class="blockquote border-info  font-size-14 mb-0">
                                 <p class="my-0   card-title fw-medium font-size-24 text-wrap">CARE CARDS</p>
                         
                         </blockquote>
@@ -33,16 +33,46 @@
       
         </div>
      </div>
+     <div class="row">
+        <div class="col-4">
+        <select class="form-select  form-select-lg mb-3 <?php $__errorArgs = ['Country'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;" 
+>
+                                   <option value="<?php echo e(route('AllQamarCareCard')); ?>">Please Filter Your Choices</option>
+
+                                    <option value="<?php echo e(route('AllQamarCareCard')); ?>">All</option>
+                                    <option value="<?php echo e(route('PendingQamarCareCard')); ?>">Pending</option>
+                                    <option value="<?php echo e(route('ApprovedQamarCareCard')); ?>">Approved</option>
+                                    <option value="<?php echo e(route('PrintedQamarCareCard')); ?>">Printed</option>
+                                    <option value="<?php echo e(route('ReleasedQamarCareCard')); ?>">Released</option>
+                                    <option value="<?php echo e(route('RejectedQamarCareCard')); ?>">Rejected</option>
+
+
+
+                                 
+
+                                    </select>
+        </div>
+        <div class="col-8 ">
+        <!-- <i class="bx bx-plus-circle  font-size-24 label-icon"></i> btn-label -->
+           <a href="<?php echo e(route('CreateQamarCareCard')); ?>" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 float-end">ADD CARE CARD</a>
+        </div>
+     </div>
     <div class="row">
         <div class="col-12">
             
             <div class="card">
-            <h3 class="card-header bg-warning text-white"></h3>
+            <h3 class="card-header bg-info text-white"></h3>
                 <div class="card-body">
-                <div class="row">
+                <!-- <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <!-- <label for="Country" class="form-label">Please Filter Your Choices</label> -->
                                     <select class="form-select  form-select-lg  <?php $__errorArgs = ['Country'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -66,21 +96,9 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                  
 
                                     </select>
-                                    <?php $__errorArgs = ['Country'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong><?php echo e($message); ?></strong>
-                                                </span>
-                                   <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
-                    </div>
+                    </div> -->
               
                     <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>

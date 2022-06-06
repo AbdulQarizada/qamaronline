@@ -22,13 +22,13 @@
     <div class="row">
     <div class="mt-4 mb-4">
                       <blockquote class="blockquote border-primary  font-size-14 mb-0">
-                                <p class="my-0   fw-medium text-dark text-muted card-title font-size-24 text-wrap">ADD & VIEW</p>
+                                <p class="my-0   fw-medium text-dark text-muted card-title font-size-24 text-wrap">CARE CARD</p>
                         
                         </blockquote>
     </div>
     <div class="col-xl-12">
         <div class="row">
-        <div class="col-md-4 mb-2">
+        <!-- <div class="col-md-4 mb-2">
                 <a  href="<?php echo e(route('CreateQamarCareCard')); ?>">
                 <div class="card-one  mini-stats-wid border border-secondary">
                     <div class="card-body">
@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 </a>
-            </div>
+            </div> -->
 
             <div class="col-md-4 mb-2">
                <a href="<?php echo e(route('AllQamarCareCard')); ?>">
@@ -70,8 +70,8 @@
 
                             <div class="flex-shrink-0 align-self-center">
                                 <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                    <span class="avatar-title bg-warning">
-                                        <i class="bx bx-list-ol  font-size-24"></i>
+                                    <span class="avatar-title bg-info">
+                                        <i class="bx bx-id-card   font-size-24"></i>
                                     </span>
                                 </div>
                             </div>
@@ -85,6 +85,34 @@
                 </div>
                 </a>
             </div>
+            <div class="col-md-4 mb-2">
+        <a href="<?php echo e(route('AssigningToServiceQamarCareCard')); ?>">
+            <div class="card-one mini-stats-wid border border-secondary">
+                <div class="card-body">
+                  <blockquote class="blockquote font-size-14 mb-0">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="my-0 text-primary card-title fw-medium">CARE CARD SERIVCES</p>
+                            <h6 class="text-muted mb-0">ASSIGNE TO SERIVCE</h4>
+                        </div>
+
+                        <div class="flex-shrink-0 align-self-center">
+                            <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                <span class="avatar-title bg-success">
+                                    <i class="bx bxs-user-rectangle    font-size-24"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="d-flex mt-4">
+                       
+                    </div>
+                    </blockquote>
+                </div>
+            </div>
+            </a>
+        </div>
 
         </div>
         <!-- end row -->
@@ -226,7 +254,7 @@
     </div> -->
     <!-- end row -->
 
-    <br />
+    <!-- <br />
 <div class="row">
 <div class="mt-4 mb-4">
                       <blockquote class="blockquote border-primary  font-size-14 mb-0">
@@ -327,7 +355,7 @@
         </div> 
 
 
-    </div>
+    </div> -->
     <!-- end row -->
 
 
