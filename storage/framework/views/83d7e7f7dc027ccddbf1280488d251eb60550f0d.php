@@ -226,6 +226,8 @@ unset($__errorArgs, $__bag); ?>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Tribe" class="form-label">Tribe</label>
+                                    <div class="input-group">
+
                                     <select class="form-select  form-select-lg <?php $__errorArgs = ['Tribe'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -259,10 +261,13 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                                 </div>
+                                </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Language" class="form-label">Language</label>
+                                    <div class="input-group">
+
                                     <select class="form-select  form-select-lg <?php $__errorArgs = ['Language'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -297,7 +302,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
-                      
+                            </div>
                    
                         </div>
                     
@@ -379,6 +384,8 @@ unset($__errorArgs, $__bag); ?>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="CurrentJob" class="form-label">Current Job</label>
+                                    <div class="input-group">
+
                                     <select class="form-select  form-select-lg <?php $__errorArgs = ['CurrentJob'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -414,9 +421,12 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
+                            </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="FutureJob" class="form-label">What type of job you can do?</label>
+                                    <div class="input-group">
+
                                     <select class="form-select  form-select-lg <?php $__errorArgs = ['FutureJob'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -448,10 +458,13 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                                 </div>
+                                </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="EducationLevel" class="form-label">Education Level</label>
+                                    <div class="input-group">
+
                                     <select class="form-select  form-select-lg <?php $__errorArgs = ['EducationLevel'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -484,6 +497,7 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -553,7 +567,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SecondaryNumber')); ?>" id="SecondaryNumber" name="SecondaryNumber" 
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SecondaryNumber')); ?>" id="SecondaryNumber" name="SecondaryNumber" max="999999999"
                                             aria-describedby="SecondaryNumber"
                                             required>
                                             <?php $__errorArgs = ['SecondaryNumber'];
@@ -594,7 +608,7 @@ $message = $__bag->first($__errorArgs[0]); ?>
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong><?php echo e($message); ?></strong>
                                                 </span>
-                               <?php unset($message);
+                                                <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
@@ -607,6 +621,7 @@ unset($__errorArgs, $__bag); ?>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Province" class="form-label">Province</label>
+                                    <div class="input-group">
                                     <select class="form-select  form-select-lg <?php $__errorArgs = ['Province'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -664,6 +679,7 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                               </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -755,6 +771,8 @@ unset($__errorArgs, $__bag); ?>
                         <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="RelativeRelationship" class="form-label">Relationship</label>
+                                    <div class="input-group">
+
                                     <select class="form-select  form-select-lg <?php $__errorArgs = ['RelativeRelationship'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -784,6 +802,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                                 </div>
+                        </div>
                         </div>
                         <div class="col-md-4">
                                 <div class="mb-3 position-relative">
@@ -1052,6 +1071,8 @@ unset($__errorArgs, $__bag); ?>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="FamilyStatus" class="form-label">Family Status</label>
+                                    <div class="input-group">
+
                                     <select class="form-select form-select-lg <?php $__errorArgs = ['FamilyStatus'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -1081,6 +1102,8 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                                 </div>
+                                </div>
+
                             </div>
                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">

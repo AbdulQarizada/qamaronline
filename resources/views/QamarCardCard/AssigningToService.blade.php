@@ -1,31 +1,30 @@
 @extends('layouts.master-layouts')
 
-@section('title') Qamar Care List @endsection
+@section('title') Assign To Services Cards @endsection
 
 @section('css')
     <!-- DataTables -->
     <link href="{{ URL::asset('/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
-    
 @endsection
 
 @section('content')
 
     @component('components.breadcrumb')
-        @slot('li_1') Qamar Care Card @endslot
-        @slot('title') Qamar Care Card List @endslot
+        @slot('li_1') Qamar Online @endslot
+        @slot('title') Assign To Services Card @endslot
     @endcomponent
+
     <div class="row">
         <div class="col-12">
            <a href="{{route('IndexQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         </div>
      </div>
-
      <div class="row">
         <div class="col-12">
         <div class="card border border-3">
                     <div class="card-header">
-                      <blockquote class="blockquote border-warning  font-size-14 mb-0">
-                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">ALL CARE CARD</p>
+                      <blockquote class="blockquote border-primary  font-size-14 mb-0">
+                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">Assign To Services</p>
                         
                         </blockquote>
                     </div>
@@ -37,36 +36,10 @@
         <div class="col-12">
             
             <div class="card">
-            <h3 class="card-header bg-warning text-white"></h3>
+            <h3 class="card-header bg-primary text-white"></h3>
                 <div class="card-body">
-                <div class="row">
-                            <div class="col-md-4">
-                                <div class="mb-3 position-relative">
-                                    <!-- <label for="Country" class="form-label">Please Filter Your Choices</label> -->
-                                    <select class="form-select  form-select-lg  @error('Country') is-invalid @enderror"  onchange="window.location.href=this.value;" 
->
-                                   <option value="{{route('AllQamarCareCard')}}">Please Filter Your Choices</option>
 
-                                    <option value="{{route('AllQamarCareCard')}}">All</option>
-                                    <option value="{{route('PendingQamarCareCard')}}">Pending</option>
-                                    <option value="{{route('ApprovedQamarCareCard')}}">Approved</option>
-                                    <option value="{{route('PrintedQamarCareCard')}}">Printed</option>
-                                    <option value="{{route('ReleasedQamarCareCard')}}">Released</option>
-                                    <option value="{{route('RejectedQamarCareCard')}}">Rejected</option>
-
-
-
-                                 
-
-                                    </select>
-                                    @error('Country')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                   @enderror
-                                </div>
-                            </div>
-                    </div>
+                    
               
                     <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>
@@ -76,7 +49,6 @@
                                 <th>Address</th>
                                 <th>Phone Numbers</th>
                                 <th>Family Status</th>
-                                <th>Status</th>
                                 <th>Actions</th>
                                 
                             </tr>
@@ -126,84 +98,37 @@
                                        @if( $qamarcarecard -> LevelPoverty == 3)
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-warning font-size-16"></i>
+                                         <i class="bx bxs-star text-secondary font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
                                        @endif
                                        @if( $qamarcarecard -> LevelPoverty == 4)
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-warning font-size-16"></i>
-                                         <i class="bx bxs-star text-warning font-size-18"></i>
+                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
                                        @endif
                                        @if( $qamarcarecard -> LevelPoverty == 5)
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-warning font-size-16"></i>
-                                         <i class="bx bxs-star text-warning font-size-18"></i>
-                                         <i class="bx bxs-star text-warning font-size-20"></i>
+                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-secondary font-size-20"></i>
                                        @endif
                                     </div>
                                 </td>
-                              
-                               <td>
-                                <div>
-
-
-                                @if($qamarcarecard -> Status == 'Pending')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary">{{$qamarcarecard -> Status}}</a></h5>
-                                 @endif
-
-                                @if($qamarcarecard -> Status == 'Approved')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">{{$qamarcarecard -> Status}} </a></h5>
-                                 @endif
-
-                                 @if($qamarcarecard -> Status == 'Rejected')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">{{$qamarcarecard -> Status}} </a></h5>
-                                 @endif
-
-
-                                 @if($qamarcarecard -> Status == 'Printed')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark">{{$qamarcarecard -> Status}} </a></h5>
-                                 @endif
-
-
-                                 @if($qamarcarecard -> Status == 'ReInitiated')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info">{{$qamarcarecard -> Status}}</a></h5>
-                                 @endif
-
-                                 @if($qamarcarecard -> Status == 'Released')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">{{$qamarcarecard -> Status}}</a></h5>
-                                 @endif
-
-                                 @if($qamarcarecard -> Status == 'Printed')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark">{{$qamarcarecard -> Status}}</a></h5>
-                                 @endif
-
-                                    </div>
-                                </td>
-                    <td>
+                                <td>
                        <div class="d-flex flex-wrap gap-2">
-                    <a href="{{route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-warning waves-effect waves-light">
+                       <!-- <a href="{{route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-warning waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
+                    </a> -->
+               
+                    <a href="{{route('AssignToServiceQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-success waves-effect waves-light">
+                        <i class="bx bx-user-plus   font-size-16 align-middle"></i>
                     </a>
-                    @if($qamarcarecard -> Status == 'Pending' || $qamarcarecard -> Status == 'Rejected')
-                    <a href="{{route('EditQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-info waves-effect waves-light">
-                        <i class="bx bx-edit  font-size-16 align-middle"></i>
-                    </a>
-                     <a href="{{route('DeleteQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-danger waves-effect waves-light delete-confirm">
-                        <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
-                    </a>
-
-                    @endif
-
-
-                   
-
-
-
-                </div></td>
+                </div>
+            </td>
                             </tr>
                             @endforeach
                 
@@ -221,20 +146,18 @@
     <script src="{{ URL::asset('/assets/libs/datatables/datatables.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/libs/jszip/jszip.min.js') }}"></script>
     <script src="{{ URL::asset('/assets/libs/pdfmake/pdfmake.min.js') }}"></script>
- 
-    
-        <!-- Datatable init js -->
-        <script src="{{ URL::asset('/assets/js/pages/datatables.init.js') }}"></script>
-        
+    <!-- Datatable init js -->
+    <script src="{{ URL::asset('/assets/js/pages/datatables.init.js') }}"></script>
+
     <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
 
 <script>
-    $('.delete-confirm').on('click', function (event) {
+    $('.reinitiate').on('click', function (event) {
     event.preventDefault();
     const url = $(this).attr('href');
     swal({
         title: 'Are you sure?',
-        text: 'This record and it`s details will be permanantly deleted!',
+        text: 'This record and it`s details will be re initiated!',
         icon: 'warning',
         buttons: ["Cancel", "Yes!"],
     }).then(function(value) {
@@ -245,5 +168,7 @@
 });
 
 
+
 </script>
+
 @endsection

@@ -104,6 +104,11 @@ Route::post('/Upload_Profile', [App\Http\Controllers\HomeController:: class, 'Up
     Route::get('/QamarCareCard/Print/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'Print'])->name('PrintQamarCareCard');
 
 
+    // assign to servies
+    Route::get('/QamarCareCard/AssigningToService', [App\Http\Controllers\QamarCareCardController:: class, 'AssigningToService'])->name('AssigningToServiceQamarCareCard');
+    Route::get('/QamarCareCard/AssignToService/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'AssignToService'])->name('AssignToServiceQamarCareCard');
+
+
     // verify qamar card that is avalibe to all
     Route::get('/QamarCareCard/Verify', [App\Http\Controllers\QamarCareCardController:: class, 'Verify'])->name('VerifyQamarCareCard');
     Route::post('/QamarCareCard/Verify', [App\Http\Controllers\QamarCareCardController:: class, 'Search'])->name('SearchQamarCareCard');

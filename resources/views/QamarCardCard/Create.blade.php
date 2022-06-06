@@ -142,6 +142,8 @@
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Tribe" class="form-label">Tribe</label>
+                                    <div class="input-group">
+
                                     <select class="form-select  form-select-lg @error('Tribe') is-invalid @enderror" value="{{ old('Tribe') }}" required id="Tribe" name="Tribe">
                                     <option>Select Option</option>
                                     
@@ -161,10 +163,13 @@
                                                 </span>
                                     @enderror
                                 </div>
+                                </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Language" class="form-label">Language</label>
+                                    <div class="input-group">
+
                                     <select class="form-select  form-select-lg @error('Language') is-invalid @enderror" value="{{ old('Language') }}" required id="Language" name="Language">
                                     <option>Select Option</option>
                                     
@@ -185,7 +190,7 @@
                                     @enderror
                                 </div>
                             </div>
-                      
+                            </div>
                    
                         </div>
                     
@@ -239,6 +244,8 @@
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="CurrentJob" class="form-label">Current Job</label>
+                                    <div class="input-group">
+
                                     <select class="form-select  form-select-lg @error('CurrentJob') is-invalid @enderror" value="{{ old('CurrentJob') }}" required name="CurrentJob"  id="CurrentJob">
                                     <option>Select Option</option>
                                     
@@ -260,9 +267,12 @@
                                @enderror
                                 </div>
                             </div>
+                            </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="FutureJob" class="form-label">What type of job you can do?</label>
+                                    <div class="input-group">
+
                                     <select class="form-select  form-select-lg @error('FutureJob') is-invalid @enderror" value="{{ old('FutureJob') }}" required name="FutureJob"  id="FutureJob">
                                     <option>Select Option</option>
                                     
@@ -280,10 +290,13 @@
                                                 </span>
                                @enderror
                                 </div>
+                                </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="EducationLevel" class="form-label">Education Level</label>
+                                    <div class="input-group">
+
                                     <select class="form-select  form-select-lg @error('EducationLevel') is-invalid @enderror" value="{{ old('EducationLevel') }}" required name="EducationLevel"  id="EducationLevel">
                                     <option>Select Option</option>
                                     
@@ -302,6 +315,7 @@
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                @enderror
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -350,7 +364,7 @@
                                     <label for="SecondaryNumber" class="form-label">Secondary Number</label>
                                     <div class="input-group">
                                       
-                                        <input type="number" class="form-control  form-control-lg @error('SecondaryNumber') is-invalid @enderror" value="{{ old('SecondaryNumber') }}" id="SecondaryNumber" name="SecondaryNumber" 
+                                        <input type="number" class="form-control  form-control-lg @error('SecondaryNumber') is-invalid @enderror" value="{{ old('SecondaryNumber') }}" id="SecondaryNumber" name="SecondaryNumber" max="999999999"
                                             aria-describedby="SecondaryNumber"
                                             required>
                                             @error('SecondaryNumber')
@@ -373,7 +387,7 @@
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
-                               @enderror
+                                                @enderror
                                     </div>
                                 </div>
                             </div>
@@ -383,6 +397,7 @@
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Province" class="form-label">Province</label>
+                                    <div class="input-group">
                                     <select class="form-select  form-select-lg @error('Province') is-invalid @enderror" required name="Province" value="{{ old('Province') }}" id="Province">
                                     <option>Select Option</option>
                                      <option value="Badakhshan"> Badakhshan</option>
@@ -426,6 +441,7 @@
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                @enderror
+                               </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -475,6 +491,8 @@
                         <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="RelativeRelationship" class="form-label">Relationship</label>
+                                    <div class="input-group">
+
                                     <select class="form-select  form-select-lg @error('RelativeRelationship') is-invalid @enderror" value="{{ old('RelativeRelationship') }}" required name="RelativeRelationship"  id="RelativeRelationship">
                                     <option>Select Option</option>
                                     <option value="Father">Father</option>
@@ -490,6 +508,7 @@
                                                 </span>
                                @enderror
                                 </div>
+                        </div>
                         </div>
                         <div class="col-md-4">
                                 <div class="mb-3 position-relative">
@@ -646,6 +665,8 @@
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="FamilyStatus" class="form-label">Family Status</label>
+                                    <div class="input-group">
+
                                     <select class="form-select form-select-lg @error('FamilyStatus') is-invalid @enderror" value="{{ old('FamilyStatus') }}" required name="FamilyStatus" id="FamilyStatus">
                                     <option>Select Option</option>
                                     <option value="Poor">Poor</option>
@@ -661,12 +682,14 @@
                                                 </span>
                                @enderror
                                 </div>
+                                </div>
+
                             </div>
                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
                                                 <label for="LevelPoverty" class="form-label">Level Of Poverty</label>
                                                     <div class="rating-star">
-                                                        <input type="hidden" class="rating @error('LevelPoverty') is-invalid @enderror" value="{{ old('LevelPoverty') }}" data-filled="mdi mdi-star text-warning" data-empty="mdi mdi-star-outline text-muted" name="LevelPoverty" id="LevelPoverty"/>
+                                                        <input type="hidden" class="rating @error('LevelPoverty') is-invalid @enderror" value="{{ old('LevelPoverty') }}" data-filled="mdi mdi-star text-warning " data-empty="mdi mdi-star-outline text-muted" name="LevelPoverty" id="LevelPoverty"/>
                                                         @error('LevelPoverty')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

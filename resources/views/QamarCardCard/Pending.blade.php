@@ -49,6 +49,7 @@
                                 <th>Address</th>
                                 <th>Phone Numbers</th>
                                 <th>Family Status</th>
+                                <th>Crated By</th>
                                 <th>Actions</th>
                                 
                             </tr>
@@ -117,6 +118,24 @@
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
                                        @endif
                                     </div>
+                                </td>
+                                <td>
+                                @if( $qamarcarecard -> Created_By !="")
+
+                                <div>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> Created_By }}</a></h5>
+                                    <p class="text-muted mb-0">Employee</p> 
+                               
+                                </div>
+                                @endif
+                                @if( $qamarcarecard -> Created_By =="")
+
+                                   <div>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
+                                    <p class="text-muted mb-0">Requested</p> 
+
+                                  </div>
+                                @endif
                                 </td>
                                 <td>
                        <div class="d-flex flex-wrap gap-2">

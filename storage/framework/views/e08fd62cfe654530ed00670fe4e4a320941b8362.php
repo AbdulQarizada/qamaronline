@@ -92,7 +92,7 @@
     </div>
 </div>
 <!-- end row -->
-<br />
+<!-- <br />
 <div class="row">
 <div class="mt-4 mb-4">
                       <blockquote class="blockquote border-primary  font-size-14 mb-0">
@@ -123,7 +123,6 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                    <!-- <i class="bx bx-check-circle  font-size-24 "></i> -->
                     </div>
                     </blockquote>
                 </div>
@@ -180,7 +179,6 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                    <!-- <i class="bx bx-check-circle  font-size-24 "></i> -->
                     </div>
                     </blockquote>
                 </div>
@@ -210,7 +208,6 @@
                     </div>
                    
                     <div class="d-flex mt-4">
-                    <!-- <i class="bx bx-check-circle  font-size-24 "></i> -->
                     </div>
                     </blockquote>
                 </div>
@@ -226,7 +223,7 @@
 
 
 
-    </div>
+    </div> -->
     <!-- end row -->
 
     <br />
@@ -241,7 +238,7 @@
     <div class="row">      
 
     <div class="col-md-4 mb-2">
-        <a href="#">
+        <a href="<?php echo e(route('AssigningToServiceQamarCareCard')); ?>">
             <div class="card-one mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">
@@ -269,34 +266,7 @@
             </a>
         </div>
 
-        <div class="col-md-4 mb-2">
-        <a  href="#">
-            <div class="card-one  mini-stats-wid border border-secondary">
-                <div class="card-body">
-                  <blockquote class="blockquote font-size-14 mb-0">
-                    <div class="d-flex">
-                        <div class="flex-grow-1">
-                            <p class="my-0 text-primary card-title fw-medium">ASSIGNED TO SERVICES</p>
-                            <h6 class="text-muted mb-0">ASSIGNED TO SERVICES</h4>
-                        </div>
-
-                        <div class="flex-shrink-0 align-self-center">
-                            <div class="mini-stat-icon avatar-sm rounded-circle bg-info">
-                                <span class="avatar-title bg-info">
-                                    <i class="bx bx-task   font-size-24"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                   
-                    <div class="d-flex mt-4">
-                        
-                    </div>
-                    </blockquote>
-                </div>
-            </div>
-            </a>
-        </div> 
+     
 
         <div class="col-md-4 mb-2">
         <a  href="#">
@@ -361,7 +331,7 @@
     <!-- end row -->
 
 
-    <br />
+    <!-- <br />
 <div class="row">
 <div class="mt-4 mb-4">
                       <blockquote class="blockquote border-primary  font-size-14 mb-0">
@@ -458,7 +428,7 @@
             </div>
             </a>
         </div> 
-    </div>
+    </div> -->
     <!-- end row -->
 
 
@@ -477,7 +447,7 @@
         
         
     <div class="col-md-4 mb-2">
-        <a  href="#">
+        <a  href="CreateQamarCareCard">
             <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">

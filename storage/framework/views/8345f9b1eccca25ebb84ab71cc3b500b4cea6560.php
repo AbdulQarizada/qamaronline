@@ -28,7 +28,7 @@
                                     <table class="table table-nowrap">
                                              <tr>
                                                 <td>
-                                                     <img src="<?php echo e(URL::asset('/uploads/Profiles/'.$data -> Profile)); ?>" style="width: 130px; height: 135px;" class="rounded-circle">
+                                                     <img src="<?php echo e(URL::asset('/uploads/Profiles/'.$data -> Profile)); ?>" style="width: 130px; height: 135px;" class="rounded">
                                                 </td>
                                                 <td style="text-align: center;">
                                                      <!-- <img src="<?php echo e(URL::asset('/assets/images/letterhead.png')); ?>" style="width: 400px; height: 100%;" class="rounded-circle"> -->
@@ -37,7 +37,7 @@
                                                  <td  style="float:right;">
                                                     <div class="">
                                                          <div class="">
-                                                            <div class="mb-3" class="rounded-circle avatar-xs">
+                                                            <div class="mb-3" class="rounded">
                                                                  <?php echo DNS2D::getBarcodeSVG(''.$data->QCC,  'QRCODE', 6, 6, true); ?>
 
                                                                  

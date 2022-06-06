@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\QamarCareCard;
 use App\Models\Location;
+use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
@@ -122,7 +123,7 @@ public function __construct()
           'NumberFamilyMembers' => request('NumberFamilyMembers'),
           'IncomeStreem' => request('IncomeStreem'),
           'LevelPoverty' => request('LevelPoverty'),
-          'Tazkira' => request('Tazkira'),
+          // 'Tazkira' => request('Tazkira'),
           'Status' => 'Pending',
           'Created_By' => auth()->user()->name,
 
@@ -238,7 +239,7 @@ public function __construct()
       
       $qamarcarecards =   QamarCareCard::where("Status", "=", 'Approved')->get();
 
-      return view('QamarCardCard.Approved', compact('qamarcarecards'));
+      return view('QamarCardCard.All', compact('qamarcarecards'));
     }
 
 
@@ -246,7 +247,7 @@ public function __construct()
     {
       
       $qamarcarecards =   QamarCareCard::where("Status", "=", 'Rejected')->get();
-      return view('QamarCardCard.Rejected', compact('qamarcarecards'));
+      return view('QamarCardCard.All', compact('qamarcarecards'));
     }
 
        
@@ -257,7 +258,7 @@ public function __construct()
     {
       
       $qamarcarecards =   QamarCareCard::where("Status", "=", 'Pending')->get();
-      return view('QamarCardCard.Pending', compact('qamarcarecards'));
+      return view('QamarCardCard.All', compact('qamarcarecards'));
     }
 
 
@@ -265,7 +266,7 @@ public function __construct()
     {
       
       $qamarcarecards =   QamarCareCard::where("Status", "=", 'Released')->get();
-      return view('QamarCardCard.Released', compact('qamarcarecards'));
+      return view('QamarCardCard.All', compact('qamarcarecards'));
     }
 
 
@@ -356,11 +357,56 @@ public function __construct()
     {
         
         $qamarcarecards =   QamarCareCard::where("Status", "=", 'Printed')->get();
-        return view('QamarCardCard.Printed', compact('qamarcarecards'));
+        return view('QamarCardCard.All', compact('qamarcarecards'));
    }
 
 
+
+
+
+   // services 
+
+   public function AssigningToService()
+    {
+      
+      $qamarcarecards =   QamarCareCard::where("Status", "=", 'Released')->get();
+      return view('QamarCardCard.AssigningToService', compact('qamarcarecards'));
+    }
+
+
    
+
+    public function AssignToService(QamarCareCard $data)
+    {
+      $users =   User::all();
+      
+      return view('QamarCardCard.AssignToService', ['data' => $data, 'users' => $users]);
+    }
+
+
+
+    public function AssignService(QamarCareCard $data )
+    {
+      
+      $data -> update([
+
+        'FirstName' => request('FirstName'),
+        'LastName' => request('LastName'),
+        'Email' => request('Email'),
+        'PNumber' => request('PNumber'),
+        'SNumber' => request('SNumber'),
+        'Province' => request('Province'),
+        'District' => request('District')
+
+      ]);
+      $qamarcarecards =   QamarCareCard::all();
+      return view('QamarCardCard.PendingServices', compact('qamarcarecards'));
+    }
+
+
+
+
+
 
 
 

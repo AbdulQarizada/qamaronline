@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('title'); ?> Approved Cards <?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?> Assign To Services Cards <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
     <!-- DataTables -->
@@ -11,7 +11,7 @@
 
     <?php $__env->startComponent('components.breadcrumb'); ?>
         <?php $__env->slot('li_1'); ?> Qamar Online <?php $__env->endSlot(); ?>
-        <?php $__env->slot('title'); ?> Approved Card <?php $__env->endSlot(); ?>
+        <?php $__env->slot('title'); ?> Assign To Services Card <?php $__env->endSlot(); ?>
     <?php echo $__env->renderComponent(); ?>
 
     <div class="row">
@@ -23,8 +23,8 @@
         <div class="col-12">
         <div class="card border border-3">
                     <div class="card-header">
-                      <blockquote class="blockquote border-secondary  font-size-14 mb-0">
-                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">Pending CARE CARD</p>
+                      <blockquote class="blockquote border-primary  font-size-14 mb-0">
+                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">Assign To Services</p>
                         
                         </blockquote>
                     </div>
@@ -36,7 +36,7 @@
         <div class="col-12">
             
             <div class="card">
-            <h3 class="card-header bg-secondary text-white"></h3>
+            <h3 class="card-header bg-primary text-white"></h3>
                 <div class="card-body">
 
                     
@@ -49,7 +49,6 @@
                                 <th>Address</th>
                                 <th>Phone Numbers</th>
                                 <th>Family Status</th>
-                                <th>Crated By</th>
                                 <th>Actions</th>
                                 
                             </tr>
@@ -120,34 +119,13 @@
                                     </div>
                                 </td>
                                 <td>
-                                <?php if( $qamarcarecard -> Created_By !=""): ?>
-
-                                <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> Created_By); ?></a></h5>
-                                    <p class="text-muted mb-0">Employee</p> 
-                               
-                                </div>
-                                <?php endif; ?>
-                                <?php if( $qamarcarecard -> Created_By ==""): ?>
-
-                                   <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
-                                    <p class="text-muted mb-0">Requested</p> 
-
-                                  </div>
-                                <?php endif; ?>
-                                </td>
-                                <td>
                        <div class="d-flex flex-wrap gap-2">
-                    <a href="<?php echo e(route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-warning waves-effect waves-light">
+                       <!-- <a href="<?php echo e(route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-warning waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
-                    </a>
+                    </a> -->
                
-                    <a href="<?php echo e(route('ApproveQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-success waves-effect waves-light approve">
-                        <i class="bx bx-check-circle font-size-16 align-middle"></i>
-                    </a>
-                     <a href="<?php echo e(route('RejectQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-danger waves-effect waves-light reject">
-                        <i class=" bx bx-x-circle font-size-16 align-middle"></i>
+                    <a href="<?php echo e(route('AssignToServiceQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-success waves-effect waves-light">
+                        <i class="bx bx-user-plus   font-size-16 align-middle"></i>
                     </a>
                 </div>
             </td>
@@ -171,16 +149,15 @@
     <!-- Datatable init js -->
     <script src="<?php echo e(URL::asset('/assets/js/pages/datatables.init.js')); ?>"></script>
 
-
     <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
 
 <script>
-    $('.approve').on('click', function (event) {
+    $('.reinitiate').on('click', function (event) {
     event.preventDefault();
     const url = $(this).attr('href');
     swal({
         title: 'Are you sure?',
-        text: 'This record and it`s details will be approved!',
+        text: 'This record and it`s details will be re initiated!',
         icon: 'warning',
         buttons: ["Cancel", "Yes!"],
     }).then(function(value) {
@@ -190,22 +167,10 @@
     });
 });
 
-$('.reject').on('click', function (event) {
-    event.preventDefault();
-    const url = $(this).attr('href');
-    swal({
-        title: 'Are you sure?',
-        text: 'This record and it`s details will be rejected!',
-        icon: 'warning',
-        buttons: ["Cancel", "Yes!"],
-    }).then(function(value) {
-        if (value) {
-            window.location.href = url;
-        }
-    });
-});
+
+
 </script>
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/Pending.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/AssigningToService.blade.php ENDPATH**/ ?>
