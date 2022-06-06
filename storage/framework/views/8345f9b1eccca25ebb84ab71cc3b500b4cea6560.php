@@ -15,9 +15,9 @@
     <?php echo $__env->renderComponent(); ?>
     <div class="row">
         <div class="col-12">
-           <a href="<?php echo e(route('IndexQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+           <a href="<?php echo e(route('AllQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
            <a href="javascript:window.print()" class="btn btn-dark  waves-effect waves-light"><i class=" bx bxs-printer   font-size-18"></i></a>
-       
+      
         </div>
      </div>
                        <div class="row">
@@ -202,7 +202,7 @@
                                                   
                                                   
                                             </table>
-                                            <table class="table table-nowrap">
+                                            <!-- <table class="table table-nowrap">
                                                     <tr>
                                                         <td style="width: 20%;  padding: 5px;">    
                                                         <input class="form-check-input font-size-18" type="checkbox" id="formCheck1">
@@ -224,7 +224,7 @@
                                                     </tr>
                                                   
                                                   
-                                            </table>
+                                            </table> -->
                                             
 
                                         </div>
@@ -311,9 +311,91 @@
                         </div>
                         <!-- end row -->
 
+                        <div class="row">
+        <div class="col-12">
+           <!-- <a href="<?php echo e(route('AllQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a> -->
+           <!-- <a href="javascript:window.print()" class="btn btn-dark  waves-effect waves-light"><i class=" bx bxs-printer   font-size-18"></i></a> -->
+           <?php if( $data -> Status == 'Approved' || $data -> Status == 'Rejected' || $data -> Status == 'Printed' || $data -> Status == 'Released'): ?>
+                    <a href="<?php echo e(route('ReInitiateQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-info waves-effect waves-light reinitiate m-3">
+                        <i class="bx bx-time-five  font-size-16 align-middle"></i>Re-Initiate
+                    </a>
+                    <?php endif; ?>
+                    <?php if( $data -> Status == 'Pending'): ?>
+                    <a href="<?php echo e(route('ApproveQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light approve m-3">
+                        <i class="bx bx-check-circle font-size-16 align-middle"></i>Approve
+                    </a>
+                     <a href="<?php echo e(route('RejectQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-danger waves-effect waves-light reject m-3">
+                        <i class=" bx bx-x-circle font-size-16 align-middle"></i>Reject
+                    </a>
+                    <?php endif; ?>
+        </div>
+     </div>
+
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
-    <!-- Required datatable js -->
+<script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
+
+<script>
+    $('.reinitiate').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Are you sure?',
+        text: 'This record and it`s details will be re initiated!',
+        icon: 'warning',
+        buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
+
+// $('.print').on('click', function (event) {
+//     event.preventDefault();
+//     const url = $(this).attr('href');
+//     swal({
+//         title: 'Are you sure?',
+//         text: 'Are you sure that this record is printed!',
+//         icon: 'warning',
+//         buttons: ["Cancel", "Yes!"],
+//     }).then(function(value) {
+//         if (value) {
+//             window.location.href = url;
+//         }
+//     });
+// });
+
+$('.approve').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Are you sure?',
+        text: 'This record and it`s details will be approved!',
+        icon: 'warning',
+        buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
+
+$('.reject').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Are you sure?',
+        text: 'This record and it`s details will be rejected!',
+        icon: 'warning',
+        buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
+</script>
   
 <?php $__env->stopSection(); ?>
 

@@ -64,7 +64,7 @@
                       <blockquote class="blockquote font-size-14 mb-0">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="my-0 text-primary card-title fw-medium">ALL CARE CARDS</p>
+                                <p class="my-0 text-primary card-title fw-medium">CARE CARDS</p>
                                 <h6 class="text-muted mb-0">Care Cards</h4>
                             </div>
 
@@ -447,7 +447,7 @@
         
         
     <div class="col-md-4 mb-2">
-        <a  href="CreateQamarCareCard">
+        <a  href="<?php echo e(route('CreateQamarCareCard')); ?>">
             <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">

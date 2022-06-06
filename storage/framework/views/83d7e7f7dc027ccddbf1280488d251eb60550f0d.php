@@ -1116,7 +1116,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('LevelPoverty')); ?>" data-filled="mdi mdi-star text-warning" data-empty="mdi mdi-star-outline text-muted" name="LevelPoverty" id="LevelPoverty"/>
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('LevelPoverty')); ?>" data-filled="mdi mdi-star text-warning " data-empty="mdi mdi-star-outline text-muted" name="LevelPoverty" id="LevelPoverty"/>
                                                         <?php $__errorArgs = ['LevelPoverty'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :

@@ -25,7 +25,7 @@
         <div class="card border border-3">
                     <div class="card-header">
                       <blockquote class="blockquote border-warning  font-size-14 mb-0">
-                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">ALL CARE CARD</p>
+                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">CARE CARDS</p>
                         
                         </blockquote>
                     </div>
@@ -178,10 +178,6 @@ unset($__errorArgs, $__bag); ?>
                                  <?php endif; ?>
 
 
-                                 <?php if($qamarcarecard -> Status == 'Printed'): ?>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark"><?php echo e($qamarcarecard -> Status); ?> </a></h5>
-                                 <?php endif; ?>
-
 
                                  <?php if($qamarcarecard -> Status == 'ReInitiated'): ?>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info"><?php echo e($qamarcarecard -> Status); ?></a></h5>
@@ -202,17 +198,37 @@ unset($__errorArgs, $__bag); ?>
                     <a href="<?php echo e(route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-warning waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
                     </a>
-                    <?php if($qamarcarecard -> Status == 'Pending' || $qamarcarecard -> Status == 'Rejected'): ?>
+                    <?php if($qamarcarecard -> Status == 'Pending'): ?>
                     <a href="<?php echo e(route('EditQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-info waves-effect waves-light">
                         <i class="bx bx-edit  font-size-16 align-middle"></i>
                     </a>
                      <a href="<?php echo e(route('DeleteQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-danger waves-effect waves-light delete-confirm">
                         <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
                     </a>
-
                     <?php endif; ?>
 
 
+                    <?php if( $qamarcarecard -> Status == 'Approved'): ?>
+
+                    <a href="<?php echo e(route('PrintingQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-dark waves-effect waves-light print">
+                        <i class="bx bxs-printer   font-size-16 align-middle"></i>
+                    </a>
+                    <?php endif; ?>
+
+                    <?php if( $qamarcarecard -> Status == 'Rejected'): ?>
+                    <a href="<?php echo e(route('EditQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-info waves-effect waves-light">
+                        <i class="bx bx-edit  font-size-16 align-middle"></i>
+                    </a>
+                     <a href="<?php echo e(route('DeleteQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-danger waves-effect waves-light delete-confirm">
+                        <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
+                    </a>
+                    <?php endif; ?>
+
+                    <?php if($qamarcarecard -> Status == 'Printed'): ?>
+                    <a href="<?php echo e(route('ReleaseQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-success waves-effect waves-light release">
+                        <i class="bx bx-user-check  font-size-16 align-middle"></i>
+                    </a>
+                    <?php endif; ?>
                    
 
 
@@ -258,7 +274,20 @@ unset($__errorArgs, $__bag); ?>
     });
 });
 
-
+$('.release').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Are you sure?',
+        text: 'This card is released!',
+        icon: 'warning',
+        buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
 </script>
 <?php $__env->stopSection(); ?>
 

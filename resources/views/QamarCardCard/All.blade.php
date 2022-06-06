@@ -25,7 +25,7 @@
         <div class="card border border-3">
                     <div class="card-header">
                       <blockquote class="blockquote border-warning  font-size-14 mb-0">
-                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">ALL CARE CARD</p>
+                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">CARE CARDS</p>
                         
                         </blockquote>
                     </div>
@@ -164,10 +164,6 @@
                                  @endif
 
 
-                                 @if($qamarcarecard -> Status == 'Printed')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark">{{$qamarcarecard -> Status}} </a></h5>
-                                 @endif
-
 
                                  @if($qamarcarecard -> Status == 'ReInitiated')
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info">{{$qamarcarecard -> Status}}</a></h5>
@@ -188,17 +184,37 @@
                     <a href="{{route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-warning waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
                     </a>
-                    @if($qamarcarecard -> Status == 'Pending' || $qamarcarecard -> Status == 'Rejected')
+                    @if($qamarcarecard -> Status == 'Pending')
                     <a href="{{route('EditQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-info waves-effect waves-light">
                         <i class="bx bx-edit  font-size-16 align-middle"></i>
                     </a>
                      <a href="{{route('DeleteQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-danger waves-effect waves-light delete-confirm">
                         <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
                     </a>
-
                     @endif
 
 
+                    @if( $qamarcarecard -> Status == 'Approved')
+
+                    <a href="{{route('PrintingQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-dark waves-effect waves-light print">
+                        <i class="bx bxs-printer   font-size-16 align-middle"></i>
+                    </a>
+                    @endif
+
+                    @if( $qamarcarecard -> Status == 'Rejected')
+                    <a href="{{route('EditQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-info waves-effect waves-light">
+                        <i class="bx bx-edit  font-size-16 align-middle"></i>
+                    </a>
+                     <a href="{{route('DeleteQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-danger waves-effect waves-light delete-confirm">
+                        <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
+                    </a>
+                    @endif
+
+                    @if($qamarcarecard -> Status == 'Printed')
+                    <a href="{{route('ReleaseQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-success waves-effect waves-light release">
+                        <i class="bx bx-user-check  font-size-16 align-middle"></i>
+                    </a>
+                    @endif
                    
 
 
@@ -244,6 +260,19 @@
     });
 });
 
-
+$('.release').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Are you sure?',
+        text: 'This card is released!',
+        icon: 'warning',
+        buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
 </script>
 @endsection
