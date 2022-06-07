@@ -42,6 +42,9 @@ class QamarCareCard extends Model
       'MonthlyFamilyExpenses',
       'NumberFamilyMembers',
       'IncomeStreem',
+
+
+      
       'LevelPoverty',
       'Tazkira',
       'Status',
