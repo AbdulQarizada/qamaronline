@@ -24,14 +24,26 @@
         </div>
      </div>
                        <div class="row">
-                            <div class="col-lg-12"> 
-                                            <img src="{{ URL::asset('/assets/images/printcard.png') }}" style="width: 800px; height: 800px;">
-                                  
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      
+                       <div  style=" background-image: url('{{ URL::asset('/assets/images/printcard.jpg') }}'); height: 100vh; background-repeat: no-repeat; "> 
+                       
+                       
+                       
+                       <table class="table-responsive" style="margin-left:70px; margin-top:95px;">
+                      
+                          <tr>
+                              <td > <span class="h5">QCC-{{$data -> QCC}}</span></span></td>
+                          </tr>
+                          <tr>
+                              <td ><span class="h5">{{$data -> FirstName}} {{$data -> LastName}}</span></td>
+                          </tr>
+                          <tr >
+                              <td style=" padding-top:5px; padding-left:5px;"><span class="h5">{{$data -> FatherName}} </span></td>
+                          </tr>
+                     </table>
+                    
+                    </div>
+
                         <!-- end row -->
 
 @endsection
