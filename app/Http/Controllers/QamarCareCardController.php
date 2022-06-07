@@ -78,7 +78,7 @@ public function __construct()
       'NumberFamilyMembers' => 'required|max:10',
       'IncomeStreem' => 'required|max:255',
       'LevelPoverty' => 'required|max:255',
-      'Tazkira' => 'required|max:255',
+      // 'Tazkira' => 'required|max:255',
 
       'RelativeNumber' => 'required|max:10',
       'RelativeRelationship' => 'required|max:255',
@@ -123,7 +123,7 @@ public function __construct()
           'NumberFamilyMembers' => request('NumberFamilyMembers'),
           'IncomeStreem' => request('IncomeStreem'),
           'LevelPoverty' => request('LevelPoverty'),
-          // 'Tazkira' => request('Tazkira'),
+         'Tazkira' => request('Tazkira'),
           'Status' => 'Pending',
           'Created_By' => auth()->user()->name,
 

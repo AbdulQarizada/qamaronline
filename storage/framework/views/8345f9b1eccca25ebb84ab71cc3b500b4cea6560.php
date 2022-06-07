@@ -202,6 +202,16 @@
                                                   
                                                   
                                             </table>
+                                            <table class="table table-nowrap">
+                                                <h5 style="font-weight: bold;" class="card-header  text-dark">DOCUMENTS</h5>
+                                                    <tr>
+                                                        <td style="width: 20%; border: 2px solid #000; padding: 5px;">Tazkira</td>
+                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"><a href="<?php echo e(URL::asset('/uploads/Tazkiras/'.$data -> Tazkira)); ?>" class="badge badge-soft-info"><?php echo e($data -> FirstName); ?> <?php echo e($data -> LastName); ?> Tazkira</a></td>
+                                                        <td style="width: 20%; border: 2px solid #000; padding: 5px;">Other</td>
+                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"></td>
+                                                    </tr>
+                                                                                              
+                                            </table>
                                             <!-- <table class="table table-nowrap">
                                                     <tr>
                                                         <td style="width: 20%;  padding: 5px;">    
@@ -300,9 +310,9 @@
                                         </div>
                                         <br />
                                         <div>
-                                        <p class="font-size-18 card-header  text-dark" >Tazkira </p>
+                                        <!-- <p class="font-size-18 card-header  text-dark" >Tazkira </p>
                                         <br />
-                                        <img src="<?php echo e(URL::asset('/uploads/Tazkiras/'.$data -> Tazkira)); ?>" style="width: 600px; height:100%" >
+                                        <img src="<?php echo e(URL::asset('/uploads/Tazkiras/'.$data -> Tazkira)); ?>" style="width: 600px; height:100%" > -->
                                         <div>
 
                                     </div>

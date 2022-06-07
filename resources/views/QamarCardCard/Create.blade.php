@@ -106,9 +106,38 @@
                                                 </span>
                                            @enderror
                                  </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="mb-3 position-relative">
+                                    <label for="DOB" class="form-label">Date of Birth</label>
+                                    <div class="input-group " id="example-date-input">
+                                      
+                                    <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{ old('DOB') }}" type="date"  id="example-date-input" name="DOB" id="DOB" required>
+                                    @error('DOB')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                               @enderror
+                                   
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3 position-relative">
+                                    <label for="Gender" class="form-label">Gender</label>
+                                    <select class="form-select  form-select-lg @error('Gender') is-invalid @enderror" value="{{ old('Gender') }}" id="Gender"  name="Gender" required>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                 </select>
+                                 @error('Gender')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                               @enderror
                                 </div>
                             </div>
-                            
                      </div>
 
                     </div>
@@ -193,19 +222,8 @@
                             </div>
                    
                         </div>
-                    
+<!--                     
                         <div class="row">
-                        <!-- <div class="col-md-4">
-                                <div class="mb-3 position-relative">
-                                    <label for="GOBType" class="form-label">Date of Birth Type</label>
-                                    <select class="form-select  form-select-lg" id="GOBType"  name="GOBType">
-                                    <option value="Age">Age</option>
-                                    <option value="ShamsiDate">Shamsi Date</option>
-                                    <option value="Gorogoin Date">Grogorian Date</option>
-
-                                 </select>
-                                </div>
-                            </div> -->
                         <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="DOB" class="form-label">Date of Birth</label>
@@ -239,7 +257,7 @@
                             </div>
                       
                    
-                        </div>
+                        </div> -->
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">

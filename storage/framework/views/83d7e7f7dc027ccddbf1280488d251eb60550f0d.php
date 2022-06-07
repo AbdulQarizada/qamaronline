@@ -162,9 +162,66 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                                  </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6 ">
+                                <div class="mb-3 position-relative">
+                                    <label for="DOB" class="form-label">Date of Birth</label>
+                                    <div class="input-group " id="example-date-input">
+                                      
+                                    <input class="form-control form-select-lg <?php $__errorArgs = ['DOB'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('DOB')); ?>" type="date"  id="example-date-input" name="DOB" id="DOB" required>
+                                    <?php $__errorArgs = ['DOB'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                   
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3 position-relative">
+                                    <label for="Gender" class="form-label">Gender</label>
+                                    <select class="form-select  form-select-lg <?php $__errorArgs = ['Gender'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Gender')); ?>" id="Gender"  name="Gender" required>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                 </select>
+                                 <?php $__errorArgs = ['Gender'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
-                            
                      </div>
 
                     </div>
@@ -305,19 +362,8 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                    
                         </div>
-                    
+<!--                     
                         <div class="row">
-                        <!-- <div class="col-md-4">
-                                <div class="mb-3 position-relative">
-                                    <label for="GOBType" class="form-label">Date of Birth Type</label>
-                                    <select class="form-select  form-select-lg" id="GOBType"  name="GOBType">
-                                    <option value="Age">Age</option>
-                                    <option value="ShamsiDate">Shamsi Date</option>
-                                    <option value="Gorogoin Date">Grogorian Date</option>
-
-                                 </select>
-                                </div>
-                            </div> -->
                         <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="DOB" class="form-label">Date of Birth</label>
@@ -379,7 +425,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                       
                    
-                        </div>
+                        </div> -->
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
