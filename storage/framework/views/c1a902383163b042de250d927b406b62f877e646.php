@@ -24,7 +24,7 @@
         <div class="col-12 ">
         <div class="card border border-3">
                     <div class="card-header">
-                      <blockquote class="blockquote border-info  font-size-14 mb-0">
+                      <blockquote class="blockquote border-warning  font-size-14 mb-0">
                                 <p class="my-0   card-title fw-medium font-size-24 text-wrap">CARE CARDS</p>
                         
                         </blockquote>
@@ -68,7 +68,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
         <div class="col-12">
             
             <div class="card">
-            <h3 class="card-header bg-info text-white"></h3>
+            <h3 class="card-header bg-warning text-white"></h3>
                 <div class="card-body">
                 <!-- <div class="row">
                             <div class="col-md-4">
