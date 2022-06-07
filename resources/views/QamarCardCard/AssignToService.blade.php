@@ -19,7 +19,7 @@
 
 <div class="row">
         <div class="col-12">
-           <a href="{{route('IndexQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+           <a href="{{route('AssigningServiceQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         </div>
      </div>
 
@@ -40,7 +40,7 @@
 
 
 
-<form class="needs-validation"  action="{{route('CreateQamarCareCard')}}" method="POST" enctype="multipart/form-data" novalidate>
+<form class="needs-validation"  action="{{route('AssignServiceQamarCareCard')}}" method="POST" enctype="multipart/form-data" novalidate>
      @csrf
      
      <div class="row">
@@ -319,7 +319,7 @@
 
 <div>
 
-<button class="btn btn-success btn-lg" type="submit">Save </button>
+<button class="btn btn-success btn-lg" type="submit">Assign</button>
 <a class="btn btn-danger btn-lg" href="{{route('IndexQamarCareCard')}}">Cancel</a>
 </div>
 

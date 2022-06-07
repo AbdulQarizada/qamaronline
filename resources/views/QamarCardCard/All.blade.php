@@ -95,6 +95,7 @@
                                 <th>Phone Numbers</th>
                                 <th>Family Status</th>
                                 <th>Status</th>
+                                <th>Crated By</th>
                                 <th>Actions</th>
                                 
                             </tr>
@@ -171,31 +172,61 @@
 
                                 @if($qamarcarecard -> Status == 'Pending')
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary">{{$qamarcarecard -> Status}}</a></h5>
+                                    <p class="text-muted mb-0">{{$qamarcarecard -> created_at}}</p> 
+
                                  @endif
 
                                 @if($qamarcarecard -> Status == 'Approved')
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">{{$qamarcarecard -> Status}} </a></h5>
+                                    <p class="text-muted mb-0">{{$qamarcarecard -> created_at}}</p> 
+
                                  @endif
 
                                  @if($qamarcarecard -> Status == 'Rejected')
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">{{$qamarcarecard -> Status}} </a></h5>
+                                    <p class="text-muted mb-0">{{$qamarcarecard -> created_at}}</p> 
+
                                  @endif
 
 
 
                                  @if($qamarcarecard -> Status == 'ReInitiated')
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info">{{$qamarcarecard -> Status}}</a></h5>
+                                    <p class="text-muted mb-0">{{$qamarcarecard -> created_at}}</p> 
+
                                  @endif
 
                                  @if($qamarcarecard -> Status == 'Released')
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">{{$qamarcarecard -> Status}}</a></h5>
+                                    <p class="text-muted mb-0">{{$qamarcarecard -> created_at}}</p> 
+
                                  @endif
 
                                  @if($qamarcarecard -> Status == 'Printed')
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark">{{$qamarcarecard -> Status}}</a></h5>
+                                    <p class="text-muted mb-0">{{$qamarcarecard -> created_at}}</p> 
+
                                  @endif
 
                                     </div>
+                                </td>
+                                <td>
+                                @if( $qamarcarecard -> Created_By !="")
+
+                                <div>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> Created_By }}</a></h5>
+                                    <p class="text-muted mb-0">Employee</p> 
+                               
+                                </div>
+                                @endif
+                                @if( $qamarcarecard -> Created_By =="")
+
+                                   <div>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
+                                    <p class="text-muted mb-0">Requested</p> 
+
+                                  </div>
+                                @endif
                                 </td>
                     <td>
                        <div class="d-flex flex-wrap gap-2">

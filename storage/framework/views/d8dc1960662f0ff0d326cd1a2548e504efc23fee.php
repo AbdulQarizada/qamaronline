@@ -19,7 +19,7 @@
 
 <div class="row">
         <div class="col-12">
-           <a href="<?php echo e(route('AssigningServiceQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+           <a href="<?php echo e(route('IndexQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         </div>
      </div>
 
@@ -375,7 +375,7 @@ unset($__errorArgs, $__bag); ?>
 
 <div>
 
-<button class="btn btn-success btn-lg" type="submit">Assign</button>
+<button class="btn btn-info btn-lg" type="submit">Update</button>
 <a class="btn btn-danger btn-lg" href="<?php echo e(route('IndexQamarCareCard')); ?>">Cancel</a>
 </div>
 
@@ -518,4 +518,4 @@ unset($__errorArgs, $__bag); ?>
 
 </script>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/AssignToService.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/ServiceEdit.blade.php ENDPATH**/ ?>

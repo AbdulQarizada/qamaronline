@@ -105,8 +105,29 @@ Route::post('/Upload_Profile', [App\Http\Controllers\HomeController:: class, 'Up
 
 
     // assign to servies
-    Route::get('/QamarCareCard/AssigningToService', [App\Http\Controllers\QamarCareCardController:: class, 'AssigningToService'])->name('AssigningToServiceQamarCareCard');
     Route::get('/QamarCareCard/AssignToService/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'AssignToService'])->name('AssignToServiceQamarCareCard');
+
+
+       // list
+       Route::get('/QamarCareCard/AssigningService', [App\Http\Controllers\QamarCareCardController:: class, 'AssigningService'])->name('AssigningServiceQamarCareCard');
+       Route::get('/QamarCareCard/PendingServices', [App\Http\Controllers\QamarCareCardController:: class, 'PendingServices'])->name('PendingServicesQamarCareCard');
+       Route::get('/QamarCareCard/RecievedServices', [App\Http\Controllers\QamarCareCardController:: class, 'RecievedServices'])->name('RecievedServicesQamarCareCard');
+       Route::get('/QamarCareCard/RejectedServices', [App\Http\Controllers\QamarCareCardController:: class, 'RejectedServices'])->name('RejectedServicesQamarCareCard');
+
+
+       // create
+       Route::post('/QamarCareCard/AssignToService', [App\Http\Controllers\QamarCareCardController:: class, 'AssignService'])->name('AssignServiceQamarCareCard');
+       
+       // update
+      Route::get('/QamarCareCard/ServiceEdit/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'ServiceEdit'])->name('ServiceEditQamarCareCard');
+      Route::put('/QamarCareCard/ServiceEdit/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'ServiceUpdate'])->name('ServiceUpdateQamarCareCard');
+   
+       // delete
+       Route::get('/QamarCareCard/ServiceDelete/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'ServiceDeleteDelete'])->name('ServiceDeleteQamarCareCard');
+   
+ // Serivce Status change
+    Route::get('/QamarCareCard/ServiceReleased/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'ServiceReleased'])->name('ServiceReleasedQamarCareCard');
+
 
 
     // verify qamar card that is avalibe to all

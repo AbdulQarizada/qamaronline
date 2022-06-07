@@ -23,7 +23,7 @@
         <div class="col-12">
         <div class="card border border-3">
                     <div class="card-header">
-                      <blockquote class="blockquote border-primary  font-size-14 mb-0">
+                      <blockquote class="blockquote border-info  font-size-14 mb-0">
                                 <p class="my-0   card-title fw-medium font-size-24 text-wrap">CARE CARD SERVICES</p>
                         
                         </blockquote>
@@ -43,14 +43,13 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;" 
 >
-                                   <option value="">Please Filter Your Choices</option>
-
-                                     <option value="<?php echo e(route('AssigningToServiceQamarCareCard')); ?>">Eligible Beneficiaries</option>
+                                   <option value="<?php echo e(route('AssigningServiceQamarCareCard')); ?>">Please Filter Your Choices</option>
+                                     <option value="<?php echo e(route('AssigningServiceQamarCareCard')); ?>">Eligible Beneficiaries</option>
                                     <option value="<?php echo e(route('PendingServicesQamarCareCard')); ?>">Pending Services</option>
                                     <option value="<?php echo e(route('RecievedServicesQamarCareCard')); ?>">Recieved Services</option>
                                     <!-- <option value="<?php echo e(route('PrintedQamarCareCard')); ?>">Printed</option>
-                                    <option value="<?php echo e(route('ReleasedQamarCareCard')); ?>">Released</option>
-                                    <option value="<?php echo e(route('RejectedQamarCareCard')); ?>">Rejected</option> -->
+                                    <option value="<?php echo e(route('ReleasedQamarCareCard')); ?>">Released</option> -->
+                                    <!-- <option value="<?php echo e(route('RejectedServicesQamarCareCard')); ?>">Rejected</option> -->
 
 
 
@@ -66,7 +65,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
         <div class="col-12">
             
             <div class="card">
-            <h3 class="card-header bg-primary text-white"></h3>
+            <h3 class="card-header bg-info text-white"></h3>
                 <div class="card-body">
 
                     
@@ -79,6 +78,8 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                 <th>Address</th>
                                 <th>Phone Numbers</th>
                                 <th>Family Status</th>
+                                <th>Status</th>
+                                <th>Assign To</th>
                                 <th>Actions</th>
                                 
                             </tr>
@@ -148,15 +149,105 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                        <?php endif; ?>
                                     </div>
                                 </td>
+                                   
+                               <td>
+                                <?php if( $qamarcarecard -> Status == "Pending"): ?>
+
+                                <div>
+
+
+                                <?php if($qamarcarecard -> Status == 'Pending'): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary"><?php echo e($qamarcarecard -> Status); ?></a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at); ?></p> 
+
+                                 <?php endif; ?>
+
+                                <?php if($qamarcarecard -> Status == 'Approved'): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success"><?php echo e($qamarcarecard -> Status); ?> </a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at); ?></p> 
+
+                                 <?php endif; ?>
+
+                                 <?php if($qamarcarecard -> Status == 'Rejected'): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger"><?php echo e($qamarcarecard -> Status); ?> </a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at); ?></p> 
+
+                                 <?php endif; ?>
+
+
+
+                                 <?php if($qamarcarecard -> Status == 'ReInitiated'): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info"><?php echo e($qamarcarecard -> Status); ?></a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at); ?></p> 
+
+                                 <?php endif; ?>
+
+                                 <?php if($qamarcarecard -> Status == 'Released'): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success"><?php echo e($qamarcarecard -> Status); ?></a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at); ?></p> 
+
+                                 <?php endif; ?>
+
+                                 <?php if($qamarcarecard -> Status == 'Printed'): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark"><?php echo e($qamarcarecard -> Status); ?></a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at); ?></p> 
+                                 <?php endif; ?>
+
+                                    </div>
+                                    <?php endif; ?>
+                                </td>
                                 <td>
+                                <?php if( $qamarcarecard -> Status == "Pending"): ?>
+                                <?php if( $qamarcarecard -> Created_By !=""): ?>
+
+                                <div>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> Created_By); ?></a></h5>
+                                    <p class="text-muted mb-0">Employee</p> 
+                               
+                                </div>
+                                <?php endif; ?>
+                                <?php if( $qamarcarecard -> Created_By ==""): ?>
+
+                                   <div>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
+                                    <p class="text-muted mb-0">Requested</p> 
+
+                                  </div>
+                                <?php endif; ?>
+                                <?php endif; ?>
+                                </td>
+                                
+                <td>
                        <div class="d-flex flex-wrap gap-2">
                        <!-- <a href="<?php echo e(route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-warning waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
                     </a> -->
-               
+                    <?php if( $qamarcarecard -> Status == "Released"): ?>
                     <a href="<?php echo e(route('AssignToServiceQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-success waves-effect waves-light">
                         <i class="bx bx-user-plus   font-size-16 align-middle"></i>
+                    </a> 
+                    <?php endif; ?>
+
+                    <?php if( $qamarcarecard -> Status == "Pending"): ?>
+                    <a href="<?php echo e(route('ServiceReleasedQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-success waves-effect waves-light recieved">
+                        <i class="bx bx-check-shield    font-size-16 align-middle"></i>
+                    </a> 
+                    
+                    <a href="<?php echo e(route('ServiceEditQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-info waves-effect waves-light">
+                        <i class="bx bx-edit  font-size-16 align-middle"></i>
                     </a>
+                     <a href="<?php echo e(route('ServiceDeleteQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-danger waves-effect waves-light delete">
+                        <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
+                    </a>
+                    <?php endif; ?>
+
+                    <!-- <?php if( $qamarcarecard -> Status == "Recieved"): ?>
+                    <a href="<?php echo e(route('AssignToServiceQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-success waves-effect waves-light">
+                        <i class="bx bx-user-plus   font-size-16 align-middle"></i>
+                    </a> 
+                    <?php endif; ?> -->
+
+
                 </div>
             </td>
                             </tr>
@@ -182,12 +273,26 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
     <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
 
 <script>
-    $('.reinitiate').on('click', function (event) {
+    $('.delete').on('click', function (event) {
     event.preventDefault();
     const url = $(this).attr('href');
     swal({
         title: 'Are you sure?',
-        text: 'This record and it`s details will be re initiated!',
+        text: 'This record and it`s details will be deleted!',
+        icon: 'warning',
+        buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+});
+
+$('.recieved').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Does this perosn recieve service?',
         icon: 'warning',
         buttons: ["Cancel", "Yes!"],
     }).then(function(value) {
@@ -198,9 +303,8 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
 });
 
 
-
 </script>
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/AssigningToService.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/AssigningService.blade.php ENDPATH**/ ?>

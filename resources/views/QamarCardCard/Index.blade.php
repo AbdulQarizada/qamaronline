@@ -86,7 +86,7 @@
                 </a>
             </div>
             <div class="col-md-4 mb-2">
-        <a href="{{route('AssigningToServiceQamarCareCard')}}">
+        <a href="{{route('AssigningServiceQamarCareCard')}}">
             <div class="card-one mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">

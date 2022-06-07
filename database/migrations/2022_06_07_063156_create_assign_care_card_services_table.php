@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('qamar_care_cards', function (Blueprint $table) {
+        Schema::create('assign_care_card_services', function (Blueprint $table) {
             $table->id();
             $table -> string('FirstName')->nullable();
             $table -> string('LastName')->nullable();
@@ -51,7 +51,6 @@ return new class extends Migration
             $table -> string('Status_By')->nullable();
             $table -> string('Created_By')->nullable();
             $table -> integer('Owner')->nullable();
-
             $table->timestamps();
         });
     }
@@ -63,6 +62,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('qamar_care_cards');
+        Schema::dropIfExists('assign_care_card_services');
     }
 };
