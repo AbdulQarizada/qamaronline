@@ -103,7 +103,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                     <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>
                             <tr>
-                                <!-- <th>ID</th> -->
+                                <th>ID</th>
                                 <th>Full Name</th>
                                 <th>Address</th>
                                 <th>Phone Numbers</th>
@@ -119,7 +119,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                         <tbody>
                             <?php $__currentLoopData = $qamarcarecards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qamarcarecard): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                <!-- <td><?php echo e($qamarcarecard -> id); ?></td> -->
+                                <td><?php echo e($qamarcarecard -> id); ?></td>
                                 <td>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> FirstName); ?> <?php echo e($qamarcarecard -> LastName); ?></a></h5>
                                         <p class="text-muted mb-0">QCC-<?php echo e($qamarcarecard -> QCC); ?></p>
