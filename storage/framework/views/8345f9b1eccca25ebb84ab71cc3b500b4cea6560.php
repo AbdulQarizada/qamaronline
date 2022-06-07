@@ -36,13 +36,14 @@
                                                 </td>
                                                  <td  style="float:right;">
                                                     <div class="">
-                                                         <div class="">
+                                                         <div class="text-center">
+                                                            <h4 class="font-size-18 mb-1"><a href="#" class="badge badge-soft-success">Scan Me </a></h4>
+
                                                             <div class="mb-3" class="rounded">
-                                                                 <?php echo DNS2D::getBarcodeSVG(''.$data->QCC,  'QRCODE', 6, 6, true); ?>
+                                                                 <?php echo DNS2D::getBarcodeSVG(''.$data->QCC,  'QRCODE', 6, 6, true); ?> 
 
                                                                  
                                                             </div>     
-
                                                          </div>
                                                      </div>
                                                 </td>

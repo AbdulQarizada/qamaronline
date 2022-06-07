@@ -226,7 +226,7 @@ unset($__errorArgs, $__bag); ?>
 
                     </div>
                     <div class="col-md-2 justify-content-center">
-                               <label for="Profile" class="form-label"></label>
+                               <!-- <label for="Profile" class="form-label"> <i class="mdi mdi-asterisk text-danger"></i></label> -->
                                 <input type="file" class="my-pond <?php $__errorArgs = ['Profile'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -615,7 +615,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SecondaryNumber')); ?>" id="SecondaryNumber" name="SecondaryNumber" max="999999999"
                                             aria-describedby="SecondaryNumber"
-                                            required>
+                                            >
                                             <?php $__errorArgs = ['SecondaryNumber'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -645,7 +645,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Email')); ?>" id="Email" name="Email"
                                             aria-describedby="Email"
-                                            required>
+                                            >
                                             <?php $__errorArgs = ['Email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -1053,7 +1053,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="NumberFamilyMembers" class="form-label">Number of  Family Members<i class="mdi mdi-asterisk text-danger"></i></label>
+                                    <label for="NumberFamilyMembers" class="form-label">Number of  Family Members <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
                                       
                                         <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['NumberFamilyMembers'];
@@ -1085,7 +1085,7 @@ unset($__errorArgs, $__bag); ?>
                         <div class="row">
                           <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="IncomeStreem" class="form-label">Income Streem<i class="mdi mdi-asterisk text-danger"></i></label>
+                                    <label for="IncomeStreem" class="form-label">Income Streem <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
                                     <select class="form-select form-select-lg <?php $__errorArgs = ['IncomeStreem'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -1116,7 +1116,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="FamilyStatus" class="form-label">Family Status<i class="mdi mdi-asterisk text-danger"></i></label>
+                                    <label for="FamilyStatus" class="form-label">Family Status <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
 
                                     <select class="form-select form-select-lg <?php $__errorArgs = ['FamilyStatus'];
@@ -1153,7 +1153,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                <label for="LevelPoverty" class="form-label">Level Of Poverty<i class="mdi mdi-asterisk text-danger"></i></label>
+                                                <label for="LevelPoverty" class="form-label">Level Of Poverty <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="rating-star">
                                                         <input type="hidden" class="rating <?php $__errorArgs = ['LevelPoverty'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');

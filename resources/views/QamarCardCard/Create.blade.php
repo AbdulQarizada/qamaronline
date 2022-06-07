@@ -142,7 +142,7 @@
 
                     </div>
                     <div class="col-md-2 justify-content-center">
-                               <label for="Profile" class="form-label"></label>
+                               <!-- <label for="Profile" class="form-label"> <i class="mdi mdi-asterisk text-danger"></i></label> -->
                                 <input type="file" class="my-pond @error('Profile') is-invalid @enderror" value="{{ old('Profile') }}" id="Profile" name="Profile"  />
                                 @error('Profile')
                                                 <span class="invalid-feedback" role="alert">
@@ -647,7 +647,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="NumberFamilyMembers" class="form-label">Number of  Family Members<i class="mdi mdi-asterisk text-danger"></i></label>
+                                    <label for="NumberFamilyMembers" class="form-label">Number of  Family Members <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
                                       
                                         <input type="number" class="form-control form-control-lg @error('NumberFamilyMembers') is-invalid @enderror" value="{{ old('NumberFamilyMembers') }}" id="NumberFamilyMembers" name="NumberFamilyMembers" max="40"
@@ -665,7 +665,7 @@
                         <div class="row">
                           <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="IncomeStreem" class="form-label">Income Streem<i class="mdi mdi-asterisk text-danger"></i></label>
+                                    <label for="IncomeStreem" class="form-label">Income Streem <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
                                     <select class="form-select form-select-lg @error('IncomeStreem') is-invalid @enderror" value="{{ old('IncomeStreem') }}" required name="IncomeStreem" id="IncomeStreem">
                                     <option>Select Option</option>
@@ -682,7 +682,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="FamilyStatus" class="form-label">Family Status<i class="mdi mdi-asterisk text-danger"></i></label>
+                                    <label for="FamilyStatus" class="form-label">Family Status <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
 
                                     <select class="form-select form-select-lg @error('FamilyStatus') is-invalid @enderror" value="{{ old('FamilyStatus') }}" required name="FamilyStatus" id="FamilyStatus">
@@ -705,7 +705,7 @@
                             </div>
                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                <label for="LevelPoverty" class="form-label">Level Of Poverty<i class="mdi mdi-asterisk text-danger"></i></label>
+                                                <label for="LevelPoverty" class="form-label">Level Of Poverty <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="rating-star">
                                                         <input type="hidden" class="rating @error('LevelPoverty') is-invalid @enderror" value="{{ old('LevelPoverty') }}" data-filled="mdi mdi-star text-warning " data-empty="mdi mdi-star-outline text-muted" name="LevelPoverty" id="LevelPoverty"/>
                                                         @error('LevelPoverty')
