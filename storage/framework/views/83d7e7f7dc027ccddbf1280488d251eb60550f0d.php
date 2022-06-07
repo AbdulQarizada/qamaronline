@@ -58,7 +58,7 @@
                       <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3 position-relative">
-                                    <label for="FirstName" class="form-label ">First Name</label>
+                                    <label for="FirstName" class="form-label ">First Name <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['FirstName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -84,7 +84,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3 position-relative">
-                                    <label for="LastName" class="form-label ">Last Name</label>
+                                    <label for="LastName" class="form-label ">Last Name <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['LastName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -111,7 +111,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3 position-relative">
-                                    <label for="TazkiraID" class="form-label ">Tazkira ID</label>
+                                    <label for="TazkiraID" class="form-label ">Tazkira ID <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['TazkiraID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -166,7 +166,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-6 ">
                                 <div class="mb-3 position-relative">
-                                    <label for="DOB" class="form-label">Date of Birth</label>
+                                    <label for="DOB" class="form-label">Date of Birth <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group " id="example-date-input">
                                       
                                     <input class="form-control form-select-lg <?php $__errorArgs = ['DOB'];
@@ -196,7 +196,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3 position-relative">
-                                    <label for="Gender" class="form-label">Gender</label>
+                                    <label for="Gender" class="form-label">Gender <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <select class="form-select  form-select-lg <?php $__errorArgs = ['Gender'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -253,7 +253,7 @@ unset($__errorArgs, $__bag); ?>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="Country" class="form-label">Country</label>
+                                    <label for="Country" class="form-label">Country <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <select class="form-select  form-select-lg  <?php $__errorArgs = ['Country'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -282,7 +282,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="Tribe" class="form-label">Tribe</label>
+                                    <label for="Tribe" class="form-label">Tribe <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
 
                                     <select class="form-select  form-select-lg <?php $__errorArgs = ['Tribe'];
@@ -322,7 +322,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="Language" class="form-label">Language</label>
+                                    <label for="Language" class="form-label">Language <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
 
                                     <select class="form-select  form-select-lg <?php $__errorArgs = ['Language'];
@@ -429,7 +429,7 @@ unset($__errorArgs, $__bag); ?>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="CurrentJob" class="form-label">Current Job</label>
+                                    <label for="CurrentJob" class="form-label">Current Job <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
 
                                     <select class="form-select  form-select-lg <?php $__errorArgs = ['CurrentJob'];
@@ -470,7 +470,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="FutureJob" class="form-label">What type of job you can do?</label>
+                                    <label for="FutureJob" class="form-label">What type of job you can do? <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
 
                                     <select class="form-select  form-select-lg <?php $__errorArgs = ['FutureJob'];
@@ -508,7 +508,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="EducationLevel" class="form-label">Education Level</label>
+                                    <label for="EducationLevel" class="form-label">Education Level <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
 
                                     <select class="form-select  form-select-lg <?php $__errorArgs = ['EducationLevel'];
@@ -572,7 +572,7 @@ unset($__errorArgs, $__bag); ?>
                          
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="PrimaryNumber" class="form-label">Primary Number</label>
+                                    <label for="PrimaryNumber" class="form-label">Primary Number <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
                                       
                                         <input type="number" class="form-control  form-control-lg <?php $__errorArgs = ['PrimaryNumber'];
@@ -666,7 +666,7 @@ unset($__errorArgs, $__bag); ?>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="Province" class="form-label">Province</label>
+                                    <label for="Province" class="form-label">Province <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
                                     <select class="form-select  form-select-lg <?php $__errorArgs = ['Province'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -730,7 +730,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="District" class="form-label">District</label>
+                                    <label for="District" class="form-label">District <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <input type="text" class="form-control  form-control-lg" id="District <?php $__errorArgs = ['District'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -756,7 +756,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="Village" class="form-label">Village</label>
+                                    <label for="Village" class="form-label">Village <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['Village'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -786,7 +786,7 @@ unset($__errorArgs, $__bag); ?>
                                                        
                         <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="RelativeName" class="form-label">Relative Name</label>
+                                    <label for="RelativeName" class="form-label">Relative Name <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
                                       
                                         <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['RelativeName'];
@@ -816,7 +816,7 @@ unset($__errorArgs, $__bag); ?>
                         </div>
                         <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="RelativeRelationship" class="form-label">Relationship</label>
+                                    <label for="RelativeRelationship" class="form-label">Relationship <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
 
                                     <select class="form-select  form-select-lg <?php $__errorArgs = ['RelativeRelationship'];
@@ -852,7 +852,7 @@ unset($__errorArgs, $__bag); ?>
                         </div>
                         <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="RelativeNumber" class="form-label">Relative Number</label>
+                                    <label for="RelativeNumber" class="form-label">Relative Number <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
                                       
                                         <input type="number" class="form-control  form-control-lg <?php $__errorArgs = ['RelativeNumber'];
@@ -906,7 +906,7 @@ unset($__errorArgs, $__bag); ?>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="FatherName" class="form-label">Father's Name</label>
+                                    <label for="FatherName" class="form-label">Father's Name <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['FatherName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -932,7 +932,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="SpuoseName" class="form-label">Spuose's Name</label>
+                                    <label for="SpuoseName" class="form-label">Spuose's Name <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['SpuoseName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -958,7 +958,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="EldestSonAge" class="form-label">Eldest Son Age</label>
+                                    <label for="EldestSonAge" class="form-label">Eldest Son Age <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
                                       
                                         <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['EldestSonAge'];
@@ -992,7 +992,7 @@ unset($__errorArgs, $__bag); ?>
                          
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="MonthlyFamilyIncome" class="form-label">Monthly Family Income</label>
+                                    <label for="MonthlyFamilyIncome" class="form-label">Monthly Family Income <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
                                     <div class="input-group-text">&#1547;</div>
                                        <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['MonthlyFamilyIncome'];
@@ -1023,7 +1023,7 @@ unset($__errorArgs, $__bag); ?>
                                      
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="MonthlyFamilyExpenses" class="form-label">Monthly Family Expenses</label>
+                                    <label for="MonthlyFamilyExpenses" class="form-label">Monthly Family Expenses <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
                                     <div class="input-group-text">&#1547;</div>
                                         <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['MonthlyFamilyExpenses'];
@@ -1053,7 +1053,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="NumberFamilyMembers" class="form-label">Number of  Family Members</label>
+                                    <label for="NumberFamilyMembers" class="form-label">Number of  Family Members<i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
                                       
                                         <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['NumberFamilyMembers'];
@@ -1085,7 +1085,7 @@ unset($__errorArgs, $__bag); ?>
                         <div class="row">
                           <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="IncomeStreem" class="form-label">Income Streem</label>
+                                    <label for="IncomeStreem" class="form-label">Income Streem<i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
                                     <select class="form-select form-select-lg <?php $__errorArgs = ['IncomeStreem'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -1116,7 +1116,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="FamilyStatus" class="form-label">Family Status</label>
+                                    <label for="FamilyStatus" class="form-label">Family Status<i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
 
                                     <select class="form-select form-select-lg <?php $__errorArgs = ['FamilyStatus'];
@@ -1153,7 +1153,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                <label for="LevelPoverty" class="form-label">Level Of Poverty</label>
+                                                <label for="LevelPoverty" class="form-label">Level Of Poverty<i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="rating-star">
                                                         <input type="hidden" class="rating <?php $__errorArgs = ['LevelPoverty'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
