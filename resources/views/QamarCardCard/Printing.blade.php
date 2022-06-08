@@ -46,7 +46,7 @@ table  td {
 
                 </tr>
                 <tr >
-                    <td ><span class="h5">{{$data -> FirstName}} </span></td>
+                    <td ><span class="h5">{{$data -> FatherName}} </span></td>
                     
                 </tr>
                 <tr>
