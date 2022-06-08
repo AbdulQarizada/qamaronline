@@ -245,8 +245,11 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="AssignedTo" class="form-label">Avalible Service Providers</label>
-                                    <select class="form-select AssignedTo  form-select-lg  @error('AssignedTo') is-invalid @enderror" value="{{ old('AssignedTo') }}" required id="AssignedTo" name="AssignedTo">
+                                    <label for="Assigned" class="form-label">Avalible Service Providers</label>
+                                    <select class="form-select Assigned  form-select-lg  @error('Assigned') is-invalid @enderror" value="{{ old('Assigned') }}" required id="Assigned" name="Assigned">
+                              </select>
+
+                              <select class="form-select AssignedTo  form-select-lg  @error('AssignedTo') is-invalid @enderror" value="{{ old('AssignedTo') }}" required id="AssignedTo" name="AssignedTo" style="displey:none">
                               </select>
                                     @error('AssignedTo')
                                                 <span class="invalid-feedback" role="alert">
@@ -482,7 +485,8 @@
 
 
             $(document).ready(function() {
-            $('.AssignedTo').on('click', function() {
+            $('.Assigned').on('click', function() {
+                
                var Province = $('.Province').val();
                var District = $('.District').val();
                var RequestedService = $('.RequestedService').val();
@@ -497,6 +501,7 @@
                        {
                          if(data)
                          {
+                            $('.AssignedTo').show();
                             $('.AssignedTo').empty();
                             $('.AssignedTo').append('<option hidden>Choose Service</option>'); 
                             $.each(data, function(key, course){

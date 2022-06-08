@@ -5,6 +5,12 @@
 <?php $__env->startSection('css'); ?>
     <!-- DataTables -->
     <link href="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.css')); ?>" rel="stylesheet" type="text/css" />
+    <!-- <style>
+    table, th, td {
+  border: 1px solid red;
+}
+</style> -->
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -17,38 +23,96 @@
         <div class="col-12">
            <a href="<?php echo e(route('AllQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
            <a href="javascript:window.print()" class="btn btn-dark waves-effect waves-light mr-1"><i class="fa fa-print"></i></a>
-           <a href="<?php echo e(route('PrintQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light print">
-                        <i class="bx bxs-printer   font-size-16 align-middle"></i>
-                        Confirm Print
-                    </a>
-        </div>
-     </div>
-                       <div class="row">
+           <a href="<?php echo e(route('PrintQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light print"><i class="bx bxs-printer   font-size-16 align-middle"></i>Confirm Print</a>
+         </div>
+    </div>
+
+                     
+                <div class="row">
+                  
+
+                       <div  style=" background-image: url('<?php echo e(URL::asset('/assets/images/qcc/front.jpeg')); ?>'); height: 40vh; background-repeat: no-repeat; "> 
+                       
+                       
+                       
+                       <table class="table-responsive" style="margin-left:90px; margin-top:120px;">
                       
-                       <div  style=" background-image: url('<?php echo e(URL::asset('/assets/images/printcard.jpg')); ?>'); height: 100vh; background-repeat: no-repeat; "> 
-                       
-                       
-                       
-                       <table class="table-responsive" style="margin-left:70px; margin-top:95px;">
-                      
-                          <tr>
+                          <!-- <tr>
                               <td > <span class="h5">QCC-<?php echo e($data -> QCC); ?></span></span></td>
-                          </tr>
+                          </tr> -->
+                        
                           <tr>
-                              <td ><span class="h5"><?php echo e($data -> FirstName); ?> <?php echo e($data -> LastName); ?></span></td>
+
+                              <td ><span class="h5"></span></td>
+                          <td style="padding-left:138px;"  rowspan="5"> <img src="<?php echo e(URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)); ?>" style="width: 120px; height: 120px;" class="rounded"></td>
+
                           </tr>
                           <tr >
-                              <td style=" padding-top:5px; padding-left:5px;"><span class="h5"><?php echo e($data -> FatherName); ?> </span></td>
+                              <td style="padding-left:25px;"><span class="h5"><?php echo e($data -> FirstName); ?> <?php echo e($data -> LastName); ?></span></td>
                           </tr>
+                          <tr >
+                              <td style="padding-top:15px; padding-left:25px;  "><span class="h5"><?php echo e($data -> FatherName); ?> </span></td>
+                          </tr>
+                         
+                          <tr >
+                              <td style="padding-left:25px; padding-top:12px;  "><span class="h5"><?php echo e($data -> Gender); ?> </span></td>
+                          </tr>
+                          <tr >
+                              <td style="padding-top:10px; padding-left:25px;"><span class="h5"><?php echo e($data -> Province); ?> </span></td>
+                          </tr>
+                        
+                          <!-- <tr >
+                              <td style=" padding-top:15px; padding-left:145px;">
+                                <div class="rating-star">
+                                   <input type="hidden" class="rating"  data-filled="mdi mdi-star text-warning " data-empty="mdi mdi-star-outline text-muted" value="<?php echo e($data -> LevelPoverty); ?>" name="LevelPoverty" id="LevelPoverty" readonly/>
+                                </div>
+                             </td>
+                          </tr> -->
                      </table>
+                     <table >
                     
+                     <tr >
+                          <td style=" padding-top:22px; padding-left:235px;">
+                            <div class="rating-star">
+                               <input type="hidden" class="rating"  data-filled="mdi mdi-star text-warning " data-empty="mdi mdi-star-outline text-muted" value="<?php echo e($data -> LevelPoverty); ?>" name="LevelPoverty" id="LevelPoverty" readonly/>
+                            </div>
+                         </td>
+                      </tr> 
+                   </table>
+                
+                </div>
                     </div>
+               
+
+                 <div class="row">
+                      
+                      <div  style=" background-image: url('<?php echo e(URL::asset('/assets/images/qcc/back.jpeg')); ?>'); 40vh; background-repeat: no-repeat; "> 
+                      
+                      
+                      
+                      <table class="table-responsive" style="margin-left:115px; margin-top:125px;">
+                     
+               
+                         <tr >
+                             <td style=" padding-top:120px; padding-bottom:130px; padding-left:90px;"><span class="h5"> <?php echo DNS2D::getBarcodeSVG(''.$data->QCC,  'QRCODE', 3, 3, true); ?> </span></td>
+                         </tr>
+                     
+                    </table>
+                   
+                   </div>
+                </div>
+
+             
+                                             
+
+
 
                         <!-- end row -->
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
 <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('/assets/libs/bootstrap-rating/bootstrap-rating.min.js')); ?> "></script>
 
 <script>
 

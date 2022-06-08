@@ -273,15 +273,25 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="AssignedTo" class="form-label">Avalible Service Providers</label>
-                                    <select class="form-select AssignedTo  form-select-lg  <?php $__errorArgs = ['AssignedTo'];
+                                    <label for="Assigned" class="form-label">Avalible Service Providers</label>
+                                    <select class="form-select Assigned  form-select-lg  <?php $__errorArgs = ['Assigned'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('AssignedTo')); ?>" required id="AssignedTo" name="AssignedTo">
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Assigned')); ?>" required id="Assigned" name="Assigned">
+                              </select>
+
+                              <select class="form-select AssignedTo  form-select-lg  <?php $__errorArgs = ['AssignedTo'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('AssignedTo')); ?>" required id="AssignedTo" name="AssignedTo" style="displey:none">
                               </select>
                                     <?php $__errorArgs = ['AssignedTo'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -552,7 +562,8 @@ unset($__errorArgs, $__bag); ?>
 
 
             $(document).ready(function() {
-            $('.AssignedTo').on('click', function() {
+            $('.Assigned').on('click', function() {
+                
                var Province = $('.Province').val();
                var District = $('.District').val();
                var RequestedService = $('.RequestedService').val();
@@ -567,6 +578,7 @@ unset($__errorArgs, $__bag); ?>
                        {
                          if(data)
                          {
+                            $('.AssignedTo').show();
                             $('.AssignedTo').empty();
                             $('.AssignedTo').append('<option hidden>Choose Service</option>'); 
                             $.each(data, function(key, course){
