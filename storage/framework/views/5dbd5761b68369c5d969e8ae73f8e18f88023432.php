@@ -69,7 +69,7 @@
                              </td>
                           </tr> -->
                      </table>
-                     <table >
+                     <table class="table-responsive">
                     
                      <tr >
                           <td style=" padding-top:22px; padding-left:235px;">

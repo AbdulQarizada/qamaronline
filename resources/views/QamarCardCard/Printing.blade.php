@@ -48,7 +48,7 @@
 
                           </tr>
                           <tr >
-                              <td style="padding-left:25px;"><span class="h5">{{$data -> FirstName}} {{$data -> LastName}}</span></td>
+                              <td style="padding-left:25px;"><span class="h5">{{$data -> FirstName}} </span></td>
                           </tr>
                           <tr >
                               <td style="padding-top:15px; padding-left:25px;  "><span class="h5">{{$data -> FatherName}} </span></td>
@@ -69,7 +69,7 @@
                              </td>
                           </tr> -->
                      </table>
-                     <table >
+                     <table class="table-responsive">
                     
                      <tr >
                           <td style=" padding-top:22px; padding-left:235px;">
@@ -81,7 +81,7 @@
                    </table>
                 
                 </div>
-                    </div>
+               </div>
                
 
                  <div class="row">
