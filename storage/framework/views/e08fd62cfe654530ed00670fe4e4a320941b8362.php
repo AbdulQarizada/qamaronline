@@ -115,7 +115,7 @@
             </a>
         </div>
         <div class="col-md-4 mb-2">
-        <a href="<?php echo e(route('ServiceProviderIndexQamarCareCard')); ?>">
+        <a href="<?php echo e(route('ServiceProvidersQamarCareCard')); ?>">
             <div class="card-one mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">

@@ -45,8 +45,11 @@ Route::get('/Reports', [App\Http\Controllers\HomeController:: class, 'Reports'])
 Route::get('/UserManagement', [App\Http\Controllers\HomeController:: class, 'UserManagement'])->name('UserManagement');
 
 // uploads
-Route::post('/Upload_Tazkira', [App\Http\Controllers\HomeController:: class, 'Upload_Tazkira'])->name('Upload_Tazkira');
-Route::post('/Upload_Profile', [App\Http\Controllers\HomeController:: class, 'Upload_Profile'])->name('Upload_Profile');
+Route::post('/Beneficiaries_Tazkira', [App\Http\Controllers\HomeController:: class, 'Beneficiaries_Tazkira'])->name('Beneficiaries_Tazkira');
+Route::post('/Beneficiaries_Profile', [App\Http\Controllers\HomeController:: class, 'Beneficiaries_Profile'])->name('Beneficiaries_Profile');
+
+Route::post('/ServiceProvider_Profile', [App\Http\Controllers\HomeController:: class, 'ServiceProvider_Profile'])->name('ServiceProvider_Profile');
+
 
 
 
@@ -133,7 +136,16 @@ Route::post('/Upload_Profile', [App\Http\Controllers\HomeController:: class, 'Up
 
 
        // Service Provider
+       Route::get('/QamarCareCard/ServiceProviders', [App\Http\Controllers\QamarCareCardController:: class, 'ServiceProviders'])->name('ServiceProvidersQamarCareCard');
        Route::get('/QamarCareCard/ServiceProviderIndex', [App\Http\Controllers\QamarCareCardController:: class, 'ServiceProviderIndex'])->name('ServiceProviderIndexQamarCareCard');
+       Route::get('/QamarCareCard/CreateServiceProviderIndividual', [App\Http\Controllers\QamarCareCardController:: class, 'CreateServiceProviderIndividual'])->name('CreateServiceProviderIndividual');
+       Route::get('/QamarCareCard/CreateServiceProviderOrganization', [App\Http\Controllers\QamarCareCardController:: class, 'CreateServiceProviderOrganization'])->name('CreateServiceProviderOrganization');
+
+
+       //create
+       Route::post('/QamarCareCard/CreateServiceProviderIndividual', [App\Http\Controllers\QamarCareCardController:: class, 'StoreServiceProviderIndividual'])->name('CreateServiceProviderIndividual');
+      
+
 
 
 

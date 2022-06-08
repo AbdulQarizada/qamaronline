@@ -72,11 +72,11 @@
     function myFunction() {
 
         if(document.getElementById('Individual').checked) {
-            document.getElementById('next').href = "{{route('IndexQamarCareCard')}}";
+            document.getElementById('next').href = "{{route('CreateServiceProviderIndividual')}}";
         }
 
       if(document.getElementById('Orgianization').checked) {
-            document.getElementById('next').href = "{{route('IndexQamarCareCard')}}";
+            document.getElementById('next').href = "";
         }
 
       // if(document.getElementById('optionthree').checked) {

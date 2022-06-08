@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\QamarCareCard;
 use App\Models\AssignCareCardServices;
 use App\Models\ServiceType;
+use App\Models\ServiceProviders;
 
 use App\Models\Location;
 use App\Models\User;
@@ -604,13 +605,133 @@ public function __construct()
 
 
     // service Provider
+    public function ServiceProviders()
+    {
+      $serviceproviders =   ServiceProviders::all();
+      return view('QamarCardCard.ServiceProviders', compact('serviceproviders'));
+    }
+    
+
     public function ServiceProviderIndex()
     {
              return view('QamarCardCard.ServiceProviderIndex');
     }
     
     
+    public function CreateServiceProviderIndividual()
+    {
+      $provinces = Location::whereNull("Parent_ID")->get();
+      $servicetypes = ServiceType::all();
 
+      return view('QamarCardCard.CreateServiceProviderIndividual', ['provinces' => $provinces, 'servicetypes' => $servicetypes]);
+    }
+
+
+        public function StoreServiceProviderIndividual(Request $request)
+    {
+      
+       $validator = $request->validate([
+      'FirstName' => 'bail|required|max:255',
+      'LastName' => 'required|max:255',
+      'TazkiraID' => 'required|max:10',
+      'QCC' => 'required|unique:qamar_care_cards|max:255',
+      'Profile' => 'required|max:255',
+      'DOB' => 'required|max:255',
+      'Gender' => 'required|max:255',
+      'Language' => 'required|max:255',
+      'CurrentJob' => 'required|max:255',
+      'Profession' => 'required|max:255',
+      'EducationLevel' => 'required|max:255',
+      'PrimaryNumber' => 'required|max:10',
+      // 'SecondaryNumber' => 'required|max:10',
+      // 'RelativeNumber' => 'required|max:10',
+      'Province' => 'required|max:255',
+      'District' => 'required|max:255',
+      // 'Village' => 'required|max:255',
+      // 'Email' => 'required|email|max:255',
+      'ProvinceService' => 'required|max:255',
+      'DistrictService' => 'required|max:255',
+      'ServiceType' => 'required|max:255',
+      // 'MonthlyFamilyIncome' => 'required|max:10',
+      // 'MonthlyFamilyExpenses' => 'required|max:10',
+      // 'NumberFamilyMembers' => 'required|max:10',
+      // 'IncomeStreem' => 'required|max:255',
+      // 'LevelPoverty' => 'required|max:255',
+      // 'Tazkira' => 'required|max:255',
+
+      // 'RelativeNumber' => 'required|max:10',
+      // 'RelativeRelationship' => 'required|max:255',
+      // 'RelativeName' => 'required|max:255',
+      // 'FamilyStatus' => 'required|max:255',
+      // 'Country' => 'required|max:255',
+      // 'Tribe' => 'required|max:255',
+
+       ]);
+
+  
+    //    if ($validator->fails()) {
+    //     $error = $validator->errors()->first();
+    //  }
+     
+
+     
+    ServiceProviders::create([
+          'FirstName' => request('FirstName'),
+          'LastName' => request('LastName'),
+          'TazkiraID' => request('TazkiraID'),
+          'QCC' => request('QCC'),
+          'Profile' => request('Profile'),
+          'DOB' => request('DOB'),
+          'Gender' => request('Gender'),
+          'Language' => request('Language'),
+          'CurrentJob' => request('CurrentJob'),
+          'Profession' => request('Profession'),
+          'EducationLevel' => request('EducationLevel'),
+          'PrimaryNumber' => request('PrimaryNumber'),
+          'SecondaryNumber' => request('SecondaryNumber'),
+          // 'EmergencyNumber' => request('EmergencyNumber'),
+          'Province' => request('Province'),
+          'District' => request('District'),
+          // 'Village' => request('Village'),
+          'Email' => request('Email'),
+          'ProvinceService' => request('ProvinceService'),
+          'DistrictService' => request('DistrictService'),
+          'ServiceType' => request('ServiceType'),
+        //   'MonthlyFamilyIncome' => request('MonthlyFamilyIncome'),
+        //   'MonthlyFamilyExpenses' => request('MonthlyFamilyExpenses'),
+        //   'NumberFamilyMembers' => request('NumberFamilyMembers'),
+        //   'IncomeStreem' => request('IncomeStreem'),
+        //   'LevelPoverty' => request('LevelPoverty'),
+        //  'Tazkira' => request('Tazkira'),
+          'Status' => 'Pending',
+          'Created_By' => auth()->user()->name,
+
+          // 'RelativeNumber' => request('RelativeNumber'),
+          // 'RelativeRelationship' => request('RelativeRelationship'),
+          // 'RelativeName' => request('RelativeName'),
+          // 'FamilyStatus' => request('FamilyStatus'),
+          // 'Country' => request('Country'),
+          // 'Tribe' => request('Tribe'),
+          'Owner' => 1,
+
+
+
+          ]);
+
+         return redirect()->route('ServiceProvidersQamarCareCard')->with('toast_success', 'Record Created Successfully!');
+
+      
+
+
+  
+
+    }
+
+
+    public function CreateServiceProviderOrganization()
+    {
+             return view('QamarCardCard.CreateServiceProviderOrganization');
+    }
 
    // Verify
    public function Verify()

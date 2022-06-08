@@ -28,7 +28,7 @@
                                     <table class="table table-nowrap">
                                              <tr>
                                                 <td>
-                                                     <img src="<?php echo e(URL::asset('/uploads/Profiles/'.$data -> Profile)); ?>" style="width: 130px; height: 135px;" class="rounded">
+                                                     <img src="<?php echo e(URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)); ?>" style="width: 130px; height: 135px;" class="rounded">
                                                 </td>
                                                 <td style="text-align: center;">
                                                      <!-- <img src="<?php echo e(URL::asset('/assets/images/letterhead.png')); ?>" style="width: 400px; height: 100%;" class="rounded-circle"> -->
@@ -207,7 +207,7 @@
                                                 <h5 style="font-weight: bold;" class="card-header  text-dark">DOCUMENTS</h5>
                                                     <tr>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Tazkira</td>
-                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"><a href="<?php echo e(URL::asset('/uploads/Tazkiras/'.$data -> Tazkira)); ?>" class="badge badge-soft-info"><?php echo e($data -> FirstName); ?> <?php echo e($data -> LastName); ?> Tazkira</a></td>
+                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"><a href="<?php echo e(URL::asset('/uploads/QamarCareCard/Beneficiaries/Tazkiras/'.$data -> Tazkira)); ?>" class="badge badge-soft-info"><?php echo e($data -> FirstName); ?> <?php echo e($data -> LastName); ?> Tazkira</a></td>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Other</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;"></td>
                                                     </tr>

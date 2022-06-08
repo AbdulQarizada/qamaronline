@@ -66,7 +66,7 @@ class HomeController extends Controller
 
 
 
-    public function Upload_Tazkira(Request $request)
+    public function Beneficiaries_Tazkira(Request $request)
     {
         if($request -> hasFile('Tazkira'))
         {
@@ -79,7 +79,7 @@ class HomeController extends Controller
              $Tazkiruniquename = uniqid().'_'.$Tazkiraname;
  
 
-             $Tazkira -> storeAs('Tazkiras', $Tazkiruniquename,'public_uploads');
+             $Tazkira -> storeAs('Tazkiras', $Tazkiruniquename,'Beneficiaries');
  
              return $Tazkiruniquename;
  
@@ -88,7 +88,7 @@ class HomeController extends Controller
     }
 
 
-    public function Upload_Profile(Request $request)
+    public function Beneficiaries_Profile(Request $request)
     {
        
        if($request -> hasFile('Profile'))
@@ -101,7 +101,7 @@ class HomeController extends Controller
 
             $profileuniquename = uniqid().'_'.$profilename;
 
-            $profile -> storeAs('Profiles', $profileuniquename,'public_uploads');
+            $profile -> storeAs('Profiles', $profileuniquename,'Beneficiaries');
 
 
             return $profileuniquename;
@@ -114,7 +114,29 @@ class HomeController extends Controller
 
 
 
+    public function ServiceProvider_Profile(Request $request)
+    {
+       
+       if($request -> hasFile('Profile'))
+       {
 
+      
+            $profile = $request->file('Profile');
+
+            $profilename = $profile -> getClientOriginalName();
+
+            $profileuniquename = uniqid().'_'.$profilename;
+
+            $profile -> storeAs('Profiles', $profileuniquename,'ServiceProvider');
+
+
+            return $profileuniquename;
+
+        }
+        return '';
+
+        
+    }
 
 
 

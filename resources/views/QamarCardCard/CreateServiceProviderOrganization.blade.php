@@ -820,7 +820,7 @@
               server:
 			  {
 
-				  url: '../Beneficiaries_Tazkira',
+				  url: '../Upload_Tazkira',
 				  headers:
 				  {
 					  'X-CSRF-TOKEN': '{{ csrf_token() }}'
@@ -839,7 +839,7 @@
 			  server:
 			  {
 
-				  url: '../Beneficiaries_Profile',
+				  url: '../Upload_Profile',
 				  headers:
 				  {
 					  'X-CSRF-TOKEN': '{{ csrf_token() }}'
@@ -859,7 +859,49 @@
 		  });
 
 
-          $(document).ready(function () {
+
+	  $(document).ready(function () {
+		  $("#select1").change(function () {
+			  var dID = $(this).val();
+			  $.getJSON("/Lecturers/Courses/GetSubTabs/"+dID,
+				  function (data) {
+					  var select = $("#select2");
+					  $("#select2").show();
+					  select.empty();
+					  select.append('<option>SelectOption</option>');
+					  $.each(data, function (index, itemData) {
+
+						  select.append($('<option/>', {
+							  value: itemData.value,
+							  text: itemData.text
+						  }));
+					  });
+				  });
+		  });
+	  });
+
+
+	  $(document).ready(function () {
+		  $("#select2").change(function () {
+			  var dID = $(this).val();
+			  $.getJSON("/Lecturers/Courses/GetSubTabs/" + dID,
+				  function (data) {
+					  var select = $("#select3");
+					  $("#select3").show();
+					  select.empty();
+					  select.append('<option>SelectOption</option>');
+					  $.each(data, function (index, itemData) {
+						  select.append($(
+							  '<option/>', {
+							  value: itemData.value,
+							  text: itemData.text
+						  }));
+					  });
+				  });
+		  });
+	  });
+
+      $(document).ready(function () {
         var rnd = Math.floor(Math.random() * 100000000);
         document.getElementById('QCC').value = rnd;
     });

@@ -35,12 +35,17 @@ return [
             'root' => storage_path('app'),
         ],
 
-        'public_uploads' => [
+        'Beneficiaries' => [
             'driver' => 'local',
-            'root'   => public_path() . '/uploads',
+            'root'   => public_path() . '/uploads/QamarCareCard/Beneficiaries',
         ],
 
-        
+        'ServiceProvider' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/QamarCareCard/ServiceProvider',
+        ],
+
+       
 
         'public' => [
             'driver' => 'local',

@@ -55,7 +55,7 @@
                                 <tr>
                                 <td>
                                         <div>
-                                            <img  class="rounded-circle avatar-lg" src="<?php echo e(URL::asset('/uploads/Profiles/'.$data -> Profile)); ?>"
+                                            <img  class="rounded-circle avatar-lg" src="<?php echo e(URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)); ?>"
                                                 alt="">
                                         </div>
                                     </td>
@@ -541,7 +541,7 @@ unset($__errorArgs, $__bag); ?>
                        {
                          if(data){
                             $('.District').empty();
-                            $('.District').append('<option hidden>Choose Course</option>'); 
+                            $('.District').append('<option hidden>Choose District</option>'); 
                             $.each(data, function(key, course){
                                 $('select[name="District"]').append('<option value="'+ key +'">' + course.Name+ '</option>');
                             });
