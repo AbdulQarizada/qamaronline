@@ -187,10 +187,10 @@
                         <div class="row">
                         <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="ExpectedService" class="form-label">Requested Service</label>
+                                    <label for="RequestedService" class="form-label">Requested Service</label>
                                     <div class="input-group " id="example-date-input">
-                                  <select class="form-control form-control-lg select2">
-                                        <option>Select</option>
+                                  <select class="form-control RequestedService form-control-lg select2">
+                                        <option value="None">Select</option>
                                         @foreach($servicetypes as $servicetype)
                                         @if($servicetype -> Parent_ID == null)
                                            <optgroup label="{{$servicetype -> Name}}">
@@ -213,7 +213,7 @@
                                     <label for="Province" class="form-label">Province</label>
                                     <div class="input-group">
                                     <select class="form-select  Province form-select-lg @error('Province') is-invalid @enderror" required name="Province" value="{{ old('Province') }}" id="Province">
-                                    <option>Select Option</option>
+                                    <option value="None">Select Province</option>
                                     @foreach($provinces as $province)
                                     <option value="{{$province -> id}}">{{$province -> Name}}</option>
                                     @endforeach
@@ -232,6 +232,7 @@
                                     <div class="input-group">
                                     <select class="form-select District form-select-lg @error('District') is-invalid @enderror" required name="District" value="{{ old('District') }}" id="Province">
                                     
+                                    <option value="None">Select District</option>
 
                                     </select>
                                     @error('District')
@@ -245,15 +246,8 @@
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="AssignedTo" class="form-label">Avalible Service Providers</label>
-                                    <select class="form-select  form-select-lg  @error('AssignedTo') is-invalid @enderror" value="{{ old('AssignedTo') }}" required id="AssignedTo" name="AssignedTo">
-                                  
-                                    @foreach ($users as $user)
-                                     <option value="Afghanistan">{{ $user->name }}</option>
-                                    @endforeach
-                                    
-                                 
-
-                                    </select>
+                                    <select class="form-select AssignedTo  form-select-lg  @error('AssignedTo') is-invalid @enderror" value="{{ old('AssignedTo') }}" required id="AssignedTo" name="AssignedTo">
+                              </select>
                                     @error('AssignedTo')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -288,7 +282,7 @@
                                     <label for="ExpectedService" class="form-label">Expected Service</label>
                                     <div class="input-group " id="example-date-input">
                                       
-                                    <input class="form-control form-select-lg @error('ExpectedService') is-invalid @enderror" value="{{ old('ExpectedService') }}" type="date"  id="example-date-input" name="ExpectedService" id="ExpectedService" required>
+                                    <input class="form-control ExpectedService form-select-lg @error('ExpectedService') is-invalid @enderror" value="{{ old('ExpectedService') }}" type="date"  id="example-date-input" name="ExpectedService" id="ExpectedService" required>
                                     @error('ExpectedService')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -471,9 +465,9 @@
                        {
                          if(data){
                             $('.District').empty();
-                            $('.District').append('<option hidden>Choose District</option>'); 
+                             $('.District').append('<option value="None" hidden>All</option>'); 
                             $.each(data, function(key, course){
-                                $('select[name="District"]').append('<option value="'+ key +'">' + course.Name+ '</option>');
+                                $('select[name="District"]').append('<option value="'+ course.Name +'">' + course.Name+ '</option>');
                             });
                         }else{
                             $('.District').empty();
@@ -487,6 +481,40 @@
             });
 
 
+            $(document).ready(function() {
+            $('.AssignedTo').on('click', function() {
+               var Province = $('.Province').val();
+               var District = $('.District').val();
+               var RequestedService = $('.RequestedService').val();
+               if(Province) {
+                   $.ajax({
+                       url: '/QamarCareCard/FindServiceProvider/' + RequestedService + '/' + Province + '/' + District,
+                       type: "GET",
+                       data : {"_token":"{{ csrf_token() }}"},
+                    //    data: {Province:Province, District:District, RequestedService:RequestedService},
+                       dataType: "json",
+                       success:function(data)
+                       {
+                         if(data)
+                         {
+                            $('.AssignedTo').empty();
+                            $('.AssignedTo').append('<option hidden>Choose Service</option>'); 
+                            $.each(data, function(key, course){
+                                $('select[name="AssignedTo"]').append('<option value="'+ course.ServiceType +'">' + course.FirstName+ "   "+ course.LastName+ "   "+course.ServiceType + '</option>');
+                            });
+                         
+                        }
+                        else
+                        {
+                            $('.AssignedTo').empty();
+                        }
+                     }
+                   });
+               }else{
+                 $('.AssignedTo').empty();
+               }
+            });
+            });
 
 
 </script>

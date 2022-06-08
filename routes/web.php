@@ -36,6 +36,8 @@ Route::get('/root', [App\Http\Controllers\HomeController:: class, 'root'])->name
 // Get District
 Route::get('/GetDistricts/{data}', [App\Http\Controllers\HomeController:: class, 'GetDistricts'])->name('GetDistricts');
 
+
+
 Route::get('/Projects', [App\Http\Controllers\HomeController:: class, 'Projects'])->name('Projects');
 
 Route::get('/BeneficiariesServices', [App\Http\Controllers\HomeController:: class, 'BeneficiariesServices'])->name('BeneficiariesServices');
@@ -146,9 +148,13 @@ Route::post('/ServiceProvider_Profile', [App\Http\Controllers\HomeController:: c
        Route::post('/QamarCareCard/CreateServiceProviderIndividual', [App\Http\Controllers\QamarCareCardController:: class, 'StoreServiceProviderIndividual'])->name('CreateServiceProviderIndividual');
       
 
+// find service provider
+   Route::get('/QamarCareCard/FindServiceProvider/{Province}/{District}/{RequestedService}', [App\Http\Controllers\QamarCareCardController:: class, 'FindServiceProvider'])->name('FindServiceProvider');
 
 
+ 
 
+   
 
     // verify qamar card that is avalibe to all
     Route::get('/QamarCareCard/Verify', [App\Http\Controllers\QamarCareCardController:: class, 'Verify'])->name('VerifyQamarCareCard');

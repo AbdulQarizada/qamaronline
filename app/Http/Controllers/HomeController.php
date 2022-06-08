@@ -162,7 +162,6 @@ class HomeController extends Controller
     }
 
 
-
     /*Language Translation*/
     public function lang($locale)
     {

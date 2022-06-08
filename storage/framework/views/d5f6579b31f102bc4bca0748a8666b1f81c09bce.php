@@ -1147,7 +1147,7 @@ unset($__errorArgs, $__bag); ?>
                             $('.District').empty();
                             $('.District').append('<option hidden>Choose District</option>'); 
                             $.each(data, function(key, course){
-                                $('select[name="District"]').append('<option value="'+ key +'">' + course.Name+ '</option>');
+                                $('select[name="District"]').append('<option value="'+ course.id +'">' + course.Name+ '</option>');
                             });
                         }else{
                             $('.District').empty();
@@ -1175,7 +1175,7 @@ unset($__errorArgs, $__bag); ?>
                             $('.DistrictService').empty();
                             $('.DistrictService').append('<option hidden>Choose District</option>'); 
                             $.each(data, function(key, course){
-                                $('select[name="DistrictService"]').append('<option value="'+ key +'">' + course.Name+ '</option>');
+                                $('select[name="DistrictService"]').append('<option value="'+ course.Name +'">' + course.Name+ '</option>');
                             });
                         }else{
                             $('.DistrictService').empty();

@@ -733,6 +733,48 @@ public function __construct()
              return view('QamarCardCard.CreateServiceProviderOrganization');
     }
 
+
+
+
+
+
+  
+    public function FindServiceProvider( $RequestedService, $Province, $District)
+    {
+
+     if($RequestedService != "None")
+     {
+       
+        if($Province != "None")
+        {
+
+          if($District != "None")
+          {
+ 
+            $result =   ServiceProviders::select('FirstName', 'LastName', 'ServiceType')->where("ServiceType", "=", $RequestedService)->where("ProvinceService", "=", $Province)->where("DistrictService", "=", $District)->get();
+            return response()->json($result);
+
+          }
+ 
+          else if($District == "None")
+          {
+            $result =   ServiceProviders::select('FirstName', 'LastName', 'ServiceType')->where("ServiceType", "=", $RequestedService)->where("ProvinceService", "=", $Province)->get();
+            return response()->json($result);
+
+          }
+       
+
+        }
+
+     }
+      // return "hi";
+      
+      return response()->json($result);
+    }
+
+
+
+
    // Verify
    public function Verify()
    {

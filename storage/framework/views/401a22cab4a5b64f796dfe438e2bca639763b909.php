@@ -187,10 +187,10 @@
                         <div class="row">
                         <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="ExpectedService" class="form-label">Requested Service</label>
+                                    <label for="RequestedService" class="form-label">Requested Service</label>
                                     <div class="input-group " id="example-date-input">
-                                  <select class="form-control form-control-lg select2">
-                                        <option>Select</option>
+                                  <select class="form-control RequestedService form-control-lg select2">
+                                        <option value="None">Select</option>
                                         <?php $__currentLoopData = $servicetypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $servicetype): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <?php if($servicetype -> Parent_ID == null): ?>
                                            <optgroup label="<?php echo e($servicetype -> Name); ?>">
@@ -220,7 +220,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" required name="Province" value="<?php echo e(old('Province')); ?>" id="Province">
-                                    <option>Select Option</option>
+                                    <option value="None">Select Province</option>
                                     <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <option value="<?php echo e($province -> id); ?>"><?php echo e($province -> Name); ?></option>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -253,6 +253,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" required name="District" value="<?php echo e(old('District')); ?>" id="Province">
                                     
+                                    <option value="None">Select District</option>
 
                                     </select>
                                     <?php $__errorArgs = ['District'];
@@ -273,7 +274,7 @@ unset($__errorArgs, $__bag); ?>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="AssignedTo" class="form-label">Avalible Service Providers</label>
-                                    <select class="form-select  form-select-lg  <?php $__errorArgs = ['AssignedTo'];
+                                    <select class="form-select AssignedTo  form-select-lg  <?php $__errorArgs = ['AssignedTo'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -281,14 +282,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('AssignedTo')); ?>" required id="AssignedTo" name="AssignedTo">
-                                  
-                                    <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                     <option value="Afghanistan"><?php echo e($user->name); ?></option>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    
-                                 
-
-                                    </select>
+                              </select>
                                     <?php $__errorArgs = ['AssignedTo'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -344,7 +338,7 @@ unset($__errorArgs, $__bag); ?>
                                     <label for="ExpectedService" class="form-label">Expected Service</label>
                                     <div class="input-group " id="example-date-input">
                                       
-                                    <input class="form-control form-select-lg <?php $__errorArgs = ['ExpectedService'];
+                                    <input class="form-control ExpectedService form-select-lg <?php $__errorArgs = ['ExpectedService'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -541,9 +535,9 @@ unset($__errorArgs, $__bag); ?>
                        {
                          if(data){
                             $('.District').empty();
-                            $('.District').append('<option hidden>Choose District</option>'); 
+                             $('.District').append('<option value="None" hidden>All</option>'); 
                             $.each(data, function(key, course){
-                                $('select[name="District"]').append('<option value="'+ key +'">' + course.Name+ '</option>');
+                                $('select[name="District"]').append('<option value="'+ course.Name +'">' + course.Name+ '</option>');
                             });
                         }else{
                             $('.District').empty();
@@ -557,6 +551,40 @@ unset($__errorArgs, $__bag); ?>
             });
 
 
+            $(document).ready(function() {
+            $('.AssignedTo').on('click', function() {
+               var Province = $('.Province').val();
+               var District = $('.District').val();
+               var RequestedService = $('.RequestedService').val();
+               if(Province) {
+                   $.ajax({
+                       url: '/QamarCareCard/FindServiceProvider/' + RequestedService + '/' + Province + '/' + District,
+                       type: "GET",
+                       data : {"_token":"<?php echo e(csrf_token()); ?>"},
+                    //    data: {Province:Province, District:District, RequestedService:RequestedService},
+                       dataType: "json",
+                       success:function(data)
+                       {
+                         if(data)
+                         {
+                            $('.AssignedTo').empty();
+                            $('.AssignedTo').append('<option hidden>Choose Service</option>'); 
+                            $.each(data, function(key, course){
+                                $('select[name="AssignedTo"]').append('<option value="'+ course.ServiceType +'">' + course.FirstName+ "   "+ course.LastName+ "   "+course.ServiceType + '</option>');
+                            });
+                         
+                        }
+                        else
+                        {
+                            $('.AssignedTo').empty();
+                        }
+                     }
+                   });
+               }else{
+                 $('.AssignedTo').empty();
+               }
+            });
+            });
 
 
 </script>
