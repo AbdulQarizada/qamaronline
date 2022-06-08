@@ -5,6 +5,7 @@
 <?php $__env->startSection('css'); ?>
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/filepond.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-image-preview.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
+<link href="<?php echo e(URL::asset('/assets/libs/select2/select2.min.css')); ?>" rel="stylesheet" type="text/css" />
 
  
 <?php $__env->stopSection(); ?>
@@ -150,6 +151,17 @@
             </div>
         </div>
     </div>
+
+
+    <div class="row mb-3">
+        <div class="col-4">
+   
+        </div>
+        <div class="col-8 ">
+        <!-- <i class="bx bx-plus-circle  font-size-24 label-icon"></i> btn-label -->
+           <!-- <a href="<?php echo e(route('CreateQamarCareCard')); ?>" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 float-end">ADD SERVICE PROVIDER</a> -->
+        </div>
+     </div>
 <div class="row">
     <div class="col-lg-12">
     <div class="card ">
@@ -173,26 +185,96 @@
                          
 
                         <div class="row">
-                            <div class="col-md-4">
+                        <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="AssignedTo" class="form-label">Assigned To</label>
-                                    <select class="form-select  form-select-lg  <?php $__errorArgs = ['AssignedTo'];
+                                    <label for="ExpectedService" class="form-label">Requested Service</label>
+                                    <div class="input-group " id="example-date-input">
+                                      
+                                    <select class="form-control form-control-lg select2">
+                                        <option>Select</option>
+                                        <optgroup label="Alaskan/Hawaiian Time Zone">
+                                            <option value="AK">Alaska</option>
+                                            <option value="HI">Hawaii</option>
+                                        </optgroup>
+                                        <optgroup label="Pacific Time Zone">
+                                            <option value="CA">California</option>
+                                            <option value="NV">Nevada</option>
+                                            <option value="OR">Oregon</option>
+                                            <option value="WA">Washington</option>
+                                        </optgroup>
+                                        <optgroup label="Mountain Time Zone">
+                                            <option value="AZ">Arizona</option>
+                                            <option value="CO">Colorado</option>
+                                            <option value="ID">Idaho</option>
+                                            <option value="MT">Montana</option>
+                                            <option value="NE">Nebraska</option>
+                                            <option value="NM">New Mexico</option>
+                                            <option value="ND">North Dakota</option>
+                                            <option value="UT">Utah</option>
+                                            <option value="WY">Wyoming</option>
+                                        </optgroup>
+                                        <optgroup label="Central Time Zone">
+                                            <option value="AL">Alabama</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="IL">Illinois</option>
+                                            <option value="IA">Iowa</option>
+                                            <option value="KS">Kansas</option>
+                                            <option value="KY">Kentucky</option>
+                                            <option value="LA">Louisiana</option>
+                                            <option value="MN">Minnesota</option>
+                                            <option value="MS">Mississippi</option>
+                                            <option value="MO">Missouri</option>
+                                            <option value="OK">Oklahoma</option>
+                                            <option value="SD">South Dakota</option>
+                                            <option value="TX">Texas</option>
+                                            <option value="TN">Tennessee</option>
+                                            <option value="WI">Wisconsin</option>
+                                        </optgroup>
+                                        <optgroup label="Eastern Time Zone">
+                                            <option value="CT">Connecticut</option>
+                                            <option value="DE">Delaware</option>
+                                            <option value="FL">Florida</option>
+                                            <option value="GA">Georgia</option>
+                                            <option value="IN">Indiana</option>
+                                            <option value="ME">Maine</option>
+                                            <option value="MD">Maryland</option>
+                                            <option value="MA">Massachusetts</option>
+                                            <option value="MI">Michigan</option>
+                                            <option value="NH">New Hampshire</option>
+                                            <option value="NJ">New Jersey</option>
+                                            <option value="NY">New York</option>
+                                            <option value="NC">North Carolina</option>
+                                            <option value="OH">Ohio</option>
+                                            <option value="PA">Pennsylvania</option>
+                                            <option value="RI">Rhode Island</option>
+                                            <option value="SC">South Carolina</option>
+                                            <option value="VT">Vermont</option>
+                                            <option value="VA">Virginia</option>
+                                            <option value="WV">West Virginia</option>
+                                        </optgroup>
+                                    </select>
+                                   
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        <div class="col-md-4">
+                                <div class="mb-3 position-relative">
+                                    <label for="Province" class="form-label">Province</label>
+                                    <div class="input-group">
+                                    <select class="form-select  form-select-lg <?php $__errorArgs = ['Province'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('AssignedTo')); ?>" required id="AssignedTo" name="AssignedTo">
-                                  
-                                    <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                     <option value="Afghanistan"><?php echo e($user->name); ?></option>
+unset($__errorArgs, $__bag); ?>" required name="Province" value="<?php echo e(old('Province')); ?>" id="Province">
+                                    <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option><?php echo e($province -> Name); ?></option>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    
-                                 
-
                                     </select>
-                                    <?php $__errorArgs = ['AssignedTo'];
+                                    <?php $__errorArgs = ['Province'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -200,15 +282,16 @@ $message = $__bag->first($__errorArgs[0]); ?>
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong><?php echo e($message); ?></strong>
                                                 </span>
-                                   <?php unset($message);
+                               <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                               </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="Province" class="form-label">Province</label>
+                                    <label for="Province" class="form-label">District</label>
                                     <div class="input-group">
                                     <select class="form-select  form-select-lg <?php $__errorArgs = ['Province'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -272,6 +355,39 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
+                                    <label for="AssignedTo" class="form-label">Avalible Service Providers</label>
+                                    <select class="form-select  form-select-lg  <?php $__errorArgs = ['AssignedTo'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('AssignedTo')); ?>" required id="AssignedTo" name="AssignedTo">
+                                  
+                                    <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                     <option value="Afghanistan"><?php echo e($user->name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    
+                                 
+
+                                    </select>
+                                    <?php $__errorArgs = ['AssignedTo'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                                   <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-4">
+                                <div class="mb-3 position-relative">
                                     <label for="ServiceType" class="form-label">Service Type</label>
                                     <div class="input-group">
 
@@ -287,11 +403,7 @@ unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ServiceType')); ?>" re
                                     
                                     <option value="Food Package">Food Package</option>
                                     <option value="Doctor">Doctor</option>
-                                    <!-- <option value="Pashai">Pashai</option>
-                                    <option value="Nooristani">Nooristani</option>
-                                    <option value="Uzbaki">Uzbaki</option>
-                                    <option value="Turkmani">Turkmani</option>
-                                    <option value="Balochi">Balochi</option> -->
+                               
                                     
 
                                     </select>
@@ -309,23 +421,8 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
-                            </div>
-                   
-                        </div>
-                    
-                        <div class="row">
-                        <!-- <div class="col-md-4">
-                                <div class="mb-3 position-relative">
-                                    <label for="GOBType" class="form-label">Date of Birth Type</label>
-                                    <select class="form-select  form-select-lg" id="GOBType"  name="GOBType">
-                                    <option value="Age">Age</option>
-                                    <option value="ShamsiDate">Shamsi Date</option>
-                                    <option value="Gorogoin Date">Grogorian Date</option>
-
-                                 </select>
-                                </div>
                             </div> -->
-                        <div class="col-md-4">
+                            <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="ExpectedService" class="form-label">Expected Service</label>
                                     <div class="input-group " id="example-date-input">
@@ -346,7 +443,7 @@ $message = $__bag->first($__errorArgs[0]); ?>
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong><?php echo e($message); ?></strong>
                                                 </span>
-                               <?php unset($message);
+                                    <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
@@ -355,10 +452,25 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                                 
                             </div>
+                        </div>
+                    
+                        <!-- <div class="row">
+                      <div class="col-md-4">
+                                <div class="mb-3 position-relative">
+                                    <label for="GOBType" class="form-label">Date of Birth Type</label>
+                                    <select class="form-select  form-select-lg" id="GOBType"  name="GOBType">
+                                    <option value="Age">Age</option>
+                                    <option value="ShamsiDate">Shamsi Date</option>
+                                    <option value="Gorogoin Date">Grogorian Date</option>
+
+                                 </select>
+                                </div>
+                            </div> 
+                    
                             
                       
                    
-                        </div>
+                        </div> -->
                      
                 </div>
             </div>
@@ -404,7 +516,11 @@ unset($__errorArgs, $__bag); ?>
 
 <script src="<?php echo e(URL::asset('/assets/js/pages/rating-init.js')); ?>"></script>
 
+<script src="<?php echo e(URL::asset('/assets/libs/select2/select2.min.js')); ?>"></script>
 
+
+    <!-- form advanced init -->
+    <script src="<?php echo e(URL::asset('/assets/js/pages/form-advanced.init.js')); ?>"></script>
 <script>
 
 	  FilePond.registerPlugin(FilePondPluginImagePreview);
@@ -497,7 +613,7 @@ unset($__errorArgs, $__bag); ?>
 
 
 	  $(document).ready(function () {
-		  $("#select2").change(function () {
+		  $("#Province").change(function () {
 			  var dID = $(this).val();
 			  $.getJSON("/Lecturers/Courses/GetSubTabs/" + dID,
 				  function (data) {

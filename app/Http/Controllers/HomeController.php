@@ -123,6 +123,26 @@ class HomeController extends Controller
 
 
 
+    // location
+    public function GetProvinces()
+    {
+ 
+        $provinces = Locations::where("Parent_ID", "=", 'null')->get();
+        return $provinces;
+    }
+
+    public function GetDistricts($data)
+    {
+        if ($locale) {
+            App::setLocale($locale);
+            Session::put('lang', $locale);
+            Session::save();
+            return redirect()->back()->with('locale', $locale);
+        } else {
+            return redirect()->back();
+        }
+    }
+
 
 
     /*Language Translation*/

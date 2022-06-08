@@ -5,6 +5,7 @@
 @section('css')
 <link href="{{ URL::asset('/assets/libs/filepond/css/filepond.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <link href="{{ URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-image-preview.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+<link href="{{ URL::asset('/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
 
  
 @endsection
@@ -150,6 +151,17 @@
             </div>
         </div>
     </div>
+
+
+    <div class="row mb-3">
+        <div class="col-4">
+   
+        </div>
+        <div class="col-8 ">
+        <!-- <i class="bx bx-plus-circle  font-size-24 label-icon"></i> btn-label -->
+           <!-- <a href="{{route('CreateQamarCareCard')}}" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 float-end">ADD SERVICE PROVIDER</a> -->
+        </div>
+     </div>
 <div class="row">
     <div class="col-lg-12">
     <div class="card ">
@@ -173,28 +185,99 @@
                          
 
                         <div class="row">
-                            <div class="col-md-4">
+                        <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="AssignedTo" class="form-label">Assigned To</label>
-                                    <select class="form-select  form-select-lg  @error('AssignedTo') is-invalid @enderror" value="{{ old('AssignedTo') }}" required id="AssignedTo" name="AssignedTo">
-                                  
-                                    @foreach ($users as $user)
-                                     <option value="Afghanistan">{{ $user->name }}</option>
-                                    @endforeach
-                                    
-                                 
-
+                                    <label for="ExpectedService" class="form-label">Requested Service</label>
+                                    <div class="input-group " id="example-date-input">
+                                      
+                                    <select class="form-control form-control-lg select2">
+                                        <option>Select</option>
+                                        <optgroup label="Alaskan/Hawaiian Time Zone">
+                                            <option value="AK">Alaska</option>
+                                            <option value="HI">Hawaii</option>
+                                        </optgroup>
+                                        <optgroup label="Pacific Time Zone">
+                                            <option value="CA">California</option>
+                                            <option value="NV">Nevada</option>
+                                            <option value="OR">Oregon</option>
+                                            <option value="WA">Washington</option>
+                                        </optgroup>
+                                        <optgroup label="Mountain Time Zone">
+                                            <option value="AZ">Arizona</option>
+                                            <option value="CO">Colorado</option>
+                                            <option value="ID">Idaho</option>
+                                            <option value="MT">Montana</option>
+                                            <option value="NE">Nebraska</option>
+                                            <option value="NM">New Mexico</option>
+                                            <option value="ND">North Dakota</option>
+                                            <option value="UT">Utah</option>
+                                            <option value="WY">Wyoming</option>
+                                        </optgroup>
+                                        <optgroup label="Central Time Zone">
+                                            <option value="AL">Alabama</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="IL">Illinois</option>
+                                            <option value="IA">Iowa</option>
+                                            <option value="KS">Kansas</option>
+                                            <option value="KY">Kentucky</option>
+                                            <option value="LA">Louisiana</option>
+                                            <option value="MN">Minnesota</option>
+                                            <option value="MS">Mississippi</option>
+                                            <option value="MO">Missouri</option>
+                                            <option value="OK">Oklahoma</option>
+                                            <option value="SD">South Dakota</option>
+                                            <option value="TX">Texas</option>
+                                            <option value="TN">Tennessee</option>
+                                            <option value="WI">Wisconsin</option>
+                                        </optgroup>
+                                        <optgroup label="Eastern Time Zone">
+                                            <option value="CT">Connecticut</option>
+                                            <option value="DE">Delaware</option>
+                                            <option value="FL">Florida</option>
+                                            <option value="GA">Georgia</option>
+                                            <option value="IN">Indiana</option>
+                                            <option value="ME">Maine</option>
+                                            <option value="MD">Maryland</option>
+                                            <option value="MA">Massachusetts</option>
+                                            <option value="MI">Michigan</option>
+                                            <option value="NH">New Hampshire</option>
+                                            <option value="NJ">New Jersey</option>
+                                            <option value="NY">New York</option>
+                                            <option value="NC">North Carolina</option>
+                                            <option value="OH">Ohio</option>
+                                            <option value="PA">Pennsylvania</option>
+                                            <option value="RI">Rhode Island</option>
+                                            <option value="SC">South Carolina</option>
+                                            <option value="VT">Vermont</option>
+                                            <option value="VA">Virginia</option>
+                                            <option value="WV">West Virginia</option>
+                                        </optgroup>
                                     </select>
-                                    @error('AssignedTo')
+                                   
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        <div class="col-md-4">
+                                <div class="mb-3 position-relative">
+                                    <label for="Province" class="form-label">Province</label>
+                                    <div class="input-group">
+                                    <select class="form-select  form-select-lg @error('Province') is-invalid @enderror" required name="Province" value="{{ old('Province') }}" id="Province">
+                                    @foreach($provinces as $province)
+                                    <option>{{ $province -> Name }}</option>
+                                    @endforeach
+                                    </select>
+                                    @error('Province')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
-                                   @enderror
+                               @enderror
+                               </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="Province" class="form-label">Province</label>
+                                    <label for="Province" class="form-label">District</label>
                                     <div class="input-group">
                                     <select class="form-select  form-select-lg @error('Province') is-invalid @enderror" required name="Province" value="{{ old('Province') }}" id="Province">
                                     <option>Select Option</option>
@@ -244,6 +327,25 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
+                                    <label for="AssignedTo" class="form-label">Avalible Service Providers</label>
+                                    <select class="form-select  form-select-lg  @error('AssignedTo') is-invalid @enderror" value="{{ old('AssignedTo') }}" required id="AssignedTo" name="AssignedTo">
+                                  
+                                    @foreach ($users as $user)
+                                     <option value="Afghanistan">{{ $user->name }}</option>
+                                    @endforeach
+                                    
+                                 
+
+                                    </select>
+                                    @error('AssignedTo')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                   @enderror
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-4">
+                                <div class="mb-3 position-relative">
                                     <label for="ServiceType" class="form-label">Service Type</label>
                                     <div class="input-group">
 
@@ -252,11 +354,7 @@
                                     
                                     <option value="Food Package">Food Package</option>
                                     <option value="Doctor">Doctor</option>
-                                    <!-- <option value="Pashai">Pashai</option>
-                                    <option value="Nooristani">Nooristani</option>
-                                    <option value="Uzbaki">Uzbaki</option>
-                                    <option value="Turkmani">Turkmani</option>
-                                    <option value="Balochi">Balochi</option> -->
+                               
                                     
 
                                     </select>
@@ -267,23 +365,8 @@
                                     @enderror
                                 </div>
                             </div>
-                            </div>
-                   
-                        </div>
-                    
-                        <div class="row">
-                        <!-- <div class="col-md-4">
-                                <div class="mb-3 position-relative">
-                                    <label for="GOBType" class="form-label">Date of Birth Type</label>
-                                    <select class="form-select  form-select-lg" id="GOBType"  name="GOBType">
-                                    <option value="Age">Age</option>
-                                    <option value="ShamsiDate">Shamsi Date</option>
-                                    <option value="Gorogoin Date">Grogorian Date</option>
-
-                                 </select>
-                                </div>
                             </div> -->
-                        <div class="col-md-4">
+                            <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="ExpectedService" class="form-label">Expected Service</label>
                                     <div class="input-group " id="example-date-input">
@@ -293,16 +376,31 @@
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
-                               @enderror
+                                    @enderror
                                    
                                     </div>
                                 </div>
                                 
                             </div>
+                        </div>
+                    
+                        <!-- <div class="row">
+                      <div class="col-md-4">
+                                <div class="mb-3 position-relative">
+                                    <label for="GOBType" class="form-label">Date of Birth Type</label>
+                                    <select class="form-select  form-select-lg" id="GOBType"  name="GOBType">
+                                    <option value="Age">Age</option>
+                                    <option value="ShamsiDate">Shamsi Date</option>
+                                    <option value="Gorogoin Date">Grogorian Date</option>
+
+                                 </select>
+                                </div>
+                            </div> 
+                    
                             
                       
                    
-                        </div>
+                        </div> -->
                      
                 </div>
             </div>
@@ -348,7 +446,11 @@
 
 <script src="{{ URL::asset('/assets/js/pages/rating-init.js') }}"></script>
 
+<script src="{{ URL::asset('/assets/libs/select2/select2.min.js') }}"></script>
 
+
+    <!-- form advanced init -->
+    <script src="{{ URL::asset('/assets/js/pages/form-advanced.init.js') }}"></script>
 <script>
 
 	  FilePond.registerPlugin(FilePondPluginImagePreview);
@@ -441,7 +543,7 @@
 
 
 	  $(document).ready(function () {
-		  $("#select2").change(function () {
+		  $("#Province").change(function () {
 			  var dID = $(this).val();
 			  $.getJSON("/Lecturers/Courses/GetSubTabs/" + dID,
 				  function (data) {
