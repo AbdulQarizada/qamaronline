@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Location;
+
 
 class HomeController extends Controller
 {
@@ -124,23 +126,17 @@ class HomeController extends Controller
 
 
     // location
-    public function GetProvinces()
-    {
+    // public function GetProvinces()
+    // {
  
-        $provinces = Locations::where("Parent_ID", "=", 'null')->get();
-        return $provinces;
-    }
+    //     $provinces = Locations::where("Parent_ID", "=", 'null')->get();
+    //     return $provinces;
+    // }
 
     public function GetDistricts($data)
     {
-        if ($locale) {
-            App::setLocale($locale);
-            Session::put('lang', $locale);
-            Session::save();
-            return redirect()->back()->with('locale', $locale);
-        } else {
-            return redirect()->back();
-        }
+        $districts =   Location::select('id','Name')->where("Parent_ID", "=", $data)->get();
+        return response()->json($districts);
     }
 
 

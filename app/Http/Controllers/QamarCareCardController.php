@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\QamarCareCard;
 use App\Models\AssignCareCardServices;
+use App\Models\ServiceType;
+
 use App\Models\Location;
 use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -404,8 +406,9 @@ public function __construct()
     public function AssignToService(QamarCareCard $data)
     {
       $users =   User::all();
-      $provinces = Location::all();
-      return view('QamarCardCard.AssignToService', ['data' => $data, 'users' => $users, 'provinces' => $provinces]);
+      $provinces = Location::whereNull("Parent_ID")->get();
+      $servicetypes = ServiceType::all();
+      return view('QamarCardCard.AssignToService', ['data' => $data, 'users' => $users, 'provinces' => $provinces, 'servicetypes' => $servicetypes]);
     }
 
 

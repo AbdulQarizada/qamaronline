@@ -33,6 +33,9 @@ Route::get('index/{locale}', [App\Http\Controllers\HomeController::class, 'lang'
 // Dashvoard
 Route::get('/root', [App\Http\Controllers\HomeController:: class, 'root'])->name('root');
 
+// Get District
+Route::get('/GetDistricts/{data}', [App\Http\Controllers\HomeController:: class, 'GetDistricts'])->name('GetDistricts');
+
 Route::get('/Projects', [App\Http\Controllers\HomeController:: class, 'Projects'])->name('Projects');
 
 Route::get('/BeneficiariesServices', [App\Http\Controllers\HomeController:: class, 'BeneficiariesServices'])->name('BeneficiariesServices');
