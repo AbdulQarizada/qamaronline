@@ -7,10 +7,10 @@
 <link href="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.css')); ?>" rel="stylesheet" type="text/css" />
 <style>
 table  td {
-    width: 225px;
+    width: 224px;
     /* display: inline-block; */
     white-space: nowrap;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 </style>
 
