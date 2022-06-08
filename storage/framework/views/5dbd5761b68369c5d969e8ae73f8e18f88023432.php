@@ -8,9 +8,7 @@
 <style>
 table  td {
     width: 224px;
-    /* display: inline-block; */
     white-space: nowrap;
-    /* border: 1px solid red; */
 }
 </style>
 
