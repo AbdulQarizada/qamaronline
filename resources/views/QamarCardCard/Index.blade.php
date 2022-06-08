@@ -85,6 +85,7 @@
                 </div>
                 </a>
             </div>
+
             <div class="col-md-4 mb-2">
         <a href="{{route('AssigningServiceQamarCareCard')}}">
             <div class="card-one mini-stats-wid border border-secondary">
@@ -92,8 +93,36 @@
                   <blockquote class="blockquote font-size-14 mb-0">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="my-0 text-primary card-title fw-medium">CARE CARD SERIVCES</p>
+                            <p class="my-0 text-primary card-title fw-medium">CARDS TO SERIVCES</p>
                             <h6 class="text-muted mb-0">ASSIGNE TO SERIVCE</h4>
+                        </div>
+
+                        <div class="flex-shrink-0 align-self-center">
+                            <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                <span class="avatar-title bg-info">
+                                    <i class="bx bxs-user-rectangle    font-size-24"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="d-flex mt-4">
+                       
+                    </div>
+                    </blockquote>
+                </div>
+            </div>
+            </a>
+        </div>
+        <div class="col-md-4 mb-2">
+        <a href="{{route('ServiceProviderIndexQamarCareCard')}}">
+            <div class="card-one mini-stats-wid border border-secondary">
+                <div class="card-body">
+                  <blockquote class="blockquote font-size-14 mb-0">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <p class="my-0 text-primary card-title fw-medium">SERVICE PROVIDERS</p>
+                            <h6 class="text-muted mb-0">Add Service Providers</h4>
                         </div>
 
                         <div class="flex-shrink-0 align-self-center">

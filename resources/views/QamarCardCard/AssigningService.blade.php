@@ -51,7 +51,7 @@
                                     </select>
         </div>
         <div class="col-8 ">
-           <a href="{{route('CreateQamarCareCard')}}" class="btn btn-primary btn-lg waves-effect waves-light m-3 float-end">ADD SERVICE PROVIDER</a>
+           <!-- <a href="{{route('CreateQamarCareCard')}}" class="btn btn-primary btn-lg waves-effect waves-light m-3 float-end">ADD SERVICE PROVIDER</a> -->
         </div>
      </div>
     <div class="row">

@@ -30,6 +30,7 @@ return array(
     'App\\Models\\AssignCareCardServices' => $baseDir . '/app/Models/AssignCareCardServices.php',
     'App\\Models\\Location' => $baseDir . '/app/Models/Location.php',
     'App\\Models\\QamarCareCard' => $baseDir . '/app/Models/QamarCareCard.php',
+    'App\\Models\\ServiceProviders' => $baseDir . '/app/Models/ServiceProviders.php',
     'App\\Models\\ServiceType' => $baseDir . '/app/Models/ServiceType.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

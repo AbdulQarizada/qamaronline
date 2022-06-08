@@ -555,6 +555,7 @@ class ComposerStaticInit266fa5b06966592293d7b7eb2a841bf9
         'App\\Models\\AssignCareCardServices' => __DIR__ . '/../..' . '/app/Models/AssignCareCardServices.php',
         'App\\Models\\Location' => __DIR__ . '/../..' . '/app/Models/Location.php',
         'App\\Models\\QamarCareCard' => __DIR__ . '/../..' . '/app/Models/QamarCareCard.php',
+        'App\\Models\\ServiceProviders' => __DIR__ . '/../..' . '/app/Models/ServiceProviders.php',
         'App\\Models\\ServiceType' => __DIR__ . '/../..' . '/app/Models/ServiceType.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

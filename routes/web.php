@@ -128,8 +128,13 @@ Route::post('/Upload_Profile', [App\Http\Controllers\HomeController:: class, 'Up
        // delete
        Route::get('/QamarCareCard/ServiceDelete/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'ServiceDeleteDelete'])->name('ServiceDeleteQamarCareCard');
    
- // Serivce Status change
-    Route::get('/QamarCareCard/ServiceReleased/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'ServiceReleased'])->name('ServiceReleasedQamarCareCard');
+      // Serivce Status change
+       Route::get('/QamarCareCard/ServiceReleased/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'ServiceReleased'])->name('ServiceReleasedQamarCareCard');
+
+
+       // Service Provider
+       Route::get('/QamarCareCard/ServiceProviderIndex', [App\Http\Controllers\QamarCareCardController:: class, 'ServiceProviderIndex'])->name('ServiceProviderIndexQamarCareCard');
+
 
 
 

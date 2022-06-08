@@ -58,7 +58,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                     </select>
         </div>
         <div class="col-8 ">
-           <a href="<?php echo e(route('CreateQamarCareCard')); ?>" class="btn btn-primary btn-lg waves-effect waves-light m-3 float-end">ADD SERVICE PROVIDER</a>
+           <!-- <a href="<?php echo e(route('CreateQamarCareCard')); ?>" class="btn btn-primary btn-lg waves-effect waves-light m-3 float-end">ADD SERVICE PROVIDER</a> -->
         </div>
      </div>
     <div class="row">

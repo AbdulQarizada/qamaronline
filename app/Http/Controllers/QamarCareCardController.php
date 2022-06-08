@@ -602,6 +602,16 @@ public function __construct()
 
 
 
+
+    // service Provider
+    public function ServiceProviderIndex()
+    {
+             return view('QamarCardCard.ServiceProviderIndex');
+    }
+    
+    
+
+
    // Verify
    public function Verify()
    {
