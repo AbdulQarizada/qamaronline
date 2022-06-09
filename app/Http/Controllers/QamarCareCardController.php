@@ -251,10 +251,10 @@ public function __construct()
    public function All()
    {
      
-     $qamarcarecards =   QamarCareCard::all();
+    //  $qamarcarecards =   QamarCareCard::all();
 
-     $qamarcarecards =   QamarCareCard::join('Locations as a','qamar_care_cards.Province_ID', '=', 'a.id')
-                                            ->join('Locations as b','qamar_care_cards.District_ID', '=', 'b.id')
+     $qamarcarecards =   QamarCareCard::join('locations as a','qamar_care_cards.Province_ID', '=', 'a.id')
+                                            ->join('locations as b','qamar_care_cards.District_ID', '=', 'b.id')
                                             // ->join('LookUp as c','qamar_care_cards.Education_ID', '=', 'c.id')
                                             ->select(['qamar_care_cards.*','a.*','a.Name as ProvinceName', 'b.Name as DistrictName', ])
                                              
