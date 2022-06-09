@@ -107,7 +107,7 @@ public function __construct()
       'RelativeRelationship_ID' => 'required|max:255',
       'RelativeName' => 'required|max:255',
       'FamilyStatus_ID' => 'required|max:255',
-      'Country' => 'required|max:255',
+      'Country_ID' => 'required|max:255',
       'Tribe_ID' => 'required|max:255',
 
        ]);
@@ -266,9 +266,13 @@ public function __construct()
 
     public function Approved()
     {
-      
-      $qamarcarecards =   QamarCareCard::where("Status", "=", 'Approved')->get();
 
+      $qamarcarecards =   QamarCareCard::join('locations as a','qamar_care_cards.Province_ID', '=', 'a.id')
+      ->join('locations as b','qamar_care_cards.District_ID', '=', 'b.id')
+      // ->join('LookUp as c','qamar_care_cards.Education_ID', '=', 'c.id')
+      ->select(['qamar_care_cards.*','a.*','a.Name as ProvinceName', 'b.Name as DistrictName', ])
+       ->where("Status", "=", 'Approved')
+       ->get();
       return view('QamarCardCard.All', compact('qamarcarecards'));
     }
 
@@ -276,7 +280,13 @@ public function __construct()
     public function Rejected()
     {
       
-      $qamarcarecards =   QamarCareCard::where("Status", "=", 'Rejected')->get();
+      // $qamarcarecards =   QamarCareCard::where("Status", "=", 'Rejected')->get();
+      $qamarcarecards =   QamarCareCard::join('locations as a','qamar_care_cards.Province_ID', '=', 'a.id')
+      ->join('locations as b','qamar_care_cards.District_ID', '=', 'b.id')
+      // ->join('LookUp as c','qamar_care_cards.Education_ID', '=', 'c.id')
+      ->select(['qamar_care_cards.*','a.*','a.Name as ProvinceName', 'b.Name as DistrictName', ])
+       ->where("Status", "=", 'Rejected')
+       ->get();
       return view('QamarCardCard.All', compact('qamarcarecards'));
     }
 
@@ -287,7 +297,13 @@ public function __construct()
     public function Pending()
     {
       
-      $qamarcarecards =   QamarCareCard::where("Status", "=", 'Pending')->get();
+      // $qamarcarecards =   QamarCareCard::where("Status", "=", 'Pending')->get();
+      $qamarcarecards =   QamarCareCard::join('locations as a','qamar_care_cards.Province_ID', '=', 'a.id')
+      ->join('locations as b','qamar_care_cards.District_ID', '=', 'b.id')
+      // ->join('LookUp as c','qamar_care_cards.Education_ID', '=', 'c.id')
+      ->select(['qamar_care_cards.*','a.*','a.Name as ProvinceName', 'b.Name as DistrictName', ])
+       ->where("Status", "=", 'Pending')
+       ->get();
       return view('QamarCardCard.All', compact('qamarcarecards'));
     }
 
@@ -295,7 +311,13 @@ public function __construct()
     public function Released()
     {
       
-      $qamarcarecards =   QamarCareCard::where("Status", "=", 'Released')->get();
+      // $qamarcarecards =   QamarCareCard::where("Status", "=", 'Released')->get();
+      $qamarcarecards =   QamarCareCard::join('locations as a','qamar_care_cards.Province_ID', '=', 'a.id')
+      ->join('locations as b','qamar_care_cards.District_ID', '=', 'b.id')
+      // ->join('LookUp as c','qamar_care_cards.Education_ID', '=', 'c.id')
+      ->select(['qamar_care_cards.*','a.*','a.Name as ProvinceName', 'b.Name as DistrictName', ])
+       ->where("Status", "=", 'Released')
+       ->get();
       return view('QamarCardCard.All', compact('qamarcarecards'));
     }
 
@@ -406,6 +428,7 @@ public function __construct()
     {
       
       $qamarcarecards =   QamarCareCard::where("Status", "=", 'Released')->get();
+      
       return view('QamarCardCard.AssigningService', compact('qamarcarecards'));
     }
 
