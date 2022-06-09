@@ -700,8 +700,8 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
     public function ServiceProviders()
     {
       
-      $serviceproviders =   ServiceProviders::join('Locations as a','service_providers.Province', '=', 'a.id')
-                                            ->join('Locations as b','service_providers.District', '=', 'b.id')->select(['service_providers.*','a.*','a.Name as ProvinceName', 'b.Name as DistrictName'])
+      $serviceproviders =   ServiceProviders::join('locations as a','service_providers.Province', '=', 'a.id')
+                                            ->join('locations as b','service_providers.District', '=', 'b.id')->select(['service_providers.*','a.*','a.Name as ProvinceName', 'b.Name as DistrictName'])
                                              
                                              ->get();
       return view('QamarCardCard.ServiceProviders', compact('serviceproviders'));
