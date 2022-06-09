@@ -10,6 +10,8 @@ use App\Models\ServiceType;
 use App\Models\ServiceProviders;
 
 use App\Models\Location;
+use App\Models\LookUp;
+
 use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
@@ -48,8 +50,23 @@ public function __construct()
     // create
     public function Create()
     {
+
+      $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+      $genders =   LookUp::where("Parent_Name", "=", "Gender")->get();
+      $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+      $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+      $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+      $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+      $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+      $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+      $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+
       
-      return view('QamarCardCard.Create');
+
+
+
+      
+      return view('QamarCardCard.Create', ['countries' => $countries,]);
     }
 
     public function Store(Request $request)
@@ -607,7 +624,11 @@ public function __construct()
     // service Provider
     public function ServiceProviders()
     {
-      $serviceproviders =   ServiceProviders::all();
+      
+      $serviceproviders =   ServiceProviders::join('Locations as a','service_providers.Province', '=', 'a.id')
+                                            ->join('Locations as b','service_providers.District', '=', 'b.id')->select(['service_providers.*','a.*','a.Name as ProvinceName', 'b.Name as DistrictName'])
+                                             
+                                             ->get();
       return view('QamarCardCard.ServiceProviders', compact('serviceproviders'));
     }
     
@@ -643,6 +664,7 @@ public function __construct()
       'Profession' => 'required|max:255',
       'EducationLevel' => 'required|max:255',
       'PrimaryNumber' => 'required|max:10',
+
       // 'SecondaryNumber' => 'required|max:10',
       // 'RelativeNumber' => 'required|max:10',
       'Province' => 'required|max:255',

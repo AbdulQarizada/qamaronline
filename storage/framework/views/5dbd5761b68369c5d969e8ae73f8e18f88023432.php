@@ -46,7 +46,7 @@ table  td {
 
                 </tr>
                 <tr >
-                    <td ><span class="h5"><?php echo e($data -> FirstName); ?> </span></td>
+                    <td ><span class="h5"><?php echo e($data -> FatherName); ?> </span></td>
                     
                 </tr>
                 <tr>

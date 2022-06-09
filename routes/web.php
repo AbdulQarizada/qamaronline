@@ -36,7 +36,9 @@ Route::get('/root', [App\Http\Controllers\HomeController:: class, 'root'])->name
 // Get District
 Route::get('/GetDistricts/{data}', [App\Http\Controllers\HomeController:: class, 'GetDistricts'])->name('GetDistricts');
 
-
+       //create lookups
+Route::post('/CreateLookups', [App\Http\Controllers\HomeController:: class, 'CreateLookups'])->name('CreateLookups');
+      
 
 Route::get('/Projects', [App\Http\Controllers\HomeController:: class, 'Projects'])->name('Projects');
 

@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Location;
+use App\Models\LookUp;
+
 
 
 class HomeController extends Controller
@@ -45,7 +47,10 @@ class HomeController extends Controller
 
     public function root()
     {
-        return view('index');
+        $catagorys =   LookUp::where("Parent_Name", "=", "None")->get();
+        
+
+        return view('index', compact('catagorys'));
     }
 
     public function Projects()
@@ -161,6 +166,36 @@ class HomeController extends Controller
         return response()->json($districts);
     }
 
+
+    public function CreateLookups(Request $request)
+    {
+      
+       $validator = $request->validate([
+      'Parent_Name' => 'bail|required|max:255',
+      'Name' => 'required|max:255',
+ 
+
+       ]);
+     
+
+     
+    LookUp::create([
+          'Parent_Name' => request('Parent_Name'),
+          'Name' => request('Name'),
+ 
+
+
+
+          ]);
+
+         return redirect()->route('root')->with('toast_success', 'Record Created Successfully!');
+
+      
+
+
+  
+
+    }
 
     /*Language Translation*/
     public function lang($locale)

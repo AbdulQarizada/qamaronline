@@ -29,6 +29,7 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Models\\AssignCareCardServices' => $baseDir . '/app/Models/AssignCareCardServices.php',
     'App\\Models\\Location' => $baseDir . '/app/Models/Location.php',
+    'App\\Models\\LookUp' => $baseDir . '/app/Models/LookUp.php',
     'App\\Models\\QamarCareCard' => $baseDir . '/app/Models/QamarCareCard.php',
     'App\\Models\\ServiceProviders' => $baseDir . '/app/Models/ServiceProviders.php',
     'App\\Models\\ServiceType' => $baseDir . '/app/Models/ServiceType.php',

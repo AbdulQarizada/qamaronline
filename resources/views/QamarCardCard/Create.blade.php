@@ -73,6 +73,7 @@
                                     <label for="LastName" class="form-label ">Last Name <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <input type="text" class="form-control form-control-lg @error('LastName') is-invalid @enderror" value="{{ old('LastName') }}" id="LastName" name="LastName"
                                           required>
+
                                           @error('LastName')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -157,7 +158,11 @@
                                 <div class="mb-3 position-relative">
                                     <label for="Country" class="form-label">Country <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <select class="form-select  form-select-lg  @error('Country') is-invalid @enderror" value="{{ old('Country') }}" required id="Country" name="Country">
-                                    <option value="Afghanistan">Afghanistan</option>
+                                    <option >Select Your Country</option>
+                                    @foreach($countries as $country)
+                                    <option value="{{ $country -> id}}">{{ $country -> Name}}</option>
+
+                                    @endforeach
                                  
 
                                     </select>

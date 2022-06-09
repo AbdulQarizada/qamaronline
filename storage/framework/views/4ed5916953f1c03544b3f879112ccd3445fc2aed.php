@@ -97,8 +97,8 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                 </td>
                                 <td>
                                 <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($serviceprovider -> Province); ?></a></h5>
-                                    <p class="text-muted mb-0"><?php echo e($serviceprovider -> District); ?></p> 
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($serviceprovider -> ProvinceName); ?></a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($serviceprovider -> DistrictName); ?></p> 
                                
                                     </div>
                                 </td>
