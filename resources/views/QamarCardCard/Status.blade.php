@@ -13,6 +13,8 @@
         @slot('li_1') Qamar Care Card @endslot
         @slot('title') Qamar Care Card List @endslot
     @endcomponent
+
+    @foreach($datas as $data)
     <div class="row">
         <div class="col-12">
            <a href="{{route('AllQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
@@ -20,6 +22,7 @@
       
         </div>
      </div>
+     
                        <div class="row">
                             <div class="col-lg-12">
                                 <div>
@@ -341,7 +344,7 @@
                     @endif
         </div>
      </div>
-
+@endforeach
 @endsection
 @section('script')
 <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>

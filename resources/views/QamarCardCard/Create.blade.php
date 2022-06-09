@@ -129,7 +129,7 @@
                                 <div class="mb-3 position-relative">
                                     <label for="Gender_ID" class="form-label">Gender <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <select class="form-select  form-select-lg @error('Gender_ID') is-invalid @enderror" value="{{ old('Gender_ID') }}" id="Gender_ID"  name="Gender_ID" required>
-                                    <option >Select Your Gender</option>
+                                    <option value="">Select Your Gender</option>
                                     @foreach($genders as $gender)
                                     <option value="{{ $gender -> id}}">{{ $gender -> Name}}</option>
 
@@ -161,7 +161,7 @@
                                 <div class="mb-3 position-relative">
                                     <label for="Country_ID" class="form-label">Country <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <select class="form-select  form-select-lg  @error('Country_ID') is-invalid @enderror" value="{{ old('Country_ID') }}" required id="Country_ID" name="Country_ID">
-                                    <option >Select Your Country</option>
+                                    <option value="">Select Your Country</option>
                                     @foreach($countries as $country)
                                     <option value="{{ $country -> id}}">{{ $country -> Name}}</option>
 
@@ -204,7 +204,7 @@
                                     <div class="input-group">
 
                                     <select class="form-select  form-select-lg @error('Language_ID') is-invalid @enderror" value="{{ old('Language_ID') }}" required id="Language_ID" name="Language_ID">
-                                    <option >Select Your Language</option>
+                                    <option value="">Select Your Language</option>
                                     @foreach($languages as $language)
                                     <option value="{{ $language -> id}}">{{ $language -> Name}}</option>
 
@@ -264,7 +264,7 @@
                                     <div class="input-group">
 
                                     <select class="form-select  form-select-lg @error('CurrentJob_ID') is-invalid @enderror" value="{{ old('CurrentJob_ID') }}" required name="CurrentJob_ID"  id="CurrentJob_ID">
-                                    <option >Select Your Current Job</option>
+                                    <option value="">Select Your Current Job</option>
                                      @foreach($currentjobs as $currentjob)
                                     <option value="{{ $currentjob -> id}}">{{ $currentjob -> Name}}</option>
 
@@ -287,7 +287,7 @@
                                     <div class="input-group">
 
                                     <select class="form-select  form-select-lg @error('FutureJob_ID') is-invalid @enderror" value="{{ old('FutureJob_ID') }}" required name="FutureJob_ID"  id="FutureJob_ID">
-                                    <option >Select Your Future Job</option>
+                                    <option value="">Select Your Future Job</option>
                                      @foreach($futurejobs as $futurejob)
                                     <option value="{{ $futurejob -> id}}">{{ $futurejob -> Name}}</option>
 
@@ -310,7 +310,7 @@
                                     <div class="input-group">
 
                                     <select class="form-select  form-select-lg @error('EducationLevel_ID') is-invalid @enderror" value="{{ old('EducationLevel_ID') }}" required name="EducationLevel_ID"  id="EducationLevel_ID">
-                                    <option >Select Your Education Level</option>
+                                    <option value="">Select Your Education Level</option>
                                      @foreach($educationlevels as $educationlevel)
                                     <option value="{{ $educationlevel -> id}}">{{ $educationlevel -> Name}}</option>
 
@@ -408,7 +408,7 @@
                                     <label for="Province_ID" class="form-label">Province <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
                                     <select class="form-select Province form-select-lg @error('Province_ID') is-invalid @enderror" required name="Province_ID" value="{{ old('Province_ID') }}" id="Province_ID">
-                                    <option >Select Your Province</option>
+                                    <option value="">Select Your Province</option>
                                      @foreach($provinces as $province)
                                     <option value="{{ $province -> id}}">{{ $province -> Name}}</option>
 
@@ -428,7 +428,7 @@
                                     <label for="District_ID" class="form-label">District <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
                                     <select class="form-select  District form-select-lg @error('District_ID') is-invalid @enderror" required name="District_ID" value="{{ old('District_ID') }}" id="District_ID">
-                                    <option >Select Your District</option>
+                                    <option value="">Select Your District</option>
                            
 
                                     </select>
@@ -490,7 +490,7 @@
                                     <div class="input-group">
 
                                     <select class="form-select  form-select-lg @error('RelativeRelationship_ID') is-invalid @enderror" value="{{ old('RelativeRelationship_ID') }}" required name="RelativeRelationship_ID"  id="RelativeRelationship_ID">
-                                    <option >Select Your Relationship</option>
+                                    <option value="">Select Your Relationship</option>
                                      @foreach($relationships as $relationship)
                                     <option value="{{ $relationship -> id}}">{{ $relationship -> Name}}</option>
 
@@ -645,7 +645,7 @@
                                     <label for="IncomeStreem_ID" class="form-label">Income Streem <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
                                     <select class="form-select form-select-lg @error('IncomeStreem_ID') is-invalid @enderror" value="{{ old('IncomeStreem_ID') }}" required name="IncomeStreem_ID" id="IncomeStreem_ID">
-                                    <option >Select Your Income Streem</option>
+                                    <option value="">Select Your Income Streem</option>
                                      @foreach($incomestreams as $incomestream)
                                     <option value="{{ $incomestream -> id}}">{{ $incomestream -> Name}}</option>
 
@@ -665,7 +665,7 @@
                                     <div class="input-group">
 
                                     <select class="form-select form-select-lg @error('FamilyStatus_ID') is-invalid @enderror" value="{{ old('FamilyStatus_ID') }}" required name="FamilyStatus_ID" id="FamilyStatus_ID">
-                                       <option >Select Your Family Status</option>
+                                       <option value="">Select Your Family Status</option>
                                      @foreach($familystatus as $familystatu)
                                     <option value="{{ $familystatu -> id}}">{{ $familystatu -> Name}}</option>
 

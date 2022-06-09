@@ -13,6 +13,8 @@
         <?php $__env->slot('li_1'); ?> Qamar Care Card <?php $__env->endSlot(); ?>
         <?php $__env->slot('title'); ?> Qamar Care Card List <?php $__env->endSlot(); ?>
     <?php echo $__env->renderComponent(); ?>
+
+    <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="row">
         <div class="col-12">
            <a href="<?php echo e(route('AllQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
@@ -20,6 +22,7 @@
       
         </div>
      </div>
+     
                        <div class="row">
                             <div class="col-lg-12">
                                 <div>
@@ -341,7 +344,7 @@
                     <?php endif; ?>
         </div>
      </div>
-
+<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
 <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
