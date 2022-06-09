@@ -60,7 +60,7 @@
                                 <div class="mb-3 position-relative">
                                     <label for="FirstName" class="form-label ">First Name <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <input type="text" class="form-control form-control-lg @error('FirstName') is-invalid @enderror" value="{{ old('FirstName') }}"  id="FirstName" name="FirstName"
-                                          >
+                                          required>
                                           @error('FirstName')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -72,7 +72,7 @@
                                 <div class="mb-3 position-relative">
                                     <label for="LastName" class="form-label ">Last Name <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <input type="text" class="form-control form-control-lg @error('LastName') is-invalid @enderror" value="{{ old('LastName') }}" id="LastName" name="LastName"
-                                          >
+                                          required>
 
                                           @error('LastName')
                                                 <span class="invalid-feedback" role="alert">
@@ -86,7 +86,7 @@
                                 <div class="mb-3 position-relative">
                                     <label for="TazkiraID" class="form-label ">Tazkira ID <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <input type="number" class="form-control form-control-lg @error('TazkiraID') is-invalid @enderror" value="{{ old('TazkiraID') }}" id="TazkiraID" name="TazkiraID" max="999999999"
-                                          >
+                                          required>
                                           @error('TazkiraID')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -114,7 +114,7 @@
                                     <label for="DOB" class="form-label">Date of Birth <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group " id="example-date-input">
                                       
-                                    <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{ old('DOB') }}" type="date"  id="example-date-input" name="DOB" id="DOB" >
+                                    <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{ old('DOB') }}" type="date"  id="example-date-input" name="DOB" id="DOB" required>
                                     @error('DOB')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -128,7 +128,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3 position-relative">
                                     <label for="Gender_ID" class="form-label">Gender <i class="mdi mdi-asterisk text-danger"></i></label>
-                                    <select class="form-select  form-select-lg @error('Gender_ID') is-invalid @enderror" value="{{ old('Gender_ID') }}" id="Gender_ID"  name="Gender_ID" >
+                                    <select class="form-select  form-select-lg @error('Gender_ID') is-invalid @enderror" value="{{ old('Gender_ID') }}" id="Gender_ID"  name="Gender_ID" required>
                                     <option >Select Your Gender</option>
                                     @foreach($genders as $gender)
                                     <option value="{{ $gender -> id}}">{{ $gender -> Name}}</option>
@@ -160,7 +160,7 @@
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Country_ID" class="form-label">Country <i class="mdi mdi-asterisk text-danger"></i></label>
-                                    <select class="form-select  form-select-lg  @error('Country_ID') is-invalid @enderror" value="{{ old('Country_ID') }}"  id="Country_ID" name="Country_ID">
+                                    <select class="form-select  form-select-lg  @error('Country_ID') is-invalid @enderror" value="{{ old('Country_ID') }}" required id="Country_ID" name="Country_ID">
                                     <option >Select Your Country</option>
                                     @foreach($countries as $country)
                                     <option value="{{ $country -> id}}">{{ $country -> Name}}</option>
@@ -181,7 +181,7 @@
                                     <label for="Tribe_ID" class="form-label">Tribe <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('Tribe') is-invalid @enderror" value="{{ old('Tribe_ID') }}"  id="Tribe_ID" name="Tribe_ID">
+                                    <select class="form-select  form-select-lg @error('Tribe') is-invalid @enderror" value="{{ old('Tribe_ID') }}" required id="Tribe_ID" name="Tribe_ID">
                                     <option >Select Your Tribe</option>
                                     @foreach($tribes as $tribe)
                                     <option value="{{ $tribe -> id}}">{{ $tribe -> Name}}</option>
@@ -203,7 +203,7 @@
                                     <label for="Language_ID" class="form-label">Language <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('Language_ID') is-invalid @enderror" value="{{ old('Language_ID') }}"  id="Language_ID" name="Language_ID">
+                                    <select class="form-select  form-select-lg @error('Language_ID') is-invalid @enderror" value="{{ old('Language_ID') }}" required id="Language_ID" name="Language_ID">
                                     <option >Select Your Language</option>
                                     @foreach($languages as $language)
                                     <option value="{{ $language -> id}}">{{ $language -> Name}}</option>
@@ -228,7 +228,7 @@
                                     <label for="DOB" class="form-label">Date of Birth</label>
                                     <div class="input-group " id="example-date-input">
                                       
-                                    <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{ old('DOB') }}" type="date"  id="example-date-input" name="DOB" id="DOB" >
+                                    <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{ old('DOB') }}" type="date"  id="example-date-input" name="DOB" id="DOB" required>
                                     @error('DOB')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -243,7 +243,7 @@
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Gender" class="form-label">Gender</label>
-                                    <select class="form-select  form-select-lg @error('Gender') is-invalid @enderror" value="{{ old('Gender') }}" id="Gender"  name="Gender" >
+                                    <select class="form-select  form-select-lg @error('Gender') is-invalid @enderror" value="{{ old('Gender') }}" id="Gender"  name="Gender" required>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                  </select>
@@ -263,7 +263,7 @@
                                     <label for="CurrentJob_ID" class="form-label">Current Job <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('CurrentJob_ID') is-invalid @enderror" value="{{ old('CurrentJob_ID') }}"  name="CurrentJob_ID"  id="CurrentJob_ID">
+                                    <select class="form-select  form-select-lg @error('CurrentJob_ID') is-invalid @enderror" value="{{ old('CurrentJob_ID') }}" required name="CurrentJob_ID"  id="CurrentJob_ID">
                                     <option >Select Your Current Job</option>
                                      @foreach($currentjobs as $currentjob)
                                     <option value="{{ $currentjob -> id}}">{{ $currentjob -> Name}}</option>
@@ -286,7 +286,7 @@
                                     <label for="FutureJob_ID" class="form-label">What type of job you can do? <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('FutureJob_ID') is-invalid @enderror" value="{{ old('FutureJob_ID') }}"  name="FutureJob_ID"  id="FutureJob_ID">
+                                    <select class="form-select  form-select-lg @error('FutureJob_ID') is-invalid @enderror" value="{{ old('FutureJob_ID') }}" required name="FutureJob_ID"  id="FutureJob_ID">
                                     <option >Select Your Future Job</option>
                                      @foreach($futurejobs as $futurejob)
                                     <option value="{{ $futurejob -> id}}">{{ $futurejob -> Name}}</option>
@@ -309,7 +309,7 @@
                                     <label for="EducationLevel_ID" class="form-label">Education Level <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('EducationLevel_ID') is-invalid @enderror" value="{{ old('EducationLevel_ID') }}"  name="EducationLevel_ID"  id="EducationLevel_ID">
+                                    <select class="form-select  form-select-lg @error('EducationLevel_ID') is-invalid @enderror" value="{{ old('EducationLevel_ID') }}" required name="EducationLevel_ID"  id="EducationLevel_ID">
                                     <option >Select Your Education Level</option>
                                      @foreach($educationlevels as $educationlevel)
                                     <option value="{{ $educationlevel -> id}}">{{ $educationlevel -> Name}}</option>
@@ -358,7 +358,7 @@
                                       
                                         <input type="number" class="form-control  form-control-lg @error('PrimaryNumber') is-invalid @enderror" value="{{ old('PrimaryNumber') }}" id="PrimaryNumber" name="PrimaryNumber" max="999999999"
                                              aria-describedby="PrimaryNumber"
-                                            >
+                                            required>
                                             @error('PrimaryNumber')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -407,7 +407,7 @@
                                 <div class="mb-3 position-relative">
                                     <label for="Province_ID" class="form-label">Province <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
-                                    <select class="form-select Province form-select-lg @error('Province_ID') is-invalid @enderror"  name="Province_ID" value="{{ old('Province_ID') }}" id="Province_ID">
+                                    <select class="form-select Province form-select-lg @error('Province_ID') is-invalid @enderror" required name="Province_ID" value="{{ old('Province_ID') }}" id="Province_ID">
                                     <option >Select Your Province</option>
                                      @foreach($provinces as $province)
                                     <option value="{{ $province -> id}}">{{ $province -> Name}}</option>
@@ -427,7 +427,7 @@
                                 <div class="mb-3 position-relative">
                                     <label for="District_ID" class="form-label">District <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
-                                    <select class="form-select  District form-select-lg @error('District_ID') is-invalid @enderror"  name="District_ID" value="{{ old('District_ID') }}" id="District_ID">
+                                    <select class="form-select  District form-select-lg @error('District_ID') is-invalid @enderror" required name="District_ID" value="{{ old('District_ID') }}" id="District_ID">
                                     <option >Select Your District</option>
                            
 
@@ -444,7 +444,7 @@
                                 <div class="mb-3 position-relative">
                                     <label for="District" class="form-label">District <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <input type="text" class="form-control  form-control-lg" id="District @error('District') is-invalid @enderror" value="{{ old('District') }}"  name="District"
-                                        >
+                                        required>
                                         @error('District')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -456,7 +456,7 @@
                                 <div class="mb-3 position-relative">
                                     <label for="Village" class="form-label">Village <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <input type="text" class="form-control  form-control-lg @error('Village') is-invalid @enderror" value="{{ old('Village') }}" id="Village"  name="Village"
-                                        >
+                                        required>
                                         @error('Village')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -475,7 +475,7 @@
                                       
                                         <input type="text" class="form-control  form-control-lg @error('RelativeName') is-invalid @enderror" value="{{ old('RelativeName') }}" id="RelativeName" name="RelativeName"
                                             aria-describedby="Email"
-                                            >
+                                            required>
                                             @error('RelativeName')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -489,7 +489,7 @@
                                     <label for="RelativeRelationship_ID" class="form-label">Relationship <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('RelativeRelationship_ID') is-invalid @enderror" value="{{ old('RelativeRelationship_ID') }}"  name="RelativeRelationship_ID"  id="RelativeRelationship_ID">
+                                    <select class="form-select  form-select-lg @error('RelativeRelationship_ID') is-invalid @enderror" value="{{ old('RelativeRelationship_ID') }}" required name="RelativeRelationship_ID"  id="RelativeRelationship_ID">
                                     <option >Select Your Relationship</option>
                                      @foreach($relationships as $relationship)
                                     <option value="{{ $relationship -> id}}">{{ $relationship -> Name}}</option>
@@ -512,7 +512,7 @@
                                       
                                         <input type="number" class="form-control  form-control-lg @error('RelativeNumber') is-invalid @enderror" value="{{ old('RelativeNumber') }}" id="RelativeNumber" name="RelativeNumber" max="999999999"
                                              aria-describedby="RelativeNumber"
-                                            >
+                                            required>
                                             @error('RelativeNumber')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -549,7 +549,7 @@
                                 <div class="mb-3 position-relative">
                                     <label for="FatherName" class="form-label">Father's Name <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <input type="text" class="form-control  form-control-lg @error('FatherName') is-invalid @enderror" value="{{ old('FatherName') }}" id="FatherName" name="FatherName"
-                                          >
+                                          required>
                                           @error('FatherName')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -561,7 +561,7 @@
                                 <div class="mb-3 position-relative">
                                     <label for="SpuoseName" class="form-label">Spuose's Name <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <input type="text" class="form-control  form-control-lg @error('SpuoseName') is-invalid @enderror" value="{{ old('SpuoseName') }}" id="SpuoseName"  name="SpuoseName"
-                                         >
+                                         required>
                                          @error('SpuoseName')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -576,7 +576,7 @@
                                       
                                         <input type="number" class="form-control form-control-lg @error('EldestSonAge') is-invalid @enderror" value="{{ old('EldestSonAge') }}" id="EldestSonAge" name="EldestSonAge" max="150"
                                              aria-describedby="EldestSonAge"
-                                            >
+                                            required>
                                             @error('EldestSonAge')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -596,7 +596,7 @@
                                     <div class="input-group-text">&#1547;</div>
                                        <input type="number" class="form-control form-control-lg @error('MonthlyFamilyIncome') is-invalid @enderror" value="{{ old('MonthlyFamilyIncome') }}" id="MonthlyFamilyIncome" name="MonthlyFamilyIncome" max="999999"
                                             aria-describedby="MonthlyFamilyIncome"
-                                            >
+                                            required>
                                             @error('MonthlyFamilyIncome')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -613,7 +613,7 @@
                                     <div class="input-group-text">&#1547;</div>
                                         <input type="number" class="form-control form-control-lg @error('MonthlyFamilyExpenses') is-invalid @enderror" value="{{ old('MonthlyFamilyExpenses') }}" id="MonthlyFamilyExpenses" name="MonthlyFamilyExpenses" max="999999"
                                              aria-describedby="MonthlyFamilyExpenses"
-                                            >
+                                            required>
                                             @error('MonthlyFamilyExpenses')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -629,7 +629,7 @@
                                       
                                         <input type="number" class="form-control form-control-lg @error('NumberFamilyMembers') is-invalid @enderror" value="{{ old('NumberFamilyMembers') }}" id="NumberFamilyMembers" name="NumberFamilyMembers" max="40"
                                              aria-describedby="NumberFamilyMembers"
-                                            >
+                                            required>
                                             @error('NumberFamilyMembers')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -644,7 +644,7 @@
                                 <div class="mb-3 position-relative">
                                     <label for="IncomeStreem_ID" class="form-label">Income Streem <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
-                                    <select class="form-select form-select-lg @error('IncomeStreem_ID') is-invalid @enderror" value="{{ old('IncomeStreem_ID') }}"  name="IncomeStreem_ID" id="IncomeStreem_ID">
+                                    <select class="form-select form-select-lg @error('IncomeStreem_ID') is-invalid @enderror" value="{{ old('IncomeStreem_ID') }}" required name="IncomeStreem_ID" id="IncomeStreem_ID">
                                     <option >Select Your Income Streem</option>
                                      @foreach($incomestreams as $incomestream)
                                     <option value="{{ $incomestream -> id}}">{{ $incomestream -> Name}}</option>
@@ -664,7 +664,7 @@
                                     <label for="FamilyStatus_ID" class="form-label">Family Status <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
 
-                                    <select class="form-select form-select-lg @error('FamilyStatus_ID') is-invalid @enderror" value="{{ old('FamilyStatus_ID') }}"  name="FamilyStatus_ID" id="FamilyStatus_ID">
+                                    <select class="form-select form-select-lg @error('FamilyStatus_ID') is-invalid @enderror" value="{{ old('FamilyStatus_ID') }}" required name="FamilyStatus_ID" id="FamilyStatus_ID">
                                        <option >Select Your Family Status</option>
                                      @foreach($familystatus as $familystatu)
                                     <option value="{{ $familystatu -> id}}">{{ $familystatu -> Name}}</option>
