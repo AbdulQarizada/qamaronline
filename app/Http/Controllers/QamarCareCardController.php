@@ -154,7 +154,7 @@ public function __construct()
           'RelativeRelationship_ID' => request('RelativeRelationship_ID'),
           'RelativeName' => request('RelativeName'),
           'FamilyStatus_ID' => request('FamilyStatus_ID'),
-          'Country' => request('Country_ID'),
+          'Country_ID' => request('Country_ID'),
           'Tribe_ID' => request('Tribe_ID'),
           'Owner' => 1,
 
