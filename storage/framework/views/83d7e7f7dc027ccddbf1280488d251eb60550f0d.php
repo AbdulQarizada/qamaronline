@@ -206,8 +206,11 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Gender')); ?>" id="Gender"  name="Gender" required>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
+                                    <option >Select Your Gender</option>
+                                    <?php $__currentLoopData = $genders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $gender): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($gender -> id); ?>"><?php echo e($gender -> Name); ?></option>
+
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                  </select>
                                  <?php $__errorArgs = ['Gender'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -298,15 +301,11 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Tribe')); ?>" required id="Tribe" name="Tribe">
-                                    <option>Select Option</option>
-                                    
-                                    <option value="Pashtoon">Pashtoon</option>
-                                    <option value="Tajik">Tajik</option>
-                                    <option value="Hazara">Hazara</option>
-                                    <option value="Nooristani">Nooristani</option>
-                                    <option value="Uzbak">Uzbak</option>
-                                    <option value="Turkman">Turkman</option>
-                                    <option value="Baloch">Baloch</option>
+                                    <option >Select Your Tribe</option>
+                                    <?php $__currentLoopData = $tribes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tribe): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($tribe -> id); ?>"><?php echo e($tribe -> Name); ?></option>
+
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     
 
                                     </select>
@@ -338,16 +337,11 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Language')); ?>" required id="Language" name="Language">
-                                    <option>Select Option</option>
-                                    
-                                    <option value="Pashto">Pashto</option>
-                                    <option value="Dari">Dari</option>
-                                    <option value="Pashai">Pashai</option>
-                                    <option value="Nooristani">Nooristani</option>
-                                    <option value="Uzbaki">Uzbaki</option>
-                                    <option value="Turkmani">Turkmani</option>
-                                    <option value="Balochi">Balochi</option>
-                                    
+                                    <option >Select Your Language</option>
+                                    <?php $__currentLoopData = $languages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $language): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($language -> id); ?>"><?php echo e($language -> Name); ?></option>
+
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                     </select>
                                     <?php $__errorArgs = ['Language'];
@@ -445,15 +439,11 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('CurrentJob')); ?>" required name="CurrentJob"  id="CurrentJob">
-                                    <option>Select Option</option>
-                                    
-                                    <option value="Jobless">Jobless</option>
-                                    <option value="Cooking">Cooking</option>
-                                    <option value="SecurityGuard">Security Guard</option>
-                                     <option value="Driving">Driving</option>
-                                     <option value="Cleaning">Cleaning</option>
-                                     <option value="ShopKeeping">Shop Keeping</option>
-                                     <option value="HouseWife">House Wife</option>
+                                    <option >Select Your Current Job</option>
+                                     <?php $__currentLoopData = $currentjobs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $currentjob): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($currentjob -> id); ?>"><?php echo e($currentjob -> Name); ?></option>
+
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
 
@@ -486,13 +476,12 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FutureJob')); ?>" required name="FutureJob"  id="FutureJob">
-                                    <option>Select Option</option>
-                                    
-                                    <option value="Cooking">Cooking</option>
-                                    <option value="SecurityGuard">Security Guard</option>
-                                     <option value="Driving">Driving</option>
-                                     <option value="Cleaning">Cleaning</option>
-                                     <option value="ShopKeeping">Shop Keeping</option>
+                                    <option >Select Your Future Job</option>
+                                     <?php $__currentLoopData = $futurejobs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $futurejob): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($futurejob -> id); ?>"><?php echo e($futurejob -> Name); ?></option>
+
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
 
 
                                </select>
@@ -524,14 +513,11 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('EducationLevel')); ?>" required name="EducationLevel"  id="EducationLevel">
-                                    <option>Select Option</option>
-                                    
-                                    <option value="NoEducation">No Education</option>
-                                    <option value="NoEducation">Only Read and Write</option>
-                                    <option value="Bachularate">School</option>
-                                     <option value="University">University Graduate</option>
-                                     <option value="Master">Master</option>
-                                     <option value="PhD">PhD</option>
+                                    <option >Select Your Education Level</option>
+                                     <?php $__currentLoopData = $educationlevels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $educationlevel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($educationlevel -> id); ?>"><?php echo e($educationlevel -> Name); ?></option>
+
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
 
@@ -673,7 +659,7 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="mb-3 position-relative">
                                     <label for="Province" class="form-label">Province <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
-                                    <select class="form-select  form-select-lg <?php $__errorArgs = ['Province'];
+                                    <select class="form-select Province form-select-lg <?php $__errorArgs = ['Province'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -681,41 +667,11 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" required name="Province" value="<?php echo e(old('Province')); ?>" id="Province">
-                                    <option>Select Option</option>
-                                     <option value="Badakhshan"> Badakhshan</option>
-    <option value="Badghis"> Badghis</option>
-    <option value="Baghlan"> Baghlan</option>
-    <option value="Balkh"> Balkh</option>
-    <option value="Bamyan"> Bamyan</option>
-   <option value="Daykundi">  Daykundi</option>
-   <option value="Farah">  Farah</option>
-    <option value="Faryab"> Faryab</option>
-    <option value="Ghazni"> Ghazni</option>
-    <option value="Ghor"> Ghor</option>
-    <option value="Helmand"> Helmand</option>
-    <option value="Herat"> Herat</option>
-   <option value="Jowzjan">  Jowzjan</option>
-    <option value="Kabul"> Kabul</option>
-    <option value="Kandahar"> Kandahar</option>
-   <option value="Kapisa">  Kapisa</option>
-   <option value="Khost">  Khost</option>
-  <option value="Kunar">   Kunar</option>
-  <option value="Kunduz">   Kunduz</option>
-   <option value="Laghman">  Laghman</option>
-    <option value="Logar"> Logar</option>
-   <option value="Nangarhar">  Nangarhar</option>
-    <option value="Nimruz"> Nimruz</option>
-    <option value="Nuristan"> Nuristan</option>
-   <option value="Paktia">  Paktia</option>
-    <option value="Paktika"> Paktika</option>
-    <option value="Panjshir"> Panjshir</option>
-    <option value="Parwan"> Parwan</option>
-   <option value="Samangan">  Samangan</option>
-   <option value="Sar-e Pol">  Sar-e Pol</option>
-    <option value="Takhar"> Takhar</option>
-   <option value="Urozgan"> Urozgan</option>
-    <option value="Wardak"> Wardak</option>
-    <option value="Zabul"> Zabul</option>
+                                    <option >Select Your Province</option>
+                                     <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($province -> id); ?>"><?php echo e($province -> Name); ?></option>
+
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                     </select>
                                     <?php $__errorArgs = ['Province'];
@@ -734,6 +690,37 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                             <div class="col-md-4">
+                                <div class="mb-3 position-relative">
+                                    <label for="District" class="form-label">District <i class="mdi mdi-asterisk text-danger"></i></label>
+                                    <div class="input-group">
+                                    <select class="form-select  District form-select-lg <?php $__errorArgs = ['District'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" required name="District" value="<?php echo e(old('District')); ?>" id="District">
+                                    <option >Select Your District</option>
+                           
+
+                                    </select>
+                                    <?php $__errorArgs = ['District'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                               </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="District" class="form-label">District <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <input type="text" class="form-control  form-control-lg" id="District <?php $__errorArgs = ['District'];
@@ -758,7 +745,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Village" class="form-label">Village <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -832,13 +819,12 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('RelativeRelationship')); ?>" required name="RelativeRelationship"  id="RelativeRelationship">
-                                    <option>Select Option</option>
-                                    <option value="Father">Father</option>
-                                    <option value="Mother">Mother</option>
-                                     <option value="Brother">Brother</option>
-                                     <option value="Sister">Sister</option>
-                                     <option value="Uncle">Uncle</option>
-                                     <option value="Aunt">Aunt</option>
+                                    <option >Select Your Relationship</option>
+                                     <?php $__currentLoopData = $relationships; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $relationship): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($relationship -> id); ?>"><?php echo e($relationship -> Name); ?></option>
+
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
                                   </select>
                                   <?php $__errorArgs = ['RelativeRelationship'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -1100,9 +1086,11 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('IncomeStreem')); ?>" required name="IncomeStreem" id="IncomeStreem">
-                                    <option>Select Option</option>
-                                    <option value="Shop">Shop</option>
-                                    <option value="Orphan">Fields</option>
+                                    <option >Select Your Income Streem</option>
+                                     <?php $__currentLoopData = $incomestreams; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $incomestream): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($incomestream -> id); ?>"><?php echo e($incomestream -> Name); ?></option>
+
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                               </select>
                                             <?php $__errorArgs = ['IncomeStreem'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -1132,13 +1120,11 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FamilyStatus')); ?>" required name="FamilyStatus" id="FamilyStatus">
-                                    <option>Select Option</option>
-                                    <option value="Poor">Poor</option>
-                                    <option value="Orphan">Orphan</option>
-                                    <option value="Widow">Widow</option>
-                                    <option value="Handicap">Handicap</option>
-                                    <option value="In debt">In debt</option>
-                                    <option value="Low Income">Low Income</option>
+                                       <option >Select Your Family Status</option>
+                                     <?php $__currentLoopData = $familystatus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $familystatu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($familystatu -> id); ?>"><?php echo e($familystatu -> Name); ?></option>
+
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                               </select>
                               <?php $__errorArgs = ['FamilyStatus'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -1344,6 +1330,37 @@ unset($__errorArgs, $__bag); ?>
         var rnd = Math.floor(Math.random() * 100000000);
         document.getElementById('QCC').value = rnd;
     });
+
+
+    $(document).ready(function() {
+            $('.Province').on('change', function() {
+               var dID = $(this).val();
+               if(dID) {
+                   $.ajax({
+                       url: '/GetDistricts/'+dID,
+                       type: "GET",
+                       data : {"_token":"<?php echo e(csrf_token()); ?>"},
+                       dataType: "json",
+                       success:function(data)
+                       {
+                         if(data){
+                            $('.District').empty();
+                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                            $.each(data, function(key, course){
+                                $('select[name="District"]').append('<option value="'+ course.id +'">' + course.Name+ '</option>');
+                            });
+                        }else{
+                            $('.District').empty();
+                        }
+                     }
+                   });
+               }else{
+                 $('.District').empty();
+               }
+            });
+            });
+
+
 </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/Create.blade.php ENDPATH**/ ?>

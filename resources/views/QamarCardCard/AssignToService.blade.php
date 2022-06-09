@@ -470,7 +470,7 @@
                             $('.District').empty();
                              $('.District').append('<option value="None" hidden>All</option>'); 
                             $.each(data, function(key, course){
-                                $('select[name="District"]').append('<option value="'+ course.Name +'">' + course.Name+ '</option>');
+                                $('select[name="District"]').append('<option value="'+ course.id +'">' + course.Name+ '</option>');
                             });
                         }else{
                             $('.District').empty();

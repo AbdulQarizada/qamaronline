@@ -129,8 +129,11 @@
                                 <div class="mb-3 position-relative">
                                     <label for="Gender" class="form-label">Gender <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <select class="form-select  form-select-lg @error('Gender') is-invalid @enderror" value="{{ old('Gender') }}" id="Gender"  name="Gender" required>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
+                                    <option >Select Your Gender</option>
+                                    @foreach($genders as $gender)
+                                    <option value="{{ $gender -> id}}">{{ $gender -> Name}}</option>
+
+                                    @endforeach
                                  </select>
                                  @error('Gender')
                                                 <span class="invalid-feedback" role="alert">
@@ -179,15 +182,11 @@
                                     <div class="input-group">
 
                                     <select class="form-select  form-select-lg @error('Tribe') is-invalid @enderror" value="{{ old('Tribe') }}" required id="Tribe" name="Tribe">
-                                    <option>Select Option</option>
-                                    
-                                    <option value="Pashtoon">Pashtoon</option>
-                                    <option value="Tajik">Tajik</option>
-                                    <option value="Hazara">Hazara</option>
-                                    <option value="Nooristani">Nooristani</option>
-                                    <option value="Uzbak">Uzbak</option>
-                                    <option value="Turkman">Turkman</option>
-                                    <option value="Baloch">Baloch</option>
+                                    <option >Select Your Tribe</option>
+                                    @foreach($tribes as $tribe)
+                                    <option value="{{ $tribe -> id}}">{{ $tribe -> Name}}</option>
+
+                                    @endforeach
                                     
 
                                     </select>
@@ -205,16 +204,11 @@
                                     <div class="input-group">
 
                                     <select class="form-select  form-select-lg @error('Language') is-invalid @enderror" value="{{ old('Language') }}" required id="Language" name="Language">
-                                    <option>Select Option</option>
-                                    
-                                    <option value="Pashto">Pashto</option>
-                                    <option value="Dari">Dari</option>
-                                    <option value="Pashai">Pashai</option>
-                                    <option value="Nooristani">Nooristani</option>
-                                    <option value="Uzbaki">Uzbaki</option>
-                                    <option value="Turkmani">Turkmani</option>
-                                    <option value="Balochi">Balochi</option>
-                                    
+                                    <option >Select Your Language</option>
+                                    @foreach($languages as $language)
+                                    <option value="{{ $language -> id}}">{{ $language -> Name}}</option>
+
+                                    @endforeach
 
                                     </select>
                                     @error('Language')
@@ -270,15 +264,11 @@
                                     <div class="input-group">
 
                                     <select class="form-select  form-select-lg @error('CurrentJob') is-invalid @enderror" value="{{ old('CurrentJob') }}" required name="CurrentJob"  id="CurrentJob">
-                                    <option>Select Option</option>
-                                    
-                                    <option value="Jobless">Jobless</option>
-                                    <option value="Cooking">Cooking</option>
-                                    <option value="SecurityGuard">Security Guard</option>
-                                     <option value="Driving">Driving</option>
-                                     <option value="Cleaning">Cleaning</option>
-                                     <option value="ShopKeeping">Shop Keeping</option>
-                                     <option value="HouseWife">House Wife</option>
+                                    <option >Select Your Current Job</option>
+                                     @foreach($currentjobs as $currentjob)
+                                    <option value="{{ $currentjob -> id}}">{{ $currentjob -> Name}}</option>
+
+                                    @endforeach
 
 
 
@@ -297,13 +287,12 @@
                                     <div class="input-group">
 
                                     <select class="form-select  form-select-lg @error('FutureJob') is-invalid @enderror" value="{{ old('FutureJob') }}" required name="FutureJob"  id="FutureJob">
-                                    <option>Select Option</option>
-                                    
-                                    <option value="Cooking">Cooking</option>
-                                    <option value="SecurityGuard">Security Guard</option>
-                                     <option value="Driving">Driving</option>
-                                     <option value="Cleaning">Cleaning</option>
-                                     <option value="ShopKeeping">Shop Keeping</option>
+                                    <option >Select Your Future Job</option>
+                                     @foreach($futurejobs as $futurejob)
+                                    <option value="{{ $futurejob -> id}}">{{ $futurejob -> Name}}</option>
+
+                                    @endforeach
+
 
 
                                </select>
@@ -321,14 +310,11 @@
                                     <div class="input-group">
 
                                     <select class="form-select  form-select-lg @error('EducationLevel') is-invalid @enderror" value="{{ old('EducationLevel') }}" required name="EducationLevel"  id="EducationLevel">
-                                    <option>Select Option</option>
-                                    
-                                    <option value="NoEducation">No Education</option>
-                                    <option value="NoEducation">Only Read and Write</option>
-                                    <option value="Bachularate">School</option>
-                                     <option value="University">University Graduate</option>
-                                     <option value="Master">Master</option>
-                                     <option value="PhD">PhD</option>
+                                    <option >Select Your Education Level</option>
+                                     @foreach($educationlevels as $educationlevel)
+                                    <option value="{{ $educationlevel -> id}}">{{ $educationlevel -> Name}}</option>
+
+                                    @endforeach
 
 
 
@@ -421,42 +407,12 @@
                                 <div class="mb-3 position-relative">
                                     <label for="Province" class="form-label">Province <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
-                                    <select class="form-select  form-select-lg @error('Province') is-invalid @enderror" required name="Province" value="{{ old('Province') }}" id="Province">
-                                    <option>Select Option</option>
-                                     <option value="Badakhshan"> Badakhshan</option>
-    <option value="Badghis"> Badghis</option>
-    <option value="Baghlan"> Baghlan</option>
-    <option value="Balkh"> Balkh</option>
-    <option value="Bamyan"> Bamyan</option>
-   <option value="Daykundi">  Daykundi</option>
-   <option value="Farah">  Farah</option>
-    <option value="Faryab"> Faryab</option>
-    <option value="Ghazni"> Ghazni</option>
-    <option value="Ghor"> Ghor</option>
-    <option value="Helmand"> Helmand</option>
-    <option value="Herat"> Herat</option>
-   <option value="Jowzjan">  Jowzjan</option>
-    <option value="Kabul"> Kabul</option>
-    <option value="Kandahar"> Kandahar</option>
-   <option value="Kapisa">  Kapisa</option>
-   <option value="Khost">  Khost</option>
-  <option value="Kunar">   Kunar</option>
-  <option value="Kunduz">   Kunduz</option>
-   <option value="Laghman">  Laghman</option>
-    <option value="Logar"> Logar</option>
-   <option value="Nangarhar">  Nangarhar</option>
-    <option value="Nimruz"> Nimruz</option>
-    <option value="Nuristan"> Nuristan</option>
-   <option value="Paktia">  Paktia</option>
-    <option value="Paktika"> Paktika</option>
-    <option value="Panjshir"> Panjshir</option>
-    <option value="Parwan"> Parwan</option>
-   <option value="Samangan">  Samangan</option>
-   <option value="Sar-e Pol">  Sar-e Pol</option>
-    <option value="Takhar"> Takhar</option>
-   <option value="Urozgan"> Urozgan</option>
-    <option value="Wardak"> Wardak</option>
-    <option value="Zabul"> Zabul</option>
+                                    <select class="form-select Province form-select-lg @error('Province') is-invalid @enderror" required name="Province" value="{{ old('Province') }}" id="Province">
+                                    <option >Select Your Province</option>
+                                     @foreach($provinces as $province)
+                                    <option value="{{ $province -> id}}">{{ $province -> Name}}</option>
+
+                                    @endforeach
 
                                     </select>
                                     @error('Province')
@@ -470,6 +426,23 @@
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="District" class="form-label">District <i class="mdi mdi-asterisk text-danger"></i></label>
+                                    <div class="input-group">
+                                    <select class="form-select  District form-select-lg @error('District') is-invalid @enderror" required name="District" value="{{ old('District') }}" id="District">
+                                    <option >Select Your District</option>
+                           
+
+                                    </select>
+                                    @error('District')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                               @enderror
+                               </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-4">
+                                <div class="mb-3 position-relative">
+                                    <label for="District" class="form-label">District <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <input type="text" class="form-control  form-control-lg" id="District @error('District') is-invalid @enderror" value="{{ old('District') }}"  name="District"
                                         required>
                                         @error('District')
@@ -478,7 +451,7 @@
                                                 </span>
                                @enderror
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Village" class="form-label">Village <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -517,13 +490,12 @@
                                     <div class="input-group">
 
                                     <select class="form-select  form-select-lg @error('RelativeRelationship') is-invalid @enderror" value="{{ old('RelativeRelationship') }}" required name="RelativeRelationship"  id="RelativeRelationship">
-                                    <option>Select Option</option>
-                                    <option value="Father">Father</option>
-                                    <option value="Mother">Mother</option>
-                                     <option value="Brother">Brother</option>
-                                     <option value="Sister">Sister</option>
-                                     <option value="Uncle">Uncle</option>
-                                     <option value="Aunt">Aunt</option>
+                                    <option >Select Your Relationship</option>
+                                     @foreach($relationships as $relationship)
+                                    <option value="{{ $relationship -> id}}">{{ $relationship -> Name}}</option>
+
+                                    @endforeach
+
                                   </select>
                                   @error('RelativeRelationship')
                                                 <span class="invalid-feedback" role="alert">
@@ -673,9 +645,11 @@
                                     <label for="IncomeStreem" class="form-label">Income Streem <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
                                     <select class="form-select form-select-lg @error('IncomeStreem') is-invalid @enderror" value="{{ old('IncomeStreem') }}" required name="IncomeStreem" id="IncomeStreem">
-                                    <option>Select Option</option>
-                                    <option value="Shop">Shop</option>
-                                    <option value="Orphan">Fields</option>
+                                    <option >Select Your Income Streem</option>
+                                     @foreach($incomestreams as $incomestream)
+                                    <option value="{{ $incomestream -> id}}">{{ $incomestream -> Name}}</option>
+
+                                    @endforeach
                               </select>
                                             @error('IncomeStreem')
                                                 <span class="invalid-feedback" role="alert">
@@ -691,13 +665,11 @@
                                     <div class="input-group">
 
                                     <select class="form-select form-select-lg @error('FamilyStatus') is-invalid @enderror" value="{{ old('FamilyStatus') }}" required name="FamilyStatus" id="FamilyStatus">
-                                    <option>Select Option</option>
-                                    <option value="Poor">Poor</option>
-                                    <option value="Orphan">Orphan</option>
-                                    <option value="Widow">Widow</option>
-                                    <option value="Handicap">Handicap</option>
-                                    <option value="In debt">In debt</option>
-                                    <option value="Low Income">Low Income</option>
+                                       <option >Select Your Family Status</option>
+                                     @foreach($familystatus as $familystatu)
+                                    <option value="{{ $familystatu -> id}}">{{ $familystatu -> Name}}</option>
+
+                                    @endforeach
                               </select>
                               @error('FamilyStatus')
                                                 <span class="invalid-feedback" role="alert">
@@ -868,5 +840,36 @@
         var rnd = Math.floor(Math.random() * 100000000);
         document.getElementById('QCC').value = rnd;
     });
+
+
+    $(document).ready(function() {
+            $('.Province').on('change', function() {
+               var dID = $(this).val();
+               if(dID) {
+                   $.ajax({
+                       url: '/GetDistricts/'+dID,
+                       type: "GET",
+                       data : {"_token":"{{ csrf_token() }}"},
+                       dataType: "json",
+                       success:function(data)
+                       {
+                         if(data){
+                            $('.District').empty();
+                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                            $.each(data, function(key, course){
+                                $('select[name="District"]').append('<option value="'+ course.id +'">' + course.Name+ '</option>');
+                            });
+                        }else{
+                            $('.District').empty();
+                        }
+                     }
+                   });
+               }else{
+                 $('.District').empty();
+               }
+            });
+            });
+
+
 </script>
 @endsection

@@ -589,7 +589,7 @@
                                 <br />
 
                                 <div class="row">
-                                    <h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">Reports</h1>
+                                    <h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">System Management</h1>
                                     <div class="col-lg-6">
                                         <!-- center modal -->
 
@@ -707,7 +707,7 @@ unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </a>
                                             </div>
-                                            <div class="col-md-4 mb-2">
+                                            <!-- <div class="col-md-4 mb-2">
                                                 <a href="QuartlyReports">
                                                     <div class="card-one  mini-stats-wid border border-secondary">
                                                         <div class="card-body">
@@ -762,7 +762,7 @@ unset($__errorArgs, $__bag); ?>
                                                         </div>
                                                     </div>
                                                 </a>
-                                            </div>
+                                            </div> -->
 
 
                                         </div>
