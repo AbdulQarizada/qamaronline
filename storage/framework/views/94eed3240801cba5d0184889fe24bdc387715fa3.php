@@ -131,8 +131,8 @@
                                                     <tr>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Email</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> Email); ?></td>
-                                                        <td style="width: 20%; border: 2px solid #000; padding: 5px;"></td>
-                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"></td>
+                                                        <td style="width: 20%; border: 2px solid #000; padding: 5px;">Service Type</td>
+                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> ServiceType); ?></td>
                                                     </tr>
                                                   
                                             </table>

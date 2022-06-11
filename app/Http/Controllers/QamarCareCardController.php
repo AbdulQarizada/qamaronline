@@ -895,6 +895,8 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
       ->join('look_ups as h','service_providers.EducationLevel_ID', '=', 'h.id')
       ->join('locations as i','service_providers.ProvinceService_ID', '=', 'i.id')
       ->join('locations as j','service_providers.DistrictService_ID', '=', 'j.id')
+      ->join('service_types as k','service_providers.ServiceType_ID', '=', 'k.id')
+
       // ->join('look_ups as k','qamar_care_cards.Tribe_ID', '=', 'k.id')
       // ->join('look_ups as l','qamar_care_cards.IncomeStreem_ID', '=', 'l.id')
       
@@ -910,6 +912,7 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
       'h.Name as EducationLevel', 
       'i.Name as ProvinceService', 
       'j.Name as DistrictService', 
+      'k.Name as ServiceType',
       // 'k.Name as Tribe', 
       // 'l.Name as IncomeStreem'
       )
