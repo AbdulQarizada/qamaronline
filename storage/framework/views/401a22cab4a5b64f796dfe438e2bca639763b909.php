@@ -156,7 +156,7 @@
                                             <span class="avatar-title bg-danger rounded-circle display-6">80%</span>
                                             <?php endif; ?>
                                             <?php if( $data -> LevelPoverty == 5): ?>
-                                            <span class="avatar-title bg-danger rounded-circle display-6">100%</span>
+                                            <span class="avatar-title bg-danger rounded-circle font-size-26">100%</span>
                                             <?php endif; ?>
                                  </div>
                                
