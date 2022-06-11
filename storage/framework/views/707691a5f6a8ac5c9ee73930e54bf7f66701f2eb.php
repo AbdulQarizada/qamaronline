@@ -44,7 +44,7 @@ endif;
 unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;" 
 >
                                    <option value="<?php echo e(route('AssigningServiceQamarCareCard')); ?>">Please Filter Your Choices</option>
-                                     <option value="<?php echo e(route('AssigningServiceQamarCareCard')); ?>">Eligible Beneficiaries</option>
+                                   <option value="<?php echo e(route('AssigningServiceQamarCareCard')); ?>">Eligible Beneficiaries</option>
                                     <option value="<?php echo e(route('AssignedServicesQamarCareCard')); ?>">Assigned Services</option>
                                     <!-- <option value="<?php echo e(route('RecievedServicesQamarCareCard')); ?>">Recieved Services</option> -->
                                     <!-- <option value="<?php echo e(route('PrintedQamarCareCard')); ?>">Printed</option>
@@ -74,12 +74,14 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Full Name</th>
-                                <th>Address</th>
-                                <th>Phone Numbers</th>
-                                <th>Family Status</th>
-                                <th>Status</th>
-                                <th>Created By</th>
+                                <th>Beneficiary</th>
+                                <th>Beneficiary Address</th>
+                                <th>Beneficiary Phone </th>
+                                <th>Service Provider</th>
+                                <th>Service Provider Address</th>
+                                <th>Service Provider Phone</th>
+                                <th>Discount</th>
+                                <th>Assigned By</th>
                                 <th>Actions</th>
                                 
                             </tr>
@@ -91,8 +93,26 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                 <tr>
                                 <td><?php echo e($qamarcarecard -> id); ?></td>
                                 <td>
-                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> FirstName); ?> <?php echo e($qamarcarecard -> LastName); ?></a></h5>
-                                        <p class="text-muted mb-0">QCC-<?php echo e($qamarcarecard -> QCC); ?></p>
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> BFirstName); ?> <?php echo e($qamarcarecard -> BLastName); ?></a></h5>
+                                        <p class="text-muted mb-0">QCC-<?php echo e($qamarcarecard -> BQCC); ?></p>
+                                </td>
+                                <td>
+                                <div>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> ProvinceName); ?></a></h5>
+                                    <!-- <p class="text-muted mb-0"><?php echo e($qamarcarecard -> DistrictName); ?></p>  -->
+                               
+                                    </div>
+                                </td>
+                                <td>    
+                                      <div>
+                                      <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($qamarcarecard -> BPrimaryNumber); ?></a></h5>
+                                        <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($qamarcarecard -> BSecondaryNumber); ?></p>
+                                         <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($qamarcarecard -> BRelativeNumber); ?></p>
+                                        </div>
+                               </td> 
+                               <td>
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> SPFirstName); ?> <?php echo e($qamarcarecard -> SPLastName); ?></a></h5>
+                                        <p class="text-muted mb-0">QCC-<?php echo e($qamarcarecard -> SPQCC); ?></p>
                                 </td>
                                 <td>
                                 <div>
@@ -103,54 +123,42 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                 </td>
                                 <td>    
                                       <div>
-                                      <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($qamarcarecard -> PrimaryNumber); ?></a></h5>
-                                        <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($qamarcarecard -> SecondaryNumber); ?></p>
-                                         <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($qamarcarecard -> RelativeNumber); ?></p>
+                                      <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($qamarcarecard -> SPPrimaryNumber); ?></a></h5>
+                                        <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($qamarcarecard -> SPSecondaryNumber); ?></p>
+                                         <!-- <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($qamarcarecard -> RelativeNumber); ?></p> -->
                                         </div>
-                               </td> 
+                               </td>
                                <td>
-                                <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> FamilyStatus); ?></a></h5>
-                                       <?php if( $qamarcarecard -> LevelPoverty == 1): ?>
-                                         <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-secondary font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-
-                                       <?php endif; ?>
-                                       <?php if( $qamarcarecard -> LevelPoverty == 2): ?>
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       <?php endif; ?>
-                                       <?php if( $qamarcarecard -> LevelPoverty == 3): ?>
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       <?php endif; ?>
-                                       <?php if( $qamarcarecard -> LevelPoverty == 4): ?>
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       <?php endif; ?>
-                                       <?php if( $qamarcarecard -> LevelPoverty == 5): ?>
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       <?php endif; ?>
-                                    </div>
+                                
+                                <div class="avatar-sm ">
+                                           <?php if( $qamarcarecard -> LevelPoverty == 1): ?>
+                                            <span class="avatar-title bg-danger rounded-circle">20%</span>
+                                            <?php endif; ?>
+                                            <?php if( $qamarcarecard -> LevelPoverty == 2): ?>
+                                            <span class="avatar-title bg-danger rounded-circle">40%</span>
+                                            <?php endif; ?>
+                                            <?php if( $qamarcarecard -> LevelPoverty == 3): ?>
+                                            <span class="avatar-title bg-danger rounded-circle">60%</span>
+                                            <?php endif; ?>
+                                            <?php if( $qamarcarecard -> LevelPoverty == 4): ?>
+                                            <span class="avatar-title bg-danger rounded-circle ">80%</span>
+                                            <?php endif; ?>
+                                            <?php if( $qamarcarecard -> LevelPoverty == 5): ?>
+                                            <span class="avatar-title bg-danger rounded-circle">100%</span>
+                                            <?php endif; ?>
+                                 </div>
+                               
                                 </td>
+                              <td>
+                              <div>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> Created_By); ?></a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at); ?></p> 
+
+                               
+                                </div>
+                              </td>
                                    
-                               <td>
+                               <!-- <td>
                         
 
                                 <div>
@@ -181,8 +189,9 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                  <?php endif; ?>
 
                                     </div>
-                                </td>
-                                <td>
+                                </td> -->
+                                <!-- <td>
+                                <?php if( $qamarcarecard -> Status == "Pending"): ?>
                                 <?php if( $qamarcarecard -> Created_By !=""): ?>
 
                                 <div>
@@ -199,7 +208,8 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
 
                                   </div>
                                 <?php endif; ?>
-                                </td>
+                                <?php endif; ?>
+                                </td> -->
                                 
                 <td>
                        <div class="d-flex flex-wrap gap-2">
@@ -291,4 +301,4 @@ $('.recieved').on('click', function (event) {
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/AssigningService.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/AssignedService.blade.php ENDPATH**/ ?>

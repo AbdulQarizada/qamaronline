@@ -120,7 +120,9 @@ Route::post('/ServiceProvider_Profile', [App\Http\Controllers\HomeController:: c
 
        // list
        Route::get('/QamarCareCard/AssigningService', [App\Http\Controllers\QamarCareCardController:: class, 'AssigningService'])->name('AssigningServiceQamarCareCard');
-       Route::get('/QamarCareCard/PendingServices', [App\Http\Controllers\QamarCareCardController:: class, 'PendingServices'])->name('PendingServicesQamarCareCard');
+       Route::get('/QamarCareCard/AssignedServices', [App\Http\Controllers\QamarCareCardController:: class, 'AssignedServices'])->name('AssignedServicesQamarCareCard');
+       
+       
        Route::get('/QamarCareCard/RecievedServices', [App\Http\Controllers\QamarCareCardController:: class, 'RecievedServices'])->name('RecievedServicesQamarCareCard');
        Route::get('/QamarCareCard/RejectedServices', [App\Http\Controllers\QamarCareCardController:: class, 'RejectedServices'])->name('RejectedServicesQamarCareCard');
 

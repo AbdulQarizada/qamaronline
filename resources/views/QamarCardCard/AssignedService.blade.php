@@ -37,7 +37,7 @@
         <select class="form-select  form-select-lg mb-3 @error('Country') is-invalid @enderror"  onchange="window.location.href=this.value;" 
 >
                                    <option value="{{route('AssigningServiceQamarCareCard')}}">Please Filter Your Choices</option>
-                                     <option value="{{route('AssigningServiceQamarCareCard')}}">Eligible Beneficiaries</option>
+                                   <option value="{{route('AssigningServiceQamarCareCard')}}">Eligible Beneficiaries</option>
                                     <option value="{{route('AssignedServicesQamarCareCard')}}">Assigned Services</option>
                                     <!-- <option value="{{route('RecievedServicesQamarCareCard')}}">Recieved Services</option> -->
                                     <!-- <option value="{{route('PrintedQamarCareCard')}}">Printed</option>
@@ -67,12 +67,14 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Full Name</th>
-                                <th>Address</th>
-                                <th>Phone Numbers</th>
-                                <th>Family Status</th>
-                                <th>Status</th>
-                                <th>Created By</th>
+                                <th>Beneficiary</th>
+                                <th>Beneficiary Address</th>
+                                <th>Beneficiary Phone </th>
+                                <th>Service Provider</th>
+                                <th>Service Provider Address</th>
+                                <th>Service Provider Phone</th>
+                                <th>Discount</th>
+                                <th>Assigned By</th>
                                 <th>Actions</th>
                                 
                             </tr>
@@ -84,8 +86,26 @@
                                 <tr>
                                 <td>{{$qamarcarecard -> id}}</td>
                                 <td>
-                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> FirstName}} {{$qamarcarecard -> LastName}}</a></h5>
-                                        <p class="text-muted mb-0">QCC-{{$qamarcarecard -> QCC}}</p>
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> BFirstName}} {{$qamarcarecard -> BLastName}}</a></h5>
+                                        <p class="text-muted mb-0">QCC-{{$qamarcarecard -> BQCC}}</p>
+                                </td>
+                                <td>
+                                <div>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> ProvinceName}}</a></h5>
+                                    <!-- <p class="text-muted mb-0">{{$qamarcarecard -> DistrictName }}</p>  -->
+                               
+                                    </div>
+                                </td>
+                                <td>    
+                                      <div>
+                                      <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$qamarcarecard -> BPrimaryNumber}}</a></h5>
+                                        <p class="text-muted mb-0 badge badge-soft-warning">{{$qamarcarecard -> BSecondaryNumber}}</p>
+                                         <p class="text-muted mb-0 badge badge-soft-danger">{{$qamarcarecard -> BRelativeNumber}}</p>
+                                        </div>
+                               </td> 
+                               <td>
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> SPFirstName}} {{$qamarcarecard -> SPLastName}}</a></h5>
+                                        <p class="text-muted mb-0">QCC-{{$qamarcarecard -> SPQCC}}</p>
                                 </td>
                                 <td>
                                 <div>
@@ -96,54 +116,42 @@
                                 </td>
                                 <td>    
                                       <div>
-                                      <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$qamarcarecard -> PrimaryNumber}}</a></h5>
-                                        <p class="text-muted mb-0 badge badge-soft-warning">{{$qamarcarecard -> SecondaryNumber}}</p>
-                                         <p class="text-muted mb-0 badge badge-soft-danger">{{$qamarcarecard -> RelativeNumber}}</p>
+                                      <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$qamarcarecard -> SPPrimaryNumber}}</a></h5>
+                                        <p class="text-muted mb-0 badge badge-soft-warning">{{$qamarcarecard -> SPSecondaryNumber}}</p>
+                                         <!-- <p class="text-muted mb-0 badge badge-soft-danger">{{$qamarcarecard -> RelativeNumber}}</p> -->
                                         </div>
-                               </td> 
+                               </td>
                                <td>
-                                <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> FamilyStatus}}</a></h5>
-                                       @if( $qamarcarecard -> LevelPoverty == 1)
-                                         <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-secondary font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-
-                                       @endif
-                                       @if( $qamarcarecard -> LevelPoverty == 2)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $qamarcarecard -> LevelPoverty == 3)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $qamarcarecard -> LevelPoverty == 4)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $qamarcarecard -> LevelPoverty == 5)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                    </div>
+                                
+                                <div class="avatar-sm ">
+                                           @if( $qamarcarecard -> LevelPoverty == 1)
+                                            <span class="avatar-title bg-danger rounded-circle">20%</span>
+                                            @endif
+                                            @if( $qamarcarecard -> LevelPoverty == 2)
+                                            <span class="avatar-title bg-danger rounded-circle">40%</span>
+                                            @endif
+                                            @if( $qamarcarecard -> LevelPoverty == 3)
+                                            <span class="avatar-title bg-danger rounded-circle">60%</span>
+                                            @endif
+                                            @if( $qamarcarecard -> LevelPoverty == 4)
+                                            <span class="avatar-title bg-danger rounded-circle ">80%</span>
+                                            @endif
+                                            @if( $qamarcarecard -> LevelPoverty == 5)
+                                            <span class="avatar-title bg-danger rounded-circle">100%</span>
+                                            @endif
+                                 </div>
+                               
                                 </td>
+                              <td>
+                              <div>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> Created_By }}</a></h5>
+                                    <p class="text-muted mb-0">{{$qamarcarecard -> created_at}}</p> 
+
+                               
+                                </div>
+                              </td>
                                    
-                               <td>
+                               <!-- <td>
                         
 
                                 <div>
@@ -174,8 +182,9 @@
                                  @endif
 
                                     </div>
-                                </td>
-                                <td>
+                                </td> -->
+                                <!-- <td>
+                                @if( $qamarcarecard -> Status == "Pending")
                                 @if( $qamarcarecard -> Created_By !="")
 
                                 <div>
@@ -192,7 +201,8 @@
 
                                   </div>
                                 @endif
-                                </td>
+                                @endif
+                                </td> -->
                                 
                 <td>
                        <div class="d-flex flex-wrap gap-2">

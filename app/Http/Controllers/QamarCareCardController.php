@@ -478,19 +478,26 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
 
 
 
-    public function PendingServices(QamarCareCard $data)
+    public function AssignedServices(AssignCareCardServices $data)
     {
-      $qamarcarecards =   AssignCareCardServices::where("Status", "=", 'Pending')->get();
+      // $qamarcarecards =   AssignCareCardServices::where("Status", "=", 'Pending')->get();
 
-      // $qamarcarecards =   AssignCareCardServices::join('locations as a', 'assign_care_card_services.Province_ID', '=', 'a.id')
+      $qamarcarecards =   AssignCareCardServices::join('locations as a', 'assign_care_card_services.Province_ID', '=', 'a.id')
       // ->join('locations as b','assign_care_card_services.District_ID', '=', 'b.id')
-      //  ->join('LookUp as c','qamar_care_cards.Education_ID', '=', 'c.id')
-      // ->select(['qamar_care_cards.*','a.Name as ProvinceName', 'b.Name as DistrictName', ])
-      //  ->where("Status", "=", 'Pending')
-      //  ->get();
+     ->join('qamar_care_cards as c','assign_care_card_services.Assignee_ID', '=', 'c.id')
+     ->join('service_providers as d','assign_care_card_services.ServiceProvider_ID', '=', 'd.id')
+      ->select(['assign_care_card_services.*',
+      'a.Name as ProvinceName', 'c.LevelPoverty', 'c.FirstName as BFirstName', 'c.LastName as BLastName', 'd.QCC as BQCC',
+      'c.PrimaryNumber as BPrimaryNumber', 'c.SecondaryNumber as BSecondaryNumber','c.RelativeNumber as BRelativeNumber',
+
+      'd.FirstName as SPFirstName', 'd.LastName as SPLastName', 'd.QCC as SPQCC',
+      'd.PrimaryNumber as SPPrimaryNumber', 'd.SecondaryNumber as SPSecondaryNumber',
+      ])
+       ->where("assign_care_card_services.Status", "=", 'Pending')
+       ->get();
 
 
-      return view('QamarCardCard.AssigningService', compact('qamarcarecards'));
+      return view('QamarCardCard.AssignedService', compact('qamarcarecards'));
     }
    
 
