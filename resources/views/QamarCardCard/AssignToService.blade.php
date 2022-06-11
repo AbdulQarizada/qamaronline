@@ -156,7 +156,7 @@
                                             <span class="avatar-title bg-danger rounded-circle display-6">80%</span>
                                             @endif
                                             @if( $data -> LevelPoverty == 5)
-                                            <span class="avatar-title bg-danger rounded-circle display-5">100%</span>
+                                            <span class="avatar-title bg-danger rounded-circle display-4">100%</span>
                                             @endif
                                  </div>
                                
