@@ -56,7 +56,7 @@
                                 <tr>
                                 <td>
                                         <div>
-                                            <img  class="rounded-circle avatar-lg" src="<?php echo e(URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)); ?>"
+                                            <img  class="rounded avatar-lg" src="<?php echo e(URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)); ?>"
                                                 alt="">
                                         </div>
                                     </td>
