@@ -71,7 +71,7 @@
                                 <th>Beneficiary Address</th>
                                 <th>Beneficiary Phone </th>
                                 <th>Service Provider</th>
-                                <th>Service Provider Address</th>
+                                <th>Service Address</th>
                                 <th>Service Provider Phone</th>
                                 <th>Discount</th>
                                 <th>Assigned By</th>
