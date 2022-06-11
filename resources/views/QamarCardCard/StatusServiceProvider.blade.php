@@ -212,7 +212,7 @@
                                                   
                                                   
                                             </table> -->
-                                            <table class="table table-nowrap">
+                                            <!-- <table class="table table-nowrap">
                                                 <h5 style="font-weight: bold;" class="card-header  text-dark">DOCUMENTS</h5>
                                                     <tr>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Tazkira</td>
@@ -221,7 +221,7 @@
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;"></td>
                                                     </tr>
                                                                                               
-                                            </table>
+                                            </table> -->
                                             <!-- <table class="table table-nowrap">
                                                     <tr>
                                                         <td style="width: 20%;  padding: 5px;">    
