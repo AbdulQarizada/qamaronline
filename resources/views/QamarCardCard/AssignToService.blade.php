@@ -102,23 +102,23 @@
                                        @if( $data -> LevelPoverty == 3)
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-warning font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
                                        @endif
                                        @if( $data -> LevelPoverty == 4)
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-warning font-size-16"></i>
+                                         <i class="bx bxs-star text-warning font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
                                        @endif
                                        @if( $data -> LevelPoverty == 5)
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+                                         <i class="bx bxs-star text-warning font-size-16"></i>
+                                         <i class="bx bxs-star text-warning font-size-18"></i>
+                                         <i class="bx bxs-star text-warning font-size-20"></i>
                                        @endif
                                     </div>
                                 </td>
@@ -480,7 +480,7 @@
                          if(data){
                             $('.District').empty();
                             $('.District').append('<option value="" >Select District</option>'); 
-                             $('.District').append('<option value="3412" >All</option>'); 
+                             $('.District').append('<option value="0" >All</option>'); 
                             $.each(data, function(key, course){
                                 $('select[name="District_ID"]').append('<option value="'+ course.id +'">' + course.Name+ '</option>');
                             });
