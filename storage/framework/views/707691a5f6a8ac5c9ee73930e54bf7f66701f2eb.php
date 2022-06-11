@@ -78,7 +78,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                 <th>Beneficiary Address</th>
                                 <th>Beneficiary Phone </th>
                                 <th>Service Provider</th>
-                                <th>Service Provider Address</th>
+                                <th>Service Address</th>
                                 <th>Service Provider Phone</th>
                                 <th>Discount</th>
                                 <th>Assigned By</th>
@@ -99,7 +99,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                 <td>
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> ProvinceName); ?></a></h5>
-                                    <!-- <p class="text-muted mb-0"><?php echo e($qamarcarecard -> DistrictName); ?></p>  -->
+                                  <p class="text-muted mb-0"><?php echo e($qamarcarecard -> DistrictName); ?></p>
                                
                                     </div>
                                 </td>

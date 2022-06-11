@@ -71,6 +71,7 @@
                                 <th>ID</th>
                                 <th>Full Name</th>
                                 <th>Address</th>
+                                <th>Service Type</th>
                                 <th>Service Address</th>
                                 <th>Phone Numbers</th>
                                 <th>Status</th>
@@ -93,6 +94,13 @@
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$serviceprovider -> ProvinceName}}</a></h5>
                                     <p class="text-muted mb-0">{{$serviceprovider -> DistrictName }}</p> 
+                               
+                                    </div>
+                                </td>
+                                <td>
+                                <div>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$serviceprovider -> ServiceType}}</a></h5>
+                                    <!-- <p class="text-muted mb-0">{{$serviceprovider -> DistrictName }}</p>  -->
                                
                                     </div>
                                 </td>

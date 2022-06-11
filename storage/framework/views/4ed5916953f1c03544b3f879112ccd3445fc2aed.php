@@ -78,6 +78,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                 <th>ID</th>
                                 <th>Full Name</th>
                                 <th>Address</th>
+                                <th>Service Type</th>
                                 <th>Service Address</th>
                                 <th>Phone Numbers</th>
                                 <th>Status</th>
@@ -100,6 +101,13 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($serviceprovider -> ProvinceName); ?></a></h5>
                                     <p class="text-muted mb-0"><?php echo e($serviceprovider -> DistrictName); ?></p> 
+                               
+                                    </div>
+                                </td>
+                                <td>
+                                <div>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($serviceprovider -> ServiceType); ?></a></h5>
+                                    <!-- <p class="text-muted mb-0"><?php echo e($serviceprovider -> DistrictName); ?></p>  -->
                                
                                     </div>
                                 </td>

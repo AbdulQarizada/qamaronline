@@ -466,7 +466,9 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
       $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
       ->join('locations as b','qamar_care_cards.District_ID', '=', 'b.id')
       // ->join('LookUp as c','qamar_care_cards.Education_ID', '=', 'c.id')
-      ->select(['qamar_care_cards.*','a.Name as ProvinceName', 'b.Name as DistrictName', ])
+     ->join('look_ups as j','qamar_care_cards.FamilyStatus_ID', '=', 'j.id')
+
+      ->select(['qamar_care_cards.*','a.Name as ProvinceName', 'b.Name as DistrictName', 'j.Name as FamilyStatus', ])
        ->where("Status", "=", 'Released')
        ->get();
 
@@ -483,15 +485,16 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
       // $qamarcarecards =   AssignCareCardServices::where("Status", "=", 'Pending')->get();
 
       $qamarcarecards =   AssignCareCardServices::join('locations as a', 'assign_care_card_services.Province_ID', '=', 'a.id')
-      // ->join('locations as b','assign_care_card_services.District_ID', '=', 'b.id')
+     ->join('locations as b','assign_care_card_services.District_ID', '=', 'b.id')
      ->join('qamar_care_cards as c','assign_care_card_services.Assignee_ID', '=', 'c.id')
      ->join('service_providers as d','assign_care_card_services.ServiceProvider_ID', '=', 'd.id')
       ->select(['assign_care_card_services.*',
-      'a.Name as ProvinceName', 'c.LevelPoverty', 'c.FirstName as BFirstName', 'c.LastName as BLastName', 'd.QCC as BQCC',
+      'a.Name as ProvinceName', 'b.Name as DistrictName','c.LevelPoverty', 'c.FirstName as BFirstName', 'c.LastName as BLastName', 'd.QCC as BQCC',
       'c.PrimaryNumber as BPrimaryNumber', 'c.SecondaryNumber as BSecondaryNumber','c.RelativeNumber as BRelativeNumber',
 
       'd.FirstName as SPFirstName', 'd.LastName as SPLastName', 'd.QCC as SPQCC',
       'd.PrimaryNumber as SPPrimaryNumber', 'd.SecondaryNumber as SPSecondaryNumber',
+     
       ])
        ->where("assign_care_card_services.Status", "=", 'Pending')
        ->get();
@@ -735,8 +738,9 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
                                             ->join('locations as b','service_providers.District_ID', '=', 'b.id')
                                             ->join('locations as i','service_providers.ProvinceService_ID', '=', 'i.id')
                                             ->join('locations as j','service_providers.DistrictService_ID', '=', 'j.id')
+                                            ->join('service_types as h','service_providers.ServiceType_ID', '=', 'h.id')
                                             ->select(['service_providers.*','a.Name as ProvinceName', 'b.Name as DistrictName' ,'i.Name as ProvinceService', 
-                                            'j.Name as DistrictService', ])
+                                            'j.Name as DistrictService','h.Name as ServiceType', ])
                                              
                                              ->get();
       return view('QamarCardCard.ServiceProviders', compact('serviceproviders'));
