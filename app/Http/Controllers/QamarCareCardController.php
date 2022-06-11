@@ -648,7 +648,7 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
 
           ]);
 
-         return redirect()->route('PendingServicesQamarCareCard')->with('toast_success', 'Record Assign Successfully!');
+         return redirect()->route('AssignedServicesQamarCareCard')->with('toast_success', 'Record Assign Successfully!');
 
       
 
