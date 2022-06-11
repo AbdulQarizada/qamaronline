@@ -1,26 +1,26 @@
-@extends('layouts.master-layouts')
 
-@section('title') Assign Services @endsection
 
-@section('css')
-<link href="{{ URL::asset('/assets/libs/filepond/css/filepond.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-<link href="{{ URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-image-preview.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-<link href="{{ URL::asset('/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
+<?php $__env->startSection('title'); ?> Assign Services <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('css'); ?>
+<link href="<?php echo e(URL::asset('/assets/libs/filepond/css/filepond.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
+<link href="<?php echo e(URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-image-preview.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
+<link href="<?php echo e(URL::asset('/assets/libs/select2/select2.min.css')); ?>" rel="stylesheet" type="text/css" />
 
  
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
-@component('components.breadcrumb')
-@slot('li_1') Qamar Care / Assign Services @endslot
-@slot('title')   @endslot
-@endcomponent
+<?php $__env->startComponent('components.breadcrumb'); ?>
+<?php $__env->slot('li_1'); ?> Qamar Care / Assign Services <?php $__env->endSlot(); ?>
+<?php $__env->slot('title'); ?>   <?php $__env->endSlot(); ?>
+<?php echo $__env->renderComponent(); ?>
 
 <div class="row">
         <div class="col-12">
-           <a href="{{route('AssigningServiceQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+           <a href="<?php echo e(route('AssigningServiceQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         </div>
      </div>
 
@@ -41,8 +41,8 @@
 
 
 
-<form class="needs-validation"  action="{{route('AssignServiceQamarCareCard')}}" method="POST" enctype="multipart/form-data" novalidate>
-     @csrf
+<form class="needs-validation"  action="<?php echo e(route('AssignServiceQamarCareCard')); ?>" method="POST" enctype="multipart/form-data" novalidate>
+     <?php echo csrf_field(); ?>
      
      <div class="row">
         <div class="col-lg-12">
@@ -55,109 +55,109 @@
                                 <tr>
                                 <td>
                                         <div>
-                                            <img  class="rounded-circle avatar-lg" src="{{URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)}}"
+                                            <img  class="rounded-circle avatar-lg" src="<?php echo e(URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)); ?>"
                                                 alt="">
                                         </div>
                                     </td>
                                     <td>
-                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> FirstName}} {{$data -> LastName}}</a></h5>
-                                        <p class="text-muted mb-0">QCC-{{$data -> QCC}}</p>
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> FirstName); ?> <?php echo e($data -> LastName); ?></a></h5>
+                                        <p class="text-muted mb-0">QCC-<?php echo e($data -> QCC); ?></p>
                                 </td>
                                 <td>
-                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> TazkiraID}}</a></h5>
-                                        <!-- <p class="text-muted mb-0">QCC-{{$data -> QCC}}</p> -->
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> TazkiraID); ?></a></h5>
+                                        <!-- <p class="text-muted mb-0">QCC-<?php echo e($data -> QCC); ?></p> -->
                                 </td>
                                 <td>
                                 <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> Province}}</a></h5>
-                                    <p class="text-muted mb-0">{{$data -> District}}</p> 
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> Province); ?></a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($data -> District); ?></p> 
                                
                                     </div>
                                 </td>
                                 <td>    
                                       <div>
-                                      <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$data -> PrimaryNumber}}</a></h5>
-                                        <p class="text-muted mb-0 badge badge-soft-warning">{{$data -> SecondaryNumber}}</p>
-                                         <p class="text-muted mb-0 badge badge-soft-danger">{{$data -> RelativeNumber}}</p>
+                                      <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($data -> PrimaryNumber); ?></a></h5>
+                                        <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($data -> SecondaryNumber); ?></p>
+                                         <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($data -> RelativeNumber); ?></p>
                                         </div>
                                </td> 
                                <td>
                                 <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> FamilyStatus}}</a></h5>
-                                       @if( $data -> LevelPoverty == 1)
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> FamilyStatus); ?></a></h5>
+                                       <?php if( $data -> LevelPoverty == 1): ?>
                                          <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-secondary font-size-14"></i>
                                          <i class="bx bxs-star text-secondary font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
 
-                                       @endif
-                                       @if( $data -> LevelPoverty == 2)
+                                       <?php endif; ?>
+                                       <?php if( $data -> LevelPoverty == 2): ?>
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
                                          <i class="bx bxs-star text-secondary font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $data -> LevelPoverty == 3)
+                                       <?php endif; ?>
+                                       <?php if( $data -> LevelPoverty == 3): ?>
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
                                          <i class="bx bxs-star text-secondary font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $data -> LevelPoverty == 4)
+                                       <?php endif; ?>
+                                       <?php if( $data -> LevelPoverty == 4): ?>
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
                                          <i class="bx bxs-star text-secondary font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $data -> LevelPoverty == 5)
+                                       <?php endif; ?>
+                                       <?php if( $data -> LevelPoverty == 5): ?>
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
                                          <i class="bx bxs-star text-secondary font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
+                                       <?php endif; ?>
                                     </div>
                                 </td>
                                 <td>
-                                @if( $data -> Created_By !="")
+                                <?php if( $data -> Created_By !=""): ?>
 
                                 <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> Created_By }}</a></h5>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> Created_By); ?></a></h5>
                                     <p class="text-muted mb-0">Employee</p> 
                                
                                 </div>
-                                @endif
-                                @if( $data -> Created_By =="")
+                                <?php endif; ?>
+                                <?php if( $data -> Created_By ==""): ?>
 
                                    <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
                                     <p class="text-muted mb-0">Requested</p> 
 
                                   </div>
-                                @endif
+                                <?php endif; ?>
                                 </td>
                                 <td>
                                 
                                 <div class="avatar-lg ">
-                                           @if( $data -> LevelPoverty == 1)
+                                           <?php if( $data -> LevelPoverty == 1): ?>
                                             <span class="avatar-title bg-danger rounded-circle display-6">20%</span>
-                                            @endif
-                                            @if( $data -> LevelPoverty == 2)
+                                            <?php endif; ?>
+                                            <?php if( $data -> LevelPoverty == 2): ?>
                                             <span class="avatar-title bg-danger rounded-circle display-6">40%</span>
-                                            @endif
-                                            @if( $data -> LevelPoverty == 3)
+                                            <?php endif; ?>
+                                            <?php if( $data -> LevelPoverty == 3): ?>
                                             <span class="avatar-title bg-danger rounded-circle display-6">60%</span>
-                                            @endif
-                                            @if( $data -> LevelPoverty == 4)
+                                            <?php endif; ?>
+                                            <?php if( $data -> LevelPoverty == 4): ?>
                                             <span class="avatar-title bg-danger rounded-circle display-6">80%</span>
-                                            @endif
-                                            @if( $data -> LevelPoverty == 5)
+                                            <?php endif; ?>
+                                            <?php if( $data -> LevelPoverty == 5): ?>
                                             <span class="avatar-title bg-danger rounded-circle display-5">100%</span>
-                                            @endif
+                                            <?php endif; ?>
                                  </div>
                                
                                 </td>
@@ -180,7 +180,7 @@
         </div>
         <div class="col-8 ">
         <!-- <i class="bx bx-plus-circle  font-size-24 label-icon"></i> btn-label -->
-           <!-- <a href="{{route('CreateQamarCareCard')}}" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 float-end">ADD SERVICE PROVIDER</a> -->
+           <!-- <a href="<?php echo e(route('CreateQamarCareCard')); ?>" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 float-end">ADD SERVICE PROVIDER</a> -->
         </div>
      </div>
 <div class="row">
@@ -191,7 +191,7 @@
                 <div class="card-body">
                     <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
                     </p> -->
-                    <input type="text"  value="{{$data -> id }}" id="Assignee_ID" name="Assignee_ID" hidden />
+                    <input type="text"  value="<?php echo e($data -> id); ?>" id="Assignee_ID" name="Assignee_ID" hidden />
       
 
                          
@@ -203,17 +203,17 @@
                                     <div class="input-group " id="example-date-input">
                                   <select class="form-control RequestedService form-control-lg select2" id="RequestedService_ID" name="RequestedService_ID">
                                         <option value="None">Select</option>
-                                        @foreach($servicetypes as $servicetype)
-                                        @if($servicetype -> Parent_ID == null)
-                                           <optgroup label="{{$servicetype -> Name}}">
-                                            @foreach($servicetypes as $servicetypeSub)
-                                            @if($servicetypeSub -> Parent_ID == $servicetype -> id )
-                                           <option value="{{$servicetypeSub -> id}}">{{$servicetypeSub -> Name}}</option>
-                                           @endif
-                                            @endforeach
+                                        <?php $__currentLoopData = $servicetypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $servicetype): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php if($servicetype -> Parent_ID == null): ?>
+                                           <optgroup label="<?php echo e($servicetype -> Name); ?>">
+                                            <?php $__currentLoopData = $servicetypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $servicetypeSub): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php if($servicetypeSub -> Parent_ID == $servicetype -> id ): ?>
+                                           <option value="<?php echo e($servicetypeSub -> id); ?>"><?php echo e($servicetypeSub -> Name); ?></option>
+                                           <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                            </optgroup>
-                                        @endif
-                                        @endforeach
+                                        <?php endif; ?>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select> 
                                    
                                     </div>
@@ -224,17 +224,31 @@
                                 <div class="mb-3 position-relative">
                                     <label for="Province_ID" class="form-label">Service Province</label>
                                     <div class="input-group">
-                                    <select class="form-select  Province form-select-lg @error('Province_ID') is-invalid @enderror" required name="Province_ID" value="{{ old('Province_ID') }}" id="Province_ID">
+                                    <select class="form-select  Province form-select-lg <?php $__errorArgs = ['Province_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" required name="Province_ID" value="<?php echo e(old('Province_ID')); ?>" id="Province_ID">
                                     <option value="None">Select Province</option>
-                                    @foreach($provinces as $province)
-                                    <option value="{{$province -> id}}">{{$province -> Name}}</option>
-                                    @endforeach
+                                    <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($province -> id); ?>"><?php echo e($province -> Name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
-                                    @error('Province_ID')
+                                    <?php $__errorArgs = ['Province_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
+                                                    <strong><?php echo e($message); ?></strong>
                                                 </span>
-                               @enderror
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                </div>
                                 </div>
                             </div>
@@ -242,31 +256,59 @@
                                 <div class="mb-3 position-relative">
                                     <label for="District_ID" class="form-label">Service District</label>
                                     <div class="input-group">
-                                    <select class="form-select District form-select-lg @error('District_ID') is-invalid @enderror" required name="District_ID" value="{{ old('District_ID') }}" id="District_ID">
+                                    <select class="form-select District form-select-lg <?php $__errorArgs = ['District_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" required name="District_ID" value="<?php echo e(old('District_ID')); ?>" id="District_ID">
 <!--                                     
                                     <option value="None">Select District</option>
                                     <option value="None">All</option> -->
 
 
                                     </select>
-                                    @error('District_ID')
+                                    <?php $__errorArgs = ['District_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
+                                                    <strong><?php echo e($message); ?></strong>
                                                 </span>
-                               @enderror
+                               <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="ServiceProvider_ID" class="form-label">Avalible Service Providers</label>
-                                <select class="form-select ServiceProvider  form-select-lg  @error('ServiceProvider_ID') is-invalid @enderror" value="{{ old('ServiceProvider_ID') }}" required id="ServiceProvider_ID" name="ServiceProvider_ID">
+                                <select class="form-select ServiceProvider  form-select-lg  <?php $__errorArgs = ['ServiceProvider_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ServiceProvider_ID')); ?>" required id="ServiceProvider_ID" name="ServiceProvider_ID">
                               </select>
-                                    @error('ServiceProvider_ID')
+                                    <?php $__errorArgs = ['ServiceProvider_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
+                                                    <strong><?php echo e($message); ?></strong>
                                                 </span>
-                                   @enderror
+                                   <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                             <!-- <div class="col-md-4">
@@ -274,7 +316,14 @@
                                     <label for="ServiceType" class="form-label">Service Type</label>
                                     <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('ServiceType') is-invalid @enderror" value="{{ old('ServiceType') }}" required id="ServiceType" name="ServiceType">
+                                    <select class="form-select  form-select-lg <?php $__errorArgs = ['ServiceType'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ServiceType')); ?>" required id="ServiceType" name="ServiceType">
                                     <option>Select Option</option>
                                     
                                     <option value="Food Package">Food Package</option>
@@ -283,11 +332,18 @@
                                     
 
                                     </select>
-                                    @error('ServiceType')
+                                    <?php $__errorArgs = ['ServiceType'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
+                                                    <strong><?php echo e($message); ?></strong>
                                                 </span>
-                                    @enderror
+                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                             </div> -->
@@ -296,12 +352,26 @@
                                     <label for="ExpectedDate" class="form-label">Expected Date</label>
                                     <div class="input-group " id="example-date-input">
                                       
-                                    <input class="form-control  form-select-lg @error('ExpectedDate') is-invalid @enderror" value="{{ old('ExpectedDate') }}" type="date"  id="example-date-input" name="ExpectedDate" id="ExpectedDate" required>
-                                    @error('ExpectedDate')
+                                    <input class="form-control  form-select-lg <?php $__errorArgs = ['ExpectedDate'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ExpectedDate')); ?>" type="date"  id="example-date-input" name="ExpectedDate" id="ExpectedDate" required>
+                                    <?php $__errorArgs = ['ExpectedDate'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
+                                                    <strong><?php echo e($message); ?></strong>
                                                 </span>
-                                    @enderror
+                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                    
                                     </div>
                                 </div>
@@ -343,7 +413,7 @@
 <div>
 
 <button class="btn btn-success btn-lg" type="submit">Assign</button>
-<a class="btn btn-danger btn-lg" href="{{route('IndexQamarCareCard')}}">Cancel</a>
+<a class="btn btn-danger btn-lg" href="<?php echo e(route('IndexQamarCareCard')); ?>">Cancel</a>
 </div>
 
 
@@ -352,30 +422,30 @@
 
 </form>
 
-@endsection
-@section('script')
-<script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
+<script src="<?php echo e(URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js')); ?>"></script>
 
-<script src="{{ URL::asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
-
-
-
-<script src="{{ URL::asset('/assets/libs/filepond/js/filepond.min.js') }}"></script>
-<script src="{{ URL::asset('/assets/libs/filepond/js/plugins/filepond-plugin-image-preview.min.js') }}"></script>
+<script src="<?php echo e(URL::asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js')); ?>"></script>
 
 
-<script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
+
+<script src="<?php echo e(URL::asset('/assets/libs/filepond/js/filepond.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('/assets/libs/filepond/js/plugins/filepond-plugin-image-preview.min.js')); ?>"></script>
+
+
+<script src="<?php echo e(URL::asset('/assets/js/pages/form-validation.init.js')); ?>"></script>
 
 <!-- Bootstrap rating js -->
-<script src="{{ URL::asset('/assets/libs/bootstrap-rating/bootstrap-rating.min.js') }} "></script>
+<script src="<?php echo e(URL::asset('/assets/libs/bootstrap-rating/bootstrap-rating.min.js')); ?> "></script>
 
-<script src="{{ URL::asset('/assets/js/pages/rating-init.js') }}"></script>
+<script src="<?php echo e(URL::asset('/assets/js/pages/rating-init.js')); ?>"></script>
 
-<script src="{{ URL::asset('/assets/libs/select2/select2.min.js') }}"></script>
+<script src="<?php echo e(URL::asset('/assets/libs/select2/select2.min.js')); ?>"></script>
 
 
     <!-- form advanced init -->
-    <script src="{{ URL::asset('/assets/js/pages/form-advanced.init.js') }}"></script>
+    <script src="<?php echo e(URL::asset('/assets/js/pages/form-advanced.init.js')); ?>"></script>
 <script>
 
 	  FilePond.registerPlugin(FilePondPluginImagePreview);
@@ -409,7 +479,7 @@
 				  url: '../Upload_Tazkira',
 				  headers:
 				  {
-					  'X-CSRF-TOKEN': '{{ csrf_token() }}'
+					  'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
 				  }
 
 			  },
@@ -428,7 +498,7 @@
 				  url: '../Upload_Profile',
 				  headers:
 				  {
-					  'X-CSRF-TOKEN': '{{ csrf_token() }}'
+					  'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
 				  }
 
 			  },
@@ -473,7 +543,7 @@
                    $.ajax({
                        url: '/GetDistricts/'+dID,
                        type: "GET",
-                       data : {"_token":"{{ csrf_token() }}"},
+                       data : {"_token":"<?php echo e(csrf_token()); ?>"},
                        dataType: "json",
                        success:function(data)
                        {
@@ -506,7 +576,7 @@
                    $.ajax({
                        url: '/QamarCareCard/FindServiceProvider/' + RequestedService + '/' + Province + '/' + District,
                        type: "GET",
-                       data : {"_token":"{{ csrf_token() }}"},
+                       data : {"_token":"<?php echo e(csrf_token()); ?>"},
                     //    data: {Province:Province, District:District, RequestedService:RequestedService},
                        dataType: "json",
                        success:function(data)
@@ -534,4 +604,5 @@
 
 
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/AssignToService.blade.php ENDPATH**/ ?>

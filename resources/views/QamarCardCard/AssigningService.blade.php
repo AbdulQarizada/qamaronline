@@ -38,8 +38,8 @@
 >
                                    <option value="{{route('AssigningServiceQamarCareCard')}}">Please Filter Your Choices</option>
                                      <option value="{{route('AssigningServiceQamarCareCard')}}">Eligible Beneficiaries</option>
-                                    <option value="{{route('PendingServicesQamarCareCard')}}">Pending Services</option>
-                                    <option value="{{route('RecievedServicesQamarCareCard')}}">Recieved Services</option>
+                                    <option value="{{route('PendingServicesQamarCareCard')}}">Assigned Services</option>
+                                    <!-- <option value="{{route('RecievedServicesQamarCareCard')}}">Recieved Services</option> -->
                                     <!-- <option value="{{route('PrintedQamarCareCard')}}">Printed</option>
                                     <option value="{{route('ReleasedQamarCareCard')}}">Released</option> -->
                                     <!-- <option value="{{route('RejectedServicesQamarCareCard')}}">Rejected</option> -->
@@ -144,7 +144,7 @@
                                 </td>
                                    
                                <td>
-                                @if( $qamarcarecard -> Status == "Pending")
+                        
 
                                 <div>
 
@@ -167,27 +167,13 @@
 
                                  @endif
 
-
-
-                                 @if($qamarcarecard -> Status == 'ReInitiated')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info">{{$qamarcarecard -> Status}}</a></h5>
-                                    <p class="text-muted mb-0">{{$qamarcarecard -> created_at}}</p> 
-
-                                 @endif
-
                                  @if($qamarcarecard -> Status == 'Released')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">{{$qamarcarecard -> Status}}</a></h5>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Eligible</a></h5>
                                     <p class="text-muted mb-0">{{$qamarcarecard -> created_at}}</p> 
 
-                                 @endif
-
-                                 @if($qamarcarecard -> Status == 'Printed')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark">{{$qamarcarecard -> Status}}</a></h5>
-                                    <p class="text-muted mb-0">{{$qamarcarecard -> created_at}}</p> 
                                  @endif
 
                                     </div>
-                                    @endif
                                 </td>
                                 <td>
                                 @if( $qamarcarecard -> Status == "Pending")
@@ -222,9 +208,9 @@
                     @endif
 
                     @if( $qamarcarecard -> Status == "Pending")
-                    <a href="{{route('ServiceReleasedQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-success waves-effect waves-light recieved">
+                    <!-- <a href="{{route('ServiceReleasedQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-success waves-effect waves-light recieved">
                         <i class="bx bx-check-shield    font-size-16 align-middle"></i>
-                    </a> 
+                    </a>  -->
                     
                     <a href="{{route('ServiceEditQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-info waves-effect waves-light">
                         <i class="bx bx-edit  font-size-16 align-middle"></i>

@@ -89,7 +89,7 @@ table  td {
 
 
             <tr>
-                <td style=" padding-top:120px; padding-bottom:130px; padding-left:90px;"><span class="h5"> {!! DNS2D::getBarcodeSVG(''.$data->QCC, 'QRCODE', 3, 3, true) !!} </span></td>
+                <td style=" padding-top:120px; padding-bottom:130px; padding-left:90px;"><span class="h5"> {!! DNS2D::getBarcodeSVG(''.$data->QCC, 'QRCODE', 3, 3, 'white', true) !!} </span></td>
             </tr>
 
         </table>

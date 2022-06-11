@@ -126,12 +126,15 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3 position-relative">
-                                    <label for="Gender" class="form-label">Gender <i class="mdi mdi-asterisk text-danger"></i></label>
-                                    <select class="form-select  form-select-lg @error('Gender') is-invalid @enderror" value="{{ old('Gender') }}" id="Gender"  name="Gender" required>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
+                                    <label for="Gender_ID" class="form-label">Gender <i class="mdi mdi-asterisk text-danger"></i></label>
+                                    <select class="form-select  form-select-lg @error('Gender_ID') is-invalid @enderror" value="{{ old('Gender_ID') }}" id="Gender_ID"  name="Gender_ID" required>
+                                    <option value="">Select Your Gender</option>
+                                    @foreach($genders as $gender)
+                                    <option value="{{ $gender -> id}}">{{ $gender -> Name}}</option>
+
+                                    @endforeach
                                  </select>
-                                 @error('Gender')
+                                 @error('Gender_ID')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -155,15 +158,15 @@
                         <div class="row">
                         <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="Province" class="form-label">Province</label>
+                                    <label for="Province_ID" class="form-label">Province</label>
                                     <div class="input-group">
-                                    <select class="form-select  Province form-select-lg @error('Province') is-invalid @enderror" required name="Province" value="{{ old('Province') }}" id="Province">
+                                    <select class="form-select  Province form-select-lg @error('Province_ID') is-invalid @enderror" required name="Province_ID" value="{{ old('Province_ID') }}" id="Province_ID">
                                     <option>Select Option</option>
                                     @foreach($provinces as $province)
                                     <option value="{{$province -> id}}">{{$province -> Name}}</option>
                                     @endforeach
                                     </select>
-                                    @error('Province')
+                                    @error('Province_ID')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -173,13 +176,13 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="District" class="form-label">District</label>
+                                    <label for="District_ID" class="form-label">District</label>
                                     <div class="input-group">
-                                    <select class="form-select District form-select-lg @error('District') is-invalid @enderror" required name="District" value="{{ old('District') }}" id="Province">
+                                    <select class="form-select District form-select-lg @error('District_ID') is-invalid @enderror" required name="District_ID" value="{{ old('District_ID') }}" id="District_ID">
                                     
 
                                     </select>
-                                    @error('District')
+                                    @error('District_ID')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -189,23 +192,19 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="Language" class="form-label">Language <i class="mdi mdi-asterisk text-danger"></i></label>
+                                    <label for="Language_ID" class="form-label">Language <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('Language') is-invalid @enderror" value="{{ old('Language') }}" required id="Language" name="Language">
-                                    <option>Select Option</option>
-                                    
-                                    <option value="Pashto">Pashto</option>
-                                    <option value="Dari">Dari</option>
-                                    <option value="Pashai">Pashai</option>
-                                    <option value="Nooristani">Nooristani</option>
-                                    <option value="Uzbaki">Uzbaki</option>
-                                    <option value="Turkmani">Turkmani</option>
-                                    <option value="Balochi">Balochi</option>
+                                    <select class="form-select  form-select-lg @error('Language_ID') is-invalid @enderror" value="{{ old('Language_ID') }}" required id="Language_ID" name="Language_ID">
+                                    <option value="">Select Your Language</option>
+                                    @foreach($languages as $language)
+                                    <option value="{{ $language -> id}}">{{ $language -> Name}}</option>
+
+                                    @endforeach
                                     
 
                                     </select>
-                                    @error('Language')
+                                    @error('Language_ID')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -254,36 +253,42 @@
                         <div class="row">
                         <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="CurrentJob" class="form-label">Current Job<i class="mdi mdi-asterisk text-danger"></i></label>
+                                    <label for="CurrentJob_ID" class="form-label">Current Job <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
-                                      
-                                        <input type="text" class="form-control  form-control-lg @error('CurrentJob') is-invalid @enderror" value="{{ old('CurrentJob') }}" id="CurrentJob" name="CurrentJob" 
-                                             aria-describedby="CurrentJob"
-                                            required>
-                                            @error('CurrentJob')
+
+                                    <select class="form-select  form-select-lg @error('CurrentJob_ID') is-invalid @enderror" value="{{ old('CurrentJob_ID') }}" required name="CurrentJob_ID"  id="CurrentJob_ID">
+                                    <option value="">Select Your Current Job</option>
+                                     @foreach($currentjobs as $currentjob)
+                                    <option value="{{ $currentjob -> id}}">{{ $currentjob -> Name}}</option>
+
+                                    @endforeach
+
+
+
+                               </select>
+                               @error('CurrentJob_ID')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                @enderror
-                                    </div>
                                 </div>
-                        </div>
+                            </div>
+                            </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="Profession" class="form-label">Profession<i class="mdi mdi-asterisk text-danger"></i></label>
+                                    <label for="Profession_ID" class="form-label">Profession<i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('Profession') is-invalid @enderror" value="{{ old('Profession') }}" required name="Profession"  id="Profession">
-                                    <option>Select Option</option>
-                                    <option value="Jobless">None</option>
-                                    <option value="Cooking">Doctor</option>
-                                    <option value="SecurityGuard">Engineer</option>
-                                     <option value="Driving">Pharmacist</option>
-                                     <option value="Cleaning">Shoopkeeper</option>
+                                    <select class="form-select  form-select-lg @error('Profession_ID') is-invalid @enderror" value="{{ old('Profession_ID') }}" required name="Profession_ID"  id="Profession_ID">
+                                    <option value="">Select Your Profession</option>
+                                     @foreach($professions as $profession)
+                                    <option value="{{ $profession -> id}}">{{ $profession -> Name}}</option>
+
+                                    @endforeach
 
 
                                </select>
-                               @error('Profession')
+                               @error('Profession_ID')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -293,23 +298,20 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="EducationLevel" class="form-label">Education Level <i class="mdi mdi-asterisk text-danger"></i></label>
+                                    <label for="EducationLevel_ID" class="form-label">Education Level <i class="mdi mdi-asterisk text-danger"></i></label>
                                     <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('EducationLevel') is-invalid @enderror" value="{{ old('EducationLevel') }}" required name="EducationLevel"  id="EducationLevel">
-                                    <option>Select Option</option>
-                                    
-                                    <option value="NoEducation">No Education</option>
-                                    <option value="NoEducation">Only Read and Write</option>
-                                    <option value="Bachularate">School</option>
-                                     <option value="University">University Graduate</option>
-                                     <option value="Master">Master</option>
-                                     <option value="PhD">PhD</option>
+                                    <select class="form-select  form-select-lg @error('EducationLevel_ID') is-invalid @enderror" value="{{ old('EducationLevel_ID') }}" required name="EducationLevel_ID"  id="EducationLevel_ID">
+                                    <option value="">Select Your Education Level</option>
+                                     @foreach($educationlevels as $educationlevel)
+                                    <option value="{{ $educationlevel -> id}}">{{ $educationlevel -> Name}}</option>
+
+                                    @endforeach
 
 
 
                                </select>
-                               @error('EducationLevel')
+                               @error('EducationLevel_ID')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -395,15 +397,15 @@
                         <div class="row">
                         <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="ProvinceService" class="form-label">Province (Service)</label>
+                                    <label for="ProvinceService_ID" class="form-label">Province (Service)</label>
                                     <div class="input-group">
-                                    <select class="form-select  ProvinceService form-select-lg @error('ProvinceService') is-invalid @enderror" required name="ProvinceService" value="{{ old('ProvinceService') }}" id="ProvinceService">
+                                    <select class="form-select  ProvinceService form-select-lg @error('ProvinceService_ID') is-invalid @enderror" required name="ProvinceService_ID" value="{{ old('ProvinceService_ID') }}" id="ProvinceService_ID">
                                     <option>Select Option</option>
                                     @foreach($provinces as $province)
                                     <option value="{{$province -> id}}">{{$province -> Name}}</option>
                                     @endforeach
                                     </select>
-                                    @error('ProvinceService')
+                                    @error('ProvinceService_ID')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -413,13 +415,13 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="DistrictService" class="form-label">District (Service)</label>
+                                    <label for="DistrictService_ID" class="form-label">District (Service)</label>
                                     <div class="input-group">
-                                    <select class="form-select DistrictService form-select-lg @error('DistrictService') is-invalid @enderror" required name="DistrictService" value="{{ old('DistrictService') }}" id="DistrictService">
+                                    <select class="form-select DistrictService form-select-lg @error('DistrictService_ID') is-invalid @enderror" required name="DistrictService_ID" value="{{ old('DistrictService_ID') }}" id="DistrictService_ID">
                                     
 
                                     </select>
-                                    @error('DistrictService')
+                                    @error('DistrictService_ID')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -429,23 +431,23 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
-                                    <label for="ServiceType" class="form-label">Service Type</label>
+                                    <label for="ServiceType_ID" class="form-label">Service Type</label>
                                     <div class="input-group " id="example-date-input">
-                                  <select class="form-select select2 form-select-lg @error('ServiceType') is-invalid @enderror" required name="ServiceType" value="{{ old('ServiceType') }}" id="ServiceType">
+                                  <select class="form-select select2 form-select-lg @error('ServiceType_ID') is-invalid @enderror" required name="ServiceType_ID" value="{{ old('ServiceType_ID') }}" id="ServiceType_ID">
                                         <option>Select</option>
                                         @foreach($servicetypes as $servicetype)
                                         @if($servicetype -> Parent_ID == null)
                                            <optgroup label="{{$servicetype -> Name}}">
                                             @foreach($servicetypes as $servicetypeSub)
                                             @if($servicetypeSub -> Parent_ID == $servicetype -> id )
-                                           <option value="{{$servicetypeSub -> Name}}">{{$servicetypeSub -> Name}}</option>
+                                           <option value="{{$servicetypeSub -> id}}">{{$servicetypeSub -> Name}}</option>
                                            @endif
                                             @endforeach
                                            </optgroup>
                                         @endif
                                         @endforeach
                                     </select> 
-                                    @error('ServiceType')
+                                    @error('ServiceType_ID')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -741,7 +743,7 @@
                             $('.District').empty();
                             $('.District').append('<option hidden>Choose District</option>'); 
                             $.each(data, function(key, course){
-                                $('select[name="District"]').append('<option value="'+ course.id +'">' + course.Name+ '</option>');
+                                $('select[name="District_ID"]').append('<option value="'+ course.id +'">' + course.Name+ '</option>');
                             });
                         }else{
                             $('.District').empty();
@@ -769,7 +771,7 @@
                             $('.DistrictService').empty();
                             $('.DistrictService').append('<option hidden>Choose District</option>'); 
                             $.each(data, function(key, course){
-                                $('select[name="DistrictService"]').append('<option value="'+ course.Name +'">' + course.Name+ '</option>');
+                                $('select[name="DistrictService_ID"]').append('<option value="'+ course.id +'">' + course.Name+ '</option>');
                             });
                         }else{
                             $('.DistrictService').empty();

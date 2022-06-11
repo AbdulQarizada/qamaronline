@@ -21,13 +21,13 @@ return new class extends Migration
             $table -> integer('QCC')->nullable();
             $table -> string('Profile')->nullable();
             $table -> string('DOB')->nullable();
-            $table -> string('Gender')->nullable();
-            $table -> string('Province')->nullable();
-            $table -> string('District')->nullable();
-            $table -> string('CurrentJob')->nullable();
-            $table -> string('Language')->nullable();
-            $table -> string('Profession')->nullable();
-            $table -> string('EducationLevel')->nullable();
+            $table -> integer('Gender_ID')->nullable();
+            $table -> integer('Province_ID')->nullable();
+            $table -> integer('District_ID')->nullable();
+            $table -> integer('CurrentJob_ID')->nullable();
+            $table -> integer('Language_ID')->nullable();
+            $table -> integer('Profession_ID')->nullable();
+            $table -> integer('EducationLevel_ID')->nullable();
 
 
 
@@ -42,9 +42,9 @@ return new class extends Migration
 
             // $table -> integer('RelativeNumber')->nullable();
             // $table -> string('Country')->nullable();
-            $table -> string('ProvinceService')->nullable();
-            $table -> string('DistrictService')->nullable();
-            $table -> string('ServiceType')->nullable();
+            $table -> integer('ProvinceService_ID')->nullable();
+            $table -> integer('DistrictService_ID')->nullable();
+            $table -> integer('ServiceType_ID')->nullable();
 
             // $table -> string('Village')->nullable();
             // $table -> string('Tribe')->nullable();

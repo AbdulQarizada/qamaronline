@@ -18,22 +18,22 @@ class ServiceProviders extends Model
      'QCC',
      'Profile',
      'DOB',
-     'Gender',
-     'Province',
-     'District',
-     'Language',
-     'CurrentJob',
-     'Profession',
-     'EducationLevel',
+     'Gender_ID',
+     'Province_ID',
+     'District_ID',
+     'Language_ID',
+     'CurrentJob_ID',
+     'Profession_ID',
+     'EducationLevel_ID',
 
      'PrimaryNumber',
      'SecondaryNumber',
      'Email',
 
 
-     'ProvinceService',
-     'DistrictService',
-     'ServiceType',
+     'ProvinceService_ID',
+     'DistrictService_ID',
+     'ServiceType_ID',
 
 
      'Status',

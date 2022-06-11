@@ -1,23 +1,23 @@
-@extends('layouts.master-layouts')
 
-@section('title') Assign Services @endsection
 
-@section('css')
-<link href="{{ URL::asset('/assets/css/mystyle/tab.css') }}" rel="stylesheet" type="text/css" />
+<?php $__env->startSection('title'); ?> Assign Services <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('css'); ?>
+<link href="<?php echo e(URL::asset('/assets/css/mystyle/tab.css')); ?>" rel="stylesheet" type="text/css" />
 
  
-@endsection
+<?php $__env->stopSection(); ?>
 
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
-@component('components.breadcrumb')
-@slot('li_1') Qamar Care / Assign Services @endslot
-@slot('title')   @endslot
-@endcomponent
+<?php $__env->startComponent('components.breadcrumb'); ?>
+<?php $__env->slot('li_1'); ?> Qamar Care / Assign Services <?php $__env->endSlot(); ?>
+<?php $__env->slot('title'); ?>   <?php $__env->endSlot(); ?>
+<?php echo $__env->renderComponent(); ?>
 <div class="row">
         <div class="col-12">
-           <a href="{{route('IndexQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+           <a href="<?php echo e(route('IndexQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         </div>
      </div>
 <div class="container">
@@ -31,7 +31,7 @@
               <span class="check-icon"></span>
               <div class="card-content">
                 <img
-                  src="{{ URL::asset('/assets/images/qcc/TaeAugust11.jpg') }}"
+                  src="<?php echo e(URL::asset('/assets/images/qcc/TaeAugust11.jpg')); ?>"
                   alt=""
                 />
                 <h4>Individual</h4>
@@ -47,7 +47,7 @@
               <span class="check-icon"></span>
               <div class="card-content">
                 <img
-                  src="{{ URL::asset('/assets/images/qcc/6301.jpg') }}"
+                  src="<?php echo e(URL::asset('/assets/images/qcc/6301.jpg')); ?>"
                   alt=""
                 />
                 <h4>Orgianization</h4>
@@ -65,14 +65,14 @@
            <a id="next" class="btn btn-warning btn-lg waves-effect waves-light m-3">Next</a>
         </div>
      </div>
-      @endsection
+      <?php $__env->stopSection(); ?>
 
-      @section('script')
+      <?php $__env->startSection('script'); ?>
       <script>
     function myFunction() {
 
         if(document.getElementById('Individual').checked) {
-            document.getElementById('next').href = "{{route('CreateServiceProviderIndividual')}}";
+            document.getElementById('next').href = "<?php echo e(route('CreateServiceProviderIndividual')); ?>";
         }
 
       if(document.getElementById('Orgianization').checked) {
@@ -84,4 +84,6 @@
       //   }
     }
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/ServiceProviderIndex.blade.php ENDPATH**/ ?>

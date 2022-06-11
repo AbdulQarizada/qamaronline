@@ -149,7 +149,13 @@ Route::post('/ServiceProvider_Profile', [App\Http\Controllers\HomeController:: c
        //create
        Route::post('/QamarCareCard/CreateServiceProviderIndividual', [App\Http\Controllers\QamarCareCardController:: class, 'StoreServiceProviderIndividual'])->name('CreateServiceProviderIndividual');
       
+       Route::get('/QamarCareCard/StatusServiceProviderQamarCareCard/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'StatusServiceProvider'])->name('StatusServiceProviderQamarCareCard');
+       Route::get('/QamarCareCard/ApproveServiceProviderQamarCareCard/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'ApproveServiceProvider'])->name('ApproveServiceProviderQamarCareCard');
+       Route::get('/QamarCareCard/RejectServiceProviderQamarCareCard/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'RejectServiceProvider'])->name('RejectServiceProviderQamarCareCard');
+       Route::get('/QamarCareCard/DeleteServiceProviderQamarCareCard/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'DeleteServiceProvider'])->name('DeleteServiceProviderQamarCareCard');
+       Route::get('/QamarCareCard/ReInitiateServiceProviderQamarCareCard/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'ReInitiateServiceProvider'])->name('ReInitiateServiceProviderQamarCareCard');
 
+       
 // find service provider
    Route::get('/QamarCareCard/FindServiceProvider/{Province}/{District}/{RequestedService}', [App\Http\Controllers\QamarCareCardController:: class, 'FindServiceProvider'])->name('FindServiceProvider');
 

@@ -78,10 +78,11 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                 <th>ID</th>
                                 <th>Full Name</th>
                                 <th>Address</th>
+                                <th>Service Address</th>
                                 <th>Phone Numbers</th>
-                                <!-- <th>Family Status</th> -->
-                                <th>Crated By</th>
-                                <!-- <th>Actions</th> -->
+                                <th>Status</th>
+                                <th>Created By</th>
+                                <th>Actions</th>
                                 
                             </tr>
                         </thead>
@@ -102,14 +103,54 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                
                                     </div>
                                 </td>
+                                <td>
+                                <div>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($serviceprovider -> ProvinceService); ?></a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($serviceprovider -> DistrictService); ?></p> 
+                               
+                                    </div>
+                                </td>
                                 <td>    
                                       <div>
                                       <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($serviceprovider -> PrimaryNumber); ?></a></h5>
-                                        <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($serviceprovider -> serviceprovider); ?></p>
+                                        <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($serviceprovider -> SecondaryNumber); ?></p>
                                          <!-- <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($serviceprovider -> serviceprovider); ?></p> -->
                                         </div>
                                </td> 
-                        
+                               <td>
+                                <div>
+
+
+                                <?php if($serviceprovider -> Status == 'Pending'): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary"><?php echo e($serviceprovider -> Status); ?></a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($serviceprovider -> created_at); ?></p> 
+
+                                 <?php endif; ?>
+
+                                <?php if($serviceprovider -> Status == 'Approved'): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success"><?php echo e($serviceprovider -> Status); ?> </a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($serviceprovider -> created_at); ?></p> 
+
+                                 <?php endif; ?>
+
+                                 <?php if($serviceprovider -> Status == 'Rejected'): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger"><?php echo e($serviceprovider -> Status); ?> </a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($serviceprovider -> created_at); ?></p> 
+
+                                 <?php endif; ?>
+
+
+
+                                 <?php if($serviceprovider -> Status == 'ReInitiated'): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info"><?php echo e($serviceprovider -> Status); ?></a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($serviceprovider -> created_at); ?></p> 
+
+                                 <?php endif; ?>
+
+                    
+
+                                    </div>
+                                </td>
                                 <td>
                                 <?php if( $serviceprovider -> Created_By !=""): ?>
 
@@ -128,20 +169,24 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                   </div>
                                 <?php endif; ?>
                                 </td>
-                                <!-- <td>
+                               <td>
                        <div class="d-flex flex-wrap gap-2">
-                    <a href="<?php echo e(route('StatusQamarCareCard', ['data' => $serviceprovider -> id])); ?>" class="btn btn-warning waves-effect waves-light">
+                    <a href="<?php echo e(route('StatusServiceProviderQamarCareCard', ['data' => $serviceprovider -> id])); ?>" class="btn btn-warning waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
                     </a>
                
-                    <a href="<?php echo e(route('ApproveQamarCareCard', ['data' => $serviceprovider -> id])); ?>" class="btn btn-success waves-effect waves-light approve">
+                    <!-- <a href="<?php echo e(route('ApproveServiceProviderQamarCareCard', ['data' => $serviceprovider -> id])); ?>" class="btn btn-success waves-effect waves-light approve">
                         <i class="bx bx-check-circle font-size-16 align-middle"></i>
+                    </a> -->
+
+                    <?php if( $serviceprovider -> Status !="Approved"): ?>
+                     <a href="<?php echo e(route('DeleteServiceProviderQamarCareCard', ['data' => $serviceprovider -> id])); ?>" class="btn btn-danger waves-effect waves-light Delete">
+                        <i class="bx bx-trash-alt font-size-16 align-middle"></i>
                     </a>
-                     <a href="<?php echo e(route('RejectQamarCareCard', ['data' => $serviceprovider -> id])); ?>" class="btn btn-danger waves-effect waves-light reject">
-                        <i class=" bx bx-x-circle font-size-16 align-middle"></i>
-                    </a>
+
+                    <?php endif; ?>
                 </div>
-            </td> -->
+            </td> 
                             </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 
@@ -181,7 +226,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
     });
 });
 
-$('.reject').on('click', function (event) {
+$('.Delete').on('click', function (event) {
     event.preventDefault();
     const url = $(this).attr('href');
     swal({
