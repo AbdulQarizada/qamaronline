@@ -31,7 +31,7 @@
                                     <table class="table table-nowrap">
                                              <tr>
                                                 <td>
-                                                     <img src="<?php echo e(URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)); ?>" style="width: 130px; height: 135px;" class="rounded">
+                                                     <img src="<?php echo e(URL::asset('/uploads/QamarCareCard/ServiceProvider/Profiles/'.$data -> Profile)); ?>" style="width: 130px; height: 135px;" class="rounded">
                                                 </td>
                                                 <td style="text-align: center;">
                                                      <!-- <img src="<?php echo e(URL::asset('/assets/images/letterhead.png')); ?>" style="width: 400px; height: 100%;" class="rounded-circle"> -->
