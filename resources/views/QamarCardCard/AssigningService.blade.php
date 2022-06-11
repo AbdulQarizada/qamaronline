@@ -122,23 +122,23 @@
                                        @if( $qamarcarecard -> LevelPoverty == 3)
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
+                                         <i class="bx bxs-star text-warning font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
                                        @endif
                                        @if( $qamarcarecard -> LevelPoverty == 4)
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
+                                         <i class="bx bxs-star text-warning font-size-16"></i>
+                                         <i class="bx bxs-star text-warning font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
                                        @endif
                                        @if( $qamarcarecard -> LevelPoverty == 5)
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+                                         <i class="bx bxs-star text-warning font-size-16"></i>
+                                         <i class="bx bxs-star text-warning font-size-18"></i>
+                                         <i class="bx bxs-star text-warning font-size-20"></i>
                                        @endif
                                     </div>
                                 </td>
