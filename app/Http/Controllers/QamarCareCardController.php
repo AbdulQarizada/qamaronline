@@ -524,9 +524,43 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
       $servicetypes = ServiceType::all();
 
 
+      $qamarcarecards =   QamarCareCard:: where("qamar_care_cards.id", "=", $data -> id)
+      
+      
+      
+      ->join('locations as a','qamar_care_cards.Province_ID', '=', 'a.id')
+      ->join('locations as b','qamar_care_cards.District_ID', '=', 'b.id')
+      // ->join('look_ups as c','qamar_care_cards.Country_ID', '=', 'c.id')
+      // ->join('look_ups as d','qamar_care_cards.Gender_ID', '=', 'd.id')
+      // ->join('look_ups as e','qamar_care_cards.Language_ID', '=', 'e.id')
+      // ->join('look_ups as f','qamar_care_cards.CurrentJob_ID', '=', 'f.id')
+      // ->join('look_ups as g','qamar_care_cards.FutureJob_ID', '=', 'g.id')
+      // ->join('look_ups as h','qamar_care_cards.EducationLevel_ID', '=', 'h.id')
+      // ->join('look_ups as i','qamar_care_cards.RelativeRelationship_ID', '=', 'i.id')
+      ->join('look_ups as j','qamar_care_cards.FamilyStatus_ID', '=', 'j.id')
+      // ->join('look_ups as k','qamar_care_cards.Tribe_ID', '=', 'k.id')
+      // ->join('look_ups as l','qamar_care_cards.IncomeStreem_ID', '=', 'l.id')
+      
+      
+      ->select('qamar_care_cards.*',
+      'a.Name as Province', 
+      'b.Name as District',
+      // 'c.Name as Country', 
+      // 'd.Name as Gender', 
+      // 'e.Name as Language', 
+      // 'f.Name as CurrentJob', 
+      // 'g.Name as FutureJob', 
+      // 'h.Name as EducationLevel', 
+      // 'i.Name as RelativeRelationship', 
+      'j.Name as FamilyStatus', 
+      // 'k.Name as Tribe', 
+      // 'l.Name as IncomeStreem'
+      )
+      
+       ->get();
 
 
-      return view('QamarCardCard.AssignToService', ['data' => $data, 'users' => $users, 'provinces' => $provinces, 'servicetypes' => $servicetypes]);
+      return view('QamarCardCard.AssignToService', ['datas' => $qamarcarecards, 'users' => $users, 'provinces' => $provinces, 'servicetypes' => $servicetypes]);
     }
 
 

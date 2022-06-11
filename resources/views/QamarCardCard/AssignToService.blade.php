@@ -50,7 +50,8 @@
                 <div>
                     <div class="table-responsive">
                         <table class="table align-middle table-nowrap table-hover">
-     
+                           @foreach($datas as $data)
+                         
                             <tbody>
                                 <tr>
                                 <td>
@@ -64,8 +65,9 @@
                                         <p class="text-muted mb-0">QCC-{{$data -> QCC}}</p>
                                 </td>
                                 <td>
-                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> TazkiraID}}</a></h5>
-                                        <!-- <p class="text-muted mb-0">QCC-{{$data -> QCC}}</p> -->
+                                    
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"> TazkiraID</a></h5>
+                                        <p class="text-muted mb-0">{{$data -> TazkiraID}}</p>
                                 </td>
                                 <td>
                                 <div>
@@ -166,6 +168,7 @@
                         
                              
                             </tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>
