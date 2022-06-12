@@ -14,13 +14,17 @@
         @slot('li_1') Qamar Care Card @endslot
         @slot('title') Qamar Care Card List @endslot
     @endcomponent
-    <div class="row">
-        <div class="col-12">
-           <a href="{{route('IndexQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+    <div class="row mt-4">
+        <div class="col-4">
+           <a href="{{route('IndexQamarCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+    
+        </div>
+        <div class="col-6">
+                                <h1 class="fw-medium font-size-24 ">QAMAR CARE CARDS</h1>
         </div>
      </div>
 
-     <div class="row">
+     <!-- <div class="row">
         <div class="col-12 ">
         <div class="card border border-3">
                     <div class="card-header">
@@ -32,7 +36,7 @@
                 </div>
       
         </div>
-     </div>
+     </div> -->
      <div class="row">
         <div class="col-4">
         <select class="form-select  form-select-lg mb-3 @error('Country') is-invalid @enderror"  onchange="window.location.href=this.value;" 

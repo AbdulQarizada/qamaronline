@@ -553,7 +553,7 @@ unset($__errorArgs, $__bag); ?>
                          if(data){
                             $('.District').empty();
                             $('.District').append('<option value="" >Select District</option>'); 
-                             $('.District').append('<option value="0" >All</option>'); 
+                             $('.District').append('<option value="3412" >All</option>'); 
                             $.each(data, function(key, course){
                                 $('select[name="District_ID"]').append('<option value="'+ course.id +'">' + course.Name+ '</option>');
                             });

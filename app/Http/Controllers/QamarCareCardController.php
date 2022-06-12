@@ -76,7 +76,7 @@ public function __construct()
       
        $validator = $request->validate([
       'FirstName' => 'bail|required|max:255',
-      'LastName' => 'required|max:255',
+      // 'LastName' => 'required|max:255',
       'TazkiraID' => 'required|max:10',
       'QCC' => 'required|unique:qamar_care_cards|max:255',
       'Profile' => 'required|max:255',

@@ -70,9 +70,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3 position-relative">
-                                    <label for="LastName" class="form-label ">Last Name <i class="mdi mdi-asterisk text-danger"></i></label>
+                                    <label for="LastName" class="form-label ">Last Name </label>
                                     <input type="text" class="form-control form-control-lg @error('LastName') is-invalid @enderror" value="{{ old('LastName') }}" id="LastName" name="LastName"
-                                          required>
+                                          >
 
                                           @error('LastName')
                                                 <span class="invalid-feedback" role="alert">
