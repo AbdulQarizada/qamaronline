@@ -29,7 +29,8 @@ return new class extends Migration
             $table -> integer('Profession_ID')->nullable();
             $table -> integer('EducationLevel_ID')->nullable();
 
-
+            $table -> integer('NumberOfFree')->nullable();
+            $table -> integer('Discount')->nullable();
 
             // $table -> string('FutureJob')->nullable();
 

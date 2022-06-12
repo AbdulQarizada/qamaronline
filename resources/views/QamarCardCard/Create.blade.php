@@ -837,7 +837,7 @@
 
 
           $(document).ready(function () {
-        var rnd = Math.floor(Math.random() * 100000000);
+        var rnd = Math.floor(Math.random() * 99999)+1;
         document.getElementById('QCC').value = rnd;
     });
 

@@ -9,17 +9,26 @@
 
 <?php $__env->startSection('content'); ?>
 
-    <?php $__env->startComponent('components.breadcrumb'); ?>
-        <?php $__env->slot('li_1'); ?> Qamar Online <?php $__env->endSlot(); ?>
-        <?php $__env->slot('title'); ?> Assign To Services Card <?php $__env->endSlot(); ?>
-    <?php echo $__env->renderComponent(); ?>
 
-    <div class="row">
+
+    <!-- <div class="row">
         <div class="col-12">
            <a href="<?php echo e(route('IndexQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         </div>
+     </div> -->
+
+     <div class="row mt-4">
+        <div class="col-4">
+           <a href="<?php echo e(route('IndexQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+    
+        </div>
+        <div class="col-6">
+                                <h1 class="fw-medium font-size-24 ">CARDS TO SERVICES</h1>
+        </div>
      </div>
-     <div class="row">
+
+
+     <!-- <div class="row">
         <div class="col-12">
         <div class="card border border-3">
                     <div class="card-header">
@@ -31,9 +40,9 @@
                 </div>
       
         </div>
-     </div>
+     </div> -->
      <div class="row">
-        <div class="col-4">
+        <div class="col-3">
         <select class="form-select  form-select-lg mb-3 <?php $__errorArgs = ['Country'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -57,7 +66,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
 
                                     </select>
         </div>
-        <div class="col-8 ">
+        <div class="col-9 ">
            <!-- <a href="<?php echo e(route('CreateQamarCareCard')); ?>" class="btn btn-primary btn-lg waves-effect waves-light m-3 float-end">ADD SERVICE PROVIDER</a> -->
         </div>
      </div>

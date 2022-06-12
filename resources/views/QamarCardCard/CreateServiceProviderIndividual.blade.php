@@ -12,19 +12,19 @@
 
 @section('content')
 
-@component('components.breadcrumb')
-@slot('li_1') Qamar Care / Service Provider @endslot
-@slot('title')   @endslot
-@endcomponent
-
-<div class="row">
-        <div class="col-12">
-           <a href="{{route('ServiceProviderIndexQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+<div class="row mt-4">
+        <div class="col-4">
+           <a href="{{route('ServiceProviderIndexQamarCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+    
+        </div>
+        <div class="col-6">
+              <h1 class="fw-medium font-size-24 ">ADD SERVICE PROVIDER</h1>
         </div>
      </div>
 
 
-     <div class="row">
+
+     <!-- <div class="row">
         <div class="col-12">
         <div class="card border border-3">
                     <div class="card-header">
@@ -36,7 +36,7 @@
                 </div>
       
         </div>
-     </div>
+     </div> -->
 
 
 
@@ -456,6 +456,30 @@
                                 </div>
                                 
                             </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 position-relative">
+                                    <label for="NumberOfFree" class="form-label ">Number of Free Service <i class="mdi mdi-asterisk text-danger"></i></label>
+                                    <input type="number" class="form-control form-control-lg @error('NumberOfFree') is-invalid @enderror" value="{{ old('NumberOfFree') }}" id="NumberOfFree" name="NumberOfFree" max="999999999"
+                                          required>
+                                          @error('NumberOfFree')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                           @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 position-relative">
+                                    <label for="Discount" class="form-label ">Discount <i class="mdi mdi-asterisk text-danger"></i></label>
+                                    <input type="number" class="form-control form-control-lg @error('Discount') is-invalid @enderror" value="{{ old('Discount') }}" id="Discount" name="Discount" max="100"
+                                          required>
+                                          @error('Discount')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                           @enderror
+                                </div>
+                            </div>
                         </div>
 
                     <!-- <div class="row">
@@ -787,7 +811,7 @@
 
 
             $(document).ready(function () {
-        var rnd = Math.floor(Math.random() * 100000000);
+        var rnd = Math.floor(Math.random() * 99999)+1;
         document.getElementById('QCC').value = rnd;
     });
 </script>

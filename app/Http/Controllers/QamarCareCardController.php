@@ -525,8 +525,7 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
       $users =   User::all();
       $provinces = Location::whereNull("Parent_ID")->get();
       $servicetypes = ServiceType::all();
-
-
+      $serviceproviders = null;
       $qamarcarecards =   QamarCareCard:: where("qamar_care_cards.id", "=", $data -> id)
       
       
@@ -563,10 +562,66 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
        ->get();
 
 
-      return view('QamarCardCard.AssignToService', ['datas' => $qamarcarecards, 'users' => $users, 'provinces' => $provinces, 'servicetypes' => $servicetypes]);
+      return view('QamarCardCard.AssignToService', ['serviceproviders' => $serviceproviders,'datas' => $qamarcarecards, 'users' => $users, 'provinces' => $provinces, 'servicetypes' => $servicetypes]);
     }
 
 
+    public function FindServiceProvider(QamarCareCard $data)
+    {
+      $users =   User::all();
+      $provinces = Location::whereNull("Parent_ID")->get();
+      $servicetypes = ServiceType::all();
+      $qamarcarecards =   QamarCareCard:: where("qamar_care_cards.id", "=", $data -> id)
+      
+      
+      
+      ->join('locations as a','qamar_care_cards.Province_ID', '=', 'a.id')
+      ->join('locations as b','qamar_care_cards.District_ID', '=', 'b.id')
+      // ->join('look_ups as c','qamar_care_cards.Country_ID', '=', 'c.id')
+      // ->join('look_ups as d','qamar_care_cards.Gender_ID', '=', 'd.id')
+      // ->join('look_ups as e','qamar_care_cards.Language_ID', '=', 'e.id')
+      // ->join('look_ups as f','qamar_care_cards.CurrentJob_ID', '=', 'f.id')
+      // ->join('look_ups as g','qamar_care_cards.FutureJob_ID', '=', 'g.id')
+      // ->join('look_ups as h','qamar_care_cards.EducationLevel_ID', '=', 'h.id')
+      // ->join('look_ups as i','qamar_care_cards.RelativeRelationship_ID', '=', 'i.id')
+      ->join('look_ups as j','qamar_care_cards.FamilyStatus_ID', '=', 'j.id')
+      // ->join('look_ups as k','qamar_care_cards.Tribe_ID', '=', 'k.id')
+      // ->join('look_ups as l','qamar_care_cards.IncomeStreem_ID', '=', 'l.id')
+      
+      
+      ->select('qamar_care_cards.*',
+      'a.Name as Province', 
+      'b.Name as District',
+      // 'c.Name as Country', 
+      // 'd.Name as Gender', 
+      // 'e.Name as Language', 
+      // 'f.Name as CurrentJob', 
+      // 'g.Name as FutureJob', 
+      // 'h.Name as EducationLevel', 
+      // 'i.Name as RelativeRelationship', 
+      'j.Name as FamilyStatus', 
+      // 'k.Name as Tribe', 
+      // 'l.Name as IncomeStreem'
+      )
+      
+       ->get();
+
+
+      //  select('service_providers.id','FirstName', 'LastName', 'QCC', 'Profile', 'Discount', 'NumberOfFree','j.Name as ServiceType')
+  
+ 
+             $serviceproviders =   ServiceProviders::
+            // ->join('service_types as j','service_providers.ServiceType_ID', '=', 'j.id')
+            where("ServiceType_ID", "=", request('RequestedService_ID'))
+            ->where("ProvinceService_ID", "=", request('Province_ID'))
+             ->where("DistrictService_ID", "=", request('District_ID'))
+            // ->where("Status", "=", "Approved")
+            ->get();
+            return view('QamarCardCard.AssignToService', ['serviceproviders' => $serviceproviders,'datas' => $qamarcarecards, 'users' => $users, 'provinces' => $provinces, 'servicetypes' => $servicetypes]);
+
+
+
+    }
 
  
     // public function AssignService(QamarCareCard $data )
@@ -784,6 +839,8 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
       'Profession_ID' => 'required|max:255',
       'EducationLevel_ID' => 'required|max:255',
       'PrimaryNumber' => 'required|max:10',
+      'NumberOfFree' => 'required|max:255',
+      'Discount' => 'required|max:10',
 
       // 'SecondaryNumber' => 'required|max:10',
       // 'RelativeNumber' => 'required|max:10',
@@ -831,6 +888,8 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
           'EducationLevel_ID' => request('EducationLevel_ID'),
           'PrimaryNumber' => request('PrimaryNumber'),
           'SecondaryNumber' => request('SecondaryNumber'),
+          'NumberOfFree' => request('NumberOfFree'),
+          'Discount' => request('Discount'),
           // 'EmergencyNumber' => request('EmergencyNumber'),
           'Province_ID' => request('Province_ID'),
           'District_ID' => request('District_ID'),
@@ -974,49 +1033,49 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
      }
 
   
-    public function FindServiceProvider( $RequestedService, $Province, $District)
-    {
+    // public function FindServiceProvider( $RequestedService, $Province, $District)
+    // {
 
-     if($RequestedService != "None")
-     {
+    //  if($RequestedService != "None")
+    //  {
        
-        if($Province != "None")
-        {
+    //     if($Province != "None")
+    //     {
 
-          if($District != 0)
-          {
+    //       if($District != 0)
+    //       {
  
-            $result =   ServiceProviders::select('service_providers.id','FirstName', 'LastName',  'j.Name as ServiceType')
-            ->join('service_types as j','service_providers.ServiceType_ID', '=', 'j.id')
-            ->where("ServiceType_ID", "=", $RequestedService)
-            ->where("ProvinceService_ID", "=", $Province)
-            ->where("DistrictService_ID", "=", $District)
-            ->where("Status", "=", "Approved")
-            ->get();
-            return response()->json($result);
+    //         $result =   ServiceProviders::select('service_providers.id','FirstName', 'LastName', 'QCC', 'Profile', 'Discount', 'NumberOfFree','j.Name as ServiceType')
+    //         ->join('service_types as j','service_providers.ServiceType_ID', '=', 'j.id')
+    //         ->where("ServiceType_ID", "=", $RequestedService)
+    //         ->where("ProvinceService_ID", "=", $Province)
+    //         ->where("DistrictService_ID", "=", $District)
+    //         ->where("Status", "=", "Approved")
+    //         ->get();
+    //         return response()->json($result);
 
-          }
+    //       }
  
-          else if($District == 0)
-          {
-            $result =   ServiceProviders::select('service_providers.id','FirstName', 'LastName', 'j.Name as ServiceType')
-            ->join('service_types as j','service_providers.ServiceType_ID', '=', 'j.id')
-            ->where("ServiceType_ID", "=", $RequestedService)
-            ->where("ProvinceService_ID", "=", $Province)
-            ->where("Status", "=", "Approved")
-            ->get();
-            return response()->json($result);
+    //       else if($District == 0)
+    //       {
+    //         $result =   ServiceProviders::select('service_providers.id','FirstName', 'LastName', 'j.Name as ServiceType')
+    //         ->join('service_types as j','service_providers.ServiceType_ID', '=', 'j.id')
+    //         ->where("ServiceType_ID", "=", $RequestedService)
+    //         ->where("ProvinceService_ID", "=", $Province)
+    //         ->where("Status", "=", "Approved")
+    //         ->get();
+    //         return response()->json($result);
 
-          }
+    //       }
        
 
-        }
+    //     }
 
-     }
-      // return "hi";
+    //  }
+    //   // return "hi";
       
-      // return response()->json($result);
-    }
+    //   // return response()->json($result);
+    // }
 
 
 

@@ -25,7 +25,8 @@ class ServiceProviders extends Model
      'CurrentJob_ID',
      'Profession_ID',
      'EducationLevel_ID',
-
+     'NumberOfFree',
+     'Discount',
      'PrimaryNumber',
      'SecondaryNumber',
      'Email',

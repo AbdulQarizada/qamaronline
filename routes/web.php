@@ -159,8 +159,9 @@ Route::post('/ServiceProvider_Profile', [App\Http\Controllers\HomeController:: c
 
        
 // find service provider
-   Route::get('/QamarCareCard/FindServiceProvider/{Province}/{District}/{RequestedService}', [App\Http\Controllers\QamarCareCardController:: class, 'FindServiceProvider'])->name('FindServiceProvider');
+//    Route::get('/QamarCareCard/FindServiceProvider/{Province}/{District}/{RequestedService}', [App\Http\Controllers\QamarCareCardController:: class, 'FindServiceProvider'])->name('FindServiceProvider');
 
+   Route::post('/QamarCareCard/FindServiceProvider/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'FindServiceProvider'])->name('FindServiceProvider');
 
  
 
