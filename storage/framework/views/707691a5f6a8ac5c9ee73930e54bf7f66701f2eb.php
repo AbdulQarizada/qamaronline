@@ -131,20 +131,12 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                <td>
                                 
                                 <div class="avatar-sm ">
-                                           <?php if( $qamarcarecard -> LevelPoverty == 1): ?>
-                                            <span class="avatar-title bg-danger rounded-circle">20%</span>
+                                            
+                                            <?php if( $qamarcarecard -> IsFree == 1): ?>
+                                            <span class="avatar-title bg-danger rounded-circle">Free</span>
                                             <?php endif; ?>
-                                            <?php if( $qamarcarecard -> LevelPoverty == 2): ?>
-                                            <span class="avatar-title bg-danger rounded-circle">40%</span>
-                                            <?php endif; ?>
-                                            <?php if( $qamarcarecard -> LevelPoverty == 3): ?>
-                                            <span class="avatar-title bg-danger rounded-circle">60%</span>
-                                            <?php endif; ?>
-                                            <?php if( $qamarcarecard -> LevelPoverty == 4): ?>
-                                            <span class="avatar-title bg-danger rounded-circle ">80%</span>
-                                            <?php endif; ?>
-                                            <?php if( $qamarcarecard -> LevelPoverty == 5): ?>
-                                            <span class="avatar-title bg-danger rounded-circle">100%</span>
+                                            <?php if( $qamarcarecard -> IsFree == null): ?>
+                                            <span class="avatar-title bg-danger rounded-circle"><?php echo e($qamarcarecard -> Discount); ?>%</span>
                                             <?php endif; ?>
                                  </div>
                                

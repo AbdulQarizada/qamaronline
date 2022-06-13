@@ -173,3 +173,4 @@ Route::post('/ServiceProvider_Profile', [App\Http\Controllers\HomeController:: c
 
 
 
+    Route::post('/QamarCareCard/AssignServices', [App\Http\Controllers\QamarCareCardController:: class, 'AssignService'])->name('AssignServicesQamarCareCard');

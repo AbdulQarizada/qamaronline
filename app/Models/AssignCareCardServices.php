@@ -14,9 +14,11 @@ class AssignCareCardServices extends Model
     
       'Assignee_ID',
       'RequestedService_ID',
-      'Province_ID',
-      'District_ID',
+      'ServiceProvince_ID',
+      'ServiceDistrict_ID',
       'ServiceProvider_ID',
+      'Discount',
+
       'IsFree',
       'Status',
       'Status_By',

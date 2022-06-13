@@ -445,6 +445,8 @@ unset($__errorArgs, $__bag); ?>
                
                     
                         <tr>
+                        <form  action="<?php echo e(route('AssignServiceQamarCareCard')); ?>" method="POST" enctype="multipart/form-data">
+                           <?php echo csrf_field(); ?>
                             <td>
                                 <div>
                                     <img class="rounded avatar-sm" src="<?php echo e(URL::asset('/uploads/QamarCareCard/ServiceProvider/Profiles/'.$serviceprovider -> Profile)); ?>" alt="">
@@ -480,6 +482,7 @@ unset($__errorArgs, $__bag); ?>
                                     <span class="avatar-title bg-transparent text-reset font-size-18">
                                         <?php echo e($serviceprovider -> NumberOfFree); ?>
 
+                                    </span><span class="position-absolute top-0 font-size-12 start-100 translate-middle badge rounded-pill bg-danger"><?php echo e($totalnumberoffree); ?><span class="visually-hidden">unread messages</span></span>
                                 </button>
                             </td>
                             <td>
@@ -488,6 +491,7 @@ unset($__errorArgs, $__bag); ?>
 
                                 </div>
                             </td>
+                           
                             <td>
                                 <div class="form-check form-check-warning font-size-18">
                                     <input class="form-check-input" type="checkbox"  name="IsFree" value="1">
@@ -496,20 +500,20 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                             </td>
                             <td>
-                            <form  action="<?php echo e(route('AssignServiceQamarCareCard')); ?>" method="POST" enctype="multipart/form-data">
-                           <?php echo csrf_field(); ?>
-                            <!-- <input type="number" class="form-control" value="<?php echo e($data -> id); ?>" id="Assignee_ID" name="Assignee_ID"  />
-                            <input type="number" class="form-control" value="<?php echo e($serviceprovider -> id); ?>" id="ServiceProvider_ID" name="ServiceProvider_ID"  />
-                            <input type="numer" class="form-control" value="<?php echo e($serviceprovider -> ServiceProvince_ID); ?>" id="ServiceProvince_ID" name="ServiceProvince_ID"  />
-                             <input type="number" class="form-control" value="<?php echo e($serviceprovider -> ServiceDistrict_ID); ?>" id="ServiceDistrict_ID" name="ServiceDistrict_ID"  /> -->
-                             <input type="number" class="form-control" value="<?php echo e($serviceprovider -> RequestedService_ID); ?>" id="RequestedService_ID" name="RequestedService_ID"  />
+                        
+                             <input type="number" class="form-control" value="<?php echo e($serviceprovider -> Discount); ?>" id="Discount" name="Discount"  hidden/>
+                            <input type="number" class="form-control" value="<?php echo e($data -> id); ?>" id="Assignee_ID" name="Assignee_ID"  hidden/>
+                            <input type="number" class="form-control" value="<?php echo e($serviceprovider -> id); ?>" id="ServiceProvider_ID" name="ServiceProvider_ID"  hidden/>
+                            <input type="number" class="form-control" value="<?php echo e($serviceprovider -> ServiceProvince_ID); ?>" id="ServiceProvince_ID" name="ServiceProvince_ID" hidden />
+                             <input type="number" class="form-control" value="<?php echo e($serviceprovider -> ServiceDistrict_ID); ?>" id="ServiceDistrict_ID" name="ServiceDistrict_ID"  hidden/>
+                             <input type="number" class="form-control" value="<?php echo e($serviceprovider -> RequestedService_ID); ?>" id="RequestedService_ID" name="RequestedService_ID" hidden />
                             
                                     <button  type="submit" class="btn btn-info waves-effect waves-light assign">
                                         Assign
                                     </button>
-                             </form>
-                            </td>
                             
+                            </td>
+                            </form>
                            </tr>
                         
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -747,7 +751,7 @@ unset($__errorArgs, $__bag); ?>
     //     });
     // });
 
-    $('.assign').on('click', function(event) {
+    $('.assign').on('submit', function(event) {
         event.preventDefault();
         const url = $(this).attr('href');
         swal({

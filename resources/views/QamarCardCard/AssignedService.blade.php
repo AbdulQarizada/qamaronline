@@ -124,20 +124,12 @@
                                <td>
                                 
                                 <div class="avatar-sm ">
-                                           @if( $qamarcarecard -> LevelPoverty == 1)
-                                            <span class="avatar-title bg-danger rounded-circle">20%</span>
+                                            
+                                            @if( $qamarcarecard -> IsFree == 1)
+                                            <span class="avatar-title bg-danger rounded-circle">Free</span>
                                             @endif
-                                            @if( $qamarcarecard -> LevelPoverty == 2)
-                                            <span class="avatar-title bg-danger rounded-circle">40%</span>
-                                            @endif
-                                            @if( $qamarcarecard -> LevelPoverty == 3)
-                                            <span class="avatar-title bg-danger rounded-circle">60%</span>
-                                            @endif
-                                            @if( $qamarcarecard -> LevelPoverty == 4)
-                                            <span class="avatar-title bg-danger rounded-circle ">80%</span>
-                                            @endif
-                                            @if( $qamarcarecard -> LevelPoverty == 5)
-                                            <span class="avatar-title bg-danger rounded-circle">100%</span>
+                                            @if( $qamarcarecard -> IsFree == null)
+                                            <span class="avatar-title bg-danger rounded-circle">{{$qamarcarecard -> Discount}}%</span>
                                             @endif
                                  </div>
                                

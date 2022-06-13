@@ -626,16 +626,16 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
              ->where("Status", "=", "Approved")
             ->get();
 
-            // foreach($serviceproviders as $serviceprovider)
-            // {
-            //   $numberoffree = AssignCareCardServices::where('assign_care_card_services.ServiceProvider_ID', "=", $serviceprovider ->id)
-            //   ->where("IsFree", "=", 1);
-            // }
+            foreach($serviceproviders as $serviceprovider)
+            {
+              $numberoffree = AssignCareCardServices::where('assign_care_card_services.ServiceProvider_ID', "=", $serviceprovider ->id)
+              ->where("IsFree", "=", 1);
+            }
           
 
-            // $totalnumberoffree = $numberoffree -> count();
+            $totalnumberoffree = $numberoffree -> count();
 
-            return view('QamarCardCard.AssignToService', ['serviceproviders' => $serviceproviders,'datas' => $qamarcarecards, 'users' => $users, 'provinces' => $provinces, 'servicetypes' => $servicetypes]);
+            return view('QamarCardCard.AssignToService', ['totalnumberoffree' => $totalnumberoffree,'serviceproviders' => $serviceproviders,'datas' => $qamarcarecards, 'users' => $users, 'provinces' => $provinces, 'servicetypes' => $servicetypes]);
 
 
 
@@ -648,7 +648,7 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
        $validator = $request->validate([
       'Assignee_ID' => 'required|max:255',
       'RequestedService_ID' => 'required|max:255',
-      'ServiceProvince_ID' => 'required|max:10',
+      'ServiceProvince_ID' => 'required|max:255',
       'ServiceDistrict_ID' => 'required|max:255',
       'ServiceProvider_ID' => 'required|max:255',
 
@@ -664,9 +664,12 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
     AssignCareCardServices::create([
           'Assignee_ID' => request('Assignee_ID'),
           'RequestedService_ID' => request('RequestedService_ID'),
+       
+          'ServiceProvider_ID' => request('ServiceProvider_ID'),
           'ServiceProvince_ID' => request('ServiceProvince_ID'),
           'ServiceDistrict_ID' => request('ServiceDistrict_ID'),
-          'ServiceProvider_ID' => request('ServiceProvider_ID'),
+          'Discount' => request('Discount'),
+
           'IsFree' => request('IsFree'),
         //   'Gender' => request('Gender'),
         //   'Language' => request('Language'),

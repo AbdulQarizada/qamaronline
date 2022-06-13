@@ -20,6 +20,7 @@ return new class extends Migration
             $table -> integer('ServiceProvince_ID')->nullable();
             $table -> integer('ServiceDistrict_ID')->nullable();
             $table -> integer('ServiceProvider_ID')->nullable();
+            $table -> integer('Discount')->nullable();
             $table -> boolean('IsFree')->nullable()->default(0);
             $table -> string('Status')->nullable();
             $table -> string('Status_By')->nullable();
