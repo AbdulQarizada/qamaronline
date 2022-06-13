@@ -127,9 +127,7 @@ Route::post('/ServiceProvider_Profile', [App\Http\Controllers\HomeController:: c
        Route::get('/QamarCareCard/RejectedServices', [App\Http\Controllers\QamarCareCardController:: class, 'RejectedServices'])->name('RejectedServicesQamarCareCard');
 
 
-       // create
-       Route::post('/QamarCareCard/AssignToService', [App\Http\Controllers\QamarCareCardController:: class, 'AssignService'])->name('AssignServiceQamarCareCard');
-       
+   
        // update
       Route::get('/QamarCareCard/ServiceEdit/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'ServiceEdit'])->name('ServiceEditQamarCareCard');
       Route::put('/QamarCareCard/ServiceEdit/{data}', [App\Http\Controllers\QamarCareCardController:: class, 'ServiceUpdate'])->name('ServiceUpdateQamarCareCard');
@@ -165,7 +163,9 @@ Route::post('/ServiceProvider_Profile', [App\Http\Controllers\HomeController:: c
 
  
 
-   
+      // create
+      Route::post('/QamarCareCard/AssignService', [App\Http\Controllers\QamarCareCardController:: class, 'AssignService'])->name('AssignServiceQamarCareCard');
+        
 
     // verify qamar card that is avalibe to all
     Route::get('/QamarCareCard/Verify', [App\Http\Controllers\QamarCareCardController:: class, 'Verify'])->name('VerifyQamarCareCard');

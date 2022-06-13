@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table -> integer('Assignee_ID')->nullable();
             $table -> integer('RequestedService_ID')->nullable();
-            $table -> integer('Province_ID')->nullable();
-            $table -> integer('District_ID')->nullable();
+            $table -> integer('ServiceProvince_ID')->nullable();
+            $table -> integer('ServiceDistrict_ID')->nullable();
             $table -> integer('ServiceProvider_ID')->nullable();
-            $table -> string('ExpectedDate')->nullable();
+            $table -> boolean('IsFree')->nullable()->default(0);
             $table -> string('Status')->nullable();
             $table -> string('Status_By')->nullable();
             $table -> string('Created_By')->nullable();

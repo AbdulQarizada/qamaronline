@@ -175,7 +175,7 @@
         </div>
     </div>
 </div>
-
+<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 <div class="row mb-3">
     <div class="col-4">
@@ -194,7 +194,7 @@
             <div class="card-body">
                 <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
                     </p> -->
-                <form class="needs-validation" action="<?php echo e(route('FindServiceProvider', ['data' => $data -> id])); ?>" method="POST" enctype="multipart/form-data" novalidate>
+                <form class="needs-validation" action="<?php echo e(route('FindServiceProvider', ['data' => $data -> id])); ?>" method="POST" enctype="multipart/form-data" novalidate name="formSearch">
                     <?php echo csrf_field(); ?>
                     <!-- <input type="text"  value="<?php echo e($data -> id); ?>" id="Assignee_ID" name="Assignee_ID" hidden /> -->
 
@@ -411,67 +411,72 @@ unset($__errorArgs, $__bag); ?>
     <!-- end col -->
 </div>
 <!-- end row -->
-<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
-
-
-
-<div>
-
-
-</div>
 
 
 
 <br />
 <?php if($serviceproviders != null): ?>
 
- <div class="row">
+
+
+    <div class="row">
+ 
+
         <div class="col-lg-12">
-                    <div class="table-responsive">
-                        <table class="table align-middle table-nowrap table-hover">
-                            <thead class="table-light">
-                                <tr>
-                                    <th scope="col" style="width: 70px;">#</th>
-                                    <th scope="col">Full Name</th>
-                                    <th scope="col">Service Address</th>
-                                    <th scope="col">Service Phones</th>
-                                    <th scope="col">Number Of Free</th>
-                                    <th scope="col">Discount</th>
-                                    <th scope="col">Action</th>
+            <div class="table-responsive">
+                <table class="table align-middle table-nowrap table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col" style="width: 70px;">#</th>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Service Address</th>
+                            <th scope="col">Service Phones</th>
+                            <th scope="col">Number Of Free</th>
+                            <th scope="col">Discount</th>
+                            <th scope="col">Is Free</th>
+                            <th scope="col">Action</th>
 
-                                    <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php $__currentLoopData = $serviceproviders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $serviceprovider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <form class="needs-validation" action="<?php echo e(route('AssignServiceQamarCareCard')); ?>" method="POST" name="formAssign" novalidate>
+                           <?php echo csrf_field(); ?>
+                        <input type="number" class="form-control" value="<?php echo e($data -> id); ?>" id="Assignee_ID" name="Assignee_ID" hidden />
+                        <input type="numer" class="form-control" value="<?php echo e($serviceprovider -> ServiceProvince_ID); ?>" id="ServiceProvince_ID" name="ServiceProvince_ID" hidden />
+                        <input type="number" class="form-control" value="<?php echo e($serviceprovider -> ServiceDistrict_ID); ?>" id="ServiceDistrict_ID" name="ServiceDistrict_ID" hidden />
+                        <input type="number" class="form-control" value="<?php echo e($serviceprovider -> RequestedService_ID); ?>" id="RequestedService_ID" name="RequestedService_ID" hidden />
+                       
+                       
+                        <tr>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <?php $__currentLoopData = $serviceproviders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $serviceprovider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <tr>
-                                <!-- <td><?php echo e($serviceprovider -> id); ?></td> -->
-                                <td>
-                                    <div>
-                                        <img class="rounded avatar-sm" src="<?php echo e(URL::asset('/uploads/QamarCareCard/ServiceProvider/Profiles/'.$serviceprovider -> Profile)); ?>" alt="">
-                                    </div>
-                                </td>
-                                    <td>
-                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($serviceprovider -> FirstName); ?> <?php echo e($serviceprovider -> LastName); ?></a></h5>
-                                        <p class="text-muted mb-0">QCC- <?php echo e($serviceprovider -> QCC); ?></p>
-                                    </td>
-                                
-                                <td>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($serviceprovider -> FirstName); ?> <?php echo e($serviceprovider -> Province); ?></a></h5>
-                                    <p class="text-muted mb-0">QCC-<?php echo e($serviceprovider -> QCC); ?></p>
-                                </td>
-                                <td>
+                   
+                            <!-- <td><?php echo e($serviceprovider -> id); ?></td> -->
+                            <td>
+                                <div>
+                                    <img class="rounded avatar-sm" src="<?php echo e(URL::asset('/uploads/QamarCareCard/ServiceProvider/Profiles/'.$serviceprovider -> Profile)); ?>" alt="">
+                                </div>
+                            </td>
+                            <td>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($serviceprovider -> FirstName); ?> <?php echo e($serviceprovider -> LastName); ?></a></h5>
+                                <p class="text-muted mb-0">QCC- <?php echo e($serviceprovider -> QCC); ?></p>
+                            </td>
+
+                            <td>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"> <?php echo e($serviceprovider -> ServiceProvince); ?></a></h5>
+                                <p class="text-muted mb-0"><?php echo e($serviceprovider -> ServiceDistrict); ?></p>
+                            </td>
+                            <td>
 
                                 <div>
-                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($serviceprovider -> PrimaryNumber); ?></a></h5>
-                                        <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($serviceprovider -> SecondaryNumber); ?></p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <!-- <div>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($serviceprovider -> PrimaryNumber); ?></a></h5>
+                                    <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($serviceprovider -> SecondaryNumber); ?></p>
+                                </div>
+                            </td>
+                            <td>
+                                <!-- <div>
                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"></a></h5>
                                         <h5 type="button" class="btn btn-primary position-relative">
                                         <?php echo e($serviceprovider -> NumberOfFree); ?> <span class="position-absolute top-0 font-size-18 start-100 translate-middle badge rounded-pill bg-danger">5<span class="visually-hidden">unread messages</span></span>
@@ -480,42 +485,47 @@ unset($__errorArgs, $__bag); ?>
                                     </div> -->
 
 
-                                    <button type="button" class="btn btn-light position-relative p-0 avatar-xs rounded-circle font-size-18">
+                                <button type="button" class="btn btn-light position-relative p-0 avatar-xs rounded-circle font-size-18">
                                     <span class="avatar-title bg-transparent text-reset font-size-18">
-                                    <?php echo e($serviceprovider -> NumberOfFree); ?>
+                                        <?php echo e($serviceprovider -> NumberOfFree); ?>
 
-                                    </span><span class="position-absolute top-0 font-size-12 start-100 translate-middle badge rounded-pill bg-danger">5<span class="visually-hidden">unread messages</span></span>
+                                    </span><span class="position-absolute top-0 font-size-12 start-100 translate-middle badge rounded-pill bg-danger"><?php echo e($totalnumberoffree); ?><span class="visually-hidden">unread messages</span></span>
                                 </button>
-                                </td>
-                                <td>
+                            </td>
+                            <td>
                                 <div class="avatar-sm ">
-                                        <span class="avatar-title bg-danger rounded-circle"><?php echo e($serviceprovider -> Discount); ?>%</span>
-                               
-                                    </div>
-                                </td>
-                                    <td>
-                             
-                                    </td>
-                                    <td>
-                       <div class="d-flex flex-wrap gap-2">
-                       <!-- <a href="<?php echo e(route('StatusQamarCareCard', ['data' => $serviceprovider -> id])); ?>" class="btn btn-warning waves-effect waves-light">
-                        <i class="bx bx-show-alt font-size-16 align-middle"></i>
-                    </a> -->
-               
-                    <a href="<?php echo e(route('ReInitiateQamarCareCard', ['data' => $serviceprovider -> id])); ?>" class="btn btn-info waves-effect waves-light reinitiate">
-                        <i class="bx bx-time-five  font-size-16 align-middle"></i>Assign
-                    </a>
-                </div>
-            </td>
+                                    <span class="avatar-title bg-danger rounded-circle"><?php echo e($serviceprovider -> Discount); ?>%</span>
+
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-warning font-size-18">
+                                    <input class="form-check-input" type="checkbox"  name="IsFree" value="1">
+                                    <label class="form-check-label" for="formCheckcolor4">
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button  type="submit" class="btn btn-info waves-effect waves-light  assign" name="formAssign">
+                                        Assign
+                                    </button>
+                                </div>
+                            </td>
+                           
+                           </tr>
+                           </form>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                         
-                            </tbody>
-                        </table>
-                    </div>
-             
-                </div>
+                           
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+      
     </div>
-    <?php endif; ?>
+
+<?php endif; ?>
 
 
 <?php $__env->stopSection(); ?>
@@ -538,6 +548,8 @@ unset($__errorArgs, $__bag); ?>
 <script src="<?php echo e(URL::asset('/assets/js/pages/rating-init.js')); ?>"></script>
 
 <script src="<?php echo e(URL::asset('/assets/libs/select2/select2.min.js')); ?>"></script>
+
+<script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
 
 
 <!-- form advanced init -->
@@ -661,48 +673,48 @@ unset($__errorArgs, $__bag); ?>
     // });
 
 
-//   $(document).ready(function() {
-//         $('.District').on('change', function() {
+    //   $(document).ready(function() {
+    //         $('.District').on('change', function() {
 
-//             var Province = $('.Province').val();
-//             var District = $('.District').val();
-//             var RequestedService = $('.RequestedService').val();
-//             if (Province) {
-//                 $.ajax({
-//                     url: '/QamarCareCard/FindServiceProvider/' + RequestedService + '/' + Province + '/' + District,
-//                     type: "GET",
-//                     data: {
-//                         "_token": "<?php echo e(csrf_token()); ?>"
-//                     },
-//                     //    data: {Province:Province, District:District, RequestedService:RequestedService},
-//                     dataType: "json",
-//                     success: function(data) {
-//                         var res='';
-//                         if (data) {
-//                             $('.ServiceProvider').empty();
-//                             $('.ServiceProvider').append('<option value="" hidden>Choose Service</option>');
-//                             $.each(data, function(key, course) {
-//                                 res +=
-//                                     '<tr>'+
-//                                      '<td>'+course.id+'</td>'+
-//                                      '<td><h5 class="font-size-14 mb-1"><a href="#" class="text-dark">'+course.FirstName +' '+ course.LastName+'</a></h5><p class="text-muted mb-0">QCC-'+ course.QCC+'</p></td>'+
+    //             var Province = $('.Province').val();
+    //             var District = $('.District').val();
+    //             var RequestedService = $('.RequestedService').val();
+    //             if (Province) {
+    //                 $.ajax({
+    //                     url: '/QamarCareCard/FindServiceProvider/' + RequestedService + '/' + Province + '/' + District,
+    //                     type: "GET",
+    //                     data: {
+    //                         "_token": "<?php echo e(csrf_token()); ?>"
+    //                     },
+    //                     //    data: {Province:Province, District:District, RequestedService:RequestedService},
+    //                     dataType: "json",
+    //                     success: function(data) {
+    //                         var res='';
+    //                         if (data) {
+    //                             $('.ServiceProvider').empty();
+    //                             $('.ServiceProvider').append('<option value="" hidden>Choose Service</option>');
+    //                             $.each(data, function(key, course) {
+    //                                 res +=
+    //                                     '<tr>'+
+    //                                      '<td>'+course.id+'</td>'+
+    //                                      '<td><h5 class="font-size-14 mb-1"><a href="#" class="text-dark">'+course.FirstName +' '+ course.LastName+'</a></h5><p class="text-muted mb-0">QCC-'+ course.QCC+'</p></td>'+
 
-                            
-//                                     '</tr>';
-//                             });
-//                             $('.tbody').html(res);
 
-//                         } else {
-//                             $('.tbody').html('No Data Found');
-//                         }
-//                     }
-//                 });
-//             } else {
-//                 $('.tbody').html('No Data Found');
+    //                                     '</tr>';
+    //                             });
+    //                             $('.tbody').html(res);
 
-//             }
-//         });
-//     });
+    //                         } else {
+    //                             $('.tbody').html('No Data Found');
+    //                         }
+    //                     }
+    //                 });
+    //             } else {
+    //                 $('.tbody').html('No Data Found');
+
+    //             }
+    //         });
+    //     });
 
     // $(document).ready(function() {
     //     $('.District').on('change', function() {
@@ -737,6 +749,21 @@ unset($__errorArgs, $__bag); ?>
     //         }
     //     });
     // });
+
+    $('.assign').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?',
+            text: 'This record will be assigned!',
+            icon: 'warning',
+            buttons: ["Cancel", "Yes!"],
+        }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
 </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/QamarCardCard/AssignToService.blade.php ENDPATH**/ ?>

@@ -608,51 +608,49 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
 
 
       //  select('service_providers.id','FirstName', 'LastName', 'QCC', 'Profile', 'Discount', 'NumberOfFree','j.Name as ServiceType')
-  
+     
  
-             $serviceproviders =   ServiceProviders::
-            // ->join('service_types as j','service_providers.ServiceType_ID', '=', 'j.id')
-            where("ServiceType_ID", "=", request('RequestedService_ID'))
+             $serviceproviders =   ServiceProviders::select('service_providers.*', 
+             'a.Name as ServiceProvince', 
+             'a.id as ServiceProvince_ID',
+             'b.Name as ServiceDistrict',
+             'b.id as ServiceDistrict_ID',
+             'service_providers.ServiceType_ID as RequestedService_ID'
+
+             )
+             ->join('locations as a','service_providers.ProvinceService_ID', '=', 'a.id')
+             ->join('locations as b','service_providers.DistrictService_ID', '=', 'b.id')
+            ->where("ServiceType_ID", "=", request('RequestedService_ID'))
             ->where("ProvinceService_ID", "=", request('Province_ID'))
              ->where("DistrictService_ID", "=", request('District_ID'))
-            // ->where("Status", "=", "Approved")
+             ->where("Status", "=", "Approved")
             ->get();
-            return view('QamarCardCard.AssignToService', ['serviceproviders' => $serviceproviders,'datas' => $qamarcarecards, 'users' => $users, 'provinces' => $provinces, 'servicetypes' => $servicetypes]);
+
+            foreach($serviceproviders as $serviceprovider)
+            {
+              $numberoffree = AssignCareCardServices::where('assign_care_card_services.ServiceProvider_ID', "=", $serviceprovider ->id)
+              ->where("IsFree", "=", 1);
+            }
+          
+
+            $totalnumberoffree = $numberoffree -> count();
+
+            return view('QamarCardCard.AssignToService', ['totalnumberoffree' => $totalnumberoffree,'serviceproviders' => $serviceproviders,'datas' => $qamarcarecards, 'users' => $users, 'provinces' => $provinces, 'servicetypes' => $servicetypes]);
 
 
 
     }
-
- 
-    // public function AssignService(QamarCareCard $data )
-    // {
-      
-    //   $data -> update([
-
-    //     'FirstName' => request('FirstName'),
-    //     'LastName' => request('LastName'),
-    //     'Email' => request('Email'),
-    //     'PNumber' => request('PNumber'),
-    //     'SNumber' => request('SNumber'),
-    //     'Province' => request('Province'),
-    //     'District' => request('District')
-
-    //   ]);
-    //   $qamarcarecards =   QamarCareCard::all();
-    //   return view('QamarCardCard.PendingServices', compact('qamarcarecards'));
-    // }
 
 
     public function AssignService(Request $request)
     {
       
        $validator = $request->validate([
-      'Assignee_ID' => 'bail|required|max:255',
+      'Assignee_ID' => 'required|max:255',
       'RequestedService_ID' => 'required|max:255',
-      'Province_ID' => 'required|max:10',
-      'District_ID' => 'required|max:255',
+      'ServiceProvince_ID' => 'required|max:10',
+      'ServiceDistrict_ID' => 'required|max:255',
       'ServiceProvider_ID' => 'required|max:255',
-      'ExpectedDate' => 'required|max:255',
 
        ]);
 
@@ -666,10 +664,10 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
     AssignCareCardServices::create([
           'Assignee_ID' => request('Assignee_ID'),
           'RequestedService_ID' => request('RequestedService_ID'),
-          'Province_ID' => request('Province_ID'),
-          'District_ID' => request('District_ID'),
+          'ServiceProvince_ID' => request('Province_ID'),
+          'ServiceDistrict_ID' => request('District_ID'),
           'ServiceProvider_ID' => request('ServiceProvider_ID'),
-          'ExpectedDate' => request('ExpectedDate'),
+          'IsFree' => request('IsFree'),
         //   'Gender' => request('Gender'),
         //   'Language' => request('Language'),
         //   'CurrentJob' => request('CurrentJob'),

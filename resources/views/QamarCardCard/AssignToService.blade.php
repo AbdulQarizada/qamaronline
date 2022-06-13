@@ -175,7 +175,7 @@
         </div>
     </div>
 </div>
-
+@endforeach
 
 <div class="row mb-3">
     <div class="col-4">
@@ -194,7 +194,7 @@
             <div class="card-body">
                 <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
                     </p> -->
-                <form class="needs-validation" action="{{route('FindServiceProvider', ['data' => $data -> id])}}" method="POST" enctype="multipart/form-data" novalidate>
+                <form class="needs-validation" action="{{route('FindServiceProvider', ['data' => $data -> id])}}" method="POST" enctype="multipart/form-data" novalidate name="formSearch">
                     @csrf
                     <!-- <input type="text"  value="{{$data -> id }}" id="Assignee_ID" name="Assignee_ID" hidden /> -->
 
@@ -341,67 +341,72 @@
     <!-- end col -->
 </div>
 <!-- end row -->
-@endforeach
 
 
-
-
-
-<div>
-
-
-</div>
 
 
 
 <br />
 @if($serviceproviders != null)
 
- <div class="row">
+
+
+    <div class="row">
+ 
+
         <div class="col-lg-12">
-                    <div class="table-responsive">
-                        <table class="table align-middle table-nowrap table-hover">
-                            <thead class="table-light">
-                                <tr>
-                                    <th scope="col" style="width: 70px;">#</th>
-                                    <th scope="col">Full Name</th>
-                                    <th scope="col">Service Address</th>
-                                    <th scope="col">Service Phones</th>
-                                    <th scope="col">Number Of Free</th>
-                                    <th scope="col">Discount</th>
-                                    <th scope="col">Action</th>
+            <div class="table-responsive">
+                <table class="table align-middle table-nowrap table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col" style="width: 70px;">#</th>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Service Address</th>
+                            <th scope="col">Service Phones</th>
+                            <th scope="col">Number Of Free</th>
+                            <th scope="col">Discount</th>
+                            <th scope="col">Is Free</th>
+                            <th scope="col">Action</th>
 
-                                    <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($serviceproviders as $serviceprovider)
+                    <form class="needs-validation" action="{{route('AssignServiceQamarCareCard')}}" method="POST" name="formAssign" novalidate>
+                           @csrf
+                        <input type="number" class="form-control" value="{{$data -> id }}" id="Assignee_ID" name="Assignee_ID" hidden />
+                        <input type="numer" class="form-control" value="{{$serviceprovider -> ServiceProvince_ID }}" id="ServiceProvince_ID" name="ServiceProvince_ID" hidden />
+                        <input type="number" class="form-control" value="{{$serviceprovider -> ServiceDistrict_ID }}" id="ServiceDistrict_ID" name="ServiceDistrict_ID" hidden />
+                        <input type="number" class="form-control" value="{{$serviceprovider -> RequestedService_ID }}" id="RequestedService_ID" name="RequestedService_ID" hidden />
+                       
+                       
+                        <tr>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($serviceproviders as $serviceprovider)
-                                <tr>
-                                <!-- <td>{{$serviceprovider -> id}}</td> -->
-                                <td>
-                                    <div>
-                                        <img class="rounded avatar-sm" src="{{URL::asset('/uploads/QamarCareCard/ServiceProvider/Profiles/'.$serviceprovider -> Profile)}}" alt="">
-                                    </div>
-                                </td>
-                                    <td>
-                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{ $serviceprovider -> FirstName}} {{ $serviceprovider -> LastName}}</a></h5>
-                                        <p class="text-muted mb-0">QCC- {{$serviceprovider -> QCC}}</p>
-                                    </td>
-                                
-                                <td>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$serviceprovider -> FirstName}} {{$serviceprovider -> Province}}</a></h5>
-                                    <p class="text-muted mb-0">QCC-{{$serviceprovider -> QCC}}</p>
-                                </td>
-                                <td>
+                   
+                            <!-- <td>{{$serviceprovider -> id}}</td> -->
+                            <td>
+                                <div>
+                                    <img class="rounded avatar-sm" src="{{URL::asset('/uploads/QamarCareCard/ServiceProvider/Profiles/'.$serviceprovider -> Profile)}}" alt="">
+                                </div>
+                            </td>
+                            <td>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{ $serviceprovider -> FirstName}} {{ $serviceprovider -> LastName}}</a></h5>
+                                <p class="text-muted mb-0">QCC- {{$serviceprovider -> QCC}}</p>
+                            </td>
+
+                            <td>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"> {{$serviceprovider -> ServiceProvince}}</a></h5>
+                                <p class="text-muted mb-0">{{$serviceprovider -> ServiceDistrict}}</p>
+                            </td>
+                            <td>
 
                                 <div>
-                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$serviceprovider -> PrimaryNumber}}</a></h5>
-                                        <p class="text-muted mb-0 badge badge-soft-warning">{{$serviceprovider -> SecondaryNumber}}</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <!-- <div>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$serviceprovider -> PrimaryNumber}}</a></h5>
+                                    <p class="text-muted mb-0 badge badge-soft-warning">{{$serviceprovider -> SecondaryNumber}}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <!-- <div>
                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"></a></h5>
                                         <h5 type="button" class="btn btn-primary position-relative">
                                         {{$serviceprovider -> NumberOfFree}} <span class="position-absolute top-0 font-size-18 start-100 translate-middle badge rounded-pill bg-danger">5<span class="visually-hidden">unread messages</span></span>
@@ -410,41 +415,46 @@
                                     </div> -->
 
 
-                                    <button type="button" class="btn btn-light position-relative p-0 avatar-xs rounded-circle font-size-18">
+                                <button type="button" class="btn btn-light position-relative p-0 avatar-xs rounded-circle font-size-18">
                                     <span class="avatar-title bg-transparent text-reset font-size-18">
-                                    {{$serviceprovider -> NumberOfFree}}
-                                    </span><span class="position-absolute top-0 font-size-12 start-100 translate-middle badge rounded-pill bg-danger">5<span class="visually-hidden">unread messages</span></span>
+                                        {{$serviceprovider -> NumberOfFree}}
+                                    </span><span class="position-absolute top-0 font-size-12 start-100 translate-middle badge rounded-pill bg-danger">{{$totalnumberoffree}}<span class="visually-hidden">unread messages</span></span>
                                 </button>
-                                </td>
-                                <td>
+                            </td>
+                            <td>
                                 <div class="avatar-sm ">
-                                        <span class="avatar-title bg-danger rounded-circle">{{$serviceprovider -> Discount}}%</span>
-                               
-                                    </div>
-                                </td>
-                                    <td>
-                             
-                                    </td>
-                                    <td>
-                       <div class="d-flex flex-wrap gap-2">
-                       <!-- <a href="{{route('StatusQamarCareCard', ['data' => $serviceprovider -> id])}}" class="btn btn-warning waves-effect waves-light">
-                        <i class="bx bx-show-alt font-size-16 align-middle"></i>
-                    </a> -->
-               
-                    <a href="{{route('ReInitiateQamarCareCard', ['data' => $serviceprovider -> id])}}" class="btn btn-info waves-effect waves-light reinitiate">
-                        <i class="bx bx-time-five  font-size-16 align-middle"></i>Assign
-                    </a>
-                </div>
-            </td>
+                                    <span class="avatar-title bg-danger rounded-circle">{{$serviceprovider -> Discount}}%</span>
+
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-check form-check-warning font-size-18">
+                                    <input class="form-check-input" type="checkbox"  name="IsFree" value="1">
+                                    <label class="form-check-label" for="formCheckcolor4">
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button  type="submit" class="btn btn-info waves-effect waves-light  assign" name="formAssign">
+                                        Assign
+                                    </button>
+                                </div>
+                            </td>
+                           
+                           </tr>
+                           </form>
                             @endforeach
-                         
-                            </tbody>
-                        </table>
-                    </div>
-             
-                </div>
+                           
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+      
     </div>
-    @endif
+
+@endif
 
 
 @endsection
@@ -467,6 +477,8 @@
 <script src="{{ URL::asset('/assets/js/pages/rating-init.js') }}"></script>
 
 <script src="{{ URL::asset('/assets/libs/select2/select2.min.js') }}"></script>
+
+<script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
 
 
 <!-- form advanced init -->
@@ -590,48 +602,48 @@
     // });
 
 
-//   $(document).ready(function() {
-//         $('.District').on('change', function() {
+    //   $(document).ready(function() {
+    //         $('.District').on('change', function() {
 
-//             var Province = $('.Province').val();
-//             var District = $('.District').val();
-//             var RequestedService = $('.RequestedService').val();
-//             if (Province) {
-//                 $.ajax({
-//                     url: '/QamarCareCard/FindServiceProvider/' + RequestedService + '/' + Province + '/' + District,
-//                     type: "GET",
-//                     data: {
-//                         "_token": "{{ csrf_token() }}"
-//                     },
-//                     //    data: {Province:Province, District:District, RequestedService:RequestedService},
-//                     dataType: "json",
-//                     success: function(data) {
-//                         var res='';
-//                         if (data) {
-//                             $('.ServiceProvider').empty();
-//                             $('.ServiceProvider').append('<option value="" hidden>Choose Service</option>');
-//                             $.each(data, function(key, course) {
-//                                 res +=
-//                                     '<tr>'+
-//                                      '<td>'+course.id+'</td>'+
-//                                      '<td><h5 class="font-size-14 mb-1"><a href="#" class="text-dark">'+course.FirstName +' '+ course.LastName+'</a></h5><p class="text-muted mb-0">QCC-'+ course.QCC+'</p></td>'+
+    //             var Province = $('.Province').val();
+    //             var District = $('.District').val();
+    //             var RequestedService = $('.RequestedService').val();
+    //             if (Province) {
+    //                 $.ajax({
+    //                     url: '/QamarCareCard/FindServiceProvider/' + RequestedService + '/' + Province + '/' + District,
+    //                     type: "GET",
+    //                     data: {
+    //                         "_token": "{{ csrf_token() }}"
+    //                     },
+    //                     //    data: {Province:Province, District:District, RequestedService:RequestedService},
+    //                     dataType: "json",
+    //                     success: function(data) {
+    //                         var res='';
+    //                         if (data) {
+    //                             $('.ServiceProvider').empty();
+    //                             $('.ServiceProvider').append('<option value="" hidden>Choose Service</option>');
+    //                             $.each(data, function(key, course) {
+    //                                 res +=
+    //                                     '<tr>'+
+    //                                      '<td>'+course.id+'</td>'+
+    //                                      '<td><h5 class="font-size-14 mb-1"><a href="#" class="text-dark">'+course.FirstName +' '+ course.LastName+'</a></h5><p class="text-muted mb-0">QCC-'+ course.QCC+'</p></td>'+
 
-                            
-//                                     '</tr>';
-//                             });
-//                             $('.tbody').html(res);
 
-//                         } else {
-//                             $('.tbody').html('No Data Found');
-//                         }
-//                     }
-//                 });
-//             } else {
-//                 $('.tbody').html('No Data Found');
+    //                                     '</tr>';
+    //                             });
+    //                             $('.tbody').html(res);
 
-//             }
-//         });
-//     });
+    //                         } else {
+    //                             $('.tbody').html('No Data Found');
+    //                         }
+    //                     }
+    //                 });
+    //             } else {
+    //                 $('.tbody').html('No Data Found');
+
+    //             }
+    //         });
+    //     });
 
     // $(document).ready(function() {
     //     $('.District').on('change', function() {
@@ -666,5 +678,20 @@
     //         }
     //     });
     // });
+
+    $('.assign').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?',
+            text: 'This record will be assigned!',
+            icon: 'warning',
+            buttons: ["Cancel", "Yes!"],
+        }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
 </script>
 @endsection
