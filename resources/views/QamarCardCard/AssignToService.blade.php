@@ -194,7 +194,7 @@
             <div class="card-body">
                 <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
                     </p> -->
-                <form class="needs-validation" action="{{route('FindServiceProvider', ['data' => $data -> id])}}" method="POST" enctype="multipart/form-data" novalidate name="formSearch">
+                <form class="needs-validation" action="{{route('FindServiceProvider', ['data' => $data -> id])}}" method="POST" enctype="multipart/form-data" novalidate>
                     @csrf
                     <!-- <input type="text"  value="{{$data -> id }}" id="Assignee_ID" name="Assignee_ID" hidden /> -->
 
@@ -372,18 +372,9 @@
                     </thead>
                     <tbody>
                     @foreach($serviceproviders as $serviceprovider)
-                    <form class="needs-validation" action="{{route('AssignServiceQamarCareCard')}}" method="POST" name="formAssign" novalidate>
-                           @csrf
-                        <input type="number" class="form-control" value="{{$data -> id }}" id="Assignee_ID" name="Assignee_ID" hidden />
-                        <input type="numer" class="form-control" value="{{$serviceprovider -> ServiceProvince_ID }}" id="ServiceProvince_ID" name="ServiceProvince_ID" hidden />
-                        <input type="number" class="form-control" value="{{$serviceprovider -> ServiceDistrict_ID }}" id="ServiceDistrict_ID" name="ServiceDistrict_ID" hidden />
-                        <input type="number" class="form-control" value="{{$serviceprovider -> RequestedService_ID }}" id="RequestedService_ID" name="RequestedService_ID" hidden />
-                       
-                       
+               
+                    
                         <tr>
-
-                   
-                            <!-- <td>{{$serviceprovider -> id}}</td> -->
                             <td>
                                 <div>
                                     <img class="rounded avatar-sm" src="{{URL::asset('/uploads/QamarCareCard/ServiceProvider/Profiles/'.$serviceprovider -> Profile)}}" alt="">
@@ -418,7 +409,6 @@
                                 <button type="button" class="btn btn-light position-relative p-0 avatar-xs rounded-circle font-size-18">
                                     <span class="avatar-title bg-transparent text-reset font-size-18">
                                         {{$serviceprovider -> NumberOfFree}}
-                                    </span><span class="position-absolute top-0 font-size-12 start-100 translate-middle badge rounded-pill bg-danger">{{$totalnumberoffree}}<span class="visually-hidden">unread messages</span></span>
                                 </button>
                             </td>
                             <td>
@@ -435,15 +425,22 @@
                                 </div>
                             </td>
                             <td>
-                                <div class="d-flex flex-wrap gap-2">
-                                    <button  type="submit" class="btn btn-info waves-effect waves-light  assign" name="formAssign">
+                            <form  action="{{route('AssignServiceQamarCareCard')}}" method="POST" enctype="multipart/form-data">
+                           @csrf
+                            <!-- <input type="number" class="form-control" value="{{$data -> id }}" id="Assignee_ID" name="Assignee_ID"  />
+                            <input type="number" class="form-control" value="{{$serviceprovider -> id }}" id="ServiceProvider_ID" name="ServiceProvider_ID"  />
+                            <input type="numer" class="form-control" value="{{$serviceprovider -> ServiceProvince_ID }}" id="ServiceProvince_ID" name="ServiceProvince_ID"  />
+                             <input type="number" class="form-control" value="{{$serviceprovider -> ServiceDistrict_ID }}" id="ServiceDistrict_ID" name="ServiceDistrict_ID"  /> -->
+                             <input type="number" class="form-control" value="{{$serviceprovider -> RequestedService_ID }}" id="RequestedService_ID" name="RequestedService_ID"  />
+                            
+                                    <button  type="submit" class="btn btn-info waves-effect waves-light assign">
                                         Assign
                                     </button>
-                                </div>
+                             </form>
                             </td>
-                           
+                            
                            </tr>
-                           </form>
+                        
                             @endforeach
                            
                     </tbody>

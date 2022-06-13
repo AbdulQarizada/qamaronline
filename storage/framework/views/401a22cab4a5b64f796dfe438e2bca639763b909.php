@@ -194,7 +194,7 @@
             <div class="card-body">
                 <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
                     </p> -->
-                <form class="needs-validation" action="<?php echo e(route('FindServiceProvider', ['data' => $data -> id])); ?>" method="POST" enctype="multipart/form-data" novalidate name="formSearch">
+                <form class="needs-validation" action="<?php echo e(route('FindServiceProvider', ['data' => $data -> id])); ?>" method="POST" enctype="multipart/form-data" novalidate>
                     <?php echo csrf_field(); ?>
                     <!-- <input type="text"  value="<?php echo e($data -> id); ?>" id="Assignee_ID" name="Assignee_ID" hidden /> -->
 
@@ -442,18 +442,9 @@ unset($__errorArgs, $__bag); ?>
                     </thead>
                     <tbody>
                     <?php $__currentLoopData = $serviceproviders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $serviceprovider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <form class="needs-validation" action="<?php echo e(route('AssignServiceQamarCareCard')); ?>" method="POST" name="formAssign" novalidate>
-                           <?php echo csrf_field(); ?>
-                        <input type="number" class="form-control" value="<?php echo e($data -> id); ?>" id="Assignee_ID" name="Assignee_ID" hidden />
-                        <input type="numer" class="form-control" value="<?php echo e($serviceprovider -> ServiceProvince_ID); ?>" id="ServiceProvince_ID" name="ServiceProvince_ID" hidden />
-                        <input type="number" class="form-control" value="<?php echo e($serviceprovider -> ServiceDistrict_ID); ?>" id="ServiceDistrict_ID" name="ServiceDistrict_ID" hidden />
-                        <input type="number" class="form-control" value="<?php echo e($serviceprovider -> RequestedService_ID); ?>" id="RequestedService_ID" name="RequestedService_ID" hidden />
-                       
-                       
+               
+                    
                         <tr>
-
-                   
-                            <!-- <td><?php echo e($serviceprovider -> id); ?></td> -->
                             <td>
                                 <div>
                                     <img class="rounded avatar-sm" src="<?php echo e(URL::asset('/uploads/QamarCareCard/ServiceProvider/Profiles/'.$serviceprovider -> Profile)); ?>" alt="">
@@ -489,7 +480,6 @@ unset($__errorArgs, $__bag); ?>
                                     <span class="avatar-title bg-transparent text-reset font-size-18">
                                         <?php echo e($serviceprovider -> NumberOfFree); ?>
 
-                                    </span><span class="position-absolute top-0 font-size-12 start-100 translate-middle badge rounded-pill bg-danger"><?php echo e($totalnumberoffree); ?><span class="visually-hidden">unread messages</span></span>
                                 </button>
                             </td>
                             <td>
@@ -506,15 +496,22 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                             </td>
                             <td>
-                                <div class="d-flex flex-wrap gap-2">
-                                    <button  type="submit" class="btn btn-info waves-effect waves-light  assign" name="formAssign">
+                            <form  action="<?php echo e(route('AssignServiceQamarCareCard')); ?>" method="POST" enctype="multipart/form-data">
+                           <?php echo csrf_field(); ?>
+                            <!-- <input type="number" class="form-control" value="<?php echo e($data -> id); ?>" id="Assignee_ID" name="Assignee_ID"  />
+                            <input type="number" class="form-control" value="<?php echo e($serviceprovider -> id); ?>" id="ServiceProvider_ID" name="ServiceProvider_ID"  />
+                            <input type="numer" class="form-control" value="<?php echo e($serviceprovider -> ServiceProvince_ID); ?>" id="ServiceProvince_ID" name="ServiceProvince_ID"  />
+                             <input type="number" class="form-control" value="<?php echo e($serviceprovider -> ServiceDistrict_ID); ?>" id="ServiceDistrict_ID" name="ServiceDistrict_ID"  /> -->
+                             <input type="number" class="form-control" value="<?php echo e($serviceprovider -> RequestedService_ID); ?>" id="RequestedService_ID" name="RequestedService_ID"  />
+                            
+                                    <button  type="submit" class="btn btn-info waves-effect waves-light assign">
                                         Assign
                                     </button>
-                                </div>
+                             </form>
                             </td>
-                           
+                            
                            </tr>
-                           </form>
+                        
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                            
                     </tbody>

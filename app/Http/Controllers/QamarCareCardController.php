@@ -484,8 +484,8 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
     {
       // $qamarcarecards =   AssignCareCardServices::where("Status", "=", 'Pending')->get();
 
-      $qamarcarecards =   AssignCareCardServices::join('locations as a', 'assign_care_card_services.Province_ID', '=', 'a.id')
-     ->join('locations as b','assign_care_card_services.District_ID', '=', 'b.id')
+      $qamarcarecards =   AssignCareCardServices::join('locations as a', 'assign_care_card_services.ServiceProvince_ID', '=', 'a.id')
+     ->join('locations as b','assign_care_card_services.ServiceDistrict_ID', '=', 'b.id')
      ->join('qamar_care_cards as c','assign_care_card_services.Assignee_ID', '=', 'c.id')
      ->join('service_providers as d','assign_care_card_services.ServiceProvider_ID', '=', 'd.id')
       ->select(['assign_care_card_services.*',
@@ -496,7 +496,7 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
       'd.PrimaryNumber as SPPrimaryNumber', 'd.SecondaryNumber as SPSecondaryNumber',
      
       ])
-       ->where("assign_care_card_services.Status", "=", 'Pending')
+      //  ->where("assign_care_card_services.Status", "=", 'Pending')
        ->get();
 
 
@@ -626,16 +626,16 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
              ->where("Status", "=", "Approved")
             ->get();
 
-            foreach($serviceproviders as $serviceprovider)
-            {
-              $numberoffree = AssignCareCardServices::where('assign_care_card_services.ServiceProvider_ID', "=", $serviceprovider ->id)
-              ->where("IsFree", "=", 1);
-            }
+            // foreach($serviceproviders as $serviceprovider)
+            // {
+            //   $numberoffree = AssignCareCardServices::where('assign_care_card_services.ServiceProvider_ID', "=", $serviceprovider ->id)
+            //   ->where("IsFree", "=", 1);
+            // }
           
 
-            $totalnumberoffree = $numberoffree -> count();
+            // $totalnumberoffree = $numberoffree -> count();
 
-            return view('QamarCardCard.AssignToService', ['totalnumberoffree' => $totalnumberoffree,'serviceproviders' => $serviceproviders,'datas' => $qamarcarecards, 'users' => $users, 'provinces' => $provinces, 'servicetypes' => $servicetypes]);
+            return view('QamarCardCard.AssignToService', ['serviceproviders' => $serviceproviders,'datas' => $qamarcarecards, 'users' => $users, 'provinces' => $provinces, 'servicetypes' => $servicetypes]);
 
 
 
@@ -664,8 +664,8 @@ return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
     AssignCareCardServices::create([
           'Assignee_ID' => request('Assignee_ID'),
           'RequestedService_ID' => request('RequestedService_ID'),
-          'ServiceProvince_ID' => request('Province_ID'),
-          'ServiceDistrict_ID' => request('District_ID'),
+          'ServiceProvince_ID' => request('ServiceProvince_ID'),
+          'ServiceDistrict_ID' => request('ServiceDistrict_ID'),
           'ServiceProvider_ID' => request('ServiceProvider_ID'),
           'IsFree' => request('IsFree'),
         //   'Gender' => request('Gender'),
