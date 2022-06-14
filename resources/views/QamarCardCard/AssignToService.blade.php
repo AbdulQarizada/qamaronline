@@ -35,7 +35,8 @@
      </div> -->
 <div class="row mt-4">
     <div class="col-4">
-        <a href="{{route('AssigningServiceQamarCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <a href="{{route('AssigningServiceQamarCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light "><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <a href="{{route('AssignedServicesQamarCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light assign2" hidden></a>
 
     </div>
     <div class="col-6">
@@ -206,7 +207,7 @@
                             <div class="mb-3 position-relative">
                                 <label for="RequestedService_ID" class="form-label">Requested Service</label>
                                 <div class="input-group " id="example-date-input">
-                                    <select class="form-control RequestedService form-control-lg select2" id="RequestedService_ID" name="RequestedService_ID">
+                                    <select class="form-control RequestedService form-control-lg select2" id="RequestedService_ID" name="RequestedService_ID" style="height: calc(1.5em + .75rem + 2px) !important;">
                                         <option value="None">Select</option>
                                         @foreach($servicetypes as $servicetype)
                                         @if($servicetype -> Parent_ID == null)
@@ -351,32 +352,33 @@
 
 
 
-    <div class="row">
- 
+<div class="row">
 
-        <div class="col-lg-12">
-            <div class="table-responsive">
-                <table class="table align-middle table-nowrap table-hover">
-                    <thead class="table-light">
-                        <tr>
-                            <th scope="col" style="width: 70px;">#</th>
-                            <th scope="col">Full Name</th>
-                            <th scope="col">Service Address</th>
-                            <th scope="col">Service Phones</th>
-                            <th scope="col">Number Of Free</th>
-                            <th scope="col">Discount</th>
-                            <th scope="col">Is Free</th>
-                            <th scope="col">Action</th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            <table class="table align-middle table-nowrap table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col" style="width: 70px;">#</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Services</th>
+                        <th scope="col">Service Address</th>
+                        <th scope="col">Service Phones</th>
+                        <th scope="col">Number Of Free</th>
+                        <th scope="col">Discount</th>
+                        <!-- <th scope="col">Is Free</th> -->
+                        <th scope="col">Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
                     @foreach($serviceproviders as $serviceprovider)
-               
-                    
-                        <tr>
-                        <form  action="{{route('AssignServiceQamarCareCard')}}" method="POST" enctype="multipart/form-data">
-                           @csrf
+
+
+                    <tr>
+                        <form action="{{route('AssignServiceQamarCareCard')}}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <td>
                                 <div>
                                     <img class="rounded avatar-sm" src="{{URL::asset('/uploads/QamarCareCard/ServiceProvider/Profiles/'.$serviceprovider -> Profile)}}" alt="">
@@ -386,7 +388,10 @@
                                 <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{ $serviceprovider -> FirstName}} {{ $serviceprovider -> LastName}}</a></h5>
                                 <p class="text-muted mb-0">QCC- {{$serviceprovider -> QCC}}</p>
                             </td>
-
+                            <td>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{ $serviceprovider -> Profession}}</a></h5>
+                                <p class="text-muted mb-0">{{$serviceprovider -> ServiceType}}</p>
+                            </td>
                             <td>
                                 <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"> {{$serviceprovider -> ServiceProvince}}</a></h5>
                                 <p class="text-muted mb-0">{{$serviceprovider -> ServiceDistrict}}</p>
@@ -411,7 +416,14 @@
                                 <button type="button" class="btn btn-light position-relative p-0 avatar-xs rounded-circle font-size-18">
                                     <span class="avatar-title bg-transparent text-reset font-size-18">
                                         {{$serviceprovider -> NumberOfFree}}
-                                    </span><span class="position-absolute top-0 font-size-12 start-100 translate-middle badge rounded-pill bg-danger">{{$totalnumberoffree}}<span class="visually-hidden">unread messages</span></span>
+                                    </span><span class="position-absolute top-0 font-size-12 start-100 translate-middle badge rounded-pill bg-danger">
+                                        @if($totalnumberoffree -> ServiceProvider_ID == $serviceprovider -> id)
+                                        {{ $totalnumberoffree -> count() }}
+                                        @endif
+                                        @if($totalnumberoffree -> ServiceProvider_ID != $serviceprovider -> id)
+                                        0
+                                        @endif
+                                        <span class="visually-hidden">unread messages</span></span>
                                 </button>
                             </td>
                             <td>
@@ -420,40 +432,85 @@
 
                                 </div>
                             </td>
-                           
                             <td>
-                                <div class="form-check form-check-warning font-size-18">
-                                    <input class="form-check-input" type="checkbox"  name="IsFree" value="1">
-                                    <label class="form-check-label" for="formCheckcolor4">
-                                    </label>
-                                </div>
-                            </td>
-                            <td>
-                        
-                             <input type="number" class="form-control" value="{{$serviceprovider -> Discount }}" id="Discount" name="Discount"  hidden/>
-                            <input type="number" class="form-control" value="{{$data -> id }}" id="Assignee_ID" name="Assignee_ID"  hidden/>
-                            <input type="number" class="form-control" value="{{$serviceprovider -> id }}" id="ServiceProvider_ID" name="ServiceProvider_ID"  hidden/>
-                            <input type="number" class="form-control" value="{{$serviceprovider -> ServiceProvince_ID }}" id="ServiceProvince_ID" name="ServiceProvince_ID" hidden />
-                             <input type="number" class="form-control" value="{{$serviceprovider -> ServiceDistrict_ID }}" id="ServiceDistrict_ID" name="ServiceDistrict_ID"  hidden/>
-                             <input type="number" class="form-control" value="{{$serviceprovider -> RequestedService_ID }}" id="RequestedService_ID" name="RequestedService_ID" hidden />
-                            
-                                    <button  type="submit" class="btn btn-info waves-effect waves-light assign">
-                                        Assign
-                                    </button>
-                            
-                            </td>
-                            </form>
-                           </tr>
-                        
-                            @endforeach
-                           
-                    </tbody>
-                </table>
-            </div>
 
+
+
+
+                                <div class="col-lg-6">
+                                    <div class="card">
+                                        <div>
+                                            <!-- center modal -->
+                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">Processed</button>
+
+                                            <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Payment Method</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body text-center">
+
+                                                            <div class="row m-3">
+
+                                                                <div class="col-6 col-sm-6">
+                                                                        <div class="form-check mb-3">
+                                                                            <input class="form-check-input" type="radio" name="IsFree" value="0" id="formRadios1" checked>
+                                                                            <label class="form-check-label" for="formRadios1">
+                                                                                Discount
+                                                                            </label>
+                                                                        </div>
+                                                                </div>
+                                                                @if($totalnumberoffree -> ServiceProvider_ID == $serviceprovider -> id)
+                                                                @if($totalnumberoffree -> count() < $serviceprovider -> NumberOfFree)
+                                                                <div class="col-6 col-sm-6">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="IsFree" value="1" id="formRadios2">
+                                                                            <label class="form-check-label" for="formRadios2">
+                                                                                Free
+                                                                            </label>
+                                                                        </div>
+                                                                </div>
+                                                                @endif
+                                                                @endif
+
+
+                                                            </div>
+
+                                                            <input type="number" class="form-control" value="{{$serviceprovider -> Discount }}" id="Discount" name="Discount" hidden />
+                                                            <input type="number" class="form-control" value="{{$data -> id }}" id="Assignee_ID" name="Assignee_ID" hidden />
+                                                            <input type="number" class="form-control" value="{{$serviceprovider -> id }}" id="ServiceProvider_ID" name="ServiceProvider_ID" hidden />
+                                                            <input type="number" class="form-control" value="{{$serviceprovider -> ServiceProvince_ID }}" id="ServiceProvince_ID" name="ServiceProvince_ID" hidden />
+                                                            <input type="number" class="form-control" value="{{$serviceprovider -> ServiceDistrict_ID }}" id="ServiceDistrict_ID" name="ServiceDistrict_ID" hidden />
+                                                            <input type="number" class="form-control" value="{{$serviceprovider -> RequestedService_ID }}" id="RequestedService_ID" name="RequestedService_ID" hidden />
+
+                                                            <button type="submit" class="btn btn-info waves-effect waves-light assign ">
+                                                                Assign
+                                                            </button>
+                                                        </div>
+                                                    </div><!-- /.modal-content -->
+                                                </div><!-- /.modal-dialog -->
+                                            </div><!-- /.modal -->
+
+                                        </div>
+                                    </div>
+                                    <!-- end card -->
+                                </div>
+
+                            </td>
+                        </form>
+                    </tr>
+
+                    @endforeach
+
+                </tbody>
+            </table>
         </div>
-      
+
     </div>
+
+</div>
 
 @endif
 
@@ -682,7 +739,7 @@
 
     $('.assign').on('submit', function(event) {
         event.preventDefault();
-        const url = $(this).attr('href');
+        const url = $('.assign2').attr('href');
         swal({
             title: 'Are you sure?',
             text: 'This record will be assigned!',

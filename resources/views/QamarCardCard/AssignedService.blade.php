@@ -33,7 +33,7 @@
         </div>
      </div>
      <div class="row">
-        <div class="col-4">
+        <div class="col-3">
         <select class="form-select  form-select-lg mb-3 @error('Country') is-invalid @enderror"  onchange="window.location.href=this.value;" 
 >
                                    <option value="{{route('AssigningServiceQamarCareCard')}}">Please Filter Your Choices</option>
@@ -50,7 +50,7 @@
 
                                     </select>
         </div>
-        <div class="col-8 ">
+        <div class="col-9 ">
            <!-- <a href="{{route('CreateQamarCareCard')}}" class="btn btn-primary btn-lg waves-effect waves-light m-3 float-end">ADD SERVICE PROVIDER</a> -->
         </div>
      </div>

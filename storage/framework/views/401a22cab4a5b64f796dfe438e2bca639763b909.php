@@ -35,7 +35,8 @@
      </div> -->
 <div class="row mt-4">
     <div class="col-4">
-        <a href="<?php echo e(route('AssigningServiceQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <a href="<?php echo e(route('AssigningServiceQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light "><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <a href="<?php echo e(route('AssignedServicesQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light assign2" hidden></a>
 
     </div>
     <div class="col-6">
@@ -206,7 +207,7 @@
                             <div class="mb-3 position-relative">
                                 <label for="RequestedService_ID" class="form-label">Requested Service</label>
                                 <div class="input-group " id="example-date-input">
-                                    <select class="form-control RequestedService form-control-lg select2" id="RequestedService_ID" name="RequestedService_ID">
+                                    <select class="form-control RequestedService form-control-lg select2" id="RequestedService_ID" name="RequestedService_ID" style="height: calc(1.5em + .75rem + 2px) !important;">
                                         <option value="None">Select</option>
                                         <?php $__currentLoopData = $servicetypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $servicetype): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <?php if($servicetype -> Parent_ID == null): ?>
@@ -421,32 +422,33 @@ unset($__errorArgs, $__bag); ?>
 
 
 
-    <div class="row">
- 
+<div class="row">
 
-        <div class="col-lg-12">
-            <div class="table-responsive">
-                <table class="table align-middle table-nowrap table-hover">
-                    <thead class="table-light">
-                        <tr>
-                            <th scope="col" style="width: 70px;">#</th>
-                            <th scope="col">Full Name</th>
-                            <th scope="col">Service Address</th>
-                            <th scope="col">Service Phones</th>
-                            <th scope="col">Number Of Free</th>
-                            <th scope="col">Discount</th>
-                            <th scope="col">Is Free</th>
-                            <th scope="col">Action</th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            <table class="table align-middle table-nowrap table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col" style="width: 70px;">#</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Services</th>
+                        <th scope="col">Service Address</th>
+                        <th scope="col">Service Phones</th>
+                        <th scope="col">Number Of Free</th>
+                        <th scope="col">Discount</th>
+                        <!-- <th scope="col">Is Free</th> -->
+                        <th scope="col">Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
                     <?php $__currentLoopData = $serviceproviders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $serviceprovider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-               
-                    
-                        <tr>
-                        <form  action="<?php echo e(route('AssignServiceQamarCareCard')); ?>" method="POST" enctype="multipart/form-data">
-                           <?php echo csrf_field(); ?>
+
+
+                    <tr>
+                        <form action="<?php echo e(route('AssignServiceQamarCareCard')); ?>" method="POST" enctype="multipart/form-data">
+                            <?php echo csrf_field(); ?>
                             <td>
                                 <div>
                                     <img class="rounded avatar-sm" src="<?php echo e(URL::asset('/uploads/QamarCareCard/ServiceProvider/Profiles/'.$serviceprovider -> Profile)); ?>" alt="">
@@ -456,7 +458,10 @@ unset($__errorArgs, $__bag); ?>
                                 <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($serviceprovider -> FirstName); ?> <?php echo e($serviceprovider -> LastName); ?></a></h5>
                                 <p class="text-muted mb-0">QCC- <?php echo e($serviceprovider -> QCC); ?></p>
                             </td>
-
+                            <td>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($serviceprovider -> Profession); ?></a></h5>
+                                <p class="text-muted mb-0"><?php echo e($serviceprovider -> ServiceType); ?></p>
+                            </td>
                             <td>
                                 <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"> <?php echo e($serviceprovider -> ServiceProvince); ?></a></h5>
                                 <p class="text-muted mb-0"><?php echo e($serviceprovider -> ServiceDistrict); ?></p>
@@ -482,7 +487,15 @@ unset($__errorArgs, $__bag); ?>
                                     <span class="avatar-title bg-transparent text-reset font-size-18">
                                         <?php echo e($serviceprovider -> NumberOfFree); ?>
 
-                                    </span><span class="position-absolute top-0 font-size-12 start-100 translate-middle badge rounded-pill bg-danger"><?php echo e($totalnumberoffree); ?><span class="visually-hidden">unread messages</span></span>
+                                    </span><span class="position-absolute top-0 font-size-12 start-100 translate-middle badge rounded-pill bg-danger">
+                                        <?php if($totalnumberoffree -> ServiceProvider_ID == $serviceprovider -> id): ?>
+                                        <?php echo e($totalnumberoffree -> count()); ?>
+
+                                        <?php endif; ?>
+                                        <?php if($totalnumberoffree -> ServiceProvider_ID != $serviceprovider -> id): ?>
+                                        0
+                                        <?php endif; ?>
+                                        <span class="visually-hidden">unread messages</span></span>
                                 </button>
                             </td>
                             <td>
@@ -491,40 +504,97 @@ unset($__errorArgs, $__bag); ?>
 
                                 </div>
                             </td>
-                           
                             <td>
-                                <div class="form-check form-check-warning font-size-18">
-                                    <input class="form-check-input" type="checkbox"  name="IsFree" value="1">
-                                    <label class="form-check-label" for="formCheckcolor4">
-                                    </label>
-                                </div>
-                            </td>
-                            <td>
-                        
-                             <input type="number" class="form-control" value="<?php echo e($serviceprovider -> Discount); ?>" id="Discount" name="Discount"  hidden/>
-                            <input type="number" class="form-control" value="<?php echo e($data -> id); ?>" id="Assignee_ID" name="Assignee_ID"  hidden/>
-                            <input type="number" class="form-control" value="<?php echo e($serviceprovider -> id); ?>" id="ServiceProvider_ID" name="ServiceProvider_ID"  hidden/>
-                            <input type="number" class="form-control" value="<?php echo e($serviceprovider -> ServiceProvince_ID); ?>" id="ServiceProvince_ID" name="ServiceProvince_ID" hidden />
-                             <input type="number" class="form-control" value="<?php echo e($serviceprovider -> ServiceDistrict_ID); ?>" id="ServiceDistrict_ID" name="ServiceDistrict_ID"  hidden/>
-                             <input type="number" class="form-control" value="<?php echo e($serviceprovider -> RequestedService_ID); ?>" id="RequestedService_ID" name="RequestedService_ID" hidden />
-                            
-                                    <button  type="submit" class="btn btn-info waves-effect waves-light assign">
-                                        Assign
-                                    </button>
-                            
-                            </td>
-                            </form>
-                           </tr>
-                        
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                           
-                    </tbody>
-                </table>
-            </div>
 
+
+
+
+                                <div class="col-lg-6">
+                                    <div class="card">
+                                        <div>
+                                            <!-- center modal -->
+                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">Processed</button>
+
+                                            <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Payment Method</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body text-center">
+
+                                                            <div class="row m-3">
+
+                                                                <div class="col-6 col-sm-6">
+                                                                        <div class="form-check mb-3">
+                                                                            <input class="form-check-input" type="radio" name="IsFree" value="0" id="formRadios1" checked>
+                                                                            <label class="form-check-label" for="formRadios1">
+                                                                                Discount
+                                                                            </label>
+                                                                        </div>
+                                                                </div>
+                                                                <?php if($totalnumberoffree -> ServiceProvider_ID == $serviceprovider -> id): ?>
+                                                                <?php if($totalnumberoffree -> count() < $serviceprovider -> NumberOfFree): ?>
+                                                                <div class="col-6 col-sm-6">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="IsFree" value="1" id="formRadios2">
+                                                                            <label class="form-check-label" for="formRadios2">
+                                                                                Free
+                                                                            </label>
+                                                                        </div>
+                                                                </div>
+                                                                <?php endif; ?>
+                                                                <?php endif; ?>
+                                                                <?php if($totalnumberoffree -> ServiceProvider_ID != $serviceprovider -> id): ?>
+                                                                <?php if($totalnumberoffree -> count() < $serviceprovider -> NumberOfFree): ?>
+                                                                <div class="col-6 col-sm-6">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="IsFree" value="1" id="formRadios2">
+                                                                            <label class="form-check-label" for="formRadios2">
+                                                                                Free
+                                                                            </label>
+                                                                        </div>
+                                                                </div>
+                                                                <?php endif; ?>
+                                                                <?php endif; ?>
+
+
+                                                            </div>
+
+                                                            <input type="number" class="form-control" value="<?php echo e($serviceprovider -> Discount); ?>" id="Discount" name="Discount" hidden />
+                                                            <input type="number" class="form-control" value="<?php echo e($data -> id); ?>" id="Assignee_ID" name="Assignee_ID" hidden />
+                                                            <input type="number" class="form-control" value="<?php echo e($serviceprovider -> id); ?>" id="ServiceProvider_ID" name="ServiceProvider_ID" hidden />
+                                                            <input type="number" class="form-control" value="<?php echo e($serviceprovider -> ServiceProvince_ID); ?>" id="ServiceProvince_ID" name="ServiceProvince_ID" hidden />
+                                                            <input type="number" class="form-control" value="<?php echo e($serviceprovider -> ServiceDistrict_ID); ?>" id="ServiceDistrict_ID" name="ServiceDistrict_ID" hidden />
+                                                            <input type="number" class="form-control" value="<?php echo e($serviceprovider -> RequestedService_ID); ?>" id="RequestedService_ID" name="RequestedService_ID" hidden />
+
+                                                            <button type="submit" class="btn btn-info waves-effect waves-light assign ">
+                                                                Assign
+                                                            </button>
+                                                        </div>
+                                                    </div><!-- /.modal-content -->
+                                                </div><!-- /.modal-dialog -->
+                                            </div><!-- /.modal -->
+
+                                        </div>
+                                    </div>
+                                    <!-- end card -->
+                                </div>
+
+                            </td>
+                        </form>
+                    </tr>
+
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                </tbody>
+            </table>
         </div>
-      
+
     </div>
+
+</div>
 
 <?php endif; ?>
 
@@ -753,7 +823,7 @@ unset($__errorArgs, $__bag); ?>
 
     $('.assign').on('submit', function(event) {
         event.preventDefault();
-        const url = $(this).attr('href');
+        const url = $('.assign2').attr('href');
         swal({
             title: 'Are you sure?',
             text: 'This record will be assigned!',

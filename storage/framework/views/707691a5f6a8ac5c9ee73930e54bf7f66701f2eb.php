@@ -33,7 +33,7 @@
         </div>
      </div>
      <div class="row">
-        <div class="col-4">
+        <div class="col-3">
         <select class="form-select  form-select-lg mb-3 <?php $__errorArgs = ['Country'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -57,7 +57,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
 
                                     </select>
         </div>
-        <div class="col-8 ">
+        <div class="col-9 ">
            <!-- <a href="<?php echo e(route('CreateQamarCareCard')); ?>" class="btn btn-primary btn-lg waves-effect waves-light m-3 float-end">ADD SERVICE PROVIDER</a> -->
         </div>
      </div>
