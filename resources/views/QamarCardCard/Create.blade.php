@@ -319,7 +319,7 @@
                                 <div class="input-group">
 
                                     <select class="form-select  form-select-lg @error('QamarSupport_ID') is-invalid @enderror" value="{{ old('QamarSupport_ID') }}" required name="QamarSupport_ID" id="QamarSupport_ID">
-                                        <option value="">Select Your Education Level</option>
+                                        <option value="">Select How Qamar Should Support You? </option>
                                         @foreach($whatqamarcandos as $whatqamarcando)
                                         <option value="{{ $whatqamarcando -> id}}">{{ $whatqamarcando -> Name}}</option>
 
@@ -928,7 +928,7 @@
     });
 
     function Random() {
-        var rnd = Math.floor(Math.random() * 10000);
+        var rnd = Math.floor(Math.random() * 99999) + 1;
         document.getElementById('QCC').value = rnd;
     };
 

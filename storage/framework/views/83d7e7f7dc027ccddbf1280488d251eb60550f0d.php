@@ -536,7 +536,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('QamarSupport_ID')); ?>" required name="QamarSupport_ID" id="QamarSupport_ID">
-                                        <option value="">Select Your Education Level</option>
+                                        <option value="">Select How Qamar Should Support You? </option>
                                         <?php $__currentLoopData = $whatqamarcandos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $whatqamarcando): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?php echo e($whatqamarcando -> id); ?>"><?php echo e($whatqamarcando -> Name); ?></option>
 
@@ -1474,7 +1474,7 @@ unset($__errorArgs, $__bag); ?>
     });
 
     function Random() {
-        var rnd = Math.floor(Math.random() * 10000);
+        var rnd = Math.floor(Math.random() * 99999) + 1;
         document.getElementById('QCC').value = rnd;
     };
 
