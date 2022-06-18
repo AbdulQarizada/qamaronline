@@ -444,9 +444,10 @@ unset($__errorArgs, $__bag); ?>
 
                     </tr>
                 </thead>
+            
                 <tbody>
                     <?php $__currentLoopData = $serviceproviders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $serviceprovider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
+                   
 
                     <tr>
                     <td>
@@ -505,16 +506,16 @@ unset($__errorArgs, $__bag); ?>
                             </td>
                             <td>
 
-
-
+                            <form action="<?php echo e(route('AssignServiceQamarCareCard')); ?>" method="POST" enctype="multipart/form-data" id="<?php echo e($serviceprovider -> FirstName); ?>">
+                                                           <?php echo csrf_field(); ?>
                           
                                 <div class="col-lg-6">
                                     <div class="card">
                                         <div>
                                             <!-- center modal -->
-                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">Processed</button>
+                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".<?php echo e($serviceprovider -> FirstName); ?>">Processed</button>
 
-                                            <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal fade <?php echo e($serviceprovider -> FirstName); ?>" tabindex="-1" role="dialog" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -522,8 +523,7 @@ unset($__errorArgs, $__bag); ?>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body text-center">
-                                                        <form action="<?php echo e(route('AssignServiceQamarCareCard')); ?>" method="POST" enctype="multipart/form-data">
-                                                           <?php echo csrf_field(); ?>
+                                                        
                                                             <div class="row m-3">
 
                                                                 <div class="col-6 col-sm-6">
@@ -549,17 +549,18 @@ unset($__errorArgs, $__bag); ?>
 
                                                             </div>
 
-                                                            <input type="number" class="form-control" value="<?php echo e($serviceprovider -> Discount); ?>" id="Discount" name="Discount" hidden />
-                                                            <input type="number" class="form-control" value="<?php echo e($serviceprovider -> id); ?>" id="ServiceProvider_ID" name="ServiceProvider_ID" hidden />
-                                                            <input type="number" class="form-control" value="<?php echo e($serviceprovider -> ServiceProvince_ID); ?>" id="ServiceProvince_ID" name="ServiceProvince_ID" hidden />
-                                                            <input type="number" class="form-control" value="<?php echo e($serviceprovider -> ServiceDistrict_ID); ?>" id="ServiceDistrict_ID" name="ServiceDistrict_ID" hidden />
-                                                            <input type="number" class="form-control" value="<?php echo e($serviceprovider -> RequestedService_ID); ?>" id="RequestedService_ID" name="RequestedService_ID" hidden />
-                                                            <input type="number" class="form-control" value="<?php echo e($data -> id); ?>" id="Assignee_ID" name="Assignee_ID" hidden />
-
-                                                            <button type="submit" class="btn btn-info waves-effect waves-light ">
+                                                           
+                                                            <input type="hidden" class="form-control" value="<?php echo e($serviceprovider -> Discount); ?>" id="Discount" name="Discount" hidden />
+                                                            <input type="hidden" class="form-control" value="<?php echo e($serviceprovider -> id); ?>" id="ServiceProvider_ID" name="ServiceProvider_ID" hidden />
+                                                            <input type="hidden" class="form-control" value="<?php echo e($serviceprovider -> ServiceProvince_ID); ?>" id="ServiceProvince_ID" name="ServiceProvince_ID" hidden />
+                                                            <input type="hidden" class="form-control" value="<?php echo e($serviceprovider -> ServiceDistrict_ID); ?>" id="ServiceDistrict_ID" name="ServiceDistrict_ID" hidden />
+                                                            <input type="hidden" class="form-control" value="<?php echo e($serviceprovider -> RequestedService_ID); ?>" id="RequestedService_ID" name="RequestedService_ID" hidden />
+                                                            <input type="hidden" class="form-control" value="<?php echo e($data -> id); ?>" id="Assignee_ID" name="Assignee_ID" hidden />
+                                                            </form>
+                                                            <button type="submit" class="btn btn-info waves-effect waves-light " form="<?php echo e($serviceprovider -> FirstName); ?>">
                                                                 Assign
                                                             </button>
-                                                         </form>
+                                                        
 
                                                         </div>
                                                     </div><!-- /.modal-content -->
@@ -570,11 +571,13 @@ unset($__errorArgs, $__bag); ?>
                                     </div>
                                     <!-- end card -->
                                 </div>
+                                </form>
                             </td>
                        
                     </tr>
-
+                    
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                 
 
                 </tbody>
             </table>

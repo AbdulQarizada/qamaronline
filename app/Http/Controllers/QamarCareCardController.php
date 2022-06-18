@@ -497,7 +497,7 @@ class QamarCareCardController extends Controller
       ->join('service_providers as d', 'assign_care_card_services.ServiceProvider_ID', '=', 'd.id')
       ->select([
         'assign_care_card_services.*',
-        'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.LevelPoverty', 'c.FirstName as BFirstName', 'c.LastName as BLastName', 'd.QCC as BQCC',
+        'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.LevelPoverty', 'c.FirstName as BFirstName', 'c.LastName as BLastName', 'c.QCC as BQCC',
         'c.PrimaryNumber as BPrimaryNumber', 'c.SecondaryNumber as BSecondaryNumber', 'c.RelativeNumber as BRelativeNumber',
 
         'd.FirstName as SPFirstName', 'd.LastName as SPLastName', 'd.QCC as SPQCC',

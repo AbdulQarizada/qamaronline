@@ -374,9 +374,10 @@
 
                     </tr>
                 </thead>
+            
                 <tbody>
                     @foreach($serviceproviders as $serviceprovider)
-
+                   
 
                     <tr>
                     <td>
@@ -433,16 +434,16 @@
                             </td>
                             <td>
 
-
-
+                            <form action="{{route('AssignServiceQamarCareCard')}}" method="POST" enctype="multipart/form-data" id="{{$serviceprovider -> FirstName}}">
+                                                           @csrf
                           
                                 <div class="col-lg-6">
                                     <div class="card">
                                         <div>
                                             <!-- center modal -->
-                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">Processed</button>
+                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target=".{{$serviceprovider -> FirstName}}">Processed</button>
 
-                                            <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal fade {{$serviceprovider -> FirstName}}" tabindex="-1" role="dialog" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -450,8 +451,7 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body text-center">
-                                                        <form action="{{route('AssignServiceQamarCareCard')}}" method="POST" enctype="multipart/form-data">
-                                                           @csrf
+                                                        
                                                             <div class="row m-3">
 
                                                                 <div class="col-6 col-sm-6">
@@ -477,17 +477,18 @@
 
                                                             </div>
 
-                                                            <input type="number" class="form-control" value="{{$serviceprovider -> Discount }}" id="Discount" name="Discount" hidden />
-                                                            <input type="number" class="form-control" value="{{$serviceprovider -> id}}" id="ServiceProvider_ID" name="ServiceProvider_ID" hidden />
-                                                            <input type="number" class="form-control" value="{{$serviceprovider -> ServiceProvince_ID }}" id="ServiceProvince_ID" name="ServiceProvince_ID" hidden />
-                                                            <input type="number" class="form-control" value="{{$serviceprovider -> ServiceDistrict_ID }}" id="ServiceDistrict_ID" name="ServiceDistrict_ID" hidden />
-                                                            <input type="number" class="form-control" value="{{$serviceprovider -> RequestedService_ID }}" id="RequestedService_ID" name="RequestedService_ID" hidden />
-                                                            <input type="number" class="form-control" value="{{$data -> id }}" id="Assignee_ID" name="Assignee_ID" hidden />
-
-                                                            <button type="submit" class="btn btn-info waves-effect waves-light ">
+                                                           
+                                                            <input type="hidden" class="form-control" value="{{$serviceprovider -> Discount }}" id="Discount" name="Discount" hidden />
+                                                            <input type="hidden" class="form-control" value="{{$serviceprovider -> id}}" id="ServiceProvider_ID" name="ServiceProvider_ID" hidden />
+                                                            <input type="hidden" class="form-control" value="{{$serviceprovider -> ServiceProvince_ID }}" id="ServiceProvince_ID" name="ServiceProvince_ID" hidden />
+                                                            <input type="hidden" class="form-control" value="{{$serviceprovider -> ServiceDistrict_ID }}" id="ServiceDistrict_ID" name="ServiceDistrict_ID" hidden />
+                                                            <input type="hidden" class="form-control" value="{{$serviceprovider -> RequestedService_ID }}" id="RequestedService_ID" name="RequestedService_ID" hidden />
+                                                            <input type="hidden" class="form-control" value="{{$data -> id }}" id="Assignee_ID" name="Assignee_ID" hidden />
+                                                            </form>
+                                                            <button type="submit" class="btn btn-info waves-effect waves-light " form="{{$serviceprovider -> FirstName}}">
                                                                 Assign
                                                             </button>
-                                                         </form>
+                                                        
 
                                                         </div>
                                                     </div><!-- /.modal-content -->
@@ -498,11 +499,13 @@
                                     </div>
                                     <!-- end card -->
                                 </div>
+                                </form>
                             </td>
                        
                     </tr>
-
+                    
                     @endforeach
+                 
 
                 </tbody>
             </table>
