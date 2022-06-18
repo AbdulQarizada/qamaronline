@@ -320,8 +320,8 @@
 
                                     <select class="form-select  form-select-lg @error('QamarSupport_ID') is-invalid @enderror" value="{{ old('QamarSupport_ID') }}" required name="QamarSupport_ID" id="QamarSupport_ID">
                                         <option value="">Select Your Education Level</option>
-                                        @foreach($educationlevels as $educationlevel)
-                                        <option value="{{ $educationlevel -> id}}">{{ $educationlevel -> Name}}</option>
+                                        @foreach($whatqamarcandos as $whatqamarcando)
+                                        <option value="{{ $whatqamarcando -> id}}">{{ $whatqamarcando -> Name}}</option>
 
                                         @endforeach
 

@@ -537,8 +537,8 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('QamarSupport_ID')); ?>" required name="QamarSupport_ID" id="QamarSupport_ID">
                                         <option value="">Select Your Education Level</option>
-                                        <?php $__currentLoopData = $educationlevels; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $educationlevel): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($educationlevel -> id); ?>"><?php echo e($educationlevel -> Name); ?></option>
+                                        <?php $__currentLoopData = $whatqamarcandos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $whatqamarcando): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($whatqamarcando -> id); ?>"><?php echo e($whatqamarcando -> Name); ?></option>
 
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 

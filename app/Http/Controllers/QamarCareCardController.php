@@ -61,6 +61,7 @@ class QamarCareCardController extends Controller
     $relationships =   LookUp::where("Parent_Name", "=", "RelativeRelationship")->get();
     $incomestreams =   LookUp::where("Parent_Name", "=", "IncomeStream")->get();
     $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
+    $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
     $provinces = Location::whereNull("Parent_ID")->get();
 
 
@@ -68,7 +69,7 @@ class QamarCareCardController extends Controller
 
 
 
-    return view('QamarCardCard.Create', ['countries' => $countries, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+    return view('QamarCardCard.Create', ['countries' => $countries,'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
   }
 
   public function Store(Request $request)
