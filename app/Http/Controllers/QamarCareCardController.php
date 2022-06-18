@@ -637,37 +637,29 @@ class QamarCareCardController extends Controller
       ->join('locations as b', 'service_providers.DistrictService_ID', '=', 'b.id')
       ->join('look_ups as c', 'service_providers.Profession_ID', '=', 'c.id')
       ->join('service_types as d', 'service_providers.ServiceType_ID', '=', 'd.id')
+      
 
       ->where("ServiceType_ID", "=", request('RequestedService_ID'))
       ->where("ProvinceService_ID", "=", request('Province_ID'))
       ->where("DistrictService_ID", "=", request('District_ID'))
       ->where("Status", "=", "Approved")
       ->get();
-    // $numberoffree = 0;
-    // foreach($serviceproviders as $serviceprovider)
-    // {
-    //  $numberoffrees = AssignCareCardServices::where("IsFree", "=",1)->get();
-    //  foreach($numberoffrees as $numberoffree)
-    //  {
-    //     $final = AssignCareCardServices::where("assign_care_card_services.ServiceProvider_ID", "=", $serviceprovider ->id)
-    //     ->get();
-    //  }
-    // }
+
+      $numberoffrees = 0;
 
       foreach($serviceproviders as $serviceprovider)
-    {
-      $numberoffrees = AssignCareCardServices::where('IsFree', "=", 1)
-      -> where('ServiceProvider_ID', "=", $serviceprovider -> id)
-      -> get()
-      -> count();
-
-    }
+      {
+     $numberoffrees = AssignCareCardServices::where("IsFree", "=","1")
+     -> where("assign_care_card_services.ServiceProvider_ID", "=", $serviceprovider -> id)
+     -> get() -> count();
+ 
+  }
   
     
 
 
 
-    return view('QamarCardCard.AssignToService', ['totalnumberoffree' => $numberoffrees, 'serviceproviders' => $serviceproviders, 'datas' => $qamarcarecards, 'users' => $users, 'provinces' => $provinces, 'servicetypes' => $servicetypes]);
+    return view('QamarCardCard.AssignToService', ['totalnumberoffrees' => $numberoffrees, 'serviceproviders' => $serviceproviders, 'datas' => $qamarcarecards, 'users' => $users, 'provinces' => $provinces, 'servicetypes' => $servicetypes]);
   }
 
 

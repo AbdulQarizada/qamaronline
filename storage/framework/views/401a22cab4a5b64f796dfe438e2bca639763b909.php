@@ -492,9 +492,15 @@ unset($__errorArgs, $__bag); ?>
                                         <?php echo e($serviceprovider -> NumberOfFree); ?>
 
                                     </span><span class="position-absolute top-0 font-size-12 start-100 translate-middle badge rounded-pill bg-danger">
-                                   
-                                        <?php echo e($totalnumberoffree); ?>
+                              
+                                
+                                       <?php echo e($totalnumberoffrees); ?>
 
+
+                                    
+                                    
+                                    
+                                 
                                         <span class="visually-hidden">unread messages</span></span>
                                 </button>
                             </td>
@@ -528,8 +534,8 @@ unset($__errorArgs, $__bag); ?>
 
                                                                 <div class="col-6 col-sm-6">
                                                                         <div class="form-check mb-3">
-                                                                            <input class="form-check-input" type="radio" name="IsFree" value="0" id="formRadios1" checked>
-                                                                            <label class="form-check-label" for="formRadios1">
+                                                                            <input class="form-check-input" type="radio" name="IsFree" value="0" id="Discount" checked>
+                                                                            <label class="form-check-label" for="Discount">
                                                                                 Discount
                                                                             </label>
                                                                         </div>
@@ -539,8 +545,8 @@ unset($__errorArgs, $__bag); ?>
 
                                                                 <div class="col-6 col-sm-6">
                                                                         <div class="form-check">
-                                                                            <input class="form-check-input" type="radio" name="IsFree" value="1" id="formRadios2">
-                                                                            <label class="form-check-label" for="formRadios2">
+                                                                            <input class="form-check-input" type="radio" name="IsFree" value="1" id="IsFree">
+                                                                            <label class="form-check-label" for="IsFree">
                                                                                 Free
                                                                             </label>
                                                                         </div>
