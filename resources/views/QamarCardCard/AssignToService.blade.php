@@ -360,6 +360,8 @@
             <table class="table align-middle table-nowrap table-hover">
                 <thead class="table-light">
                     <tr>
+                    <th scope="col" style="width: 70px;">id</th>
+
                         <th scope="col" style="width: 70px;">#</th>
                         <th scope="col">Full Name</th>
                         <th scope="col">Services</th>
@@ -377,8 +379,9 @@
 
 
                     <tr>
-                        <form action="{{route('AssignServiceQamarCareCard')}}" method="POST" enctype="multipart/form-data">
-                            @csrf
+                    <td>
+                    <p class="text-muted mb-0">{{$serviceprovider -> id}}</p>
+                            </td>
                             <td>
                                 <div>
                                     <img class="rounded avatar-sm" src="{{URL::asset('/uploads/QamarCareCard/ServiceProvider/Profiles/'.$serviceprovider -> Profile)}}" alt="">
@@ -417,12 +420,8 @@
                                     <span class="avatar-title bg-transparent text-reset font-size-18">
                                         {{$serviceprovider -> NumberOfFree}}
                                     </span><span class="position-absolute top-0 font-size-12 start-100 translate-middle badge rounded-pill bg-danger">
-                                        @if($totalnumberoffree -> ServiceProvider_ID == $serviceprovider -> id)
-                                        {{ $totalnumberoffree -> count() }}
-                                        @endif
-                                        @if($totalnumberoffree -> ServiceProvider_ID != $serviceprovider -> id)
-                                        0
-                                        @endif
+                                   
+                                        {{ $totalnumberoffree }}
                                         <span class="visually-hidden">unread messages</span></span>
                                 </button>
                             </td>
@@ -436,7 +435,7 @@
 
 
 
-
+                          
                                 <div class="col-lg-6">
                                     <div class="card">
                                         <div>
@@ -451,7 +450,8 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body text-center">
-
+                                                        <form action="{{route('AssignServiceQamarCareCard')}}" method="POST" enctype="multipart/form-data">
+                                                           @csrf
                                                             <div class="row m-3">
 
                                                                 <div class="col-6 col-sm-6">
@@ -462,8 +462,9 @@
                                                                             </label>
                                                                         </div>
                                                                 </div>
-                                                                @if($totalnumberoffree -> ServiceProvider_ID == $serviceprovider -> id)
-                                                                @if($totalnumberoffree -> count() < $serviceprovider -> NumberOfFree)
+                                               
+
+
                                                                 <div class="col-6 col-sm-6">
                                                                         <div class="form-check">
                                                                             <input class="form-check-input" type="radio" name="IsFree" value="1" id="formRadios2">
@@ -472,22 +473,22 @@
                                                                             </label>
                                                                         </div>
                                                                 </div>
-                                                                @endif
-                                                                @endif
-
+                                                              
 
                                                             </div>
 
                                                             <input type="number" class="form-control" value="{{$serviceprovider -> Discount }}" id="Discount" name="Discount" hidden />
-                                                            <input type="number" class="form-control" value="{{$data -> id }}" id="Assignee_ID" name="Assignee_ID" hidden />
-                                                            <input type="number" class="form-control" value="{{$serviceprovider -> id }}" id="ServiceProvider_ID" name="ServiceProvider_ID" hidden />
+                                                            <input type="number" class="form-control" value="{{$serviceprovider -> id}}" id="ServiceProvider_ID" name="ServiceProvider_ID" hidden />
                                                             <input type="number" class="form-control" value="{{$serviceprovider -> ServiceProvince_ID }}" id="ServiceProvince_ID" name="ServiceProvince_ID" hidden />
                                                             <input type="number" class="form-control" value="{{$serviceprovider -> ServiceDistrict_ID }}" id="ServiceDistrict_ID" name="ServiceDistrict_ID" hidden />
                                                             <input type="number" class="form-control" value="{{$serviceprovider -> RequestedService_ID }}" id="RequestedService_ID" name="RequestedService_ID" hidden />
+                                                            <input type="number" class="form-control" value="{{$data -> id }}" id="Assignee_ID" name="Assignee_ID" hidden />
 
-                                                            <button type="submit" class="btn btn-info waves-effect waves-light assign ">
+                                                            <button type="submit" class="btn btn-info waves-effect waves-light ">
                                                                 Assign
                                                             </button>
+                                                         </form>
+
                                                         </div>
                                                     </div><!-- /.modal-content -->
                                                 </div><!-- /.modal-dialog -->
@@ -497,9 +498,8 @@
                                     </div>
                                     <!-- end card -->
                                 </div>
-
                             </td>
-                        </form>
+                       
                     </tr>
 
                     @endforeach

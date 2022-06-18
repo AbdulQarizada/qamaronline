@@ -14,9 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('qamar_care_cards', function (Blueprint $table) {
-            $table->id();
+            $table->id()->start_from(1000);
             $table -> string('FirstName')->nullable();
             $table -> string('LastName')->nullable();
+            $table -> string('FirstNameLocal')->nullable();
+            $table -> string('LastNameLocal')->nullable();
             $table -> string('TazkiraID')->nullable();
             $table -> integer('QCC')->nullable();
             $table -> string('Profile')->nullable();
@@ -26,6 +28,7 @@ return new class extends Migration
             $table -> integer('CurrentJob_ID')->nullable();
             $table -> integer('FutureJob_ID')->nullable();
             $table -> integer('EducationLevel_ID')->nullable();
+            $table -> integer('QamarSupport_ID')->nullable();
             $table -> integer('PrimaryNumber')->nullable();
             $table -> integer('SecondaryNumber')->nullable();
             $table -> integer('RelativeNumber')->nullable();
@@ -38,6 +41,8 @@ return new class extends Migration
             $table -> integer('RelativeRelationship_ID')->nullable();
             $table -> string('RelativeName')->nullable();
             $table -> string('FatherName')->nullable();
+            $table -> string('FatherNameLocal')->nullable();
+            $table -> string('MaritalStatus')->nullable();
             $table -> string('SpuoseName')->nullable();
             $table -> integer('EldestSonAge')->nullable();
             $table -> integer('MonthlyFamilyIncome')->nullable();

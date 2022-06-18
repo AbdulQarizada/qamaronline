@@ -430,6 +430,8 @@ unset($__errorArgs, $__bag); ?>
             <table class="table align-middle table-nowrap table-hover">
                 <thead class="table-light">
                     <tr>
+                    <th scope="col" style="width: 70px;">id</th>
+
                         <th scope="col" style="width: 70px;">#</th>
                         <th scope="col">Full Name</th>
                         <th scope="col">Services</th>
@@ -447,8 +449,9 @@ unset($__errorArgs, $__bag); ?>
 
 
                     <tr>
-                        <form action="<?php echo e(route('AssignServiceQamarCareCard')); ?>" method="POST" enctype="multipart/form-data">
-                            <?php echo csrf_field(); ?>
+                    <td>
+                    <p class="text-muted mb-0"><?php echo e($serviceprovider -> id); ?></p>
+                            </td>
                             <td>
                                 <div>
                                     <img class="rounded avatar-sm" src="<?php echo e(URL::asset('/uploads/QamarCareCard/ServiceProvider/Profiles/'.$serviceprovider -> Profile)); ?>" alt="">
@@ -488,13 +491,9 @@ unset($__errorArgs, $__bag); ?>
                                         <?php echo e($serviceprovider -> NumberOfFree); ?>
 
                                     </span><span class="position-absolute top-0 font-size-12 start-100 translate-middle badge rounded-pill bg-danger">
-                                        <?php if($totalnumberoffree -> ServiceProvider_ID == $serviceprovider -> id): ?>
-                                        <?php echo e($totalnumberoffree -> count()); ?>
+                                   
+                                        <?php echo e($totalnumberoffree); ?>
 
-                                        <?php endif; ?>
-                                        <?php if($totalnumberoffree -> ServiceProvider_ID != $serviceprovider -> id): ?>
-                                        0
-                                        <?php endif; ?>
                                         <span class="visually-hidden">unread messages</span></span>
                                 </button>
                             </td>
@@ -508,7 +507,7 @@ unset($__errorArgs, $__bag); ?>
 
 
 
-
+                          
                                 <div class="col-lg-6">
                                     <div class="card">
                                         <div>
@@ -523,7 +522,8 @@ unset($__errorArgs, $__bag); ?>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body text-center">
-
+                                                        <form action="<?php echo e(route('AssignServiceQamarCareCard')); ?>" method="POST" enctype="multipart/form-data">
+                                                           <?php echo csrf_field(); ?>
                                                             <div class="row m-3">
 
                                                                 <div class="col-6 col-sm-6">
@@ -534,44 +534,33 @@ unset($__errorArgs, $__bag); ?>
                                                                             </label>
                                                                         </div>
                                                                 </div>
-                                                                <?php if($totalnumberoffree -> ServiceProvider_ID == $serviceprovider -> id): ?>
-                                                                <?php if($totalnumberoffree -> count() < $serviceprovider -> NumberOfFree): ?>
-                                                                <div class="col-6 col-sm-6">
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input" type="radio" name="IsFree" value="1" id="formRadios2">
-                                                                            <label class="form-check-label" for="formRadios2">
-                                                                                Free
-                                                                            </label>
-                                                                        </div>
-                                                                </div>
-                                                                <?php endif; ?>
-                                                                <?php endif; ?>
-                                                                <?php if($totalnumberoffree -> ServiceProvider_ID != $serviceprovider -> id): ?>
-                                                                <?php if($totalnumberoffree -> count() < $serviceprovider -> NumberOfFree): ?>
-                                                                <div class="col-6 col-sm-6">
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input" type="radio" name="IsFree" value="1" id="formRadios2">
-                                                                            <label class="form-check-label" for="formRadios2">
-                                                                                Free
-                                                                            </label>
-                                                                        </div>
-                                                                </div>
-                                                                <?php endif; ?>
-                                                                <?php endif; ?>
+                                               
 
+
+                                                                <div class="col-6 col-sm-6">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="radio" name="IsFree" value="1" id="formRadios2">
+                                                                            <label class="form-check-label" for="formRadios2">
+                                                                                Free
+                                                                            </label>
+                                                                        </div>
+                                                                </div>
+                                                              
 
                                                             </div>
 
                                                             <input type="number" class="form-control" value="<?php echo e($serviceprovider -> Discount); ?>" id="Discount" name="Discount" hidden />
-                                                            <input type="number" class="form-control" value="<?php echo e($data -> id); ?>" id="Assignee_ID" name="Assignee_ID" hidden />
                                                             <input type="number" class="form-control" value="<?php echo e($serviceprovider -> id); ?>" id="ServiceProvider_ID" name="ServiceProvider_ID" hidden />
                                                             <input type="number" class="form-control" value="<?php echo e($serviceprovider -> ServiceProvince_ID); ?>" id="ServiceProvince_ID" name="ServiceProvince_ID" hidden />
                                                             <input type="number" class="form-control" value="<?php echo e($serviceprovider -> ServiceDistrict_ID); ?>" id="ServiceDistrict_ID" name="ServiceDistrict_ID" hidden />
                                                             <input type="number" class="form-control" value="<?php echo e($serviceprovider -> RequestedService_ID); ?>" id="RequestedService_ID" name="RequestedService_ID" hidden />
+                                                            <input type="number" class="form-control" value="<?php echo e($data -> id); ?>" id="Assignee_ID" name="Assignee_ID" hidden />
 
-                                                            <button type="submit" class="btn btn-info waves-effect waves-light assign ">
+                                                            <button type="submit" class="btn btn-info waves-effect waves-light ">
                                                                 Assign
                                                             </button>
+                                                         </form>
+
                                                         </div>
                                                     </div><!-- /.modal-content -->
                                                 </div><!-- /.modal-dialog -->
@@ -581,9 +570,8 @@ unset($__errorArgs, $__bag); ?>
                                     </div>
                                     <!-- end card -->
                                 </div>
-
                             </td>
-                        </form>
+                       
                     </tr>
 
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

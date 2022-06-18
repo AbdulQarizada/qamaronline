@@ -76,9 +76,12 @@ class QamarCareCardController extends Controller
 
     $validator = $request->validate([
       'FirstName' => 'bail|required|max:255',
+      'FirstNameLocal' => 'required|max:255',
+
       // 'LastName' => 'required|max:255',
       'TazkiraID' => 'required|max:10',
-      'QCC' => 'required|unique:qamar_care_cards|max:255',
+      'QamarSupport_ID' => 'required|max:255',
+      'MaritalStatus' => 'required|max:255',
       'Profile' => 'required|max:255',
       'DOB' => 'required|max:255',
       'Gender_ID' => 'required|max:255',
@@ -94,7 +97,9 @@ class QamarCareCardController extends Controller
       'Village' => 'required|max:255',
       // 'Email' => 'required|email|max:255',
       'FatherName' => 'required|max:255',
-      'SpuoseName' => 'required|max:255',
+      'FatherNameLocal' => 'required|max:255',
+
+      // 'SpuoseName' => 'required|max:255',
       'EldestSonAge' => 'required|max:255',
       'MonthlyFamilyIncome' => 'required|max:10',
       'MonthlyFamilyExpenses' => 'required|max:10',
@@ -121,16 +126,23 @@ class QamarCareCardController extends Controller
 
     QamarCareCard::create([
       'FirstName' => request('FirstName'),
+      'FirstNameLocal' => request('FirstNameLocal'),
+
+      
       'LastName' => request('LastName'),
+      'LastNameLocal' => request('LastNameLocal'),
+
+
       'TazkiraID' => request('TazkiraID'),
-      'QCC' => request('QCC'),
       'Profile' => request('Profile'),
       'DOB' => request('DOB'),
+      'QCC' => request('QCC'),
       'Gender_ID' => request('Gender_ID'),
       'Language_ID' => request('Language_ID'),
       'CurrentJob_ID' => request('CurrentJob_ID'),
       'FutureJob_ID' => request('FutureJob_ID'),
       'EducationLevel_ID' => request('EducationLevel_ID'),
+      'QamarSupport_ID' => request('QamarSupport_ID'),
       'PrimaryNumber' => request('PrimaryNumber'),
       'SecondaryNumber' => request('SecondaryNumber'),
       'RelativeNumber' => request('RelativeNumber'),
@@ -139,6 +151,9 @@ class QamarCareCardController extends Controller
       'Village' => request('Village'),
       'Email' => request('Email'),
       'FatherName' => request('FatherName'),
+      'FatherNameLocal' => request('FatherNameLocal'),
+
+      'MaritalStatus' => request('MaritalStatus'),
       'SpuoseName' => request('SpuoseName'),
       'EldestSonAge' => request('EldestSonAge'),
       'MonthlyFamilyIncome' => request('MonthlyFamilyIncome'),
@@ -638,19 +653,20 @@ class QamarCareCardController extends Controller
     //  }
     // }
 
-    $serviceprovierCounts = ServiceProviders::get();
-    foreach ($serviceprovierCounts as $serviceprovierCount)
-     {
-      $numberoffrees = AssignCareCardServices::where("IsFree", "=", 1)->where("assign_care_card_services.ServiceProvider_ID", "=", $serviceprovierCount->id)->get();
-      foreach ($numberoffrees as $numberoffree) 
-      {
-        $total = $numberoffree;
-      }
+      foreach($serviceproviders as $serviceprovider)
+    {
+      $numberoffrees = AssignCareCardServices::where('IsFree', "=", 1)
+      -> where('ServiceProvider_ID', "=", $serviceprovider -> id)
+      -> get()
+      -> count();
+
     }
+  
+    
 
 
 
-    return view('QamarCardCard.AssignToService', ['totalnumberoffree' => $total, 'serviceproviders' => $serviceproviders, 'datas' => $qamarcarecards, 'users' => $users, 'provinces' => $provinces, 'servicetypes' => $servicetypes]);
+    return view('QamarCardCard.AssignToService', ['totalnumberoffree' => $numberoffrees, 'serviceproviders' => $serviceproviders, 'datas' => $qamarcarecards, 'users' => $users, 'provinces' => $provinces, 'servicetypes' => $servicetypes]);
   }
 
 
