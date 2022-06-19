@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('scholarships', function (Blueprint $table) {
             $table->id();
-            $table->string('Name')->nullable();
+            $table->string('ScholarshipName')->nullable();
             $table->integer('ScholarshipType_ID')->nullable();
             $table->integer('Country_ID')->nullable();
             $table->string('StartDate')->nullable();
@@ -23,6 +23,8 @@ return new class extends Migration
             $table->integer('Seats')->nullable();
             $table->string('Status')->nullable();
             $table->string('Created_By')->nullable();
+            $table->integer('Owner')->nullable();
+
 
 
 

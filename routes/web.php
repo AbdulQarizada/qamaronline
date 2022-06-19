@@ -71,10 +71,14 @@ Route::get('/Education/Applicant', [App\Http\Controllers\EducationController:: c
 
 // create scholarship
 Route::get('/Education/Scholarship/Create', [App\Http\Controllers\EducationController:: class, 'CreateScholarship'])->name('CreateScholarship');
-Route::post('/Education/Scholarship/Create', [App\Http\Controllers\QamarCareCardController:: class, 'StoreScholarship'])->name('CreateScholarship');
+Route::post('/Education/Scholarship/Create', [App\Http\Controllers\EducationController:: class, 'StoreScholarship'])->name('CreateScholarship');
+
+   // delete
+   Route::get('/Education/Scholarship/Delete/{data}', [App\Http\Controllers\EducationController:: class, 'DeleteScholarship'])->name('DeleteScholarship');
 
 
-
+   Route::get('/Education/Scholarship/Active', [App\Http\Controllers\EducationController:: class, 'ActiveScholarship'])->name('ActiveScholarship');
+   Route::get('/Education/Scholarship/Closed', [App\Http\Controllers\EducationController:: class, 'ClosedScholarship'])->name('ClosedScholarship');
 
 
 

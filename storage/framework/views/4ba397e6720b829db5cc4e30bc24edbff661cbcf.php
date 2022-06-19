@@ -44,9 +44,9 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
 >
                                    <option value="<?php echo e(route('AllQamarCareCard')); ?>">Please Filter Your Choices</option>
 
-                                    <option value="<?php echo e(route('AllQamarCareCard')); ?>">All</option>
-                                    <option value="<?php echo e(route('PendingQamarCareCard')); ?>">Active</option>
-                                    <option value="<?php echo e(route('ApprovedQamarCareCard')); ?>">Closed</option>
+                                    <option value="<?php echo e(route('AllScholarshipEducation')); ?>">All</option>
+                                    <option value="<?php echo e(route('ActiveScholarship')); ?>">Active</option>
+                                    <option value="<?php echo e(route('ClosedScholarship')); ?>">Closed</option>
                                     <!-- <option value="<?php echo e(route('PrintedQamarCareCard')); ?>">Printed</option>
                                     <option value="<?php echo e(route('ReleasedQamarCareCard')); ?>">Released</option>
                                     <option value="<?php echo e(route('RejectedQamarCareCard')); ?>">Rejected</option> -->
@@ -103,10 +103,10 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Location</th>
-                                <!-- <th>Phone Numbers</th> -->
+                                <th>Country</th>
+                                <th>Avalible Seats</th>
                                 <th>Dates</th>
-                                <th>Status</th>
+                                <!-- <th>Status</th> -->
                                 <th>Crated By</th>
                                 <th>Actions</th>
                                 
@@ -119,20 +119,16 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                 <tr>
                                 <td><?php echo e($scholarship -> id); ?></td>
                                 <td>
-                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($scholarship -> Name); ?> </a></h5>
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($scholarship -> ScholarshipName); ?> </a></h5>
                                         <p class="text-muted mb-0"><?php echo e($scholarship -> ScholarshipType); ?></p>
                                 </td>
                                 <td>
                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($scholarship -> Country); ?> </a></h5>
-                                        <p class="text-muted mb-0"><?php echo e($scholarship -> ScholarshipType); ?></p>
+                                        <!-- <p class="text-muted mb-0"><?php echo e($scholarship -> ScholarshipType); ?></p> -->
                                 </td>
-                                <!-- <td>    
-                                      <div>
-                                      <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($scholarship -> PrimaryNumber); ?></a></h5>
-                                        <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($scholarship -> SecondaryNumber); ?></p>
-                                         <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($scholarship -> RelativeNumber); ?></p>
-                                        </div>
-                               </td>  -->
+                               <td>    
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"> <?php echo e($scholarship -> Seats); ?> </a></h5>
+                               </td>
                                <td>
                                <div>
                                       <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($scholarship -> StartDate); ?></a></h5>
@@ -141,7 +137,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                         </div>
                                 </td>
                               
-                               <td>
+                               <!-- <td>
                                 <div>
 
 
@@ -159,7 +155,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
 
 
                                     </div>
-                                </td>
+                                </td> -->
                                 <td>
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($scholarship -> Created_By); ?></a></h5>
@@ -169,10 +165,17 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                 </td>
                     <td>
                        <div class="d-flex flex-wrap gap-2">
-                    <a href="<?php echo e(route('StatusQamarCareCard', ['data' => $scholarship -> id])); ?>" class="btn btn-warning waves-effect waves-light">
+                    <!-- <a href="<?php echo e(route('StatusQamarCareCard', ['data' => $scholarship -> id])); ?>" class="btn btn-warning waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
+                    </a> -->
+                    <!-- href="<?php echo e(route('EditQamarCareCard', ['data' => $scholarship -> id])); ?>" -->
+                    <a  class="btn btn-info waves-effect waves-light">
+                        <i class="bx bx-edit  font-size-16 align-middle"></i>
                     </a>
-                    <?php if($scholarship -> Status == 'Pending'): ?>
+                     <a href="<?php echo e(route('DeleteScholarship', ['data' => $scholarship -> id])); ?>" class="btn btn-danger waves-effect waves-light delete-confirm">
+                        <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
+                    </a>
+                    <!-- <?php if($scholarship -> Status == 'Pending'): ?>
                     <a href="<?php echo e(route('EditQamarCareCard', ['data' => $scholarship -> id])); ?>" class="btn btn-info waves-effect waves-light">
                         <i class="bx bx-edit  font-size-16 align-middle"></i>
                     </a>
@@ -202,7 +205,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                     <a href="<?php echo e(route('ReleaseQamarCareCard', ['data' => $scholarship -> id])); ?>" class="btn btn-success waves-effect waves-light release">
                         <i class="bx bx-user-check  font-size-16 align-middle"></i>
                     </a>
-                    <?php endif; ?>
+                    <?php endif; ?> -->
                    
 
 

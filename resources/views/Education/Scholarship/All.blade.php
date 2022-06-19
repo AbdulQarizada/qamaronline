@@ -37,9 +37,9 @@
 >
                                    <option value="{{route('AllQamarCareCard')}}">Please Filter Your Choices</option>
 
-                                    <option value="{{route('AllQamarCareCard')}}">All</option>
-                                    <option value="{{route('PendingQamarCareCard')}}">Active</option>
-                                    <option value="{{route('ApprovedQamarCareCard')}}">Closed</option>
+                                    <option value="{{route('AllScholarshipEducation')}}">All</option>
+                                    <option value="{{route('ActiveScholarship')}}">Active</option>
+                                    <option value="{{route('ClosedScholarship')}}">Closed</option>
                                     <!-- <option value="{{route('PrintedQamarCareCard')}}">Printed</option>
                                     <option value="{{route('ReleasedQamarCareCard')}}">Released</option>
                                     <option value="{{route('RejectedQamarCareCard')}}">Rejected</option> -->
@@ -89,10 +89,10 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Location</th>
-                                <!-- <th>Phone Numbers</th> -->
+                                <th>Country</th>
+                                <th>Avalible Seats</th>
                                 <th>Dates</th>
-                                <th>Status</th>
+                                <!-- <th>Status</th> -->
                                 <th>Crated By</th>
                                 <th>Actions</th>
                                 
@@ -105,20 +105,16 @@
                                 <tr>
                                 <td>{{$scholarship -> id}}</td>
                                 <td>
-                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$scholarship -> Name}} </a></h5>
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$scholarship -> ScholarshipName}} </a></h5>
                                         <p class="text-muted mb-0">{{$scholarship -> ScholarshipType}}</p>
                                 </td>
                                 <td>
                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$scholarship -> Country}} </a></h5>
-                                        <p class="text-muted mb-0">{{$scholarship -> ScholarshipType}}</p>
+                                        <!-- <p class="text-muted mb-0">{{$scholarship -> ScholarshipType}}</p> -->
                                 </td>
-                                <!-- <td>    
-                                      <div>
-                                      <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$scholarship -> PrimaryNumber}}</a></h5>
-                                        <p class="text-muted mb-0 badge badge-soft-warning">{{$scholarship -> SecondaryNumber}}</p>
-                                         <p class="text-muted mb-0 badge badge-soft-danger">{{$scholarship -> RelativeNumber}}</p>
-                                        </div>
-                               </td>  -->
+                               <td>    
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"> {{$scholarship -> Seats}} </a></h5>
+                               </td>
                                <td>
                                <div>
                                       <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$scholarship -> StartDate}}</a></h5>
@@ -127,7 +123,7 @@
                                         </div>
                                 </td>
                               
-                               <td>
+                               <!-- <td>
                                 <div>
 
 
@@ -145,7 +141,7 @@
 
 
                                     </div>
-                                </td>
+                                </td> -->
                                 <td>
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$scholarship -> Created_By }}</a></h5>
@@ -155,10 +151,17 @@
                                 </td>
                     <td>
                        <div class="d-flex flex-wrap gap-2">
-                    <a href="{{route('StatusQamarCareCard', ['data' => $scholarship -> id])}}" class="btn btn-warning waves-effect waves-light">
+                    <!-- <a href="{{route('StatusQamarCareCard', ['data' => $scholarship -> id])}}" class="btn btn-warning waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
+                    </a> -->
+                    <!-- href="{{route('EditQamarCareCard', ['data' => $scholarship -> id])}}" -->
+                    <a  class="btn btn-info waves-effect waves-light">
+                        <i class="bx bx-edit  font-size-16 align-middle"></i>
                     </a>
-                    @if($scholarship -> Status == 'Pending')
+                     <a href="{{route('DeleteScholarship', ['data' => $scholarship -> id])}}" class="btn btn-danger waves-effect waves-light delete-confirm">
+                        <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
+                    </a>
+                    <!-- @if($scholarship -> Status == 'Pending')
                     <a href="{{route('EditQamarCareCard', ['data' => $scholarship -> id])}}" class="btn btn-info waves-effect waves-light">
                         <i class="bx bx-edit  font-size-16 align-middle"></i>
                     </a>
@@ -188,7 +191,7 @@
                     <a href="{{route('ReleaseQamarCareCard', ['data' => $scholarship -> id])}}" class="btn btn-success waves-effect waves-light release">
                         <i class="bx bx-user-check  font-size-16 align-middle"></i>
                     </a>
-                    @endif
+                    @endif -->
                    
 
 

@@ -274,22 +274,22 @@ unset($__errorArgs, $__bag); ?>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
-                                <label for="Gender_ID" class="form-label">Scholarship Type <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <select class="form-select  form-select-lg <?php $__errorArgs = ['Gender_ID'];
+                                <label for="ScholarshipType_ID" class="form-label">Scholarship Type <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <select class="form-select  form-select-lg <?php $__errorArgs = ['ScholarshipType_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Gender_ID')); ?>" id="Gender_ID" name="Gender_ID" required>
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ScholarshipType_ID')); ?>" id="ScholarshipType_ID" name="ScholarshipType_ID" required>
                                     <option value="">Select Scholarship Type</option>
                                     <?php $__currentLoopData = $scholarshiptypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $scholarshiptype): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <option value="<?php echo e($scholarshiptype -> id); ?>"><?php echo e($scholarshiptype -> Name); ?></option>
 
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
-                                <?php $__errorArgs = ['Gender_ID'];
+                                <?php $__errorArgs = ['ScholarshipType_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -338,18 +338,18 @@ unset($__errorArgs, $__bag); ?>
                         </div>
                         <div class="col-md-4 ">
                             <div class="mb-3 position-relative">
-                                <label for="DOB" class="form-label">Start Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <label for="StartDate" class="form-label">Start Date <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group " id="example-date-input">
 
-                                    <input class="form-control form-select-lg <?php $__errorArgs = ['DOB'];
+                                    <input class="form-control form-select-lg <?php $__errorArgs = ['StartDate'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('DOB')); ?>" type="date" id="example-date-input" name="DOB" id="DOB" required>
-                                    <?php $__errorArgs = ['DOB'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('StartDate')); ?>" type="date" id="example-date-input" name="StartDate" id="StartDate" required>
+                                    <?php $__errorArgs = ['StartDate'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -368,18 +368,18 @@ unset($__errorArgs, $__bag); ?>
                         </div>
                         <div class="col-md-4 ">
                             <div class="mb-3 position-relative">
-                                <label for="DOB" class="form-label">End Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <label for="EndDate" class="form-label">End Date <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group " id="example-date-input">
 
-                                    <input class="form-control form-select-lg <?php $__errorArgs = ['DOB'];
+                                    <input class="form-control form-select-lg <?php $__errorArgs = ['EndDate'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('DOB')); ?>" type="date" id="example-date-input" name="DOB" id="DOB" required>
-                                    <?php $__errorArgs = ['DOB'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('EndDate')); ?>" type="date" id="example-date-input" name="EndDate" id="EndDate" required>
+                                    <?php $__errorArgs = ['EndDate'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -398,16 +398,16 @@ unset($__errorArgs, $__bag); ?>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
-                                <label for="TazkiraID" class="form-label ">Seats <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['TazkiraID'];
+                                <label for="Seats" class="form-label ">Seats <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['Seats'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('TazkiraID')); ?>" id="TazkiraID" name="TazkiraID" max="999999999" required>
-                                <?php $__errorArgs = ['TazkiraID'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Seats')); ?>" id="Seats" name="Seats" max="999999" required>
+                                <?php $__errorArgs = ['Seats'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }

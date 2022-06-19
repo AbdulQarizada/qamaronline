@@ -162,15 +162,15 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
-                                <label for="Gender_ID" class="form-label">Scholarship Type <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <select class="form-select  form-select-lg @error('Gender_ID') is-invalid @enderror" value="{{ old('Gender_ID') }}" id="Gender_ID" name="Gender_ID" required>
+                                <label for="ScholarshipType_ID" class="form-label">Scholarship Type <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <select class="form-select  form-select-lg @error('ScholarshipType_ID') is-invalid @enderror" value="{{ old('ScholarshipType_ID') }}" id="ScholarshipType_ID" name="ScholarshipType_ID" required>
                                     <option value="">Select Scholarship Type</option>
                                     @foreach($scholarshiptypes as $scholarshiptype)
                                     <option value="{{ $scholarshiptype -> id}}">{{ $scholarshiptype -> Name}}</option>
 
                                     @endforeach
                                 </select>
-                                @error('Gender_ID')
+                                @error('ScholarshipType_ID')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -198,11 +198,11 @@
                         </div>
                         <div class="col-md-4 ">
                             <div class="mb-3 position-relative">
-                                <label for="DOB" class="form-label">Start Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <label for="StartDate" class="form-label">Start Date <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group " id="example-date-input">
 
-                                    <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{ old('DOB') }}" type="date" id="example-date-input" name="DOB" id="DOB" required>
-                                    @error('DOB')
+                                    <input class="form-control form-select-lg @error('StartDate') is-invalid @enderror" value="{{ old('StartDate') }}" type="date" id="example-date-input" name="StartDate" id="StartDate" required>
+                                    @error('StartDate')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -214,11 +214,11 @@
                         </div>
                         <div class="col-md-4 ">
                             <div class="mb-3 position-relative">
-                                <label for="DOB" class="form-label">End Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <label for="EndDate" class="form-label">End Date <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group " id="example-date-input">
 
-                                    <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{ old('DOB') }}" type="date" id="example-date-input" name="DOB" id="DOB" required>
-                                    @error('DOB')
+                                    <input class="form-control form-select-lg @error('EndDate') is-invalid @enderror" value="{{ old('EndDate') }}" type="date" id="example-date-input" name="EndDate" id="EndDate" required>
+                                    @error('EndDate')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -230,9 +230,9 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
-                                <label for="TazkiraID" class="form-label ">Seats <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <input type="number" class="form-control form-control-lg @error('TazkiraID') is-invalid @enderror" value="{{ old('TazkiraID') }}" id="TazkiraID" name="TazkiraID" max="999999999" required>
-                                @error('TazkiraID')
+                                <label for="Seats" class="form-label ">Seats <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <input type="number" class="form-control form-control-lg @error('Seats') is-invalid @enderror" value="{{ old('Seats') }}" id="Seats" name="Seats" max="999999" required>
+                                @error('Seats')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
