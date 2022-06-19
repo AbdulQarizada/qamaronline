@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\QamarCareCardController;
+use App\Http\Controllers\EducationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +55,79 @@ Route::post('/Beneficiaries_Tazkira', [App\Http\Controllers\HomeController:: cla
 Route::post('/Beneficiaries_Profile', [App\Http\Controllers\HomeController:: class, 'Beneficiaries_Profile'])->name('Beneficiaries_Profile');
 
 Route::post('/ServiceProvider_Profile', [App\Http\Controllers\HomeController:: class, 'ServiceProvider_Profile'])->name('ServiceProvider_Profile');
+
+
+
+
+
+
+
+// Education
+
+Route::get('/Education', [App\Http\Controllers\EducationController:: class, 'Index'])->name('IndexEducation');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

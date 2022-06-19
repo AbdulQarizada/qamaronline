@@ -821,6 +821,7 @@
 
 <script src="{{ URL::asset('/assets/libs/filepond/js/filepond.min.js') }}"></script>
 <script src="{{ URL::asset('/assets/libs/filepond/js/plugins/filepond-plugin-image-preview.min.js') }}"></script>
+<script src="{{ URL::asset('/assets/libs/filepond/js/plugins/filepond-plugin-file-validate-type.js') }}"></script>
 
 
 <script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
@@ -833,6 +834,8 @@
 
 <script>
     FilePond.registerPlugin(FilePondPluginImagePreview);
+    FilePond.registerPlugin(FilePondPluginFileValidateType);
+
 
 
 
@@ -847,7 +850,7 @@
     // Create a FilePond instance
     const Profile = FilePond.create(inputProfile, {
         labelIdle: 'Profile <span class="bx bx-upload"></span >',
-
+ 
 
     });
 
@@ -855,6 +858,8 @@
     // Create a FilePond instance
     const Tazkira = FilePond.create(inputTazkira, {
         labelIdle: 'Click to upload Tazkira <span class="bx bx-upload"></span >',
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
         server: {
 
             url: '../Beneficiaries_Tazkira',
@@ -879,6 +884,8 @@
             }
 
         },
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
         instantUpload: true,
         imagePreviewHeight: 100,
         imageCropAspectRatio: '1:1',

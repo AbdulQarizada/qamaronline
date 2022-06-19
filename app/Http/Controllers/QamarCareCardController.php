@@ -645,21 +645,20 @@ class QamarCareCardController extends Controller
       ->where("Status", "=", "Approved")
       ->get();
 
-      $numberoffrees = 0;
+      $final = 0;
 
       foreach($serviceproviders as $serviceprovider)
       {
-     $numberoffrees = AssignCareCardServices::where("IsFree", "=","1")
+        dd( $numberoffrees = AssignCareCardServices::where("IsFree", "=","1")
      -> where("assign_care_card_services.ServiceProvider_ID", "=", $serviceprovider -> id)
-     -> get() -> count();
+     -> get());
  
   }
   
-    
 
 
 
-    return view('QamarCardCard.AssignToService', ['totalnumberoffrees' => $numberoffrees, 'serviceproviders' => $serviceproviders, 'datas' => $qamarcarecards, 'users' => $users, 'provinces' => $provinces, 'servicetypes' => $servicetypes]);
+    return view('QamarCardCard.AssignToService', ['totalnumberoffrees' => $final, 'serviceproviders' => $serviceproviders, 'datas' => $qamarcarecards, 'users' => $users, 'provinces' => $provinces, 'servicetypes' => $servicetypes]);
   }
 
 
