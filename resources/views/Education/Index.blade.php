@@ -22,7 +22,7 @@
     <div class="row">
     <div class="mt-4 mb-4">
                       <blockquote class="blockquote border-primary  font-size-14 mb-0">
-                                <p class="my-0   fw-medium text-dark text-muted card-title font-size-24 text-wrap">CARE CARD</p>
+                                <p class="my-0   fw-medium text-dark text-muted card-title font-size-24 text-wrap">EDUCATION</p>
                         
                         </blockquote>
     </div>
@@ -58,7 +58,7 @@
             </div> -->
 
             <div class="col-md-4 mb-2">
-               <a href="{{route('AllQamarCareCard')}}">
+               <a href="{{route('AllScholarshipEducation')}}">
                 <div class="card-one mini-stats-wid border border-secondary">
                     <div class="card-body">
                       <blockquote class="blockquote font-size-14 mb-0">
@@ -88,7 +88,7 @@
 
 
         <div class="col-md-4 mb-2">
-        <a href="{{route('ServiceProvidersQamarCareCard')}}">
+        <a href="{{route('AllApplicantEducation')}}">
             <div class="card-one mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">

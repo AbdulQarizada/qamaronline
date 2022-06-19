@@ -22,7 +22,7 @@
     <div class="row">
     <div class="mt-4 mb-4">
                       <blockquote class="blockquote border-primary  font-size-14 mb-0">
-                                <p class="my-0   fw-medium text-dark text-muted card-title font-size-24 text-wrap">EDUCATION</p>
+                                <p class="my-0   fw-medium text-dark text-muted card-title font-size-24 text-wrap">CARE CARD</p>
                         
                         </blockquote>
     </div>
@@ -552,4 +552,4 @@
     <script src="<?php echo e(URL::asset('/assets/js/pages/datatables.init.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/Education/Index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Home\Desktop\Qamar\qamaronline\qamaronline\resources\views/Education/Scholarship/Index.blade.php ENDPATH**/ ?>

@@ -319,7 +319,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Country_ID')); ?>" required id="Country_ID" name="Country_ID">
-                                    <option value="">Select Your Country</option>
+                                    <!-- <option value="">Select Your Country</option> -->
                                     <?php $__currentLoopData = $countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <option value="<?php echo e($country -> id); ?>"><?php echo e($country -> Name); ?></option>
 
@@ -1404,7 +1404,7 @@ unset($__errorArgs, $__bag); ?>
     // Create a FilePond instance
     const Tazkira = FilePond.create(inputTazkira, {
         labelIdle: 'Click to upload Tazkira <span class="bx bx-upload"></span >',
-        acceptedFileTypes: ['image/png'],
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
 
