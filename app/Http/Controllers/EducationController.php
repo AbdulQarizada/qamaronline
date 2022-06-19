@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 
 use App\Models\Scholarship;
+use App\Models\Application;
+
 use App\Models\Location;
 use App\Models\LookUp;
 
@@ -34,11 +36,6 @@ class EducationController extends Controller
   return view('Education.Scholarship.All', compact('scholarships'));
   }
 
-  public function AllApplicant()
-  {
-
-    return view('Education.AllApplicant');
-  }
 
 
 
@@ -206,5 +203,22 @@ class EducationController extends Controller
     -> get();
   return view('Education.Scholarship.All', compact('scholarships'));
   }
+
+
+
+
+  
+  public function AllApplicant()
+  {
+    $applicants =   Application::
+    // join('look_ups as a', 'scholarships.ScholarshipType_ID', '=', 'a.id')
+    // ->join('look_ups as b', 'scholarships.Country_ID', '=', 'b.id')
+    // ->select(['scholarships.*', 'a.Name as ScholarshipType', 'b.Name as Country',])
+
+    get();
+  return view('Education.Application.All', compact('applicants'));
+  }
+
+
 
 }

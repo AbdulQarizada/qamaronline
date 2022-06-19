@@ -67,7 +67,6 @@ Route::post('/ServiceProvider_Profile', [App\Http\Controllers\HomeController:: c
 Route::get('/Education', [App\Http\Controllers\EducationController:: class, 'Index'])->name('IndexEducation');
 
 Route::get('/Education/Scholarship', [App\Http\Controllers\EducationController:: class, 'AllScholarship'])->name('AllScholarshipEducation');
-Route::get('/Education/Applicant', [App\Http\Controllers\EducationController:: class, 'AllApplicant'])->name('AllApplicantEducation');
 
 // create scholarship
 Route::get('/Education/Scholarship/Create', [App\Http\Controllers\EducationController:: class, 'CreateScholarship'])->name('CreateScholarship');
@@ -82,6 +81,9 @@ Route::post('/Education/Scholarship/Create', [App\Http\Controllers\EducationCont
 
 
 
+
+
+Route::get('/Education/Applicant', [App\Http\Controllers\EducationController:: class, 'AllApplicant'])->name('AllApplicantEducation');
 
 
 
