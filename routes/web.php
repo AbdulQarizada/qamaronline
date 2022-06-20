@@ -85,6 +85,9 @@ Route::post('/Education/Scholarship/Create', [App\Http\Controllers\EducationCont
 
 Route::get('/Education/Applicant', [App\Http\Controllers\EducationController:: class, 'AllApplicant'])->name('AllApplicantEducation');
 
+// create Application
+Route::get('/Education/Application/Create', [App\Http\Controllers\EducationController:: class, 'CreateApplication'])->name('CreateApplication');
+Route::post('/Education/Application/Create', [App\Http\Controllers\EducationController:: class, 'StoreApplication'])->name('CreateApplication');
 
 
 

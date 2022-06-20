@@ -45,7 +45,7 @@
         </div>
         <div class="col-9 ">
         <!-- <i class="bx bx-plus-circle  font-size-24 label-icon"></i> btn-label -->
-           <a  class="btn btn-primary btn-lg waves-effect  waves-light mb-3 float-end">ADD APPLICANTS</a>
+           <a  href="{{route('CreateApplication')}}" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 float-end">ADD APPLICANTS</a>
         </div>
      </div>
     <div class="row">

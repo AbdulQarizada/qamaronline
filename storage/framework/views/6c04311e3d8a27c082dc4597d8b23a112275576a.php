@@ -52,7 +52,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
         </div>
         <div class="col-9 ">
         <!-- <i class="bx bx-plus-circle  font-size-24 label-icon"></i> btn-label -->
-           <a  class="btn btn-primary btn-lg waves-effect  waves-light mb-3 float-end">ADD APPLICANTS</a>
+           <a  href="<?php echo e(route('CreateApplication')); ?>" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 float-end">ADD APPLICANTS</a>
         </div>
      </div>
     <div class="row">
