@@ -11,7 +11,7 @@
 
 
 @section('content')
-
+@if (Auth::check()) 
 @component('components.breadcrumb')
 @slot('li_1') Qamar / Scholarship @endslot
 @slot('title') @endslot
@@ -22,7 +22,7 @@
         <a href="{{route('AllApplicantEducation')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
     </div>
 </div>
-
+@endif
 
 <div class="row">
     <div class="col-12">
