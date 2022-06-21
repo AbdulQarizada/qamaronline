@@ -1,6 +1,6 @@
 @extends('layouts.master-layouts')
 
-@section('title') ADD QAMAR CARE CARD @endsection
+@section('title') QAMAR SCHOLARSHIP @endsection
 
 @section('css')
 <link href="{{ URL::asset('/assets/libs/filepond/css/filepond.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -39,7 +39,7 @@
 </div>
 
 
-<form class="needs-validation" action="{{route('CreateQamarCareCard')}}" method="POST" enctype="multipart/form-data" novalidate>
+<form class="needs-validation" action="{{route('CreateApplicationEducation')}}" method="POST" enctype="multipart/form-data" novalidate>
     @csrf
     <div class="checkout-tabs">
         <div class="row">
@@ -378,10 +378,31 @@
                                                     </div>
                                                 </div>
                                             </div> -->
-
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="MonthlyFamilyIncome" class="form-label">Monthly Family Income <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="FatherName" class="form-label">Father's Name <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <input type="text" class="form-control  form-control-lg @error('FatherName') is-invalid @enderror" value="{{ old('FatherName') }}" id="FatherName" name="FatherName" required>
+                                                    @error('FatherName')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="MotherName" class="form-label">Mother's Name <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <input type="text" class="form-control  form-control-lg @error('MotherName') is-invalid @enderror" value="{{ old('MotherName') }}" id="MotherName" name="MotherName" required>
+                                                    @error('MotherName')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="MonthlyFamilyIncome" class="form-label">Total Monthly Family Income <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
                                                         <div class="input-group-text">&#1547;</div>
                                                         <input type="number" class="form-control form-control-lg @error('MonthlyFamilyIncome') is-invalid @enderror" value="{{ old('MonthlyFamilyIncome') }}" id="MonthlyFamilyIncome" name="MonthlyFamilyIncome" max="999999" aria-describedby="MonthlyFamilyIncome" required>
@@ -566,10 +587,10 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="Email" class="form-label">Email</label>
+                                                    <label for="Email" class="form-label">Email <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
-                                                        <input type="email" class="form-control  form-control-lg @error('Email') is-invalid @enderror" value="{{ old('Email') }}" id="Email" name="Email" aria-describedby="Email">
+                                                        <input type="email" class="form-control  form-control-lg @error('Email') is-invalid @enderror" value="{{ old('Email') }}" id="Email" name="Email" aria-describedby="Email" required>
                                                         @error('Email')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -583,9 +604,9 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="Province_ID" class="form-label">Province (Current) <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="CurrentProvince_ID" class="form-label">Province (Current) <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
-                                                        <select class="form-select Province form-select-lg @error('Province_ID') is-invalid @enderror" required name="Province_ID" value="{{ old('Province_ID') }}" id="Province_ID">
+                                                        <select class="form-select CurrentProvince form-select-lg @error('CurrentProvince_ID') is-invalid @enderror" required name="CurrentProvince_ID" value="{{ old('CurrentProvince_ID') }}" id="CurrentProvince_ID">
                                                             <option value="">Select Your Province</option>
                                                             @foreach($provinces as $province)
                                                             <option value="{{ $province -> id}}">{{ $province -> Name}}</option>
@@ -593,7 +614,7 @@
                                                             @endforeach
 
                                                         </select>
-                                                        @error('Province_ID')
+                                                        @error('CurrentProvince_ID')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -603,14 +624,14 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="District_ID" class="form-label">District (Current) <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="CurrentDistrict_ID" class="form-label">District (Current) <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
-                                                        <select class="form-select  District form-select-lg @error('District_ID') is-invalid @enderror" required name="District_ID" value="{{ old('District_ID') }}" id="District_ID">
+                                                        <select class="form-select  CurrentDistrict form-select-lg @error('CurrentDistrict_ID') is-invalid @enderror" required name="CurrentDistrict_ID" value="{{ old('CurrentDistrict_ID') }}" id="CurrentDistrict_ID">
                                                             <option value="">Select Your District</option>
 
 
                                                         </select>
-                                                        @error('District_ID')
+                                                        @error('CurrentDistrict_ID')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -620,9 +641,9 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="Village" class="form-label">Village (Current) <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                    <input type="text" class="form-control  form-control-lg @error('Village') is-invalid @enderror" value="{{ old('Village') }}" id="Village" name="Village" required>
-                                                    @error('Village')
+                                                    <label for="CurrentVillage" class="form-label">Village (Current) <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <input type="text" class="form-control  form-control-lg @error('CurrentVillage') is-invalid @enderror" value="{{ old('CurrentVillage') }}" id="CurrentVillage" name="CurrentVillage" required>
+                                                    @error('CurrentVillage')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -630,7 +651,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <!-- <div class="row">
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
                                                     <label for="Province_ID" class="form-label">Province (Permanent) <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -679,16 +700,16 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="row">
 
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="RelativeName" class="form-label">Facebook URL <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="Facebook" class="form-label">Facebook URL </label>
                                                     <div class="input-group">
 
-                                                        <input type="text" class="form-control  form-control-lg @error('RelativeName') is-invalid @enderror" value="{{ old('RelativeName') }}" id="RelativeName" name="RelativeName" aria-describedby="Email" required>
-                                                        @error('RelativeName')
+                                                        <input type="text" class="form-control  form-control-lg @error('Facebook') is-invalid @enderror" value="{{ old('Facebook') }}" id="Facebook" name="Facebook" aria-describedby="Facebook" required>
+                                                        @error('Facebook')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -698,11 +719,11 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="RelativeName" class="form-label">Youtube URL <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="Telegram" class="form-label">Instagram URL</label>
                                                     <div class="input-group">
 
-                                                        <input type="text" class="form-control  form-control-lg @error('RelativeName') is-invalid @enderror" value="{{ old('RelativeName') }}" id="RelativeName" name="RelativeName" aria-describedby="Email" required>
-                                                        @error('RelativeName')
+                                                        <input type="text" class="form-control  form-control-lg @error('Telegram') is-invalid @enderror" value="{{ old('Telegram') }}" id="Telegram" name="Telegram" aria-describedby="Telegram" required>
+                                                        @error('Telegram')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -712,11 +733,11 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="RelativeName" class="form-label">Twitter URL <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="Twitter" class="form-label">Twitter URL </label>
                                                     <div class="input-group">
 
-                                                        <input type="text" class="form-control  form-control-lg @error('RelativeName') is-invalid @enderror" value="{{ old('RelativeName') }}" id="RelativeName" name="RelativeName" aria-describedby="Email" required>
-                                                        @error('RelativeName')
+                                                        <input type="text" class="form-control  form-control-lg @error('Twitter') is-invalid @enderror" value="{{ old('Twitter') }}" id="Twitter" name="Twitter" aria-describedby="Twitter" required>
+                                                        @error('Twitter')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -784,9 +805,9 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="FatherName" class="form-label">School's Name <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                    <input type="text" class="form-control  form-control-lg @error('FatherName') is-invalid @enderror" value="{{ old('FatherName') }}" id="FatherName" name="FatherName" required>
-                                                    @error('FatherName')
+                                                    <label for="SchoolName" class="form-label">School's Name <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <input type="text" class="form-control  form-control-lg @error('SchoolName') is-invalid @enderror" value="{{ old('SchoolName') }}" id="SchoolName" name="SchoolName" required>
+                                                    @error('SchoolName')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -795,9 +816,9 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="Province_ID" class="form-label">Province (School) <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="SchoolProvince_ID" class="form-label">Province (School) <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
-                                                        <select class="form-select Province form-select-lg @error('Province_ID') is-invalid @enderror" required name="Province_ID" value="{{ old('Province_ID') }}" id="Province_ID">
+                                                        <select class="form-select SchoolProvince form-select-lg @error('SchoolProvince_ID') is-invalid @enderror" required name="SchoolProvince_ID" value="{{ old('SchoolProvince_ID') }}" id="SchoolProvince_ID">
                                                             <option value="">Select Your Province</option>
                                                             @foreach($provinces as $province)
                                                             <option value="{{ $province -> id}}">{{ $province -> Name}}</option>
@@ -805,7 +826,7 @@
                                                             @endforeach
 
                                                         </select>
-                                                        @error('Province_ID')
+                                                        @error('SchoolProvince_ID')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -815,14 +836,14 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="District_ID" class="form-label">District (School) <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="SchoolDistrict_ID" class="form-label">District (School) <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
-                                                        <select class="form-select  District form-select-lg @error('District_ID') is-invalid @enderror" required name="District_ID" value="{{ old('District_ID') }}" id="District_ID">
+                                                        <select class="form-select  SchoolDistrict form-select-lg @error('SchoolDistrict_ID') is-invalid @enderror" required name="SchoolDistrict_ID" value="{{ old('SchoolDistrict_ID') }}" id="SchoolDistrict_ID">
                                                             <option value="">Select Your District</option>
 
 
                                                         </select>
-                                                        @error('District_ID')
+                                                        @error('SchoolDistrict_ID')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -844,11 +865,11 @@
 
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="EldestSonAge" class="form-label">School Percentage <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="SchoolPercentage" class="form-label">School Percentage <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
-                                                        <input type="number" class="form-control form-control-lg @error('EldestSonAge') is-invalid @enderror" value="{{ old('EldestSonAge') }}" id="EldestSonAge" name="EldestSonAge" max="150" aria-describedby="EldestSonAge" required>
-                                                        @error('EldestSonAge')
+                                                        <input type="number" class="form-control form-control-lg @error('SchoolPercentage') is-invalid @enderror" value="{{ old('SchoolPercentage') }}" id="SchoolPercentage" name="SchoolPercentage" max="100" aria-describedby="SchoolPercentage" required>
+                                                        @error('SchoolPercentage')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -858,11 +879,11 @@
                                             </div>
                                             <div class="col-md-4 ">
                                                         <div class="mb-3 position-relative">
-                                                            <label for="DOB" class="form-label">Graduation Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                            <label for="SchoolGraduationDate" class="form-label">Graduation Date <i class="mdi mdi-asterisk text-danger"></i></label>
                                                             <div class="input-group " id="example-date-input">
 
-                                                                <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{ old('DOB') }}" type="date" id="example-date-input" name="DOB" id="DOB" required>
-                                                                @error('DOB')
+                                                                <input class="form-control form-select-lg @error('SchoolGraduationDate') is-invalid @enderror" value="{{ old('SchoolGraduationDate') }}" type="date" id="example-date-input" name="SchoolGraduationDate" id="SchoolGraduationDate" required>
+                                                                @error('SchoolGraduationDate')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>
@@ -874,17 +895,17 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                      <div class="mb-3 position-relative">
-                                                    <label for="FamilyStatus_ID" class="form-label">English Profeciancy<i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="EnglishProficiency_ID" class="form-label">English Profeciancy<i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
-                                                        <select class="form-select form-select-lg @error('FamilyStatus_ID') is-invalid @enderror" value="{{ old('FamilyStatus_ID') }}" required name="FamilyStatus_ID" id="FamilyStatus_ID">
-                                                            <option value="">Select Your Family Status</option>
-                                                            @foreach($familystatus as $familystatu)
-                                                            <option value="{{ $familystatu -> id}}">{{ $familystatu -> Name}}</option>
+                                                        <select class="form-select form-select-lg @error('EnglishProficiency_ID') is-invalid @enderror" value="{{ old('EnglishProficiency_ID') }}" required name="EnglishProficiency_ID" id="EnglishProficiency_ID">
+                                                            <option value="">Select Your English Proficiency</option>
+                                                            @foreach($englishproficiencys as $englishproficiency)
+                                                            <option value="{{ $englishproficiency -> id}}">{{ $englishproficiency -> Name}}</option>
 
                                                             @endforeach
                                                         </select>
-                                                        @error('FamilyStatus_ID')
+                                                        @error('EnglishProficiency_ID')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -933,27 +954,27 @@
                                         </div>
                                         <div class="row">
                                          <div class="col-md-4">
-                                                <label for="Tazkira" class="form-label">School Diploma</label>
-                                                <input type="file" class="my-pond @error('Tazkira') is-invalid @enderror" value="{{ old('Tazkira') }}" name="Tazkira" id="Tazkira" />
-                                                @error('Tazkira')
+                                                <label for="SchoolDiploma" class="form-label">School Diploma</label>
+                                                <input type="file" class="my-pond @error('SchoolDiploma') is-invalid @enderror" value="{{ old('SchoolDiploma') }}" name="SchoolDiploma" id="SchoolDiploma" />
+                                                @error('SchoolDiploma')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                                 @enderror
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="Tazkira" class="form-label">School Transcript</label>
-                                                <input type="file" class="my-pond @error('Tazkira') is-invalid @enderror" value="{{ old('Tazkira') }}" name="Tazkira" id="Tazkira" />
-                                                @error('Tazkira')
+                                                <label for="SchoolTranscript" class="form-label">School Transcript</label>
+                                                <input type="file" class="my-pond @error('SchoolTranscript') is-invalid @enderror" value="{{ old('SchoolTranscript') }}" name="SchoolTranscript" id="SchoolTranscript" />
+                                                @error('SchoolTranscript')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                                 @enderror
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="Tazkira" class="form-label">English Diploma</label>
-                                                <input type="file" class="my-pond @error('Tazkira') is-invalid @enderror" value="{{ old('Tazkira') }}" name="Tazkira" id="Tazkira" />
-                                                @error('Tazkira')
+                                                <label for="EnglishDiploma" class="form-label">English Diploma</label>
+                                                <input type="file" class="my-pond @error('EnglishDiploma') is-invalid @enderror" value="{{ old('EnglishDiploma') }}" name="EnglishDiploma" id="EnglishDiploma" />
+                                                @error('EnglishDiploma')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -1085,9 +1106,9 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="FatherName" class="form-label">Orgianization's Name <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                    <input type="text" class="form-control  form-control-lg @error('FatherName') is-invalid @enderror" value="{{ old('FatherName') }}" id="FatherName" name="FatherName" required>
-                                                    @error('FatherName')
+                                                    <label for="OraganizationName" class="form-label">Orgianization's Name </label>
+                                                    <input type="text" class="form-control  form-control-lg @error('OraganizationName') is-invalid @enderror" value="{{ old('OraganizationName') }}" id="OraganizationName" name="OraganizationName" >
+                                                    @error('OraganizationName')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -1096,9 +1117,9 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="FatherNameLocal" class="form-label">Position <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                    <input type="text" class="form-control  form-control-lg @error('FatherNameLocal') is-invalid @enderror" value="{{ old('FatherNameLocal') }}" id="FatherNameLocal" name="FatherNameLocal" required>
-                                                    @error('FatherNameLocal')
+                                                    <label for="Position" class="form-label">Position </label>
+                                                    <input type="text" class="form-control  form-control-lg @error('Position') is-invalid @enderror" value="{{ old('Position') }}" id="Position" name="Position" >
+                                                    @error('Position')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -1107,11 +1128,11 @@
                                             </div>
                                             <div class="col-md-4 ">
                                                         <div class="mb-3 position-relative">
-                                                            <label for="DOB" class="form-label">Start Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                            <label for="OrganizationStartDate" class="form-label">Start Date </i></label>
                                                             <div class="input-group " id="example-date-input">
 
-                                                                <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{ old('DOB') }}" type="date" id="example-date-input" name="DOB" id="DOB" required>
-                                                                @error('DOB')
+                                                                <input class="form-control form-select-lg @error('OrganizationStartDate') is-invalid @enderror" value="{{ old('OrganizationStartDate') }}" type="date" id="example-date-input" name="OrganizationStartDate" id="OrganizationStartDate" >
+                                                                @error('OrganizationStartDate')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>
@@ -1123,11 +1144,11 @@
                                                     </div>            
                                                      <div class="col-md-4 ">
                                                         <div class="mb-3 position-relative">
-                                                            <label for="DOB" class="form-label">End Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                            <label for="OrganizationEndDate" class="form-label">End Date </label>
                                                             <div class="input-group " id="example-date-input">
 
-                                                                <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{ old('DOB') }}" type="date" id="example-date-input" name="DOB" id="DOB" required>
-                                                                @error('DOB')
+                                                                <input class="form-control form-select-lg @error('OrganizationEndDate') is-invalid @enderror" value="{{ old('OrganizationEndDate') }}" type="date" id="example-date-input" name="OrganizationEndDate" id="OrganizationEndDate" >
+                                                                @error('OrganizationEndDate')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>
@@ -1191,18 +1212,18 @@
                                         </div>
                                         <div class="row">
                                          <div class="col-md-4">
-                                                <label for="Tazkira" class="form-label">Work Experience Letter</label>
-                                                <input type="file" class="my-pond @error('Tazkira') is-invalid @enderror" value="{{ old('Tazkira') }}" name="Tazkira" id="Tazkira" />
-                                                @error('Tazkira')
+                                                <label for="WorkExperienceLetter" class="form-label">Work Experience Letter</label>
+                                                <input type="file" class="my-pond @error('WorkExperienceLetter') is-invalid @enderror" value="{{ old('WorkExperienceLetter') }}" name="WorkExperienceLetter" id="WorkExperienceLetter" />
+                                                @error('WorkExperienceLetter')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                                 @enderror
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="Tazkira" class="form-label">Updated Resume</label>
-                                                <input type="file" class="my-pond @error('Tazkira') is-invalid @enderror" value="{{ old('Tazkira') }}" name="Tazkira" id="Tazkira" />
-                                                @error('Tazkira')
+                                                <label for="Resume" class="form-label">Updated Resume</label>
+                                                <input type="file" class="my-pond @error('Resume') is-invalid @enderror" value="{{ old('Resume') }}" name="Resume" id="Resume" />
+                                                @error('Resume')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -1430,10 +1451,10 @@
 
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <label for="Tazkira" class="form-label">Personal Statement</label>
-                                                <textarea id="textarea" class="form-control" maxlength="2205" rows="20"  placeholder="Please write, why do you want this scholarship?"></textarea>
+                                                <label for="PersonalStatement" class="form-label">Personal Statement <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                <textarea id="textarea" class="form-control @error('PersonalStatement') is-invalid @enderror" maxlength="2205" rows="20"  placeholder="Please write, why do you want this scholarship?" value="{{ old('PersonalStatement') }}" required name="PersonalStatement" id="PersonalStatement" required></textarea>
                                                 <!-- <input type="textarea" class="my-pond @error('Tazkira') is-invalid @enderror" value="{{ old('Tazkira') }}" name="Tazkira" id="Tazkira" /> -->
-                                                @error('Tazkira')
+                                                @error('PersonalStatement')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -1444,19 +1465,17 @@
                                         <div class="row mt-4">
                                         <div class="col-md-4">
                                                      <div class="mb-3 position-relative">
-                                                    <label for="FamilyStatus_ID" class="form-label">Scholarship Type<i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="ScholarshipType_ID" class="form-label">Scholarship Type<i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
-                                                        <select class="form-select form-select-lg @error('FamilyStatus_ID') is-invalid @enderror" value="{{ old('FamilyStatus_ID') }}" required name="FamilyStatus_ID" id="FamilyStatus_ID">
-                                                            <option value="">National</option>
-                                                            <option value="">International</option>
+                                                        <select class="form-select ScholarshipType form-select-lg @error('ScholarshipType_ID') is-invalid @enderror" value="{{ old('ScholarshipType_ID') }}" required name="ScholarshipType_ID" id="ScholarshipType_ID">
+                                                            <option value="">Select Your Scholarship Type</option>
+                                                             @foreach($scholarshiptypes as $scholarshiptype)
+                                                            <option value="{{ $scholarshiptype -> id}}">{{ $scholarshiptype -> Name}}</option>
 
-                                                            <!-- @foreach($familystatus as $familystatu)
-                                                            <option value="{{ $familystatu -> id}}">{{ $familystatu -> Name}}</option>
-
-                                                            @endforeach -->
+                                                            @endforeach
                                                         </select>
-                                                        @error('FamilyStatus_ID')
+                                                        @error('ScholarshipType_ID')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -1467,17 +1486,38 @@
                                             </div>
                                             <div class="col-md-4">
                                                      <div class="mb-3 position-relative">
-                                                    <label for="FamilyStatus_ID" class="form-label">Avaliable Scholarships<i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="Scholarship_ID" class="form-label">Avaliable Scholarships<i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
-                                                        <select class="form-select form-select-lg @error('FamilyStatus_ID') is-invalid @enderror" value="{{ old('FamilyStatus_ID') }}" required name="FamilyStatus_ID" id="FamilyStatus_ID">
+                                                        <select class="form-select Scholarship form-select-lg @error('Scholarship_ID') is-invalid @enderror" value="{{ old('Scholarship_ID') }}" required name="Scholarship_ID" id="Scholarship_ID">
                                                             <option value="">Select Your scholarship</option>
                                                             <!-- @foreach($familystatus as $familystatu)
                                                             <option value="{{ $familystatu -> id}}">{{ $familystatu -> Name}}</option>
 
                                                             @endforeach -->
                                                         </select>
-                                                        @error('FamilyStatus_ID')
+                                                        @error('Scholarship_ID')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                     <div class="mb-3 position-relative">
+                                                    <label for="ScholarshipModule_ID" class="form-label">Avaliable Modules <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <div class="input-group">
+
+                                                        <select class="form-select ScholarshipModule form-select-lg @error('ScholarshipModule_ID') is-invalid @enderror" value="{{ old('ScholarshipModule_ID') }}" required name="ScholarshipModule_ID" id="ScholarshipModule_ID">
+                                                            <option value="">Select Your scholarship</option>
+                                                            <!-- @foreach($familystatus as $familystatu)
+                                                            <option value="{{ $familystatu -> id}}">{{ $familystatu -> Name}}</option>
+
+                                                            @endforeach -->
+                                                        </select>
+                                                        @error('ScholarshipModule_ID')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -1555,6 +1595,22 @@
     // Get a reference to the file input element
     const inputTazkira = document.querySelector('input[name="Tazkira"]');
 
+    // Get a reference to the file input element
+    const inputSchoolDiploma = document.querySelector('input[name="SchoolDiploma"]');
+
+    // Get a reference to the file input element
+    const inputSchoolTranscript = document.querySelector('input[name="SchoolTranscript"]');  
+    
+    // Get a reference to the file input element
+    const inputEnglishDiploma = document.querySelector('input[name="EnglishDiploma"]');
+
+    // Get a reference to the file input element
+    const inputWorkExperienceLetter = document.querySelector('input[name="WorkExperienceLetter"]');
+
+    
+    // Get a reference to the file input element
+    const inputResume = document.querySelector('input[name="Resume"]');
+
 
 
     // Create a FilePond instance
@@ -1565,30 +1621,10 @@
     });
 
 
-    // Create a FilePond instance
-    const Tazkira = FilePond.create(inputTazkira, {
-        labelIdle: 'Click to upload Tazkira <span class="bx bx-upload"></span >',
-        acceptedFileTypes: ['image/png', 'image/jpeg'],
-        allowFileTypeValidation: true,
-        server: {
-
-            url: '../Beneficiaries_Tazkira',
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            }
-
-        },
-        instantUpload: true,
-
-
-    });
-
-
-
     Profile.setOptions({
         server: {
 
-            url: '../Beneficiaries_Profile',
+            url: '../Scholarship',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }
@@ -1609,14 +1645,121 @@
     });
 
 
-    $(document).ready(function() {
-        var rnd = Math.floor(Math.random() * 99999) + 1;
-        document.getElementById('QCC').value = rnd;
+    // Create a FilePond instance
+    const Tazkira = FilePond.create(inputTazkira, {
+        labelIdle: 'Click to upload Tazkira <span class="bx bx-upload"></span >',
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
+        server: {
+
+            url: '../Scholarship',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+
+        },
+        instantUpload: true,
+
+
+    });
+
+
+
+
+        // Create a FilePond instance
+        const SchoolDiploma = FilePond.create(inputSchoolDiploma, {
+        labelIdle: 'Click to upload School Diploma <span class="bx bx-upload"></span >',
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
+        server: {
+
+            url: '../Scholarship',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+
+        },
+        instantUpload: true,
+
+
+    });
+
+        // Create a FilePond instance
+        const SchoolTranscript = FilePond.create(inputSchoolTranscript, {
+        labelIdle: 'Click to upload School Transcript <span class="bx bx-upload"></span >',
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
+        server: {
+
+            url: '../Scholarship',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+
+        },
+        instantUpload: true,
+
+
+    });
+
+        // Create a FilePond instance
+        const EnglishDiploma = FilePond.create(inputEnglishDiploma, {
+        labelIdle: 'Click to upload English Diploma <span class="bx bx-upload"></span >',
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
+        server: {
+
+            url: '../Scholarship',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+
+        },
+        instantUpload: true,
+
+
+    });
+
+        // Create a FilePond instance
+        const WorkExperienceLetter = FilePond.create(inputWorkExperienceLetter, {
+        labelIdle: 'Click to upload Work Experience Letter <span class="bx bx-upload"></span >',
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
+        server: {
+
+            url: '../Scholarship',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+
+        },
+        instantUpload: true,
+
+
+    });
+
+
+        // Create a FilePond instance
+        const Resume = FilePond.create(inputResume, {
+        labelIdle: 'Click to upload Resume <span class="bx bx-upload"></span >',
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
+        server: {
+
+            url: '../Scholarship',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+
+        },
+        instantUpload: true,
+
+
     });
 
 
     $(document).ready(function() {
-        $('.Province').on('change', function() {
+        $('.CurrentProvince').on('change', function() {
             var dID = $(this).val();
             if (dID) {
                 $.ajax({
@@ -1628,45 +1771,109 @@
                     dataType: "json",
                     success: function(data) {
                         if (data) {
-                            $('.District').empty();
+                            $('.CurrentDistrict').empty();
                             //  $('.District').append('<option value="None" hidden>All</option>'); 
                             $.each(data, function(key, course) {
-                                $('select[name="District_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
+                                $('select[name="CurrentDistrict_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
                             });
                         } else {
-                            $('.District').empty();
+                            $('.CurrentDistrict').empty();
                         }
                     }
                 });
             } else {
-                $('.District').empty();
+                $('.CurrentDistrict').empty();
             }
         });
     });
 
-    function Random() {
-        var rnd = Math.floor(Math.random() * 99999) + 1;
-        document.getElementById('QCC').value = rnd;
-    };
 
-    // $(document).ready(function() {
-    //     $('#SpuoseName').hide();
-    //     $('.SpuoseName').hide();
-    //     $('#No').prop("checked", true);
+    $(document).ready(function() {
+        $('.SchoolProvince').on('change', function() {
+            var dID = $(this).val();
+            if (dID) {
+                $.ajax({
+                    url: '/GetDistricts/' + dID,
+                    type: "GET",
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        if (data) {
+                            $('.SchoolDistrict').empty();
+                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                            $.each(data, function(key, course) {
+                                $('select[name="SchoolDistrict_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
+                            });
+                        } else {
+                            $('.SchoolDistrict').empty();
+                        }
+                    }
+                });
+            } else {
+                $('.SchoolDistrict').empty();
+            }
+        });
+    });
 
-    // });
-    // $('#Yes').click(function() {
-    //     $('#SpuoseName').show();
-    //     $('.SpuoseName').show();
+    $(document).ready(function() {
+        $('.ScholarshipType').on('change', function() {
+            var dID = $(this).val();
+            if (dID) {
+                $.ajax({
+                    url: '/GetScholarship/' + dID,
+                    type: "GET",
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        if (data) {
+                            $('.Scholarship').empty();
+                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                            $.each(data, function(key, course) {
+                                $('select[name="Scholarship_ID"]').append('<option value="' + course.id + '">' + course.ScholarshipName + '</option>');
+                            });
+                        } else {
+                            $('.Scholarship').empty();
+                        }
+                    }
+                });
+            } else {
+                $('.Scholarship').empty();
+            }
+        });
+    });
 
-    // });
-
-
-
-    // $('#No').click(function() {
-    //     $('#SpuoseName').hide();
-    //     $('.SpuoseName').hide();
-    // });
+    $(document).ready(function() {
+        $('.Scholarship').on('change', function() {
+            var dID = $(this).val();
+            if (dID) {
+                $.ajax({
+                    url: '/GetScholarshipModule/' + dID,
+                    type: "GET",
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        if (data) {
+                            $('.ScholarshipModule').empty();
+                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                            $.each(data, function(key, course) {
+                                $('select[name="ScholarshipModule_ID"]').append('<option value="' + course.id + '">' + course.ModuleName + '</option>');
+                            });
+                        } else {
+                            $('.ScholarshipModule').empty();
+                        }
+                    }
+                });
+            } else {
+                $('.ScholarshipModule').empty();
+            }
+        });
+    });
 
     function personal() {
         document.getElementById("v-pills-personal-tab").click();

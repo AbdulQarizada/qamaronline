@@ -175,6 +175,9 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                      <a href="<?php echo e(route('DeleteScholarship', ['data' => $scholarship -> id])); ?>" class="btn btn-danger waves-effect waves-light delete-confirm">
                         <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
                     </a>
+                    <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-center" class="btn btn-secondary waves-effect waves-light">
+                        <i class="  bx bx-list-ol  font-size-16 align-middle"></i>
+                    </a>
                     <!-- <?php if($scholarship -> Status == 'Pending'): ?>
                     <a href="<?php echo e(route('EditQamarCareCard', ['data' => $scholarship -> id])); ?>" class="btn btn-info waves-effect waves-light">
                         <i class="bx bx-edit  font-size-16 align-middle"></i>
@@ -221,7 +224,87 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
             </div>
         </div> <!-- end col -->
     </div> <!-- end row -->
+    <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">ADD MODULES FOR SCHOLARSHIP</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
 
+
+                                                        <form class="needs-validation" action="<?php echo e(route('CreateScholarshipModule')); ?>" method="POST" enctype="multipart/form-data" novalidate>
+                                                        <?php echo csrf_field(); ?>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="mb-3 position-relative">
+                                                                        <label for="Parent_ID" class="form-label">Scholarship <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                                        <div class="input-group">
+
+                                                                            <select class="form-select  form-select-lg <?php $__errorArgs = ['Parent_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Parent_ID')); ?>" required id="Parent_ID" name="Parent_ID">
+                                                                                <!-- <option value="None">Main Catagory</option> -->
+
+                                                                                 <?php $__currentLoopData = $scholarships; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $scholarship): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                                 <option value="<?php echo e($scholarship -> id); ?>"><?php echo e($scholarship -> ScholarshipName); ?></option>
+                                                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                            </select>
+                                                                            <?php $__errorArgs = ['Parent_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong><?php echo e($message); ?></strong>
+                                                                            </span>
+                                                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="mb-3 position-relative">
+                                                                        <label for="ModuleName" class="form-label ">Module Name<i class="mdi mdi-asterisk text-danger"></i></label>
+                                                                        <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['ModuleName'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ModuleName')); ?>" id="ModuleName" name="ModuleName" required>
+                                                                        <?php $__errorArgs = ['ModuleName'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong><?php echo e($message); ?></strong>
+                                                                        </span>
+                                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <button class="btn btn-success btn-lg" type="submit">Save </button>
+                                                            <a class="btn btn-danger btn-lg" href="<?php echo e(route('root')); ?>">Cancel</a>
+                                                        </form>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
     <!-- Required datatable js -->

@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('title'); ?> ADD QAMAR CARE CARD <?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?> QAMAR SCHOLARSHIP <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/filepond.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -39,7 +39,7 @@
 </div>
 
 
-<form class="needs-validation" action="<?php echo e(route('CreateQamarCareCard')); ?>" method="POST" enctype="multipart/form-data" novalidate>
+<form class="needs-validation" action="<?php echo e(route('CreateApplicationEducation')); ?>" method="POST" enctype="multipart/form-data" novalidate>
     <?php echo csrf_field(); ?>
     <div class="checkout-tabs">
         <div class="row">
@@ -616,10 +616,59 @@ unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
                                             </div> -->
-
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="MonthlyFamilyIncome" class="form-label">Monthly Family Income <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="FatherName" class="form-label">Father's Name <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['FatherName'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FatherName')); ?>" id="FatherName" name="FatherName" required>
+                                                    <?php $__errorArgs = ['FatherName'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong><?php echo e($message); ?></strong>
+                                                    </span>
+                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="MotherName" class="form-label">Mother's Name <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['MotherName'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('MotherName')); ?>" id="MotherName" name="MotherName" required>
+                                                    <?php $__errorArgs = ['MotherName'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong><?php echo e($message); ?></strong>
+                                                    </span>
+                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="MonthlyFamilyIncome" class="form-label">Total Monthly Family Income <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
                                                         <div class="input-group-text">&#1547;</div>
                                                         <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['MonthlyFamilyIncome'];
@@ -930,7 +979,7 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="Email" class="form-label">Email</label>
+                                                    <label for="Email" class="form-label">Email <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
                                                         <input type="email" class="form-control  form-control-lg <?php $__errorArgs = ['Email'];
@@ -940,7 +989,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Email')); ?>" id="Email" name="Email" aria-describedby="Email">
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Email')); ?>" id="Email" name="Email" aria-describedby="Email" required>
                                                         <?php $__errorArgs = ['Email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -961,16 +1010,16 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="Province_ID" class="form-label">Province (Current) <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="CurrentProvince_ID" class="form-label">Province (Current) <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
-                                                        <select class="form-select Province form-select-lg <?php $__errorArgs = ['Province_ID'];
+                                                        <select class="form-select CurrentProvince form-select-lg <?php $__errorArgs = ['CurrentProvince_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" required name="Province_ID" value="<?php echo e(old('Province_ID')); ?>" id="Province_ID">
+unset($__errorArgs, $__bag); ?>" required name="CurrentProvince_ID" value="<?php echo e(old('CurrentProvince_ID')); ?>" id="CurrentProvince_ID">
                                                             <option value="">Select Your Province</option>
                                                             <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                             <option value="<?php echo e($province -> id); ?>"><?php echo e($province -> Name); ?></option>
@@ -978,7 +1027,7 @@ unset($__errorArgs, $__bag); ?>" required name="Province_ID" value="<?php echo e
                                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                                         </select>
-                                                        <?php $__errorArgs = ['Province_ID'];
+                                                        <?php $__errorArgs = ['CurrentProvince_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -995,21 +1044,21 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="District_ID" class="form-label">District (Current) <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="CurrentDistrict_ID" class="form-label">District (Current) <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
-                                                        <select class="form-select  District form-select-lg <?php $__errorArgs = ['District_ID'];
+                                                        <select class="form-select  CurrentDistrict form-select-lg <?php $__errorArgs = ['CurrentDistrict_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" required name="District_ID" value="<?php echo e(old('District_ID')); ?>" id="District_ID">
+unset($__errorArgs, $__bag); ?>" required name="CurrentDistrict_ID" value="<?php echo e(old('CurrentDistrict_ID')); ?>" id="CurrentDistrict_ID">
                                                             <option value="">Select Your District</option>
 
 
                                                         </select>
-                                                        <?php $__errorArgs = ['District_ID'];
+                                                        <?php $__errorArgs = ['CurrentDistrict_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1026,16 +1075,16 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="Village" class="form-label">Village (Current) <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['Village'];
+                                                    <label for="CurrentVillage" class="form-label">Village (Current) <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['CurrentVillage'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Village')); ?>" id="Village" name="Village" required>
-                                                    <?php $__errorArgs = ['Village'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('CurrentVillage')); ?>" id="CurrentVillage" name="CurrentVillage" required>
+                                                    <?php $__errorArgs = ['CurrentVillage'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1050,7 +1099,7 @@ unset($__errorArgs, $__bag); ?>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <!-- <div class="row">
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
                                                     <label for="Province_ID" class="form-label">Province (Permanent) <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -1141,23 +1190,23 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="row">
 
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="RelativeName" class="form-label">Facebook URL <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="Facebook" class="form-label">Facebook URL </label>
                                                     <div class="input-group">
 
-                                                        <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['RelativeName'];
+                                                        <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['Facebook'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('RelativeName')); ?>" id="RelativeName" name="RelativeName" aria-describedby="Email" required>
-                                                        <?php $__errorArgs = ['RelativeName'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Facebook')); ?>" id="Facebook" name="Facebook" aria-describedby="Facebook" required>
+                                                        <?php $__errorArgs = ['Facebook'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1174,18 +1223,18 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="RelativeName" class="form-label">Youtube URL <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="Telegram" class="form-label">Instagram URL</label>
                                                     <div class="input-group">
 
-                                                        <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['RelativeName'];
+                                                        <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['Telegram'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('RelativeName')); ?>" id="RelativeName" name="RelativeName" aria-describedby="Email" required>
-                                                        <?php $__errorArgs = ['RelativeName'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Telegram')); ?>" id="Telegram" name="Telegram" aria-describedby="Telegram" required>
+                                                        <?php $__errorArgs = ['Telegram'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1202,18 +1251,18 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="RelativeName" class="form-label">Twitter URL <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="Twitter" class="form-label">Twitter URL </label>
                                                     <div class="input-group">
 
-                                                        <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['RelativeName'];
+                                                        <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['Twitter'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('RelativeName')); ?>" id="RelativeName" name="RelativeName" aria-describedby="Email" required>
-                                                        <?php $__errorArgs = ['RelativeName'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Twitter')); ?>" id="Twitter" name="Twitter" aria-describedby="Twitter" required>
+                                                        <?php $__errorArgs = ['Twitter'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1316,16 +1365,16 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="FatherName" class="form-label">School's Name <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['FatherName'];
+                                                    <label for="SchoolName" class="form-label">School's Name <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['SchoolName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FatherName')); ?>" id="FatherName" name="FatherName" required>
-                                                    <?php $__errorArgs = ['FatherName'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SchoolName')); ?>" id="SchoolName" name="SchoolName" required>
+                                                    <?php $__errorArgs = ['SchoolName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1341,16 +1390,16 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="Province_ID" class="form-label">Province (School) <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="SchoolProvince_ID" class="form-label">Province (School) <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
-                                                        <select class="form-select Province form-select-lg <?php $__errorArgs = ['Province_ID'];
+                                                        <select class="form-select SchoolProvince form-select-lg <?php $__errorArgs = ['SchoolProvince_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" required name="Province_ID" value="<?php echo e(old('Province_ID')); ?>" id="Province_ID">
+unset($__errorArgs, $__bag); ?>" required name="SchoolProvince_ID" value="<?php echo e(old('SchoolProvince_ID')); ?>" id="SchoolProvince_ID">
                                                             <option value="">Select Your Province</option>
                                                             <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                             <option value="<?php echo e($province -> id); ?>"><?php echo e($province -> Name); ?></option>
@@ -1358,7 +1407,7 @@ unset($__errorArgs, $__bag); ?>" required name="Province_ID" value="<?php echo e
                                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                                         </select>
-                                                        <?php $__errorArgs = ['Province_ID'];
+                                                        <?php $__errorArgs = ['SchoolProvince_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1375,21 +1424,21 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="District_ID" class="form-label">District (School) <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="SchoolDistrict_ID" class="form-label">District (School) <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
-                                                        <select class="form-select  District form-select-lg <?php $__errorArgs = ['District_ID'];
+                                                        <select class="form-select  SchoolDistrict form-select-lg <?php $__errorArgs = ['SchoolDistrict_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" required name="District_ID" value="<?php echo e(old('District_ID')); ?>" id="District_ID">
+unset($__errorArgs, $__bag); ?>" required name="SchoolDistrict_ID" value="<?php echo e(old('SchoolDistrict_ID')); ?>" id="SchoolDistrict_ID">
                                                             <option value="">Select Your District</option>
 
 
                                                         </select>
-                                                        <?php $__errorArgs = ['District_ID'];
+                                                        <?php $__errorArgs = ['SchoolDistrict_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1432,18 +1481,18 @@ unset($__errorArgs, $__bag); ?>
 
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="EldestSonAge" class="form-label">School Percentage <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="SchoolPercentage" class="form-label">School Percentage <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
-                                                        <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['EldestSonAge'];
+                                                        <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['SchoolPercentage'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('EldestSonAge')); ?>" id="EldestSonAge" name="EldestSonAge" max="150" aria-describedby="EldestSonAge" required>
-                                                        <?php $__errorArgs = ['EldestSonAge'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SchoolPercentage')); ?>" id="SchoolPercentage" name="SchoolPercentage" max="100" aria-describedby="SchoolPercentage" required>
+                                                        <?php $__errorArgs = ['SchoolPercentage'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1460,18 +1509,18 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col-md-4 ">
                                                         <div class="mb-3 position-relative">
-                                                            <label for="DOB" class="form-label">Graduation Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                            <label for="SchoolGraduationDate" class="form-label">Graduation Date <i class="mdi mdi-asterisk text-danger"></i></label>
                                                             <div class="input-group " id="example-date-input">
 
-                                                                <input class="form-control form-select-lg <?php $__errorArgs = ['DOB'];
+                                                                <input class="form-control form-select-lg <?php $__errorArgs = ['SchoolGraduationDate'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('DOB')); ?>" type="date" id="example-date-input" name="DOB" id="DOB" required>
-                                                                <?php $__errorArgs = ['DOB'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SchoolGraduationDate')); ?>" type="date" id="example-date-input" name="SchoolGraduationDate" id="SchoolGraduationDate" required>
+                                                                <?php $__errorArgs = ['SchoolGraduationDate'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1490,24 +1539,24 @@ unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                     <div class="col-md-4">
                                                      <div class="mb-3 position-relative">
-                                                    <label for="FamilyStatus_ID" class="form-label">English Profeciancy<i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="EnglishProficiency_ID" class="form-label">English Profeciancy<i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
-                                                        <select class="form-select form-select-lg <?php $__errorArgs = ['FamilyStatus_ID'];
+                                                        <select class="form-select form-select-lg <?php $__errorArgs = ['EnglishProficiency_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FamilyStatus_ID')); ?>" required name="FamilyStatus_ID" id="FamilyStatus_ID">
-                                                            <option value="">Select Your Family Status</option>
-                                                            <?php $__currentLoopData = $familystatus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $familystatu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            <option value="<?php echo e($familystatu -> id); ?>"><?php echo e($familystatu -> Name); ?></option>
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('EnglishProficiency_ID')); ?>" required name="EnglishProficiency_ID" id="EnglishProficiency_ID">
+                                                            <option value="">Select Your English Proficiency</option>
+                                                            <?php $__currentLoopData = $englishproficiencys; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $englishproficiency): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <option value="<?php echo e($englishproficiency -> id); ?>"><?php echo e($englishproficiency -> Name); ?></option>
 
                                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                         </select>
-                                                        <?php $__errorArgs = ['FamilyStatus_ID'];
+                                                        <?php $__errorArgs = ['EnglishProficiency_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1577,16 +1626,16 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                         <div class="row">
                                          <div class="col-md-4">
-                                                <label for="Tazkira" class="form-label">School Diploma</label>
-                                                <input type="file" class="my-pond <?php $__errorArgs = ['Tazkira'];
+                                                <label for="SchoolDiploma" class="form-label">School Diploma</label>
+                                                <input type="file" class="my-pond <?php $__errorArgs = ['SchoolDiploma'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Tazkira')); ?>" name="Tazkira" id="Tazkira" />
-                                                <?php $__errorArgs = ['Tazkira'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SchoolDiploma')); ?>" name="SchoolDiploma" id="SchoolDiploma" />
+                                                <?php $__errorArgs = ['SchoolDiploma'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1600,16 +1649,16 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="Tazkira" class="form-label">School Transcript</label>
-                                                <input type="file" class="my-pond <?php $__errorArgs = ['Tazkira'];
+                                                <label for="SchoolTranscript" class="form-label">School Transcript</label>
+                                                <input type="file" class="my-pond <?php $__errorArgs = ['SchoolTranscript'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Tazkira')); ?>" name="Tazkira" id="Tazkira" />
-                                                <?php $__errorArgs = ['Tazkira'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SchoolTranscript')); ?>" name="SchoolTranscript" id="SchoolTranscript" />
+                                                <?php $__errorArgs = ['SchoolTranscript'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1623,16 +1672,16 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="Tazkira" class="form-label">English Diploma</label>
-                                                <input type="file" class="my-pond <?php $__errorArgs = ['Tazkira'];
+                                                <label for="EnglishDiploma" class="form-label">English Diploma</label>
+                                                <input type="file" class="my-pond <?php $__errorArgs = ['EnglishDiploma'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Tazkira')); ?>" name="Tazkira" id="Tazkira" />
-                                                <?php $__errorArgs = ['Tazkira'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('EnglishDiploma')); ?>" name="EnglishDiploma" id="EnglishDiploma" />
+                                                <?php $__errorArgs = ['EnglishDiploma'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1855,16 +1904,16 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="FatherName" class="form-label">Orgianization's Name <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['FatherName'];
+                                                    <label for="OraganizationName" class="form-label">Orgianization's Name </label>
+                                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['OraganizationName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FatherName')); ?>" id="FatherName" name="FatherName" required>
-                                                    <?php $__errorArgs = ['FatherName'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('OraganizationName')); ?>" id="OraganizationName" name="OraganizationName" >
+                                                    <?php $__errorArgs = ['OraganizationName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1880,16 +1929,16 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
-                                                    <label for="FatherNameLocal" class="form-label">Position <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['FatherNameLocal'];
+                                                    <label for="Position" class="form-label">Position </label>
+                                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['Position'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FatherNameLocal')); ?>" id="FatherNameLocal" name="FatherNameLocal" required>
-                                                    <?php $__errorArgs = ['FatherNameLocal'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Position')); ?>" id="Position" name="Position" >
+                                                    <?php $__errorArgs = ['Position'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1905,18 +1954,18 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col-md-4 ">
                                                         <div class="mb-3 position-relative">
-                                                            <label for="DOB" class="form-label">Start Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                            <label for="OrganizationStartDate" class="form-label">Start Date </i></label>
                                                             <div class="input-group " id="example-date-input">
 
-                                                                <input class="form-control form-select-lg <?php $__errorArgs = ['DOB'];
+                                                                <input class="form-control form-select-lg <?php $__errorArgs = ['OrganizationStartDate'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('DOB')); ?>" type="date" id="example-date-input" name="DOB" id="DOB" required>
-                                                                <?php $__errorArgs = ['DOB'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('OrganizationStartDate')); ?>" type="date" id="example-date-input" name="OrganizationStartDate" id="OrganizationStartDate" >
+                                                                <?php $__errorArgs = ['OrganizationStartDate'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1935,18 +1984,18 @@ unset($__errorArgs, $__bag); ?>
                                                     </div>            
                                                      <div class="col-md-4 ">
                                                         <div class="mb-3 position-relative">
-                                                            <label for="DOB" class="form-label">End Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                            <label for="OrganizationEndDate" class="form-label">End Date </label>
                                                             <div class="input-group " id="example-date-input">
 
-                                                                <input class="form-control form-select-lg <?php $__errorArgs = ['DOB'];
+                                                                <input class="form-control form-select-lg <?php $__errorArgs = ['OrganizationEndDate'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('DOB')); ?>" type="date" id="example-date-input" name="DOB" id="DOB" required>
-                                                                <?php $__errorArgs = ['DOB'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('OrganizationEndDate')); ?>" type="date" id="example-date-input" name="OrganizationEndDate" id="OrganizationEndDate" >
+                                                                <?php $__errorArgs = ['OrganizationEndDate'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -2045,16 +2094,16 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                         <div class="row">
                                          <div class="col-md-4">
-                                                <label for="Tazkira" class="form-label">Work Experience Letter</label>
-                                                <input type="file" class="my-pond <?php $__errorArgs = ['Tazkira'];
+                                                <label for="WorkExperienceLetter" class="form-label">Work Experience Letter</label>
+                                                <input type="file" class="my-pond <?php $__errorArgs = ['WorkExperienceLetter'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Tazkira')); ?>" name="Tazkira" id="Tazkira" />
-                                                <?php $__errorArgs = ['Tazkira'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('WorkExperienceLetter')); ?>" name="WorkExperienceLetter" id="WorkExperienceLetter" />
+                                                <?php $__errorArgs = ['WorkExperienceLetter'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -2068,16 +2117,16 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="Tazkira" class="form-label">Updated Resume</label>
-                                                <input type="file" class="my-pond <?php $__errorArgs = ['Tazkira'];
+                                                <label for="Resume" class="form-label">Updated Resume</label>
+                                                <input type="file" class="my-pond <?php $__errorArgs = ['Resume'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Tazkira')); ?>" name="Tazkira" id="Tazkira" />
-                                                <?php $__errorArgs = ['Tazkira'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Resume')); ?>" name="Resume" id="Resume" />
+                                                <?php $__errorArgs = ['Resume'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -2452,8 +2501,15 @@ unset($__errorArgs, $__bag); ?>
 
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <label for="Tazkira" class="form-label">Personal Statement</label>
-                                                <textarea id="textarea" class="form-control" maxlength="2205" rows="20"  placeholder="Please write, why do you want this scholarship?"></textarea>
+                                                <label for="PersonalStatement" class="form-label">Personal Statement <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                <textarea id="textarea" class="form-control <?php $__errorArgs = ['PersonalStatement'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" maxlength="2205" rows="20"  placeholder="Please write, why do you want this scholarship?" value="<?php echo e(old('PersonalStatement')); ?>" required name="PersonalStatement" id="PersonalStatement" required></textarea>
                                                 <!-- <input type="textarea" class="my-pond <?php $__errorArgs = ['Tazkira'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -2462,7 +2518,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Tazkira')); ?>" name="Tazkira" id="Tazkira" /> -->
-                                                <?php $__errorArgs = ['Tazkira'];
+                                                <?php $__errorArgs = ['PersonalStatement'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -2480,26 +2536,24 @@ unset($__errorArgs, $__bag); ?>
                                         <div class="row mt-4">
                                         <div class="col-md-4">
                                                      <div class="mb-3 position-relative">
-                                                    <label for="FamilyStatus_ID" class="form-label">Scholarship Type<i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="ScholarshipType_ID" class="form-label">Scholarship Type<i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
-                                                        <select class="form-select form-select-lg <?php $__errorArgs = ['FamilyStatus_ID'];
+                                                        <select class="form-select ScholarshipType form-select-lg <?php $__errorArgs = ['ScholarshipType_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FamilyStatus_ID')); ?>" required name="FamilyStatus_ID" id="FamilyStatus_ID">
-                                                            <option value="">National</option>
-                                                            <option value="">International</option>
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ScholarshipType_ID')); ?>" required name="ScholarshipType_ID" id="ScholarshipType_ID">
+                                                            <option value="">Select Your Scholarship Type</option>
+                                                             <?php $__currentLoopData = $scholarshiptypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $scholarshiptype): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <option value="<?php echo e($scholarshiptype -> id); ?>"><?php echo e($scholarshiptype -> Name); ?></option>
 
-                                                            <!-- <?php $__currentLoopData = $familystatus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $familystatu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            <option value="<?php echo e($familystatu -> id); ?>"><?php echo e($familystatu -> Name); ?></option>
-
-                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> -->
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                         </select>
-                                                        <?php $__errorArgs = ['FamilyStatus_ID'];
+                                                        <?php $__errorArgs = ['ScholarshipType_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -2517,24 +2571,59 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col-md-4">
                                                      <div class="mb-3 position-relative">
-                                                    <label for="FamilyStatus_ID" class="form-label">Avaliable Scholarships<i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <label for="Scholarship_ID" class="form-label">Avaliable Scholarships<i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
-                                                        <select class="form-select form-select-lg <?php $__errorArgs = ['FamilyStatus_ID'];
+                                                        <select class="form-select Scholarship form-select-lg <?php $__errorArgs = ['Scholarship_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FamilyStatus_ID')); ?>" required name="FamilyStatus_ID" id="FamilyStatus_ID">
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Scholarship_ID')); ?>" required name="Scholarship_ID" id="Scholarship_ID">
                                                             <option value="">Select Your scholarship</option>
                                                             <!-- <?php $__currentLoopData = $familystatus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $familystatu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                             <option value="<?php echo e($familystatu -> id); ?>"><?php echo e($familystatu -> Name); ?></option>
 
                                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> -->
                                                         </select>
-                                                        <?php $__errorArgs = ['FamilyStatus_ID'];
+                                                        <?php $__errorArgs = ['Scholarship_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong><?php echo e($message); ?></strong>
+                                                        </span>
+                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                     <div class="mb-3 position-relative">
+                                                    <label for="ScholarshipModule_ID" class="form-label">Avaliable Modules <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <div class="input-group">
+
+                                                        <select class="form-select ScholarshipModule form-select-lg <?php $__errorArgs = ['ScholarshipModule_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ScholarshipModule_ID')); ?>" required name="ScholarshipModule_ID" id="ScholarshipModule_ID">
+                                                            <option value="">Select Your scholarship</option>
+                                                            <!-- <?php $__currentLoopData = $familystatus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $familystatu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <option value="<?php echo e($familystatu -> id); ?>"><?php echo e($familystatu -> Name); ?></option>
+
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> -->
+                                                        </select>
+                                                        <?php $__errorArgs = ['ScholarshipModule_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -2619,6 +2708,22 @@ unset($__errorArgs, $__bag); ?>
     // Get a reference to the file input element
     const inputTazkira = document.querySelector('input[name="Tazkira"]');
 
+    // Get a reference to the file input element
+    const inputSchoolDiploma = document.querySelector('input[name="SchoolDiploma"]');
+
+    // Get a reference to the file input element
+    const inputSchoolTranscript = document.querySelector('input[name="SchoolTranscript"]');  
+    
+    // Get a reference to the file input element
+    const inputEnglishDiploma = document.querySelector('input[name="EnglishDiploma"]');
+
+    // Get a reference to the file input element
+    const inputWorkExperienceLetter = document.querySelector('input[name="WorkExperienceLetter"]');
+
+    
+    // Get a reference to the file input element
+    const inputResume = document.querySelector('input[name="Resume"]');
+
 
 
     // Create a FilePond instance
@@ -2629,30 +2734,10 @@ unset($__errorArgs, $__bag); ?>
     });
 
 
-    // Create a FilePond instance
-    const Tazkira = FilePond.create(inputTazkira, {
-        labelIdle: 'Click to upload Tazkira <span class="bx bx-upload"></span >',
-        acceptedFileTypes: ['image/png', 'image/jpeg'],
-        allowFileTypeValidation: true,
-        server: {
-
-            url: '../Beneficiaries_Tazkira',
-            headers: {
-                'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
-            }
-
-        },
-        instantUpload: true,
-
-
-    });
-
-
-
     Profile.setOptions({
         server: {
 
-            url: '../Beneficiaries_Profile',
+            url: '../Scholarship',
             headers: {
                 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
             }
@@ -2673,14 +2758,121 @@ unset($__errorArgs, $__bag); ?>
     });
 
 
-    $(document).ready(function() {
-        var rnd = Math.floor(Math.random() * 99999) + 1;
-        document.getElementById('QCC').value = rnd;
+    // Create a FilePond instance
+    const Tazkira = FilePond.create(inputTazkira, {
+        labelIdle: 'Click to upload Tazkira <span class="bx bx-upload"></span >',
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
+        server: {
+
+            url: '../Scholarship',
+            headers: {
+                'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
+            }
+
+        },
+        instantUpload: true,
+
+
+    });
+
+
+
+
+        // Create a FilePond instance
+        const SchoolDiploma = FilePond.create(inputSchoolDiploma, {
+        labelIdle: 'Click to upload School Diploma <span class="bx bx-upload"></span >',
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
+        server: {
+
+            url: '../Scholarship',
+            headers: {
+                'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
+            }
+
+        },
+        instantUpload: true,
+
+
+    });
+
+        // Create a FilePond instance
+        const SchoolTranscript = FilePond.create(inputSchoolTranscript, {
+        labelIdle: 'Click to upload School Transcript <span class="bx bx-upload"></span >',
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
+        server: {
+
+            url: '../Scholarship',
+            headers: {
+                'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
+            }
+
+        },
+        instantUpload: true,
+
+
+    });
+
+        // Create a FilePond instance
+        const EnglishDiploma = FilePond.create(inputEnglishDiploma, {
+        labelIdle: 'Click to upload English Diploma <span class="bx bx-upload"></span >',
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
+        server: {
+
+            url: '../Scholarship',
+            headers: {
+                'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
+            }
+
+        },
+        instantUpload: true,
+
+
+    });
+
+        // Create a FilePond instance
+        const WorkExperienceLetter = FilePond.create(inputWorkExperienceLetter, {
+        labelIdle: 'Click to upload Work Experience Letter <span class="bx bx-upload"></span >',
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
+        server: {
+
+            url: '../Scholarship',
+            headers: {
+                'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
+            }
+
+        },
+        instantUpload: true,
+
+
+    });
+
+
+        // Create a FilePond instance
+        const Resume = FilePond.create(inputResume, {
+        labelIdle: 'Click to upload Resume <span class="bx bx-upload"></span >',
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
+        server: {
+
+            url: '../Scholarship',
+            headers: {
+                'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
+            }
+
+        },
+        instantUpload: true,
+
+
     });
 
 
     $(document).ready(function() {
-        $('.Province').on('change', function() {
+        $('.CurrentProvince').on('change', function() {
             var dID = $(this).val();
             if (dID) {
                 $.ajax({
@@ -2692,45 +2884,109 @@ unset($__errorArgs, $__bag); ?>
                     dataType: "json",
                     success: function(data) {
                         if (data) {
-                            $('.District').empty();
+                            $('.CurrentDistrict').empty();
                             //  $('.District').append('<option value="None" hidden>All</option>'); 
                             $.each(data, function(key, course) {
-                                $('select[name="District_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
+                                $('select[name="CurrentDistrict_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
                             });
                         } else {
-                            $('.District').empty();
+                            $('.CurrentDistrict').empty();
                         }
                     }
                 });
             } else {
-                $('.District').empty();
+                $('.CurrentDistrict').empty();
             }
         });
     });
 
-    function Random() {
-        var rnd = Math.floor(Math.random() * 99999) + 1;
-        document.getElementById('QCC').value = rnd;
-    };
 
-    // $(document).ready(function() {
-    //     $('#SpuoseName').hide();
-    //     $('.SpuoseName').hide();
-    //     $('#No').prop("checked", true);
+    $(document).ready(function() {
+        $('.SchoolProvince').on('change', function() {
+            var dID = $(this).val();
+            if (dID) {
+                $.ajax({
+                    url: '/GetDistricts/' + dID,
+                    type: "GET",
+                    data: {
+                        "_token": "<?php echo e(csrf_token()); ?>"
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        if (data) {
+                            $('.SchoolDistrict').empty();
+                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                            $.each(data, function(key, course) {
+                                $('select[name="SchoolDistrict_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
+                            });
+                        } else {
+                            $('.SchoolDistrict').empty();
+                        }
+                    }
+                });
+            } else {
+                $('.SchoolDistrict').empty();
+            }
+        });
+    });
 
-    // });
-    // $('#Yes').click(function() {
-    //     $('#SpuoseName').show();
-    //     $('.SpuoseName').show();
+    $(document).ready(function() {
+        $('.ScholarshipType').on('change', function() {
+            var dID = $(this).val();
+            if (dID) {
+                $.ajax({
+                    url: '/GetScholarship/' + dID,
+                    type: "GET",
+                    data: {
+                        "_token": "<?php echo e(csrf_token()); ?>"
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        if (data) {
+                            $('.Scholarship').empty();
+                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                            $.each(data, function(key, course) {
+                                $('select[name="Scholarship_ID"]').append('<option value="' + course.id + '">' + course.ScholarshipName + '</option>');
+                            });
+                        } else {
+                            $('.Scholarship').empty();
+                        }
+                    }
+                });
+            } else {
+                $('.Scholarship').empty();
+            }
+        });
+    });
 
-    // });
-
-
-
-    // $('#No').click(function() {
-    //     $('#SpuoseName').hide();
-    //     $('.SpuoseName').hide();
-    // });
+    $(document).ready(function() {
+        $('.Scholarship').on('change', function() {
+            var dID = $(this).val();
+            if (dID) {
+                $.ajax({
+                    url: '/GetScholarshipModule/' + dID,
+                    type: "GET",
+                    data: {
+                        "_token": "<?php echo e(csrf_token()); ?>"
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        if (data) {
+                            $('.ScholarshipModule').empty();
+                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                            $.each(data, function(key, course) {
+                                $('select[name="ScholarshipModule_ID"]').append('<option value="' + course.id + '">' + course.ModuleName + '</option>');
+                            });
+                        } else {
+                            $('.ScholarshipModule').empty();
+                        }
+                    }
+                });
+            } else {
+                $('.ScholarshipModule').empty();
+            }
+        });
+    });
 
     function personal() {
         document.getElementById("v-pills-personal-tab").click();

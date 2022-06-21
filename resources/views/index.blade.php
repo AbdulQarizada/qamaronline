@@ -615,7 +615,7 @@
                                                                                 <!-- <option value="None">Main Catagory</option> -->
 
                                                                                  @foreach($catagorys as $catagory)
-                                                                                 <option>{{ $catagory -> Name}}</option>
+                                                                                 <option value="{{ $catagory -> Name}}">{{ $catagory -> Name}}</option>
                                                                                  @endforeach
                                                                             </select>
                                                                             @error('Parent_Name')

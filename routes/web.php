@@ -57,7 +57,13 @@ Route::post('/Beneficiaries_Profile', [App\Http\Controllers\HomeController:: cla
 Route::post('/ServiceProvider_Profile', [App\Http\Controllers\HomeController:: class, 'ServiceProvider_Profile'])->name('ServiceProvider_Profile');
 
 
+Route::post('/Education/Scholarship', [App\Http\Controllers\HomeController:: class, 'Scholarship'])->name('Scholarship');
 
+// Get Scholarship
+Route::get('/GetScholarship/{data}', [App\Http\Controllers\HomeController:: class, 'GetScholarship'])->name('GetScholarship');
+
+// Get Scholarship Module
+Route::get('/GetScholarshipModule/{data}', [App\Http\Controllers\HomeController:: class, 'GetScholarshipModule'])->name('GetScholarshipModule');
 
 
 
@@ -81,15 +87,18 @@ Route::post('/Education/Scholarship/Create', [App\Http\Controllers\EducationCont
 
 
 
-
+       //create CreateScholarshipModule
+Route::post('/Education/Scholarship/CreateScholarshipModule', [App\Http\Controllers\EducationController:: class, 'CreateScholarshipModule'])->name('CreateScholarshipModule');
+  
 
 Route::get('/Education/Applicant', [App\Http\Controllers\EducationController:: class, 'AllApplicant'])->name('AllApplicantEducation');
 
 // create Application
-Route::get('/Education/Application/Create', [App\Http\Controllers\EducationController:: class, 'CreateApplication'])->name('CreateApplication');
-Route::post('/Education/Application/Create', [App\Http\Controllers\EducationController:: class, 'StoreApplication'])->name('CreateApplication');
+Route::get('/Education/Application/Create', [App\Http\Controllers\EducationController:: class, 'CreateApplication'])->name('CreateApplicationEducation');
+Route::post('/Education/Application/Create', [App\Http\Controllers\EducationController:: class, 'StoreApplication'])->name('CreateApplicationEducation');
 
-
+// success applicant
+Route::get('/Education/Application/Success', [App\Http\Controllers\EducationController:: class, 'SuccessApplication'])->name('SuccessApplicationEducation');
 
 
 

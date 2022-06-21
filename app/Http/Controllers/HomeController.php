@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Location;
+use App\Models\Scholarship;
+use App\Models\ScholarshipModule;
+
 use App\Models\LookUp;
 
 
@@ -146,7 +149,132 @@ class HomeController extends Controller
 
 
 
+    public function Scholarship(Request $request)
+    {
+        if($request -> hasFile('Profile'))
+        {
+ 
+       
+             $profile = $request->file('Profile');
+ 
+             $profilename = $profile -> getClientOriginalName();
+ 
+             $profileuniquename = uniqid().'_'.$profilename;
+ 
+             $profile -> storeAs('Profiles', $profileuniquename,'Scholarship');
+ 
+ 
+             return $profileuniquename;
+ 
+         }
 
+        if($request -> hasFile('Tazkira'))
+        {
+ 
+       
+             $Tazkira = $request->file('Tazkira');
+ 
+             $Tazkiraname = $Tazkira -> getClientOriginalName();
+ 
+             $Tazkiruniquename = uniqid().'_'.$Tazkiraname;
+ 
+
+             $Tazkira -> storeAs('Tazkiras', $Tazkiruniquename,'Scholarship');
+ 
+             return $Tazkiruniquename;
+ 
+         }
+
+         
+        if($request -> hasFile('SchoolDiploma'))
+        {
+ 
+       
+             $SchoolDiploma = $request->file('SchoolDiploma');
+ 
+             $SchoolDiplomaname = $SchoolDiploma -> getClientOriginalName();
+ 
+             $SchoolDiplomauniquename = uniqid().'_'.$SchoolDiplomaname;
+ 
+
+             $SchoolDiploma -> storeAs('SchoolDiplomas', $SchoolDiplomauniquename,'Scholarship');
+ 
+             return $SchoolDiplomauniquename;
+ 
+         }
+
+         
+        if($request -> hasFile('SchoolTranscript'))
+        {
+ 
+       
+             $SchoolTranscript = $request->file('SchoolTranscript');
+ 
+             $SchoolTranscriptname = $SchoolTranscript -> getClientOriginalName();
+ 
+             $SchoolTranscriptuniquename = uniqid().'_'.$SchoolTranscriptname;
+ 
+
+             $SchoolTranscript -> storeAs('SchoolTranscripts', $SchoolTranscriptuniquename,'Scholarship');
+ 
+             return $SchoolTranscriptuniquename;
+ 
+         }
+
+         
+        if($request -> hasFile('EnglishDiploma'))
+        {
+ 
+       
+             $EnglishDiploma = $request->file('EnglishDiploma');
+ 
+             $EnglishDiplomaname = $EnglishDiploma -> getClientOriginalName();
+ 
+             $EnglishDiplomauniquename = uniqid().'_'.$EnglishDiplomaname;
+ 
+
+             $EnglishDiploma -> storeAs('EnglishDiploma', $EnglishDiplomauniquename,'Scholarship');
+ 
+             return $EnglishDiplomauniquename;
+ 
+         }
+
+         if($request -> hasFile('WorkExperienceLetter'))
+         {
+  
+        
+              $WorkExperienceLetter = $request->file('WorkExperienceLetter');
+  
+              $WorkExperienceLettername = $WorkExperienceLetter -> getClientOriginalName();
+  
+              $WorkExperienceLetteruniquename = uniqid().'_'.$WorkExperienceLettername;
+  
+ 
+              $WorkExperienceLetter -> storeAs('WorkExperienceLetters', $WorkExperienceLetteruniquename,'Scholarship');
+  
+              return $WorkExperienceLetteruniquename;
+  
+          }
+
+          if($request -> hasFile('Resume'))
+          {
+   
+         
+               $Resume = $request->file('Resume');
+   
+               $Resumename = $Resume -> getClientOriginalName();
+   
+               $Resumenameuniquename = uniqid().'_'.$Resumename;
+   
+  
+               $Resume -> storeAs('Resumes', $Resumenameuniquename,'Scholarship');
+   
+               return $Resumenameuniquename;
+   
+           }
+
+         return '';
+    }
 
 
 
@@ -165,6 +293,24 @@ class HomeController extends Controller
         $districts =   Location::select('id','Name')->where("Parent_ID", "=", $data)->get();
         return response()->json($districts);
     }
+
+
+
+
+
+    public function GetScholarship($data)
+    {
+        $scholarships =   Scholarship::select('id','ScholarshipName')->where("ScholarshipType_ID", "=", $data)->get();
+        return response()->json($scholarships);
+    }
+
+
+    public function GetScholarshipModule($data)
+    {
+        $scholarshipmodules =   ScholarshipModule::select('id','ModuleName')->where("Parent_ID", "=", $data)->get();
+        return response()->json($scholarshipmodules);
+    }
+
 
 
     public function CreateLookups(Request $request)

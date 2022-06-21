@@ -650,12 +650,12 @@ class QamarCareCardController extends Controller
 
       foreach($serviceproviders as $serviceprovider)
       {
-        dd( $numberoffrees = AssignCareCardServices::where("IsFree", "=","1")
+        $numberoffrees = AssignCareCardServices::where("IsFree", "=","1")
      -> where("assign_care_card_services.ServiceProvider_ID", "=", $serviceprovider -> id)
-     -> get());
+     -> get();
  
   }
-  
+  $final = $numberoffrees;
 
 
 

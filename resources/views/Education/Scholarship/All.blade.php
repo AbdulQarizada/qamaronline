@@ -161,6 +161,9 @@
                      <a href="{{route('DeleteScholarship', ['data' => $scholarship -> id])}}" class="btn btn-danger waves-effect waves-light delete-confirm">
                         <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
                     </a>
+                    <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-center" class="btn btn-secondary waves-effect waves-light">
+                        <i class="  bx bx-list-ol  font-size-16 align-middle"></i>
+                    </a>
                     <!-- @if($scholarship -> Status == 'Pending')
                     <a href="{{route('EditQamarCareCard', ['data' => $scholarship -> id])}}" class="btn btn-info waves-effect waves-light">
                         <i class="bx bx-edit  font-size-16 align-middle"></i>
@@ -207,7 +210,59 @@
             </div>
         </div> <!-- end col -->
     </div> <!-- end row -->
+    <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">ADD MODULES FOR SCHOLARSHIP</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
 
+
+                                                        <form class="needs-validation" action="{{route('CreateScholarshipModule')}}" method="POST" enctype="multipart/form-data" novalidate>
+                                                        @csrf
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <div class="mb-3 position-relative">
+                                                                        <label for="Parent_ID" class="form-label">Scholarship <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                                        <div class="input-group">
+
+                                                                            <select class="form-select  form-select-lg @error('Parent_ID') is-invalid @enderror" value="{{ old('Parent_ID') }}" required id="Parent_ID" name="Parent_ID">
+                                                                                <!-- <option value="None">Main Catagory</option> -->
+
+                                                                                 @foreach($scholarships as $scholarship)
+                                                                                 <option value="{{ $scholarship -> id}}">{{ $scholarship -> ScholarshipName}}</option>
+                                                                                 @endforeach
+                                                                            </select>
+                                                                            @error('Parent_ID')
+                                                                            <span class="invalid-feedback" role="alert">
+                                                                                <strong>{{ $message }}</strong>
+                                                                            </span>
+                                                                            @enderror
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="mb-3 position-relative">
+                                                                        <label for="ModuleName" class="form-label ">Module Name<i class="mdi mdi-asterisk text-danger"></i></label>
+                                                                        <input type="text" class="form-control form-control-lg @error('ModuleName') is-invalid @enderror" value="{{ old('ModuleName') }}" id="ModuleName" name="ModuleName" required>
+                                                                        @error('ModuleName')
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <button class="btn btn-success btn-lg" type="submit">Save </button>
+                                                            <a class="btn btn-danger btn-lg" href="{{route('root')}}">Cancel</a>
+                                                        </form>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
 @endsection
 @section('script')
     <!-- Required datatable js -->

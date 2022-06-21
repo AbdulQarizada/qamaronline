@@ -71,7 +71,7 @@
                             <div class="flex-shrink-0 align-self-center">
                                 <div class="mini-stat-icon avatar-sm rounded-circle ">
                                     <span class="avatar-title bg-warning">
-                                        <i class="bx bx-id-card   font-size-24"></i>
+                                        <i class="bx bxs-graduation   font-size-24"></i>
                                     </span>
                                 </div>
                             </div>

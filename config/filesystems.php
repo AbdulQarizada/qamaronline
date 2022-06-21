@@ -46,6 +46,11 @@ return [
         ],
 
        
+        'Scholarship' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/Scholarship/Applicant',
+        ],
+
 
         'public' => [
             'driver' => 'local',

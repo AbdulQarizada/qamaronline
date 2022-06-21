@@ -34,6 +34,7 @@ return array(
     'App\\Models\\LookUp' => $baseDir . '/app/Models/LookUp.php',
     'App\\Models\\QamarCareCard' => $baseDir . '/app/Models/QamarCareCard.php',
     'App\\Models\\Scholarship' => $baseDir . '/app/Models/Scholarship.php',
+    'App\\Models\\ScholarshipModule' => $baseDir . '/app/Models/ScholarshipModule.php',
     'App\\Models\\ServiceProviders' => $baseDir . '/app/Models/ServiceProviders.php',
     'App\\Models\\ServiceType' => $baseDir . '/app/Models/ServiceType.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',

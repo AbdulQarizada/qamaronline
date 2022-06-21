@@ -622,7 +622,7 @@ unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Parent_Name')); ?>" re
                                                                                 <!-- <option value="None">Main Catagory</option> -->
 
                                                                                  <?php $__currentLoopData = $catagorys; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $catagory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                                 <option><?php echo e($catagory -> Name); ?></option>
+                                                                                 <option value="<?php echo e($catagory -> Name); ?>"><?php echo e($catagory -> Name); ?></option>
                                                                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                             </select>
                                                                             <?php $__errorArgs = ['Parent_Name'];
