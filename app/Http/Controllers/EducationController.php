@@ -18,7 +18,7 @@ class EducationController extends Controller
 {
     public function __construct()
   {
-    $this->middleware('auth', ['except' => ['Verify', 'Search']]);
+    $this->middleware('auth', ['except' => ['CreateApplication', 'StoreApplication', 'SuccessApplication']]);
   }
 
   // index
