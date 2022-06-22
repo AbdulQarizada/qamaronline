@@ -167,7 +167,7 @@
                                                                 <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{ old('DOB') }}" type="date" id="example-date-input" name="DOB" id="DOB" required>
                                                                 @error('DOB')
                                                                 <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
+                                                                    <strong>Applicant should not be more then 22 years old</strong>
                                                                 </span>
                                                                 @enderror
 
@@ -527,7 +527,7 @@
                                         </div>
                                         <div class="row">
                                          <div class="col-md-4">
-                                                <label for="Tazkira" class="form-label">Tazkira</label>
+                                                <label for="Tazkira" class="form-label">Tazkira <i class="mdi mdi-asterisk text-danger"></i></label>
                                                 <input type="file" class="my-pond @error('Tazkira') is-invalid @enderror" value="{{ old('Tazkira') }}" name="Tazkira" id="Tazkira" />
                                                 @error('Tazkira')
                                                 <span class="invalid-feedback" role="alert">
@@ -954,7 +954,7 @@
                                         </div>
                                         <div class="row">
                                          <div class="col-md-4">
-                                                <label for="SchoolDiploma" class="form-label">School Diploma</label>
+                                                <label for="SchoolDiploma" class="form-label">School Diploma <i class="mdi mdi-asterisk text-danger"></i></label>
                                                 <input type="file" class="my-pond @error('SchoolDiploma') is-invalid @enderror" value="{{ old('SchoolDiploma') }}" name="SchoolDiploma" id="SchoolDiploma" />
                                                 @error('SchoolDiploma')
                                                 <span class="invalid-feedback" role="alert">
@@ -963,7 +963,7 @@
                                                 @enderror
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="SchoolTranscript" class="form-label">School Transcript</label>
+                                                <label for="SchoolTranscript" class="form-label">School Transcript <i class="mdi mdi-asterisk text-danger"></i></label>
                                                 <input type="file" class="my-pond @error('SchoolTranscript') is-invalid @enderror" value="{{ old('SchoolTranscript') }}" name="SchoolTranscript" id="SchoolTranscript" />
                                                 @error('SchoolTranscript')
                                                 <span class="invalid-feedback" role="alert">
@@ -972,7 +972,7 @@
                                                 @enderror
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="EnglishDiploma" class="form-label">English Diploma</label>
+                                                <label for="EnglishDiploma" class="form-label">English Diploma <i class="mdi mdi-asterisk text-danger"></i></label>
                                                 <input type="file" class="my-pond @error('EnglishDiploma') is-invalid @enderror" value="{{ old('EnglishDiploma') }}" name="EnglishDiploma" id="EnglishDiploma" />
                                                 @error('EnglishDiploma')
                                                 <span class="invalid-feedback" role="alert">
@@ -1490,7 +1490,7 @@
                                                     <div class="input-group">
 
                                                         <select class="form-select Scholarship form-select-lg @error('Scholarship_ID') is-invalid @enderror" value="{{ old('Scholarship_ID') }}" required name="Scholarship_ID" id="Scholarship_ID">
-                                                            <option value="">Select Your scholarship</option>
+                                                          
                                                             <!-- @foreach($familystatus as $familystatu)
                                                             <option value="{{ $familystatu -> id}}">{{ $familystatu -> Name}}</option>
 
@@ -1511,7 +1511,7 @@
                                                     <div class="input-group">
 
                                                         <select class="form-select ScholarshipModule form-select-lg @error('ScholarshipModule_ID') is-invalid @enderror" value="{{ old('ScholarshipModule_ID') }}" required name="ScholarshipModule_ID" id="ScholarshipModule_ID">
-                                                            <option value="">Select Your scholarship</option>
+                                                           
                                                             <!-- @foreach($familystatus as $familystatu)
                                                             <option value="{{ $familystatu -> id}}">{{ $familystatu -> Name}}</option>
 
@@ -1831,7 +1831,7 @@
                     success: function(data) {
                         if (data) {
                             $('.Scholarship').empty();
-                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                             $('.Scholarship').append('<option value="" hidden>Select Your Scholarship</option>'); 
                             $.each(data, function(key, course) {
                                 $('select[name="Scholarship_ID"]').append('<option value="' + course.id + '">' + course.ScholarshipName + '</option>');
                             });
@@ -1860,7 +1860,7 @@
                     success: function(data) {
                         if (data) {
                             $('.ScholarshipModule').empty();
-                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                             $('.ScholarshipModule').append('<option value="" hidden>Select Your Scholarship Module</option>'); 
                             $.each(data, function(key, course) {
                                 $('select[name="ScholarshipModule_ID"]').append('<option value="' + course.id + '">' + course.ModuleName + '</option>');
                             });

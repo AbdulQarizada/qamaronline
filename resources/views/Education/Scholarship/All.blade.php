@@ -93,7 +93,7 @@
                                 <th>Avalible Seats</th>
                                 <th>Dates</th>
                                 <!-- <th>Status</th> -->
-                                <th>Crated By</th>
+                                <th>Created By</th>
                                 <th>Actions</th>
                                 
                             </tr>

@@ -262,7 +262,7 @@ if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
                                                                 <span class="invalid-feedback" role="alert">
-                                                                    <strong><?php echo e($message); ?></strong>
+                                                                    <strong>Applicant should not be more then 22 years old</strong>
                                                                 </span>
                                                                 <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
@@ -2582,7 +2582,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Scholarship_ID')); ?>" required name="Scholarship_ID" id="Scholarship_ID">
-                                                            <option value="">Select Your scholarship</option>
+                                                          
                                                             <!-- <?php $__currentLoopData = $familystatus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $familystatu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                             <option value="<?php echo e($familystatu -> id); ?>"><?php echo e($familystatu -> Name); ?></option>
 
@@ -2617,7 +2617,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ScholarshipModule_ID')); ?>" required name="ScholarshipModule_ID" id="ScholarshipModule_ID">
-                                                            <option value="">Select Your scholarship</option>
+                                                           
                                                             <!-- <?php $__currentLoopData = $familystatus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $familystatu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                             <option value="<?php echo e($familystatu -> id); ?>"><?php echo e($familystatu -> Name); ?></option>
 
@@ -2944,7 +2944,7 @@ unset($__errorArgs, $__bag); ?>
                     success: function(data) {
                         if (data) {
                             $('.Scholarship').empty();
-                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                             $('.Scholarship').append('<option value="" hidden>Select Your Scholarship</option>'); 
                             $.each(data, function(key, course) {
                                 $('select[name="Scholarship_ID"]').append('<option value="' + course.id + '">' + course.ScholarshipName + '</option>');
                             });
@@ -2973,7 +2973,7 @@ unset($__errorArgs, $__bag); ?>
                     success: function(data) {
                         if (data) {
                             $('.ScholarshipModule').empty();
-                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                             $('.ScholarshipModule').append('<option value="" hidden>Select Your Scholarship Module</option>'); 
                             $.each(data, function(key, course) {
                                 $('select[name="ScholarshipModule_ID"]').append('<option value="' + course.id + '">' + course.ModuleName + '</option>');
                             });

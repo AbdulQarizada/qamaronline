@@ -403,12 +403,13 @@ class EducationController extends Controller
 
   public function StoreApplication(Request $request)
   {
-
+    $dt = new Carbon();
+    $after = $dt->subYears(22)->format('Y-m-d');
     $validator = $request->validate([
       'FirstName' => 'bail|required|max:255',
       // 'LastName' => 'required|max:255',
       'TazkiraID' => 'required|max:255|unique:applications',
-      'DOB'=> 'required|max:255',
+      'DOB'=> 'required|date|after:' . $after,
       'Gender_ID'=> 'required|max:10',
       'Country_ID'=> 'required|max:10',
       'Tribe_ID'=> 'required|max:10',
