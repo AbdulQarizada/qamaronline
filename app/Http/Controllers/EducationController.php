@@ -344,7 +344,7 @@ class EducationController extends Controller
  
  
      ]);
-     return redirect()->route('ApprovedQamarCareCard')->with('toast_success', 'Record Approved Successfully!');
+     return redirect()->route('ApprovedApplicantsEducation')->with('toast_success', 'Record Approved Successfully!');
    }
  
    public function Reject(Application $data)
@@ -356,7 +356,7 @@ class EducationController extends Controller
        'Status' => 'Rejected'
  
      ]);
-     return redirect()->route('RejectedQamarCareCard')->with('toast_error', 'Record Rejected Successfully!');
+     return redirect()->route('RejectedApplicantsEducation')->with('toast_error', 'Record Rejected Successfully!');
    }
  
  
@@ -369,7 +369,7 @@ class EducationController extends Controller
        'Status' => 'Pending'
  
      ]);
-     return redirect()->route('PendingQamarCareCard')->with('toast_warning', 'Record Re-Initiated Successfully!');
+     return redirect()->route('PendingApplicantsEducation')->with('toast_warning', 'Record Re-Initiated Successfully!');
    }
 
 

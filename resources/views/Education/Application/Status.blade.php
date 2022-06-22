@@ -330,15 +330,15 @@
            <!-- <a href="{{route('AllQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a> -->
            <!-- <a href="javascript:window.print()" class="btn btn-dark  waves-effect waves-light"><i class=" bx bxs-printer   font-size-18"></i></a> -->
            @if( $data -> Status == 'Approved' || $data -> Status == 'Rejected' || $data -> Status == 'Printed' || $data -> Status == 'Released')
-                    <a href="{{route('ReInitiateQamarCareCard', ['data' => $data -> id])}}" class="btn btn-info waves-effect waves-light reinitiate m-3">
+                    <a href="{{route('ReInitiateApplicantEducation', ['data' => $data -> id])}}" class="btn btn-info waves-effect waves-light reinitiate m-3">
                         <i class="bx bx-time-five  font-size-16 align-middle"></i>Re-Initiate
                     </a>
                     @endif
                     @if( $data -> Status == 'Pending')
-                    <a href="{{route('ApproveQamarCareCard', ['data' => $data -> id])}}" class="btn btn-success waves-effect waves-light approve m-3">
+                    <a href="{{route('ApproveApplicantEducation', ['data' => $data -> id])}}" class="btn btn-success waves-effect waves-light approve m-3">
                         <i class="bx bx-check-circle font-size-16 align-middle"></i>Approve
                     </a>
-                     <a href="{{route('RejectQamarCareCard', ['data' => $data -> id])}}" class="btn btn-danger waves-effect waves-light reject m-3">
+                     <a href="{{route('RejectApplicantEducation', ['data' => $data -> id])}}" class="btn btn-danger waves-effect waves-light reject m-3">
                         <i class=" bx bx-x-circle font-size-16 align-middle"></i>Reject
                     </a>
                     @endif
