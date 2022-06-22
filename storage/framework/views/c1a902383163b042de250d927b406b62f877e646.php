@@ -229,8 +229,8 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                 <?php if( $qamarcarecard -> Created_By !=""): ?>
 
                                 <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> Created_By); ?></a></h5>
-                                    <p class="text-muted mb-0">Employee</p> 
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> FirstName); ?> <?php echo e($qamarcarecard -> LastName); ?></a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($qamarcarecard -> Job); ?></p> 
                                
                                 </div>
                                 <?php endif; ?>

@@ -11,7 +11,7 @@
 
 
 <?php $__env->startSection('content'); ?>
-
+<?php if(Auth::check()): ?> 
 <?php $__env->startComponent('components.breadcrumb'); ?>
 <?php $__env->slot('li_1'); ?> Qamar / Scholarship <?php $__env->endSlot(); ?>
 <?php $__env->slot('title'); ?> <?php $__env->endSlot(); ?>
@@ -22,7 +22,7 @@
         <a href="<?php echo e(route('AllApplicantEducation')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
     </div>
 </div>
-
+<?php endif; ?>
 
 <div class="row">
     <div class="col-12">

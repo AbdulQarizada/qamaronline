@@ -92,6 +92,22 @@ Route::post('/Education/Scholarship/CreateScholarshipModule', [App\Http\Controll
   
 
 Route::get('/Education/Applicant', [App\Http\Controllers\EducationController:: class, 'AllApplicant'])->name('AllApplicantEducation');
+Route::get('/Education/Applicant/Approved', [App\Http\Controllers\EducationController:: class, 'ApprovedApplicants'])->name('ApprovedApplicantsEducation');
+Route::get('/Education/Applicant/Rejected', [App\Http\Controllers\EducationController:: class, 'RejectedApplicants'])->name('RejectedApplicantsEducation');
+Route::get('/Education/Applicant/Pending', [App\Http\Controllers\EducationController:: class, 'PendingApplicants'])->name('PendingApplicantsEducation');
+
+    // status list and change status
+    Route::get('/Education/Applicant/Status/{data}', [App\Http\Controllers\EducationController:: class, 'Status'])->name('StatusApplicantEducation');
+
+    Route::get('/Education/Applicant/Approve/{data}', [App\Http\Controllers\EducationController:: class, 'Approve'])->name('ApproveApplicantEducation');
+
+    Route::get('/Education/Applicant/Reject/{data}', [App\Http\Controllers\EducationController:: class, 'Reject'])->name('RejectApplicantEducation');
+
+    Route::get('/Education/Applicant/ReInitiate/{data}', [App\Http\Controllers\EducationController:: class, 'ReInitiate'])->name('ReInitiateApplicantEducation');
+
+    
+
+
 
 // create Application
 Route::get('/Education/Application/Create', [App\Http\Controllers\EducationController:: class, 'CreateApplication'])->name('CreateApplicationEducation');
