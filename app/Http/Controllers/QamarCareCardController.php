@@ -394,7 +394,7 @@ class QamarCareCardController extends Controller
     $data->update([
 
       'Status' => 'Approved',
-      'Status_By' => auth()->user()->name
+      'Status_By' => auth()->user()->id
 
 
     ]);
@@ -405,7 +405,7 @@ class QamarCareCardController extends Controller
   {
 
     $data->update([
-      'Status_By' => auth()->user()->name,
+      'Status_By' => auth()->user()->id,
 
       'Status' => 'Rejected'
 
@@ -418,7 +418,7 @@ class QamarCareCardController extends Controller
   {
 
     $data->update([
-      'Status_By' => auth()->user()->name,
+      'Status_By' => auth()->user()->id,
 
       'Status' => 'Pending'
 
@@ -433,7 +433,7 @@ class QamarCareCardController extends Controller
   {
 
     $data->update([
-      'Status_By' => auth()->user()->name,
+      'Status_By' => auth()->user()->id,
 
       'Status' => 'Released'
 
@@ -457,7 +457,7 @@ class QamarCareCardController extends Controller
   {
 
     $data->update([
-      'Status_By' => auth()->user()->name,
+      'Status_By' => auth()->user()->id,
 
       'Status' => 'Printed'
 
@@ -725,7 +725,7 @@ class QamarCareCardController extends Controller
       //   'LevelPoverty' => request('LevelPoverty'),
       //  'Tazkira' => request('Tazkira'),
       'Status' => 'Pending',
-      'Created_By' => auth()->user()->name,
+      'Created_By' => auth()->user()->id,
 
       // 'RelativeNumber' => request('RelativeNumber'),
       // 'RelativeRelationship' => request('RelativeRelationship'),
@@ -785,7 +785,7 @@ class QamarCareCardController extends Controller
   {
 
     $data->update([
-      'Status_By' => auth()->user()->name,
+      'Status_By' => auth()->user()->id,
 
       'Status' => 'Recieved'
 
@@ -933,7 +933,7 @@ class QamarCareCardController extends Controller
       //   'LevelPoverty' => request('LevelPoverty'),
       //  'Tazkira' => request('Tazkira'),
       'Status' => 'Pending',
-      'Created_By' => auth()->user()->name,
+      'Created_By' => auth()->user()->id,
 
       // 'RelativeNumber' => request('RelativeNumber'),
       // 'RelativeRelationship' => request('RelativeRelationship'),
@@ -1011,7 +1011,7 @@ class QamarCareCardController extends Controller
   {
 
     $data->update([
-      'Status_By' => auth()->user()->name,
+      'Status_By' => auth()->user()->id,
 
       'Status' => 'Approved'
 
@@ -1024,7 +1024,7 @@ class QamarCareCardController extends Controller
   {
 
     $data->update([
-      'Status_By' => auth()->user()->name,
+      'Status_By' => auth()->user()->id,
 
       'Status' => 'Rejected'
 
@@ -1037,7 +1037,7 @@ class QamarCareCardController extends Controller
   {
 
     $data->update([
-      'Status_By' => auth()->user()->name,
+      'Status_By' => auth()->user()->id,
 
       'Status' => 'Pending'
 

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('EndDate')->nullable();
             $table->integer('Seats')->nullable();
             $table->string('Status')->nullable();
-            $table->string('Created_By')->nullable();
+            $table->integer('Created_By')->nullable();
             $table->integer('Owner')->nullable();
 
 

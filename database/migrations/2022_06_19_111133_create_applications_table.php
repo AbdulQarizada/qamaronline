@@ -92,8 +92,8 @@ return new class extends Migration
 
 
             $table->string('Status')->nullable();
-            $table->string('Status_By')->nullable();
-            $table->string('Created_By')->nullable();
+            $table->integer('Status_By')->nullable();
+            $table->integer('Created_By')->nullable();
             $table->integer('Owner')->nullable();
             $table->timestamps();
         });

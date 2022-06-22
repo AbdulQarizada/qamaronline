@@ -156,7 +156,7 @@ class EducationController extends Controller
     //   'LevelPoverty' => request('LevelPoverty'),
     //   'Tazkira' => request('Tazkira'),
       'Status' => 'Pending',
-      'Created_By' => auth()->user()->name,
+      'Created_By' => auth()->user()->id,
 
     //   'RelativeNumber' => request('RelativeNumber'),
     //   'RelativeRelationship_ID' => request('RelativeRelationship_ID'),
@@ -340,7 +340,7 @@ class EducationController extends Controller
      $data->update([
  
        'Status' => 'Approved',
-       'Status_By' => auth()->user()->name
+       'Status_By' => auth()->user()->id
  
  
      ]);
@@ -351,7 +351,7 @@ class EducationController extends Controller
    {
  
      $data->update([
-       'Status_By' => auth()->user()->name,
+       'Status_By' => auth()->user()->id,
  
        'Status' => 'Rejected'
  
@@ -364,7 +364,7 @@ class EducationController extends Controller
    {
  
      $data->update([
-       'Status_By' => auth()->user()->name,
+       'Status_By' => auth()->user()->id,
  
        'Status' => 'Pending'
  
