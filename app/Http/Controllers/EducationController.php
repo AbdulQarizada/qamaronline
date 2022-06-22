@@ -474,7 +474,7 @@ class EducationController extends Controller
 
 
       
-      'PersonalStatement'=> 'required|max:10',
+      'PersonalStatement'=> 'required',
       'ScholarshipType_ID'=> 'required|max:10',
       'Scholarship_ID'=> 'required|max:10',
       'ScholarshipModule_ID'=> 'required|max:10',

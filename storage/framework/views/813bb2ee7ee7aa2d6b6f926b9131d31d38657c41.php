@@ -877,7 +877,7 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                         <div class="row">
                                          <div class="col-md-4">
-                                                <label for="Tazkira" class="form-label">Tazkira</label>
+                                                <label for="Tazkira" class="form-label">Tazkira <i class="mdi mdi-asterisk text-danger"></i></label>
                                                 <input type="file" class="my-pond <?php $__errorArgs = ['Tazkira'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -1626,7 +1626,7 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                         <div class="row">
                                          <div class="col-md-4">
-                                                <label for="SchoolDiploma" class="form-label">School Diploma</label>
+                                                <label for="SchoolDiploma" class="form-label">School Diploma <i class="mdi mdi-asterisk text-danger"></i></label>
                                                 <input type="file" class="my-pond <?php $__errorArgs = ['SchoolDiploma'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -1649,7 +1649,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="SchoolTranscript" class="form-label">School Transcript</label>
+                                                <label for="SchoolTranscript" class="form-label">School Transcript <i class="mdi mdi-asterisk text-danger"></i></label>
                                                 <input type="file" class="my-pond <?php $__errorArgs = ['SchoolTranscript'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -1672,7 +1672,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="EnglishDiploma" class="form-label">English Diploma</label>
+                                                <label for="EnglishDiploma" class="form-label">English Diploma <i class="mdi mdi-asterisk text-danger"></i></label>
                                                 <input type="file" class="my-pond <?php $__errorArgs = ['EnglishDiploma'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :

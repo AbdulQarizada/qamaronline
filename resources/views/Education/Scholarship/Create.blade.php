@@ -198,7 +198,7 @@
                         </div>
                         <div class="col-md-4 ">
                             <div class="mb-3 position-relative">
-                                <label for="StartDate" class="form-label">Start Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <label for="StartDate" class="form-label">Application Start Date <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group " id="example-date-input">
 
                                     <input class="form-control form-select-lg @error('StartDate') is-invalid @enderror" value="{{ old('StartDate') }}" type="date" id="example-date-input" name="StartDate" id="StartDate" required>
@@ -214,7 +214,7 @@
                         </div>
                         <div class="col-md-4 ">
                             <div class="mb-3 position-relative">
-                                <label for="EndDate" class="form-label">End Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <label for="EndDate" class="form-label">Application End Date <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group " id="example-date-input">
 
                                     <input class="form-control form-select-lg @error('EndDate') is-invalid @enderror" value="{{ old('EndDate') }}" type="date" id="example-date-input" name="EndDate" id="EndDate" required>
