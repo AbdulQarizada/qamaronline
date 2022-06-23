@@ -215,8 +215,8 @@
                                 @if( $qamarcarecard -> Created_By !="")
 
                                 <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> UFirstName }} {{$qamarcarecard -> ULastName }}</a></h5>
-                                    <p class="text-muted mb-0">{{$qamarcarecard -> UJob }}</p> 
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard ->  UFirstName }} {{$qamarcarecard ->  ULastName }}</a></h5>
+                                    <p class="text-muted mb-0">{{$qamarcarecard ->  UJob }}</p> 
                                
                                 </div>
                                 @endif
