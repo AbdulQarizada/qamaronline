@@ -267,7 +267,7 @@ class QamarCareCardController extends Controller
       ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
       ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
 
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as FirstName', 'd.LastName as LastName', 'd.Job as Job'])
+      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
 
       ->get();
     return view('QamarCardCard.All', compact('qamarcarecards'));
@@ -282,7 +282,7 @@ class QamarCareCardController extends Controller
       ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
       ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
       ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as FirstName', 'd.LastName as LastName', 'd.Job as Job'])
+      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
       ->where("Status", "=", 'Approved')
       ->get();
     return view('QamarCardCard.All', compact('qamarcarecards'));
@@ -298,7 +298,7 @@ class QamarCareCardController extends Controller
       ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
       ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
       
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as FirstName', 'd.LastName as LastName', 'd.Job as Job'])
+      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
       ->where("Status", "=", 'Rejected')
       ->get();
     return view('QamarCardCard.All', compact('qamarcarecards'));
@@ -317,7 +317,7 @@ class QamarCareCardController extends Controller
       ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
       ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
 
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as FirstName', 'd.LastName as LastName', 'd.Job as Job'])
+      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
       ->where("Status", "=", 'Pending')
       ->get();
     return view('QamarCardCard.All', compact('qamarcarecards'));
@@ -333,7 +333,7 @@ class QamarCareCardController extends Controller
       ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
       ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
 
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as FirstName', 'd.LastName as LastName', 'd.Job as Job'])
+      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
       ->where("Status", "=", 'Released')
       ->get();
     return view('QamarCardCard.All', compact('qamarcarecards'));
