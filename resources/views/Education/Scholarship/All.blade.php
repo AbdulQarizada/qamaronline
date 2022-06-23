@@ -144,8 +144,8 @@
                                 </td> -->
                                 <td>
                                 <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$scholarship -> Created_By }}</a></h5>
-                                    <p class="text-muted mb-0">Employee</p> 
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$scholarship -> FirstName }} {{$scholarship -> LastName }}</a></h5>
+                                    <p class="text-muted mb-0">{{$scholarship -> Job }}</p> 
                                
                                 </div>
                                 </td>
