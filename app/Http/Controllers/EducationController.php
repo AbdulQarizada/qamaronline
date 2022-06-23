@@ -34,7 +34,7 @@ class EducationController extends Controller
     ->join('look_ups as b', 'scholarships.Country_ID', '=', 'b.id')
     ->join('users as d', 'scholarships.Created_By', '=', 'd.id')
 
-    ->select(['scholarships.*', 'a.Name as ScholarshipType', 'b.Name as Country', 'd.FirstName as FirstName', 'd.LastName as LastName','d.Job as Job',])
+    ->select(['scholarships.*', 'a.Name as ScholarshipType', 'b.Name as Country', 'd.FirstName as UFirstName', 'd.LastName as ULastName','d.Job as UJob',])
 
     -> get();
   return view('Education.Scholarship.All', compact('scholarships'));

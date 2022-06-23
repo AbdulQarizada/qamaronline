@@ -96,7 +96,7 @@
                                 <th>Phone Numbers</th>
                                 <th>Family Status</th>
                                 <th>Status</th>
-                                <th>Crated By</th>
+                                <th>Created By</th>
                                 <th>Actions</th>
                                 
                             </tr>
