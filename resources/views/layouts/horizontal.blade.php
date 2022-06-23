@@ -237,7 +237,7 @@
                 <img class="rounded-circle header-profile-user" src="{{ isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-1.png') }}"
                     alt="Header Avatar">
                 <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{ucfirst(Auth::user()->FirstName)}} {{ucfirst(Auth::user()->LastName)}}</span>
-                <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{ucfirst(Auth::user()->FirstName)}} {{ucfirst(Auth::user()->LastName)}}</span>
+                <p>{{ucfirst(Auth::user()->Job)}}</p>
                 
                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
             </button>
