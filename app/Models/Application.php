@@ -41,6 +41,9 @@ class Application extends Model
         'CurrentProvince_ID',
         'CurrentDistrict_ID',
         'CurrentVillage',
+        'RelativeName',
+        'RelativeRelationship_ID',
+        'RelativeNumber',
         'Facebook',
         'Telegram',
         'Twitter',
@@ -79,10 +82,15 @@ class Application extends Model
 
 
         
-        'PersonalStatement',
+        'WhyChosenPersonalStatement',
+        'WhyChosenTHisCountryPersonalStatement',
+        'PlanAfterGraduationPersonalStatement',
         'ScholarshipType_ID',
         'Scholarship_ID',
-        'ScholarshipModule_ID',
+        'PrefernceOneScholarshipModule_ID',
+        'PrefernceTwoScholarshipModule_ID',
+        'PrefernceThreeScholarshipModule_ID',
+
 
 
 

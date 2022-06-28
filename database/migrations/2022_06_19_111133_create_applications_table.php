@@ -46,6 +46,10 @@ return new class extends Migration
             $table->integer('CurrentProvince_ID')->nullable();
             $table->integer('CurrentDistrict_ID')->nullable();
             $table->string('CurrentVillage')->nullable();
+            $table -> string('RelativeName')->nullable();
+            $table -> integer('RelativeRelationship_ID')->nullable();
+            $table -> integer('RelativeNumber')->nullable();
+
             $table->string('Facebook')->nullable();
             $table->string('Telegram')->nullable();
             $table->string('Twitter')->nullable();
@@ -84,12 +88,15 @@ return new class extends Migration
 
             
             
-            $table->longText('PersonalStatement')->nullable();
+            $table->longText('WhyChosenPersonalStatement')->nullable();
+            $table->longText('WhyChosenTHisCountryPersonalStatement')->nullable();
+            $table->longText('PlanAfterGraduationPersonalStatement')->nullable();
+
             $table->integer('ScholarshipType_ID')->nullable();
             $table->integer('Scholarship_ID')->nullable();
-            $table->integer('ScholarshipModule_ID')->nullable();
-
-
+            $table->integer('PrefernceOneScholarshipModule_ID')->nullable();
+            $table->integer('PrefernceTwoScholarshipModule_ID')->nullable();
+            $table->integer('PrefernceThreeScholarshipModule_ID')->nullable();
 
             $table->string('Status')->nullable();
             $table->integer('Status_By')->nullable();

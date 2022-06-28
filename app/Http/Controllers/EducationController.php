@@ -441,10 +441,9 @@ class EducationController extends Controller
       // 'Facebook'=> 'required|max:255',
       // 'Telegram'=> 'required|max:255',
       // 'Twitter'=> 'required|max:255',
-
-
-
-
+      'RelativeRelationship_ID'=> 'required|max:10',
+      'RelativeName'=> 'required|max:255',
+      'RelativeNumber'=> 'required|max:10',
 
 
       'SchoolName'=> 'required|max:255',
@@ -474,13 +473,15 @@ class EducationController extends Controller
       // 'WorkExperienceLetter'=> 'required|max:10',
       // 'Resume'=> 'required|max:10',
 
+      'WhyChosenPersonalStatement'=> 'required',
+      'WhyChosenTHisCountryPersonalStatement'=> 'required',
+      'PlanAfterGraduationPersonalStatement'=> 'required',
 
-      
-      'PersonalStatement'=> 'required',
       'ScholarshipType_ID'=> 'required|max:10',
       'Scholarship_ID'=> 'required|max:10',
-      'ScholarshipModule_ID'=> 'required|max:10',
-
+      'PrefernceOneScholarshipModule_ID'=> 'required|max:10',
+      'PrefernceTwoScholarshipModule_ID'=> 'required|max:10',
+      'PrefernceThreeScholarshipModule_ID'=> 'required|max:10',
     ]);
 
 
@@ -518,6 +519,10 @@ class EducationController extends Controller
       'CurrentProvince_ID' => request('CurrentProvince_ID'),
       'CurrentDistrict_ID' => request('CurrentDistrict_ID'),
       'CurrentVillage' => request('CurrentVillage'),
+      'RelativeRelationship_ID' => request('RelativeRelationship_ID'),
+      'RelativeName' => request('RelativeName'),
+      'RelativeNumber' => request('RelativeNumber'),
+
       'Facebook' => request('Facebook'),
       'Telegram' => request('Telegram'),
       'Twitter' => request('Twitter'),
@@ -556,10 +561,14 @@ class EducationController extends Controller
 
 
       
-      'PersonalStatement' => request('PersonalStatement'),
+      'WhyChosenPersonalStatement' => request('WhyChosenPersonalStatement'),
+      'WhyChosenTHisCountryPersonalStatement' => request('WhyChosenTHisCountryPersonalStatement'),
+      'PlanAfterGraduationPersonalStatement' => request('PlanAfterGraduationPersonalStatement'),
       'ScholarshipType_ID' => request('ScholarshipType_ID'),
       'Scholarship_ID' => request('Scholarship_ID'),
-      'ScholarshipModule_ID' => request('ScholarshipModule_ID'),
+      'PrefernceOneScholarshipModule_ID' => request('PrefernceOneScholarshipModule_ID'),
+      'PrefernceTwoScholarshipModule_ID' => request('PrefernceTwoScholarshipModule_ID'),
+      'PrefernceThreeScholarshipModule_ID' => request('PrefernceThreeScholarshipModule_ID'),
 
 
 
