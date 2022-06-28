@@ -1779,7 +1779,7 @@
     // Create a FilePond instance
     const Tazkira = FilePond.create(inputTazkira, {
         labelIdle: 'Drag & Drop your Tazkira or <span class="filepond--label-action"> Browse </span>',
-        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        acceptedFileTypes: ['application/pdf', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
 
@@ -1801,7 +1801,7 @@
         const SchoolDiploma = FilePond.create(inputSchoolDiploma, {
         labelIdle:     'Drag & Drop your Scholl Diploma or <span class="filepond--label-action"> Browse </span>'
 ,
-        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        acceptedFileTypes: ['application/pdf', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
 
@@ -1819,7 +1819,7 @@
         // Create a FilePond instance
         const SchoolTranscript = FilePond.create(inputSchoolTranscript, {
         labelIdle: 'Drag & Drop your School Transcript or <span class="filepond--label-action"> Browse </span>',
-        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        acceptedFileTypes: ['application/pdf', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
 
@@ -1837,7 +1837,7 @@
         // Create a FilePond instance
         const EnglishDiploma = FilePond.create(inputEnglishDiploma, {
         labelIdle: 'Drag & Drop your English Diploma or <span class="filepond--label-action"> Browse </span>',
-        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        acceptedFileTypes: ['application/pdf', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
 
@@ -1855,7 +1855,7 @@
         // Create a FilePond instance
         const WorkExperienceLetter = FilePond.create(inputWorkExperienceLetter, {
         labelIdle:'Drag & Drop your Work Experience letter or <span class="filepond--label-action"> Browse </span>',
-        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        acceptedFileTypes: ['application/pdf', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
 
@@ -1874,7 +1874,7 @@
         // Create a FilePond instance
         const Resume = FilePond.create(inputResume, {
         labelIdle: 'Drag & Drop your Resume or <span class="filepond--label-action"> Browse </span>',
-        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        acceptedFileTypes: ['application/pdf', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
 
