@@ -1746,7 +1746,8 @@
 
     // Create a FilePond instance
     const Profile = FilePond.create(inputProfile, {
-        labelIdle: 'Profile <span class="bx bx-upload"></span >',
+        labelIdle:     'Drag & Drop your Profile Picture or <span class="filepond--label-action"> Browse </span>'
+,
 
 
     });
@@ -1775,10 +1776,9 @@
         styleButtonProcessItemPosition: 'right bottom'
     });
 
-
     // Create a FilePond instance
     const Tazkira = FilePond.create(inputTazkira, {
-        labelIdle: 'Click to upload Tazkira <span class="bx bx-upload"></span >',
+        labelIdle: 'Drag & Drop your Tazkira or <span class="filepond--label-action"> Browse </span>',
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
@@ -1799,7 +1799,8 @@
 
         // Create a FilePond instance
         const SchoolDiploma = FilePond.create(inputSchoolDiploma, {
-        labelIdle: 'Click to upload School Diploma <span class="bx bx-upload"></span >',
+        labelIdle:     'Drag & Drop your Scholl Diploma or <span class="filepond--label-action"> Browse </span>'
+,
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
@@ -1817,7 +1818,7 @@
 
         // Create a FilePond instance
         const SchoolTranscript = FilePond.create(inputSchoolTranscript, {
-        labelIdle: 'Click to upload School Transcript <span class="bx bx-upload"></span >',
+        labelIdle: 'Drag & Drop your School Transcript or <span class="filepond--label-action"> Browse </span>',
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
@@ -1835,7 +1836,7 @@
 
         // Create a FilePond instance
         const EnglishDiploma = FilePond.create(inputEnglishDiploma, {
-        labelIdle: 'Click to upload English Diploma <span class="bx bx-upload"></span >',
+        labelIdle: 'Drag & Drop your English Diploma or <span class="filepond--label-action"> Browse </span>',
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
@@ -1853,7 +1854,7 @@
 
         // Create a FilePond instance
         const WorkExperienceLetter = FilePond.create(inputWorkExperienceLetter, {
-        labelIdle: 'Click to upload Work Experience Letter <span class="bx bx-upload"></span >',
+        labelIdle:'Drag & Drop your Work Experience letter or <span class="filepond--label-action"> Browse </span>',
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
@@ -1872,7 +1873,7 @@
 
         // Create a FilePond instance
         const Resume = FilePond.create(inputResume, {
-        labelIdle: 'Click to upload Resume <span class="bx bx-upload"></span >',
+        labelIdle: 'Drag & Drop your Resume or <span class="filepond--label-action"> Browse </span>',
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
