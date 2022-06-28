@@ -1646,6 +1646,18 @@
                                                 </div>
 
                                             </div>
+                                      
+                                        </div>
+                                        <div class="row mt-4">
+                                        <div class="col-md-12">
+                                        <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="formCheck1" required>
+                                <label class="form-check-label" for="formCheck1">
+                                I hereby confirm all the information provided by me is correct and true to the best of my knowledge. I agree to inform Qamar Foundation if there is any change to the information provided in this application while I am studying at Al-Bukhary International University. I also certify that Qamar Foundation reserves the right to vary or reverse any decision about my admission to Al-Bukhary International University if the information given by myself is incorrect and untrue. I also consent to the collection, processing, and retention by the Qamar Foundation of my data.
+                                </label>
+                            </div>
+
+                                            </div>
                                         </div>
                                     </div>
 
