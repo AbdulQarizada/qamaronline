@@ -10,6 +10,10 @@
 
 <?php $__env->startSection('content'); ?>
 
+    <?php $__env->startComponent('components.breadcrumb'); ?>
+        <?php $__env->slot('li_1'); ?> Qamar Online <?php $__env->endSlot(); ?>
+        <?php $__env->slot('title'); ?> Qamar Care Card <?php $__env->endSlot(); ?>
+    <?php echo $__env->renderComponent(); ?>
     <div class="row">
         <div class="col-12">
            <a href="<?php echo e(route('root')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
@@ -18,7 +22,7 @@
     <div class="row">
     <div class="mt-4 mb-4">
                       <blockquote class="blockquote border-primary  font-size-14 mb-0">
-                                <p class="my-0   fw-medium text-dark text-muted card-title font-size-24 text-wrap">CARE CARD</p>
+                                <p class="my-0   fw-medium text-dark text-muted card-title font-size-24 text-wrap">EDUCATION</p>
                         
                         </blockquote>
     </div>
@@ -54,20 +58,20 @@
             </div> -->
 
             <div class="col-md-4 mb-2">
-               <a href="<?php echo e(route('AllQamarCareCard')); ?>">
+               <a href="<?php echo e(route('AllScholarshipEducation')); ?>">
                 <div class="card-one mini-stats-wid border border-secondary">
                     <div class="card-body">
                       <blockquote class="blockquote font-size-14 mb-0">
                         <div class="d-flex">
                             <div class="flex-grow-1">
-                                <p class="my-0 text-primary card-title fw-medium">CARE CARDS</p>
-                                <h6 class="text-muted mb-0">Care Cards</h4>
+                                <p class="my-0 text-primary card-title fw-medium">Scholarships</p>
+                                <h6 class="text-muted mb-0">All Scholarships</h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
                                 <div class="mini-stat-icon avatar-sm rounded-circle ">
                                     <span class="avatar-title bg-warning">
-                                        <i class="bx bx-id-card   font-size-24"></i>
+                                        <i class="bx bxs-graduation   font-size-24"></i>
                                     </span>
                                 </div>
                             </div>
@@ -82,43 +86,16 @@
                 </a>
             </div>
 
-            <div class="col-md-4 mb-2">
-        <a href="<?php echo e(route('AssigningServiceQamarCareCard')); ?>">
-            <div class="card-one mini-stats-wid border border-secondary">
-                <div class="card-body">
-                  <blockquote class="blockquote font-size-14 mb-0">
-                    <div class="d-flex">
-                        <div class="flex-grow-1">
-                            <p class="my-0 text-primary card-title fw-medium">CARDS TO SERIVCES</p>
-                            <h6 class="text-muted mb-0">ASSIGNE TO SERIVCE</h4>
-                        </div>
 
-                        <div class="flex-shrink-0 align-self-center">
-                            <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                <span class="avatar-title bg-info">
-                                    <i class="bx bxs-user-rectangle    font-size-24"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                   
-                    <div class="d-flex mt-4">
-                       
-                    </div>
-                    </blockquote>
-                </div>
-            </div>
-            </a>
-        </div>
         <div class="col-md-4 mb-2">
-        <a href="<?php echo e(route('ServiceProvidersQamarCareCard')); ?>">
+        <a href="<?php echo e(route('AllApplicantEducation')); ?>">
             <div class="card-one mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <p class="my-0 text-primary card-title fw-medium">SERVICE PROVIDERS</p>
-                            <h6 class="text-muted mb-0">Add Service Providers</h4>
+                            <p class="my-0 text-primary card-title fw-medium">Applications</p>
+                            <h6 class="text-muted mb-0">All Applicants</h4>
                         </div>
 
                         <div class="flex-shrink-0 align-self-center">
@@ -485,7 +462,7 @@
     <!-- end row -->
 
 
-
+<!-- 
     <br />
 <div class="row">
 <div class="mt-4 mb-4">
@@ -559,11 +536,10 @@
 
 
     </div>
-    <!-- end row -->
 
 
 </div>
-</div>
+</div> -->
 <!-- end row -->
 
 <?php $__env->stopSection(); ?>
@@ -576,4 +552,4 @@
     <script src="<?php echo e(URL::asset('/assets/js/pages/datatables.init.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Qamar\QamarOnline\qamaronline\resources\views/QamarCardCard/Index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Qamar\QamarOnline\qamaronline\resources\views/Education/Index.blade.php ENDPATH**/ ?>

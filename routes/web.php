@@ -291,7 +291,24 @@ Route::get('/Education/Application/Success', [App\Http\Controllers\EducationCont
 
 
 
-    // OrphansRelief
+
+
+
+
+
+
+
+
+
+
+
+
+
+// OrphansRelief
     Route::get('/OrphansRelief', [App\Http\Controllers\OrphansReliefController:: class, 'Index'])->name('IndexOrphansRelief');
     Route::get('/OrphansRelief/All', [App\Http\Controllers\OrphansReliefController:: class, 'All'])->name('AllOrphansRelief');
-     
+
+
+    // Create
+    Route::get('/OrphansRelief/Create', [App\Http\Controllers\OrphansReliefController:: class, 'Create'])->name('CreateOrphansRelief');
+    Route::post('/OrphansRelief/Create', [App\Http\Controllers\OrphansReliefController:: class, 'Store'])->name('CreateOrphansRelief');

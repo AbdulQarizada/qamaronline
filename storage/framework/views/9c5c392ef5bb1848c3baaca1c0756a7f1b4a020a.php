@@ -13,7 +13,7 @@
 
     <div class="row mt-4">
         <div class="col-4">
-           <a href="<?php echo e(route('IndexQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+           <a href="<?php echo e(route('IndexOrphansRelief')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
     
         </div>
         <div class="col-6">
@@ -50,8 +50,8 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                     <option value="<?php echo e(route('AllQamarCareCard')); ?>">All</option>
                                     <option value="<?php echo e(route('PendingQamarCareCard')); ?>">Pending</option>
                                     <option value="<?php echo e(route('ApprovedQamarCareCard')); ?>">Approved</option>
-                                    <option value="<?php echo e(route('PrintedQamarCareCard')); ?>">Printed</option>
-                                    <option value="<?php echo e(route('ReleasedQamarCareCard')); ?>">Released</option>
+                                    <option value="<?php echo e(route('PrintedQamarCareCard')); ?>">Active</option>
+                                    <option value="<?php echo e(route('ReleasedQamarCareCard')); ?>">InActive</option>
                                     <option value="<?php echo e(route('RejectedQamarCareCard')); ?>">Rejected</option>
 
 
@@ -63,8 +63,8 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
         <div class="col-9 ">
         <!-- <i class="bx bx-plus-circle  font-size-24 label-icon"></i> btn-label -->
           <div class="button">
-           <a href="<?php echo e(route('CreateQamarCareCard')); ?>" class="btn btn-secondary btn-lg waves-effect  waves-light mb-3 ml-2 float-end"> <i class=" bx bx-trash-alt font-size-16 align-middle"></i></a>
-           <a href="<?php echo e(route('CreateQamarCareCard')); ?>" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 ml-2 float-end">ADD ORPHAN</a>
+           <a href="<?php echo e(route('CreateQamarCareCard')); ?>" class="btn btn-alt btn-lg waves-effect  waves-light mb-3 m-1 float-end"> <i class=" bx bx-trash-alt font-size-16 align-middle"></i></a>
+           <a href="<?php echo e(route('CreateOrphansRelief')); ?>" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 m-1 float-end">ADD ORPHAN</a>
            </div>
        
         </div>
@@ -122,7 +122,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
 
 
                         <tbody>
-                            <?php $__currentLoopData = $qamarcarecards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qamarcarecard): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = $orphans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qamarcarecard): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
                                 <td><?php echo e($qamarcarecard -> id); ?></td>
                                 <td>

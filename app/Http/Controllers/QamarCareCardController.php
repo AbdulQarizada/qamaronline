@@ -80,7 +80,7 @@ class QamarCareCardController extends Controller
       'FirstNameLocal' => 'required|max:255',
 
       // 'LastName' => 'required|max:255',
-      'TazkiraID' => 'required|max:10',
+      'TazkiraID' => 'required|unique:qamar_care_cards|max:10',
       'QamarSupport_ID' => 'required|max:255',
       'MaritalStatus' => 'required|max:255',
       'Profile' => 'required|max:255',
@@ -101,6 +101,7 @@ class QamarCareCardController extends Controller
       'FatherNameLocal' => 'required|max:255',
 
       // 'SpuoseName' => 'required|max:255',
+      'SpuoseTazkiraID' => 'required|unique:qamar_care_cards|max:255',
       'EldestSonAge' => 'required|max:255',
       'MonthlyFamilyIncome' => 'required|max:10',
       'MonthlyFamilyExpenses' => 'required|max:10',

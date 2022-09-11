@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\QamarCareCard;
+use App\Models\Orphan;
 use App\Models\AssignCareCardServices;
 use App\Models\ServiceType;
 use App\Models\ServiceProviders;
@@ -69,7 +70,7 @@ class OrphansReliefController extends Controller
 
 
 
-    return view('QamarCardCard.Create', ['countries' => $countries,'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+    return view('OrphansRelief.Create', ['countries' => $countries,'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
   }
 
   public function Store(Request $request)
@@ -262,15 +263,16 @@ class OrphansReliefController extends Controller
 
     //  $qamarcarecards =   QamarCareCard::all();
 
-    $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
+    $orphans =   Orphan::get();
+    // join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
+    //   ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+    //   ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+    //   ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
 
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+    //   ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
 
-      ->get();
-    return view('OrphansRelief.All', compact('qamarcarecards'));
+    //   ->get();
+    return view('OrphansRelief.All', compact('orphans'));
   }
 
 

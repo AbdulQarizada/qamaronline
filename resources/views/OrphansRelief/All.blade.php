@@ -13,7 +13,7 @@
 
     <div class="row mt-4">
         <div class="col-4">
-           <a href="{{route('IndexQamarCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+           <a href="{{route('IndexOrphansRelief')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
     
         </div>
         <div class="col-6">
@@ -43,8 +43,8 @@
                                     <option value="{{route('AllQamarCareCard')}}">All</option>
                                     <option value="{{route('PendingQamarCareCard')}}">Pending</option>
                                     <option value="{{route('ApprovedQamarCareCard')}}">Approved</option>
-                                    <option value="{{route('PrintedQamarCareCard')}}">Printed</option>
-                                    <option value="{{route('ReleasedQamarCareCard')}}">Released</option>
+                                    <option value="{{route('PrintedQamarCareCard')}}">Active</option>
+                                    <option value="{{route('ReleasedQamarCareCard')}}">InActive</option>
                                     <option value="{{route('RejectedQamarCareCard')}}">Rejected</option>
 
 
@@ -56,8 +56,8 @@
         <div class="col-9 ">
         <!-- <i class="bx bx-plus-circle  font-size-24 label-icon"></i> btn-label -->
           <div class="button">
-           <a href="{{route('CreateQamarCareCard')}}" class="btn btn-secondary btn-lg waves-effect  waves-light mb-3 ml-2 float-end"> <i class=" bx bx-trash-alt font-size-16 align-middle"></i></a>
-           <a href="{{route('CreateQamarCareCard')}}" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 ml-2 float-end">ADD ORPHAN</a>
+           <a href="{{route('CreateQamarCareCard')}}" class="btn btn-alt btn-lg waves-effect  waves-light mb-3 m-1 float-end"> <i class=" bx bx-trash-alt font-size-16 align-middle"></i></a>
+           <a href="{{route('CreateOrphansRelief')}}" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 m-1 float-end">ADD ORPHAN</a>
            </div>
        
         </div>
@@ -108,7 +108,7 @@
 
 
                         <tbody>
-                            @foreach($qamarcarecards as $qamarcarecard)
+                            @foreach($orphans as $qamarcarecard)
                                 <tr>
                                 <td>{{$qamarcarecard -> id}}</td>
                                 <td>
