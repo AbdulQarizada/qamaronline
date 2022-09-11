@@ -622,32 +622,18 @@
                         <div class="col-md-4">
                             <div class="row mb-3 position-relative" >
                             <label for="MaritalStatus" class="form-label" >Marital Status <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <div class="col-2 col-sm-3">
+                                <div class="col-6 col-sm-6">
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="MaritalStatus" value="Single" id="Single" checked>
-                                        <label class="form-check-label" for="Single">
+                                        <input class="form-check-input" type="radio" name="MaritalStatus" value="Single" id="No" checked>
+                                        <label class="form-check-label" for="No">
                                             Single
                                         </label>
                                     </div>
                                 </div>
-                                <div class="col-2 col-sm-3">
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="MaritalStatus" value="Divorced" id="Divorced">
-                                        <label class="form-check-label" for="Divorced">
-                                            Divorced
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-2 col-sm-3">
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="MaritalStatus" value="Widow" id="Widow">
-                                        <label class="form-check-label" for="Widow">
-                                            Widow
-                                        </label>
-                                    </div>
-                                </div>
 
-                                <div class="col-2 col-sm-2">
+
+
+                                <div class="col-6 col-sm-6">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="MaritalStatus" value="Married" id="Yes">
                                         <label class="form-check-label" for="Yes">
@@ -664,17 +650,6 @@
                                 <label for="SpuoseName"  class="form-label SpuoseName">Spuose's Name <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <input type="text" class="form-control  form-control-lg @error('SpuoseName') is-invalid @enderror" value="{{ old('SpuoseName') }}" id="SpuoseName" name="SpuoseName" >
                                 @error('SpuoseName')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="mb-3 position-relative">
-                                <label for="SpuoseTazkiraID"  class="form-label SpuoseTazkiraID">Spuose's TazkiraID <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <input type="text" class="form-control  form-control-lg @error('SpuoseTazkiraID') is-invalid @enderror" value="{{ old('SpuoseTazkiraID') }}" id="SpuoseTazkiraID" name="SpuoseTazkiraID" >
-                                @error('SpuoseTazkiraID')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -968,8 +943,6 @@
 {
     $('#SpuoseName').hide();
     $('.SpuoseName').hide();
-    $('#SpuoseTazkiraID').hide();
-    $('.SpuoseTazkiraID').hide();
     $('#No').prop("checked", true);
 
 });
@@ -977,29 +950,14 @@
     {
     $('#SpuoseName').show();
     $('.SpuoseName').show();
-    $('#SpuoseTazkiraID').show();
-    $('.SpuoseTazkiraID').show();
+
 });
 
 
 
-$('#Single').click(function() {
+$('#No').click(function() {
     $('#SpuoseName').hide();
     $('.SpuoseName').hide();
-    $('#SpuoseTazkiraID').hide();
-    $('.SpuoseTazkiraID').hide();
-});
-$('#Divorced').click(function() {
-    $('#SpuoseName').hide();
-    $('.SpuoseName').hide();
-    $('#SpuoseTazkiraID').hide();
-    $('.SpuoseTazkiraID').hide();
-});
-$('#Widow').click(function() {
-    $('#SpuoseName').hide();
-    $('.SpuoseName').hide();
-    $('#SpuoseTazkiraID').hide();
-    $('.SpuoseTazkiraID').hide();
 });
 </script>
 @endsection

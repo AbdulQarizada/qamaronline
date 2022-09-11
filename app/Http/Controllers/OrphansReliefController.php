@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
 
-class QamarCareCardController extends Controller
+class OrphansReliefController extends Controller
 {
 
 
@@ -37,7 +37,7 @@ class QamarCareCardController extends Controller
   public function Index()
   {
 
-    return view('QamarCardCard.Index');
+    return view('OrphansRelief.Index');
   }
 
 
@@ -156,7 +156,6 @@ class QamarCareCardController extends Controller
 
       'MaritalStatus' => request('MaritalStatus'),
       'SpuoseName' => request('SpuoseName'),
-      'SpuoseTazkiraID' => request('SpuoseTazkiraID'),
       'EldestSonAge' => request('EldestSonAge'),
       'MonthlyFamilyIncome' => request('MonthlyFamilyIncome'),
       'MonthlyFamilyExpenses' => request('MonthlyFamilyExpenses'),
@@ -271,7 +270,7 @@ class QamarCareCardController extends Controller
       ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
 
       ->get();
-    return view('QamarCardCard.All', compact('qamarcarecards'));
+    return view('OrphansRelief.All', compact('qamarcarecards'));
   }
 
 

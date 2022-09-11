@@ -44,6 +44,7 @@ return new class extends Migration
             $table -> string('FatherNameLocal')->nullable();
             $table -> string('MaritalStatus')->nullable();
             $table -> string('SpuoseName')->nullable();
+            $table -> string('SpuoseTazkiraID')->nullable();
             $table -> integer('EldestSonAge')->nullable();
             $table -> integer('MonthlyFamilyIncome')->nullable();
             $table -> integer('MonthlyFamilyExpenses')->nullable();

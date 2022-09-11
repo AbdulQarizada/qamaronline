@@ -219,7 +219,7 @@
     <div class="col-xl-12">
         <div class="row">
             <div class="col-md-4 mb-2">
-                <a href="OrphansRelief">
+                <a href="{{route('IndexOrphansRelief')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body">
                             <blockquote class="blockquote font-size-14 mb-0">
@@ -231,7 +231,7 @@
 
                                     <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-dark">
+                                            <span class="avatar-title bg-info">
                                                 <i class="bx bx-smile font-size-24"></i>
                                             </span>
                                         </div>
@@ -323,7 +323,7 @@
 
                                             <div class="flex-shrink-0 align-self-center">
                                                 <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                                    <span class="avatar-title bg-dark">
+                                                    <span class="avatar-title bg-info">
                                                         <i class="bx bxs-graduation font-size-24"></i>
                                                     </span>
                                                 </div>

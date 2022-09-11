@@ -288,3 +288,10 @@ Route::get('/Education/Application/Success', [App\Http\Controllers\EducationCont
 
 
     Route::post('/QamarCareCard/AssignServices', [App\Http\Controllers\QamarCareCardController:: class, 'AssignService'])->name('AssignServicesQamarCareCard');
+
+
+
+    // OrphansRelief
+    Route::get('/OrphansRelief', [App\Http\Controllers\OrphansReliefController:: class, 'Index'])->name('IndexOrphansRelief');
+    Route::get('/OrphansRelief/All', [App\Http\Controllers\OrphansReliefController:: class, 'All'])->name('AllOrphansRelief');
+     

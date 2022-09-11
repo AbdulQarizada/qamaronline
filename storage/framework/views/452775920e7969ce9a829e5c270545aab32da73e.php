@@ -1056,18 +1056,32 @@ unset($__errorArgs, $__bag); ?>
                         <div class="col-md-4">
                             <div class="row mb-3 position-relative" >
                             <label for="MaritalStatus" class="form-label" >Marital Status <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <div class="col-6 col-sm-6">
+                                <div class="col-2 col-sm-3">
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="MaritalStatus" value="Single" id="No" checked>
-                                        <label class="form-check-label" for="No">
+                                        <input class="form-check-input" type="radio" name="MaritalStatus" value="Single" id="Single" checked>
+                                        <label class="form-check-label" for="Single">
                                             Single
                                         </label>
                                     </div>
                                 </div>
+                                <div class="col-2 col-sm-3">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="radio" name="MaritalStatus" value="Divorced" id="Divorced">
+                                        <label class="form-check-label" for="Divorced">
+                                            Divorced
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-2 col-sm-3">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="radio" name="MaritalStatus" value="Widow" id="Widow">
+                                        <label class="form-check-label" for="Widow">
+                                            Widow
+                                        </label>
+                                    </div>
+                                </div>
 
-
-
-                                <div class="col-6 col-sm-6">
+                                <div class="col-2 col-sm-2">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="MaritalStatus" value="Married" id="Yes">
                                         <label class="form-check-label" for="Yes">
@@ -1091,6 +1105,31 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SpuoseName')); ?>" id="SpuoseName" name="SpuoseName" >
                                 <?php $__errorArgs = ['SpuoseName'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong><?php echo e($message); ?></strong>
+                                </span>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3 position-relative">
+                                <label for="SpuoseTazkiraID"  class="form-label SpuoseTazkiraID">Spuose's TazkiraID <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['SpuoseTazkiraID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SpuoseTazkiraID')); ?>" id="SpuoseTazkiraID" name="SpuoseTazkiraID" >
+                                <?php $__errorArgs = ['SpuoseTazkiraID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1489,6 +1528,8 @@ unset($__errorArgs, $__bag); ?>
 {
     $('#SpuoseName').hide();
     $('.SpuoseName').hide();
+    $('#SpuoseTazkiraID').hide();
+    $('.SpuoseTazkiraID').hide();
     $('#No').prop("checked", true);
 
 });
@@ -1496,14 +1537,29 @@ unset($__errorArgs, $__bag); ?>
     {
     $('#SpuoseName').show();
     $('.SpuoseName').show();
-
+    $('#SpuoseTazkiraID').show();
+    $('.SpuoseTazkiraID').show();
 });
 
 
 
-$('#No').click(function() {
+$('#Single').click(function() {
     $('#SpuoseName').hide();
     $('.SpuoseName').hide();
+    $('#SpuoseTazkiraID').hide();
+    $('.SpuoseTazkiraID').hide();
+});
+$('#Divorced').click(function() {
+    $('#SpuoseName').hide();
+    $('.SpuoseName').hide();
+    $('#SpuoseTazkiraID').hide();
+    $('.SpuoseTazkiraID').hide();
+});
+$('#Widow').click(function() {
+    $('#SpuoseName').hide();
+    $('.SpuoseName').hide();
+    $('#SpuoseTazkiraID').hide();
+    $('.SpuoseTazkiraID').hide();
 });
 </script>
 <?php $__env->stopSection(); ?>

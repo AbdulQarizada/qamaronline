@@ -42,6 +42,7 @@ class QamarCareCard extends Model
       'Email',
       'FatherName',
       'SpuoseName',
+      'SpuoseTazkiraID',
       'EldestSonAge',
       'MonthlyFamilyIncome',
       'MonthlyFamilyExpenses',
