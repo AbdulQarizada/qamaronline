@@ -78,41 +78,23 @@ class OrphansReliefController extends Controller
 
     $validator = $request->validate([
       'FirstName' => 'bail|required|max:255',
-      'FirstNameLocal' => 'required|max:255',
-
-      // 'LastName' => 'required|max:255',
+      'IntroducerName' => 'required|max:255',
       'TazkiraID' => 'required|max:10',
-      'QamarSupport_ID' => 'required|max:255',
-      'MaritalStatus' => 'required|max:255',
       'Profile' => 'required|max:255',
       'DOB' => 'required|max:255',
       'Gender_ID' => 'required|max:255',
       'Language_ID' => 'required|max:255',
-      'CurrentJob_ID' => 'required|max:255',
-      'FutureJob_ID' => 'required|max:255',
-      'EducationLevel_ID' => 'required|max:255',
       'PrimaryNumber' => 'required|max:10',
-      // 'SecondaryNumber' => 'required|max:10',
-      'RelativeNumber' => 'required|max:10',
+      'InCareNumber' => 'required|max:10',
       'Province_ID' => 'required|max:255',
       'District_ID' => 'required|max:255',
       'Village' => 'required|max:255',
-      // 'Email' => 'required|email|max:255',
       'FatherName' => 'required|max:255',
-      'FatherNameLocal' => 'required|max:255',
-
-      // 'SpuoseName' => 'required|max:255',
-      'EldestSonAge' => 'required|max:255',
       'MonthlyFamilyIncome' => 'required|max:10',
       'MonthlyFamilyExpenses' => 'required|max:10',
       'NumberFamilyMembers' => 'required|max:10',
       'IncomeStreem_ID' => 'required|max:255',
       'LevelPoverty' => 'required|max:255',
-      // 'Tazkira' => 'required|max:255',
-
-      'RelativeNumber' => 'required|max:10',
-      'RelativeRelationship_ID' => 'required|max:255',
-      'RelativeName' => 'required|max:255',
       'FamilyStatus_ID' => 'required|max:255',
       'Country_ID' => 'required|max:255',
       'Tribe_ID' => 'required|max:255',
@@ -126,60 +108,65 @@ class OrphansReliefController extends Controller
 
 
 
-    QamarCareCard::create([
+    Orphan::create([
       'FirstName' => request('FirstName'),
-      'FirstNameLocal' => request('FirstNameLocal'),
-
-      
       'LastName' => request('LastName'),
-      'LastNameLocal' => request('LastNameLocal'),
-
-
+      'IntroducerName' => request('IntroducerName'),
       'TazkiraID' => request('TazkiraID'),
       'Profile' => request('Profile'),
       'DOB' => request('DOB'),
-      'QCC' => request('QCC'),
       'Gender_ID' => request('Gender_ID'),
+      'Country_ID' => request('Country_ID'),
+      'Tribe_ID' => request('Tribe_ID'),
       'Language_ID' => request('Language_ID'),
-      'CurrentJob_ID' => request('CurrentJob_ID'),
-      'FutureJob_ID' => request('FutureJob_ID'),
-      'EducationLevel_ID' => request('EducationLevel_ID'),
-      'QamarSupport_ID' => request('QamarSupport_ID'),
+
       'PrimaryNumber' => request('PrimaryNumber'),
       'SecondaryNumber' => request('SecondaryNumber'),
-      'RelativeNumber' => request('RelativeNumber'),
+      'EmergencyNumber' => request('EmergencyNumber'),
       'Province_ID' => request('Province_ID'),
       'District_ID' => request('District_ID'),
       'Village' => request('Village'),
-      'Email' => request('Email'),
-      'FatherName' => request('FatherName'),
-      'FatherNameLocal' => request('FatherNameLocal'),
+      'InCareName' => request('InCareName'),
+      'InCareRelationship_ID' => request('InCareRelationship_ID'),
+      'InCareNumber' => request('InCareNumber'),
+      'InCareTazkiraID' => request('InCareTazkiraID'),
+   
 
-      'MaritalStatus' => request('MaritalStatus'),
-      'SpuoseName' => request('SpuoseName'),
-      'EldestSonAge' => request('EldestSonAge'),
+      'CurrentlyInSchool' => request('CurrentlyInSchool'),
+      'SchoolName' => request('SchoolName'),
+      'SchoolProvince_ID' => request('SchoolProvince_ID'),
+      'SchoolDistrict_ID' => request('SchoolDistrict_ID'),
+      'SchoolVillage' => request('SchoolVillage'),
+      'SchoolNumber' => request('SchoolNumber'),
+      'SchoolEmail' => request('SchoolEmail'),
+      'Class' => request('Class'),
+
+
+  
+      'FatherName' => request('FatherName'),
       'MonthlyFamilyIncome' => request('MonthlyFamilyIncome'),
       'MonthlyFamilyExpenses' => request('MonthlyFamilyExpenses'),
       'NumberFamilyMembers' => request('NumberFamilyMembers'),
       'IncomeStreem_ID' => request('IncomeStreem_ID'),
       'LevelPoverty' => request('LevelPoverty'),
+      'FamilyStatus_ID' => request('FamilyStatus_ID'),
+
+
+
       'Tazkira' => request('Tazkira'),
+
+
       'Status' => 'Pending',
       'Created_By' => auth()->user()->id,
 
-      'RelativeNumber' => request('RelativeNumber'),
-      'RelativeRelationship_ID' => request('RelativeRelationship_ID'),
-      'RelativeName' => request('RelativeName'),
-      'FamilyStatus_ID' => request('FamilyStatus_ID'),
-      'Country_ID' => request('Country_ID'),
-      'Tribe_ID' => request('Tribe_ID'),
+     
       'Owner' => 1,
 
 
 
     ]);
 
-    return redirect()->route('AllQamarCareCard')->with('toast_success', 'Record Created Successfully!');
+    return redirect()->route('AllOrphansRelief')->with('toast_success', 'Record Created Successfully!');
   }
 
 
@@ -263,15 +250,14 @@ class OrphansReliefController extends Controller
 
     //  $qamarcarecards =   QamarCareCard::all();
 
-    $orphans =   Orphan::get();
-    // join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-    //   ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-    //   ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-    //   ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
+    $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
+      ->join('look_ups as c','orphans.FamilyStatus_ID', '=', 'c.id')
+      ->join('users as d','orphans.Created_By', '=', 'd.id')
 
-    //   ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+      ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
 
-    //   ->get();
+      ->get();
     return view('OrphansRelief.All', compact('orphans'));
   }
 

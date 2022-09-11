@@ -22,48 +22,51 @@ return new class extends Migration
             $table -> string('Profile')->nullable();
             $table -> string('DOB')->nullable();
             $table -> integer('Gender_ID')->nullable();
+            $table -> integer('Country_ID')->nullable();
+            $table -> integer('Tribe_ID')->nullable();
             $table -> integer('Language_ID')->nullable();
 
-            $table -> integer('Country_ID')->nullable();
-            $table -> integer('Province_ID')->nullable();
-            $table -> integer('District_ID')->nullable();
-            $table -> string('Village')->nullable();
-            $table -> integer('Tribe_ID')->nullable();
-
-
-            $table -> integer('NumberFamilyMembers')->nullable();
-
-
-            $table -> integer('MonthlyFamilyIncome')->nullable();
-            $table -> integer('MonthlyFamilyExpenses')->nullable();
 
 
             $table -> integer('PrimaryNumber')->nullable();
             $table -> integer('SecondaryNumber')->nullable();
             $table -> integer('EmergencyNumber')->nullable();
-            $table -> string('ChildStatus')->nullable();
-            $table -> integer('Sponsor_ID')->nullable();
-           
+            $table -> integer('Province_ID')->nullable();
+            $table -> integer('District_ID')->nullable();
+            $table -> string('Village')->nullable();
+            $table -> string('InCareName')->nullable();
+            $table -> integer('InCareRelationship_ID')->nullable();
+            $table -> integer('InCareNumber')->nullable();
+            $table -> string('InCareTazkiraID')->nullable();
 
-            $table -> integer('CurrentlyInSchool')->nullable();            
-            $table->string('SchoolName')->nullable();
-            $table->integer('SchoolProvince_ID')->nullable();
-            $table->integer('SchoolDistrict_ID')->nullable();
+
+
+            $table -> string('CurrentlyInSchool')->nullable();
+            $table -> string('SchoolName')->nullable();
+            $table -> integer('SchoolProvince_ID')->nullable();
+            $table -> integer('SchoolDistrict_ID')->nullable();
             $table -> string('SchoolVillage')->nullable();
-            $table -> integer('SchoolEmail')->nullable();
             $table -> integer('SchoolNumber')->nullable();
+            $table -> string('SchoolEmail')->nullable();
+            $table -> integer('Class')->nullable();
 
 
-     
-            $table -> integer('RelativeRelationship_ID')->nullable();
-            $table -> string('RelativeName')->nullable();
-            $table -> integer('RelativeNumber')->nullable();
-            $table -> integer('RelativeTazkiraID')->nullable();
 
-
+            $table -> string('FatherName')->nullable();
+            $table -> integer('MonthlyFamilyIncome')->nullable();
+            $table -> integer('MonthlyFamilyExpenses')->nullable();
+            $table -> integer('NumberFamilyMembers')->nullable();
             $table -> integer('IncomeStreem_ID')->nullable();
             $table -> integer('LevelPoverty')->nullable();
             $table -> integer('FamilyStatus_ID')->nullable();
+
+
+
+
+            $table -> integer('Sponsor_ID')->nullable();
+
+
+
             $table -> string('Tazkira')->nullable();
             
             $table -> string('Status')->nullable();

@@ -16,24 +16,24 @@
            <a href="{{route('IndexOrphansRelief')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
     
         </div>
-        <div class="col-6">
+        <!-- <div class="col-6">
                                 <h1 class="fw-medium font-size-24 ">Orphans List</h1>
-        </div>
+        </div> -->
      </div>
 
-     <!-- <div class="row">
+     <div class="row">
         <div class="col-12 ">
         <div class="card border border-3">
                     <div class="card-header">
                       <blockquote class="blockquote border-warning  font-size-14 mb-0">
-                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">CARE CARDS</p>
+                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">ORPHANS</p>
                         
                         </blockquote>
                     </div>
                 </div>
       
         </div>
-     </div> -->
+     </div>
      <div class="row">
         <div class="col-3">
         <select class="form-select  form-select-lg mb-3 @error('Country') is-invalid @enderror"  onchange="window.location.href=this.value;" 
@@ -56,7 +56,7 @@
         <div class="col-9 ">
         <!-- <i class="bx bx-plus-circle  font-size-24 label-icon"></i> btn-label -->
           <div class="button">
-           <a href="{{route('CreateQamarCareCard')}}" class="btn btn-alt btn-lg waves-effect  waves-light mb-3 m-1 float-end"> <i class=" bx bx-trash-alt font-size-16 align-middle"></i></a>
+           <a href="{{route('CreateQamarCareCard')}}" class="btn btn-success btn-lg waves-effect  waves-light mb-3 m-1 float-end"> <i class=" bx bx-grid font-size-24 align-middle"></i></a>
            <a href="{{route('CreateOrphansRelief')}}" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 m-1 float-end">ADD ORPHAN</a>
            </div>
        
@@ -113,7 +113,7 @@
                                 <td>{{$qamarcarecard -> id}}</td>
                                 <td>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> FirstName}} {{$qamarcarecard -> LastName}}</a></h5>
-                                        <p class="text-muted mb-0">QCC-{{$qamarcarecard -> QCC}}</p>
+                                        <p class="text-muted mb-0">{{$qamarcarecard -> IntroducerName}}</p>
                                 </td>
                                 <td>
                                 <div>

@@ -37,7 +37,7 @@
 
 
 
-<form class="needs-validation" action="{{route('CreateQamarCareCard')}}" method="POST" enctype="multipart/form-data" novalidate>
+<form class="needs-validation" action="{{route('CreateOrphansRelief')}}" method="POST" enctype="multipart/form-data" novalidate>
     @csrf
 
 
@@ -92,9 +92,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3 position-relative">
-                                        <label for="FirstName" class="form-label ">Introducer Name <i class="mdi mdi-asterisk text-danger"></i></label>
-                                        <input type="text" class="form-control form-control-lg @error('FirstName') is-invalid @enderror" value="{{ old('FirstName') }}" id="FirstName" name="FirstName" required>
-                                        @error('FirstName')
+                                        <label for="IntroducerName" class="form-label ">Introducer Name <i class="mdi mdi-asterisk text-danger"></i></label>
+                                        <input type="text" class="form-control form-control-lg @error('IntroducerName') is-invalid @enderror" value="{{ old('IntroducerName') }}" id="IntroducerName" name="IntroducerName" required>
+                                        @error('IntroducerName')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -214,7 +214,7 @@
                                 <label for="Tribe_ID" class="form-label">Tribe <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('Tribe') is-invalid @enderror" value="{{ old('Tribe_ID') }}" required id="Tribe_ID" name="Tribe_ID">
+                                    <select class="form-select  form-select-lg @error('Tribe_ID') is-invalid @enderror" value="{{ old('Tribe_ID') }}" required id="Tribe_ID" name="Tribe_ID">
                                         <option>Select Your Tribe</option>
                                         @foreach($tribes as $tribe)
                                         <option value="{{ $tribe -> id}}">{{ $tribe -> Name}}</option>
@@ -533,11 +533,11 @@
 
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
-                                <label for="RelativeName" class="form-label">InCare Name <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <label for="InCareName" class="form-label">InCare Name <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
-                                    <input type="text" class="form-control  form-control-lg @error('RelativeName') is-invalid @enderror" value="{{ old('RelativeName') }}" id="RelativeName" name="RelativeName" aria-describedby="Email" required>
-                                    @error('RelativeName')
+                                    <input type="text" class="form-control  form-control-lg @error('InCareName') is-invalid @enderror" value="{{ old('InCareName') }}" id="InCareName" name="InCareName"  required>
+                                    @error('InCareName')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -547,10 +547,10 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
-                                <label for="RelativeRelationship_ID" class="form-label">Relationship <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <label for="InCareRelationship_ID" class="form-label">Relationship <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('RelativeRelationship_ID') is-invalid @enderror" value="{{ old('RelativeRelationship_ID') }}" required name="RelativeRelationship_ID" id="RelativeRelationship_ID">
+                                    <select class="form-select  form-select-lg @error('InCareRelationship_ID') is-invalid @enderror" value="{{ old('InCareRelationship_ID') }}" required name="InCareRelationship_ID" id="InCareRelationship_ID">
                                         <option value="">Select Your Relationship</option>
                                         @foreach($relationships as $relationship)
                                         <option value="{{ $relationship -> id}}">{{ $relationship -> Name}}</option>
@@ -558,7 +558,7 @@
                                         @endforeach
 
                                     </select>
-                                    @error('RelativeRelationship_ID')
+                                    @error('InCareRelationship_ID')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -568,11 +568,11 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
-                                <label for="RelativeNumber" class="form-label">InCare Number <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <label for="InCareNumber" class="form-label">InCare Number <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
-                                    <input type="number" class="form-control  form-control-lg @error('RelativeNumber') is-invalid @enderror" value="{{ old('RelativeNumber') }}" id="RelativeNumber" name="RelativeNumber" max="999999999" aria-describedby="RelativeNumber" required>
-                                    @error('RelativeNumber')
+                                    <input type="number" class="form-control  form-control-lg @error('InCareNumber') is-invalid @enderror" value="{{ old('InCareNumber') }}" id="InCareNumber" name="InCareNumber" max="999999999" aria-describedby="InCareNumber" required>
+                                    @error('InCareNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -582,9 +582,9 @@
                         </div>
                         <div class="col-md-4">
                                     <div class="mb-3 position-relative">
-                                        <label for="TazkiraID" class="form-label ">InCare Tazkira ID <i class="mdi mdi-asterisk text-danger"></i></label>
-                                        <input type="number" class="form-control form-control-lg @error('TazkiraID') is-invalid @enderror" value="{{ old('TazkiraID') }}" id="TazkiraID" name="TazkiraID" max="999999999" required>
-                                        @error('TazkiraID')
+                                        <label for="InCareTazkiraID" class="form-label ">InCare Tazkira ID <i class="mdi mdi-asterisk text-danger"></i></label>
+                                        <input type="number" class="form-control form-control-lg @error('InCareTazkiraID') is-invalid @enderror" value="{{ old('InCareTazkiraID') }}" id="InCareTazkiraID" name="InCareTazkiraID" max="999999999" required>
+                                        @error('InCareTazkiraID')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -613,10 +613,10 @@
                     <div class="row">
                       <div class="col-md-4">
                             <div class="row mb-3 position-relative" >
-                            <label for="MaritalStatus" class="form-label" >Currently In School? <i class="mdi mdi-asterisk text-danger"></i></label>
+                            <label for="CurrentlyInSchool" class="form-label" >Currently In School? <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="col-6 col-sm-6">
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="InSchool" value="No" id="No" checked>
+                                        <input class="form-check-input" type="radio" name="CurrentlyInSchool" value="No" id="No" checked>
                                         <label class="form-check-label" for="No">
                                             No
                                         </label>
@@ -627,7 +627,7 @@
 
                                 <div class="col-6 col-sm-6">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="InSchool" value="Yes" id="Yes">
+                                        <input class="form-check-input" type="radio" name="CurrentlyInSchool" value="Yes" id="Yes">
                                         <label class="form-check-label" for="Yes">
                                             Yes
                                         </label>
@@ -644,9 +644,9 @@
                     <div class="row InSchoolDiv" id="InSchoolDiv">
                        <div class="col-md-4">
                             <div class="mb-3 position-relative">
-                                <label for="SpuoseName"  class="form-label SpuoseName">School Name <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <input type="text" class="form-control  form-control-lg @error('SpuoseName') is-invalid @enderror" value="{{ old('SpuoseName') }}" id="SpuoseName" name="SpuoseName" >
-                                @error('SpuoseName')
+                                <label for="SchoolName"  class="form-label">School Name <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <input type="text" class="form-control  form-control-lg @error('SchoolName') is-invalid @enderror" value="{{ old('SchoolName') }}" id="SchoolName" name="SchoolName" >
+                                @error('SchoolName')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -655,9 +655,9 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
-                                <label for="Province_ID" class="form-label">School Province <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <label for="SchoolProvince_ID" class="form-label">School Province <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-                                    <select class="form-select Province form-select-lg @error('Province_ID') is-invalid @enderror" required name="Province_ID" value="{{ old('Province_ID') }}" id="Province_ID">
+                                    <select class="form-select SchoolProvince form-select-lg @error('SchoolProvince_ID') is-invalid @enderror" required name="SchoolProvince_ID" value="{{ old('SchoolProvince_ID') }}" id="SchoolProvince_ID">
                                         <option value="">Select Your Province</option>
                                         @foreach($provinces as $province)
                                         <option value="{{ $province -> id}}">{{ $province -> Name}}</option>
@@ -665,7 +665,7 @@
                                         @endforeach
 
                                     </select>
-                                    @error('Province_ID')
+                                    @error('SchoolProvince_ID')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -675,14 +675,14 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
-                                <label for="District_ID" class="form-label">School District <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <label for="SchoolDistrict_ID" class="form-label">School District <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-                                    <select class="form-select  District form-select-lg @error('District_ID') is-invalid @enderror" required name="District_ID" value="{{ old('District_ID') }}" id="District_ID">
+                                    <select class="form-select  SchoolDistrict form-select-lg @error('SchoolDistrict_ID') is-invalid @enderror" required name="SchoolDistrict_ID" value="{{ old('SchoolDistrict_ID') }}" id="SchoolDistrict_ID">
                                         <option value="">Select Your District</option>
 
 
                                     </select>
-                                    @error('District_ID')
+                                    @error('SchoolDistrict_ID')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -704,9 +704,9 @@
                             </div> -->
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
-                                <label for="Village" class="form-label">School Village <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <input type="text" class="form-control  form-control-lg @error('Village') is-invalid @enderror" value="{{ old('Village') }}" id="Village" name="Village" required>
-                                @error('Village')
+                                <label for="SchoolVillage" class="form-label">School Village <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <input type="text" class="form-control  form-control-lg @error('SchoolVillage') is-invalid @enderror" value="{{ old('SchoolVillage') }}" id="SchoolVillage" name="SchoolVillage" required>
+                                @error('SchoolVillage')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -715,11 +715,11 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
-                                <label for="SecondaryNumber" class="form-label">School Number</label>
+                                <label for="SchoolNumber" class="form-label">School Number</label>
                                 <div class="input-group">
 
-                                    <input type="number" class="form-control  form-control-lg @error('SecondaryNumber') is-invalid @enderror" value="{{ old('SecondaryNumber') }}" id="SecondaryNumber" name="SecondaryNumber" max="999999999" aria-describedby="SecondaryNumber">
-                                    @error('SecondaryNumber')
+                                    <input type="number" class="form-control  form-control-lg @error('SchoolNumber') is-invalid @enderror" value="{{ old('SchoolNumber') }}" id="SchoolNumber" name="SchoolNumber" max="999999999" aria-describedby="SchoolNumber">
+                                    @error('SchoolNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -729,11 +729,11 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
-                                <label for="Email" class="form-label">School Email</label>
+                                <label for="SchoolEmail" class="form-label">School Email</label>
                                 <div class="input-group">
 
-                                    <input type="email" class="form-control  form-control-lg @error('Email') is-invalid @enderror" value="{{ old('Email') }}" id="Email" name="Email" aria-describedby="Email">
-                                    @error('Email')
+                                    <input type="email" class="form-control  form-control-lg @error('SchoolEmail') is-invalid @enderror" value="{{ old('SchoolEmail') }}" id="SchoolEmail" name="SchoolEmail" aria-describedby="SchoolEmail">
+                                    @error('SchoolEmail')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -1103,10 +1103,7 @@
     });
 
 
-    $(document).ready(function() {
-        var rnd = Math.floor(Math.random() * 99999) + 1;
-        document.getElementById('QCC').value = rnd;
-    });
+   
 
 
     $(document).ready(function() {
@@ -1138,10 +1135,38 @@
         });
     });
 
-    function Random() {
-        var rnd = Math.floor(Math.random() * 99999) + 1;
-        document.getElementById('QCC').value = rnd;
-    };
+
+    
+    $(document).ready(function() {
+        $('.SchoolProvince').on('change', function() {
+            var dID = $(this).val();
+            if (dID) {
+                $.ajax({
+                    url: '/GetDistricts/' + dID,
+                    type: "GET",
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        if (data) {
+                            $('.SchoolDistrict').empty();
+                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                            $.each(data, function(key, course) {
+                                $('select[name="SchoolDistrict_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
+                            });
+                        } else {
+                            $('.SchoolDistrict').empty();
+                        }
+                    }
+                });
+            } else {
+                $('.District').empty();
+            }
+        });
+    });
+
+
 
     $(document).ready(function()
 {
