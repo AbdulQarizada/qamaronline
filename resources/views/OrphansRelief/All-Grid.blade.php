@@ -141,7 +141,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-2 col-sm-2">
+                <div class="col-md-4 col-sm-4">
                     <div class="card">
                         <div class="card-body">
                             <div class="product-img position-relative">
