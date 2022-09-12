@@ -68,7 +68,8 @@ Route::get('/GetScholarshipModule/{data}', [App\Http\Controllers\HomeController:
 // uploads of orphans
 Route::post('/Orphans_Tazkira', [App\Http\Controllers\HomeController:: class, 'Orphans_Tazkira'])->name('Orphans_Tazkira');
 Route::post('/Orphans_Profile', [App\Http\Controllers\HomeController:: class, 'Orphans_Profile'])->name('Orphans_Profile');
-
+Route::post('/Orphans_FamilyPic', [App\Http\Controllers\HomeController:: class, 'Orphans_FamilyPic'])->name('Orphans_FamilyPic');
+Route::post('/Orphans_HousePic', [App\Http\Controllers\HomeController:: class, 'Orphans_HousePic'])->name('Orphans_HousePic');
 
 // Education
 

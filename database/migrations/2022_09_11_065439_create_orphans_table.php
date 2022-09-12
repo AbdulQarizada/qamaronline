@@ -25,6 +25,7 @@ return new class extends Migration
             $table -> integer('Country_ID')->nullable();
             $table -> integer('Tribe_ID')->nullable();
             $table -> integer('Language_ID')->nullable();
+            $table -> longText('WhyShouldYouHelpMe')->nullable();
 
 
 
@@ -68,6 +69,9 @@ return new class extends Migration
 
 
             $table -> string('Tazkira')->nullable();
+            $table -> string('FamilyPic')->nullable();
+            $table -> string('HousePic')->nullable();
+
             
             $table -> string('Status')->nullable();
             $table -> integer('Status_By')->nullable();

@@ -335,6 +335,50 @@ class HomeController extends Controller
          return '';
     }
 
+
+    public function Orphans_HousePic(Request $request)
+    {
+        if($request -> hasFile('HousePic'))
+        {
+ 
+       
+             $Tazkira = $request->file('HousePic');
+ 
+             $Tazkiraname = $Tazkira -> getClientOriginalName();
+ 
+             $Tazkiruniquename = uniqid().'_'.$Tazkiraname;
+ 
+
+             $Tazkira -> storeAs('HousePic', $Tazkiruniquename,'OrphansRelief');
+ 
+             return $Tazkiruniquename;
+ 
+         }
+         return '';
+    }
+
+    public function Orphans_FamilyPic(Request $request)
+    {
+        if($request -> hasFile('FamilyPic'))
+        {
+ 
+       
+             $Tazkira = $request->file('FamilyPic');
+ 
+             $Tazkiraname = $Tazkira -> getClientOriginalName();
+ 
+             $Tazkiruniquename = uniqid().'_'.$Tazkiraname;
+ 
+
+             $Tazkira -> storeAs('FamilyPic', $Tazkiruniquename,'OrphansRelief');
+ 
+             return $Tazkiruniquename;
+ 
+         }
+         return '';
+    }
+
+
     // location
     // public function GetProvinces()
     // {

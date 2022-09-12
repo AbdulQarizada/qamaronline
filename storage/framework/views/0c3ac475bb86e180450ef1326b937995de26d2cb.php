@@ -434,6 +434,37 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                         </div>
+                                            <div class="col-md-12">
+                                                <label for="WhyShouldYouHelpMe" class="form-label">Why Should You Help Me?  <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                <textarea id="textarea" class="form-control <?php $__errorArgs = ['WhyShouldYouHelpMe'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" maxlength="2205" rows="10"   value="<?php echo e(old('WhyShouldYouHelpMe')); ?>" required name="WhyShouldYouHelpMe" id="WhyShouldYouHelpMe" required></textarea>
+                                                <!-- <input type="textarea" class="my-pond <?php $__errorArgs = ['Tazkira'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Tazkira')); ?>" name="Tazkira" id="Tazkira" /> -->
+                                                <?php $__errorArgs = ['WhyShouldYouHelpMe'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                            </div>
                         <!-- <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="CurrentJob_ID" class="form-label">Current Job <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -1112,7 +1143,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" required name="SchoolProvince_ID" value="<?php echo e(old('SchoolProvince_ID')); ?>" id="SchoolProvince_ID">
+unset($__errorArgs, $__bag); ?>"  name="SchoolProvince_ID" value="<?php echo e(old('SchoolProvince_ID')); ?>" id="SchoolProvince_ID">
                                         <option value="">Select Your Province</option>
                                         <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?php echo e($province -> id); ?>"><?php echo e($province -> Name); ?></option>
@@ -1146,7 +1177,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" required name="SchoolDistrict_ID" value="<?php echo e(old('SchoolDistrict_ID')); ?>" id="SchoolDistrict_ID">
+unset($__errorArgs, $__bag); ?>"  name="SchoolDistrict_ID" value="<?php echo e(old('SchoolDistrict_ID')); ?>" id="SchoolDistrict_ID">
                                         <option value="">Select Your District</option>
 
 
@@ -1202,7 +1233,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SchoolVillage')); ?>" id="SchoolVillage" name="SchoolVillage" required>
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SchoolVillage')); ?>" id="SchoolVillage" name="SchoolVillage" >
                                 <?php $__errorArgs = ['SchoolVillage'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -1693,7 +1724,52 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                         </div>
-
+                        <div class="col-md-4">
+                            <label for="HousePic" class="form-label">House Picture</label>
+                            <input type="file" class="my-pond <?php $__errorArgs = ['HousePic'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('HousePic')); ?>" name="HousePic" id="HousePic" />
+                            <?php $__errorArgs = ['HousePic'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <span class="invalid-feedback" role="alert">
+                                <strong><?php echo e($message); ?></strong>
+                            </span>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="FamilyPic" class="form-label">Family Picture</label>
+                            <input type="file" class="my-pond <?php $__errorArgs = ['FamilyPic'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FamilyPic')); ?>" name="FamilyPic" id="FamilyPic" />
+                            <?php $__errorArgs = ['FamilyPic'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <span class="invalid-feedback" role="alert">
+                                <strong><?php echo e($message); ?></strong>
+                            </span>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                        </div>
                     </div>
 
                 </div>
@@ -1749,14 +1825,13 @@ unset($__errorArgs, $__bag); ?>
     // Get a reference to the file input element
     const inputTazkira = document.querySelector('input[name="Tazkira"]');
 
+ // Get a reference to the file input element
+ const inputFamilyPic = document.querySelector('input[name="FamilyPic"]');
+
+// Get a reference to the file input element
+const inputHousePic = document.querySelector('input[name="HousePic"]');
 
 
-    // Create a FilePond instance
-    const Profile = FilePond.create(inputProfile, {
-        labelIdle: 'Profile <span class="bx bx-upload"></span >',
- 
-
-    });
 
 
     // Create a FilePond instance
@@ -1767,6 +1842,48 @@ unset($__errorArgs, $__bag); ?>
         server: {
 
             url: '../Orphans_Tazkira',
+            headers: {
+                'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
+            }
+
+        },
+        instantUpload: true,
+
+
+    });
+    // Create a FilePond instance
+    const Profile = FilePond.create(inputProfile, {
+        labelIdle: 'Profile <span class="bx bx-upload"></span >',
+ 
+
+    });
+
+       // Create a FilePond instance
+       const FamilyPic = FilePond.create(inputFamilyPic, {
+        labelIdle: 'Click to upload Family Picture <span class="bx bx-upload"></span >',
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
+        server: {
+
+            url: '../Orphans_FamilyPic',
+            headers: {
+                'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
+            }
+
+        },
+        instantUpload: true,
+
+
+    });
+
+       // Create a FilePond instance
+       const HousePic = FilePond.create(inputHousePic, {
+        labelIdle: 'Click to upload House Picture <span class="bx bx-upload"></span >',
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
+        server: {
+
+            url: '../Orphans_HousePic',
             headers: {
                 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
             }

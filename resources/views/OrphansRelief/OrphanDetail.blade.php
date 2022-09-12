@@ -40,13 +40,13 @@
                                             <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}" alt="" class="img-fluid mx-auto d-block rounded">
                                         </a>
                                         <a class="nav-link" id="product-2-tab" data-bs-toggle="pill" href="#product-2" role="tab" aria-controls="product-2" aria-selected="false">
-                                            <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}" alt="" class="img-fluid mx-auto d-block rounded">
+                                            <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/FamilyPic/'.$data -> FamilyPic)}}" alt="" class="img-fluid mx-auto d-block rounded">
                                         </a>
                                         <a class="nav-link" id="product-3-tab" data-bs-toggle="pill" href="#product-3" role="tab" aria-controls="product-3" aria-selected="false">
-                                            <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}" alt="" class="img-fluid mx-auto d-block rounded">
+                                            <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/HousePic/'.$data -> HousePic)}}" alt="" class="img-fluid mx-auto d-block rounded">
                                         </a>
                                         <a class="nav-link" id="product-4-tab" data-bs-toggle="pill" href="#product-4" role="tab" aria-controls="product-4" aria-selected="false">
-                                            <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}" alt="" class="img-fluid mx-auto d-block rounded">
+                                            <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Tazkiras/'.$data -> Tazkira)}}" alt="" class="img-fluid mx-auto d-block rounded">
                                         </a>
                                     </div>
                                 </div>
@@ -59,17 +59,17 @@
                                         </div>
                                         <div class="tab-pane fade" id="product-2" role="tabpanel" aria-labelledby="product-2-tab">
                                             <div>
-                                                <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}" alt="" class="img-fluid mx-auto d-block">
+                                                <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/FamilyPic/'.$data -> FamilyPic)}}" alt="" class="img-fluid mx-auto d-block">
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="product-3" role="tabpanel" aria-labelledby="product-3-tab">
                                             <div>
-                                                <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}" alt="" class="img-fluid mx-auto d-block">
+                                                <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/HousePic/'.$data -> HousePic)}}" alt="" class="img-fluid mx-auto d-block">
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="product-4" role="tabpanel" aria-labelledby="product-4-tab">
                                             <div>
-                                                <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}" alt="" class="img-fluid mx-auto d-block">
+                                                <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Tazkiras/'.$data -> Tazkira)}}" alt="" class="img-fluid mx-auto d-block">
                                             </div>
                                         </div>
                                     </div>
@@ -130,7 +130,7 @@
                             </p>
                             <p class="text-muted mb-4"><b class="text-success text-uppercase">$40 USD </b>/ Month</p>
                             <div class="mt-5">
-                    <h5 class=" text-uppercase">why Should You Help Me?</h5>
+                    <h5 class=" text-uppercase text-primary">why Should You Help Me?</h5>
 
                     <div class="d-flex py-3 border-bottom">
                         <div class="flex-shrink-0 me-3">
@@ -139,12 +139,7 @@
 
                         <div class="flex-grow-1">
                             <h5 class="mb-1 font-size-15">{{$data -> FirstName}} {{$data -> LastName}}</h5>
-                            <p class="text-muted">Assalamu alykom, my name is zainab and I am 12 years old. I am a student of class 6th at 
-Yaqeen private school. 
-Our home is in laghmani village and I live in my grandmother’s house. My mother manages our 
-home expenses by sewing clothes. Our monthly expense is around 8000 AFN and our monthly 
-income is 5000 AFN.
-In the future I want to be Dari teacher</p>
+                            <p class="text-muted text-break">{{$data -> WhyShouldYouHelpMe}}</p>
                            
                         </div>
                     </div>

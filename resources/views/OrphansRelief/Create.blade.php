@@ -252,6 +252,16 @@
                                 </div>
                             </div>
                         </div>
+                                            <div class="col-md-12">
+                                                <label for="WhyShouldYouHelpMe" class="form-label">Why Should You Help Me?  <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                <textarea id="textarea" class="form-control @error('WhyShouldYouHelpMe') is-invalid @enderror" maxlength="2205" rows="10"   value="{{ old('WhyShouldYouHelpMe') }}" required name="WhyShouldYouHelpMe" id="WhyShouldYouHelpMe" required></textarea>
+                                                <!-- <input type="textarea" class="my-pond @error('Tazkira') is-invalid @enderror" value="{{ old('Tazkira') }}" name="Tazkira" id="Tazkira" /> -->
+                                                @error('WhyShouldYouHelpMe')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
                         <!-- <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="CurrentJob_ID" class="form-label">Current Job <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -657,7 +667,7 @@
                             <div class="mb-3 position-relative">
                                 <label for="SchoolProvince_ID" class="form-label">School Province <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-                                    <select class="form-select SchoolProvince form-select-lg @error('SchoolProvince_ID') is-invalid @enderror" required name="SchoolProvince_ID" value="{{ old('SchoolProvince_ID') }}" id="SchoolProvince_ID">
+                                    <select class="form-select SchoolProvince form-select-lg @error('SchoolProvince_ID') is-invalid @enderror"  name="SchoolProvince_ID" value="{{ old('SchoolProvince_ID') }}" id="SchoolProvince_ID">
                                         <option value="">Select Your Province</option>
                                         @foreach($provinces as $province)
                                         <option value="{{ $province -> id}}">{{ $province -> Name}}</option>
@@ -677,7 +687,7 @@
                             <div class="mb-3 position-relative">
                                 <label for="SchoolDistrict_ID" class="form-label">School District <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-                                    <select class="form-select  SchoolDistrict form-select-lg @error('SchoolDistrict_ID') is-invalid @enderror" required name="SchoolDistrict_ID" value="{{ old('SchoolDistrict_ID') }}" id="SchoolDistrict_ID">
+                                    <select class="form-select  SchoolDistrict form-select-lg @error('SchoolDistrict_ID') is-invalid @enderror"  name="SchoolDistrict_ID" value="{{ old('SchoolDistrict_ID') }}" id="SchoolDistrict_ID">
                                         <option value="">Select Your District</option>
 
 
@@ -705,7 +715,7 @@
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="SchoolVillage" class="form-label">School Village <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <input type="text" class="form-control  form-control-lg @error('SchoolVillage') is-invalid @enderror" value="{{ old('SchoolVillage') }}" id="SchoolVillage" name="SchoolVillage" required>
+                                <input type="text" class="form-control  form-control-lg @error('SchoolVillage') is-invalid @enderror" value="{{ old('SchoolVillage') }}" id="SchoolVillage" name="SchoolVillage" >
                                 @error('SchoolVillage')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -993,7 +1003,24 @@
                             </span>
                             @enderror
                         </div>
-
+                        <div class="col-md-4">
+                            <label for="HousePic" class="form-label">House Picture</label>
+                            <input type="file" class="my-pond @error('HousePic') is-invalid @enderror" value="{{ old('HousePic') }}" name="HousePic" id="HousePic" />
+                            @error('HousePic')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="col-md-4">
+                            <label for="FamilyPic" class="form-label">Family Picture</label>
+                            <input type="file" class="my-pond @error('FamilyPic') is-invalid @enderror" value="{{ old('FamilyPic') }}" name="FamilyPic" id="FamilyPic" />
+                            @error('FamilyPic')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
                     </div>
 
                 </div>
@@ -1049,14 +1076,13 @@
     // Get a reference to the file input element
     const inputTazkira = document.querySelector('input[name="Tazkira"]');
 
+ // Get a reference to the file input element
+ const inputFamilyPic = document.querySelector('input[name="FamilyPic"]');
+
+// Get a reference to the file input element
+const inputHousePic = document.querySelector('input[name="HousePic"]');
 
 
-    // Create a FilePond instance
-    const Profile = FilePond.create(inputProfile, {
-        labelIdle: 'Profile <span class="bx bx-upload"></span >',
- 
-
-    });
 
 
     // Create a FilePond instance
@@ -1067,6 +1093,48 @@
         server: {
 
             url: '../Orphans_Tazkira',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+
+        },
+        instantUpload: true,
+
+
+    });
+    // Create a FilePond instance
+    const Profile = FilePond.create(inputProfile, {
+        labelIdle: 'Profile <span class="bx bx-upload"></span >',
+ 
+
+    });
+
+       // Create a FilePond instance
+       const FamilyPic = FilePond.create(inputFamilyPic, {
+        labelIdle: 'Click to upload Family Picture <span class="bx bx-upload"></span >',
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
+        server: {
+
+            url: '../Orphans_FamilyPic',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+
+        },
+        instantUpload: true,
+
+
+    });
+
+       // Create a FilePond instance
+       const HousePic = FilePond.create(inputHousePic, {
+        labelIdle: 'Click to upload House Picture <span class="bx bx-upload"></span >',
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
+        server: {
+
+            url: '../Orphans_HousePic',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }

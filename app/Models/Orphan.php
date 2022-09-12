@@ -21,7 +21,8 @@ class Orphan extends Model
         'Country_ID',
         'Tribe_ID',
         'Language_ID',
-
+        'WhyShouldYouHelpMe',
+        
 
         'PrimaryNumber',
         'SecondaryNumber',
@@ -63,7 +64,8 @@ class Orphan extends Model
 
         
         'Tazkira',
-        
+        'HousePic',
+        'FamilyPic',
 
         'Sponsor_ID',
 

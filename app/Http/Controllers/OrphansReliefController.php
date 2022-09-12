@@ -98,7 +98,7 @@ class OrphansReliefController extends Controller
       'FamilyStatus_ID' => 'required|max:255',
       'Country_ID' => 'required|max:255',
       'Tribe_ID' => 'required|max:255',
-
+      'WhyShouldYouHelpMe' => 'required',
     ]);
 
 
@@ -150,10 +150,14 @@ class OrphansReliefController extends Controller
       'IncomeStreem_ID' => request('IncomeStreem_ID'),
       'LevelPoverty' => request('LevelPoverty'),
       'FamilyStatus_ID' => request('FamilyStatus_ID'),
+      'WhyShouldYouHelpMe' => request('WhyShouldYouHelpMe'),
 
 
-
+      
       'Tazkira' => request('Tazkira'),
+      'HousePic' => request('HousePic'),
+      'FamilyPic' => request('FamilyPic'),
+
 
 
       'Status' => 'Pending',
