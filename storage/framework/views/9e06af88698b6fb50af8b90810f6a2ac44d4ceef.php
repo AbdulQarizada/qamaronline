@@ -9,7 +9,29 @@
 
 <?php $__env->startSection('content'); ?>
 
+<div class="row mt-4">
+        <div class="col-4">
+           <a href="<?php echo e(route('IndexOrphansRelief')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+    
+        </div>
+        <!-- <div class="col-6">
+                                <h1 class="fw-medium font-size-24 ">Orphans List</h1>
+        </div> -->
+     </div>
 
+     <div class="row">
+        <div class="col-12 ">
+        <div class="card border border-3">
+                    <div class="card-header">
+                      <blockquote class="blockquote border-warning  font-size-14 mb-0">
+                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">ORPHANS</p>
+                        
+                        </blockquote>
+                    </div>
+                </div>
+      
+        </div>
+     </div>
 <div class="row">
     <!-- <div class="col-lg-3">
             <div class="card">
@@ -212,10 +234,10 @@
 
                     </div>
                     <div class="text-center">
-                        <a href="<?php echo e(route('StatusOrphans', ['data' => $data -> id])); ?>" class="btn btn-danger waves-effect waves-light mt-2 me-1">
+                        <a href="<?php echo e(route('StatusOrphans', ['data' => $data -> id])); ?>" class="btn btn-warning waves-effect waves-light mt-2 me-1">
                             <i class="bx bx-happy-beaming me-2"></i> Sponsor Me
 </a>
-                        <a href="<?php echo e(route('StatusOrphans', ['data' => $data -> id])); ?>" class="btn waves-effect  mt-2 waves-light">
+                        <a href="<?php echo e(route('OrphanDetailOrphans', ['data' => $data -> id])); ?>" class="btn waves-effect  mt-2 waves-light">
                             Read More <i class=" bx bx-right-arrow-circle  me-2"></i>
 </a>
                     </div>
@@ -226,7 +248,7 @@
                             <span class="badge bg-success">Verified</span>
                         </li>
                         <li class="list-inline-item me-3">
-                            Waiting Since:
+                            <span class="text-danger text-uppercase">Waiting Since:</span>
                             <i class="bx bx-calendar me-1"></i> <?php echo e($data -> created_at); ?>
 
                         </li>
@@ -276,4 +298,4 @@
 <!-- init js -->
 <script src="<?php echo e(URL::asset('/assets/js/pages/product-filter-range.init.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Qamar\QamarOnline\qamaronline\resources\views/OrphansRelief/All-Grid.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Qamar\QamarOnline\qamaronline\resources\views/OrphansRelief/AllGrid.blade.php ENDPATH**/ ?>

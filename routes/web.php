@@ -322,7 +322,8 @@ Route::get('/Education/Application/Success', [App\Http\Controllers\EducationCont
 
         // qamar care list
         Route::get('/OrphansRelief/All', [App\Http\Controllers\OrphansReliefController:: class, 'All'])->name('AllOrphans');
-        Route::get('/OrphansRelief/All-Grid', [App\Http\Controllers\OrphansReliefController:: class, 'AllGrid'])->name('AllGridOrphans');
+        Route::get('/OrphansRelief/AllGrid', [App\Http\Controllers\OrphansReliefController:: class, 'AllGrid'])->name('AllGridOrphans');
+        Route::get('/OrphansRelief/OrphanDetail/{data}', [App\Http\Controllers\OrphansReliefController:: class, 'OrphanDetail'])->name('OrphanDetailOrphans');
 
         Route::get('/OrphansRelief/Pending', [App\Http\Controllers\OrphansReliefController:: class, 'Pending'])->name('PendingOrphans');
         Route::get('/OrphansRelief/Approved', [App\Http\Controllers\OrphansReliefController:: class, 'Approved'])->name('ApprovedOrphans');

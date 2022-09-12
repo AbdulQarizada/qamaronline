@@ -1,15 +1,37 @@
+@extends('layouts.master-layouts')
 
+@section('title') Orphans List @endsection
 
-<?php $__env->startSection('title'); ?> Orphans List <?php $__env->stopSection(); ?>
-
-<?php $__env->startSection('css'); ?>
+@section('css')
 <!-- ION Slider -->
-<link href="<?php echo e(URL::asset('/assets/libs/ion-rangeslider/ion-rangeslider.min.css')); ?>" rel="stylesheet" type="text/css" />
-<?php $__env->stopSection(); ?>
+<link href="{{ URL::asset('/assets/libs/ion-rangeslider/ion-rangeslider.min.css') }}" rel="stylesheet" type="text/css" />
+@endsection
 
-<?php $__env->startSection('content'); ?>
+@section('content')
 
+<div class="row mt-4">
+        <div class="col-4">
+           <a href="{{route('IndexOrphansRelief')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+    
+        </div>
+        <!-- <div class="col-6">
+                                <h1 class="fw-medium font-size-24 ">Orphans List</h1>
+        </div> -->
+     </div>
 
+     <div class="row">
+        <div class="col-12 ">
+        <div class="card border border-3">
+                    <div class="card-header">
+                      <blockquote class="blockquote border-warning  font-size-14 mb-0">
+                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">ORPHANS</p>
+                        
+                        </blockquote>
+                    </div>
+                </div>
+      
+        </div>
+     </div>
 <div class="row">
     <!-- <div class="col-lg-3">
             <div class="card">
@@ -127,10 +149,10 @@
                 </div>
                 <ul class="nav nav-pills product-view-nav justify-content-end mt-3 mt-sm-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="<?php echo e(route('AllGridOrphans')); ?>"><i class="bx bx-grid-alt"></i></a>
+                        <a class="nav-link active" href="{{route('AllGridOrphans')}}"><i class="bx bx-grid-alt"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo e(route('AllOrphans')); ?>"><i class="bx bx-list-ul"></i></a>
+                        <a class="nav-link" href="{{route('AllOrphans')}}"><i class="bx bx-list-ul"></i></a>
                     </li>
                 </ul>
 
@@ -139,71 +161,71 @@
         </div>
     </div>
     <div class="row">
-    <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    @foreach($datas as $data)
     <div class="col-md-4 col-sm-4">
             <div class="card">
                 <div class="card-body">
                     <div class="product-img position-relative">
                         <div class="avatar-sm product-ribbon">
-                                   <?php if( $data -> LevelPoverty == 1): ?>
+                                   @if( $data -> LevelPoverty == 1)
                                         <span class="avatar-title bg-danger rounded-circle ">20%</span>
-                                        <?php endif; ?>
-                                        <?php if( $data -> LevelPoverty == 2): ?>
+                                        @endif
+                                        @if( $data -> LevelPoverty == 2)
                                         <span class="avatar-title bg-danger rounded-circle ">40%</span>
-                                        <?php endif; ?>
-                                        <?php if( $data -> LevelPoverty == 3): ?>
+                                        @endif
+                                        @if( $data -> LevelPoverty == 3)
                                         <span class="avatar-title bg-danger rounded-circle ">60%</span>
-                                        <?php endif; ?>
-                                        <?php if( $data -> LevelPoverty == 4): ?>
+                                        @endif
+                                        @if( $data -> LevelPoverty == 4)
                                         <span class="avatar-title bg-danger rounded-circle ">80%</span>
-                                        <?php endif; ?>
-                                        <?php if( $data -> LevelPoverty == 5): ?>
+                                        @endif
+                                        @if( $data -> LevelPoverty == 5)
                                         <span class="avatar-title bg-danger rounded-circle font-size-24">100%</span>
-                                        <?php endif; ?>
+                                        @endif
                         </div>
-                        <img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)); ?>" alt="" class="img-fluid mx-auto d-block">
+                        <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}" alt="" class="img-fluid mx-auto d-block">
                     </div>
                     <div class="mt-4 mt-xl-3">
                         <a href="javascript: void(0);" class="text-primary">Orphan</a>
-                        <h5 class="mt-1 mb-3"><?php echo e($data -> FirstName); ?> <?php echo e($data -> LastName); ?></h5>
+                        <h5 class="mt-1 mb-3">{{$data -> FirstName}} {{$data -> LastName}}</h5>
 
                         <p class="text-muted float-start me-3">
-                        <?php if( $data -> LevelPoverty == 1): ?>
+                        @if( $data -> LevelPoverty == 1)
                                          <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-secondary font-size-14"></i>
                                          <i class="bx bxs-star text-secondary font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
 
-                                       <?php endif; ?>
-                                       <?php if( $data -> LevelPoverty == 2): ?>
+                                       @endif
+                                       @if( $data -> LevelPoverty == 2)
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
                                          <i class="bx bxs-star text-secondary font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       <?php endif; ?>
-                                       <?php if( $data -> LevelPoverty == 3): ?>
+                                       @endif
+                                       @if( $data -> LevelPoverty == 3)
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
                                          <i class="bx bxs-star text-warning font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       <?php endif; ?>
-                                       <?php if( $data -> LevelPoverty == 4): ?>
+                                       @endif
+                                       @if( $data -> LevelPoverty == 4)
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
                                          <i class="bx bxs-star text-warning font-size-16"></i>
                                          <i class="bx bxs-star text-warning font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       <?php endif; ?>
-                                       <?php if( $data -> LevelPoverty == 5): ?>
+                                       @endif
+                                       @if( $data -> LevelPoverty == 5)
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
                                          <i class="bx bxs-star text-warning font-size-16"></i>
                                          <i class="bx bxs-star text-warning font-size-18"></i>
                                          <i class="bx bxs-star text-warning font-size-20"></i>
-                                       <?php endif; ?>
+                                       @endif
                         </p>
                         <p class="text-muted mb-4"><b class="text-success text-uppercase">$40 USD </b>/ Month</p>
 
@@ -212,10 +234,10 @@
 
                     </div>
                     <div class="text-center">
-                        <a href="<?php echo e(route('StatusOrphans', ['data' => $data -> id])); ?>" class="btn btn-danger waves-effect waves-light mt-2 me-1">
+                        <a href="{{route('StatusOrphans', ['data' => $data -> id])}}" class="btn btn-warning waves-effect waves-light mt-2 me-1">
                             <i class="bx bx-happy-beaming me-2"></i> Sponsor Me
 </a>
-                        <a href="<?php echo e(route('StatusOrphans', ['data' => $data -> id])); ?>" class="btn waves-effect  mt-2 waves-light">
+                        <a href="{{route('OrphanDetailOrphans', ['data' => $data -> id])}}" class="btn waves-effect  mt-2 waves-light">
                             Read More <i class=" bx bx-right-arrow-circle  me-2"></i>
 </a>
                     </div>
@@ -226,15 +248,14 @@
                             <span class="badge bg-success">Verified</span>
                         </li>
                         <li class="list-inline-item me-3">
-                            Waiting Since:
-                            <i class="bx bx-calendar me-1"></i> <?php echo e($data -> created_at); ?>
-
+                            <span class="text-danger text-uppercase">Waiting Since:</span>
+                            <i class="bx bx-calendar me-1"></i> {{$data -> created_at}}
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        @endforeach
     </div>
     <!-- end row -->
 
@@ -268,12 +289,11 @@
 </div>
 <!-- end row -->
 
-<?php $__env->stopSection(); ?>
-<?php $__env->startSection('script'); ?>
+@endsection
+@section('script')
 <!-- Ion Range Slider-->
-<script src="<?php echo e(URL::asset('/assets/libs/ion-rangeslider/ion-rangeslider.min.js')); ?>"></script>
+<script src="{{ URL::asset('/assets/libs/ion-rangeslider/ion-rangeslider.min.js') }}"></script>
 
 <!-- init js -->
-<script src="<?php echo e(URL::asset('/assets/js/pages/product-filter-range.init.js')); ?>"></script>
-<?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Qamar\QamarOnline\qamaronline\resources\views/OrphansRelief/All-Grid.blade.php ENDPATH**/ ?>
+<script src="{{ URL::asset('/assets/js/pages/product-filter-range.init.js') }}"></script>
+@endsection

@@ -272,7 +272,7 @@ class OrphansReliefController extends Controller
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
 
       ->get();
-    return view('OrphansRelief.All-Grid', ['datas' => $orphans]);
+    return view('OrphansRelief.AllGrid', ['datas' => $orphans]);
   }
 
 
@@ -414,6 +414,53 @@ class OrphansReliefController extends Controller
 
     return view('OrphansRelief.Status',  ['datas' => $orphans]);
   }
+
+
+  // OrphanDetail
+  public function OrphanDetail(Orphan $data)
+  {
+
+    $orphans =   Orphan::where("orphans.id", "=", $data->id)
+
+
+
+      ->join('locations as a', 'orphans.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
+      ->join('look_ups as c', 'orphans.Country_ID', '=', 'c.id')
+      ->join('look_ups as d', 'orphans.Gender_ID', '=', 'd.id')
+      ->join('look_ups as e', 'orphans.Language_ID', '=', 'e.id')
+      // ->join('look_ups as f', 'orphans.CurrentJob_ID', '=', 'f.id')
+      // ->join('look_ups as g', 'orphans.FutureJob_ID', '=', 'g.id')
+      // ->join('look_ups as h', 'orphans.EducationLevel_ID', '=', 'h.id')
+      // ->join('look_ups as i', 'orphans.RelativeRelationship_ID', '=', 'i.id')
+      ->join('look_ups as j', 'orphans.FamilyStatus_ID', '=', 'j.id')
+      ->join('look_ups as k', 'orphans.Tribe_ID', '=', 'k.id')
+      ->join('look_ups as l', 'orphans.IncomeStreem_ID', '=', 'l.id')
+
+
+      ->select(
+        'orphans.*',
+        'a.Name as Province',
+        'b.Name as District',
+        'c.Name as Country',
+        'd.Name as Gender',
+        'e.Name as Language',
+        // 'f.Name as CurrentJob',
+        // 'g.Name as FutureJob',
+        // 'h.Name as EducationLevel',
+        // 'i.Name as RelativeRelationship',
+        'j.Name as FamilyStatus',
+        'k.Name as Tribe',
+        'l.Name as IncomeStreem'
+      )
+
+      ->get();
+    //  $qamarcarecards  = $data;
+
+    return view('OrphansRelief.OrphanDetail',  ['datas' => $orphans]);
+  }
+
+
 
   public function Approve(Orphan $data)
   {
