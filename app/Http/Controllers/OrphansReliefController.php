@@ -260,6 +260,20 @@ class OrphansReliefController extends Controller
     return view('OrphansRelief.All', ['datas' => $orphans]);
   }
 
+  public function AllGrid()
+  {
+
+
+    $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
+      ->join('look_ups as c','orphans.FamilyStatus_ID', '=', 'c.id')
+      ->join('users as d','orphans.Created_By', '=', 'd.id')
+
+      ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+
+      ->get();
+    return view('OrphansRelief.All-Grid', ['datas' => $orphans]);
+  }
 
 
   public function Approved()
