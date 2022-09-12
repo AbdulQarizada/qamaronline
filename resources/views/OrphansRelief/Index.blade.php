@@ -10,10 +10,7 @@
 
 @section('content')
 
-    @component('components.breadcrumb')
-        @slot('li_1') Qamar Online @endslot
-        @slot('title') ORPHANS AND SPONSORSHIPS @endslot
-    @endcomponent
+
     <div class="row">
         <div class="col-12">
            <a href="{{route('root')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
@@ -58,7 +55,7 @@
             </div> -->
 
             <div class="col-md-4 mb-2">
-               <a href="{{route('AllOrphansRelief')}}">
+               <a href="{{route('AllOrphans')}}">
                 <div class="card-one mini-stats-wid border border-secondary">
                     <div class="card-body">
                       <blockquote class="blockquote font-size-14 mb-0">

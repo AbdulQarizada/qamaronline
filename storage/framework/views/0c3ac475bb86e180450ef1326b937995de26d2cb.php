@@ -16,7 +16,7 @@
 
 <div class="row">
     <div class="col-12">
-        <a href="<?php echo e(route('AllOrphansRelief')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <a href="<?php echo e(route('AllOrphans')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
     </div>
 </div>
 
@@ -37,7 +37,7 @@
 
 
 
-<form class="needs-validation" action="<?php echo e(route('CreateOrphansRelief')); ?>" method="POST" enctype="multipart/form-data" novalidate>
+<form class="needs-validation" action="<?php echo e(route('CreateOrphans')); ?>" method="POST" enctype="multipart/form-data" novalidate>
     <?php echo csrf_field(); ?>
 
 
@@ -1766,7 +1766,7 @@ unset($__errorArgs, $__bag); ?>
         allowFileTypeValidation: true,
         server: {
 
-            url: '../Beneficiaries_Tazkira',
+            url: '../Orphans_Tazkira',
             headers: {
                 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
             }
@@ -1782,7 +1782,7 @@ unset($__errorArgs, $__bag); ?>
     Profile.setOptions({
         server: {
 
-            url: '../Beneficiaries_Profile',
+            url: '../Orphans_Profile',
             headers: {
                 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
             }

@@ -280,6 +280,61 @@ class HomeController extends Controller
 
 
 
+
+
+
+
+
+
+
+
+
+    public function Orphans_Profile(Request $request)
+    {
+       
+       if($request -> hasFile('Profile'))
+       {
+
+      
+            $profile = $request->file('Profile');
+
+            $profilename = $profile -> getClientOriginalName();
+
+            $profileuniquename = uniqid().'_'.$profilename;
+
+            $profile -> storeAs('Profiles', $profileuniquename,'OrphansRelief');
+
+
+            return $profileuniquename;
+
+        }
+        return '';
+
+        
+    }
+
+
+  public function Orphans_Tazkira(Request $request)
+    {
+        if($request -> hasFile('Tazkira'))
+        {
+ 
+       
+             $Tazkira = $request->file('Tazkira');
+ 
+             $Tazkiraname = $Tazkira -> getClientOriginalName();
+ 
+             $Tazkiruniquename = uniqid().'_'.$Tazkiraname;
+ 
+
+             $Tazkira -> storeAs('Tazkiras', $Tazkiruniquename,'OrphansRelief');
+ 
+             return $Tazkiruniquename;
+ 
+         }
+         return '';
+    }
+
     // location
     // public function GetProvinces()
     // {

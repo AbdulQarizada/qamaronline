@@ -16,7 +16,7 @@
 
 <div class="row">
     <div class="col-12">
-        <a href="{{route('AllOrphansRelief')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <a href="{{route('AllOrphans')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
     </div>
 </div>
 
@@ -37,7 +37,7 @@
 
 
 
-<form class="needs-validation" action="{{route('CreateOrphansRelief')}}" method="POST" enctype="multipart/form-data" novalidate>
+<form class="needs-validation" action="{{route('CreateOrphans')}}" method="POST" enctype="multipart/form-data" novalidate>
     @csrf
 
 
@@ -1066,7 +1066,7 @@
         allowFileTypeValidation: true,
         server: {
 
-            url: '../Beneficiaries_Tazkira',
+            url: '../Orphans_Tazkira',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }
@@ -1082,7 +1082,7 @@
     Profile.setOptions({
         server: {
 
-            url: '../Beneficiaries_Profile',
+            url: '../Orphans_Profile',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }

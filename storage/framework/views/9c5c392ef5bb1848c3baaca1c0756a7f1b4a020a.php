@@ -45,14 +45,14 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;" 
 >
-                                   <option value="<?php echo e(route('AllQamarCareCard')); ?>">Please Filter Your Choices</option>
+                                   <option value="<?php echo e(route('AllOrphans')); ?>">Please Filter Your Choices</option>
 
-                                    <option value="<?php echo e(route('AllQamarCareCard')); ?>">All</option>
-                                    <option value="<?php echo e(route('PendingQamarCareCard')); ?>">Pending</option>
-                                    <option value="<?php echo e(route('ApprovedQamarCareCard')); ?>">Approved</option>
-                                    <option value="<?php echo e(route('PrintedQamarCareCard')); ?>">Active</option>
-                                    <option value="<?php echo e(route('ReleasedQamarCareCard')); ?>">InActive</option>
-                                    <option value="<?php echo e(route('RejectedQamarCareCard')); ?>">Rejected</option>
+                                    <option value="<?php echo e(route('AllOrphans')); ?>">All</option>
+                                    <option value="<?php echo e(route('PendingOrphans')); ?>">Pending</option>
+                                    <option value="<?php echo e(route('ApprovedOrphans')); ?>">Approved</option>
+                                    <option value="<?php echo e(route('ActiveOrphans')); ?>">Active</option>
+                                    <option value="<?php echo e(route('InActiveOrphans')); ?>">InActive</option>
+                                    <option value="<?php echo e(route('RejectedOrphans')); ?>">Rejected</option>
 
 
 
@@ -64,7 +64,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
         <!-- <i class="bx bx-plus-circle  font-size-24 label-icon"></i> btn-label -->
           <div class="button">
            <a href="<?php echo e(route('CreateQamarCareCard')); ?>" class="btn btn-success btn-lg waves-effect  waves-light mb-3 m-1 float-end"> <i class=" bx bx-grid font-size-24 align-middle"></i></a>
-           <a href="<?php echo e(route('CreateOrphansRelief')); ?>" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 m-1 float-end">ADD ORPHAN</a>
+           <a href="<?php echo e(route('CreateOrphans')); ?>" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 m-1 float-end">ADD ORPHAN</a>
            </div>
        
         </div>
@@ -122,31 +122,31 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
 
 
                         <tbody>
-                            <?php $__currentLoopData = $orphans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qamarcarecard): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                <td><?php echo e($qamarcarecard -> id); ?></td>
+                                <td><?php echo e($data -> id); ?></td>
                                 <td>
-                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> FirstName); ?> <?php echo e($qamarcarecard -> LastName); ?></a></h5>
-                                        <p class="text-muted mb-0"><?php echo e($qamarcarecard -> IntroducerName); ?></p>
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> FirstName); ?> <?php echo e($data -> LastName); ?></a></h5>
+                                        <p class="text-muted mb-0"><?php echo e($data -> IntroducerName); ?></p>
                                 </td>
                                 <td>
                                 <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> ProvinceName); ?></a></h5>
-                                    <p class="text-muted mb-0"><?php echo e($qamarcarecard -> DistrictName); ?></p> 
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> ProvinceName); ?></a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($data -> DistrictName); ?></p> 
                                
                                     </div>
                                 </td>
                                 <td>    
                                       <div>
-                                      <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($qamarcarecard -> PrimaryNumber); ?></a></h5>
-                                        <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($qamarcarecard -> SecondaryNumber); ?></p>
-                                         <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($qamarcarecard -> RelativeNumber); ?></p>
+                                      <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($data -> PrimaryNumber); ?></a></h5>
+                                        <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($data -> SecondaryNumber); ?></p>
+                                         <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($data -> RelativeNumber); ?></p>
                                         </div>
                                </td> 
                                <td>
                                 <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> FamilyStatus); ?></a></h5>
-                                       <?php if( $qamarcarecard -> LevelPoverty == 1): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> FamilyStatus); ?></a></h5>
+                                       <?php if( $data -> LevelPoverty == 1): ?>
                                          <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-secondary font-size-14"></i>
                                          <i class="bx bxs-star text-secondary font-size-16"></i>
@@ -154,28 +154,28 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
 
                                        <?php endif; ?>
-                                       <?php if( $qamarcarecard -> LevelPoverty == 2): ?>
+                                       <?php if( $data -> LevelPoverty == 2): ?>
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
                                          <i class="bx bxs-star text-secondary font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
                                        <?php endif; ?>
-                                       <?php if( $qamarcarecard -> LevelPoverty == 3): ?>
+                                       <?php if( $data -> LevelPoverty == 3): ?>
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
                                          <i class="bx bxs-star text-warning font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
                                        <?php endif; ?>
-                                       <?php if( $qamarcarecard -> LevelPoverty == 4): ?>
+                                       <?php if( $data -> LevelPoverty == 4): ?>
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
                                          <i class="bx bxs-star text-warning font-size-16"></i>
                                          <i class="bx bxs-star text-warning font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
                                        <?php endif; ?>
-                                       <?php if( $qamarcarecard -> LevelPoverty == 5): ?>
+                                       <?php if( $data -> LevelPoverty == 5): ?>
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
                                          <i class="bx bxs-star text-warning font-size-16"></i>
@@ -189,56 +189,56 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                 <div>
 
 
-                                <?php if($qamarcarecard -> Status == 'Pending'): ?>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary"><?php echo e($qamarcarecard -> Status); ?></a></h5>
-                                    <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at); ?></p> 
+                                <?php if($data -> Status == 'Pending'): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary"><?php echo e($data -> Status); ?></a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($data -> created_at); ?></p> 
 
                                  <?php endif; ?>
 
-                                <?php if($qamarcarecard -> Status == 'Approved'): ?>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success"><?php echo e($qamarcarecard -> Status); ?> </a></h5>
-                                    <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at); ?></p> 
+                                <?php if($data -> Status == 'Approved'): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success"><?php echo e($data -> Status); ?> </a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($data -> created_at); ?></p> 
 
                                  <?php endif; ?>
 
-                                 <?php if($qamarcarecard -> Status == 'Rejected'): ?>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger"><?php echo e($qamarcarecard -> Status); ?> </a></h5>
-                                    <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at); ?></p> 
+                                 <?php if($data -> Status == 'Rejected'): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger"><?php echo e($data -> Status); ?> </a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($data -> created_at); ?></p> 
 
                                  <?php endif; ?>
 
 
 
-                                 <?php if($qamarcarecard -> Status == 'ReInitiated'): ?>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info"><?php echo e($qamarcarecard -> Status); ?></a></h5>
-                                    <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at); ?></p> 
+                                 <?php if($data -> Status == 'ReInitiated'): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info"><?php echo e($data -> Status); ?></a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($data -> created_at); ?></p> 
 
                                  <?php endif; ?>
 
-                                 <?php if($qamarcarecard -> Status == 'Released'): ?>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success"><?php echo e($qamarcarecard -> Status); ?></a></h5>
-                                    <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at); ?></p> 
+                                 <?php if($data -> Status == 'Released'): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success"><?php echo e($data -> Status); ?></a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($data -> created_at); ?></p> 
 
                                  <?php endif; ?>
 
-                                 <?php if($qamarcarecard -> Status == 'Printed'): ?>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark"><?php echo e($qamarcarecard -> Status); ?></a></h5>
-                                    <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at); ?></p> 
+                                 <?php if($data -> Status == 'Printed'): ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark"><?php echo e($data -> Status); ?></a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($data -> created_at); ?></p> 
 
                                  <?php endif; ?>
 
                                     </div>
                                 </td>
                                 <td>
-                                <?php if( $qamarcarecard -> Created_By !=""): ?>
+                                <?php if( $data -> Created_By !=""): ?>
 
                                 <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard ->  UFirstName); ?> <?php echo e($qamarcarecard ->  ULastName); ?></a></h5>
-                                    <p class="text-muted mb-0"><?php echo e($qamarcarecard ->  UJob); ?></p> 
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data ->  UFirstName); ?> <?php echo e($data ->  ULastName); ?></a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($data ->  UJob); ?></p> 
                                
                                 </div>
                                 <?php endif; ?>
-                                <?php if( $qamarcarecard -> Created_By ==""): ?>
+                                <?php if( $data -> Created_By ==""): ?>
 
                                    <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
@@ -249,40 +249,39 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                 </td>
                     <td>
                        <div class="d-flex flex-wrap gap-2">
-                    <a href="<?php echo e(route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-warning waves-effect waves-light">
+                    <a href="<?php echo e(route('StatusOrphans', ['data' => $data -> id])); ?>" class="btn btn-warning waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
                     </a>
-                    <?php if($qamarcarecard -> Status == 'Pending'): ?>
-                    <a href="<?php echo e(route('EditQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-info waves-effect waves-light">
+                    <?php if($data -> Status == 'Pending'): ?>
+                    <!-- <a href="<?php echo e(route('EditQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-info waves-effect waves-light">
                         <i class="bx bx-edit  font-size-16 align-middle"></i>
-                    </a>
-                     <a href="<?php echo e(route('DeleteQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-danger waves-effect waves-light delete-confirm">
+                    </a> -->
+                     <a href="<?php echo e(route('DeleteOrphan', ['data' => $data -> id])); ?>" class="btn btn-danger waves-effect waves-light delete-confirm">
                         <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
                     </a>
                     <?php endif; ?>
 
 
-                    <?php if( $qamarcarecard -> Status == 'Approved'): ?>
-
-                    <a href="<?php echo e(route('PrintingQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-dark waves-effect waves-light print">
-                        <i class="bx bxs-printer   font-size-16 align-middle"></i>
-                    </a>
+                    <?php if( $data -> Status == 'Approved'): ?>
+                    <a href="<?php echo e(route('AssignToServiceQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light">
+                        <i class="bx bx-user-plus   font-size-16 align-middle"></i>
+                    </a> 
                     <?php endif; ?>
 
-                    <?php if( $qamarcarecard -> Status == 'Rejected'): ?>
-                    <a href="<?php echo e(route('EditQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-info waves-effect waves-light">
+                    <?php if( $data -> Status == 'Rejected'): ?>
+                    <!-- <a href="<?php echo e(route('EditQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-info waves-effect waves-light">
                         <i class="bx bx-edit  font-size-16 align-middle"></i>
-                    </a>
-                     <a href="<?php echo e(route('DeleteQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-danger waves-effect waves-light delete-confirm">
+                    </a> -->
+                     <a href="<?php echo e(route('DeleteOrphan', ['data' => $data -> id])); ?>" class="btn btn-danger waves-effect waves-light delete-confirm">
                         <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
                     </a>
                     <?php endif; ?>
 
-                    <?php if($qamarcarecard -> Status == 'Printed'): ?>
-                    <a href="<?php echo e(route('ReleaseQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-success waves-effect waves-light release">
+                    <!-- <?php if($data -> Status == 'Printed'): ?>
+                    <a href="<?php echo e(route('Releasedata', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light release">
                         <i class="bx bx-user-check  font-size-16 align-middle"></i>
                     </a>
-                    <?php endif; ?>
+                    <?php endif; ?> -->
                    
 
 

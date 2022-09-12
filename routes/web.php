@@ -65,7 +65,9 @@ Route::get('/GetScholarship/{data}', [App\Http\Controllers\HomeController:: clas
 // Get Scholarship Module
 Route::get('/GetScholarshipModule/{data}', [App\Http\Controllers\HomeController:: class, 'GetScholarshipModule'])->name('GetScholarshipModule');
 
-
+// uploads of orphans
+Route::post('/Orphans_Tazkira', [App\Http\Controllers\HomeController:: class, 'Orphans_Tazkira'])->name('Orphans_Tazkira');
+Route::post('/Orphans_Profile', [App\Http\Controllers\HomeController:: class, 'Orphans_Profile'])->name('Orphans_Profile');
 
 
 // Education
@@ -305,10 +307,39 @@ Route::get('/Education/Application/Success', [App\Http\Controllers\EducationCont
 
 
 // OrphansRelief
+
+    // index
     Route::get('/OrphansRelief', [App\Http\Controllers\OrphansReliefController:: class, 'Index'])->name('IndexOrphansRelief');
-    Route::get('/OrphansRelief/All', [App\Http\Controllers\OrphansReliefController:: class, 'All'])->name('AllOrphansRelief');
 
 
     // Create
-    Route::get('/OrphansRelief/Create', [App\Http\Controllers\OrphansReliefController:: class, 'Create'])->name('CreateOrphansRelief');
-    Route::post('/OrphansRelief/Create', [App\Http\Controllers\OrphansReliefController:: class, 'Store'])->name('CreateOrphansRelief');
+    Route::get('/OrphansRelief/Create', [App\Http\Controllers\OrphansReliefController:: class, 'Create'])->name('CreateOrphans');
+    Route::post('/OrphansRelief/Create', [App\Http\Controllers\OrphansReliefController:: class, 'Store'])->name('CreateOrphans');
+
+        // delete
+        Route::get('/OrphansRelief/Delete/{data}', [App\Http\Controllers\OrphansReliefController:: class, 'Delete'])->name('DeleteOrphan');
+
+
+        // qamar care list
+        Route::get('/OrphansRelief/All', [App\Http\Controllers\OrphansReliefController:: class, 'All'])->name('AllOrphans');
+        Route::get('/OrphansRelief/Pending', [App\Http\Controllers\OrphansReliefController:: class, 'Pending'])->name('PendingOrphans');
+        Route::get('/OrphansRelief/Approved', [App\Http\Controllers\OrphansReliefController:: class, 'Approved'])->name('ApprovedOrphans');
+        Route::get('/OrphansRelief/Active', [App\Http\Controllers\OrphansReliefController:: class, 'Active'])->name('ActiveOrphans');
+        Route::get('/OrphansRelief/InActive', [App\Http\Controllers\OrphansReliefController:: class, 'InActive'])->name('InActiveOrphans');
+        Route::get('/OrphansRelief/Rejected', [App\Http\Controllers\OrphansReliefController:: class, 'Rejected'])->name('RejectedOrphans');
+        Route::get('/OrphansRelief/Assigned', [App\Http\Controllers\OrphansReliefController:: class, 'Assigned'])->name('AssignedOrphans');
+
+
+         // status list and change status
+    Route::get('/OrphansRelief/Status/{data}', [App\Http\Controllers\OrphansReliefController:: class, 'Status'])->name('StatusOrphans');
+
+    Route::get('/OrphansRelief/Approve/{data}', [App\Http\Controllers\OrphansReliefController:: class, 'Approve'])->name('ApproveOrphans');
+
+    Route::get('/OrphansRelief/Reject/{data}', [App\Http\Controllers\OrphansReliefController:: class, 'Reject'])->name('RejectOrphans');
+
+    Route::get('/OrphansRelief/ReInitiate/{data}', [App\Http\Controllers\OrphansReliefController:: class, 'ReInitiate'])->name('ReInitiateOrphans');
+
+    Route::get('/OrphansRelief/AssignSponsor/{data}', [App\Http\Controllers\OrphansReliefController:: class, 'AssignSponsor'])->name('AssignSponsorOrphans');
+
+    
+ 

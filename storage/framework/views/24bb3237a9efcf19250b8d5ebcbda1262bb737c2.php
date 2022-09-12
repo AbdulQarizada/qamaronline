@@ -10,10 +10,7 @@
 
 <?php $__env->startSection('content'); ?>
 
-    <?php $__env->startComponent('components.breadcrumb'); ?>
-        <?php $__env->slot('li_1'); ?> Qamar Online <?php $__env->endSlot(); ?>
-        <?php $__env->slot('title'); ?> ORPHANS AND SPONSORSHIPS <?php $__env->endSlot(); ?>
-    <?php echo $__env->renderComponent(); ?>
+
     <div class="row">
         <div class="col-12">
            <a href="<?php echo e(route('root')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
@@ -58,7 +55,7 @@
             </div> -->
 
             <div class="col-md-4 mb-2">
-               <a href="<?php echo e(route('AllOrphansRelief')); ?>">
+               <a href="<?php echo e(route('AllOrphans')); ?>">
                 <div class="card-one mini-stats-wid border border-secondary">
                     <div class="card-body">
                       <blockquote class="blockquote font-size-14 mb-0">

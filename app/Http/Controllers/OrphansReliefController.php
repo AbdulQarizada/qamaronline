@@ -166,7 +166,7 @@ class OrphansReliefController extends Controller
 
     ]);
 
-    return redirect()->route('AllOrphansRelief')->with('toast_success', 'Record Created Successfully!');
+    return redirect()->route('AllOrphans')->with('toast_success', 'Record Created Successfully!');
   }
 
 
@@ -207,8 +207,8 @@ class OrphansReliefController extends Controller
       'District' => request('District')
 
     ]);
-    $qamarcarecards =   QamarCareCard::all();
-    return view('QamarCardCard.All', compact('qamarcarecards'));
+    $orphans =   QamarCareCard::all();
+    return view('QamarCardCard.All', ['datas' => $orphans]);
   }
 
 
@@ -226,7 +226,7 @@ class OrphansReliefController extends Controller
 
 
   // Delete
-  public function Delete(QamarCareCard $data)
+  public function Delete(Orphan $data)
   {
 
     $data->delete();
@@ -248,7 +248,6 @@ class OrphansReliefController extends Controller
   public function All()
   {
 
-    //  $qamarcarecards =   QamarCareCard::all();
 
     $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
       ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
@@ -258,7 +257,7 @@ class OrphansReliefController extends Controller
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
 
       ->get();
-    return view('OrphansRelief.All', compact('orphans'));
+    return view('OrphansRelief.All', ['datas' => $orphans]);
   }
 
 
@@ -266,14 +265,14 @@ class OrphansReliefController extends Controller
   public function Approved()
   {
 
-    $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
-      ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+    $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
+      ->join('users as d','orphans.Created_By', '=', 'd.id')
+      ->join('look_ups as c','orphans.FamilyStatus_ID', '=', 'c.id')
+      ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
       ->where("Status", "=", 'Approved')
       ->get();
-    return view('QamarCardCard.All', compact('qamarcarecards'));
+    return view('OrphansRelief.All', ['datas' => $orphans]);
   }
 
 
@@ -281,15 +280,15 @@ class OrphansReliefController extends Controller
   {
 
     // $qamarcarecards =   QamarCareCard::where("Status", "=", 'Rejected')->get();
-    $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
+    $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
+      ->join('look_ups as c','orphans.FamilyStatus_ID', '=', 'c.id')
+      ->join('users as d','orphans.Created_By', '=', 'd.id')
       
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+      ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
       ->where("Status", "=", 'Rejected')
       ->get();
-    return view('QamarCardCard.All', compact('qamarcarecards'));
+    return view('OrphansRelief.All', ['datas' => $orphans]);
   }
 
 
@@ -300,71 +299,97 @@ class OrphansReliefController extends Controller
   {
 
     // $qamarcarecards =   QamarCareCard::where("Status", "=", 'Pending')->get();
-    $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
+    $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
+      ->join('look_ups as c','orphans.FamilyStatus_ID', '=', 'c.id')
+      ->join('users as d','orphans.Created_By', '=', 'd.id')
 
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+      ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
       ->where("Status", "=", 'Pending')
       ->get();
-    return view('QamarCardCard.All', compact('qamarcarecards'));
+    return view('OrphansRelief.All', ['datas' => $orphans]);
   }
 
 
-  public function Released()
+  public function Active()
   {
 
     // $qamarcarecards =   QamarCareCard::where("Status", "=", 'Released')->get();
-    $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
+    $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
+      ->join('look_ups as c','orphans.FamilyStatus_ID', '=', 'c.id')
+      ->join('users as d','orphans.Created_By', '=', 'd.id')
 
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("Status", "=", 'Released')
+      ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+      ->where("Status", "=", 'Active')
       ->get();
-    return view('QamarCardCard.All', compact('qamarcarecards'));
+    return view('OrphansRelief.All', ['datas' => $orphans]);
+  }
+
+  public function InActive()
+  {
+
+    // $qamarcarecards =   QamarCareCard::where("Status", "=", 'Released')->get();
+    $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
+      ->join('look_ups as c','orphans.FamilyStatus_ID', '=', 'c.id')
+      ->join('users as d','orphans.Created_By', '=', 'd.id')
+
+      ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+      ->where("Status", "=", 'InActive')
+      ->get();
+    return view('OrphansRelief.All', ['datas' => $orphans]);
+  }
+
+  public function Assigned()
+  {
+
+    // $qamarcarecards =   QamarCareCard::where("Status", "=", 'Rejected')->get();
+    $orphans =   Orphan::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
+      ->join('look_ups as c','orphans.FamilyStatus_ID', '=', 'c.id')
+      ->join('users as d','orphans.Created_By', '=', 'd.id')
+      
+      ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+      ->where("Status", "=", 'Assigned')
+      ->get();
+    return view('OrphansRelief.All', ['datas' => $orphans]);
   }
 
 
-
-
-
-
   // status
-  public function Status(QamarCareCard $data)
+  public function Status(Orphan $data)
   {
 
-    $qamarcarecards =   QamarCareCard::where("qamar_care_cards.id", "=", $data->id)
+    $orphans =   Orphan::where("orphans.id", "=", $data->id)
 
 
 
-      ->join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('look_ups as c', 'qamar_care_cards.Country_ID', '=', 'c.id')
-      ->join('look_ups as d', 'qamar_care_cards.Gender_ID', '=', 'd.id')
-      ->join('look_ups as e', 'qamar_care_cards.Language_ID', '=', 'e.id')
-      ->join('look_ups as f', 'qamar_care_cards.CurrentJob_ID', '=', 'f.id')
-      ->join('look_ups as g', 'qamar_care_cards.FutureJob_ID', '=', 'g.id')
-      ->join('look_ups as h', 'qamar_care_cards.EducationLevel_ID', '=', 'h.id')
-      ->join('look_ups as i', 'qamar_care_cards.RelativeRelationship_ID', '=', 'i.id')
-      ->join('look_ups as j', 'qamar_care_cards.FamilyStatus_ID', '=', 'j.id')
-      ->join('look_ups as k', 'qamar_care_cards.Tribe_ID', '=', 'k.id')
-      ->join('look_ups as l', 'qamar_care_cards.IncomeStreem_ID', '=', 'l.id')
+      ->join('locations as a', 'orphans.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
+      ->join('look_ups as c', 'orphans.Country_ID', '=', 'c.id')
+      ->join('look_ups as d', 'orphans.Gender_ID', '=', 'd.id')
+      ->join('look_ups as e', 'orphans.Language_ID', '=', 'e.id')
+      // ->join('look_ups as f', 'orphans.CurrentJob_ID', '=', 'f.id')
+      // ->join('look_ups as g', 'orphans.FutureJob_ID', '=', 'g.id')
+      // ->join('look_ups as h', 'orphans.EducationLevel_ID', '=', 'h.id')
+      // ->join('look_ups as i', 'orphans.RelativeRelationship_ID', '=', 'i.id')
+      ->join('look_ups as j', 'orphans.FamilyStatus_ID', '=', 'j.id')
+      ->join('look_ups as k', 'orphans.Tribe_ID', '=', 'k.id')
+      ->join('look_ups as l', 'orphans.IncomeStreem_ID', '=', 'l.id')
 
 
       ->select(
-        'qamar_care_cards.*',
+        'orphans.*',
         'a.Name as Province',
         'b.Name as District',
         'c.Name as Country',
         'd.Name as Gender',
         'e.Name as Language',
-        'f.Name as CurrentJob',
-        'g.Name as FutureJob',
-        'h.Name as EducationLevel',
-        'i.Name as RelativeRelationship',
+        // 'f.Name as CurrentJob',
+        // 'g.Name as FutureJob',
+        // 'h.Name as EducationLevel',
+        // 'i.Name as RelativeRelationship',
         'j.Name as FamilyStatus',
         'k.Name as Tribe',
         'l.Name as IncomeStreem'
@@ -373,10 +398,10 @@ class OrphansReliefController extends Controller
       ->get();
     //  $qamarcarecards  = $data;
 
-    return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
+    return view('OrphansRelief.Status',  ['datas' => $orphans]);
   }
 
-  public function Approve(QamarCareCard $data)
+  public function Approve(Orphan $data)
   {
 
     $data->update([
@@ -386,10 +411,10 @@ class OrphansReliefController extends Controller
 
 
     ]);
-    return redirect()->route('ApprovedQamarCareCard')->with('toast_success', 'Record Approved Successfully!');
+    return redirect()->route('ApprovedOrphans')->with('toast_success', 'Record Approved Successfully!');
   }
 
-  public function Reject(QamarCareCard $data)
+  public function Reject(Orphan $data)
   {
 
     $data->update([
@@ -398,11 +423,11 @@ class OrphansReliefController extends Controller
       'Status' => 'Rejected'
 
     ]);
-    return redirect()->route('RejectedQamarCareCard')->with('toast_error', 'Record Rejected Successfully!');
+    return redirect()->route('RejectedOrphans')->with('toast_error', 'Record Rejected Successfully!');
   }
 
 
-  public function ReInitiate(QamarCareCard $data)
+  public function ReInitiate(Orphan $data)
   {
 
     $data->update([
@@ -411,22 +436,22 @@ class OrphansReliefController extends Controller
       'Status' => 'Pending'
 
     ]);
-    return redirect()->route('PendingQamarCareCard')->with('toast_warning', 'Record Re-Initiated Successfully!');
+    return redirect()->route('PendingOrphans')->with('toast_warning', 'Record Re-Initiated Successfully!');
   }
 
 
 
 
-  public function Release(QamarCareCard $data)
+  public function AssignSponsor(Orphan $data)
   {
 
     $data->update([
       'Status_By' => auth()->user()->id,
 
-      'Status' => 'Released'
+      'Status' => 'Assigned'
 
     ]);
-    return redirect()->route('ReleasedQamarCareCard')->with('toast_warning', 'The card has been Printed!');
+    return redirect()->route('AssignedOrphans')->with('toast_warning', 'The card has been Printed!');
   }
 
 

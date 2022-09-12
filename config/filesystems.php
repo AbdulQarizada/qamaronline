@@ -51,6 +51,11 @@ return [
             'root'   => public_path() . '/uploads/Scholarship/Applicant',
         ],
 
+        'OrphansRelief' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/OrphansRelief/Orphans',
+        ],
+
 
         'public' => [
             'driver' => 'local',
