@@ -12,7 +12,7 @@
                                 <h1 class="fw-medium font-size-24 ">Orphans List</h1>
         </div> -->
      </div>
-     <div class="row">
+     <!-- <div class="row">
         <div class="col-12 ">
         <div class="card border border-3">
                     <div class="card-header">
@@ -24,7 +24,7 @@
                 </div>
       
         </div>
-     </div>
+     </div> -->
 <div class="row">
 <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="col-lg-12">
