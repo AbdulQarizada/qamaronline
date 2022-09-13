@@ -1,5 +1,8 @@
 
 
+
+    ;
+
 <?php $__env->startSection('title'); ?> ADD ORPHAN <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
@@ -2010,4 +2013,4 @@ $('#No').click(function() {
 
 </script>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Qamar\QamarOnline\qamaronline\resources\views/OrphansRelief/Create.blade.php ENDPATH**/ ?>
+<?php echo $__env->make(Auth::user()->IsEmployee == 1 ? 'layouts.master-layouts' : 'layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Qamar\QamarOnline\qamaronline\resources\views/OrphansRelief/Create.blade.php ENDPATH**/ ?>
