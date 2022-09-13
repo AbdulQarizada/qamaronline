@@ -19,7 +19,7 @@
             <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn">
                 <i class="fa fa-fw fa-bars"></i>
             </button>
-            <?php if(Auth::check()): ?> 
+
            <!-- App Search-->
            <form class="app-search d-none d-lg-block">
             <div class="position-relative">
@@ -27,7 +27,7 @@
                 <span class="bx bx-search-alt"></span>
             </div>
         </form>
-    
+        <?php if(Auth::check()): ?> 
         <div class="dropdown dropdown-mega d-none d-lg-block ms-2">
             <!-- <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
                 <span key="t-megamenu"><?php echo app('translator')->get('translation.Mega_Menu'); ?></span>

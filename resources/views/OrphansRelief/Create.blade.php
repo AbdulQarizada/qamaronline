@@ -1,5 +1,4 @@
-
- @extends(Auth::user()->IsEmployee == 1 ? 'layouts.master-layouts' : 'layouts.master');
+@extends(Auth::user()->IsEmployee == 1 ? 'layouts.master-layouts' : 'layouts.master');
 
 @section('title') ADD ORPHAN @endsection
 

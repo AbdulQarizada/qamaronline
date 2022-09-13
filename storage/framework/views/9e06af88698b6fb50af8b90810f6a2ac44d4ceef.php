@@ -272,7 +272,7 @@
                 <li class="page-item active">
                     <a href="#" class="page-link">1</a>
                 </li>
-                <li class="page-item ">
+                <!-- <li class="page-item ">
                     <a href="#" class="page-link">2</a>
                 </li>
                 <li class="page-item">
@@ -282,7 +282,7 @@
                     <a href="#" class="page-link">4</a>
                 </li>
                 <li class="page-item">
-                    <a href="#" class="page-link">5</a>
+                    <a href="#" class="page-link">5</a> -->
                 </li>
                 <li class="page-item">
                     <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
