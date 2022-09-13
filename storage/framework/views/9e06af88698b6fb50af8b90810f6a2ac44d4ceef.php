@@ -10,10 +10,12 @@
 <?php $__env->startSection('content'); ?>
 
 <div class="row mt-4">
+<?php if(Auth::check()): ?> 
         <div class="col-4">
            <a href="<?php echo e(route('IndexOrphansRelief')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
     
         </div>
+        <?php endif; ?>
         <!-- <div class="col-6">
                                 <h1 class="fw-medium font-size-24 ">Orphans List</h1>
         </div> -->
@@ -147,6 +149,7 @@
                         <i class="bx bx-search-alt search-icon"></i>
                     </div>
                 </div>
+                <?php if(Auth::check()): ?> 
                 <ul class="nav nav-pills product-view-nav justify-content-end mt-3 mt-sm-0">
                     <li class="nav-item">
                         <a class="nav-link active" href="<?php echo e(route('AllGridOrphans')); ?>"><i class="bx bx-grid-alt"></i></a>
@@ -155,7 +158,7 @@
                         <a class="nav-link" href="<?php echo e(route('AllOrphans')); ?>"><i class="bx bx-list-ul"></i></a>
                     </li>
                 </ul>
-
+                <?php endif; ?>
 
             </form>
         </div>
@@ -167,7 +170,7 @@
                 <div class="card-body">
                     <div class="product-img position-relative">
                         <div class="avatar-sm product-ribbon">
-                                   <?php if( $data -> LevelPoverty == 1): ?>
+                                   <!-- <?php if( $data -> LevelPoverty == 1): ?>
                                         <span class="avatar-title bg-danger rounded-circle ">20%</span>
                                         <?php endif; ?>
                                         <?php if( $data -> LevelPoverty == 2): ?>
@@ -181,13 +184,13 @@
                                         <?php endif; ?>
                                         <?php if( $data -> LevelPoverty == 5): ?>
                                         <span class="avatar-title bg-danger rounded-circle font-size-24">100%</span>
-                                        <?php endif; ?>
+                                        <?php endif; ?> -->
                         </div>
                         <img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)); ?>" alt="" class="img-fluid mx-auto d-block">
                     </div>
                     <div class="mt-4 mt-xl-3">
                         <a href="javascript: void(0);" class="text-primary">Orphan</a>
-                        <h5 class="mt-1 mb-3"><?php echo e($data -> FirstName); ?> <?php echo e($data -> LastName); ?></h5>
+                        <h5 class="mt-1 mb-3"> <?php echo e($data -> FirstName); ?> <?php echo e($data -> LastName); ?> </h5>
 
                         <p class="text-muted float-start me-3">
                         <?php if( $data -> LevelPoverty == 1): ?>

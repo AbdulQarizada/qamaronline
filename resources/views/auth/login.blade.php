@@ -19,26 +19,20 @@
                                 <div class="row">
                                     <div class="col-7">
                                         <div class="text-black p-4">
-                                            <h5 class="text-primary">Qamar Foundation</h5>
-                                            <p>Sign in to continue to Qamar Online Systems.</p>
+                                            
+                                            <!-- <h5 class="text-primary">Qamar Foundation</h5>
+                                            <p>Sign in to continue to Qamar Online Systems.</p> -->
                                         </div>
                                     </div>
-                                    <div class="col-5 align-self-end">
+                                    <!-- <div class="col-5 align-self-end">
                                         <img src="{{ URL::asset('/assets/images/profile-img.png') }}" alt=""
                                             class="img-fluid">
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="card-body pt-0">
                                 <div class="auth-logo">
-                                    <a href="index" class="auth-logo-light">
-                                        <div class="avatar-md profile-user-wid mb-4">
-                                            <span class="avatar-title rounded-circle bg-light">
-                                                <img src="{{ URL::asset('/assets/images/logo-light.svg') }}" alt=""
-                                                    class="rounded-circle" height="34">
-                                            </span>
-                                        </div>
-                                    </a>
+                          
 
                                     <a href="index" class="auth-logo-dark">
                                         <div class="avatar-md profile-user-wid mb-4">
@@ -55,8 +49,8 @@
                                     <form class="form-horizontal"  method="POST" action="{{ route('login') }}">
                                     @csrf
                                     <div class="mb-3">
-                                                <label for="username" class="form-label">Email</label>
-                                                <input name="email" type="email" class="form-control @error('email') is-invalid @enderror"  id="username" placeholder="Enter Email" autocomplete="email" autofocus>
+                                                <label for="email" class="form-label">Email</label>
+                                                <input name="email" type="email" class="form-control @error('email') is-invalid @enderror"  id="email" placeholder="Enter Email" autocomplete="email" autofocus>
                                                 @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -67,12 +61,12 @@
                                             <div class="mb-3">
                                                 <div class="float-end">
                                                     @if (Route::has('password.request'))
-                                                    <a href="{{ route('password.request') }}" class="text-muted">Forgot password?</a>
+                                                    <!-- <a href="{{ route('password.request') }}" class="text-muted">Forgot password?</a> -->
                                                     @endif
                                                 </div>
                                                 <label class="form-label">Password</label>
                                                 <div class="input-group auth-pass-inputgroup @error('password') is-invalid @enderror">
-                                                    <input type="password" name="password" class="form-control  @error('password') is-invalid @enderror" id="userpassword"  placeholder="Enter password" aria-label="Password" aria-describedby="password-addon">
+                                                    <input type="password" name="password" class="form-control  @error('password') is-invalid @enderror" id="password"  placeholder="Enter password" aria-label="password" aria-describedby="password-addon">
                                                     <button class="btn btn-light " type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
                                                     @error('password')
                                                     <span class="invalid-feedback" role="alert">
@@ -120,8 +114,8 @@
                                         </div> -->
 
                                         <div class="mt-4 text-center">
-                                            <a href="auth-recoverpw" class="text-muted"><i
-                                                    class="mdi mdi-lock me-1"></i> Forgot your password?</a>
+                                            <p>Do not have an account ? <a href="{{ url('register') }}" class="fw-medium text-primary"> Create one</a> </p>
+
                                         </div>
                                     </form>
                                 </div>

@@ -651,6 +651,34 @@
                                     </div>
                                     <div class="col-xl-12">
                                         <div class="row">
+                                        <div class="col-md-4 mb-2">
+                                                <a href="QuartlyReports">
+                                                    <div class="card-one  mini-stats-wid border border-secondary">
+                                                        <div class="card-body">
+                                                            <blockquote class="blockquote  font-size-14 mb-0">
+                                                                <div class="d-flex">
+                                                                    <div class="flex-grow-1">
+                                                                        <p class="my-0 text-primary card-title fw-semibold">User Managements</p>
+                                                                        <h6 class="text-muted mb-0">Users Management</h4>
+                                                                    </div>
+
+                                                                    <div class="flex-shrink-0 align-self-center">
+                                                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                                                            <span class="avatar-title bg-dark">
+                                                                                <i class="bx bxs-report  font-size-24"></i>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="d-flex mt-4">
+
+                                                                </div>
+                                                            </blockquote>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
                                             <div class="col-md-4 mb-2">
                                                 <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">
                                                     <div class="card-one  mini-stats-wid border border-secondary">
@@ -679,34 +707,8 @@
                                                     </div>
                                                 </a>
                                             </div>
-                                            <!-- <div class="col-md-4 mb-2">
-                                                <a href="QuartlyReports">
-                                                    <div class="card-one  mini-stats-wid border border-secondary">
-                                                        <div class="card-body">
-                                                            <blockquote class="blockquote  font-size-14 mb-0">
-                                                                <div class="d-flex">
-                                                                    <div class="flex-grow-1">
-                                                                        <p class="my-0 text-primary card-title fw-semibold">Quartly Reports</p>
-                                                                        <h6 class="text-muted mb-0">Quartly Reports</h4>
-                                                                    </div>
-
-                                                                    <div class="flex-shrink-0 align-self-center">
-                                                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                                                            <span class="avatar-title bg-dark">
-                                                                                <i class="bx bxs-report  font-size-24"></i>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="d-flex mt-4">
-
-                                                                </div>
-                                                            </blockquote>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
+                            
+                                            <!--
                                             <div class="col-md-4 mb-2">
                                                 <a href="YearlyReports">
                                                     <div class="card-one  mini-stats-wid border border-secondary">

@@ -51,6 +51,8 @@ trait AuthenticatesUsers
             return $this->sendLoginResponse($request);
         }
 
+
+        
         // If the login attempt was unsuccessful we will increment the number of attempts
         // to login and redirect the user back to the login form. Of course, when this
         // user surpasses their maximum number of attempts they will get locked out.
@@ -67,13 +69,27 @@ trait AuthenticatesUsers
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+    // protected function validateLogin(Request $request)
+    // {
+    //     $request->validate([
+    //         $this->username() => 'required|string',
+    //         'password' => 'required|string',
+    //     ]);
+    // }
+
+
     protected function validateLogin(Request $request)
-    {
-        $request->validate([
-            $this->username() => 'required|string',
-            'password' => 'required|string',
-        ]);
+{
+    $user = User::where($this->username(), '=', $request->input($this->username()))->first();
+    if ($user && !$user->IsActive == "1") {
+        throw ValidationException::withMessages([$this->username() => __('This Account is Inactive, Please contact the Qamar Team. Thanks')]);
     }
+    $request->validate([
+        $this->username() => 'required|string',
+        'password' => 'required|string',
+    ]);
+}
+
 
     /**
      * Attempt to log the user into the application.
