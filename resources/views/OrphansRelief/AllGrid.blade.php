@@ -190,11 +190,23 @@
                     <div class="product-option">
                         <div class="product-size">
                         
-                        <a href="{{route('StatusOrphans', ['data' => $data -> id])}}" class="btn btn-warning waves-effect waves-light mt-2 mb-3 me-1">
+                        <a href="{{route('StatusOrphans', ['data' => $data -> id])}}" class="btn btn-warning waves-effect waves-light mt-3 mb-3 me-1">
                             <i class="bx bx-happy-beaming me-2"></i> Sponsor Me
                       </a>
-                           <h3 class="mt-2">Why Should You Help Me?</h3>
-                            <p> {{$data -> WhyShouldYouHelpMe}}</p>
+                      <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div>
+                                        <p class="text-muted"><i class="bx bx-user-circle  font-size-16 align-middle text-primary me-1"></i>{{$data -> id}} </p>
+                                        <p class="text-muted"><i class="fas fa-baby   font-size-16 align-middle text-primary me-1"></i> {{$data -> Gender}} </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div>
+                                        <p class="text-muted"><i class="fas fa-baby-carriage  font-size-16 align-middle text-primary me-1"></i> {{\Carbon\Carbon::parse($data -> DOB)->diff(\Carbon\Carbon::now())->format('%y Years');}}</p>
+                                        <!-- <p class="text-muted"><i class="bx bx-cog font-size-16 align-middle text-primary me-1"></i> Warranty : 1 Year</p> -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- <div class="product-color">
                             <h3>Colors</h3>
