@@ -50,7 +50,7 @@ h1.page-title {
 
 .product-image {
   /* padding: 20px; */
-  height: 310px;
+  height: 250px;
   position: relative;
   overflow: hidden;
   transition: 1s;
