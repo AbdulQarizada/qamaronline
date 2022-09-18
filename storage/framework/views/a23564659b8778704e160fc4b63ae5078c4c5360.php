@@ -336,7 +336,7 @@ unset($__errorArgs, $__bag); ?>
 
                         </div>
                         <div class="col-md-3 justify-content-center ">
-                            <img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data['item']['Profile'])); ?>" alt="" class="img-fluid mx-auto d-block ">
+                            <img src="<?php echo e(URL::asset('/assets/images/payment.jpg')); ?>" alt="" class="img-fluid mx-auto d-block ">
 
                         </div>
                     </div>
