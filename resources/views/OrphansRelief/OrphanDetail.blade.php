@@ -4,15 +4,15 @@
 
 @section('content')
 <div class="row mt-4">
-        <div class="col-4">
-           <a href="{{route('AllGridOrphans')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-    
-        </div>
-        <!-- <div class="col-6">
+    <div class="col-4">
+        <a href="{{route('AllGridOrphans')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+
+    </div>
+    <!-- <div class="col-6">
                                 <h1 class="fw-medium font-size-24 ">Orphans List</h1>
         </div> -->
-     </div>
-     <!-- <div class="row">
+</div>
+<!-- <div class="row">
         <div class="col-12 ">
         <div class="card border border-3">
                     <div class="card-header">
@@ -26,7 +26,7 @@
         </div>
      </div> -->
 <div class="row">
-@foreach($datas as $data)
+    @foreach($datas as $data)
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
@@ -73,13 +73,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-center mt-2">
-                                    <a href="{{route('StatusOrphans', ['data' => $data -> id])}}" class="btn btn-warning waves-effect waves-light mt-2 me-1">
-                            <i class="bx bx-happy-beaming me-2"></i> Sponsor Me
-</a>
-                        
-                                    </div>
 
+                                    <div class="text-center mt-2">
+                                        <a href="{{route('AddToCartOrphans', ['data' => $data -> id])}}" class="btn btn-warning waves-effect waves-light mt-2 me-1">
+                                            <i class="bx bx-happy-beaming me-2"></i> Sponsor Me
+                                        </a>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -90,60 +90,67 @@
                             <a href="javascript: void(0);" class="text-primary">Orphan</a>
                             <h4 class="mt-1 mb-3">{{$data -> FirstName}} {{$data -> LastName}}</h4>
 
-                            <p class="text-muted float-start me-3">
-                            @if( $data -> LevelPoverty == 1)
-                                         <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-secondary font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+                            <!-- <p class="text-muted float-start me-3">
+                                @if( $data -> LevelPoverty == 1)
+                                <i class="bx bxs-star text-warning font-size-12"></i>
+                                <i class="bx bxs-star text-secondary font-size-14"></i>
+                                <i class="bx bxs-star text-secondary font-size-16"></i>
+                                <i class="bx bxs-star text-secondary font-size-18"></i>
+                                <i class="bx bxs-star text-secondary font-size-20"></i>
 
-                                       @endif
-                                       @if( $data -> LevelPoverty == 2)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $data -> LevelPoverty == 3)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-warning font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $data -> LevelPoverty == 4)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-warning font-size-16"></i>
-                                         <i class="bx bxs-star text-warning font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $data -> LevelPoverty == 5)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-warning font-size-16"></i>
-                                         <i class="bx bxs-star text-warning font-size-18"></i>
-                                         <i class="bx bxs-star text-warning font-size-20"></i>
-                                       @endif
-                            </p>
-                            <p class="text-muted mb-4"><b class="text-success text-uppercase">$40 USD </b>/ Month</p>
-                            <div class="mt-5">
-                    <h5 class=" text-uppercase text-primary">why Should You Help Me?</h5>
+                                @endif
+                                @if( $data -> LevelPoverty == 2)
+                                <i class="bx bxs-star text-warning font-size-12"></i>
+                                <i class="bx bxs-star text-warning font-size-14"></i>
+                                <i class="bx bxs-star text-secondary font-size-16"></i>
+                                <i class="bx bxs-star text-secondary font-size-18"></i>
+                                <i class="bx bxs-star text-secondary font-size-20"></i>
+                                @endif
+                                @if( $data -> LevelPoverty == 3)
+                                <i class="bx bxs-star text-warning font-size-12"></i>
+                                <i class="bx bxs-star text-warning font-size-14"></i>
+                                <i class="bx bxs-star text-warning font-size-16"></i>
+                                <i class="bx bxs-star text-secondary font-size-18"></i>
+                                <i class="bx bxs-star text-secondary font-size-20"></i>
+                                @endif
+                                @if( $data -> LevelPoverty == 4)
+                                <i class="bx bxs-star text-warning font-size-12"></i>
+                                <i class="bx bxs-star text-warning font-size-14"></i>
+                                <i class="bx bxs-star text-warning font-size-16"></i>
+                                <i class="bx bxs-star text-warning font-size-18"></i>
+                                <i class="bx bxs-star text-secondary font-size-20"></i>
+                                @endif
+                                @if( $data -> LevelPoverty == 5)
+                                <i class="bx bxs-star text-warning font-size-12"></i>
+                                <i class="bx bxs-star text-warning font-size-14"></i>
+                                <i class="bx bxs-star text-warning font-size-16"></i>
+                                <i class="bx bxs-star text-warning font-size-18"></i>
+                                <i class="bx bxs-star text-warning font-size-20"></i>
+                                @endif
+                            </p> -->
+                            <!-- <p class="text-muted mb-4"><b class="text-success text-uppercase">$40 USD </b>/ Month</p> -->
+                            <div class="mt-4">
+                                <h5 class=" text-uppercase text-primary">why Should You Help Me?</h5>
 
-                    <div class="d-flex py-3 border-bottom">
-                        <div class="flex-shrink-0 me-3">
-                            <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}" class="avatar-xs rounded-circle" alt="img" />
-                        </div>
+                                <div class="d-flex py-3 border-bottom">
+                                    <div class="flex-shrink-0 me-3">
+                                        <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}" class="avatar-xs rounded-circle" alt="img" />
+                                    </div>
 
-                        <div class="flex-grow-1">
-                            <h5 class="mb-1 font-size-15">{{$data -> FirstName}} {{$data -> LastName}}</h5>
-                            <p class="text-muted text-break">{{$data -> WhyShouldYouHelpMe}}</p>
-                           
-                        </div>
-                    </div>
-                </div>
+                                    <div class="flex-grow-1">
+                                        <h5 class="mb-1 font-size-15">{{$data -> FirstName}} {{$data -> LastName}}</h5>
+                                        <p class="text-muted text-break">{{$data -> WhyShouldYouHelpMe}}</p>
+
+                                    </div>
+
+                                </div>
+                                <!-- <div class="text-center mt-2">
+                                    <a href="{{route('StatusOrphans', ['data' => $data -> id])}}" class="btn btn-warning waves-effect waves-light mt-2 me-1">
+                            <i class="bx bx-happy-beaming me-2"></i> Sponsor Me
+</a>
+                        
+                                    </div> -->
+                            </div>
                             <!-- <div class="row mb-3">
                                 <div class="col-md-6">
                                     <div>
@@ -186,7 +193,7 @@
                 </div>
                 <!-- end row -->
 
-                <div class="mt-5">
+                <!-- <div class="mt-5">
                     <h5 class="mb-3 text-uppercase">About Me </h5>
 
                     <div class="table-responsive">
@@ -227,7 +234,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </div> -->
                 <!-- end Specifications -->
 
 

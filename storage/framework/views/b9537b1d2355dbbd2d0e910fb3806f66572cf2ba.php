@@ -149,7 +149,7 @@ unset($__errorArgs, $__bag); ?>
                                         </div> -->
 
                                         <div class="mt-4 text-center">
-                                            <p>Do not have an account ? <a href="<?php echo e(url('register')); ?>" class="fw-medium text-primary"> Create one</a> </p>
+                                            <!-- <p>Do not have an account ? <a href="<?php echo e(url('register')); ?>" class="fw-medium text-primary"> Create one</a> </p> -->
 
                                         </div>
                                     </form>

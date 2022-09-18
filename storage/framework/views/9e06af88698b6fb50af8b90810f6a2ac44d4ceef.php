@@ -190,20 +190,22 @@
                     </div>
                     <div class="product-option">
                         <div class="product-size">
-                        
-                        <a href="<?php echo e(route('StatusOrphans', ['data' => $data -> id])); ?>" class="btn btn-warning waves-effect waves-light mt-3 mb-3 me-1">
+                      
+                        <a href="<?php echo e(route('AddToCartOrphans', ['data' => $data -> id])); ?>" class="btn  btn-warning  waves-effect waves-light mt-3 mb-3 me-1">
                             <i class="bx bx-happy-beaming me-2"></i> Sponsor Me
-                      </a>
+                          </a>
+                     
                       <div class="row mb-3">
                                 <div class="col-md-6">
                                     <div>
                                         <p class="text-muted"><i class="bx bx-user-circle  font-size-16 align-middle text-primary me-1"></i><?php echo e($data -> id); ?> </p>
-                                        <p class="text-muted"><i class="fas fa-baby   font-size-16 align-middle text-primary me-1"></i> <?php echo e($data -> Gender); ?> </p>
+                                        <p class="text-muted"><i class="fas fa-baby-carriage  font-size-16 align-middle text-primary me-1"></i> <?php echo e(\Carbon\Carbon::parse($data -> DOB)->diff(\Carbon\Carbon::now())->format('%y Years old')); ?></p>
+                                        
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div>
-                                        <p class="text-muted"><i class="fas fa-baby-carriage  font-size-16 align-middle text-primary me-1"></i> <?php echo e(\Carbon\Carbon::parse($data -> DOB)->diff(\Carbon\Carbon::now())->format('%y Years')); ?></p>
+                                    <p class="text-muted"><i class="fas fa-baby   font-size-16 align-middle text-primary me-1"></i> <?php echo e($data -> Gender); ?> </p>
                                         <!-- <p class="text-muted"><i class="bx bx-cog font-size-16 align-middle text-primary me-1"></i> Warranty : 1 Year</p> -->
                                     </div>
                                 </div>

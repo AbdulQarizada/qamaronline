@@ -162,6 +162,7 @@
                 </div>
             </div>
         </div>
+    
         @if (Auth::check()) 
         <div class="d-flex">
 

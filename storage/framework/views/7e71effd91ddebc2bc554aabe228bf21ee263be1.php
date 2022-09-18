@@ -162,6 +162,7 @@
                 </div>
             </div>
         </div>
+    
         <?php if(Auth::check()): ?> 
         <div class="d-flex">
 

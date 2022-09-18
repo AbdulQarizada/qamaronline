@@ -349,3 +349,18 @@ Route::get('/Education/Application/Success', [App\Http\Controllers\EducationCont
 
     
  
+
+
+
+    // routes for orphan routes
+
+    // Route::get('/OrphansRelief/Status/{data}', [App\Http\Controllers\OrphansReliefController:: class, 'Status'])->name('StatusOrphans');
+
+    // Route::get('/OrphansRelief/Approve/{data}', [App\Http\Controllers\OrphansReliefController:: class, 'Approve'])->name('ApproveOrphans');
+
+    // Route::get('/OrphansRelief/Reject/{data}', [App\Http\Controllers\OrphansReliefController:: class, 'Reject'])->name('RejectOrphans');
+
+
+    Route::get('/OrphansRelief/AddToCart/{data}', [App\Http\Controllers\OrphansReliefController:: class, 'AddToCart'])->name('AddToCartOrphans');
+    Route::get('/OrphansRelief/RemoveFromCart/{data}', [App\Http\Controllers\OrphansReliefController:: class, 'RemoveFromCart'])->name('RemoveFromCartOrphans');
+    Route::post('/OrphansRelief/Payment/', [App\Http\Controllers\OrphansReliefController:: class, 'Payment'])->name('Payment');
