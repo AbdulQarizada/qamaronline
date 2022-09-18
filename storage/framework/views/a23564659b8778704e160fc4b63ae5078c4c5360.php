@@ -4,7 +4,7 @@
 
 <?php $__env->startSection('css'); ?>
 <!-- DataTables -->
-<link href="<?php echo e(URL::asset('/assets/css/mystyle/Payment.css')); ?>" rel="stylesheet" type="text/css" />
+<link href="<?php echo e(URL::asset('/assets/css/mystyle/payment.css')); ?>" rel="stylesheet" type="text/css" />
 
 <?php $__env->stopSection(); ?>
 

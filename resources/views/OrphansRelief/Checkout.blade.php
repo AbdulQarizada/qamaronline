@@ -3,8 +3,7 @@
 @section('title') ORPHAN CHECKOUT @endsection
 
 @section('css')
-<!-- DataTables -->
-<link href="{{ URL::asset('/assets/css/mystyle/payment.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ URL::asset('/assets/css/mystyle/Payment.css') }}" rel="stylesheet" type="text/css" />
 
 @endsection
 
