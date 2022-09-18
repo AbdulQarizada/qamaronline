@@ -121,7 +121,7 @@
 <!-- end row -->
 
 
-<form method="POST" class="form-horizontal" action="{{ route('Payment') }}" enctype="multipart/form-data">
+<form method="POST" class="form-horizontal" action="{{ route('Payment') }}" enctype="multipart/form-data" id="Payment">
     @csrf
     <div class="row justify-content-center">
         <div class="col-lg-12">
@@ -130,7 +130,9 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-9">
-
+                               <div id="charge-error" class="alert alert-danger {{ !Session::has('error') ? 'd-none' : ''  }}">
+                                 {{ Session::get('error') }}
+                               </div>
                             <div class="row">
                             <div class="col-md-6">
                                     <div class="mb-3 position-relative">
@@ -286,24 +288,23 @@
 <script>
     Stripe.setPublishableKey('pk_test_m6ZWLYyvkUAqJzr1fvr1uRj2');
 
-var $form = $('#checkout-form');
-
+var $form = $('#Payment');
 $form.submit(function(event) {
-    $('#charge-error').addClass('hidden');
+    $('#charge-error').addClass('d-none');
     $form.find('button').prop('disabled', true);
     Stripe.card.createToken({
-        number: $('#card-number').val(),
-        cvc: $('#card-cvc').val(),
-        exp_month: $('#card-expiry-month').val(),
-        exp_year: $('#card-expiry-year').val(),
-        name: $('#card-name').val()
+        number: $('#CardNumber').val(),
+        cvc: $('#CVV').val(),
+        exp_month: $('#ValidMonth').val(),
+        exp_year: $('#ValidYear').val(),
+        name: $('#FullName').val()
     }, stripeResponseHandler);
     return false;
 });
 
 function stripeResponseHandler(status, response) {
     if (response.error) {
-        $('#charge-error').removeClass('hidden');
+        $('#charge-error').removeClass('d-none');
         $('#charge-error').text(response.error.message);
         $form.find('button').prop('disabled', false);
     } else {
