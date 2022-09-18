@@ -366,7 +366,40 @@ unset($__errorArgs, $__bag); ?>
 
 
 <script src="<?php echo e(URL::asset('/assets/js/pages/Payment.js')); ?>"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
+<script>
+    Stripe.setPublishableKey('pk_test_m6ZWLYyvkUAqJzr1fvr1uRj2');
+
+var $form = $('#checkout-form');
+
+$form.submit(function(event) {
+    $('#charge-error').addClass('hidden');
+    $form.find('button').prop('disabled', true);
+    Stripe.card.createToken({
+        number: $('#card-number').val(),
+        cvc: $('#card-cvc').val(),
+        exp_month: $('#card-expiry-month').val(),
+        exp_year: $('#card-expiry-year').val(),
+        name: $('#card-name').val()
+    }, stripeResponseHandler);
+    return false;
+});
+
+function stripeResponseHandler(status, response) {
+    if (response.error) {
+        $('#charge-error').removeClass('hidden');
+        $('#charge-error').text(response.error.message);
+        $form.find('button').prop('disabled', false);
+    } else {
+        var token = response.id;
+        $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+
+        // Submit the form:
+        $form.get(0).submit();
+    }
+}
+</script>
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Qamar\QamarOnline\qamaronline\resources\views/OrphansRelief/Checkout.blade.php ENDPATH**/ ?>

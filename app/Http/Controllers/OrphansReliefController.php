@@ -34,7 +34,7 @@ class OrphansReliefController extends Controller
 
   public function __construct()
   {
-    $this->middleware('auth', ['except' => ['AllGrid', 'OrphanDetail']]);
+    $this->middleware('auth', ['except' => ['AllGrid', 'OrphanDetail','AddToCart', 'RemoveFromCart', 'Payment']]);
   }
 
 
