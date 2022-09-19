@@ -133,18 +133,18 @@
                                <div id="charge-error" class="alert alert-danger {{ !Session::has('error') ? 'd-none' : ''  }}">
                                  {{ Session::get('error') }}
                                </div>
+
+
+                               
+
                             <div class="row">
                             <div class="col-md-6">
                                     <div class="mb-3 position-relative">
                                     <label for="card" class="method card">
-                                    <div class="card-logos">
-                                        <h1>Montly</h1>
-
-                                    </div>
-
+                                    <h1>Montly</h1>
                                     <div class="radio-input">
                                         <input id="card" type="radio" name="payment">
-                                        Pay ${{ $totalPrice }}
+                                        Pay ${{ $totalPriceMontly =  count($datas) * 40}}
                                     </div>
                                 </label>
                                     </div>
@@ -155,14 +155,14 @@
                                     <h1>Yearly</h1>
                                     <div class="radio-input">
                                         <input id="paypal" type="radio" name="payment">
-                                        Pay ${{ $totalPriceYearly = $totalPrice * 12  }}
+                                        Pay ${{ $totalPriceYearly = count($datas) * 40 * 12  }}
                                     </div>
                                 </label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3 position-relative">
-                                        <label for="FullName" class="label ">Full Name </label>
+                                        <label for="FullName" class="label mb-3">Full Name </label>
                                         <input type="text" class="form-control form-control-lg @error('FullName') is-invalid @enderror" value="{{ old('FullName') }}" id="FullName" name="FullName" required>
                                         @error('FullName')
                                         <span class="invalid-feedback" role="alert">
@@ -201,7 +201,7 @@
                                 <div class="col-md-2">
                                     <div class="mb-3 position-relative">
                                         <label for="ValidMonth" class="label">Valid Month </i></label>
-                                        <input type="text" class="form-control form-control-lg @error('ValidMonth') is-invalid @enderror" value="{{ old('ValidMonth') }}" id="ValidMonth" name="ValidMonth" placeholder="MM"   minlength="2" maxlength="2" required>
+                                        <input type="text" class="form-control form-control-lg @error('ValidMonth') is-invalid @enderror" value="{{ old('ValidMonth') }}" id="ValidMonth" name="ValidMonth" placeholder="MM"   minlength="2"  maxlength="2" max="12" required>
 
                                         @error('ValidMonth')
                                         <span class="invalid-feedback" role="alert">

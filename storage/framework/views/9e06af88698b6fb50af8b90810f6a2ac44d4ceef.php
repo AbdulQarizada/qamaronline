@@ -182,7 +182,7 @@
                             <!-- <p class="price">$39</p> -->
                             <li class="list-inline-item me-3">
                             <span class="text-danger text-uppercase">Waiting:</span>
-                            <i class="bx bx-calendar me-1"></i> <?php echo e($data -> created_at -> todatestring()); ?>
+                            <i class="bx bx-calendar me-1"></i> <?php echo e($data -> created_at ->format("d-m-Y")); ?>
 
                         </li>
                             <p></p>

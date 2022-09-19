@@ -134,18 +134,18 @@
                                  <?php echo e(Session::get('error')); ?>
 
                                </div>
+
+
+                               
+
                             <div class="row">
                             <div class="col-md-6">
                                     <div class="mb-3 position-relative">
                                     <label for="card" class="method card">
-                                    <div class="card-logos">
-                                        <h1>Montly</h1>
-
-                                    </div>
-
+                                    <h1>Montly</h1>
                                     <div class="radio-input">
                                         <input id="card" type="radio" name="payment">
-                                        Pay $<?php echo e($totalPrice); ?>
+                                        Pay $<?php echo e($totalPriceMontly =  count($datas) * 40); ?>
 
                                     </div>
                                 </label>
@@ -157,7 +157,7 @@
                                     <h1>Yearly</h1>
                                     <div class="radio-input">
                                         <input id="paypal" type="radio" name="payment">
-                                        Pay $<?php echo e($totalPriceYearly = $totalPrice * 12); ?>
+                                        Pay $<?php echo e($totalPriceYearly = count($datas) * 40 * 12); ?>
 
                                     </div>
                                 </label>
@@ -165,7 +165,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3 position-relative">
-                                        <label for="FullName" class="label ">Full Name </label>
+                                        <label for="FullName" class="label mb-3">Full Name </label>
                                         <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['FullName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -253,7 +253,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ValidMonth')); ?>" id="ValidMonth" name="ValidMonth" placeholder="MM"   minlength="2" maxlength="2" required>
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ValidMonth')); ?>" id="ValidMonth" name="ValidMonth" placeholder="MM"   minlength="2"  maxlength="2" max="12" required>
 
                                         <?php $__errorArgs = ['ValidMonth'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
