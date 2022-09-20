@@ -1,18 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Mail\OrphanMails;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Cart;
 use App\Models\QamarCareCard;
 use App\Models\Orphan;
+use App\Models\OrphanPayment;
 use App\Models\AssignCareCardServices;
 use App\Models\ServiceType;
 use App\Models\ServiceProviders;
-
+use Illuminate\Support\Facades\Hash;
 use App\Models\Location;
 use App\Models\LookUp;
-
+use Illuminate\Support\Str;
 use App\Models\User;
 use Session;
 use Auth;
@@ -278,6 +280,7 @@ class OrphansReliefController extends Controller
       ->join('look_ups as c','orphans.FamilyStatus_ID', '=', 'c.id')
       ->join('users as d','orphans.Created_By', '=', 'd.id')
       ->join('look_ups as e','orphans.Gender_ID', '=', 'e.id')
+      
 
 
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.Name as Gender'])
@@ -1239,17 +1242,23 @@ class OrphansReliefController extends Controller
 
   // orphan cart
 
+  public function Checkout()
+  {
+      if (!Session::has('cart')) {
+          return view('OrphansRelief.AllGrid');
+      }
+      $oldCart = Session::get('cart');
+      $cart = new Cart($oldCart);
+      $total = $cart->totalPrice;
+      return view('OrphansRelief.Checkout',  ['datas' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+  }
 
-  // public function getIndex()
-  // {
-  //     $products = Product::all();
-  //     return view('shop.index', ['products' => $products]);
-  // }
+
 
   public function AddToCart(Request $request, $id)
   {
-      $product = Orphan::find($id);
-      $oldCart = Session::has('cart') ? Session::get('cart') : null;
+                   $product = Orphan::find($id);
+                 $oldCart = Session::has('cart') ? Session::get('cart') : null;
        
               $cart = new Cart($oldCart);
               $cart->add($product, $product->id);
@@ -1318,31 +1327,123 @@ class OrphansReliefController extends Controller
   public function Payment(Request $request)
   {
       if (!Session::has('cart')) {
-          return redirect()->route('shop.shoppingCart');
+          return redirect()->route('AllGridOrphans');
       }
       $oldCart = Session::get('cart');
       $cart = new Cart($oldCart);
 
-      Stripe::setApiKey('sk_test_fwmVPdJfpkmwlQRedXec5IxR');
-      try {
-          $charge = Charge::create(array(
-              "amount" => $cart->totalPrice * 100,
-              "currency" => "usd",
-              "source" => $request->input('stripeToken'), // obtained with Stripe.js
-              "description" => "Test Charge"
-          ));
-          $order = new Order();
-          $order->cart = serialize($cart);
-          $order->address = $request->input('address');
-          $order->name = $request->input('name');
-          $order->payment_id = $charge->id;
           
-          Auth::user()->orders()->save($order);
-      } catch (\Exception $e) {
-          return redirect()->route('checkout')->with('error', $e->getMessage());
-      }
+      $userid = User::where('email', '=', request('Email'))->first();
+      if($userid)
+      {
+        $AmountInCents = $request->input('PaymentAmount') * 100;
+        Stripe::setApiKey('sk_test_51LjcarLOXjyUWh0laUbAmtzmX9vEeVF12yE6sWjvqI7uGfpCqJd6IW0T7VKCRynfEIxNolJIOHBl7AtmWNnC4qiR00OPUpBtZr');
+        try {
+            $charge = Charge::create(array(
+                "amount" =>$AmountInCents,
+                "currency" => "usd",
+                "source" => $request->input('stripeToken'), // obtained with Stripe.js
+                "description" => "Orphan Sponsorship"
+            ));
+               $RandomPassword = Str::random(8);
+               OrphanPayment::create([
+              'PaymentOption' => request('PaymentOption'),
+              'PaymentAmount' => request('PaymentAmount'),
+              'FullName' => request('FullName'),
+              'Email' => request('Email'),
+              'CardNumber' => request('CardNumber'),
+              'Password' => $RandomPassword,
+              'ChargeID' => $charge->id,
+               ]);
 
-      Session::forget('cart');
-      return redirect()->route('product.index')->with('success', 'Successfully purchased products!');
+         
+        
+  
+               $userid = User::where('email', '=', request('Email'))->first();
+  
+               foreach($oldCart -> items as $item)
+                {
+  
+                  $orphanid = Orphan::where('id', '=', $item['item']['id'])->first();
+                  $orphanid -> update([   'Sponsor_ID' => $userid -> id  ]);
+  
+                 }
+  
+                 Mail::to(request('Email')) -> send(new OrphanMails(request('Email')));
+  
+        
+  
+  
+        } 
+        catch (\Exception $e) 
+        {
+            return redirect()->route('CheckoutOrphans')->with('error', $e->getMessage());
+        }
+  
+        Session::forget('cart');
+        return view('OrphansRelief.Success', ['datas' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+      }
+      else
+      {
+        $AmountInCents = $request->input('PaymentAmount') * 100;
+        Stripe::setApiKey('sk_test_51LjcarLOXjyUWh0laUbAmtzmX9vEeVF12yE6sWjvqI7uGfpCqJd6IW0T7VKCRynfEIxNolJIOHBl7AtmWNnC4qiR00OPUpBtZr');
+        try
+         {
+            
+            $charge = Charge::create(array(
+                "amount" => $AmountInCents,
+                "currency" => "usd",
+                "source" => $request->input('stripeToken'), // obtained with Stripe.js
+                "description" => "Orphan Sponsorship"
+            ));
+
+               $RandomPassword = Str::random(8);
+               OrphanPayment::create([
+              'PaymentOption' => request('PaymentOption'),
+              'PaymentAmount' => request('PaymentAmount'),
+              'FullName' => request('FullName'),
+              'Email' => request('Email'),
+              'CardNumber' => request('CardNumber'),
+              'Password' => $RandomPassword,
+              'ChargeID' => $charge->id,
+               ]);
+  
+               $userid = User::create([
+                'FullName' => request('FullName'),
+                'email' => request('Email'),
+                'password' => Hash::make($RandomPassword),
+                'IsActive' => 1,
+                'IsEmployee' => 0,
+                'OrphanSponsor' => 1,
+               ]);
+  
+               $userid = User::where('email', '=', request('Email'))->first();
+  
+               foreach($oldCart -> items as $item)
+                {
+  
+                  $orphanid = Orphan::where('id', '=', $item['item']['id'])->first();
+                  $orphanid -> update([   'Sponsor_ID' => $userid -> id  ]);
+  
+                 }
+  
+                 Mail::to(request('Email')) -> send(new OrphanMails(request('Email')));
+  
+        
+  
+  
+        } 
+        catch (\Exception $e) 
+        {
+            return redirect()->route('CheckoutOrphans')->with('error', $e->getMessage());
+        }
+  
+        Session::forget('cart');
+        return view('OrphansRelief.Success', ['datas' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+
+      }
+      
+
+  
   }
 }

@@ -360,7 +360,9 @@ Route::get('/Education/Application/Success', [App\Http\Controllers\EducationCont
 
     // Route::get('/OrphansRelief/Reject/{data}', [App\Http\Controllers\OrphansReliefController:: class, 'Reject'])->name('RejectOrphans');
 
-
+    Route::get('/OrphansRelief/Checkout/', [App\Http\Controllers\OrphansReliefController:: class, 'Checkout'])->name('CheckoutOrphans');
     Route::get('/OrphansRelief/AddToCart/{data}', [App\Http\Controllers\OrphansReliefController:: class, 'AddToCart'])->name('AddToCartOrphans');
     Route::get('/OrphansRelief/RemoveFromCart/{data}', [App\Http\Controllers\OrphansReliefController:: class, 'RemoveFromCart'])->name('RemoveFromCartOrphans');
     Route::post('/OrphansRelief/Payment/', [App\Http\Controllers\OrphansReliefController:: class, 'Payment'])->name('Payment');
+
+  

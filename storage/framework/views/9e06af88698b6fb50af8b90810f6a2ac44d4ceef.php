@@ -171,59 +171,35 @@
             <div class="product-container">
                 <div class="product-image">
                     <span class="hover-link"></span>
-                    <a href="<?php echo e(route('OrphanDetailOrphans', ['data' => $data -> id])); ?>" class="product-link">view details</a>
+                    <!-- <a href="<?php echo e(route('OrphanDetailOrphans', ['data' => $data -> id])); ?>" class="product-link">view details</a> -->
+
+                    <a href="<?php echo e(route('AddToCartOrphans', ['data' => $data -> id])); ?>" class="product-link">Sponsor Me</a>
                     <img class="img-responsive" src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)); ?>" alt="">
                 </div>
                 <div class="product-description">
                     <div class="product-label">
                         
-                        <div class="product-name">
-                            <h1><?php echo e($data -> FirstName); ?> </h1>
+                        <div class="product-name textoverflow" >
+                            <h1><?php echo e($data -> FirstName); ?> / <?php echo e(\Carbon\Carbon::parse($data -> DOB)->diff(\Carbon\Carbon::now())->format('%y Years old')); ?> </h1>
                             <!-- <p class="price">$39</p> -->
-                            <li class="list-inline-item me-3">
-                            <span class="text-danger text-uppercase">Waiting:</span>
-                            <i class="bx bx-calendar me-1"></i> <?php echo e($data -> created_at ->format("d-m-Y")); ?>
-
-                        </li>
-                            <p></p>
-                        </div>
-                    </div>
-                    <div class="product-option">
-                        <div class="product-size">
                       
-                        <a href="<?php echo e(route('AddToCartOrphans', ['data' => $data -> id])); ?>" class="btn  btn-warning  waves-effect waves-light mt-3 mb-3 me-1">
-                            <i class="bx bx-happy-beaming me-2"></i> Sponsor Me
-                          </a>
-                     
-                      <div class="row mb-3">
-                                <div class="col-md-6">
+                        <div class="row mb-3">
+                                <div class="col-md-12">
                                     <div>
-                                        <p class="text-muted"><i class="bx bx-user-circle  font-size-16 align-middle text-primary me-1"></i><?php echo e($data -> id); ?> </p>
-                                        <p class="text-muted"><i class="fas fa-baby-carriage  font-size-16 align-middle text-primary me-1"></i> <?php echo e(\Carbon\Carbon::parse($data -> DOB)->diff(\Carbon\Carbon::now())->format('%y Years old')); ?></p>
+                                    <li class="list-inline-item me-3">
+                            <span class="text-danger text-uppercase">Waiting Since:</span>
+                            <?php echo e($data -> created_at -> format("d-m-Y")); ?>
+
+                            
+                        </li>
+                                        <p class="text-muted"><i class="bx bx-user-circle  font-size-16 align-middle text-primary me-1"></i>ID: <?php echo e($data -> id); ?> </p>
+                                        <p class="text-muted text-uppercase"><i class="bx bx-home-alt  font-size-16 align-middle text-primary me-1 "></i> <?php echo e($data -> ProvinceName); ?> - Afghanistan </p>
                                         
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div>
-                                    <p class="text-muted"><i class="fas fa-baby   font-size-16 align-middle text-primary me-1"></i> <?php echo e($data -> Gender); ?> </p>
-                                        <!-- <p class="text-muted"><i class="bx bx-cog font-size-16 align-middle text-primary me-1"></i> Warranty : 1 Year</p> -->
-                                    </div>
-                                </div>
+                              
                             </div>
                         </div>
-                        <!-- <div class="product-color">
-                            <h3>Colors</h3>
-                            <ul>
-                                <li class="red"></li>
-                                <li class="blue"></li>
-                                <li class="green"></li>
-                                <li class="gray"></li>
-                                <li class="black"></li>
-                                <li class="dark-blue"></li>
-                            </ul>
-                        </div> -->
-                       
-
                     </div>
                 </div>
             </div>

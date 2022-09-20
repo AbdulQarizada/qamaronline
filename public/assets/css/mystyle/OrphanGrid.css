@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,300italic);
 
 body {
-  background-color: #f0f0f0;
   font-family: Lato, sans-serif;
 }
 
@@ -12,9 +11,17 @@ h1.page-title {
   font-weight: bold;
 }
 
+
+.textoverflow{
+  display:inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
 .product-container {
   background-color: #fff;
-  height: 400px;
+  height: 280px;
   overflow: hidden;
   position: relative;
   margin-bottom: 20px;
@@ -50,7 +57,7 @@ h1.page-title {
 
 .product-image {
   /* padding: 20px; */
-  height: 250px;
+  height: 160px;
   position: relative;
   overflow: hidden;
   transition: 1s;
