@@ -1,15 +1,15 @@
-@extends('layouts.master-without-nav')
 
-@section('title')
+
+<?php $__env->startSection('title'); ?>
    Successfull Application
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('body')
+<?php $__env->startSection('body'); ?>
 
     <body>
-    @endsection
+    <?php $__env->stopSection(); ?>
 
-    @section('content')
+    <?php $__env->startSection('content'); ?>
 
 
         <section class="my-5 pt-sm-5">
@@ -19,9 +19,9 @@
                         <div class="home-wrapper">
                             <div class="mb-5">
                                 <a href="index" class="d-block auth-logo">
-                                    <!-- <img src="{{ URL::asset('/assets/images/logo-dark@2x.png') }}" alt="" height="80"
+                                    <!-- <img src="<?php echo e(URL::asset('/assets/images/logo-dark@2x.png')); ?>" alt="" height="80"
                                         class="auth-logo-dark mx-auto">
-                                    <img src="{{ URL::asset('/assets/images/logo-dark@2x.png') }}" alt="" height="80"
+                                    <img src="<?php echo e(URL::asset('/assets/images/logo-dark@2x.png')); ?>" alt="" height="80"
                                         class="auth-logo-light mx-auto"> -->
                                 </a>
                                 <!-- <h1 class="mt-5">Qamar Foundation</h1> -->
@@ -31,18 +31,18 @@
                             <div class="row justify-content-center">
                                 <div class="col-sm-4">
                                     <div class="maintenance-img">
-                                        <img src="{{ URL::asset('/assets/images/Work_6.png') }}" alt="" class="img-fluid mx-auto d-block">
+                                        <img src="<?php echo e(URL::asset('/assets/images/Work_6.png')); ?>" alt="" class="img-fluid mx-auto d-block">
                                     </div>
                                 </div>
                             </div>
                             <h1 class="mt-5 text-success">Congratulations</h1>
-                            <p  class="font-size-24">Your payment has been revieved. we have send you an email along with password, please login to your account. now you can track your orphans.</p>
+                            <p  class="font-size-18">Your payment has been revieved. we have send you an email along with password, please login to your account. now you can track your orphans.</p>
 
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="card mt-4 maintenance-box">
                                         <div class="card-body">
-                                        <img src="{{ URL::asset('/assets/images/logo-dark@2x.png') }}" alt="" height="50"
+                                        <img src="<?php echo e(URL::asset('/assets/images/logo-dark@2x.png')); ?>" alt="" height="50"
                                         class="auth-logo-light mx-auto">
                                             <h5 class="font-size-15 text-uppercase mt-2">Haven't Heard about Qamar?</h5>
                                             <p class="text-muted mb-0">Please click on the link below to know more about Qamar Charity Foundation.</p>
@@ -53,7 +53,7 @@
                                 <div class="col-md-4">
                                     <div class="card mt-4 maintenance-box">
                                         <div class="card-body">
-                                        <img src="{{ URL::asset('/assets/images/logo-dark@2x.png') }}" alt="" height="50"
+                                        <img src="<?php echo e(URL::asset('/assets/images/logo-dark@2x.png')); ?>" alt="" height="50"
                                         class="auth-logo-light mx-auto">
                                             <h5 class="font-size-15 text-uppercase mt-2">
                                                 Login to our system?</h5>
@@ -83,4 +83,6 @@
             </div>
         </section>
 
-    @endsection
+    <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master-without-nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Qamar\QamarOnline\qamaronline\resources\views/OrphansRelief/Orphan/Success.blade.php ENDPATH**/ ?>
