@@ -511,7 +511,7 @@ class OrphansReliefController extends Controller
 
 
 
-  public function AssignSponsor(Orphan $data)
+  public function AssignedSponsor(Orphan $data)
   {
 
     $data->update([
@@ -1438,6 +1438,65 @@ class OrphansReliefController extends Controller
       get()->where("OrphanSponsor", "=", '1');
     return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors]);
   }
+
+
+  public function AssignToSponsor(Orphan $data)
+  {
+    $users =   User::all();
+    $provinces = Location::whereNull("Parent_ID")->get();
+    $sponsors = User::where("OrphanSponsor", "=", "1")->get();
+    $orphans =   Orphan::where("orphans.id", "=", $data->id)
+
+
+
+      ->join('locations as a', 'orphans.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
+      // ->join('look_ups as c','qamar_care_cards.Country_ID', '=', 'c.id')
+      // ->join('look_ups as d','qamar_care_cards.Gender_ID', '=', 'd.id')
+      // ->join('look_ups as e','qamar_care_cards.Language_ID', '=', 'e.id')
+      // ->join('look_ups as f','qamar_care_cards.CurrentJob_ID', '=', 'f.id')
+      // ->join('look_ups as g','qamar_care_cards.FutureJob_ID', '=', 'g.id')
+      // ->join('look_ups as h','qamar_care_cards.EducationLevel_ID', '=', 'h.id')
+      // ->join('look_ups as i','qamar_care_cards.RelativeRelationship_ID', '=', 'i.id')
+      // ->join('look_ups as j', 'qamar_care_cards.FamilyStatus_ID', '=', 'j.id')
+      // ->join('look_ups as k','qamar_care_cards.Tribe_ID', '=', 'k.id')
+      // ->join('look_ups as l','qamar_care_cards.IncomeStreem_ID', '=', 'l.id')
+
+
+      ->select(
+        'orphans.*',
+        'a.Name as Province',
+        'b.Name as District',
+        // 'c.Name as Country', 
+        // 'd.Name as Gender', 
+        // 'e.Name as Language', 
+        // 'f.Name as CurrentJob', 
+        // 'g.Name as FutureJob', 
+        // 'h.Name as EducationLevel', 
+        // 'i.Name as RelativeRelationship', 
+        // 'j.Name as FamilyStatus',
+        // 'k.Name as Tribe', 
+        // 'l.Name as IncomeStreem'
+      )
+
+      ->get();
+
+
+    return view('OrphansRelief.Orphan.AssignToSponsor', [ 'datas' => $orphans, 'users' => $users, 'sponsors' => $sponsors,]);
+  }
+
+
+  public function AssignSponsor(Orphan $data)
+  {
+    $data -> update([
+      // 'Assigned_By' => auth()->user()->id,
+
+      'Sponsor_ID' => request('Sponsor_ID')
+
+    ]);
+    return redirect()->route('AllOrphans')->with('success', 'Sponsor Has Been Added!');
+  }
+
 
   
 }

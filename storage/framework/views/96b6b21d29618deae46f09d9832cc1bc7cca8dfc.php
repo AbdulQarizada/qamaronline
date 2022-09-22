@@ -263,7 +263,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
 
 
                     <?php if( $data -> Status == 'Approved'): ?>
-                    <a href="<?php echo e(route('AssignToServiceQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light">
+                    <a href="<?php echo e(route('AssignToSponsorOrphan', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light">
                         <i class="bx bx-user-plus   font-size-16 align-middle"></i>
                     </a> 
                     <?php endif; ?>

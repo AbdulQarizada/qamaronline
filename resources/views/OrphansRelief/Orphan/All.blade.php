@@ -249,7 +249,7 @@
 
 
                     @if( $data -> Status == 'Approved')
-                    <a href="{{route('AssignToServiceQamarCareCard', ['data' => $data -> id])}}" class="btn btn-success waves-effect waves-light">
+                    <a href="{{route('AssignToSponsorOrphan', ['data' => $data -> id])}}" class="btn btn-success waves-effect waves-light">
                         <i class="bx bx-user-plus   font-size-16 align-middle"></i>
                     </a> 
                     @endif

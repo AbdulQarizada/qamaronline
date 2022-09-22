@@ -346,7 +346,9 @@ Route::get('/OrphansRelief/Orphan/Reject/{data}', [App\Http\Controllers\OrphansR
 
 Route::get('/OrphansRelief/Orphan/ReInitiate/{data}', [App\Http\Controllers\OrphansReliefController::class, 'ReInitiate'])->name('ReInitiateOrphans');
 
-Route::get('/OrphansRelief/Orphan/AssignSponsor/{data}', [App\Http\Controllers\OrphansReliefController::class, 'AssignSponsor'])->name('AssignSponsorOrphans');
+Route::get('/OrphansRelief/Orphan/AssignToSponsor/{data}', [App\Http\Controllers\OrphansReliefController::class, 'AssignToSponsor'])->name('AssignToSponsorOrphan');
+Route::put('/OrphansRelief/Orphan/AssignSponsor/{data}', [App\Http\Controllers\OrphansReliefController::class, 'AssignSponsor'])->name('AssignSponsorOrphan');
+
 
 
 
@@ -355,6 +357,7 @@ Route::get('/OrphansRelief/Orphan/Checkout/', [App\Http\Controllers\OrphansRelie
 Route::get('/OrphansRelief/Orphan/AddToCart/{data}', [App\Http\Controllers\OrphansReliefController::class, 'AddToCart'])->name('AddToCartOrphans');
 Route::get('/OrphansRelief/Orphan/RemoveFromCart/{data}', [App\Http\Controllers\OrphansReliefController::class, 'RemoveFromCart'])->name('RemoveFromCartOrphans');
 Route::post('/OrphansRelief/Orphan/Payment/', [App\Http\Controllers\OrphansReliefController::class, 'Payment'])->name('PaymentOrphan');
+
 
 // sponsors
 Route::get('/OrphansRelief/Sponsor/All', [App\Http\Controllers\OrphansReliefController::class, 'AllSponsor'])->name('AllSponsor');
