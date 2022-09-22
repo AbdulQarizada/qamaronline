@@ -34,34 +34,6 @@
       
         </div>
      </div>
-     <div class="row">
-        <div class="col-3">
-        <select class="form-select  form-select-lg mb-3 @error('Country') is-invalid @enderror"  onchange="window.location.href=this.value;" 
->
-                                   <option value="{{route('AllOrphans')}}">Please Filter Your Choices</option>
-
-                                    <option value="{{route('AllOrphans')}}">All</option>
-                                    <option value="{{route('PendingOrphans')}}">Pending</option>
-                                    <option value="{{route('ApprovedOrphans')}}">Approved</option>
-                                    <option value="{{route('ActiveOrphans')}}">Active</option>
-                                    <option value="{{route('InActiveOrphans')}}">InActive</option>
-                                    <option value="{{route('RejectedOrphans')}}">Rejected</option>
-
-
-
-                                 
-
-                                    </select>
-        </div>
-        <div class="col-9 ">
-        <!-- <i class="bx bx-plus-circle  font-size-24 label-icon"></i> btn-label -->
-          <div class="button">
-           <a href="{{route('AllGridOrphans')}}" class="btn  btn-lg waves-effect  waves-light mb-3 m-1 float-end"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a>
-           <a href="{{route('CreateOrphans')}}" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 m-1 float-end">ADD ORPHAN</a>
-           </div>
-       
-        </div>
-     </div>
     <div class="row">
         <div class="col-12">
             
@@ -96,9 +68,9 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Full Name</th>
-                                <th>Address</th>
-                                <th>Phone Numbers</th>
-                                <th>Family Status</th>
+                                <th>Charge ID</th>
+                                <th>Payment </h>
+                                <th>Email</th>
                                 <th>Status</th>
                                 <th>Created By</th>
                                 <th>Actions</th>
@@ -117,57 +89,21 @@
                                 </td>
                                 <td>
                                 <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> ProvinceName}}</a></h5>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> ChargeID}}</a></h5>
                                     <p class="text-muted mb-0">{{$data -> DistrictName}}</p> 
                                
                                     </div>
                                 </td>
                                 <td>    
                                       <div>
-                                      <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$data -> PrimaryNumber}}</a></h5>
-                                        <p class="text-muted mb-0 badge badge-soft-warning">{{$data -> SecondaryNumber}}</p>
-                                         <p class="text-muted mb-0 badge badge-soft-danger">{{$data -> RelativeNumber}}</p>
+                                      <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$data -> PaymentAmount}}</a></h5>
+                                        <p class="text-muted mb-0 badge badge-soft-warning">{{$data -> PaymentOption}}</p>
                                         </div>
                                </td> 
                                <td>
                                 <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> FamilyStatus}}</a></h5>
-                                       @if( $data -> LevelPoverty == 1)
-                                         <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-secondary font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-
-                                       @endif
-                                       @if( $data -> LevelPoverty == 2)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $data -> LevelPoverty == 3)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-warning font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $data -> LevelPoverty == 4)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-warning font-size-16"></i>
-                                         <i class="bx bxs-star text-warning font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $data -> LevelPoverty == 5)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-warning font-size-16"></i>
-                                         <i class="bx bxs-star text-warning font-size-18"></i>
-                                         <i class="bx bxs-star text-warning font-size-20"></i>
-                                       @endif
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> Email}}</a></h5>
+                                     
                                     </div>
                                 </td>
                               
@@ -175,63 +111,20 @@
                                 <div>
 
 
-                                @if($data -> Status == 'Pending')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary">{{$data -> Status}}</a></h5>
-                                    <p class="text-muted mb-0">{{$data -> created_at -> format("d-m-Y")}}</p> 
 
-                                 @endif
+                        
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Successed</a></h5>
 
-                                @if($data -> Status == 'Approved')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">{{$data -> Status}} </a></h5>
-                                    <p class="text-muted mb-0">{{$data -> created_at -> format("d-m-Y")}}</p> 
-
-                                 @endif
-
-                                 @if($data -> Status == 'Rejected')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">{{$data -> Status}} </a></h5>
-                                    <p class="text-muted mb-0">{{$data -> created_at -> format("d-m-Y")}}</p> 
-
-                                 @endif
-
-
-
-                                 @if($data -> Status == 'ReInitiated')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info">{{$data -> Status}}</a></h5>
-                                    <p class="text-muted mb-0">{{$data -> created_at -> format("d-m-Y")}}</p> 
-
-                                 @endif
-
-                                 @if($data -> Status == 'Released')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">{{$data -> Status}}</a></h5>
-                                    <p class="text-muted mb-0">{{$data -> created_at -> format("d-m-Y")}}</p> 
-
-                                 @endif
-
-                                 @if($data -> Status == 'Printed')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark">{{$data -> Status}}</a></h5>
-                                    <p class="text-muted mb-0">{{$data -> created_at -> format("d-m-Y")}}</p> 
-
-                                 @endif
+                         
 
                                     </div>
                                 </td>
                                 <td>
-                                @if( $data -> Created_By !="")
 
                                 <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data ->  UFirstName }} {{$data ->  ULastName }}</a></h5>
-                                    <p class="text-muted mb-0">{{$data ->  UJob }}</p> 
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> created_at -> format("d-m-Y") }}</a></h5>
                                
                                 </div>
-                                @endif
-                                @if( $data -> Created_By =="")
-
-                                   <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
-                                    <p class="text-muted mb-0">Requested</p> 
-
-                                  </div>
-                                @endif
                                 </td>
                     <td>
                        <div class="d-flex flex-wrap gap-2">

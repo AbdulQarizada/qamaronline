@@ -34,41 +34,6 @@
       
         </div>
      </div>
-     <div class="row">
-        <div class="col-3">
-        <select class="form-select  form-select-lg mb-3 <?php $__errorArgs = ['Country'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;" 
->
-                                   <option value="<?php echo e(route('AllOrphans')); ?>">Please Filter Your Choices</option>
-
-                                    <option value="<?php echo e(route('AllOrphans')); ?>">All</option>
-                                    <option value="<?php echo e(route('PendingOrphans')); ?>">Pending</option>
-                                    <option value="<?php echo e(route('ApprovedOrphans')); ?>">Approved</option>
-                                    <option value="<?php echo e(route('ActiveOrphans')); ?>">Active</option>
-                                    <option value="<?php echo e(route('InActiveOrphans')); ?>">InActive</option>
-                                    <option value="<?php echo e(route('RejectedOrphans')); ?>">Rejected</option>
-
-
-
-                                 
-
-                                    </select>
-        </div>
-        <div class="col-9 ">
-        <!-- <i class="bx bx-plus-circle  font-size-24 label-icon"></i> btn-label -->
-          <div class="button">
-           <a href="<?php echo e(route('AllGridOrphans')); ?>" class="btn  btn-lg waves-effect  waves-light mb-3 m-1 float-end"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a>
-           <a href="<?php echo e(route('CreateOrphans')); ?>" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 m-1 float-end">ADD ORPHAN</a>
-           </div>
-       
-        </div>
-     </div>
     <div class="row">
         <div class="col-12">
             
@@ -110,9 +75,9 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                             <tr>
                                 <th>ID</th>
                                 <th>Full Name</th>
-                                <th>Address</th>
-                                <th>Phone Numbers</th>
-                                <th>Family Status</th>
+                                <th>Charge ID</th>
+                                <th>Payment </h>
+                                <th>Email</th>
                                 <th>Status</th>
                                 <th>Created By</th>
                                 <th>Actions</th>
@@ -131,57 +96,21 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                 </td>
                                 <td>
                                 <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> ProvinceName); ?></a></h5>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> ChargeID); ?></a></h5>
                                     <p class="text-muted mb-0"><?php echo e($data -> DistrictName); ?></p> 
                                
                                     </div>
                                 </td>
                                 <td>    
                                       <div>
-                                      <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($data -> PrimaryNumber); ?></a></h5>
-                                        <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($data -> SecondaryNumber); ?></p>
-                                         <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($data -> RelativeNumber); ?></p>
+                                      <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($data -> PaymentAmount); ?></a></h5>
+                                        <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($data -> PaymentOption); ?></p>
                                         </div>
                                </td> 
                                <td>
                                 <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> FamilyStatus); ?></a></h5>
-                                       <?php if( $data -> LevelPoverty == 1): ?>
-                                         <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-secondary font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-
-                                       <?php endif; ?>
-                                       <?php if( $data -> LevelPoverty == 2): ?>
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       <?php endif; ?>
-                                       <?php if( $data -> LevelPoverty == 3): ?>
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-warning font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       <?php endif; ?>
-                                       <?php if( $data -> LevelPoverty == 4): ?>
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-warning font-size-16"></i>
-                                         <i class="bx bxs-star text-warning font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       <?php endif; ?>
-                                       <?php if( $data -> LevelPoverty == 5): ?>
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-warning font-size-16"></i>
-                                         <i class="bx bxs-star text-warning font-size-18"></i>
-                                         <i class="bx bxs-star text-warning font-size-20"></i>
-                                       <?php endif; ?>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> Email); ?></a></h5>
+                                     
                                     </div>
                                 </td>
                               
@@ -189,63 +118,20 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                 <div>
 
 
-                                <?php if($data -> Status == 'Pending'): ?>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary"><?php echo e($data -> Status); ?></a></h5>
-                                    <p class="text-muted mb-0"><?php echo e($data -> created_at -> format("d-m-Y")); ?></p> 
 
-                                 <?php endif; ?>
+                        
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Successed</a></h5>
 
-                                <?php if($data -> Status == 'Approved'): ?>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success"><?php echo e($data -> Status); ?> </a></h5>
-                                    <p class="text-muted mb-0"><?php echo e($data -> created_at -> format("d-m-Y")); ?></p> 
-
-                                 <?php endif; ?>
-
-                                 <?php if($data -> Status == 'Rejected'): ?>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger"><?php echo e($data -> Status); ?> </a></h5>
-                                    <p class="text-muted mb-0"><?php echo e($data -> created_at -> format("d-m-Y")); ?></p> 
-
-                                 <?php endif; ?>
-
-
-
-                                 <?php if($data -> Status == 'ReInitiated'): ?>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info"><?php echo e($data -> Status); ?></a></h5>
-                                    <p class="text-muted mb-0"><?php echo e($data -> created_at -> format("d-m-Y")); ?></p> 
-
-                                 <?php endif; ?>
-
-                                 <?php if($data -> Status == 'Released'): ?>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success"><?php echo e($data -> Status); ?></a></h5>
-                                    <p class="text-muted mb-0"><?php echo e($data -> created_at -> format("d-m-Y")); ?></p> 
-
-                                 <?php endif; ?>
-
-                                 <?php if($data -> Status == 'Printed'): ?>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark"><?php echo e($data -> Status); ?></a></h5>
-                                    <p class="text-muted mb-0"><?php echo e($data -> created_at -> format("d-m-Y")); ?></p> 
-
-                                 <?php endif; ?>
+                         
 
                                     </div>
                                 </td>
                                 <td>
-                                <?php if( $data -> Created_By !=""): ?>
 
                                 <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data ->  UFirstName); ?> <?php echo e($data ->  ULastName); ?></a></h5>
-                                    <p class="text-muted mb-0"><?php echo e($data ->  UJob); ?></p> 
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> created_at -> format("d-m-Y")); ?></a></h5>
                                
                                 </div>
-                                <?php endif; ?>
-                                <?php if( $data -> Created_By ==""): ?>
-
-                                   <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
-                                    <p class="text-muted mb-0">Requested</p> 
-
-                                  </div>
-                                <?php endif; ?>
                                 </td>
                     <td>
                        <div class="d-flex flex-wrap gap-2">

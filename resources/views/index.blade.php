@@ -1,4 +1,4 @@
-@extends('layouts.master-layouts')
+@extends(Auth::user()->IsEmployee == 1 ? 'layouts.master-layouts' : 'layouts.master')
 
 @section('title') @lang('translation.Dashboards') @endsection
 @section('css')
@@ -12,6 +12,8 @@
 @slot('title') Dashboard @endslot
 @endcomponent
 
+
+@if(Auth::user()->IsEmployee == 1)
 <div class="row">
     <div class="col-xl-4">
         <div class="card overflow-hidden">
@@ -40,8 +42,8 @@
 
                             <div class="row">
                                 <div class="col-8">
-                                    <h5 class="font-size-15 text-truncate">{{ Str::ucfirst(Auth::user()->name) }}</h5>
-                                    <p class="text-muted mb-0 text-truncate">{{ Str::ucfirst(Auth::user()->name) }}</p>
+                                    <h5 class="font-size-15 text-truncate">{{ Str::ucfirst(Auth::user()->FullName) }}</h5>
+                                    <!-- <p class="text-muted mb-0 text-truncate">{{ Str::ucfirst(Auth::user()->name) }}</p> -->
                                 </div>
 
                             </div>
@@ -186,38 +188,20 @@
             </div>
         </div>
         <!-- end row -->
-
-        <!-- <div class="card">
-            <div class="card-body">
-                <div class="d-sm-flex flex-wrap">
-                    <h4 class="card-title mb-4">Email Sent</h4>
-                    <div class="ms-auto">
-                        <ul class="nav nav-pills">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Week</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Month</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">Year</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div id="stacked-column-chart" class="apex-charts" dir="ltr"></div>
-            </div>
-        </div> -->
     </div>
 </div>
 <!-- end row -->
 <br />
 <br />
 <div class="row">
+    @if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsAidAndRelief == 1 || Auth::user()->IsWash == 1 || Auth::user()->IsEducation == 1 || Auth::user()->IsInitiative == 1|| Auth::user()->IsMedicalSector == 1)
+
     <h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">Projects</h1>
+    @endif
+
     <div class="col-xl-12">
         <div class="row">
+            @if(Auth::user()->IsOrphanRelief == 1)
             <div class="col-md-4 mb-2">
                 <a href="{{route('IndexOrphansRelief')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
@@ -246,6 +230,8 @@
                     </div>
                 </a>
             </div>
+            @endif
+            @if(Auth::user()->IsAidAndRelief == 1)
             <div class="col-md-4 mb-2">
                 <a href="AidAndRelief">
                     <div class="card-one  mini-stats-wid border border-secondary">
@@ -274,6 +260,8 @@
                     </div>
                 </a>
             </div>
+            @endif
+            @if(Auth::user()->IsWash == 1)
             <div class="col-md-4 mb-2">
                 <a href="Wash">
                     <div class="card-one  mini-stats-wid border border-secondary">
@@ -302,14 +290,14 @@
                     </div>
                 </a>
             </div>
-
-
+            @endif
         </div>
         <!-- end row -->
 
         <div class="row">
             <div class="col-xl-12">
                 <div class="row">
+                    @if(Auth::user()->IsEducation == 1)
                     <div class="col-md-4 mb-2">
                         <a href="{{route('IndexEducation')}}">
                             <div class="card-one  mini-stats-wid border border-secondary">
@@ -338,6 +326,9 @@
                             </div>
                         </a>
                     </div>
+                    @endif
+
+                    @if(Auth::user()->IsInitiative == 1)
                     <div class="col-md-4 mb-2">
                         <a href="Initiative">
                             <div class="card-one  mini-stats-wid border border-secondary">
@@ -366,6 +357,9 @@
                             </div>
                         </a>
                     </div>
+                    @endif
+
+                    @if(Auth::user()->IsMedicalSector == 1)
                     <div class="col-md-4 mb-2">
                         <a href="MedicalSector">
                             <div class="card-one  mini-stats-wid border border-secondary">
@@ -394,6 +388,8 @@
                             </div>
                         </a>
                     </div>
+                    @endif
+
 
 
                 </div>
@@ -403,9 +399,13 @@
                 <br />
 
                 <div class="row ">
+                    @if(Auth::user()->IsFoodAppeal == 1 || Auth::user()->IsQamarCareCard == 1 || Auth::user()->IsAppealsDistributions == 1 || Auth::user()->IsDonorsAndDonorBoxes == 1)
                     <h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">Benef. Services</h1>
+                    @endif
+
                     <div class="col-xl-12">
                         <div class="row">
+                            @if(Auth::user()->IsFoodAppeal == 1)
                             <div class="col-md-4 mb-2">
                                 <a href="FoodAppeal">
                                     <div class="card-one  mini-stats-wid border border-secondary">
@@ -434,6 +434,9 @@
                                     </div>
                                 </a>
                             </div>
+                            @endif
+                            @if(Auth::user()->IsQamarCareCard == 1)
+
                             <div class="col-md-4 mb-2">
                                 <a href="{{route('IndexQamarCareCard')}}">
                                     <div class="card-one  mini-stats-wid border border-secondary">
@@ -462,6 +465,9 @@
                                     </div>
                                 </a>
                             </div>
+                            @endif
+                            @if(Auth::user()->IsAppealsDistributions == 1)
+
                             <div class="col-md-4">
                                 <a href="AppealsDistributions">
                                     <div class="card-one  mini-stats-wid border border-secondary">
@@ -490,7 +496,7 @@
                                     </div>
                                 </a>
                             </div>
-
+                            @endif
 
                         </div>
                         <!-- end row -->
@@ -499,6 +505,8 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="row">
+                                    @if(Auth::user()->IsDonorsAndDonorBoxes == 1)
+
                                     <div class="col-md-4 mb-2">
                                         <a href="Donors&DonorBoxes">
                                             <div class="card-one  mini-stats-wid border border-secondary">
@@ -527,60 +535,8 @@
                                             </div>
                                         </a>
                                     </div>
-                                    <!-- <div class="col-md-4">
-            <div class="card mini-stats-wid border border-secondary">
-                <div class="card-body">
-                  <blockquote class="blockquote  font-size-14 mb-0">
-                    <div class="d-flex">
-                        <div class="flex-grow-1">
-                            <p class="my-0 text-dark card-title fw-semibold">Quartly Reports</p>
-                            <h6 class="text-muted mb-0">Quartly Reports</h4>
-                        </div>
 
-                        <div class="flex-shrink-0 align-self-center">
-                            <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                <span class="avatar-title bg-dark">
-                                    <i class="bx bx-briefcase-alt-2 font-size-24"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                   
-                    <div class="d-flex mt-4">
-                         <a href="QuartlyReports" class="btn btn-primary btn-lg">Enter</a>
-                    </div>
-                    </blockquote>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card mini-stats-wid border border-secondary">
-                <div class="card-body">
-                  <blockquote class="blockquote  font-size-14 mb-0">
-                    <div class="d-flex">
-                        <div class="flex-grow-1">
-                            <p class="my-0 text-dark card-title fw-semibold">Yearly Reports</p>
-                            <h6 class="text-muted mb-0">Yearly Reports</h4>
-                        </div>
-
-                        <div class="flex-shrink-0 align-self-center">
-                            <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                <span class="avatar-title bg-dark">
-                                    <i class="bx bx-gas-pump font-size-24"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                   
-                    <div class="d-flex mt-4">
-                         <a href="YearlyReports" class="btn btn-primary btn-lg">Enter</a>
-                    </div>
-                    </blockquote>
-                </div>
-            </div>
-        </div> -->
-
-
+                                    @endif
                                 </div>
                                 <!-- end row -->
 
@@ -589,7 +545,11 @@
                                 <br />
 
                                 <div class="row">
+                                    @if(Auth::user()->IsSuperAdmin == 1)
+
                                     <h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">System Management</h1>
+                                    @endif
+
                                     <div class="col-lg-6">
                                         <!-- center modal -->
 
@@ -604,7 +564,7 @@
 
 
                                                         <form class="needs-validation" action="{{route('CreateLookups')}}" method="POST" enctype="multipart/form-data" novalidate>
-                                                        @csrf
+                                                            @csrf
                                                             <div class="row">
                                                                 <div class="col-md-12">
                                                                     <div class="mb-3 position-relative">
@@ -614,9 +574,9 @@
                                                                             <select class="form-select  form-select-lg @error('Parent_Name') is-invalid @enderror" value="{{ old('Parent_Name') }}" required id="Parent_Name" name="Parent_Name">
                                                                                 <!-- <option value="None">Main Catagory</option> -->
 
-                                                                                 @foreach($catagorys as $catagory)
-                                                                                 <option value="{{ $catagory -> Name}}">{{ $catagory -> Name}}</option>
-                                                                                 @endforeach
+                                                                                @foreach($catagorys as $catagory)
+                                                                                <option value="{{ $catagory -> Name}}">{{ $catagory -> Name}}</option>
+                                                                                @endforeach
                                                                             </select>
                                                                             @error('Parent_Name')
                                                                             <span class="invalid-feedback" role="alert">
@@ -651,7 +611,8 @@
                                     </div>
                                     <div class="col-xl-12">
                                         <div class="row">
-                                        <div class="col-md-4 mb-2">
+                                            @if(Auth::user()->IsSuperAdmin == 1)
+                                            <div class="col-md-4 mb-2">
                                                 <a href="QuartlyReports">
                                                     <div class="card-one  mini-stats-wid border border-secondary">
                                                         <div class="card-body">
@@ -679,6 +640,8 @@
                                                     </div>
                                                 </a>
                                             </div>
+                                            @endif
+                                            @if(Auth::user()->IsSuperAdmin == 1)
                                             <div class="col-md-4 mb-2">
                                                 <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">
                                                     <div class="card-one  mini-stats-wid border border-secondary">
@@ -707,82 +670,195 @@
                                                     </div>
                                                 </a>
                                             </div>
-                            
-                                            <!--
-                                            <div class="col-md-4 mb-2">
-                                                <a href="YearlyReports">
-                                                    <div class="card-one  mini-stats-wid border border-secondary">
-                                                        <div class="card-body">
-                                                            <blockquote class="blockquote  font-size-14 mb-0">
-                                                                <div class="d-flex">
-                                                                    <div class="flex-grow-1">
-                                                                        <p class="my-0 text-primary card-title fw-semibold">Yearly Reports</p>
-                                                                        <h6 class="text-muted mb-0">Yearly Reports</h4>
-                                                                    </div>
-
-                                                                    <div class="flex-shrink-0 align-self-center">
-                                                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                                                            <span class="avatar-title bg-dark">
-                                                                                <i class="bx bxs-report  font-size-24"></i>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="d-flex mt-4">
-
-                                                                </div>
-                                                            </blockquote>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div> -->
+                                            @endif
 
 
                                         </div>
                                         <!-- end row -->
 
 
+                                        @else
+                                        <div class="row">
+                                            <div class="col-xl-4">
+                                                <div class="card overflow-hidden">
+                                                    <div class="bg-primary bg-soft">
+                                                        <div class="row">
+                                                            <div class="col-7">
+                                                                <div class="text-primary p-3">
+                                                                    <h5 class="text-dark">Welcome Back !</h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-5 align-self-end">
+                                                                <img src="{{ URL::asset('/assets/images/profile-img.png') }}" alt="" class="img-fluid">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body pt-0">
+                                                        <div class="row">
+                                                            <div class="col-sm-4">
+                                                                <div class="avatar-md profile-user-wid mb-4">
+                                                                    <img src="{{ isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-1.jpg') }}" alt="" class="img-thumbnail rounded-circle">
+                                                                </div>
+                                                            </div>
 
-                                        <!-- subscribeModal -->
-                                        <!-- <div class="modal fade" id="subscribeModal" tabindex="-1" aria-labelledby="subscribeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header border-bottom-0">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="text-center mb-4">
-                    <div class="avatar-md mx-auto mb-4">
-                        <div class="avatar-title bg-light rounded-circle text-primary h1">
-                            <i class="mdi mdi-email-open"></i>
-                        </div>
-                    </div>
+                                                            <div class="col-sm-8">
+                                                                <div class="pt-4">
 
-                    <div class="row justify-content-center">
-                        <div class="col-xl-10">
-                            <h4 class="text-primary">Subscribe !</h4>
-                            <p class="text-muted font-size-14 mb-4">Subscribe our newletter and get notification to stay
-                                update.</p>
+                                                                    <div class="row">
+                                                                        <div class="col-8">
+                                                                            <h5 class="font-size-15 text-truncate">{{ Str::ucfirst(Auth::user()->FullName) }}</h5>
+                                                                            <!-- <p class="text-muted mb-0 text-truncate">{{ Str::ucfirst(Auth::user()->name) }}</p> -->
+                                                                        </div>
 
-                            <div class="input-group bg-light rounded">
-                                <input type="email" class="form-control bg-transparent border-0" placeholder="Enter Email address" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                                                    </div>
+                                                                    <div class="mt-4">
+                                                                        <a href="" class="btn btn-primary waves-effect waves-light btn-sm">View Profile <i class="mdi mdi-arrow-right ms-1"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-8">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <div class="card mini-stats-wid">
+                                                            <div class="card-body">
+                                                                <div class="d-flex">
+                                                                    <div class="flex-grow-1">
+                                                                        <p class="text-muted fw-medium">Date</p>
+                                                                        <h4 class="mb-0">
+                                                                            <script>
+                                                                                document.write(new Date().getFullYear())
+                                                                            </script>
+                                                                        </h4>
+                                                                    </div>
 
-                                <button class="btn btn-primary" type="button" id="button-addon2">
-                                    <i class="bx bxs-paper-plane"></i>
-                                </button>
+                                                                    <div class="flex-shrink-0 align-self-center">
+                                                                        <div class="mini-stat-icon avatar-sm rounded-circle bg-dark">
+                                                                            <span class="avatar-title bg-dark">
+                                                                                1
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="card mini-stats-wid">
+                                                            <div class="card-body">
+                                                                <div class="d-flex">
+                                                                    <div class="flex-grow-1">
+                                                                        <p class="text-muted fw-medium">Last Login</p>
+                                                                        <h4 class="mb-0">
+                                                                            <script>
+                                                                                document.write(new Date().getFullYear())
+                                                                            </script>
+                                                                        </h4>
+                                                                    </div>
 
-                            </div>
+                                                                    <div class="flex-shrink-0 align-self-center ">
+                                                                        <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+                                                                            <span class="avatar-title rounded-circle bg-dark">
+                                                                                2
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="card mini-stats-wid">
+                                                            <div class="card-body">
+                                                                <div class="d-flex">
+                                                                    <div class="flex-grow-1">
+                                                                        <p class="text-muted fw-medium">Average Price</p>
+                                                                        <h4 class="mb-0">$16.2</h4>
+                                                                    </div>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-                                        <!-- end modal -->
+                                                                    <div class="flex-shrink-0 align-self-center">
+                                                                        <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+                                                                            <span class="avatar-title rounded-circle bg-dark">
+                                                                                3
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="card mini-stats-wid">
+                                                            <div class="card-body">
+                                                                <div class="d-flex">
+                                                                    <div class="flex-grow-1">
+                                                                        <p class="text-muted fw-medium">Average Price</p>
+                                                                        <h4 class="mb-0">$16.2</h4>
+                                                                    </div>
 
+                                                                    <div class="flex-shrink-0 align-self-center">
+                                                                        <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+                                                                            <span class="avatar-title rounded-circle bg-dark">
+                                                                                4
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="card mini-stats-wid">
+                                                            <div class="card-body">
+                                                                <div class="d-flex">
+                                                                    <div class="flex-grow-1">
+                                                                        <p class="text-muted fw-medium">Average Price</p>
+                                                                        <h4 class="mb-0">$16.2</h4>
+                                                                    </div>
+
+                                                                    <div class="flex-shrink-0 align-self-center">
+                                                                        <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+                                                                            <span class="avatar-title rounded-circle bg-dark">
+                                                                                5
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="card mini-stats-wid">
+                                                            <div class="card-body">
+                                                                <div class="d-flex">
+                                                                    <div class="flex-grow-1">
+                                                                        <p class="text-muted fw-medium">Average Price</p>
+                                                                        <h4 class="mb-0">$16.2</h4>
+                                                                    </div>
+
+                                                                    <div class="flex-shrink-0 align-self-center">
+                                                                        <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
+                                                                            <span class="avatar-title rounded-circle bg-dark">
+                                                                                6
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end row -->
+                                            </div>
+                                        </div>
+                                        <!-- end row -->
+                                        <br />
+                                        <br />
+
+                                        @endif
                                         @endsection
                                         @section('script')
                                         <!-- apexcharts -->
