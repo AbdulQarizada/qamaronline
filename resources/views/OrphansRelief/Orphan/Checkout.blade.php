@@ -5,19 +5,19 @@
 @section('css')
 
 <link href="{{ URL::asset('/assets/css/mystyle/Payment.css') }}" rel="stylesheet" type="text/css" />
-
+<link href="{{ URL::asset('/assets/css/mystyle/tab.css') }}" rel="stylesheet" type="text/css" />
 <style type="text/css">
-#loader {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  background: rgba(0,0,0,0.75) url("{{URL::asset('/assets/images/loading.gif')}}") no-repeat center center;
-  z-index: 10000;
-}
+    #loader {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.75) url("{{URL::asset('/assets/images/loading.gif')}}") no-repeat center center;
+        z-index: 10000;
+    }
 </style>
 @endsection
 
@@ -143,22 +143,113 @@
     @csrf
     <div class="row justify-content-center">
         <div class="col-lg-12">
-            <div class="card ">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="display-6 fw-semibold text-success text-uppercase"> Payment Options</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="container">
+                        <div class="top-text-wrapper text-center">
+                            <!-- <h4>Please Select your option</h4> -->
+                        </div>
+                        <div class="grid-wrapper grid-col-auto">
+                            <label for="Montly" class="radio-card">
+                                <input type="radio" name="radio-card" id="Montly" />
+                                <div class="card-content-wrapper">
+                                    <span class="check-icon"></span>
+                                    <div class="card-content">
+                                        <img src="{{ URL::asset('/assets/images/checkout/give.jpg') }}" alt="" />
+
+                                        <input id="MontlyPaymentOption" type="radio" name="PaymentOption" value="Montly" hidden>
+                                        <input id="MontlyPaymentAmount" type="radio" name="PaymentAmount" value="{{ $totalPriceMontly =  count($datas) * 40}}" hidden>
+
+                                        <p class="fw-semibold display-6">${{ $totalPriceMontly =  count($datas) * 40}}</p>
+                                        <p class="font-size-24 fw-semibold text-success text-uppercase">Pay Montly</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <!-- /.radio-card -->
+
+                            <label for="Yearly" class="radio-card">
+                                <input type="radio" name="radio-card" id="Yearly" />
+                                <div class="card-content-wrapper">
+                                    <span class="check-icon"></span>
+                                    <div class="card-content">
+                                        <img src="{{ URL::asset('/assets/images/checkout/give.jpg') }}" alt="" />
+                                        <input id="YearlyPaymentOption" type="radio" name="PaymentOption" value="Yearly" hidden>
+                                        <input id="YearlyPaymentAmount" type="radio" name="PaymentAmount" value="{{ $totalPriceYearly = count($datas) * 40 * 12}}" hidden>
+
+                                        <p class="fw-semibold display-6">${{ $totalPriceYearly = count($datas) * 40 * 12}}</p>
+                                        <p class="font-size-24 fw-semibold text-success text-uppercase">Pay Yearly</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <!-- /.radio-card -->
+                        </div>
+                        <!-- /.grid-wrapper -->
+                    </div>
+                </div>
+            </div>
+            <div class="card " id="PaymentPart">
+               <div class="card-header">
+                </div>
 
                 <div class="card-body">
-                   <div class="row">
+                    <!-- <div class="row">
                         <div class="col-md-12 text-center">
-                          <p class="display-6 fw-semibold text-success text-uppercase"> Payment Options</p>
-                          <hr/>
-                            </div>
+                            <p class="display-6 fw-semibold text-success text-uppercase"> Payment Options</p>
+                            <hr />
+                        </div>
                     </div>
-                    <div class="row justify-content-center text-center">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="container">
+                                <div class="top-text-wrapper text-center">
+                                </div>
+                                <div class="grid-wrapper grid-col-auto">
+                                    <label for="Montly" class="radio-card">
+                                        <input type="radio" name="radio-card" id="Montly" />
+                                        <div class="card-content-wrapper">
+                                            <span class="check-icon"></span>
+                                            <div class="card-content">
+                                                <img src="{{ URL::asset('/assets/images/checkout/give.jpg') }}" alt="" />
+
+                                                <input id="MontlyPaymentOption" type="radio" name="PaymentOption" value="Montly" hidden>
+                                                <input id="MontlyPaymentAmount" type="radio" name="PaymentAmount" value="{{ $totalPriceMontly =  count($datas) * 40}}" hidden>
+
+                                                <p class="fw-semibold display-6">${{ $totalPriceMontly =  count($datas) * 40}}</p>
+                                                <p class="font-size-24 fw-semibold text-success text-uppercase">Pay Montly</p>
+                                            </div>
+                                        </div>
+                                    </label>
+
+                                    <label for="Yearly" class="radio-card">
+                                        <input type="radio" name="radio-card" id="Yearly" />
+                                        <div class="card-content-wrapper">
+                                            <span class="check-icon"></span>
+                                            <div class="card-content">
+                                                <img src="{{ URL::asset('/assets/images/checkout/give.jpg') }}" alt="" />
+                                                <input id="YearlyPaymentOption" type="radio" name="PaymentOption" value="Yearly" hidden>
+                                                <input id="YearlyPaymentAmount" type="radio" name="PaymentAmount" value="{{ $totalPriceYearly = count($datas) * 40 * 12}}" hidden>
+
+                                                <p class="fw-semibold display-6">${{ $totalPriceYearly = count($datas) * 40 * 12}}</p>
+                                                <p class="font-size-24 fw-semibold text-success text-uppercase">Pay Yearly</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="row justify-content-center text-center">
                         <div class="col-md-6">
                             <div class="mb-3 position-relative">
                                 <label for="card" class="method card" id="Montly">
                                     <div class="radio-input">
-                                        <input id="MontlyPaymentOption" type="radio" name="PaymentOption" value="Montly" hidden >
-                                        <input id="MontlyPaymentAmount" type="radio" name="PaymentAmount" value="{{ $totalPriceMontly =  count($datas) * 40}}" hidden >
+                                        <input id="MontlyPaymentOption" type="radio" name="PaymentOption" value="Montly" hidden>
+                                        <input id="MontlyPaymentAmount" type="radio" name="PaymentAmount" value="{{ $totalPriceMontly =  count($datas) * 40}}" hidden>
 
                                         <p class="fw-semibold display-6">${{ $totalPriceMontly =  count($datas) * 40}}</p>
                                         <p class="font-size-24 fw-semibold text-success text-uppercase">Pay Montly</p>
@@ -174,14 +265,15 @@
                                         <input id="YearlyPaymentOption" type="radio" name="PaymentOption" value="Yearly" hidden>
                                         <input id="YearlyPaymentAmount" type="radio" name="PaymentAmount" value="{{ $totalPriceYearly = count($datas) * 40 * 12}}" hidden>
 
-                                        <p class="fw-semibold display-6">${{ $totalPriceYearly = count($datas) * 40 * 12}}</p><p class="font-size-24 fw-semibold text-success text-uppercase">Pay Yearly</p>
+                                        <p class="fw-semibold display-6">${{ $totalPriceYearly = count($datas) * 40 * 12}}</p>
+                                        <p class="font-size-24 fw-semibold text-success text-uppercase">Pay Yearly</p>
 
                                     </div>
                                 </label>
                             </div>
                         </div>
-                    </div>
-                    <div class="row" id="PaymentPart">
+                    </div> -->
+                    <div class="row" >
                         <div class="col-md-12">
                             <div id="charge-error" class="alert alert-danger {{ !Session::has('error') ? 'd-none' : ''  }}">
                                 {{ Session::get('error') }}
@@ -228,7 +320,7 @@
                                 <div class="col-md-2">
                                     <div class="mb-3 position-relative">
                                         <label for="ValidMonth" class="label">Valid Month </i></label>
-                                        <input type="text" class="form-control form-control-lg @error('ValidMonth') is-invalid @enderror" value="{{ old('ValidMonth') }}" id="ValidMonth" name="ValidMonth" placeholder="MM"  maxlength="2"  required>
+                                        <input type="text" class="form-control form-control-lg @error('ValidMonth') is-invalid @enderror" value="{{ old('ValidMonth') }}" id="ValidMonth" name="ValidMonth" placeholder="MM" maxlength="2" required>
 
                                         @error('ValidMonth')
                                         <span class="invalid-feedback" role="alert">
@@ -284,6 +376,10 @@
 
                         </div> -->
                     </div>
+                </div>
+                <div class="card-footer">
+                    <p class="text-success font-size-18 fw-semibold text-success">We are secured and powered by <i class="fab fa-cc-stripe "></i></p>
+                    
                 </div>
             </div>
             <!-- end card -->
@@ -343,15 +439,14 @@
     }
 
 
-    $(document).ready(function()
-{
-    $('#PaymentPart').hide();
-    $("#MontlyPaymentOption").prop("checked", false);
-    $("#MontlyPaymentAmount").prop("checked", false);
-    $("#YearlyPaymentOption").prop("checked", false);
-    $("#YearlyPaymentAmount").prop("checked", false);
+    $(document).ready(function() {
+        $('#PaymentPart').hide();
+        $("#MontlyPaymentOption").prop("checked", false);
+        $("#MontlyPaymentAmount").prop("checked", false);
+        $("#YearlyPaymentOption").prop("checked", false);
+        $("#YearlyPaymentAmount").prop("checked", false);
 
-});
+    });
 
     $('#Montly').click(function() {
         $('#PaymentPart').show();
@@ -361,7 +456,7 @@
         $("#YearlyPaymentOption").prop("checked", false);
         $("#YearlyPaymentAmount").prop("checked", false);
 
-        
+
 
 
     });
@@ -379,25 +474,25 @@
     $('#submit').click(function() {
         $("body").attr("disabled", true);
     });
-   
-  
 
-  var spinner = $('#loader');
-$(function() {
-  $('form').submit(function(e) {
-    e.preventDefault();
-    spinner.show();
-    $.ajax({
-      url: 't2228.php',
-      data: $(this).serialize(),
-      method: 'post',
-      dataType: 'JSON'
-    }).done(function(resp) {
-      spinner.hide();
-      alert(resp.status);
+
+
+    var spinner = $('#loader');
+    $(function() {
+        $('form').submit(function(e) {
+            e.preventDefault();
+            spinner.show();
+            $.ajax({
+                url: 't2228.php',
+                data: $(this).serialize(),
+                method: 'post',
+                dataType: 'JSON'
+            }).done(function(resp) {
+                spinner.hide();
+                alert(resp.status);
+            });
+        });
     });
-  });
-});
 </script>
 
 @endsection

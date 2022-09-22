@@ -524,22 +524,6 @@ class OrphansReliefController extends Controller
   }
 
 
-  public function AllSponsor()
-  {
-
-
-    $sponsors =   User::
-      // join('locations as a', 'orphans.Province_ID', '=', 'a.id')
-      //   ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
-      //   ->join('look_ups as c','orphans.FamilyStatus_ID', '=', 'c.id')
-      //   ->join('users as d','orphans.Created_By', '=', 'd.id')
-
-      // ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-
-      get()->where("OrphanSponsor", "=", '1');
-    return view('OrphansRelief.Sponsors.All', ['datas' => $sponsors]);
-  }
-
   // print
 
   public function Printing(QamarCareCard $data)
@@ -1427,4 +1411,33 @@ class OrphansReliefController extends Controller
       return view('OrphansRelief.Orphan.Success', ['datas' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
   }
+  
+
+  public function AllPayments()
+  {
+
+
+    $payments =   OrphanPayment::get();
+    return view('OrphansRelief.Payment.All', ['datas' => $payments]);
+  }
+
+
+
+  public function AllSponsor()
+  {
+
+
+    $sponsors =   User::
+      // join('locations as a', 'orphans.Province_ID', '=', 'a.id')
+      //   ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
+      //   ->join('look_ups as c','orphans.FamilyStatus_ID', '=', 'c.id')
+      //   ->join('users as d','orphans.Created_By', '=', 'd.id')
+
+      // ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+
+      get()->where("OrphanSponsor", "=", '1');
+    return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors]);
+  }
+
+  
 }

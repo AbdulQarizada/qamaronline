@@ -1,6 +1,6 @@
 @extends('layouts.master-layouts')
 
-@section('title') Orphans List @endsection
+@section('title') Payments @endsection
 
 @section('css')
     <!-- DataTables -->
@@ -26,7 +26,7 @@
         <div class="card border border-3">
                     <div class="card-header">
                       <blockquote class="blockquote border-warning  font-size-14 mb-0">
-                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">SPONSORS</p>
+                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">PAYMENTS</p>
                         
                         </blockquote>
                     </div>
@@ -57,7 +57,7 @@
         <!-- <i class="bx bx-plus-circle  font-size-24 label-icon"></i> btn-label -->
           <div class="button">
            <a href="{{route('AllGridOrphans')}}" class="btn  btn-lg waves-effect  waves-light mb-3 m-1 float-end"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a>
-           <a href="{{route('CreateOrphans')}}" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 m-1 float-end">ADD SPONSOR</a>
+           <a href="{{route('CreateOrphans')}}" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 m-1 float-end">ADD ORPHAN</a>
            </div>
        
         </div>
