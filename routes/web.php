@@ -52,7 +52,12 @@ Route::get('/Reports', [App\Http\Controllers\HomeController::class, 'Reports'])-
 
 Route::get('/UserManagement', [App\Http\Controllers\HomeController::class, 'UserManagement'])->name('UserManagement');
 
+
 // uploads
+Route::post('UserManagement/Employees_Profile', [App\Http\Controllers\HomeController::class, 'Employees_Profile'])->name('Employees_Profile');
+Route::post('/Employees_Profile', [App\Http\Controllers\HomeController::class, 'Employees_Profile'])->name('Employees_Profile');
+
+
 Route::post('/Beneficiaries_Tazkira', [App\Http\Controllers\HomeController::class, 'Beneficiaries_Tazkira'])->name('Beneficiaries_Tazkira');
 Route::post('/Beneficiaries_Profile', [App\Http\Controllers\HomeController::class, 'Beneficiaries_Profile'])->name('Beneficiaries_Profile');
 
@@ -381,5 +386,12 @@ Route::get('/UserManagement/All', [App\Http\Controllers\UserManagementController
 // Create
 Route::get('/UserManagement/Create', [App\Http\Controllers\UserManagementController::class, 'Create'])->name('CreateUser');
 Route::post('/UserManagement/Create', [App\Http\Controllers\UserManagementController::class, 'Store'])->name('CreateUser');
+// update
+Route::get('/UserManagement/Edit/{data}', [App\Http\Controllers\UserManagementController::class, 'Edit'])->name('EditUser');
+Route::put('/UserManagement/Edit/{data}', [App\Http\Controllers\UserManagementController::class, 'Update'])->name('UpdateUser');
+
+// delete
+Route::get('/UserManagement/Delete/{data}', [App\Http\Controllers\UserManagementController::class, 'Delete'])->name('DeleteUser');
+
 
 

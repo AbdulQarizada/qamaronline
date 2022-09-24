@@ -8,7 +8,7 @@ use App\Models\QamarCareCard;
 use App\Models\AssignCareCardServices;
 use App\Models\ServiceType;
 use App\Models\ServiceProviders;
-
+use Illuminate\Support\Facades\Hash;
 use App\Models\Location;
 use App\Models\LookUp;
 
@@ -77,45 +77,19 @@ class UserManagementController extends Controller
 
     $validator = $request->validate([
       'FirstName' => 'bail|required|max:255',
-      'FirstNameLocal' => 'required|max:255',
-
-      // 'LastName' => 'required|max:255',
-      'TazkiraID' => 'required|unique:qamar_care_cards|max:10',
-      'QamarSupport_ID' => 'required|max:255',
-      'MaritalStatus' => 'required|max:255',
+      'LastName' => 'required|max:255',
+      'FullName' => 'required|max:255',
+      'Tazkira_ID' => 'required|unique:users|max:10',
       'Profile' => 'required|max:255',
+      'Job' => 'required|max:255',
       'DOB' => 'required|max:255',
       'Gender_ID' => 'required|max:255',
-      'Language_ID' => 'required|max:255',
-      'CurrentJob_ID' => 'required|max:255',
-      'FutureJob_ID' => 'required|max:255',
-      'EducationLevel_ID' => 'required|max:255',
       'PrimaryNumber' => 'required|max:10',
-      // 'SecondaryNumber' => 'required|max:10',
-      'RelativeNumber' => 'required|max:10',
       'Province_ID' => 'required|max:255',
       'District_ID' => 'required|max:255',
       'Village' => 'required|max:255',
-      // 'Email' => 'required|email|max:255',
-      'FatherName' => 'required|max:255',
-      'FatherNameLocal' => 'required|max:255',
-
-      // 'SpuoseName' => 'required|max:255',
-      // 'SpuoseTazkiraID' => 'unique:qamar_care_cards|max:255',
-      'EldestSonAge' => 'required|max:255',
-      'MonthlyFamilyIncome' => 'required|max:10',
-      'MonthlyFamilyExpenses' => 'required|max:10',
-      'NumberFamilyMembers' => 'required|max:10',
-      'IncomeStreem_ID' => 'required|max:255',
-      'LevelPoverty' => 'required|max:255',
-      // 'Tazkira' => 'required|max:255',
-
-      'RelativeNumber' => 'required|max:10',
-      'RelativeRelationship_ID' => 'required|max:255',
-      'RelativeName' => 'required|max:255',
-      'FamilyStatus_ID' => 'required|max:255',
-      'Country_ID' => 'required|max:255',
-      'Tribe_ID' => 'required|max:255',
+      'email' => 'required|unique:users|email|max:255',
+      'password' => 'required|max:255',
 
     ]);
 
@@ -126,61 +100,51 @@ class UserManagementController extends Controller
 
 
 
-    QamarCareCard::create([
+    User::create([
       'FirstName' => request('FirstName'),
-      'FirstNameLocal' => request('FirstNameLocal'),
-
-      
       'LastName' => request('LastName'),
-      'LastNameLocal' => request('LastNameLocal'),
-
-
-      'TazkiraID' => request('TazkiraID'),
+      'FullName' => request('FullName'),
+      'Job' => request('Job'),
+      'Tazkira_ID' => request('Tazkira_ID'),
       'Profile' => request('Profile'),
       'DOB' => request('DOB'),
-      'QCC' => request('QCC'),
       'Gender_ID' => request('Gender_ID'),
-      'Language_ID' => request('Language_ID'),
-      'CurrentJob_ID' => request('CurrentJob_ID'),
-      'FutureJob_ID' => request('FutureJob_ID'),
-      'EducationLevel_ID' => request('EducationLevel_ID'),
-      'QamarSupport_ID' => request('QamarSupport_ID'),
       'PrimaryNumber' => request('PrimaryNumber'),
       'SecondaryNumber' => request('SecondaryNumber'),
-      'RelativeNumber' => request('RelativeNumber'),
       'Province_ID' => request('Province_ID'),
       'District_ID' => request('District_ID'),
       'Village' => request('Village'),
-      'Email' => request('Email'),
-      'FatherName' => request('FatherName'),
-      'FatherNameLocal' => request('FatherNameLocal'),
+      'email' => request('email'),
+      'password' => Hash::make(request('password')),
 
-      'MaritalStatus' => request('MaritalStatus'),
-      'SpuoseName' => request('SpuoseName'),
-      'SpuoseTazkiraID' => request('SpuoseTazkiraID'),
-      'EldestSonAge' => request('EldestSonAge'),
-      'MonthlyFamilyIncome' => request('MonthlyFamilyIncome'),
-      'MonthlyFamilyExpenses' => request('MonthlyFamilyExpenses'),
-      'NumberFamilyMembers' => request('NumberFamilyMembers'),
-      'IncomeStreem_ID' => request('IncomeStreem_ID'),
-      'LevelPoverty' => request('LevelPoverty'),
-      'Tazkira' => request('Tazkira'),
+
+      'IsEmployee' => request('IsEmployee'),
+      'IsActive' => request('IsActive'),
+      'IsSuperAdmin' => request('IsSuperAdmin'),
+      'IsSuperAdmin' => request('IsSuperAdmin'),
+      'IsOrphanRelief' => request('IsOrphanRelief'),
+      'IsAidAndRelief' => request('IsAidAndRelief'),
+      'IsWash' => request('IsWash'),
+      'IsEducation' => request('IsEducation'),
+      'IsInitiative' => request('IsInitiative'),
+      'IsMedicalSector' => request('IsMedicalSector'),
+      'IsFoodAppeal' => request('IsFoodAppeal'),
+      'IsQamarCareCard' => request('IsQamarCareCard'),
+      'IsAppealsDistributions' => request('IsAppealsDistributions'),
+      'IsDonorsAndDonorBoxes' => request('IsDonorsAndDonorBoxes'),
+
+
+
+
       'Status' => 'Pending',
       'Created_By' => auth()->user()->id,
-
-      'RelativeNumber' => request('RelativeNumber'),
-      'RelativeRelationship_ID' => request('RelativeRelationship_ID'),
-      'RelativeName' => request('RelativeName'),
-      'FamilyStatus_ID' => request('FamilyStatus_ID'),
-      'Country_ID' => request('Country_ID'),
-      'Tribe_ID' => request('Tribe_ID'),
       'Owner' => 1,
 
 
 
     ]);
 
-    return redirect()->route('AllQamarCareCard')->with('toast_success', 'Record Created Successfully!');
+    return redirect()->route('AllUser')->with('toast_success', 'Record Created Successfully!');
   }
 
 
@@ -200,29 +164,68 @@ class UserManagementController extends Controller
 
 
   // update
-  public function Edit(QamarCareCard $data)
+  public function Edit(User $data)
   {
 
-
-    return view('QamarCardCard.Edit', ['data' => $data]);
+    $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+    $genders =   LookUp::where("Parent_Name", "=", "Gender")->get();
+    $tribes =   LookUp::where("Parent_Name", "=", "Tribe")->get();
+    $languages =   LookUp::where("Parent_Name", "=", "Language")->get();
+    $currentjobs =   LookUp::where("Parent_Name", "=", "CurrentJob")->get();
+    $futurejobs =   LookUp::where("Parent_Name", "=", "FutureJob")->get();
+    $educationlevels =   LookUp::where("Parent_Name", "=", "EducationLevel")->get();
+    $relationships =   LookUp::where("Parent_Name", "=", "RelativeRelationship")->get();
+    $incomestreams =   LookUp::where("Parent_Name", "=", "IncomeStream")->get();
+    $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
+    $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
+    $provinces = Location::whereNull("Parent_ID")->get();
+    return view('SystemManagement.User.Edit',['data' => $data, 'countries' => $countries,'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
   }
 
-  public function Update(QamarCareCard $data)
+  public function Update(User $data)
   {
 
     $data->update([
 
       'FirstName' => request('FirstName'),
       'LastName' => request('LastName'),
-      'Email' => request('Email'),
-      'PNumber' => request('PNumber'),
-      'SNumber' => request('SNumber'),
-      'Province' => request('Province'),
-      'District' => request('District')
+      'FullName' => request('FullName'),
+      'Job' => request('Job'),
+      'Tazkira_ID' => request('Tazkira_ID'),
+      'Profile' => request('Profile'),
+      'DOB' => request('DOB'),
+      'Gender_ID' => request('Gender_ID'),
+      'PrimaryNumber' => request('PrimaryNumber'),
+      'SecondaryNumber' => request('SecondaryNumber'),
+      'Province_ID' => request('Province_ID'),
+      'District_ID' => request('District_ID'),
+      'Village' => request('Village'),
+      'email' => request('email'),
+      'password' => Hash::make(request('password')),
+
+
+      'IsEmployee' => request('IsEmployee'),
+      'IsActive' => request('IsActive'),
+      'IsSuperAdmin' => request('IsSuperAdmin'),
+      'IsSuperAdmin' => request('IsSuperAdmin'),
+      'IsOrphanRelief' => request('IsOrphanRelief'),
+      'IsAidAndRelief' => request('IsAidAndRelief'),
+      'IsWash' => request('IsWash'),
+      'IsEducation' => request('IsEducation'),
+      'IsInitiative' => request('IsInitiative'),
+      'IsMedicalSector' => request('IsMedicalSector'),
+      'IsFoodAppeal' => request('IsFoodAppeal'),
+      'IsQamarCareCard' => request('IsQamarCareCard'),
+      'IsAppealsDistributions' => request('IsAppealsDistributions'),
+      'IsDonorsAndDonorBoxes' => request('IsDonorsAndDonorBoxes'),
+
+
+
+      // 'Updated_By' => auth()->user()->id,
+      'Owner' => 1,
 
     ]);
-    $qamarcarecards =   QamarCareCard::all();
-    return view('QamarCardCard.All', compact('qamarcarecards'));
+    return redirect()->route('AllUser')->with('toast_success', 'Record Updated Successfully!');
   }
 
 
@@ -240,7 +243,7 @@ class UserManagementController extends Controller
 
 
   // Delete
-  public function Delete(QamarCareCard $data)
+  public function Delete(User $data)
   {
 
     $data->delete();
@@ -266,13 +269,12 @@ class UserManagementController extends Controller
 
     $datas =   User::
     // join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      // ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      // ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      // ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
+    //   ->join('locations as b', 'users.District_ID', '=', 'b.id')'a.Name as ProvinceName', 'b.Name as DistrictName',
+      join('users as d','users.Created_By', '=', 'd.id')
 
-      // ->select(['users.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+      -> select(['users.*',   'd.FirstName as UFirstName', 'd.LastName as ULastName'])
 
-      get();
+      -> get();
     return view('SystemManagement.User.All', compact('datas'));
   }
 

@@ -72,7 +72,29 @@ class HomeController extends Controller
     }
     
 
+    public function Employees_Profile(Request $request)
+    {
+       
+       if($request -> hasFile('Profile'))
+       {
 
+      
+            $profile = $request->file('Profile');
+
+            $profilename = $profile -> getClientOriginalName();
+
+            $profileuniquename = uniqid().'_'.$profilename;
+
+            $profile -> storeAs('Profiles', $profileuniquename,'Employees');
+
+
+            return $profileuniquename;
+
+        }
+        return '';
+
+        
+    }
 
     public function Beneficiaries_Tazkira(Request $request)
     {

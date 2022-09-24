@@ -251,6 +251,9 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                     <a href="<?php echo e(route('StatusOrphans', ['data' => $data -> id])); ?>" class="btn btn-warning waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
                     </a>
+                       <a href="<?php echo e(route('EditUser', ['data' => $data -> id])); ?>" class="btn btn-info waves-effect waves-light">
+                        <i class="bx bx-edit  font-size-16 align-middle"></i>
+                    </a>
                     <?php if($data -> Status == 'Pending'): ?>
                     <!-- <a href="<?php echo e(route('EditQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-info waves-effect waves-light">
                         <i class="bx bx-edit  font-size-16 align-middle"></i>

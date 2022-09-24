@@ -20,14 +20,43 @@ class User extends Authenticatable
         'FirstName',
         'LastName',
         'FullName',
-        'DOB', 
-        'Avatar',
-        'Role',
-        'IsActive',
-        'IsEmployee',
-        'IsOrphanSponsor',
+        'Job',
+        'Gender_ID',
+        'Tazkira_ID',
+        'PrimaryNumber',
+        'SecondaryNumber',
+        'Province_ID',
+        'District_ID',
+        'Village',
         'email',
         'password',
+        'DOB', 
+        'Profile',
+
+
+
+        
+        'IsEmployee',
+        'IsActive',
+        'IsSuperAdmin',
+        'IsOrphanSponsor',
+        'IsOrphanRelief',
+        'IsAidAndRelief',
+        'IsWash',
+        'IsEducation',
+        'IsInitiative',
+        'IsMedicalSector',
+        'IsFoodAppeal',
+        'IsQamarCareCard',
+        'IsAppealsDistributions',
+        'IsDonorsAndDonorBoxes',
+
+        'Status',
+      'Created_By',
+      'Owner',
+
+
+       
     ];
 
     /**

@@ -1,6 +1,6 @@
-@extends('layouts.master-layouts')
+@extends(Auth::user()->IsEmployee == 1 ? 'layouts.master-layouts' : 'layouts.master')
 
-@section('title') ADD USER @endsection
+@section('title') UPDATE USER @endsection
 
 @section('css')
 <link href="{{ URL::asset('/assets/libs/filepond/css/filepond.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -12,7 +12,7 @@
 
 @section('content')
 
-
+@if(Auth::user()->IsEmployee == 1)
 <div class="row">
     <div class="col-12">
         <a href="{{route('AllUser')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
@@ -25,7 +25,7 @@
         <div class="card border border-3">
             <div class="card-header">
                 <blockquote class="blockquote border-primary  font-size-14 mb-0">
-                    <p class="my-0   card-title fw-medium font-size-24 text-wrap">ADD USER</p>
+                    <p class="my-0   card-title fw-medium font-size-24 text-wrap">UPDATE USER</p>
 
                 </blockquote>
             </div>
@@ -34,9 +34,11 @@
     </div>
 </div>
 
+@endif
 
+<form class="needs-validation" action="{{route('UpdateUser', [$data -> id])}}" method="POST" enctype="multipart/form-data" novalidate>
+@method('PUT')
 
-<form class="needs-validation" action="{{route('CreateUser')}}" method="POST" enctype="multipart/form-data" novalidate>
     @csrf
 
 
@@ -55,7 +57,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3 position-relative">
                                         <label for="FirstName" class="form-label ">First Name <i class="mdi mdi-asterisk text-danger"></i></label>
-                                        <input type="text" class="form-control form-control-lg @error('FirstName') is-invalid @enderror" value="{{ old('FirstName') }}" id="FirstName" name="FirstName" required>
+                                        <input type="text" class="form-control form-control-lg @error('FirstName') is-invalid @enderror" value="{{$data -> FirstName}}" id="FirstName" name="FirstName" required>
                                         @error('FirstName')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -66,7 +68,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3 position-relative">
                                         <label for="LastName" class="form-label ">Last Name <i class="mdi mdi-asterisk text-danger"></i></label>
-                                        <input type="text" class="form-control form-control-lg @error('LastName') is-invalid @enderror" value="{{ old('LastName') }}" id="LastName" name="LastName" required>
+                                        <input type="text" class="form-control form-control-lg @error('LastName') is-invalid @enderror" value="{{$data -> LastName}}" id="LastName" name="LastName" required>
 
                                         @error('LastName')
                                         <span class="invalid-feedback" role="alert">
@@ -79,7 +81,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3 position-relative">
                                         <label for="FullName" class="form-label ">Full Name </label>
-                                        <input type="text" class="form-control form-control-lg @error('FullName') is-invalid @enderror" value="{{ old('FullName') }}" id="FullName" name="FullName">
+                                        <input type="text" class="form-control form-control-lg @error('FullName') is-invalid @enderror" value="{{$data -> FullName}}" id="FullName" name="FullName">
 
                                         @error('FullName')
                                         <span class="invalid-feedback" role="alert">
@@ -92,7 +94,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3 position-relative">
                                         <label for="Job" class="form-label ">Job </label>
-                                        <input type="text" class="form-control form-control-lg @error('Job') is-invalid @enderror" value="{{ old('Job') }}" id="Job" name="Job">
+                                        <input type="text" class="form-control form-control-lg @error('Job') is-invalid @enderror" value="{{$data -> Job}}" id="Job" name="Job">
 
                                         @error('Job')
                                         <span class="invalid-feedback" role="alert">
@@ -105,7 +107,7 @@
                                 <div class="col-md-6">
                                 <div class="mb-3 position-relative">
                                         <label for="email" class="form-label ">Email (User Name)<i class="mdi mdi-asterisk text-danger"></i></label>
-                                        <input type="text" class="form-control form-control-lg @error('email') is-invalid @enderror" value="{{ old('email') }}" id="email" name="email">
+                                        <input type="text" class="form-control form-control-lg @error('email') is-invalid @enderror" value="{{$data -> email}}" id="email" name="email" readonly>
 
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -115,43 +117,12 @@
 
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3 position-relative">
-                                        <label for="password" class="form-label ">Password <i class="mdi mdi-asterisk text-danger"></i></label>
-                                        <div class="hstack gap-3">
-                                            <input class="form-control form-control-lg me-auto @error('password') is-invalid @enderror" value="{{ old('password') }}" type="text" name="password" id="QCC" readonly>
-                                            <button type="button" class="btn btn-lg btn-outline-danger" onclick="Random();"><i class=" bx bxs-magic-wand  font-size-16 align-middle"></i> </button>
-                                            @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-                        </div>
-                        <div class="col-md-2 justify-content-center">
-                            <!-- <label for="Profile" class="form-label"> <i class="mdi mdi-asterisk text-danger"></i></label> -->
-                            <input type="file" class="my-pond @error('Profile') is-invalid @enderror" value="{{ old('Profile') }}" id="Profile" name="Profile" />
-                            @error('Profile')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4 ">
+                                <div class="col-md-6 ">
                             <div class="mb-3 position-relative">
                                 <label for="DOB" class="form-label">Date of Birth <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group " id="example-date-input">
 
-                                    <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{ old('DOB') }}" type="date" id="example-date-input" name="DOB" id="DOB" required>
+                                    <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{$data -> DOB}}" type="date" id="example-date-input" name="DOB" id="DOB" required>
                                     @error('DOB')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -162,10 +133,42 @@
                             </div>
 
                         </div>
+                                <!-- <div class="col-md-6">
+                                    <div class="mb-3 position-relative">
+                                        <label for="password" class="form-label ">Password <i class="mdi mdi-asterisk text-danger"></i></label>
+                                        <div class="hstack gap-3">
+                                            <input class="form-control form-control-lg me-auto @error('password') is-invalid @enderror" value="{{$data -> password}}" type="text" name="password" id="QCC" readonly>
+                                            <button type="button" class="btn btn-lg btn-outline-danger" onclick="Random();"><i class=" bx bxs-magic-wand  font-size-16 align-middle"></i> </button>
+                                            @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div> -->
+
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-2 justify-content-center">
+                            <!-- <label for="Profile" class="form-label"> <i class="mdi mdi-asterisk text-danger"></i></label> -->
+                            <input type="file" class="my-pond @error('Profile') is-invalid @enderror" value="{{$data -> Profile}}" id="Profile" name="Profile" />
+                            @error('Profile')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="row">
+           
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="Gender_ID" class="form-label">Gender <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <select class="form-select  form-select-lg @error('Gender_ID') is-invalid @enderror" value="{{ old('Gender_ID') }}" id="Gender_ID" name="Gender_ID" required>
+                                <select class="form-select  form-select-lg @error('Gender_ID') is-invalid @enderror" value="{{$data -> Gender_ID}}" id="Gender_ID" name="Gender_ID" required>
                                     <option value="">Select Your Gender</option>
                                     @foreach($genders as $gender)
                                     <option value="{{ $gender -> id}}">{{ $gender -> Name}}</option>
@@ -182,7 +185,7 @@
                         <div class="col-md-4">
                                     <div class="mb-3 position-relative">
                                         <label for="Tazkira_ID" class="form-label ">Tazkira ID <i class="mdi mdi-asterisk text-danger"></i></label>
-                                        <input type="number" class="form-control form-control-lg @error('Tazkira_ID') is-invalid @enderror" value="{{ old('Tazkira_ID') }}" id="Tazkira_ID" name="Tazkira_ID" max="999999999" required>
+                                        <input type="number" class="form-control form-control-lg @error('Tazkira_ID') is-invalid @enderror" value="{{$data -> Tazkira_ID}}" id="Tazkira_ID" name="Tazkira_ID" max="999999999" required>
                                         @error('TazkiraID')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -412,7 +415,7 @@
                             <div class="mb-3 position-relative">
                                 <label for="Province_ID" class="form-label">Province <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-                                    <select class="form-select Province form-select-lg @error('Province_ID') is-invalid @enderror" required name="Province_ID" value="{{ old('Province_ID') }}" id="Province_ID">
+                                    <select class="form-select Province form-select-lg @error('Province_ID') is-invalid @enderror" required name="Province_ID" value="{{$data -> Province_ID}}" id="Province_ID">
                                         <option value="">Select Your Province</option>
                                         @foreach($provinces as $province)
                                         <option value="{{ $province -> id}}">{{ $province -> Name}}</option>
@@ -432,7 +435,7 @@
                             <div class="mb-3 position-relative">
                                 <label for="District_ID" class="form-label">District <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-                                    <select class="form-select  District form-select-lg @error('District_ID') is-invalid @enderror" required name="District_ID" value="{{ old('District_ID') }}" id="District_ID">
+                                    <select class="form-select  District form-select-lg @error('District_ID') is-invalid @enderror" required name="District_ID" value="{{$data -> District_ID}}" id="District_ID">
                                         <option value="">Select Your District</option>
 
 
@@ -460,7 +463,7 @@
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="Village" class="form-label">Village <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <input type="text" class="form-control  form-control-lg @error('Village') is-invalid @enderror" value="{{ old('Village') }}" id="Village" name="Village" required>
+                                <input type="text" class="form-control  form-control-lg @error('Village') is-invalid @enderror" value="{{$data -> Village}}" id="Village" name="Village" required>
                                 @error('Village')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -476,7 +479,7 @@
                                 <label for="PrimaryNumber" class="form-label">Primary Number <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
-                                    <input type="number" class="form-control  form-control-lg @error('PrimaryNumber') is-invalid @enderror" value="{{ old('PrimaryNumber') }}" id="PrimaryNumber" name="PrimaryNumber" max="999999999" aria-describedby="PrimaryNumber" required>
+                                    <input type="number" class="form-control  form-control-lg @error('PrimaryNumber') is-invalid @enderror" value="{{$data -> PrimaryNumber}}" id="PrimaryNumber" name="PrimaryNumber" max="999999999" aria-describedby="PrimaryNumber" required>
                                     @error('PrimaryNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -491,7 +494,7 @@
                                 <label for="SecondaryNumber" class="form-label">Secondary Number</label>
                                 <div class="input-group">
 
-                                    <input type="number" class="form-control  form-control-lg @error('SecondaryNumber') is-invalid @enderror" value="{{ old('SecondaryNumber') }}" id="SecondaryNumber" name="SecondaryNumber" max="999999999" aria-describedby="SecondaryNumber">
+                                    <input type="number" class="form-control  form-control-lg @error('SecondaryNumber') is-invalid @enderror" value="{{$data -> SecondaryNumber}}" id="SecondaryNumber" name="SecondaryNumber" max="999999999" aria-describedby="SecondaryNumber">
                                     @error('SecondaryNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -566,7 +569,7 @@
 
 
 
-
+    @if(Auth::user()->IsSuperAdmin == 1)
 
     <div class="row">
         <div class="col-lg-12">
@@ -581,7 +584,7 @@
                         <div class="col-md-2">
                             <div class="mb-3 position-relative">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input @error('IsEmployee') is-invalid @enderror" type="checkbox" value="1" id="IsEmployee" name="IsEmployee">
+                                    <input class="form-check-input @error('IsEmployee') is-invalid @enderror" type="checkbox" value="{{$data -> IsEmployee}}" id="IsEmployee" name="IsEmployee[]">
                                     <label class="form-check-label" for="IsEmployee">
                                         IsEmployee
                                     </label>
@@ -596,7 +599,7 @@
                         <div class="col-md-2">
                             <div class="mb-3 position-relative">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input @error('IsActive') is-invalid @enderror" type="checkbox" value="1" id="IsActive" name="IsActive">
+                                    <input class="form-check-input @error('IsActive') is-invalid @enderror" type="checkbox" value="{{$data -> IsActive}}" id="IsActive" name="IsActive">
                                     <label class="form-check-label" for="IsActive">
                                        IsActive
                                     </label>
@@ -796,7 +799,7 @@
         <!-- end col -->
     </div>
     <!-- end row -->
-
+    @endif
 
 
 
@@ -827,8 +830,8 @@
     <!-- end row -->
     <div>
 
-        <button class="btn btn-success btn-lg" type="submit">Save </button>
-        <a class="btn btn-danger btn-lg" href="{{route('IndexQamarCareCard')}}">Cancel</a>
+        <button class="btn btn-success btn-lg" type="submit">Update </button>
+        <a class="btn btn-danger btn-lg" href="{{route('AllUser')}}">Cancel</a>
     </div>
 
 

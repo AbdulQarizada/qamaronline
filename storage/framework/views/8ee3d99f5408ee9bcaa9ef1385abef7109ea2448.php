@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('title'); ?> ADD USER <?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?> UPDATE USER <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/filepond.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -12,7 +12,7 @@
 
 <?php $__env->startSection('content'); ?>
 
-
+<?php if(Auth::user()->IsEmployee == 1): ?>
 <div class="row">
     <div class="col-12">
         <a href="<?php echo e(route('AllUser')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
@@ -25,7 +25,7 @@
         <div class="card border border-3">
             <div class="card-header">
                 <blockquote class="blockquote border-primary  font-size-14 mb-0">
-                    <p class="my-0   card-title fw-medium font-size-24 text-wrap">ADD USER</p>
+                    <p class="my-0   card-title fw-medium font-size-24 text-wrap">UPDATE USER</p>
 
                 </blockquote>
             </div>
@@ -34,9 +34,11 @@
     </div>
 </div>
 
+<?php endif; ?>
 
+<form class="needs-validation" action="<?php echo e(route('UpdateUser', [$data -> id])); ?>" method="POST" enctype="multipart/form-data" novalidate>
+<?php echo method_field('PUT'); ?>
 
-<form class="needs-validation" action="<?php echo e(route('CreateUser')); ?>" method="POST" enctype="multipart/form-data" novalidate>
     <?php echo csrf_field(); ?>
 
 
@@ -62,7 +64,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FirstName')); ?>" id="FirstName" name="FirstName" required>
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> FirstName); ?>" id="FirstName" name="FirstName" required>
                                         <?php $__errorArgs = ['FirstName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -87,7 +89,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('LastName')); ?>" id="LastName" name="LastName" required>
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> LastName); ?>" id="LastName" name="LastName" required>
 
                                         <?php $__errorArgs = ['LastName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -114,7 +116,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FullName')); ?>" id="FullName" name="FullName">
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> FullName); ?>" id="FullName" name="FullName">
 
                                         <?php $__errorArgs = ['FullName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -141,7 +143,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Job')); ?>" id="Job" name="Job">
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> Job); ?>" id="Job" name="Job">
 
                                         <?php $__errorArgs = ['Job'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -168,7 +170,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('email')); ?>" id="email" name="email">
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> email); ?>" id="email" name="email" readonly>
 
                                         <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -185,66 +187,7 @@ unset($__errorArgs, $__bag); ?>
 
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3 position-relative">
-                                        <label for="password" class="form-label ">Password <i class="mdi mdi-asterisk text-danger"></i></label>
-                                        <div class="hstack gap-3">
-                                            <input class="form-control form-control-lg me-auto <?php $__errorArgs = ['password'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('password')); ?>" type="text" name="password" id="QCC" readonly>
-                                            <button type="button" class="btn btn-lg btn-outline-danger" onclick="Random();"><i class=" bx bxs-magic-wand  font-size-16 align-middle"></i> </button>
-                                            <?php $__errorArgs = ['password'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong><?php echo e($message); ?></strong>
-                                            </span>
-                                            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-                        </div>
-                        <div class="col-md-2 justify-content-center">
-                            <!-- <label for="Profile" class="form-label"> <i class="mdi mdi-asterisk text-danger"></i></label> -->
-                            <input type="file" class="my-pond <?php $__errorArgs = ['Profile'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Profile')); ?>" id="Profile" name="Profile" />
-                            <?php $__errorArgs = ['Profile'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                            <span class="invalid-feedback" role="alert">
-                                <strong><?php echo e($message); ?></strong>
-                            </span>
-                            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4 ">
+                                <div class="col-md-6 ">
                             <div class="mb-3 position-relative">
                                 <label for="DOB" class="form-label">Date of Birth <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group " id="example-date-input">
@@ -256,7 +199,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('DOB')); ?>" type="date" id="example-date-input" name="DOB" id="DOB" required>
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> DOB); ?>" type="date" id="example-date-input" name="DOB" id="DOB" required>
                                     <?php $__errorArgs = ['DOB'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -274,6 +217,66 @@ unset($__errorArgs, $__bag); ?>
                             </div>
 
                         </div>
+                                <!-- <div class="col-md-6">
+                                    <div class="mb-3 position-relative">
+                                        <label for="password" class="form-label ">Password <i class="mdi mdi-asterisk text-danger"></i></label>
+                                        <div class="hstack gap-3">
+                                            <input class="form-control form-control-lg me-auto <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> password); ?>" type="text" name="password" id="QCC" readonly>
+                                            <button type="button" class="btn btn-lg btn-outline-danger" onclick="Random();"><i class=" bx bxs-magic-wand  font-size-16 align-middle"></i> </button>
+                                            <?php $__errorArgs = ['password'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong><?php echo e($message); ?></strong>
+                                            </span>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                        </div>
+                                    </div>
+                                </div> -->
+
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-2 justify-content-center">
+                            <!-- <label for="Profile" class="form-label"> <i class="mdi mdi-asterisk text-danger"></i></label> -->
+                            <input type="file" class="my-pond <?php $__errorArgs = ['Profile'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> Profile); ?>" id="Profile" name="Profile" />
+                            <?php $__errorArgs = ['Profile'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                            <span class="invalid-feedback" role="alert">
+                                <strong><?php echo e($message); ?></strong>
+                            </span>
+                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                        </div>
+                    </div>
+
+                    <div class="row">
+           
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="Gender_ID" class="form-label">Gender <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -284,7 +287,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Gender_ID')); ?>" id="Gender_ID" name="Gender_ID" required>
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> Gender_ID); ?>" id="Gender_ID" name="Gender_ID" required>
                                     <option value="">Select Your Gender</option>
                                     <?php $__currentLoopData = $genders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $gender): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <option value="<?php echo e($gender -> id); ?>"><?php echo e($gender -> Name); ?></option>
@@ -315,7 +318,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Tazkira_ID')); ?>" id="Tazkira_ID" name="Tazkira_ID" max="999999999" required>
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> Tazkira_ID); ?>" id="Tazkira_ID" name="Tazkira_ID" max="999999999" required>
                                         <?php $__errorArgs = ['TazkiraID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -685,7 +688,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" required name="Province_ID" value="<?php echo e(old('Province_ID')); ?>" id="Province_ID">
+unset($__errorArgs, $__bag); ?>" required name="Province_ID" value="<?php echo e($data -> Province_ID); ?>" id="Province_ID">
                                         <option value="">Select Your Province</option>
                                         <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?php echo e($province -> id); ?>"><?php echo e($province -> Name); ?></option>
@@ -719,7 +722,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" required name="District_ID" value="<?php echo e(old('District_ID')); ?>" id="District_ID">
+unset($__errorArgs, $__bag); ?>" required name="District_ID" value="<?php echo e($data -> District_ID); ?>" id="District_ID">
                                         <option value="">Select Your District</option>
 
 
@@ -775,7 +778,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Village')); ?>" id="Village" name="Village" required>
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> Village); ?>" id="Village" name="Village" required>
                                 <?php $__errorArgs = ['Village'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -805,7 +808,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('PrimaryNumber')); ?>" id="PrimaryNumber" name="PrimaryNumber" max="999999999" aria-describedby="PrimaryNumber" required>
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> PrimaryNumber); ?>" id="PrimaryNumber" name="PrimaryNumber" max="999999999" aria-describedby="PrimaryNumber" required>
                                     <?php $__errorArgs = ['PrimaryNumber'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -834,7 +837,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SecondaryNumber')); ?>" id="SecondaryNumber" name="SecondaryNumber" max="999999999" aria-describedby="SecondaryNumber">
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> SecondaryNumber); ?>" id="SecondaryNumber" name="SecondaryNumber" max="999999999" aria-describedby="SecondaryNumber">
                                     <?php $__errorArgs = ['SecondaryNumber'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -958,7 +961,7 @@ unset($__errorArgs, $__bag); ?>
 
 
 
-
+    <?php if(Auth::user()->IsSuperAdmin == 1): ?>
 
     <div class="row">
         <div class="col-lg-12">
@@ -980,7 +983,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsEmployee" name="IsEmployee">
+unset($__errorArgs, $__bag); ?>" type="checkbox" value="<?php echo e($data -> IsEmployee); ?>" id="IsEmployee" name="IsEmployee[]">
                                     <label class="form-check-label" for="IsEmployee">
                                         IsEmployee
                                     </label>
@@ -1009,7 +1012,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsActive" name="IsActive">
+unset($__errorArgs, $__bag); ?>" type="checkbox" value="<?php echo e($data -> IsActive); ?>" id="IsActive" name="IsActive">
                                     <label class="form-check-label" for="IsActive">
                                        IsActive
                                     </label>
@@ -1384,7 +1387,7 @@ unset($__errorArgs, $__bag); ?>
         <!-- end col -->
     </div>
     <!-- end row -->
-
+    <?php endif; ?>
 
 
 
@@ -1429,8 +1432,8 @@ unset($__errorArgs, $__bag); ?>
     <!-- end row -->
     <div>
 
-        <button class="btn btn-success btn-lg" type="submit">Save </button>
-        <a class="btn btn-danger btn-lg" href="<?php echo e(route('IndexQamarCareCard')); ?>">Cancel</a>
+        <button class="btn btn-success btn-lg" type="submit">Update </button>
+        <a class="btn btn-danger btn-lg" href="<?php echo e(route('AllUser')); ?>">Cancel</a>
     </div>
 
 
@@ -1605,4 +1608,4 @@ unset($__errorArgs, $__bag); ?>
     });
 </script>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Qamar\QamarOnline\qamaronline\resources\views/SystemManagement/User/Create.blade.php ENDPATH**/ ?>
+<?php echo $__env->make(Auth::user()->IsEmployee == 1 ? 'layouts.master-layouts' : 'layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Qamar\QamarOnline\qamaronline\resources\views/SystemManagement/User/Edit.blade.php ENDPATH**/ ?>

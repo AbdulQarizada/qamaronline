@@ -34,6 +34,10 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
+        'Employees' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/User/Employees',
+        ],
 
         'Beneficiaries' => [
             'driver' => 'local',
