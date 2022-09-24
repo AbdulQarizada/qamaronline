@@ -1,6 +1,6 @@
 @extends('layouts.master-layouts')
 
-@section('title') Orphans List @endsection
+@section('title') Users List @endsection
 
 @section('css')
     <!-- DataTables -->
@@ -26,7 +26,7 @@
         <div class="card border border-3">
                     <div class="card-header">
                       <blockquote class="blockquote border-warning  font-size-14 mb-0">
-                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">ORPHANS</p>
+                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">USERS</p>
                         
                         </blockquote>
                     </div>
@@ -35,7 +35,7 @@
         </div>
      </div>
      <div class="row">
-        <div class="col-3">
+      <div class="col-3">
         <select class="form-select  form-select-lg mb-3 @error('Country') is-invalid @enderror"  onchange="window.location.href=this.value;" 
 >
                                    <option value="{{route('AllOrphans')}}">Please Filter Your Choices</option>
@@ -54,10 +54,9 @@
                                     </select>
         </div>
         <div class="col-9 ">
-        <!-- <i class="bx bx-plus-circle  font-size-24 label-icon"></i> btn-label -->
           <div class="button">
-           <a href="{{route('AllGridOrphans')}}" class="btn  btn-lg waves-effect  waves-light mb-3 m-1 float-end"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a>
-           <a href="{{route('CreateOrphans')}}" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 m-1 float-end">ADD ORPHAN</a>
+           <!-- <a href="{{route('AllGridOrphans')}}" class="btn  btn-lg waves-effect  waves-light mb-3 m-1 float-end"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a> -->
+           <a href="{{route('CreateUser')}}" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 m-1 float-end">ADD USER</a>
            </div>
        
         </div>
@@ -98,7 +97,7 @@
                                 <th>Full Name</th>
                                 <th>Address</th>
                                 <th>Phone Numbers</th>
-                                <th>Family Status</th>
+                                <th>JOB</th>
                                 <th>Status</th>
                                 <th>Created By</th>
                                 <th>Actions</th>

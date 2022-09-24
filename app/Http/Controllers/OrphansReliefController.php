@@ -1355,7 +1355,6 @@ class OrphansReliefController extends Controller
           $orphanid->update(['Sponsor_ID' => $userid->id]);
         }
 
-        Mail::to(request('Email'))->send(new OrphanMails(request('Email')));
       } catch (\Exception $e) {
         return redirect()->route('CheckoutOrphans')->with('error', $e->getMessage());
       }
@@ -1391,7 +1390,7 @@ class OrphansReliefController extends Controller
           'password' => Hash::make($RandomPassword),
           'IsActive' => 1,
           'IsEmployee' => 0,
-          'OrphanSponsor' => 1,
+          'IsOrphanSponsor' => 1,
         ]);
 
         $userid = User::where('email', '=', request('Email'))->first();
@@ -1401,8 +1400,9 @@ class OrphansReliefController extends Controller
           $orphanid = Orphan::where('id', '=', $item['item']['id'])->first();
           $orphanid->update(['Sponsor_ID' => $userid->id]);
         }
-
-        Mail::to(request('Email'))->send(new OrphanMails(request('Email')));
+          $details = ['Email' => request('Email'),'Password' => $RandomPassword];
+        
+        Mail::to(request('Email'))->send(new OrphanMails($details));
       } catch (\Exception $e) {
         return redirect()->route('CheckoutOrphans')->with('error', $e->getMessage());
       }
@@ -1435,7 +1435,7 @@ class OrphansReliefController extends Controller
 
       // ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
 
-      get()->where("OrphanSponsor", "=", '1');
+      get()->where("IsOrphanSponsor", "=", '1');
     return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors]);
   }
 
@@ -1444,7 +1444,7 @@ class OrphansReliefController extends Controller
   {
     $users =   User::all();
     $provinces = Location::whereNull("Parent_ID")->get();
-    $sponsors = User::where("OrphanSponsor", "=", "1")->get();
+    $sponsors = User::where("IsOrphanSponsor", "=", "1")->get();
     $orphans =   Orphan::where("orphans.id", "=", $data->id)
 
 

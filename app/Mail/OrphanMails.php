@@ -15,10 +15,15 @@ class OrphanMails extends Mailable
      * Create a new message instance.
      *
      * @return void
+     * 
+     * 
      */
-    public function __construct()
+
+    public $details;
+    public function __construct($details)
     {
         //
+        $this->details = $details;
     }
 
     /**

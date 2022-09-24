@@ -25,7 +25,7 @@ class User extends Authenticatable
         'Role',
         'IsActive',
         'IsEmployee',
-        'OrphanSponsor',
+        'IsOrphanSponsor',
         'email',
         'password',
     ];

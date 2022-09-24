@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
 
-class QamarCareCardController extends Controller
+class UserManagementController extends Controller
 {
 
 
@@ -37,7 +37,7 @@ class QamarCareCardController extends Controller
   public function Index()
   {
 
-    return view('QamarCardCard.Index');
+    return view('SystemManagement.Index');
   }
 
 
@@ -69,7 +69,7 @@ class QamarCareCardController extends Controller
 
 
 
-    return view('QamarCardCard.Create', ['countries' => $countries,'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+    return view('SystemManagement.User.Create', ['countries' => $countries,'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
   }
 
   public function Store(Request $request)
@@ -264,15 +264,16 @@ class QamarCareCardController extends Controller
 
     //  $qamarcarecards =   QamarCareCard::all();
 
-    $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
+    $datas =   User::
+    // join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
+      // ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+      // ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+      // ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
 
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+      // ->select(['users.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
 
-      ->get();
-    return view('QamarCardCard.All', compact('qamarcarecards'));
+      get();
+    return view('SystemManagement.User.All', compact('datas'));
   }
 
 

@@ -177,8 +177,8 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
     <p style="font-size: 14px; line-height: 160%;">Thanks for supporting orphan at this times of need. we are welcome you to the great network of Qamar Foundation.</p>
 <p style="font-size: 14px; line-height: 160%;">Please find the username and password, which you can now use it for login to your own dashboard and track your orphans transactions and support.</p>
 <p style="font-size: 14px; line-height: 160%;"> </p>
-<p style="font-size: 14px; line-height: 160%;">Username: <a rel="noopener" href="mailto:ab_wahabqarizada@qamarcharity.org" target="_blank">ab_wahabqarizada@qamarcharity.org</a></p>
-<p style="font-size: 14px; line-height: 160%;">Password: wMHiNEqw</p>
+<p style="font-size: 14px; line-height: 160%;">Username: <a rel="noopener" href="mailto:ab_wahabqarizada@qamarcharity.org" target="_blank"><?php echo e($details['Email']); ?></a></p>
+<p style="font-size: 14px; line-height: 160%;">Password: <?php echo e($details['Password']); ?></p>
 <p style="font-size: 14px; line-height: 160%;">Link: https://online.qamarcharity.org/login</p>
 <p style="font-size: 14px; line-height: 160%;"> </p>
 <p style="font-size: 14px; line-height: 160%;"> </p>

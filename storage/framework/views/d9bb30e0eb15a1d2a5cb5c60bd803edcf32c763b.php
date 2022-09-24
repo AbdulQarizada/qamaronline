@@ -43,7 +43,7 @@
                             <div class="row">
                                 <div class="col-8">
                                     <h5 class="font-size-15 text-truncate"><?php echo e(Str::ucfirst(Auth::user()->FullName)); ?></h5>
-                                    <!-- <p class="text-muted mb-0 text-truncate"><?php echo e(Str::ucfirst(Auth::user()->name)); ?></p> -->
+                                    <p class="text-muted mb-0 text-truncate"><?php echo e(Str::ucfirst(Auth::user()->Job)); ?></p>
                                 </div>
 
                             </div>
@@ -194,7 +194,7 @@
 <br />
 <br />
 <div class="row">
-<?php if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsAidAndRelief == 1 ||  Auth::user()->IsWash == 1 || Auth::user()->IsEducation == 1 || Auth::user()->IsInitiative == 1|| Auth::user()->IsMedicalSector == 1): ?>
+    <?php if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsAidAndRelief == 1 || Auth::user()->IsWash == 1 || Auth::user()->IsEducation == 1 || Auth::user()->IsInitiative == 1|| Auth::user()->IsMedicalSector == 1): ?>
 
     <h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">Projects</h1>
     <?php endif; ?>
@@ -399,13 +399,13 @@
                 <br />
 
                 <div class="row ">
-                <?php if(Auth::user()->IsFoodAppeal == 1 || Auth::user()->IsQamarCareCard == 1 ||  Auth::user()->IsAppealsDistributions == 1 || Auth::user()->IsDonorsAndDonorBoxes == 1): ?>
+                    <?php if(Auth::user()->IsFoodAppeal == 1 || Auth::user()->IsQamarCareCard == 1 || Auth::user()->IsAppealsDistributions == 1 || Auth::user()->IsDonorsAndDonorBoxes == 1): ?>
                     <h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">Benef. Services</h1>
                     <?php endif; ?>
 
                     <div class="col-xl-12">
                         <div class="row">
-                    <?php if(Auth::user()->IsFoodAppeal == 1): ?>
+                            <?php if(Auth::user()->IsFoodAppeal == 1): ?>
                             <div class="col-md-4 mb-2">
                                 <a href="FoodAppeal">
                                     <div class="card-one  mini-stats-wid border border-secondary">
@@ -435,7 +435,7 @@
                                 </a>
                             </div>
                             <?php endif; ?>
-                    <?php if(Auth::user()->IsQamarCareCard == 1): ?>
+                            <?php if(Auth::user()->IsQamarCareCard == 1): ?>
 
                             <div class="col-md-4 mb-2">
                                 <a href="<?php echo e(route('IndexQamarCareCard')); ?>">
@@ -466,7 +466,7 @@
                                 </a>
                             </div>
                             <?php endif; ?>
-                    <?php if(Auth::user()->IsAppealsDistributions == 1): ?>
+                            <?php if(Auth::user()->IsAppealsDistributions == 1): ?>
 
                             <div class="col-md-4">
                                 <a href="AppealsDistributions">
@@ -505,7 +505,7 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="row">
-                    <?php if(Auth::user()->IsDonorsAndDonorBoxes == 1): ?>
+                                    <?php if(Auth::user()->IsDonorsAndDonorBoxes == 1): ?>
 
                                     <div class="col-md-4 mb-2">
                                         <a href="Donors&DonorBoxes">
@@ -545,7 +545,7 @@
                                 <br />
 
                                 <div class="row">
-                <?php if(Auth::user()->IsSuperAdmin == 1): ?>
+                                    <?php if(Auth::user()->IsSuperAdmin == 1): ?>
 
                                     <h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">System Management</h1>
                                     <?php endif; ?>
@@ -639,9 +639,9 @@ unset($__errorArgs, $__bag); ?>
                                     </div>
                                     <div class="col-xl-12">
                                         <div class="row">
-                                     <?php if(Auth::user()->IsSuperAdmin == 1): ?>
+                                            <?php if(Auth::user()->IsSuperAdmin == 1): ?>
                                             <div class="col-md-4 mb-2">
-                                                <a href="QuartlyReports">
+                                                <a href="<?php echo e(route('IndexUserManagement')); ?>">
                                                     <div class="card-one  mini-stats-wid border border-secondary">
                                                         <div class="card-body">
                                                             <blockquote class="blockquote  font-size-14 mb-0">
@@ -699,35 +699,6 @@ unset($__errorArgs, $__bag); ?>
                                                 </a>
                                             </div>
                                             <?php endif; ?>
-                                            <!--
-                                            <div class="col-md-4 mb-2">
-                                                <a href="YearlyReports">
-                                                    <div class="card-one  mini-stats-wid border border-secondary">
-                                                        <div class="card-body">
-                                                            <blockquote class="blockquote  font-size-14 mb-0">
-                                                                <div class="d-flex">
-                                                                    <div class="flex-grow-1">
-                                                                        <p class="my-0 text-primary card-title fw-semibold">Yearly Reports</p>
-                                                                        <h6 class="text-muted mb-0">Yearly Reports</h4>
-                                                                    </div>
-
-                                                                    <div class="flex-shrink-0 align-self-center">
-                                                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                                                            <span class="avatar-title bg-dark">
-                                                                                <i class="bx bxs-report  font-size-24"></i>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="d-flex mt-4">
-
-                                                                </div>
-                                                            </blockquote>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div> -->
 
 
                                         </div>
@@ -909,29 +880,6 @@ unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
                                                 <!-- end row -->
-
-                                                <!-- <div class="card">
-            <div class="card-body">
-                <div class="d-sm-flex flex-wrap">
-                    <h4 class="card-title mb-4">Email Sent</h4>
-                    <div class="ms-auto">
-                        <ul class="nav nav-pills">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Week</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Month</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">Year</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div id="stacked-column-chart" class="apex-charts" dir="ltr"></div>
-            </div>
-        </div> -->
                                             </div>
                                         </div>
                                         <!-- end row -->

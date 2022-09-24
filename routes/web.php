@@ -369,3 +369,19 @@ Route::get('/OrphansRelief/Sponsor/All', [App\Http\Controllers\OrphansReliefCont
 
 Route::get('/OrphansRelief/Payment', [App\Http\Controllers\OrphansReliefController::class, 'AllPayments'])->name('AllPayment');
 
+
+
+
+
+
+
+
+//User Management
+Route::get('/UserManagement', [App\Http\Controllers\UserManagementController::class, 'Index'])->name('IndexUserManagement');
+
+Route::get('/UserManagement/All', [App\Http\Controllers\UserManagementController::class, 'All'])->name('AllUser');
+// Create
+Route::get('/UserManagement/Create', [App\Http\Controllers\UserManagementController::class, 'Create'])->name('CreateUser');
+Route::post('/UserManagement/Create', [App\Http\Controllers\UserManagementController::class, 'Store'])->name('CreateUser');
+
+

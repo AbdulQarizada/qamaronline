@@ -43,7 +43,7 @@
                             <div class="row">
                                 <div class="col-8">
                                     <h5 class="font-size-15 text-truncate">{{ Str::ucfirst(Auth::user()->FullName) }}</h5>
-                                    <!-- <p class="text-muted mb-0 text-truncate">{{ Str::ucfirst(Auth::user()->name) }}</p> -->
+                                    <p class="text-muted mb-0 text-truncate">{{ Str::ucfirst(Auth::user()->Job) }}</p>
                                 </div>
 
                             </div>
@@ -613,7 +613,7 @@
                                         <div class="row">
                                             @if(Auth::user()->IsSuperAdmin == 1)
                                             <div class="col-md-4 mb-2">
-                                                <a href="QuartlyReports">
+                                                <a href="{{route('IndexUserManagement')}}">
                                                     <div class="card-one  mini-stats-wid border border-secondary">
                                                         <div class="card-body">
                                                             <blockquote class="blockquote  font-size-14 mb-0">
