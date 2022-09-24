@@ -179,7 +179,7 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="@lang('translation.Search')" aria-label="Search input">
                                 
-                                <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>s
+                                <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
                             </div>
                         </div>
                     </form>
@@ -235,9 +235,10 @@
             <div class="dropdown d-inline-block">
             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="rounded-circle header-profile-user" src="{{ isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-1.png') }}"
-                    alt="Header Avatar">
-                <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{ucfirst(Auth::user()->FirstName)}} {{ucfirst(Auth::user()->LastName)}}</span>
+                <img class="rounded-circle header-profile-user" src="{{ isset(Auth::user()->Profile) ? asset('/uploads/User/Profiles/'.$data -> Profile) : asset('/uploads/User/Profiles/avatar-1.png') }}"
+                    alt="Profile">
+                
+                <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{ucfirst(Auth::user()->FullName)}}</span>
                 
                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
             </button>

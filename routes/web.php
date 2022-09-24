@@ -361,13 +361,11 @@ Route::post('/OrphansRelief/Orphan/Payment/', [App\Http\Controllers\OrphansRelie
 
 // sponsors
 Route::get('/OrphansRelief/Sponsor/All', [App\Http\Controllers\OrphansReliefController::class, 'AllSponsor'])->name('AllSponsor');
-
-
-
-
-
-
 Route::get('/OrphansRelief/Payment', [App\Http\Controllers\OrphansReliefController::class, 'AllPayments'])->name('AllPayment');
+Route::get('/OrphansRelief/Sponsor/MyOrphans', [App\Http\Controllers\OrphansReliefController::class, 'MyOrphans'])->name('MyOrphansSponsor');
+Route::get('/OrphansRelief/Sponsor/MyPyaments', [App\Http\Controllers\OrphansReliefController::class, 'MyPayments'])->name('MyPaymentsSponsor');
+
+
 
 
 

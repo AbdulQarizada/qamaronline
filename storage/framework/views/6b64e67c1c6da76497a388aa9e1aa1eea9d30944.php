@@ -118,7 +118,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
   <div style="background-color: #ffffff;height: 100%;width: 100% !important;">
   <!--[if (!mso)&(!IE)]><!--><div class="v-col-padding" style="height: 100%; padding: 0px 0px 50px;border-top: 1px solid #CCC;border-left: 1px solid #CCC;border-right: 1px solid #CCC;border-bottom: 1px solid #CCC;"><!--<![endif]-->
   
-<table id="u_content_image_1" style="font-family:'Montserrat',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+<!-- <table id="u_content_image_1" style="font-family:'Montserrat',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
   <tbody>
     <tr>
       <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:0px;font-family:'Montserrat',sans-serif;" align="left">
@@ -136,7 +136,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       </td>
     </tr>
   </tbody>
-</table>
+</table> -->
 
 <table id="u_content_heading_2" style="font-family:'Montserrat',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
   <tbody>
@@ -160,7 +160,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:20px 10px 10px 40px;font-family:'Montserrat',sans-serif;" align="left">
         
   <div class="v-text-align v-line-height" style="line-height: 140%; text-align: left; word-wrap: break-word;">
-    <p style="font-size: 14px; line-height: 140%;"><strong><span style="font-size: 18px; line-height: 25.2px;">Dear Abdul Wahab Qarizada!</span></strong></p>
+    <p style="font-size: 14px; line-height: 140%;"><strong><span style="font-size: 18px; line-height: 25.2px;">Dear <?php echo e($details['FullName']); ?>!</span></strong></p>
   </div>
 
       </td>
@@ -211,154 +211,8 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
 <div id="u_column_3" class="u-col u-col-100" style="max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;">
   <div style="background-color: #f0f0f0;height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
   <!--[if (!mso)&(!IE)]><!--><div class="v-col-padding" style="height: 100%; padding: 50px 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;"><!--<![endif]-->
-  
-<table id="u_content_text_3" style="font-family:'Montserrat',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
-  <tbody>
-    <tr>
-      <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:10px 50px;font-family:'Montserrat',sans-serif;" align="left">
-        
-  <div class="v-text-align v-line-height" style="line-height: 140%; text-align: center; word-wrap: break-word;">
-    <p style="font-size: 14px; line-height: 140%;">If you have any questions, please email us at <a rel="noopener" href="orphanrelief@qamarcharity.org" target="_blank">orphanrelief@qamarcharity.org</a> or visit our FAQS.</p>
-  </div>
+ 
 
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<table id="u_content_divider_1" style="font-family:'Montserrat',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
-  <tbody>
-    <tr>
-      <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:20px 10px;font-family:'Montserrat',sans-serif;" align="left">
-        
-  <table height="0px" align="center" border="0" cellpadding="0" cellspacing="0" width="57%" style="border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;border-top: 1px solid #BBBBBB;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
-    <tbody>
-      <tr style="vertical-align: top">
-        <td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;font-size: 0px;line-height: 0px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
-          <span>&#160;</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<table style="font-family:'Montserrat',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
-  <tbody>
-    <tr>
-      <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:'Montserrat',sans-serif;" align="left">
-        
-<div align="center">
-  <div style="display: table; max-width:187px;">
-  <!--[if (mso)|(IE)]><table width="187" cellpadding="0" cellspacing="0" border="0"><tr><td style="border-collapse:collapse;" align="center"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; mso-table-lspace: 0pt;mso-table-rspace: 0pt; width:187px;"><tr><![endif]-->
-  
-    
-    <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 15px;" valign="top"><![endif]-->
-    <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 15px">
-      <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-        <a href="https://facebook.com/" title="Facebook" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" width="1298" height="2500" viewBox="88.428 12.828 107.543 207.085"><path d="M158.232 219.912v-94.461h31.707l4.747-36.813h-36.454V65.134c0-10.658 2.96-17.922 18.245-17.922l19.494-.009V14.278c-3.373-.447-14.944-1.449-28.406-1.449-28.106 0-47.348 17.155-47.348 48.661v27.149H88.428v36.813h31.788v94.461l38.016-.001z" fill="#3c5a9a"/></svg>        </a>
-      </td></tr>
-    </tbody></table>
-    <!--[if (mso)|(IE)]></td><![endif]-->
-    
-    <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 15px;" valign="top"><![endif]-->
-    <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 15px">
-      <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-        <a href="https://instagram.com/" title="Instagram" target="_blank">
-          <img src="images/image-2.png" alt="Instagram" title="Instagram" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
-        </a>
-      </td></tr>
-    </tbody></table>
-    <!--[if (mso)|(IE)]></td><![endif]-->
-    
-    <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 15px;" valign="top"><![endif]-->
-    <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 15px">
-      <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-        <a href="https://youtube.com/" title="YouTube" target="_blank">
-          <img src="images/image-3.png" alt="YouTube" title="YouTube" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
-        </a>
-      </td></tr>
-    </tbody></table>
-    <!--[if (mso)|(IE)]></td><![endif]-->
-    
-    <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 0px;" valign="top"><![endif]-->
-    <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 0px">
-      <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-        <a href="https://tiktok.com/" title="TikTok" target="_blank">
-          <img src="images/image-4.png" alt="TikTok" title="TikTok" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
-        </a>
-      </td></tr>
-    </tbody></table>
-    <!--[if (mso)|(IE)]></td><![endif]-->
-    
-    
-    <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
-  </div>
-</div>
-
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<table id="u_content_menu_1" style="font-family:'Montserrat',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
-  <tbody>
-    <tr>
-      <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:10px;font-family:'Montserrat',sans-serif;" align="left">
-        
-<div class="menu" style="text-align:center">
-<!--[if (mso)|(IE)]><table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center"><tr><![endif]-->
-
-  <!--[if (mso)|(IE)]><td style="padding:5px 15px"><![endif]-->
-  
-    <a href="https://qamarcharity.org/who-we-are/" target="_blank" style="padding:5px 15px;display:inline-block;color:#000000;font-family:'Montserrat',sans-serif;font-size:14px;text-decoration:none"  class="v-padding">
-      Who We Are
-    </a>
-  
-  <!--[if (mso)|(IE)]></td><![endif]-->
-  
-    <!--[if (mso)|(IE)]><td style="padding:5px 15px"><![endif]-->
-    <span style="padding:5px 15px;display:inline-block;color:#444444;font-family:'Montserrat',sans-serif;font-size:14px" class="v-padding hide-mobile">
-      |
-    </span>
-    <!--[if (mso)|(IE)]></td><![endif]-->
-  
-
-  <!--[if (mso)|(IE)]><td style="padding:5px 15px"><![endif]-->
-  
-    <a href="https://qamarcharity.org/volunteer/" target="_blank" style="padding:5px 15px;display:inline-block;color:#000000;font-family:'Montserrat',sans-serif;font-size:14px;text-decoration:none"  class="v-padding">
-      Become Volunteer
-    </a>
-  
-  <!--[if (mso)|(IE)]></td><![endif]-->
-  
-    <!--[if (mso)|(IE)]><td style="padding:5px 15px"><![endif]-->
-    <span style="padding:5px 15px;display:inline-block;color:#444444;font-family:'Montserrat',sans-serif;font-size:14px" class="v-padding hide-mobile">
-      |
-    </span>
-    <!--[if (mso)|(IE)]></td><![endif]-->
-  
-
-  <!--[if (mso)|(IE)]><td style="padding:5px 15px"><![endif]-->
-  
-    <a href="https://qamarcharity.org/representative/" target="_blank" style="padding:5px 15px;display:inline-block;color:#000000;font-family:'Montserrat',sans-serif;font-size:14px;text-decoration:none"  class="v-padding">
-      Become Representative
-    </a>
-  
-  <!--[if (mso)|(IE)]></td><![endif]-->
-  
-
-<!--[if (mso)|(IE)]></tr></table><![endif]-->
-</div>
-
-      </td>
-    </tr>
-  </tbody>
-</table>
 
   <!--[if (!mso)&(!IE)]><!--></div><!--<![endif]-->
   </div>

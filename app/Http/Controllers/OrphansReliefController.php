@@ -1400,7 +1400,7 @@ class OrphansReliefController extends Controller
           $orphanid = Orphan::where('id', '=', $item['item']['id'])->first();
           $orphanid->update(['Sponsor_ID' => $userid->id]);
         }
-          $details = ['Email' => request('Email'),'Password' => $RandomPassword];
+          $details = ['Email' => request('Email'),'Password' => $RandomPassword,'FullName' => request('FullName')];
         
         Mail::to(request('Email'))->send(new OrphanMails($details));
       } catch (\Exception $e) {
@@ -1439,6 +1439,40 @@ class OrphansReliefController extends Controller
     return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors]);
   }
 
+
+  
+  public function MyOrphans()
+  {
+
+
+    $myorphans =   Orphan::
+       join('locations as a', 'orphans.Province_ID', '=', 'a.id')
+      //  -> join('locations as b', 'orphans.District_ID', '=', 'b.id')
+      //   ->join('look_ups as c','orphans.FamilyStatus_ID', '=', 'c.id')
+      //   ->join('users as d','orphans.Created_By', '=', 'd.id')
+
+      ->select(['orphans.*', 'a.Name as ProvinceName'])
+
+      -> get()->where("Sponsor_ID", "=", Auth::user()->id);
+    return view('OrphansRelief.Sponsor.MyOrphan', ['datas' => $myorphans]);
+  }
+
+  
+  public function MyPayments()
+  {
+
+
+    $mypayments =   OrphanPayment::
+      // join('locations as a', 'orphans.Province_ID', '=', 'a.id')
+      //   ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
+      //   ->join('look_ups as c','orphans.FamilyStatus_ID', '=', 'c.id')
+      //   ->join('users as d','orphans.Created_By', '=', 'd.id')
+
+      // ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+
+      get()->where("Email", "=", Auth::user()->email);
+    return view('OrphansRelief.Sponsor.MyPayment', ['datas' => $mypayments]);
+  }
 
   public function AssignToSponsor(Orphan $data)
   {
