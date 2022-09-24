@@ -125,90 +125,22 @@
                                       <div>
                                       <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$data -> PrimaryNumber}}</a></h5>
                                         <p class="text-muted mb-0 badge badge-soft-warning">{{$data -> SecondaryNumber}}</p>
-                                         <p class="text-muted mb-0 badge badge-soft-danger">{{$data -> RelativeNumber}}</p>
                                         </div>
                                </td> 
                                <td>
-                                <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> FamilyStatus}}</a></h5>
-                                       @if( $data -> LevelPoverty == 1)
-                                         <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-secondary font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-
-                                       @endif
-                                       @if( $data -> LevelPoverty == 2)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $data -> LevelPoverty == 3)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-warning font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $data -> LevelPoverty == 4)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-warning font-size-16"></i>
-                                         <i class="bx bxs-star text-warning font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $data -> LevelPoverty == 5)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-warning font-size-16"></i>
-                                         <i class="bx bxs-star text-warning font-size-18"></i>
-                                         <i class="bx bxs-star text-warning font-size-20"></i>
-                                       @endif
-                                    </div>
+                                  {{$data -> Job}}
                                 </td>
                               
                                <td>
                                 <div>
 
 
-                                @if($data -> Status == 'Pending')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary">{{$data -> Status}}</a></h5>
-                                    <p class="text-muted mb-0">{{$data -> created_at}}</p> 
+                                @if($data -> IsActive == 1)
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Active</a></h5>
 
                                  @endif
-
-                                @if($data -> Status == 'Approved')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">{{$data -> Status}} </a></h5>
-                                    <p class="text-muted mb-0">{{$data -> created_at}}</p> 
-
-                                 @endif
-
-                                 @if($data -> Status == 'Rejected')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">{{$data -> Status}} </a></h5>
-                                    <p class="text-muted mb-0">{{$data -> created_at}}</p> 
-
-                                 @endif
-
-
-
-                                 @if($data -> Status == 'ReInitiated')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info">{{$data -> Status}}</a></h5>
-                                    <p class="text-muted mb-0">{{$data -> created_at}}</p> 
-
-                                 @endif
-
-                                 @if($data -> Status == 'Released')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">{{$data -> Status}}</a></h5>
-                                    <p class="text-muted mb-0">{{$data -> created_at}}</p> 
-
-                                 @endif
-
-                                 @if($data -> Status == 'Printed')
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark">{{$data -> Status}}</a></h5>
-                                    <p class="text-muted mb-0">{{$data -> created_at}}</p> 
+                                 @if($data -> IsActive == 0)
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">Not Active</a></h5>
 
                                  @endif
 

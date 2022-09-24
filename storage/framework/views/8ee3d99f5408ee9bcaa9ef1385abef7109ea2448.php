@@ -983,7 +983,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" type="checkbox" value="<?php echo e($data -> IsEmployee); ?>" id="IsEmployee" name="IsEmployee[]">
+unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsEmployee" name="IsEmployee">
                                     <label class="form-check-label" for="IsEmployee">
                                         IsEmployee
                                     </label>
@@ -1012,7 +1012,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" type="checkbox" value="<?php echo e($data -> IsActive); ?>" id="IsActive" name="IsActive">
+unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsActive" name="IsActive">
                                     <label class="form-check-label" for="IsActive">
                                        IsActive
                                     </label>

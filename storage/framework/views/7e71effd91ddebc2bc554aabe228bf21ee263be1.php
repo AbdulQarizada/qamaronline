@@ -238,14 +238,15 @@
                     <?php if(Auth::user()->IsEmployee == 1): ?>
                 <img class="rounded-circle header-profile-user" src="<?php echo e(isset(Auth::user()->Profile) ? asset('/uploads/User/Employees/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png')); ?>"
                     alt="Profile">
-                <?php endif; ?>
 
-                <?php if(Auth::user()->IsOrphanSponsor == 1): ?>
+                <?php else: ?>
                 <img class="rounded-circle header-profile-user" src="<?php echo e(isset(Auth::user()->Profile) ? asset('/uploads/User/Sponsors/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png')); ?>"
                     alt="Profile">
                 <?php endif; ?>
                 
                 <span class="d-none d-xl-inline-block ms-1" key="t-henry"><?php echo e(ucfirst(Auth::user()->FullName)); ?></span>
+                
+                
                 
                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
             </button>

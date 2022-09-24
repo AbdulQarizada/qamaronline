@@ -398,9 +398,8 @@
                 @if(Auth::user()->IsEmployee == 1)
                 <img class="rounded-circle header-profile-user" src="{{ isset(Auth::user()->Profile) ? asset('/uploads/User/Employees/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png') }}"
                     alt="Profile">
-                @endif
 
-                @if(Auth::user()->IsOrphanSponsor == 1)
+                @else
                 <img class="rounded-circle header-profile-user" src="{{ isset(Auth::user()->Profile) ? asset('/uploads/User/Sponsors/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png') }}"
                     alt="Profile">
                 @endif
