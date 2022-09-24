@@ -584,7 +584,7 @@
                         <div class="col-md-2">
                             <div class="mb-3 position-relative">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input @error('IsEmployee') is-invalid @enderror" type="checkbox" value="{{$data -> IsEmployee}}" id="IsEmployee" name="IsEmployee[]">
+                                    <input class="form-check-input @error('IsEmployee') is-invalid @enderror" type="checkbox" value="1" id="IsEmployee" name="IsEmployee">
                                     <label class="form-check-label" for="IsEmployee">
                                         IsEmployee
                                     </label>
@@ -599,7 +599,7 @@
                         <div class="col-md-2">
                             <div class="mb-3 position-relative">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input @error('IsActive') is-invalid @enderror" type="checkbox" value="{{$data -> IsActive}}" id="IsActive" name="IsActive">
+                                    <input class="form-check-input @error('IsActive') is-invalid @enderror" type="checkbox" value="1" id="IsActive" name="IsActive">
                                     <label class="form-check-label" for="IsActive">
                                        IsActive
                                     </label>

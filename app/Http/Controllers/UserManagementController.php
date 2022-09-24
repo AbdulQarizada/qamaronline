@@ -222,7 +222,7 @@ class UserManagementController extends Controller
 
 
       // 'Updated_By' => auth()->user()->id,
-      'Owner' => 1,
+      // 'Owner' => 1,
 
     ]);
     return redirect()->route('AllUser')->with('toast_success', 'Record Updated Successfully!');
