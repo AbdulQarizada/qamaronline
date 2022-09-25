@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                             <h1 class="mt-5 text-success">Congratulations</h1>
-                            <p  class="font-size-18">Your payment has been revieved. we have send you an email along with password, please login to your account. now you can track your orphans.</p>
+                            <p  class="font-size-14">Your payment has been revieved. we have send you an email along with password, please login to your account.</p>
 
                             <div class="row">
                                 <div class="col-md-4">
