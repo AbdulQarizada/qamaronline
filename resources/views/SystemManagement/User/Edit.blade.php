@@ -185,7 +185,7 @@
                         <div class="col-md-4">
                                     <div class="mb-3 position-relative">
                                         <label for="Tazkira_ID" class="form-label ">Tazkira ID <i class="mdi mdi-asterisk text-danger"></i></label>
-                                        <input type="number" class="form-control form-control-lg @error('Tazkira_ID') is-invalid @enderror" value="{{$data -> Tazkira_ID}}" id="Tazkira_ID" name="Tazkira_ID" max="999999999" required>
+                                        <input type="number" class="form-control form-control-lg @error('Tazkira_ID') is-invalid @enderror" value="{{$data -> Tazkira_ID}}" id="Tazkira_ID" name="Tazkira_ID"  required>
                                         @error('TazkiraID')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
