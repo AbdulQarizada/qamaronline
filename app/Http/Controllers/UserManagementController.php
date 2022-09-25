@@ -69,7 +69,7 @@ class UserManagementController extends Controller
 
 
 
-    return view('SystemManagement.User.Create', ['countries' => $countries,'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+    return view('SystemManagement.User.Create', ['countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
   }
 
   public function Store(Request $request)
@@ -116,29 +116,13 @@ class UserManagementController extends Controller
       'Village' => request('Village'),
       'email' => request('email'),
       'password' => Hash::make(request('password')),
-
-
-      'IsEmployee' => request('IsEmployee'),
-      'IsActive' => request('IsActive'),
-      'IsSuperAdmin' => request('IsSuperAdmin'),
-      'IsSuperAdmin' => request('IsSuperAdmin'),
-      'IsOrphanRelief' => request('IsOrphanRelief'),
-      'IsAidAndRelief' => request('IsAidAndRelief'),
-      'IsWash' => request('IsWash'),
-      'IsEducation' => request('IsEducation'),
-      'IsInitiative' => request('IsInitiative'),
-      'IsMedicalSector' => request('IsMedicalSector'),
-      'IsFoodAppeal' => request('IsFoodAppeal'),
-      'IsQamarCareCard' => request('IsQamarCareCard'),
-      'IsAppealsDistributions' => request('IsAppealsDistributions'),
-      'IsDonorsAndDonorBoxes' => request('IsDonorsAndDonorBoxes'),
+      'IsEmployee' => 1,
 
 
 
 
       'Status' => 'Pending',
       'Created_By' => auth()->user()->id,
-      'Owner' => 1,
 
 
 
@@ -179,11 +163,30 @@ class UserManagementController extends Controller
     $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
     $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
     $provinces = Location::whereNull("Parent_ID")->get();
-    return view('SystemManagement.User.Edit',['data' => $data, 'countries' => $countries,'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+
+
+
+    return view('SystemManagement.User.Edit', ['data' => $data, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
   }
 
-  public function Update(User $data)
+  public function Update(Request $request, User $data)
   {
+    $validator = $request->validate([
+      'FirstName' => 'bail|required|max:255',
+      'LastName' => 'required|max:255',
+      'FullName' => 'required|max:255',
+      'Tazkira_ID' => 'required|max:255',
+      'Profile' => 'required|max:255',
+      'Job' => 'required|max:255',
+      'DOB' => 'required|max:255',
+      'Gender_ID' => 'required|max:255',
+      'PrimaryNumber' => 'required|max:10',
+      'Province_ID' => 'required|max:255',
+      'District_ID' => 'required|max:255',
+      'Village' => 'required|max:255',
+
+    ]);
+
 
     $data->update([
 
@@ -223,38 +226,18 @@ class UserManagementController extends Controller
 
 
 
-    ->join('locations as a', 'users.Province_ID', '=', 'a.id')
-    ->join('locations as b', 'users.District_ID', '=', 'b.id')
-    // ->join('look_ups as c','qamar_care_cards.Country_ID', '=', 'c.id')
-    // ->join('look_ups as d','qamar_care_cards.Gender_ID', '=', 'd.id')
-    // ->join('look_ups as e','qamar_care_cards.Language_ID', '=', 'e.id')
-    // ->join('look_ups as f','qamar_care_cards.CurrentJob_ID', '=', 'f.id')
-    // ->join('look_ups as g','qamar_care_cards.FutureJob_ID', '=', 'g.id')
-    // ->join('look_ups as h','qamar_care_cards.EducationLevel_ID', '=', 'h.id')
-    // ->join('look_ups as i','qamar_care_cards.RelativeRelationship_ID', '=', 'i.id')
-    // ->join('look_ups as j', 'qamar_care_cards.FamilyStatus_ID', '=', 'j.id')
-    // ->join('look_ups as k','qamar_care_cards.Tribe_ID', '=', 'k.id')
-    // ->join('look_ups as l','qamar_care_cards.IncomeStreem_ID', '=', 'l.id')
+      ->join('locations as a', 'users.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'users.District_ID', '=', 'b.id')
 
 
-    ->select(
-      'users.*',
-      'a.Name as Province',
-      'b.Name as District',
-      // 'c.Name as Country', 
-      // 'd.Name as Gender', 
-      // 'e.Name as Language', 
-      // 'f.Name as CurrentJob', 
-      // 'g.Name as FutureJob', 
-      // 'h.Name as EducationLevel', 
-      // 'i.Name as RelativeRelationship', 
-      // 'j.Name as FamilyStatus',
-      // 'k.Name as Tribe', 
-      // 'l.Name as IncomeStreem'
-    )
+      ->select(
+        'users.*',
+        'a.Name as Province',
+        'b.Name as District',
+      )
 
-    ->get();
-    return view('SystemManagement.User.Role',['datas' => $users]);
+      ->get();
+    return view('SystemManagement.User.Role', ['datas' => $users]);
   }
 
   public function AssignRole(User $data)
@@ -316,13 +299,13 @@ class UserManagementController extends Controller
   public function All()
   {
 
-    $datas =   User:: join('locations as a', 'users.Province_ID', '=', 'a.id')
-     ->join('locations as b', 'users.District_ID', '=', 'b.id')
-      ->join('users as d','users.Created_By', '=', 'd.id')
+    $datas =   User::join('locations as a', 'users.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'users.District_ID', '=', 'b.id')
+      ->join('users as d', 'users.Created_By', '=', 'd.id')
 
-      -> select(['users.*',  'a.Name as ProvinceName', 'b.Name as DistrictName', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+      ->select(['users.*',  'a.Name as ProvinceName', 'b.Name as DistrictName', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
       ->where("users.IsEmployee", "=", 1)
-      -> get();
+      ->get();
     return view('SystemManagement.User.All', compact('datas'));
   }
 
@@ -331,9 +314,9 @@ class UserManagementController extends Controller
   public function Activated()
   {
 
-    $datas =   User:: join('locations as a', 'users.Province_ID', '=', 'a.id')
-       ->join('locations as b', 'users.District_ID', '=', 'b.id')
-       ->join('users as d','users.Created_By', '=', 'd.id')
+    $datas =   User::join('locations as a', 'users.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'users.District_ID', '=', 'b.id')
+      ->join('users as d', 'users.Created_By', '=', 'd.id')
       ->select(['users.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
       ->where("users.IsEmployee", "=", 1)
       ->where("users.IsActive", "=", 1)
@@ -348,7 +331,7 @@ class UserManagementController extends Controller
     // $qamarcarecards =   QamarCareCard::where("Status", "=", 'Rejected')->get();
     $datas =   User::join('locations as a', 'users.Province_ID', '=', 'a.id')
       ->join('locations as b', 'users.District_ID', '=', 'b.id')
-      ->join('users as d','users.Created_By', '=', 'd.id')
+      ->join('users as d', 'users.Created_By', '=', 'd.id')
       ->select(['users.*', 'a.Name as ProvinceName', 'b.Name as DistrictName',  'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
       ->where("users.IsEmployee", "=", 1)
       ->where("users.IsActive", "!=", 1)
@@ -367,8 +350,8 @@ class UserManagementController extends Controller
     // $qamarcarecards =   QamarCareCard::where("Status", "=", 'Pending')->get();
     $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
       ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
+      ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+      ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
 
       ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
       ->where("Status", "=", 'Pending')
@@ -383,8 +366,8 @@ class UserManagementController extends Controller
     // $qamarcarecards =   QamarCareCard::where("Status", "=", 'Released')->get();
     $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
       ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
+      ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+      ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
 
       ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
       ->where("Status", "=", 'Released')
@@ -504,8 +487,8 @@ class UserManagementController extends Controller
   {
 
     $qamarcarecards =   QamarCareCard::where("Status", "=", 'Printed')
-    ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
-    ->get();
+      ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+      ->get();
     return view('QamarCardCard.All', compact('qamarcarecards'));
   }
 
@@ -684,7 +667,7 @@ class UserManagementController extends Controller
       ->join('locations as b', 'service_providers.DistrictService_ID', '=', 'b.id')
       ->join('look_ups as c', 'service_providers.Profession_ID', '=', 'c.id')
       ->join('service_types as d', 'service_providers.ServiceType_ID', '=', 'd.id')
-      
+
 
       ->where("ServiceType_ID", "=", request('RequestedService_ID'))
       ->where("ProvinceService_ID", "=", request('Province_ID'))
@@ -692,16 +675,14 @@ class UserManagementController extends Controller
       ->where("Status", "=", "Approved")
       ->get();
 
-      $final = 0;
+    $final = 0;
 
-      foreach($serviceproviders as $serviceprovider)
-      {
-        $numberoffrees = AssignCareCardServices::where("IsFree", "=","1")
-     -> where("assign_care_card_services.ServiceProvider_ID", "=", $serviceprovider -> id)
-     -> get();
- 
-  }
-  $final = $numberoffrees;
+    foreach ($serviceproviders as $serviceprovider) {
+      $numberoffrees = AssignCareCardServices::where("IsFree", "=", "1")
+        ->where("assign_care_card_services.ServiceProvider_ID", "=", $serviceprovider->id)
+        ->get();
+    }
+    $final = $numberoffrees;
 
 
 

@@ -12,10 +12,6 @@
 
 <?php $__env->startSection('content'); ?>
 
-<?php $__env->startComponent('components.breadcrumb'); ?>
-<?php $__env->slot('li_1'); ?> Qamar Care / Add Qamar Care Card <?php $__env->endSlot(); ?>
-<?php $__env->slot('title'); ?> <?php $__env->endSlot(); ?>
-<?php echo $__env->renderComponent(); ?>
 
 <div class="row">
     <div class="col-12">
@@ -1027,7 +1023,7 @@ unset($__errorArgs, $__bag); ?>
                    
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
-                                <label for="EldestSonAge" class="form-label">Eldest Son Age <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <label for="EldestSonAge" class="form-label">Eldest Child Age <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
                                     <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['EldestSonAge'];

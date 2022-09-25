@@ -12,10 +12,6 @@
 
 @section('content')
 
-@component('components.breadcrumb')
-@slot('li_1') Qamar Care / Add Qamar Care Card @endslot
-@slot('title') @endslot
-@endcomponent
 
 <div class="row">
     <div class="col-12">
@@ -607,7 +603,7 @@
                    
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
-                                <label for="EldestSonAge" class="form-label">Eldest Son Age <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <label for="EldestSonAge" class="form-label">Eldest Child Age <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
                                     <input type="number" class="form-control form-control-lg @error('EldestSonAge') is-invalid @enderror" value="{{ old('EldestSonAge') }}" id="EldestSonAge" name="EldestSonAge" max="150" aria-describedby="EldestSonAge" required>

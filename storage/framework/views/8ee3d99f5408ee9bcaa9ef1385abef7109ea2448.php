@@ -35,7 +35,6 @@
 </div>
 
 <?php endif; ?>
-
 <form class="needs-validation" action="<?php echo e(route('UpdateUser', [$data -> id])); ?>" method="POST" enctype="multipart/form-data" novalidate>
 <?php echo method_field('PUT'); ?>
 
@@ -318,7 +317,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> Tazkira_ID); ?>" id="Tazkira_ID" name="Tazkira_ID" max="999999999" required>
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> Tazkira_ID); ?>" id="Tazkira_ID" name="Tazkira_ID"  required>
                                         <?php $__errorArgs = ['TazkiraID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -1013,7 +1012,6 @@ unset($__errorArgs, $__bag); ?>
 
 
 </form>
-
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
 <script src="<?php echo e(URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js')); ?>"></script>

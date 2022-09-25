@@ -32,6 +32,7 @@
                                              <tr>
                                                 <td>
                                                      <img src="{{URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)}}" style="width: 130px; height: 135px;" class="rounded">
+                                                     <p class="ml-2">{{$data -> created_at -> format("d-m-Y")}}</p>
                                                 </td>
                                                 <td style="text-align: center;">
                                                      <!-- <img src="{{URL::asset('/assets/images/letterhead.png')}}" style="width: 400px; height: 100%;" class="rounded-circle"> -->
@@ -140,7 +141,7 @@
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> SpuoseName}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="width: 20%; border: 2px solid #000; padding: 5px;">Eldest Son Age</td>
+                                                        <td style="width: 20%; border: 2px solid #000; padding: 5px;">Eldest Child Age</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> EldestSonAge}}</td>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Monthly Family Income</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> MonthlyFamilyIncome}} (AFGHANI)</td>
@@ -149,7 +150,7 @@
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Monthly Family Expenses</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> MonthlyFamilyExpenses}} (AFGHANI)</td>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Number of  Family Members</td>
-                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> NumberFamilyMembers}} (AFGHANI)</td>
+                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> NumberFamilyMembers}} </td>
                                                     </tr>
                                                     <tr>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Income Streem</td>

@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('title'); ?> Qamar Care List <?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?> Scholarship <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
     <!-- DataTables -->
@@ -10,14 +10,14 @@
 <?php $__env->startSection('content'); ?>
 
     <?php $__env->startComponent('components.breadcrumb'); ?>
-        <?php $__env->slot('li_1'); ?> Qamar Care Card <?php $__env->endSlot(); ?>
-        <?php $__env->slot('title'); ?> Qamar Care Card List <?php $__env->endSlot(); ?>
+        <?php $__env->slot('li_1'); ?> Education <?php $__env->endSlot(); ?>
+        <?php $__env->slot('title'); ?> Applications <?php $__env->endSlot(); ?>
     <?php echo $__env->renderComponent(); ?>
 
     <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="row">
         <div class="col-12">
-           <a href="<?php echo e(route('AllQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+           <a href="<?php echo e(route('AllApplicantEducation')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
            <a href="javascript:window.print()" class="btn btn-dark  waves-effect waves-light"><i class=" bx bxs-printer   font-size-18"></i></a>
       
         </div>
@@ -31,8 +31,7 @@
                                     <table class="table table-nowrap">
                                              <tr>
                                                 <td>
-                                                     <img src="<?php echo e(URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)); ?>" style="width: 130px; height: 135px;" class="rounded">
-                                                     <p class="ml-2"><?php echo e($data -> created_at -> format("d-m-Y")); ?></p>
+                                                     <img src="<?php echo e(URL::asset('/uploads/Scholarship/Applicant/Profiles/'.$data -> Profile)); ?>" style="width: 130px; height: 135px;" class="rounded">
                                                 </td>
                                                 <td style="text-align: center;">
                                                      <!-- <img src="<?php echo e(URL::asset('/assets/images/letterhead.png')); ?>" style="width: 400px; height: 100%;" class="rounded-circle"> -->
@@ -44,7 +43,7 @@
                                                             <h4 class="font-size-18 mb-1"><a href="#" class="badge badge-soft-success">Scan Me </a></h4>
 
                                                             <div class="mb-3" class="rounded">
-                                                                 <?php echo DNS2D::getBarcodeSVG(''.$data->QCC,  'QRCODE', 6, 6, true); ?> 
+                                                                 <?php echo DNS2D::getBarcodeSVG(''.$data->TazkiraID,  'QRCODE', 6, 6, true); ?> 
 
                                                                  
                                                             </div>     
@@ -141,7 +140,7 @@
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> SpuoseName); ?></td>
                                                     </tr>
                                                     <tr>
-                                                        <td style="width: 20%; border: 2px solid #000; padding: 5px;">Eldest Child Age</td>
+                                                        <td style="width: 20%; border: 2px solid #000; padding: 5px;">Eldest Son Age</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> EldestSonAge); ?></td>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Monthly Family Income</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> MonthlyFamilyIncome); ?> (AFGHANI)</td>
@@ -150,7 +149,7 @@
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Monthly Family Expenses</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> MonthlyFamilyExpenses); ?> (AFGHANI)</td>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Number of  Family Members</td>
-                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> NumberFamilyMembers); ?> </td>
+                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> NumberFamilyMembers); ?> (AFGHANI)</td>
                                                     </tr>
                                                     <tr>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Income Streem</td>
@@ -331,15 +330,15 @@
            <!-- <a href="<?php echo e(route('AllQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a> -->
            <!-- <a href="javascript:window.print()" class="btn btn-dark  waves-effect waves-light"><i class=" bx bxs-printer   font-size-18"></i></a> -->
            <?php if( $data -> Status == 'Approved' || $data -> Status == 'Rejected' || $data -> Status == 'Printed' || $data -> Status == 'Released'): ?>
-                    <a href="<?php echo e(route('ReInitiateQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-info waves-effect waves-light reinitiate m-3">
+                    <a href="<?php echo e(route('ReInitiateApplicantEducation', ['data' => $data -> id])); ?>" class="btn btn-info waves-effect waves-light reinitiate m-3">
                         <i class="bx bx-time-five  font-size-16 align-middle"></i>Re-Initiate
                     </a>
                     <?php endif; ?>
                     <?php if( $data -> Status == 'Pending'): ?>
-                    <a href="<?php echo e(route('ApproveQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light approve m-3">
+                    <a href="<?php echo e(route('ApproveApplicantEducation', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light approve m-3">
                         <i class="bx bx-check-circle font-size-16 align-middle"></i>Approve
                     </a>
-                     <a href="<?php echo e(route('RejectQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-danger waves-effect waves-light reject m-3">
+                     <a href="<?php echo e(route('RejectApplicantEducation', ['data' => $data -> id])); ?>" class="btn btn-danger waves-effect waves-light reject m-3">
                         <i class=" bx bx-x-circle font-size-16 align-middle"></i>Reject
                     </a>
                     <?php endif; ?>
@@ -414,4 +413,4 @@ $('.reject').on('click', function (event) {
   
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Qamar\QamarOnline\qamaronline\resources\views/QamarCardCard/Status.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Qamar\QamarOnline\qamaronline\resources\views/Education/Application/Status.blade.php ENDPATH**/ ?>

@@ -35,7 +35,6 @@
 </div>
 
 @endif
-
 <form class="needs-validation" action="{{route('UpdateUser', [$data -> id])}}" method="POST" enctype="multipart/form-data" novalidate>
 @method('PUT')
 
@@ -607,7 +606,6 @@
 
 
 </form>
-
 @endsection
 @section('script')
 <script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
