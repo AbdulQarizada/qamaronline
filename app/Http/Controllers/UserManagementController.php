@@ -79,7 +79,7 @@ class UserManagementController extends Controller
       'FirstName' => 'bail|required|max:255',
       'LastName' => 'required|max:255',
       'FullName' => 'required|max:255',
-      'Tazkira_ID' => 'required|unique:users|max:10',
+      'Tazkira_ID' => 'required|unique:users|max:255',
       'Profile' => 'required|max:255',
       'Job' => 'required|max:255',
       'DOB' => 'required|max:255',
