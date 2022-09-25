@@ -173,7 +173,7 @@
                     <span class="hover-link"></span>
                     <!-- <a href="<?php echo e(route('OrphanDetailOrphans', ['data' => $data -> id])); ?>" class="product-link">view details</a> -->
 
-                    <a href="<?php echo e(route('AddToCartOrphans', ['data' => $data -> id])); ?>" class="product-link">Sponsor Me</a>
+                    <a  href="<?php echo e(route('AddToCartOrphans', ['data' => $data -> id])); ?>" class="product-link">Sponsor Me</a>
                     <img class="img-responsive" src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)); ?>" alt="">
                 </div>
                 <div class="product-description">

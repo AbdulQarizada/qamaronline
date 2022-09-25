@@ -496,8 +496,11 @@ unset($__errorArgs, $__bag); ?>
 <script>
     Stripe.setPublishableKey('pk_test_51LjcarLOXjyUWh0lkBPGJ6FylCgNF7o2tFx2wZn5EG9Zy1ZER6foMbcb2QOYXsFu7jhydyfextfSBOaDyy3ALEAv00oocN9BLH');
     var $form = $('#Payment');
+    var spinner = $('#loader');
     $form.submit(function(event) {
         $('#charge-error').addClass('d-none');
+        event.preventDefault();
+            spinner.show();
         $form.find('button').prop('disabled', true);
         Stripe.card.createToken({
             number: $('#CardNumber').val(),
@@ -514,10 +517,10 @@ unset($__errorArgs, $__bag); ?>
             $('#charge-error').removeClass('d-none');
             $('#charge-error').text(response.error.message);
             $form.find('button').prop('disabled', false);
+            spinner.hide();
         } else {
             var token = response.id;
             $form.append($('<input type="hidden" name="stripeToken" />').val(token));
-
             // Submit the form:
             $form.get(0).submit();
         }
@@ -562,22 +565,22 @@ unset($__errorArgs, $__bag); ?>
 
 
 
-    var spinner = $('#loader');
-    $(function() {
-        $('form').submit(function(e) {
-            e.preventDefault();
-            spinner.show();
-            $.ajax({
-                url: 't2228.php',
-                data: $(this).serialize(),
-                method: 'post',
-                dataType: 'JSON'
-            }).done(function(resp) {
-                spinner.hide();
-                alert(resp.status);
-            });
-        });
-    });
+    // var spinner = $('#loader');
+    // $(function() {
+    //     $('form').submit(function(e) {
+    //         e.preventDefault();
+    //         spinner.show();
+    //         $.ajax({
+    //             url: 't2228.php',
+    //             data: $(this).serialize(),
+    //             method: 'post',
+    //             dataType: 'JSON'
+    //         }).done(function(resp) {
+    //             spinner.hide();
+    //             alert(resp.status);
+    //         });
+    //     });
+    // });
 </script>
 
 <?php $__env->stopSection(); ?>
