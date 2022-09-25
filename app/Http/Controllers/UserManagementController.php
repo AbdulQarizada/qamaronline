@@ -321,7 +321,7 @@ class UserManagementController extends Controller
       ->join('users as d','users.Created_By', '=', 'd.id')
 
       -> select(['users.*',  'a.Name as ProvinceName', 'b.Name as DistrictName', 'd.FirstName as UFirstName', 'd.LastName as ULastName'])
-
+      ->where("users.IsEmployee", "=", 1)
       -> get();
     return view('SystemManagement.User.All', compact('datas'));
   }
@@ -335,6 +335,7 @@ class UserManagementController extends Controller
        ->join('locations as b', 'users.District_ID', '=', 'b.id')
        ->join('users as d','users.Created_By', '=', 'd.id')
       ->select(['users.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+      ->where("users.IsEmployee", "=", 1)
       ->where("users.IsActive", "=", 1)
       ->get();
     return view('SystemManagement.User.All', compact('datas'));
@@ -349,7 +350,9 @@ class UserManagementController extends Controller
       ->join('locations as b', 'users.District_ID', '=', 'b.id')
       ->join('users as d','users.Created_By', '=', 'd.id')
       ->select(['users.*', 'a.Name as ProvinceName', 'b.Name as DistrictName',  'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+      ->where("users.IsEmployee", "!=", 1)
       ->where("users.IsActive", "!=", 1)
+
       ->get();
     return view('SystemManagement.User.All', compact('datas'));
   }
