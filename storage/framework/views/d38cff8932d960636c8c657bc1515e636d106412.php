@@ -20,16 +20,22 @@
 </head>
 
 <?php $__env->startSection('body'); ?>
-    <body data-topbar="dark" data-layout="horizontal">
+<?php if(Auth::check()): ?>
+    <body  data-topbar="dark" data-layout="horizontal">
+        <?php endif; ?>
+    <?php if(!Auth::check()): ?>
+    <body  class="bg-white" data-topbar="dark" data-layout="horizontal">
+    <?php endif; ?>
+
 <?php echo $__env->yieldSection(); ?>
 <?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     <!-- Begin page -->
     <div id="layout-wrapper">
     
-
+    <?php if(Auth::check()): ?>
         <?php echo $__env->make('layouts.horizontal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
+        <?php endif; ?>
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
@@ -44,7 +50,10 @@
             <br />
             <br />
             <br />
+            <?php if(Auth::check()): ?>
             <?php echo $__env->make('layouts.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+        <?php endif; ?>
+
         </div>
         <!-- ============================================================== -->
         <!-- End Right content here -->
