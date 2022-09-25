@@ -37,7 +37,7 @@ class OrphansReliefController extends Controller
 
   public function __construct()
   {
-    $this->middleware('auth', ['except' => ['AllGrid', 'OrphanDetail', 'AddToCart', 'RemoveFromCart', 'Payment']]);
+    $this->middleware('auth', ['except' => ['AllGrid','AllGridWordpress', 'OrphanDetail', 'AddToCart', 'RemoveFromCart', 'Payment']]);
   }
 
 
@@ -88,6 +88,24 @@ class OrphansReliefController extends Controller
     return view('OrphansRelief.Orphan.AllGrid', ['datas' => $orphans]);
   }
 
+  public function AllGridWordpress()
+  {
+
+
+    $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
+      ->join('look_ups as c', 'orphans.FamilyStatus_ID', '=', 'c.id')
+      ->join('users as d', 'orphans.Created_By', '=', 'd.id')
+      ->join('look_ups as e', 'orphans.Gender_ID', '=', 'e.id')
+
+
+
+      ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.Name as Gender'])
+
+      ->get();
+
+    return view('OrphansRelief.Orphan.AllGridWordpress', ['datas' => $orphans]);
+  }
 
 
   // create

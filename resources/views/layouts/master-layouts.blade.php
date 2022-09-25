@@ -27,9 +27,8 @@
     <!-- Begin page -->
     <div id="layout-wrapper">
     
-       @if (Auth::check()) 
+
         @include('layouts.horizontal')
-        @endif
 
         <!-- ============================================================== -->
         <!-- Start right Content here -->
@@ -45,9 +44,7 @@
             <br />
             <br />
             <br />
-            @if (Auth::check()) 
             @include('layouts.footer')
-            @endif
         </div>
         <!-- ============================================================== -->
         <!-- End Right content here -->

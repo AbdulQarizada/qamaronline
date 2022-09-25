@@ -332,6 +332,8 @@ Route::get('/OrphansRelief/Orphan/Delete/{data}', [App\Http\Controllers\OrphansR
 // qamar care list
 Route::get('/OrphansRelief/Orphan/All', [App\Http\Controllers\OrphansReliefController::class, 'All'])->name('AllOrphans');
 Route::get('/OrphansRelief/Orphan/AllGrid', [App\Http\Controllers\OrphansReliefController::class, 'AllGrid'])->name('AllGridOrphans');
+Route::get('/OrphansRelief/Orphan/AllGridWordpress', [App\Http\Controllers\OrphansReliefController::class, 'AllGridWordpress'])->name('AllGridWordpressOrphans');
+
 Route::get('/OrphansRelief/Orphan/OrphanDetail/{data}', [App\Http\Controllers\OrphansReliefController::class, 'OrphanDetail'])->name('OrphanDetailOrphans');
 
 Route::get('/OrphansRelief/Orphan/Pending', [App\Http\Controllers\OrphansReliefController::class, 'Pending'])->name('PendingOrphans');
