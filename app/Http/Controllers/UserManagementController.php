@@ -200,13 +200,71 @@ class UserManagementController extends Controller
       'Province_ID' => request('Province_ID'),
       'District_ID' => request('District_ID'),
       'Village' => request('Village'),
-      'email' => request('email'),
-      'password' => Hash::make(request('password')),
 
 
-      'IsEmployee' => request('IsEmployee'),
-      'IsActive' => request('IsActive'),
-      'IsSuperAdmin' => request('IsSuperAdmin'),
+
+      // 'Updated_By' => auth()->user()->id,
+      // 'Owner' => 1,
+
+    ]);
+    return redirect()->route('AllUser')->with('toast_success', 'Record Updated Successfully!');
+  }
+
+
+
+
+
+
+  // role
+  public function Role(User $data)
+  {
+
+    $users =   User::where("users.id", "=", $data->id)
+
+
+
+    ->join('locations as a', 'users.Province_ID', '=', 'a.id')
+    ->join('locations as b', 'users.District_ID', '=', 'b.id')
+    // ->join('look_ups as c','qamar_care_cards.Country_ID', '=', 'c.id')
+    // ->join('look_ups as d','qamar_care_cards.Gender_ID', '=', 'd.id')
+    // ->join('look_ups as e','qamar_care_cards.Language_ID', '=', 'e.id')
+    // ->join('look_ups as f','qamar_care_cards.CurrentJob_ID', '=', 'f.id')
+    // ->join('look_ups as g','qamar_care_cards.FutureJob_ID', '=', 'g.id')
+    // ->join('look_ups as h','qamar_care_cards.EducationLevel_ID', '=', 'h.id')
+    // ->join('look_ups as i','qamar_care_cards.RelativeRelationship_ID', '=', 'i.id')
+    // ->join('look_ups as j', 'qamar_care_cards.FamilyStatus_ID', '=', 'j.id')
+    // ->join('look_ups as k','qamar_care_cards.Tribe_ID', '=', 'k.id')
+    // ->join('look_ups as l','qamar_care_cards.IncomeStreem_ID', '=', 'l.id')
+
+
+    ->select(
+      'users.*',
+      'a.Name as Province',
+      'b.Name as District',
+      // 'c.Name as Country', 
+      // 'd.Name as Gender', 
+      // 'e.Name as Language', 
+      // 'f.Name as CurrentJob', 
+      // 'g.Name as FutureJob', 
+      // 'h.Name as EducationLevel', 
+      // 'i.Name as RelativeRelationship', 
+      // 'j.Name as FamilyStatus',
+      // 'k.Name as Tribe', 
+      // 'l.Name as IncomeStreem'
+    )
+
+    ->get();
+    return view('SystemManagement.User.Role',['datas' => $users]);
+  }
+
+  public function AssignRole(User $data)
+  {
+
+    $data->update([
+
+
+      // 'IsEmployee' => request('IsEmployee'),
+      // 'IsActive' => request('IsActive'),
       'IsSuperAdmin' => request('IsSuperAdmin'),
       'IsOrphanRelief' => request('IsOrphanRelief'),
       'IsAidAndRelief' => request('IsAidAndRelief'),
@@ -225,15 +283,8 @@ class UserManagementController extends Controller
       // 'Owner' => 1,
 
     ]);
-    return redirect()->route('AllUser')->with('toast_success', 'Record Updated Successfully!');
+    return redirect()->route('AllUser')->with('toast_success', 'Role Added Successfully!');
   }
-
-
-
-
-
-
-
 
 
 
@@ -247,7 +298,7 @@ class UserManagementController extends Controller
   {
 
     $data->delete();
-    return back()->with('success', 'Record deleted successfully');
+    return redirect()->route('AllUser')->with('success', 'Record deleted successfully');
   }
 
 
@@ -265,14 +316,11 @@ class UserManagementController extends Controller
   public function All()
   {
 
-    //  $qamarcarecards =   QamarCareCard::all();
+    $datas =   User:: join('locations as a', 'users.Province_ID', '=', 'a.id')
+     ->join('locations as b', 'users.District_ID', '=', 'b.id')
+      ->join('users as d','users.Created_By', '=', 'd.id')
 
-    $datas =   User::
-    // join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-    //   ->join('locations as b', 'users.District_ID', '=', 'b.id')'a.Name as ProvinceName', 'b.Name as DistrictName',
-      join('users as d','users.Created_By', '=', 'd.id')
-
-      -> select(['users.*',   'd.FirstName as UFirstName', 'd.LastName as ULastName'])
+      -> select(['users.*',  'a.Name as ProvinceName', 'b.Name as DistrictName', 'd.FirstName as UFirstName', 'd.LastName as ULastName'])
 
       -> get();
     return view('SystemManagement.User.All', compact('datas'));
@@ -280,33 +328,30 @@ class UserManagementController extends Controller
 
 
 
-  public function Approved()
+  public function Activated()
   {
 
-    $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
-      ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("Status", "=", 'Approved')
+    $datas =   User:: join('locations as a', 'users.Province_ID', '=', 'a.id')
+       ->join('locations as b', 'users.District_ID', '=', 'b.id')
+       ->join('users as d','users.Created_By', '=', 'd.id')
+      ->select(['users.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+      ->where("users.IsActive", "=", 1)
       ->get();
-    return view('QamarCardCard.All', compact('qamarcarecards'));
+    return view('SystemManagement.User.All', compact('datas'));
   }
 
 
-  public function Rejected()
+  public function DeActivated()
   {
 
     // $qamarcarecards =   QamarCareCard::where("Status", "=", 'Rejected')->get();
-    $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
-      
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("Status", "=", 'Rejected')
+    $datas =   User::join('locations as a', 'users.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'users.District_ID', '=', 'b.id')
+      ->join('users as d','users.Created_By', '=', 'd.id')
+      ->select(['users.*', 'a.Name as ProvinceName', 'b.Name as DistrictName',  'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+      ->where("users.IsActive", "!=", 1)
       ->get();
-    return view('QamarCardCard.All', compact('qamarcarecards'));
+    return view('SystemManagement.User.All', compact('datas'));
   }
 
 
@@ -350,72 +395,54 @@ class UserManagementController extends Controller
 
 
   // status
-  public function Status(QamarCareCard $data)
+  public function Status(User $data)
   {
 
-    $qamarcarecards =   QamarCareCard::where("qamar_care_cards.id", "=", $data->id)
+    $users =   User::where("users.id", "=", $data->id)
 
 
 
-      ->join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('look_ups as c', 'qamar_care_cards.Country_ID', '=', 'c.id')
-      ->join('look_ups as d', 'qamar_care_cards.Gender_ID', '=', 'd.id')
-      ->join('look_ups as e', 'qamar_care_cards.Language_ID', '=', 'e.id')
-      ->join('look_ups as f', 'qamar_care_cards.CurrentJob_ID', '=', 'f.id')
-      ->join('look_ups as g', 'qamar_care_cards.FutureJob_ID', '=', 'g.id')
-      ->join('look_ups as h', 'qamar_care_cards.EducationLevel_ID', '=', 'h.id')
-      ->join('look_ups as i', 'qamar_care_cards.RelativeRelationship_ID', '=', 'i.id')
-      ->join('look_ups as j', 'qamar_care_cards.FamilyStatus_ID', '=', 'j.id')
-      ->join('look_ups as k', 'qamar_care_cards.Tribe_ID', '=', 'k.id')
-      ->join('look_ups as l', 'qamar_care_cards.IncomeStreem_ID', '=', 'l.id')
+      ->join('locations as a', 'users.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'users.District_ID', '=', 'b.id')
+      ->join('look_ups as d', 'users.Gender_ID', '=', 'd.id')
 
 
       ->select(
-        'qamar_care_cards.*',
+        'users.*',
         'a.Name as Province',
         'b.Name as District',
-        'c.Name as Country',
         'd.Name as Gender',
-        'e.Name as Language',
-        'f.Name as CurrentJob',
-        'g.Name as FutureJob',
-        'h.Name as EducationLevel',
-        'i.Name as RelativeRelationship',
-        'j.Name as FamilyStatus',
-        'k.Name as Tribe',
-        'l.Name as IncomeStreem'
       )
 
       ->get();
     //  $qamarcarecards  = $data;
 
-    return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
+    return view('SystemManagement.User.Status',  ['datas' => $users]);
   }
 
-  public function Approve(QamarCareCard $data)
+  public function Activate(User $data)
   {
 
     $data->update([
 
-      'Status' => 'Approved',
-      'Status_By' => auth()->user()->id
+      'IsActive' => 1,
+      // 'Status_By' => auth()->user()->id
 
 
     ]);
-    return redirect()->route('ApprovedQamarCareCard')->with('toast_success', 'Record Approved Successfully!');
+    return redirect()->route('ActivatedUser')->with('toast_success', 'user Activated Successfully!');
   }
 
-  public function Reject(QamarCareCard $data)
+  public function DeActivate(User $data)
   {
 
     $data->update([
-      'Status_By' => auth()->user()->id,
+      // 'Status_By' => auth()->user()->id,
 
-      'Status' => 'Rejected'
+      'IsActive' => 0
 
     ]);
-    return redirect()->route('RejectedQamarCareCard')->with('toast_error', 'Record Rejected Successfully!');
+    return redirect()->route('DeActivatedUser')->with('toast_error', 'User De-Activated Successfully!');
   }
 
 

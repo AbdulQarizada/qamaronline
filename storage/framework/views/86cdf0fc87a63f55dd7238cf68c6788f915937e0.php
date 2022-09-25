@@ -45,14 +45,11 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;" 
 >
-                                   <option value="<?php echo e(route('AllOrphans')); ?>">Please Filter Your Choices</option>
+                                   <option value="<?php echo e(route('AllUser')); ?>">Please Filter Your Choices</option>
 
-                                    <option value="<?php echo e(route('AllOrphans')); ?>">All</option>
-                                    <option value="<?php echo e(route('PendingOrphans')); ?>">Pending</option>
-                                    <option value="<?php echo e(route('ApprovedOrphans')); ?>">Approved</option>
-                                    <option value="<?php echo e(route('ActiveOrphans')); ?>">Active</option>
-                                    <option value="<?php echo e(route('InActiveOrphans')); ?>">InActive</option>
-                                    <option value="<?php echo e(route('RejectedOrphans')); ?>">Rejected</option>
+                                    <option value="<?php echo e(route('AllUser')); ?>">All</option>
+                                    <option value="<?php echo e(route('ActivatedUser')); ?>">Active</option>
+                                    <option value="<?php echo e(route('DeActivatedUser')); ?>">InActive</option>
 
 
 
@@ -154,7 +151,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Active</a></h5>
 
                                  <?php endif; ?>
-                                 <?php if($data -> IsActive == 0): ?>
+                                 <?php if($data -> IsActive != 1): ?>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">Not Active</a></h5>
 
                                  <?php endif; ?>
@@ -170,55 +167,20 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                
                                 </div>
                                 <?php endif; ?>
-                                <?php if( $data -> Created_By ==""): ?>
-
-                                   <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
-                                    <p class="text-muted mb-0">Requested</p> 
-
-                                  </div>
-                                <?php endif; ?>
                                 </td>
                     <td>
                        <div class="d-flex flex-wrap gap-2">
-                    <a href="<?php echo e(route('StatusOrphans', ['data' => $data -> id])); ?>" class="btn btn-warning waves-effect waves-light">
+                    <a href="<?php echo e(route('StatusUser', ['data' => $data -> id])); ?>" class="btn btn-warning waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
                     </a>
                        <a href="<?php echo e(route('EditUser', ['data' => $data -> id])); ?>" class="btn btn-info waves-effect waves-light">
                         <i class="bx bx-edit  font-size-16 align-middle"></i>
                     </a>
-                    <?php if($data -> Status == 'Pending'): ?>
-                    <!-- <a href="<?php echo e(route('EditQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-info waves-effect waves-light">
-                        <i class="bx bx-edit  font-size-16 align-middle"></i>
-                    </a> -->
-                     <a href="<?php echo e(route('DeleteOrphan', ['data' => $data -> id])); ?>" class="btn btn-danger waves-effect waves-light delete-confirm">
-                        <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
+                    <?php if( Auth::user() -> IsSuperAdmin == 1): ?>
+                    <a href="<?php echo e(route('RoleUser', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light">
+                    <i class="bx bx-user-plus    font-size-16 align-middle"></i>
                     </a>
                     <?php endif; ?>
-
-
-                    <?php if( $data -> Status == 'Approved'): ?>
-                    <a href="<?php echo e(route('AssignToServiceQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light">
-                        <i class="bx bx-user-plus   font-size-16 align-middle"></i>
-                    </a> 
-                    <?php endif; ?>
-
-                    <?php if( $data -> Status == 'Rejected'): ?>
-                    <!-- <a href="<?php echo e(route('EditQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-info waves-effect waves-light">
-                        <i class="bx bx-edit  font-size-16 align-middle"></i>
-                    </a> -->
-                     <a href="<?php echo e(route('DeleteOrphan', ['data' => $data -> id])); ?>" class="btn btn-danger waves-effect waves-light delete-confirm">
-                        <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
-                    </a>
-                    <?php endif; ?>
-
-                    <!-- <?php if($data -> Status == 'Printed'): ?>
-                    <a href="<?php echo e(route('Releasedata', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light release">
-                        <i class="bx bx-user-check  font-size-16 align-middle"></i>
-                    </a>
-                    <?php endif; ?> -->
-                   
-
 
 
                 </div></td>

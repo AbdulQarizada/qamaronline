@@ -38,14 +38,11 @@
       <div class="col-3">
         <select class="form-select  form-select-lg mb-3 @error('Country') is-invalid @enderror"  onchange="window.location.href=this.value;" 
 >
-                                   <option value="{{route('AllOrphans')}}">Please Filter Your Choices</option>
+                                   <option value="{{route('AllUser')}}">Please Filter Your Choices</option>
 
-                                    <option value="{{route('AllOrphans')}}">All</option>
-                                    <option value="{{route('PendingOrphans')}}">Pending</option>
-                                    <option value="{{route('ApprovedOrphans')}}">Approved</option>
-                                    <option value="{{route('ActiveOrphans')}}">Active</option>
-                                    <option value="{{route('InActiveOrphans')}}">InActive</option>
-                                    <option value="{{route('RejectedOrphans')}}">Rejected</option>
+                                    <option value="{{route('AllUser')}}">All</option>
+                                    <option value="{{route('ActivatedUser')}}">Active</option>
+                                    <option value="{{route('DeActivatedUser')}}">InActive</option>
 
 
 
@@ -139,7 +136,7 @@
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Active</a></h5>
 
                                  @endif
-                                 @if($data -> IsActive == 0)
+                                 @if($data -> IsActive != 1)
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">Not Active</a></h5>
 
                                  @endif
@@ -155,55 +152,20 @@
                                
                                 </div>
                                 @endif
-                                @if( $data -> Created_By =="")
-
-                                   <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
-                                    <p class="text-muted mb-0">Requested</p> 
-
-                                  </div>
-                                @endif
                                 </td>
                     <td>
                        <div class="d-flex flex-wrap gap-2">
-                    <a href="{{route('StatusOrphans', ['data' => $data -> id])}}" class="btn btn-warning waves-effect waves-light">
+                    <a href="{{route('StatusUser', ['data' => $data -> id])}}" class="btn btn-warning waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
                     </a>
                        <a href="{{route('EditUser', ['data' => $data -> id])}}" class="btn btn-info waves-effect waves-light">
                         <i class="bx bx-edit  font-size-16 align-middle"></i>
                     </a>
-                    @if($data -> Status == 'Pending')
-                    <!-- <a href="{{route('EditQamarCareCard', ['data' => $data -> id])}}" class="btn btn-info waves-effect waves-light">
-                        <i class="bx bx-edit  font-size-16 align-middle"></i>
-                    </a> -->
-                     <a href="{{route('DeleteOrphan', ['data' => $data -> id])}}" class="btn btn-danger waves-effect waves-light delete-confirm">
-                        <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
+                    @if( Auth::user() -> IsSuperAdmin == 1)
+                    <a href="{{route('RoleUser', ['data' => $data -> id])}}" class="btn btn-success waves-effect waves-light">
+                    <i class="bx bx-user-plus    font-size-16 align-middle"></i>
                     </a>
                     @endif
-
-
-                    @if( $data -> Status == 'Approved')
-                    <a href="{{route('AssignToServiceQamarCareCard', ['data' => $data -> id])}}" class="btn btn-success waves-effect waves-light">
-                        <i class="bx bx-user-plus   font-size-16 align-middle"></i>
-                    </a> 
-                    @endif
-
-                    @if( $data -> Status == 'Rejected')
-                    <!-- <a href="{{route('EditQamarCareCard', ['data' => $data -> id])}}" class="btn btn-info waves-effect waves-light">
-                        <i class="bx bx-edit  font-size-16 align-middle"></i>
-                    </a> -->
-                     <a href="{{route('DeleteOrphan', ['data' => $data -> id])}}" class="btn btn-danger waves-effect waves-light delete-confirm">
-                        <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
-                    </a>
-                    @endif
-
-                    <!-- @if($data -> Status == 'Printed')
-                    <a href="{{route('Releasedata', ['data' => $data -> id])}}" class="btn btn-success waves-effect waves-light release">
-                        <i class="bx bx-user-check  font-size-16 align-middle"></i>
-                    </a>
-                    @endif -->
-                   
-
 
 
                 </div></td>
