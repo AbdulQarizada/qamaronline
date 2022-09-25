@@ -45,7 +45,9 @@
             <br />
             <br />
             <br />
+            @if (Auth::check()) 
             @include('layouts.footer')
+            @endif
         </div>
         <!-- ============================================================== -->
         <!-- End Right content here -->

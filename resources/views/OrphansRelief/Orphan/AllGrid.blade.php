@@ -173,7 +173,7 @@
                     <span class="hover-link"></span>
                     <!-- <a href="{{route('OrphanDetailOrphans', ['data' => $data -> id])}}" class="product-link">view details</a> -->
 
-                    <a target="_blank" href="{{route('AddToCartOrphans', ['data' => $data -> id])}}" class="product-link">Sponsor Me</a>
+                    <a  href="{{route('AddToCartOrphans', ['data' => $data -> id])}}" class="product-link">Sponsor Me</a>
                     <img class="img-responsive" src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}" alt="">
                 </div>
                 <div class="product-description">
