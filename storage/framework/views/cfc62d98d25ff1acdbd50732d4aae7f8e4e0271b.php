@@ -60,7 +60,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Tazkira ID</td>
-                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> TazkiraID); ?></td>
+                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> Tazkira_ID); ?></td>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Date of Birth</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> DOB); ?></td>
                                                     </tr>
@@ -114,10 +114,10 @@
                                                 <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-success">Employee</a></span>
                                                 <?php endif; ?>
                                                 <?php if($data -> IsActive == 1): ?>
-                                                <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-success">IsActive</a></span>
+                                                <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-success">Active</a></span>
                                                 <?php endif; ?>
-                                                <?php if($data -> IsActive == 0): ?>
-                                                <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-danger">DeActive</a></span>
+                                                <?php if($data -> IsActive != 1): ?>
+                                                <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-danger">InActive</a></span>
                                                 <?php endif; ?>
                                                 <?php if($data -> IsSuperAdmin == 1): ?>
                                                 <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-success">Super Admin</a></span>
