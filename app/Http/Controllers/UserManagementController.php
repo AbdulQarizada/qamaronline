@@ -272,7 +272,21 @@ class UserManagementController extends Controller
 
 
 
+  public function ResetPassword(Request $request, User $data)
+  {
+    $validator = $request->validate([
+      'password' => 'bail|required|max:255',
 
+    ]);
+
+
+    $data->update([
+
+      'password' => Hash::make(request('password')),
+
+    ]);
+    return redirect()->route('AllUser')->with('toast_success', 'Password reset Successfully!');
+  }
 
 
 

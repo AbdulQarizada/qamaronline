@@ -607,6 +607,7 @@
 
 </form>
 @endsection
+
 @section('script')
 <script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
 
