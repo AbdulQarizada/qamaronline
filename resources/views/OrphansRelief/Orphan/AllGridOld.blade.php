@@ -10,18 +10,18 @@
 @section('content')
 
 <div class="row mt-4">
-@if (Auth::check()) 
-        <div class="col-4">
-           <a href="{{route('IndexOrphansRelief')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-    
-        </div>
-        @endif
-        <!-- <div class="col-6">
+    @if (Auth::check())
+    <div class="col-4">
+        <a href="{{route('IndexOrphansRelief')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+
+    </div>
+    @endif
+    <!-- <div class="col-6">
                                 <h1 class="fw-medium font-size-24 ">Orphans List</h1>
         </div> -->
-     </div>
+</div>
 
-     <!-- <div class="row">
+<!-- <div class="row">
         <div class="col-12 ">
         <div class="card border border-3">
                     <div class="card-header">
@@ -149,7 +149,7 @@
                         <i class="bx bx-search-alt search-icon"></i>
                     </div>
                 </div>
-                @if (Auth::check()) 
+                @if (Auth::check())
                 <ul class="nav nav-pills product-view-nav justify-content-end mt-3 mt-sm-0">
                     <li class="nav-item">
                         <a class="nav-link active" href="{{route('AllGridOrphans')}}"><i class="bx bx-grid-alt"></i></a>
@@ -164,27 +164,27 @@
         </div>
     </div>
     <div class="row">
-    @foreach($datas as $data)
-    <div class="col-md-4 col-sm-4">
+        @foreach($datas as $data)
+        <div class="col-md-4 col-sm-4">
             <div class="card">
                 <div class="card-body">
                     <div class="product-img position-relative">
                         <div class="avatar-sm product-ribbon">
-                                   <!-- @if( $data -> LevelPoverty == 1)
-                                        <span class="avatar-title bg-danger rounded-circle ">20%</span>
-                                        @endif
-                                        @if( $data -> LevelPoverty == 2)
-                                        <span class="avatar-title bg-danger rounded-circle ">40%</span>
-                                        @endif
-                                        @if( $data -> LevelPoverty == 3)
-                                        <span class="avatar-title bg-danger rounded-circle ">60%</span>
-                                        @endif
-                                        @if( $data -> LevelPoverty == 4)
-                                        <span class="avatar-title bg-danger rounded-circle ">80%</span>
-                                        @endif
-                                        @if( $data -> LevelPoverty == 5)
-                                        <span class="avatar-title bg-danger rounded-circle font-size-24">100%</span>
-                                        @endif -->
+                            @if( $data -> LevelPoverty == 1)
+                            <span class="avatar-title bg-danger rounded-circle ">20%</span>
+                            @endif
+                            @if( $data -> LevelPoverty == 2)
+                            <span class="avatar-title bg-danger rounded-circle ">40%</span>
+                            @endif
+                            @if( $data -> LevelPoverty == 3)
+                            <span class="avatar-title bg-danger rounded-circle ">60%</span>
+                            @endif
+                            @if( $data -> LevelPoverty == 4)
+                            <span class="avatar-title bg-danger rounded-circle ">80%</span>
+                            @endif
+                            @if( $data -> LevelPoverty == 5)
+                            <span class="avatar-title bg-danger rounded-circle font-size-24">100%</span>
+                            @endif
                         </div>
                         <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}" alt="" class="img-fluid mx-auto d-block">
                     </div>
@@ -193,42 +193,42 @@
                         <h5 class="mt-1 mb-3"> {{$data -> FirstName}} {{$data -> LastName}} </h5>
 
                         <p class="text-muted float-start me-3">
-                        @if( $data -> LevelPoverty == 1)
-                                         <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-secondary font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
+                            @if( $data -> LevelPoverty == 1)
+                            <i class="bx bxs-star text-warning font-size-12"></i>
+                            <i class="bx bxs-star text-secondary font-size-14"></i>
+                            <i class="bx bxs-star text-secondary font-size-16"></i>
+                            <i class="bx bxs-star text-secondary font-size-18"></i>
+                            <i class="bx bxs-star text-secondary font-size-20"></i>
 
-                                       @endif
-                                       @if( $data -> LevelPoverty == 2)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-secondary font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $data -> LevelPoverty == 3)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-warning font-size-16"></i>
-                                         <i class="bx bxs-star text-secondary font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $data -> LevelPoverty == 4)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-warning font-size-16"></i>
-                                         <i class="bx bxs-star text-warning font-size-18"></i>
-                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $data -> LevelPoverty == 5)
-                                       <i class="bx bxs-star text-warning font-size-12"></i>
-                                         <i class="bx bxs-star text-warning font-size-14"></i>
-                                         <i class="bx bxs-star text-warning font-size-16"></i>
-                                         <i class="bx bxs-star text-warning font-size-18"></i>
-                                         <i class="bx bxs-star text-warning font-size-20"></i>
-                                       @endif
+                            @endif
+                            @if( $data -> LevelPoverty == 2)
+                            <i class="bx bxs-star text-warning font-size-12"></i>
+                            <i class="bx bxs-star text-warning font-size-14"></i>
+                            <i class="bx bxs-star text-secondary font-size-16"></i>
+                            <i class="bx bxs-star text-secondary font-size-18"></i>
+                            <i class="bx bxs-star text-secondary font-size-20"></i>
+                            @endif
+                            @if( $data -> LevelPoverty == 3)
+                            <i class="bx bxs-star text-warning font-size-12"></i>
+                            <i class="bx bxs-star text-warning font-size-14"></i>
+                            <i class="bx bxs-star text-warning font-size-16"></i>
+                            <i class="bx bxs-star text-secondary font-size-18"></i>
+                            <i class="bx bxs-star text-secondary font-size-20"></i>
+                            @endif
+                            @if( $data -> LevelPoverty == 4)
+                            <i class="bx bxs-star text-warning font-size-12"></i>
+                            <i class="bx bxs-star text-warning font-size-14"></i>
+                            <i class="bx bxs-star text-warning font-size-16"></i>
+                            <i class="bx bxs-star text-warning font-size-18"></i>
+                            <i class="bx bxs-star text-secondary font-size-20"></i>
+                            @endif
+                            @if( $data -> LevelPoverty == 5)
+                            <i class="bx bxs-star text-warning font-size-12"></i>
+                            <i class="bx bxs-star text-warning font-size-14"></i>
+                            <i class="bx bxs-star text-warning font-size-16"></i>
+                            <i class="bx bxs-star text-warning font-size-18"></i>
+                            <i class="bx bxs-star text-warning font-size-20"></i>
+                            @endif
                         </p>
                         <p class="text-muted mb-4"><b class="text-success text-uppercase">$40 USD </b>/ Month</p>
 
@@ -239,10 +239,10 @@
                     <div class="text-center">
                         <a href="{{route('StatusOrphans', ['data' => $data -> id])}}" class="btn btn-warning waves-effect waves-light mt-2 me-1">
                             <i class="bx bx-happy-beaming me-2"></i> Sponsor Me
-</a>
+                        </a>
                         <a href="{{route('OrphanDetailOrphans', ['data' => $data -> id])}}" class="btn waves-effect  mt-2 waves-light">
                             Read More <i class=" bx bx-right-arrow-circle  me-2"></i>
-</a>
+                        </a>
                     </div>
                 </div>
                 <div class="px-4 py-3 border-top">

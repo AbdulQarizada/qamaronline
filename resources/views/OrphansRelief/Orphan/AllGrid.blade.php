@@ -170,17 +170,17 @@
         <div class="col-md-3">
             <div class="product-container">
                 <div class="product-image">
-                    <span class="hover-link"></span>
+                    <!-- <span class="hover-link"></span> -->
                     <!-- <a href="{{route('OrphanDetailOrphans', ['data' => $data -> id])}}" class="product-link">view details</a> -->
 
                     <a  href="{{route('AddToCartOrphans', ['data' => $data -> id])}}" class="product-link">Sponsor Me</a>
-                    <img class="img-responsive" src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}" alt="">
+                    <img class="img-responsive" src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}" alt="" >
                 </div>
                 <div class="product-description">
                     <div class="product-label">
                         
                         <div class="product-name textoverflow" >
-                            <h1>{{$data -> FirstName}} / {{\Carbon\Carbon::parse($data -> DOB)->diff(\Carbon\Carbon::now())->format('%y Years old');}} </h1>
+                            <h1>{{$data -> FirstName}} / {{\Carbon\Carbon::parse($data -> DOB)->diff(\Carbon\Carbon::now())->format('%y');}} </h1>
                             <!-- <p class="price">$39</p> -->
                       
                         <div class="row mb-3">
@@ -191,7 +191,7 @@
                             {{$data -> created_at -> format("d-m-Y") }}
                             
                         </li>
-                                        <p class="text-muted"><i class="bx bx-user-circle  font-size-16 align-middle text-primary me-1"></i>ID: {{$data -> id}} </p>
+                                        <!-- <p class="text-muted"><i class="bx bx-user-circle  font-size-16 align-middle text-primary me-1"></i>ID: {{$data -> id}} </p> -->
                                         <p class="text-muted text-uppercase"><i class="bx bx-home-alt  font-size-16 align-middle text-primary me-1 "></i> {{$data -> ProvinceName}} - Afghanistan </p>
                                         
                                     </div>

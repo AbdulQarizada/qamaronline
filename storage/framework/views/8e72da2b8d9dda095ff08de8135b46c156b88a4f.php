@@ -4,26 +4,24 @@
 
 <?php $__env->startSection('css'); ?>
 <!-- ION Slider -->
-<link href="<?php echo e(URL::asset('/assets/css/mystyle/OrphanGrid.css')); ?>" rel="stylesheet" type="text/css" />
 <link href="<?php echo e(URL::asset('/assets/libs/ion-rangeslider/ion-rangeslider.min.css')); ?>" rel="stylesheet" type="text/css" />
-
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
 
 <div class="row mt-4">
-    <?php if(Auth::check()): ?>
-    <div class="col-4">
-        <a href="<?php echo e(route('IndexOrphansRelief')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-
-    </div>
-    <?php endif; ?>
-    <!-- <div class="col-6">
+<?php if(Auth::check()): ?> 
+        <div class="col-4">
+           <a href="<?php echo e(route('IndexOrphansRelief')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+    
+        </div>
+        <?php endif; ?>
+        <!-- <div class="col-6">
                                 <h1 class="fw-medium font-size-24 ">Orphans List</h1>
         </div> -->
-</div>
+     </div>
 
-<!-- <div class="row">
+     <!-- <div class="row">
         <div class="col-12 ">
         <div class="card border border-3">
                     <div class="card-header">
@@ -151,7 +149,7 @@
                         <i class="bx bx-search-alt search-icon"></i>
                     </div>
                 </div>
-                <?php if(Auth::check()): ?>
+                <?php if(Auth::check()): ?> 
                 <ul class="nav nav-pills product-view-nav justify-content-end mt-3 mt-sm-0">
                     <li class="nav-item">
                         <a class="nav-link active" href="<?php echo e(route('AllGridOrphans')); ?>"><i class="bx bx-grid-alt"></i></a>
@@ -166,50 +164,13 @@
         </div>
     </div>
     <div class="row">
-        <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <div class="col-md-3">
-            <div class="product-container">
-                <div class="product-image">
-                    <!-- <span class="hover-link"></span> -->
-                    <!-- <a href="<?php echo e(route('OrphanDetailOrphans', ['data' => $data -> id])); ?>" class="product-link">view details</a> -->
-
-                    <a  href="<?php echo e(route('AddToCartOrphans', ['data' => $data -> id])); ?>" class="product-link">Sponsor Me</a>
-                    <img class="img-responsive" src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)); ?>" alt="" >
-                </div>
-                <div class="product-description">
-                    <div class="product-label">
-                        
-                        <div class="product-name textoverflow" >
-                            <h1><?php echo e($data -> FirstName); ?> / <?php echo e(\Carbon\Carbon::parse($data -> DOB)->diff(\Carbon\Carbon::now())->format('%y')); ?> </h1>
-                            <!-- <p class="price">$39</p> -->
-                      
-                        <div class="row mb-3">
-                                <div class="col-md-12">
-                                    <div>
-                                    <li class="list-inline-item me-3">
-                            <span class="text-danger text-uppercase">Waiting Since:</span>
-                            <?php echo e($data -> created_at -> format("d-m-Y")); ?>
-
-                            
-                        </li>
-                                        <!-- <p class="text-muted"><i class="bx bx-user-circle  font-size-16 align-middle text-primary me-1"></i>ID: <?php echo e($data -> id); ?> </p> -->
-                                        <p class="text-muted text-uppercase"><i class="bx bx-home-alt  font-size-16 align-middle text-primary me-1 "></i> <?php echo e($data -> ProvinceName); ?> - Afghanistan </p>
-                                        
-                                    </div>
-                                </div>
-                              
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- <div class="col-md-4 col-sm-4">
+    <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    <div class="col-md-4 col-sm-4">
             <div class="card">
                 <div class="card-body">
                     <div class="product-img position-relative">
                         <div class="avatar-sm product-ribbon">
-                                   <?php if( $data -> LevelPoverty == 1): ?>
+                                  <?php if( $data -> LevelPoverty == 1): ?>
                                         <span class="avatar-title bg-danger rounded-circle ">20%</span>
                                         <?php endif; ?>
                                         <?php if( $data -> LevelPoverty == 2): ?>
@@ -271,17 +232,17 @@
                         </p>
                         <p class="text-muted mb-4"><b class="text-success text-uppercase">$40 USD </b>/ Month</p>
 
-                         <h5 class="mb-4">Support :  <b class="text-success text-uppercase">$225 USD</b></h5> 
-                         <p class="text-muted mb-4">To achieve this, it would be necessary to have uniform grammar pronunciation and more common words If several languages coalesce</p> 
+                        <!-- <h5 class="mb-4">Support :  <b class="text-success text-uppercase">$225 USD</b></h5> -->
+                        <!-- <p class="text-muted mb-4">To achieve this, it would be necessary to have uniform grammar pronunciation and more common words If several languages coalesce</p> -->
 
                     </div>
                     <div class="text-center">
                         <a href="<?php echo e(route('StatusOrphans', ['data' => $data -> id])); ?>" class="btn btn-warning waves-effect waves-light mt-2 me-1">
                             <i class="bx bx-happy-beaming me-2"></i> Sponsor Me
-                      </a>
+</a>
                         <a href="<?php echo e(route('OrphanDetailOrphans', ['data' => $data -> id])); ?>" class="btn waves-effect  mt-2 waves-light">
                             Read More <i class=" bx bx-right-arrow-circle  me-2"></i>
-                 </a>
+</a>
                     </div>
                 </div>
                 <div class="px-4 py-3 border-top">
@@ -297,7 +258,7 @@
                     </ul>
                 </div>
             </div>
-        </div> -->
+        </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
     <!-- end row -->
@@ -340,4 +301,4 @@
 <!-- init js -->
 <script src="<?php echo e(URL::asset('/assets/js/pages/product-filter-range.init.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Qamar\QamarOnline\qamaronline\resources\views/OrphansRelief/Orphan/AllGrid.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Qamar\QamarOnline\qamaronline\resources\views/OrphansRelief/Orphan/AllGridOld.blade.php ENDPATH**/ ?>

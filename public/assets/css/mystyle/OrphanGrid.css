@@ -21,7 +21,7 @@ h1.page-title {
 
 .product-container {
   background-color: #fff;
-  height: 280px;
+  height: 350px;
   overflow: hidden;
   position: relative;
   margin-bottom: 20px;
@@ -57,7 +57,7 @@ h1.page-title {
 
 .product-image {
   /* padding: 20px; */
-  height: 160px;
+  height: 250px;
   position: relative;
   overflow: hidden;
   transition: 1s;
@@ -66,16 +66,16 @@ h1.page-title {
 .product-link {
   position: absolute;
   background: #fff;
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 40px;
   color: #0693e3;
-  border-radius: 50%;
+  border-radius: 0%;
   font-size: 25px;
   text-align: center;
-  padding: 22px 0;
+  padding: 10px 0;
   line-height: 25px;
-  left: calc(50% - 50px);
-  top: calc(50% - 50px);
+  left: calc(60% - 50px);
+  top: calc(30% - 50px);
   opacity: 0;
   transition: 1s;
   font-style: italic;
