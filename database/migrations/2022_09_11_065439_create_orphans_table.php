@@ -63,7 +63,7 @@ return new class extends Migration
 
 
 
-
+            $table -> integer('IsSponsored')->nullable();
             $table -> integer('Sponsor_ID')->nullable();
 
 

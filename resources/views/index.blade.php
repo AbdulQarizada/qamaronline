@@ -625,7 +625,7 @@
 
                                                                     <div class="flex-shrink-0 align-self-center">
                                                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                                                            <span class="avatar-title bg-dark">
+                                                                            <span class="avatar-title bg-info">
                                                                                 <i class="bx bxs-report  font-size-24"></i>
                                                                             </span>
                                                                         </div>
@@ -655,7 +655,7 @@
 
                                                                     <div class="flex-shrink-0 align-self-center">
                                                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                                                            <span class="avatar-title bg-dark">
+                                                                            <span class="avatar-title bg-info">
                                                                                 <i class="bx bxs-report  font-size-24"></i>
                                                                             </span>
                                                                         </div>

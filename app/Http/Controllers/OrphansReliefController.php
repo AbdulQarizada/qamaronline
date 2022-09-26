@@ -82,7 +82,8 @@ class OrphansReliefController extends Controller
 
 
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.Name as Gender'])
-
+      ->where("orphans.Status", "=", 'Approved')
+      ->where("orphans.IsSponsored", "=", 0)
       ->get();
 
     return view('OrphansRelief.Orphan.AllGrid', ['datas' => $orphans]);
@@ -203,6 +204,8 @@ class OrphansReliefController extends Controller
 
 
       'Status' => 'Pending',
+      'IsSponsored' => 0,
+
       'Created_By' => auth()->user()->id,
 
 
@@ -292,7 +295,7 @@ class OrphansReliefController extends Controller
       ->join('users as d', 'orphans.Created_By', '=', 'd.id')
       ->join('look_ups as c', 'orphans.FamilyStatus_ID', '=', 'c.id')
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("Status", "=", 'Approved')
+      ->where("orphans.Status", "=", 'Approved')
       ->get();
     return view('OrphansRelief.Orphan.All', ['datas' => $orphans]);
   }
@@ -308,7 +311,7 @@ class OrphansReliefController extends Controller
       ->join('users as d', 'orphans.Created_By', '=', 'd.id')
 
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("Status", "=", 'Rejected')
+      ->where("orphans.Status", "=", 'Rejected')
       ->get();
     return view('OrphansRelief.Orphan.All', ['datas' => $orphans]);
   }
@@ -327,7 +330,7 @@ class OrphansReliefController extends Controller
       ->join('users as d', 'orphans.Created_By', '=', 'd.id')
 
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("Status", "=", 'Pending')
+      ->where("orphans.Status", "=", 'Pending')
       ->get();
     return view('OrphansRelief.Orphan.All', ['datas' => $orphans]);
   }
@@ -343,7 +346,7 @@ class OrphansReliefController extends Controller
       ->join('users as d', 'orphans.Created_By', '=', 'd.id')
 
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("Status", "=", 'Active')
+      ->where("orphans.Status", "=", 'Active')
       ->get();
     return view('OrphansRelief.Orphan.All', ['datas' => $orphans]);
   }
@@ -358,7 +361,7 @@ class OrphansReliefController extends Controller
       ->join('users as d', 'orphans.Created_By', '=', 'd.id')
 
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("Status", "=", 'InActive')
+      ->where("orphans.Status", "=", 'InActive')
       ->get();
     return view('OrphansRelief.Orphan.All', ['datas' => $orphans]);
   }
@@ -373,7 +376,7 @@ class OrphansReliefController extends Controller
       ->join('users as d', 'orphans.Created_By', '=', 'd.id')
 
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("Status", "=", 'Assigned')
+      ->where("orphans.Status", "=", 'Assigned')
       ->get();
     return view('OrphansRelief.Orphan.All', ['datas' => $orphans]);
   }
@@ -515,6 +518,7 @@ class OrphansReliefController extends Controller
   {
 
     $data->update([
+      'IsSponsored' => 1,
       'Status_By' => auth()->user()->id,
 
       'Status' => 'Assigned'
@@ -1353,6 +1357,8 @@ class OrphansReliefController extends Controller
 
           $orphanid = Orphan::where('id', '=', $item['item']['id'])->first();
           $orphanid->update(['Sponsor_ID' => $userid->id]);
+          $orphanid->update(['IsSponsored' => 1]);
+
         }
 
       } catch (\Exception $e) {
@@ -1399,6 +1405,8 @@ class OrphansReliefController extends Controller
 
           $orphanid = Orphan::where('id', '=', $item['item']['id'])->first();
           $orphanid->update(['Sponsor_ID' => $userid->id]);
+          $orphanid->update(['IsSponsored' => 1]);
+
         }
           $details = ['Email' => request('Email'),'Password' => $RandomPassword,'FullName' => request('FullName')];
         
@@ -1525,7 +1533,9 @@ class OrphansReliefController extends Controller
     $data -> update([
       // 'Assigned_By' => auth()->user()->id,
 
-      'Sponsor_ID' => request('Sponsor_ID')
+      'Sponsor_ID' => request('Sponsor_ID'),
+      'IsSponsored' => 1
+
 
     ]);
     return redirect()->route('AllOrphans')->with('success', 'Sponsor Has Been Added!');
