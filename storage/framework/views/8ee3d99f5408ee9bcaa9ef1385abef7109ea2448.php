@@ -1013,6 +1013,7 @@ unset($__errorArgs, $__bag); ?>
 
 </form>
 <?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('script'); ?>
 <script src="<?php echo e(URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js')); ?>"></script>
 

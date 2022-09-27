@@ -283,7 +283,7 @@
                             <i class="bx bx-home-circle me-2"></i><span key="t-dashboards">Home</span>
                         </a>
                     </li>
-
+                    @if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsAidAndRelief == 1 || Auth::user()->IsWash == 1 || Auth::user()->IsEducation == 1 || Auth::user()->IsInitiative == 1|| Auth::user()->IsMedicalSector == 1)
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="{{route('Projects')}}" id="topnav-uielement" role="button"
                             >
@@ -292,6 +292,8 @@
                             <!-- <div class="arrow-down"></div> -->
                         </a>
                     </li>
+                    @endif
+                    @if(Auth::user()->IsFoodAppeal == 1 || Auth::user()->IsQamarCareCard == 1 || Auth::user()->IsAppealsDistributions == 1 || Auth::user()->IsDonorsAndDonorBoxes == 1)
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="{{route('BeneficiariesServices')}}" id="topnav-pages" role="button"
@@ -300,14 +302,8 @@
                             <!-- <div class="arrow-down"></div> -->
                         </a>
                     </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="{{route('Reports')}}" id="topnav-components" role="button"
-                            >
-                            <i class="bx bx-collection me-2"></i><span key="t-components">Reports</span> 
-                            <!-- <div class="arrow-down"></div> -->
-                        </a>
-                    </li>
+                    @endif
+                    @if(Auth::user()->IsSuperAdmin == 1)
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button"
@@ -316,7 +312,7 @@
                             <div class="arrow-down"></div>
                         </a>
                     </li>
-
+                    @endif
                 </ul>
             </div>
         </nav>
