@@ -45,10 +45,9 @@ class OrphansReliefController extends Controller
   // index
   public function Index()
   {
-
+   
     return view('OrphansRelief.Index');
   }
-
 
 
 
@@ -83,7 +82,7 @@ class OrphansReliefController extends Controller
 
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.Name as Gender'])
       ->where("orphans.Status", "=", 'Approved')
-      ->where("orphans.IsSponsored", "=", 0)
+      // ->where("orphans.IsSponsored", "=", 0)
       ->get();
 
     return view('OrphansRelief.Orphan.AllGrid', ['datas' => $orphans]);

@@ -381,4 +381,4 @@ unset($__errorArgs, $__bag); ?>" name="password"
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-<?php endif; ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Qamar\QamarOnline\qamaronline\resources\views/layouts/horizontal.blade.php ENDPATH**/ ?>
+<?php endif; ?><?php /**PATH C:\Users\TheDeveloper\OneDrive\Desktop\Qamar\QamarOnline\qamaronline\resources\views/layouts/horizontal.blade.php ENDPATH**/ ?>
