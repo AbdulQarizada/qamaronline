@@ -20,12 +20,9 @@
 </head>
 
 @section('body')
-@if (Auth::check())
     <body  data-topbar="dark" data-layout="horizontal">
-        @endif
-    @if (!Auth::check())
-    <body  class="bg-white" data-topbar="dark" data-layout="horizontal">
-    @endif
+      
+   
 
 @show
 @include('sweetalert::alert')
@@ -33,9 +30,8 @@
     <!-- Begin page -->
     <div id="layout-wrapper">
     
-    @if (Auth::check())
+   
         @include('layouts.horizontal')
-        @endif
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
@@ -50,9 +46,7 @@
             <br />
             <br />
             <br />
-            @if (Auth::check())
             @include('layouts.footer')
-        @endif
 
         </div>
         <!-- ============================================================== -->
