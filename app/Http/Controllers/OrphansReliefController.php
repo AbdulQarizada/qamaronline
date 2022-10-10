@@ -1368,6 +1368,9 @@ class OrphansReliefController extends Controller
       return view('OrphansRelief.Orphan.Success', ['datas' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     } else {
       $AmountInCents = $request->input('PaymentAmount') * 100;
+    
+
+
       Stripe::setApiKey('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');
       try {
 

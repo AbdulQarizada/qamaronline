@@ -409,7 +409,9 @@
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 <script>
-    Stripe.setPublishableKey('pk_live_Xj0fQHaIs5afu4twa3A7Eob5');
+   
+
+   Stripe.setPublishableKey('pk_live_Xj0fQHaIs5afu4twa3A7Eob5');
     var $form = $('#Payment');
     var spinner = $('#loader');
     $form.submit(function(event) {
