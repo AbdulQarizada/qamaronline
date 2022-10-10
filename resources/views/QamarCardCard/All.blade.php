@@ -277,10 +277,11 @@
                         </tbody>
                     </table>
                 </div>
+                
             </div>
         </div> <!-- end col -->
     </div> <!-- end row -->
-
+    
 @endsection
 @section('script')
     <!-- Required datatable js -->
