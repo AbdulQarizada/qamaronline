@@ -91,7 +91,7 @@ class QamarCareCardController extends Controller
       'FutureJob_ID' => 'required|max:255',
       'EducationLevel_ID' => 'required|max:255',
       'PrimaryNumber' => 'required|max:10',
-      // 'SecondaryNumber' => 'required|max:10',
+      'SecondaryNumber' => 'required|max:10',
       'RelativeNumber' => 'required|max:10',
       'Province_ID' => 'required|max:255',
       'District_ID' => 'required|max:255',
@@ -203,8 +203,22 @@ class QamarCareCardController extends Controller
   public function Edit(QamarCareCard $data)
   {
 
+    $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+    $genders =   LookUp::where("Parent_Name", "=", "Gender")->get();
+    $tribes =   LookUp::where("Parent_Name", "=", "Tribe")->get();
+    $languages =   LookUp::where("Parent_Name", "=", "Language")->get();
+    $currentjobs =   LookUp::where("Parent_Name", "=", "CurrentJob")->get();
+    $futurejobs =   LookUp::where("Parent_Name", "=", "FutureJob")->get();
+    $educationlevels =   LookUp::where("Parent_Name", "=", "EducationLevel")->get();
+    $relationships =   LookUp::where("Parent_Name", "=", "RelativeRelationship")->get();
+    $incomestreams =   LookUp::where("Parent_Name", "=", "IncomeStream")->get();
+    $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
+    $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
+    $provinces = Location::whereNull("Parent_ID")->get();
+    $districts = Location::get();
+    return view('QamarCardCard.Edit', ['data' => $data, 'countries' => $countries,'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'districts' => $districts, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
 
-    return view('QamarCardCard.Edit', ['data' => $data]);
+    // return view('QamarCardCard.Edit', ['data' => $data]);
   }
 
   public function Update(QamarCareCard $data)
