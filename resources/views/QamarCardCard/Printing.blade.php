@@ -10,16 +10,22 @@ table  td {
     width: 224px;
     white-space: nowrap;
 }
+
+html { background-color: #000; } 
+.CardSize {
+    position: fixed;
+    height: 580px;
+    width: 680px;
+    background-color: papayawhip; 
+    margin:  auto;
+    background-repeat: no-repeat; 
+}
 </style>
 
 @endsection
 
 @section('content')
 
-@component('components.breadcrumb')
-@slot('li_1') Qamar Care Card @endslot
-@slot('title') Qamar Care Card List @endslot
-@endcomponent
 <div class="row">
     <div class="col-12">
         <a href="{{route('AllQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
@@ -28,9 +34,9 @@ table  td {
     </div>
 </div>
 
-
+<div class="CardSize">
 <div class="row">
-    <div style=" background-image: url('{{ URL::asset('/assets/images/qcc/front.jpeg') }}'); height: 40vh; background-repeat: no-repeat; ">
+    <div style=" background-image: url('{{ URL::asset('/assets/images/qcc/front.jpeg') }}'); height: 580px; width: 680px; background-repeat: no-repeat; ">
         <!-- <div class="table-responsive"> -->
             <table style="margin-left:112px; margin-top:122px;">
 
@@ -47,7 +53,6 @@ table  td {
                 </tr>
                 <tr >
                     <td ><span class="h5">{{$data -> FatherName}} </span></td>
-                    
                 </tr>
                 <tr>
                     <td ><span class="h5">{{$data -> Gender}} </span></td>
@@ -77,8 +82,8 @@ table  td {
         <!-- </div> -->
     </div>
 </div>
-
-
+</div>
+<!-- 
 <div class="row">
 
     <div style=" background-image: url('{{ URL::asset('/assets/images/qcc/back.jpeg') }}'); 40vh; background-repeat: no-repeat; ">
@@ -95,7 +100,7 @@ table  td {
         </table>
 
     </div>
-</div>
+</div> -->
 
 
 

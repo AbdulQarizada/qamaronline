@@ -30,8 +30,8 @@
                                     <div class="table-responsive">
                                     <table class="table table-nowrap">
                                              <tr>
-                                                <td>
-                                                     <img src="{{URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)}}" style="width: 130px; height: 135px;" class="rounded">
+                                                <td><a href="{{URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)}}" target="_blank" class="badge badge-soft-info"><img src="{{URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)}}" style="width: 130px; height: 135px;" class="rounded"></a>
+                                                     
                                                      <p class="ml-2">{{$data -> created_at -> format("d-m-Y")}}</p>
                                                 </td>
                                                 <td style="text-align: center;">
@@ -68,7 +68,7 @@
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Tazkira ID</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> TazkiraID}}</td>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Date of Birth</td>
-                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> DOB}}</td>
+                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;">  {{\Carbon\Carbon::parse($data -> DOB)->format("d-m-Y");}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Gender</td>
@@ -211,7 +211,7 @@
                                                 <h5 style="font-weight: bold;" class="card-header  text-dark">DOCUMENTS</h5>
                                                     <tr>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Tazkira</td>
-                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"><a href="{{URL::asset('/uploads/QamarCareCard/Beneficiaries/Tazkiras/'.$data -> Tazkira)}}" class="badge badge-soft-info">{{ $data -> FirstName}} {{ $data -> LastName}} Tazkira</a></td>
+                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"><a href="{{URL::asset('/uploads/QamarCareCard/Beneficiaries/Tazkiras/'.$data -> Tazkira)}}" target="_blank" class="badge badge-soft-info">{{ $data -> FirstName}} {{ $data -> LastName}} Tazkira</a></td>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Other</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;"></td>
                                                     </tr>

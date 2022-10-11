@@ -340,7 +340,7 @@ class QamarCareCardController extends Controller
       ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
       ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
       ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("Status", "=", 'Approved')
+      ->where("qamar_care_cards.Status", "=", 'Approved')
       ->get();
     return view('QamarCardCard.All', compact('qamarcarecards'));
   }
@@ -356,7 +356,7 @@ class QamarCareCardController extends Controller
       ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
       
       ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("Status", "=", 'Rejected')
+      ->where("qamar_care_cards.Status", "=", 'Rejected')
       ->get();
     return view('QamarCardCard.All', compact('qamarcarecards'));
   }
@@ -375,7 +375,7 @@ class QamarCareCardController extends Controller
       ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
 
       ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("Status", "=", 'Pending')
+      ->where("qamar_care_cards.Status", "=", 'Pending')
       ->get();
     return view('QamarCardCard.All', compact('qamarcarecards'));
   }
@@ -391,7 +391,7 @@ class QamarCareCardController extends Controller
       ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
 
       ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("Status", "=", 'Released')
+      ->where("qamar_care_cards.Status", "=", 'Released')
       ->get();
     return view('QamarCardCard.All', compact('qamarcarecards'));
   }
@@ -480,7 +480,7 @@ class QamarCareCardController extends Controller
       'Status' => 'Pending'
 
     ]);
-    return redirect()->route('PendingQamarCareCard')->with('toast_warning', 'Record Re-Initiated Successfully!');
+    return redirect()->route('PendingQamarCareCard')->with('toast_success', 'Record Re-Initiated Successfully!');
   }
 
 
@@ -495,7 +495,7 @@ class QamarCareCardController extends Controller
       'Status' => 'Released'
 
     ]);
-    return redirect()->route('ReleasedQamarCareCard')->with('toast_warning', 'The card has been Printed!');
+    return redirect()->route('ReleasedQamarCareCard')->with('toast_success', 'The card has been Released!');
   }
 
 
@@ -519,13 +519,13 @@ class QamarCareCardController extends Controller
       'Status' => 'Printed'
 
     ]);
-    return redirect()->route('PrintedQamarCareCard')->with('toast_warning', 'The card has been Printed!');
+    return redirect()->route('PrintedQamarCareCard')->with('toast_success', 'The card has been Printed!');
   }
 
   public function Printed()
   {
 
-    $qamarcarecards =   QamarCareCard::where("Status", "=", 'Printed')
+    $qamarcarecards =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Printed')
     ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
     ->get();
     return view('QamarCardCard.All', compact('qamarcarecards'));
