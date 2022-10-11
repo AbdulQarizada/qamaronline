@@ -1432,24 +1432,22 @@ unset($__errorArgs, $__bag); ?>
     // Create a FilePond instance
     const Profile = FilePond.create(inputProfile, {
         labelIdle: 'Profile <span class="bx bx-upload"></span >',
-
         files: [
         {
-            // the server file reference
-            source: 'https://i.imgur.com/hRliFiT.jpg',
-
-            // set type to local to indicate an already uploaded file
+            source:1234,
             options: {
                 type: 'local',
-
-         
-
-                // pass poster property
-                metadata: {
-                    poster: 'https://i.imgur.com/hRliFiT.jpg',
+                file: {
+                    name: 'No Image',
+                    size: 1234,
+                    type: 'image/png'
                 },
-            },
-        },
+                metadata:{
+                    poster: '<?php echo e(URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)); ?>'
+                }
+                
+            }
+        }
     ],
      
 
@@ -1470,7 +1468,23 @@ unset($__errorArgs, $__bag); ?>
 
         },
         instantUpload: true,
-
+        files: [
+        {
+            source:1234,
+            options: {
+                type: 'local',
+                file: {
+                    name: 'No Tazkira',
+                    size: 1234,
+                    type: 'image/png'
+                },
+                metadata:{
+                    poster: '<?php echo e(URL::asset('/uploads/QamarCareCard/Beneficiaries/Tazkiras/'.$data -> Tazkira)); ?>'
+                }
+                
+            }
+        }
+    ],
 
     });
 
@@ -1485,23 +1499,7 @@ unset($__errorArgs, $__bag); ?>
             }
 
         },
-        files: [
-        {
-            source:1234,
-            options: {
-                type: 'local',
-                file: {
-                    name: 'my-file.png',
-                    size: 1234,
-                    type: 'image/png'
-                },
-                metadata:{
-                    poster: '<?php echo e(URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)); ?>'
-                }
-                
-            }
-        }
-    ],
+    
         allowImagePreview: true,
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
