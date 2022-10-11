@@ -63,8 +63,8 @@ Route::post('UserManagement/Employees_Profile', [App\Http\Controllers\HomeContro
 Route::post('/Employees_Profile', [App\Http\Controllers\HomeController::class, 'Employees_Profile'])->name('Employees_Profile');
 
 
-Route::post('/Beneficiaries_Tazkira', [App\Http\Controllers\HomeController::class, 'Beneficiaries_Tazkira'])->name('Beneficiaries_Tazkira');
-Route::post('/Beneficiaries_Profile', [App\Http\Controllers\HomeController::class, 'Beneficiaries_Profile'])->name('Beneficiaries_Profile');
+Route::post('/QamarCareCard/Beneficiaries_Tazkira', [App\Http\Controllers\HomeController::class, 'Beneficiaries_Tazkira'])->name('Beneficiaries_Tazkira');
+Route::post('/QamarCareCard/Beneficiaries_Profile', [App\Http\Controllers\HomeController::class, 'Beneficiaries_Profile'])->name('Beneficiaries_Profile');
 
 Route::post('/ServiceProvider_Profile', [App\Http\Controllers\HomeController::class, 'ServiceProvider_Profile'])->name('ServiceProvider_Profile');
 

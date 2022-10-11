@@ -4,15 +4,13 @@
 <?php $__env->startSection('css'); ?>
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/filepond.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-image-preview.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
+<link href="<?php echo e(URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-file-poster.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
+
 
  
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 
-<?php $__env->startComponent('components.breadcrumb'); ?>
-<?php $__env->slot('li_1'); ?> Qamar Care / Edit Qamar Care Card <?php $__env->endSlot(); ?>
-<?php $__env->slot('title'); ?>   <?php $__env->endSlot(); ?>
-<?php echo $__env->renderComponent(); ?>
 
 <div class="row">
         <div class="col-12">
@@ -1403,6 +1401,7 @@ unset($__errorArgs, $__bag); ?>
 
 <script src="<?php echo e(URL::asset('/assets/libs/filepond/js/filepond.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('/assets/libs/filepond/js/plugins/filepond-plugin-image-preview.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('/assets/libs/filepond/js/plugins/filepond-plugin-file-poster.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('/assets/libs/filepond/js/plugins/filepond-plugin-file-validate-type.js')); ?>"></script>
 
 
@@ -1417,6 +1416,7 @@ unset($__errorArgs, $__bag); ?>
 <script>
     FilePond.registerPlugin(FilePondPluginImagePreview);
     FilePond.registerPlugin(FilePondPluginFileValidateType);
+    FilePond.registerPlugin(FilePondPluginFilePoster);
 
 
 
@@ -1432,7 +1432,26 @@ unset($__errorArgs, $__bag); ?>
     // Create a FilePond instance
     const Profile = FilePond.create(inputProfile, {
         labelIdle: 'Profile <span class="bx bx-upload"></span >',
- 
+
+        files: [
+        {
+            // the server file reference
+            source: 'https://i.imgur.com/hRliFiT.jpg',
+
+            // set type to local to indicate an already uploaded file
+            options: {
+                type: 'local',
+
+         
+
+                // pass poster property
+                metadata: {
+                    poster: 'https://i.imgur.com/hRliFiT.jpg',
+                },
+            },
+        },
+    ],
+     
 
     });
 
@@ -1466,6 +1485,24 @@ unset($__errorArgs, $__bag); ?>
             }
 
         },
+        files: [
+        {
+            source:1234,
+            options: {
+                type: 'local',
+                file: {
+                    name: 'my-file.png',
+                    size: 1234,
+                    type: 'image/png'
+                },
+                metadata:{
+                    poster: '<?php echo e(URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)); ?>'
+                }
+                
+            }
+        }
+    ],
+        allowImagePreview: true,
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
         instantUpload: true,
@@ -1477,7 +1514,9 @@ unset($__errorArgs, $__bag); ?>
         styleLoadIndicatorPosition: 'center bottom',
         styleProgressIndicatorPosition: 'right bottom',
         styleButtonRemoveItemPosition: 'left bottom',
-        styleButtonProcessItemPosition: 'right bottom'
+        styleButtonProcessItemPosition: 'right bottom',
+        
+     
     });
 
 

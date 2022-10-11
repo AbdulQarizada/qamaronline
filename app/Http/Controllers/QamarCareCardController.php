@@ -227,12 +227,53 @@ class QamarCareCardController extends Controller
     $data->update([
 
       'FirstName' => request('FirstName'),
+      'FirstNameLocal' => request('FirstNameLocal'),
+
+      
       'LastName' => request('LastName'),
+      'LastNameLocal' => request('LastNameLocal'),
+
+
+      'TazkiraID' => request('TazkiraID'),
+      'Profile' => request('Profile'),
+      'DOB' => request('DOB'),
+      'QCC' => request('QCC'),
+      'Gender_ID' => request('Gender_ID'),
+      'Language_ID' => request('Language_ID'),
+      'CurrentJob_ID' => request('CurrentJob_ID'),
+      'FutureJob_ID' => request('FutureJob_ID'),
+      'EducationLevel_ID' => request('EducationLevel_ID'),
+      'QamarSupport_ID' => request('QamarSupport_ID'),
+      'PrimaryNumber' => request('PrimaryNumber'),
+      'SecondaryNumber' => request('SecondaryNumber'),
+      'RelativeNumber' => request('RelativeNumber'),
+      'Province_ID' => request('Province_ID'),
+      'District_ID' => request('District_ID'),
+      'Village' => request('Village'),
       'Email' => request('Email'),
-      'PNumber' => request('PNumber'),
-      'SNumber' => request('SNumber'),
-      'Province' => request('Province'),
-      'District' => request('District')
+      'FatherName' => request('FatherName'),
+      'FatherNameLocal' => request('FatherNameLocal'),
+
+      'MaritalStatus' => request('MaritalStatus'),
+      'SpuoseName' => request('SpuoseName'),
+      'SpuoseTazkiraID' => request('SpuoseTazkiraID'),
+      'EldestSonAge' => request('EldestSonAge'),
+      'MonthlyFamilyIncome' => request('MonthlyFamilyIncome'),
+      'MonthlyFamilyExpenses' => request('MonthlyFamilyExpenses'),
+      'NumberFamilyMembers' => request('NumberFamilyMembers'),
+      'IncomeStreem_ID' => request('IncomeStreem_ID'),
+      'LevelPoverty' => request('LevelPoverty'),
+      'Tazkira' => request('Tazkira'),
+      'Status' => 'Pending',
+      'Created_By' => auth()->user()->id,
+
+      'RelativeNumber' => request('RelativeNumber'),
+      'RelativeRelationship_ID' => request('RelativeRelationship_ID'),
+      'RelativeName' => request('RelativeName'),
+      'FamilyStatus_ID' => request('FamilyStatus_ID'),
+      'Country_ID' => request('Country_ID'),
+      'Tribe_ID' => request('Tribe_ID'),
+      'Owner' => 1,
 
     ]);
     $qamarcarecards =   QamarCareCard::all();
