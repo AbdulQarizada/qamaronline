@@ -68,11 +68,11 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
             <h3 class="card-header bg-warning text-white"></h3>
                 <div class="card-body">
                     <div class="table-responsive">
-                    <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
+                    <table id="datatable"  class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Full Name</th>
+                                <th>FirstName</th>
                                 <th>Address</th>
                                 <th>Phone Numbers</th>
                                 <th>Family Status</th>
@@ -87,6 +87,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                         <tbody>
                             <?php $__currentLoopData = $qamarcarecards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qamarcarecard): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
+                                <!-- <td><?php echo e($qamarcarecard->id); ?></td> -->
                                 <td><?php echo e($loop->iteration); ?></td>
                                 <td>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> FirstName); ?> <?php echo e($qamarcarecard -> LastName); ?></a></h5>
@@ -264,7 +265,22 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
             </div>
         </div> <!-- end col -->
     </div> <!-- end row -->
-    
+
+    <!-- <table id="example" class="display example" style="width:100%">
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody></tboday>
+   
+    </table> -->
+
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
     <!-- Required datatable js -->
@@ -308,6 +324,29 @@ $('.release').on('click', function (event) {
         }
     });
 });
+
+
+
+
+$('#datatable').DataTable( {
+    responsive: true,
+ 
+    lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]], 
+    	
+    dom: 'lBfrtip',           
+    buttons: [
+        {
+            autoFilter: true,
+            extend: 'excel',
+            text: 'Export To Excel',
+            exportOptions: {
+                modifier: {
+                    page: 'current'
+                }
+            }
+        }
+    ]
+} );
 </script>
 <?php $__env->stopSection(); ?>
 

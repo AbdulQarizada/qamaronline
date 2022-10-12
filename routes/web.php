@@ -213,6 +213,8 @@ Route::get('/QamarCareCard/Delete/{data}', [App\Http\Controllers\QamarCareCardCo
 
 // qamar care list
 Route::get('/QamarCareCard/All', [App\Http\Controllers\QamarCareCardController::class, 'All'])->name('AllQamarCareCard');
+// Route::get('/QamarCareCard/AllAjax', [App\Http\Controllers\QamarCareCardController::class, 'AllAjax'])->name('AllAjax');
+
 Route::get('/QamarCareCard/Approved', [App\Http\Controllers\QamarCareCardController::class, 'Approved'])->name('ApprovedQamarCareCard');
 Route::get('/QamarCareCard/Rejected', [App\Http\Controllers\QamarCareCardController::class, 'Rejected'])->name('RejectedQamarCareCard');
 Route::get('/QamarCareCard/Printed', [App\Http\Controllers\QamarCareCardController::class, 'Printed'])->name('PrintedQamarCareCard');

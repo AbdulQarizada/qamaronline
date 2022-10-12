@@ -61,11 +61,11 @@
             <h3 class="card-header bg-warning text-white"></h3>
                 <div class="card-body">
                     <div class="table-responsive">
-                    <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
+                    <table id="datatable"  class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Full Name</th>
+                                <th>FirstName</th>
                                 <th>Address</th>
                                 <th>Phone Numbers</th>
                                 <th>Family Status</th>
@@ -80,7 +80,8 @@
                         <tbody>
                             @foreach($qamarcarecards as $qamarcarecard)
                                 <tr>
-                                <td>{{ $loop->iteration }}</td>
+                                <!-- <td>{{ $qamarcarecard->id }}</td> -->
+                                <td>{{$loop->iteration}}</td>
                                 <td>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> FirstName}} {{$qamarcarecard -> LastName}}</a></h5>
                                         <p class="text-muted mb-0">QCC-{{$qamarcarecard -> QCC}}</p>
@@ -257,7 +258,22 @@
             </div>
         </div> <!-- end col -->
     </div> <!-- end row -->
-    
+
+    <!-- <table id="example" class="display example" style="width:100%">
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody></tboday>
+   
+    </table> -->
+
 @endsection
 @section('script')
     <!-- Required datatable js -->
@@ -301,5 +317,28 @@ $('.release').on('click', function (event) {
         }
     });
 });
+
+
+
+
+$('#datatable').DataTable( {
+    responsive: true,
+ 
+    lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]], 
+    	
+    dom: 'lBfrtip',           
+    buttons: [
+        {
+            autoFilter: true,
+            extend: 'excel',
+            text: 'Export To Excel',
+            exportOptions: {
+                modifier: {
+                    page: 'current'
+                }
+            }
+        }
+    ]
+} );
 </script>
 @endsection
