@@ -1470,11 +1470,11 @@ unset($__errorArgs, $__bag); ?>
         instantUpload: true,
         files: [
         {
-            source:'<?php echo e($data -> Profile); ?>',
+            source:'<?php echo e($data -> Tazkira); ?>',
             options: {
                 type: 'local',
                 file: {
-                    name: 'No Tazkira',
+                 
                     type: 'image/png'
                 },
                 metadata:{

@@ -16,12 +16,9 @@
            <a href="{{route('IndexQamarCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
     
         </div>
-        <div class="col-6">
-                                <h1 class="fw-medium font-size-24 ">QAMAR CARE CARDS</h1>
-        </div>
      </div>
 
-     <!-- <div class="row">
+     <div class="row">
         <div class="col-12 ">
         <div class="card border border-3">
                     <div class="card-header">
@@ -33,7 +30,7 @@
                 </div>
       
         </div>
-     </div> -->
+     </div>
      <div class="row">
         <div class="col-3">
         <select class="form-select  form-select-lg mb-3 @error('Country') is-invalid @enderror"  onchange="window.location.href=this.value;" 
@@ -54,8 +51,7 @@
                                     </select>
         </div>
         <div class="col-9 ">
-        <!-- <i class="bx bx-plus-circle  font-size-24 label-icon"></i> btn-label -->
-           <a href="{{route('CreateQamarCareCard')}}" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 float-end">ADD CARE CARD</a>
+           <a href="{{route('CreateQamarCareCard')}}" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD CARE CARD</a>
         </div>
      </div>
     <div class="row">
@@ -64,30 +60,8 @@
             <div class="card">
             <h3 class="card-header bg-warning text-white"></h3>
                 <div class="card-body">
-                <!-- <div class="row">
-                            <div class="col-md-4">
-                                <div class="mb-3 position-relative">
-                                    <select class="form-select  form-select-lg  @error('Country') is-invalid @enderror"  onchange="window.location.href=this.value;" 
->
-                                   <option value="{{route('AllQamarCareCard')}}">Please Filter Your Choices</option>
-
-                                    <option value="{{route('AllQamarCareCard')}}">All</option>
-                                    <option value="{{route('PendingQamarCareCard')}}">Pending</option>
-                                    <option value="{{route('ApprovedQamarCareCard')}}">Approved</option>
-                                    <option value="{{route('PrintedQamarCareCard')}}">Printed</option>
-                                    <option value="{{route('ReleasedQamarCareCard')}}">Released</option>
-                                    <option value="{{route('RejectedQamarCareCard')}}">Rejected</option>
-
-
-
-                                 
-
-                                    </select>
-                                </div>
-                            </div>
-                    </div> -->
-              
-                    <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
+                    <div class="table-responsive">
+                    <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -106,7 +80,7 @@
                         <tbody>
                             @foreach($qamarcarecards as $qamarcarecard)
                                 <tr>
-                                <td>{{$qamarcarecard -> id}}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> FirstName}} {{$qamarcarecard -> LastName}}</a></h5>
                                         <p class="text-muted mb-0">QCC-{{$qamarcarecard -> QCC}}</p>
@@ -115,6 +89,7 @@
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> ProvinceName}}</a></h5>
                                     <p class="text-muted mb-0">{{$qamarcarecard -> DistrictName}}</p> 
+                                    <p class="text-muted mb-0">{{$qamarcarecard -> Village}}</p> 
                                
                                     </div>
                                 </td>
@@ -276,6 +251,7 @@
                        
                         </tbody>
                     </table>
+</div>
                 </div>
                 
             </div>

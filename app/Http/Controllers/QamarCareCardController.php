@@ -8,6 +8,7 @@ use App\Models\QamarCareCard;
 use App\Models\AssignCareCardServices;
 use App\Models\ServiceType;
 use App\Models\ServiceProviders;
+use Auth;
 
 use App\Models\Location;
 use App\Models\LookUp;
@@ -317,14 +318,13 @@ class QamarCareCardController extends Controller
   public function All()
   {
 
-    //  $qamarcarecards =   QamarCareCard::all();
-
     $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
       ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
       ->join('look_ups as c','qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
       ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
-
       ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+      ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
+      ->orWhere("qamar_care_cards.Owner", "=", Auth::user()->IsManager)
 
       ->get();
     return view('QamarCardCard.All', compact('qamarcarecards'));

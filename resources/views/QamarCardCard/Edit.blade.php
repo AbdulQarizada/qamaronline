@@ -914,7 +914,7 @@
             options: {
                 type: 'local',
                 file: {
-                    name: 'No Tazkira',
+                 
                     type: 'image/png'
                 },
                 metadata:{
