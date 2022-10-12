@@ -874,7 +874,7 @@
         labelIdle: 'Profile <span class="bx bx-upload"></span >',
         files: [
         {
-            source:1234,
+            source:'{{$data -> Profile}}',
             options: {
                 type: 'local',
                 file: {
@@ -910,12 +910,11 @@
         instantUpload: true,
         files: [
         {
-            source:1234,
+            source:'{{$data -> Tazkira}}',
             options: {
                 type: 'local',
                 file: {
                     name: 'No Tazkira',
-                    size: 1234,
                     type: 'image/png'
                 },
                 metadata:{

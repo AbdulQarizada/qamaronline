@@ -1434,7 +1434,7 @@ unset($__errorArgs, $__bag); ?>
         labelIdle: 'Profile <span class="bx bx-upload"></span >',
         files: [
         {
-            source:1234,
+            source:'<?php echo e($data -> Profile); ?>',
             options: {
                 type: 'local',
                 file: {
@@ -1470,12 +1470,11 @@ unset($__errorArgs, $__bag); ?>
         instantUpload: true,
         files: [
         {
-            source:1234,
+            source:'<?php echo e($data -> Profile); ?>',
             options: {
                 type: 'local',
                 file: {
                     name: 'No Tazkira',
-                    size: 1234,
                     type: 'image/png'
                 },
                 metadata:{
