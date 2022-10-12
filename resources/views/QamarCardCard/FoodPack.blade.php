@@ -13,8 +13,8 @@
 
     <div class="row mt-4">
         <div class="col-4">
-           <a href="{{route('IndexCareCardQamarCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-            <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>CARE CARDS</span>
+           <a href="{{route('IndexAssignServiceQamarCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+            <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>FOOD PACKS</span>
         </div>
      </div>
      <div class="row">
@@ -22,7 +22,7 @@
     
   </div>
      <div class="row">
-                        <!-- <div class="col-md-2">
+                         <div class="col-md-2">
                             <div class="mb-3 position-relative">
                                 <label for="Province_ID" class="form-label">Province</label>
                                 <div class="input-group">
@@ -92,10 +92,10 @@
                                     @enderror
                                 </div>
                             </div>
-                        </div> -->
-                        <div class="col-12 ">
+                        </div> 
+                        <!-- <div class="col-12 ">
         <a href="{{route('CreateQamarCareCard')}}" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD CARE CARD</a>
-     </div>
+     </div> -->
                     </div>
 
     <div class="row">

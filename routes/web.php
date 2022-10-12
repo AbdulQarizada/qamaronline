@@ -198,6 +198,8 @@ Route::get('/Education/Application/Success', [App\Http\Controllers\EducationCont
 // Qamar Care Card
 Route::get('/QamarCareCard', [App\Http\Controllers\QamarCareCardController::class, 'Index'])->name('IndexQamarCareCard');
 Route::get('/QamarCareCard/IndexCardCard', [App\Http\Controllers\QamarCareCardController::class, 'IndexCareCard'])->name('IndexCareCardQamarCareCard');
+Route::get('/QamarCareCard/IndexAssignService', [App\Http\Controllers\QamarCareCardController::class, 'IndexAssignService'])->name('IndexAssignServiceQamarCareCard');
+
 
 
 
@@ -214,6 +216,8 @@ Route::get('/QamarCareCard/Delete/{data}', [App\Http\Controllers\QamarCareCardCo
 
 
 // qamar care list
+Route::get('/QamarCareCard/FoodPack', [App\Http\Controllers\QamarCareCardController::class, 'FoodPack'])->name('FoodPackQamarCareCard');
+
 Route::get('/QamarCareCard/All', [App\Http\Controllers\QamarCareCardController::class, 'All'])->name('AllQamarCareCard');
 // Route::get('/QamarCareCard/AllAjax', [App\Http\Controllers\QamarCareCardController::class, 'AllAjax'])->name('AllAjax');
 
