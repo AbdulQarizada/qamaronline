@@ -13,14 +13,19 @@
 <?php $__env->startSection('content'); ?>
 
 
-<div class="row">
+<!-- <div class="row">
     <div class="col-12">
         <a href="<?php echo e(route('AllQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
     </div>
-</div>
+</div> -->
+<div class="row mt-4">
+        <div class="col-4">
+           <a href="<?php echo e(route('AllQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+            <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>ADD CARE CARD</span>
+        </div>
+     </div>
 
-
-<div class="row">
+<!-- <div class="row">
     <div class="col-12">
         <div class="card border border-3">
             <div class="card-header">
@@ -32,7 +37,7 @@
         </div>
 
     </div>
-</div>
+</div> -->
 
 
 
@@ -43,7 +48,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
-                <h4 class="card-header bg-primary text-white ">PEROSNAL INFORMATION</h4>
+                <h4 class="card-header bg-dark text-white ">PEROSNAL INFORMATION</h4>
 
                 <div class="card-body">
                     <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
@@ -638,7 +643,7 @@ unset($__errorArgs, $__bag); ?>
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
-                <h4 class="card-header bg-primary text-white ">ADDRESS AND CONTACT</h4>
+                <h4 class="card-header bg-dark text-white ">ADDRESS AND CONTACT</h4>
 
                 <div class="card-body">
                     <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
@@ -963,7 +968,7 @@ unset($__errorArgs, $__bag); ?>
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
-                <h4 class="card-header bg-primary text-white ">FAMILY AND INCOME INFORMATION</h4>
+                <h4 class="card-header bg-dark text-white ">FAMILY AND INCOME INFORMATION</h4>
 
                 <div class="card-body">
                     <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
@@ -1340,7 +1345,7 @@ unset($__errorArgs, $__bag); ?>
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
-                <h4 class="card-header bg-primary text-white ">DOCUMENTS</h4>
+                <h4 class="card-header bg-dark text-white ">DOCUMENTS</h4>
 
                 <div class="card-body">
                     <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
