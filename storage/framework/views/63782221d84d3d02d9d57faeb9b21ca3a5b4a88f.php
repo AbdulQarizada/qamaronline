@@ -13,62 +13,157 @@
 
     <div class="row mt-4">
         <div class="col-4">
-           <a href="<?php echo e(route('IndexQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+           <a href="<?php echo e(route('IndexCareCardQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+            <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>CARE CARDS</span>
+        </div>
+     </div>
+     <div class="row">
+     
     
-        </div>
-     </div>
-
+  </div>
      <div class="row">
-        <div class="col-12 ">
-        <div class="card border border-3">
-                    <div class="card-header">
-                      <blockquote class="blockquote border-warning  font-size-14 mb-0">
-                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">CARE CARDS</p>
-                        
-                        </blockquote>
-                    </div>
-                </div>
-      
-        </div>
-     </div>
-     <div class="row">
-        <div class="col-3">
-        <select class="form-select  form-select-lg mb-3 <?php $__errorArgs = ['Country'];
+                        <div class="col-md-2">
+                            <div class="mb-3 position-relative">
+                                <label for="Province_ID" class="form-label">Province</label>
+                                <div class="input-group">
+                                    <select class="form-select Province form-select-lg <?php $__errorArgs = ['Province_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;" 
->
-                                   <option value="<?php echo e(route('AllQamarCareCard')); ?>">Please Filter Your Choices</option>
+unset($__errorArgs, $__bag); ?>" required name="Province_ID" value="<?php echo e(old('Province_ID')); ?>" id="Province_ID">
+                                        <option value="">Select Your Province</option>
+                                        <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($province -> id); ?>"><?php echo e($province -> Name); ?></option>
 
-                                    <option value="<?php echo e(route('AllQamarCareCard')); ?>">All</option>
-                                    <option value="<?php echo e(route('PendingQamarCareCard')); ?>">Pending</option>
-                                    <option value="<?php echo e(route('ApprovedQamarCareCard')); ?>">Approved</option>
-                                    <option value="<?php echo e(route('PrintedQamarCareCard')); ?>">Printed</option>
-                                    <option value="<?php echo e(route('ReleasedQamarCareCard')); ?>">Released</option>
-                                    <option value="<?php echo e(route('RejectedQamarCareCard')); ?>">Rejected</option>
-
-
-
-                                 
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                     </select>
-        </div>
-        <div class="col-9 ">
-           <a href="<?php echo e(route('CreateQamarCareCard')); ?>" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD CARE CARD</a>
-        </div>
+                                    <?php $__errorArgs = ['Province_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong><?php echo e($message); ?></strong>
+                                    </span>
+                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="mb-3 position-relative">
+                                <label for="District_ID" class="form-label">District</label>
+                                <div class="input-group">
+                                    <select class="form-select  District form-select-lg <?php $__errorArgs = ['District_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" required name="District_ID" value="<?php echo e(old('District_ID')); ?>" id="District_ID">
+                                        <option value="">Select Your District</option>
+
+
+                                    </select>
+                                    <?php $__errorArgs = ['District_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong><?php echo e($message); ?></strong>
+                                    </span>
+                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="mb-3 position-relative">
+                                <label for="FamilyStatus_ID" class="form-label">Family Status</label>
+                                <div class="input-group">
+
+                                    <select class="form-select form-select-lg <?php $__errorArgs = ['FamilyStatus_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FamilyStatus_ID')); ?>" required name="FamilyStatus_ID" id="FamilyStatus_ID">
+                                        <option value="">Select Your Family Status</option>
+                                        <?php $__currentLoopData = $familystatus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $familystatu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($familystatu -> id); ?>"><?php echo e($familystatu -> Name); ?></option>
+
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select>
+                                    <?php $__errorArgs = ['FamilyStatus_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong><?php echo e($message); ?></strong>
+                                    </span>
+                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-2">
+                            <div class="mb-3 position-relative">
+                                <label for="LevelPoverty" class="form-label">Level Of Poverty</label>
+                                <div class="rating-star">
+                                    <input type="hidden" class="rating <?php $__errorArgs = ['LevelPoverty'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('LevelPoverty')); ?>" data-filled="mdi mdi-star text-warning " data-empty="mdi mdi-star-outline text-muted" name="LevelPoverty" id="LevelPoverty" />
+                                    <?php $__errorArgs = ['LevelPoverty'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong><?php echo e($message); ?></strong>
+                                    </span>
+                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 ">
+        <a href="<?php echo e(route('CreateQamarCareCard')); ?>" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD CARE CARD</a>
      </div>
+                    </div>
+
     <div class="row">
         <div class="col-12">
             
             <div class="card">
-            <h3 class="card-header bg-warning text-white"></h3>
+            <h3 class="card-header bg-dark text-white"></h3>
+            
                 <div class="card-body">
+                    
                     <div class="table-responsive">
-                    <table id="datatable"  class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
+                    <table id="datatable-buttons"  class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -294,6 +389,12 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
         
     <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
 
+    
+<!-- Bootstrap rating js -->
+<script src="<?php echo e(URL::asset('/assets/libs/bootstrap-rating/bootstrap-rating.min.js')); ?> "></script>
+
+<script src="<?php echo e(URL::asset('/assets/js/pages/rating-init.js')); ?>"></script>
+
 <script>
     $('.delete-confirm').on('click', function (event) {
     event.preventDefault();
@@ -328,25 +429,25 @@ $('.release').on('click', function (event) {
 
 
 
-$('#datatable').DataTable( {
-    responsive: true,
+// $('#datatable').DataTable( {
+//     responsive: true,
  
-    lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]], 
+//     lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]], 
     	
-    dom: 'lBfrtip',           
-    buttons: [
-        {
-            autoFilter: true,
-            extend: 'excel',
-            text: 'Export To Excel',
-            exportOptions: {
-                modifier: {
-                    page: 'current'
-                }
-            }
-        }
-    ]
-} );
+//     dom: 'lBfrtip',           
+//     buttons: [
+//         {
+//             autoFilter: true,
+//             extend: 'excel',
+//             text: 'Export To Excel',
+//             exportOptions: {
+//                 modifier: {
+//                     page: 'current'
+//                 }
+//             }
+//         }
+//     ]
+// } );
 </script>
 <?php $__env->stopSection(); ?>
 

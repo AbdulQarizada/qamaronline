@@ -13,55 +13,101 @@
 
     <div class="row mt-4">
         <div class="col-4">
-           <a href="{{route('IndexQamarCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+           <a href="{{route('IndexCareCardQamarCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+            <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>CARE CARDS</span>
+        </div>
+     </div>
+     <div class="row">
+     
     
-        </div>
-     </div>
-
+  </div>
      <div class="row">
-        <div class="col-12 ">
-        <div class="card border border-3">
-                    <div class="card-header">
-                      <blockquote class="blockquote border-warning  font-size-14 mb-0">
-                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">CARE CARDS</p>
-                        
-                        </blockquote>
-                    </div>
-                </div>
-      
-        </div>
-     </div>
-     <div class="row">
-        <div class="col-3">
-        <select class="form-select  form-select-lg mb-3 @error('Country') is-invalid @enderror"  onchange="window.location.href=this.value;" 
->
-                                   <option value="{{route('AllQamarCareCard')}}">Please Filter Your Choices</option>
+                        <div class="col-md-2">
+                            <div class="mb-3 position-relative">
+                                <label for="Province_ID" class="form-label">Province</label>
+                                <div class="input-group">
+                                    <select class="form-select Province form-select-lg @error('Province_ID') is-invalid @enderror" required name="Province_ID" value="{{ old('Province_ID') }}" id="Province_ID">
+                                        <option value="">Select Your Province</option>
+                                        @foreach($provinces as $province)
+                                        <option value="{{ $province -> id}}">{{ $province -> Name}}</option>
 
-                                    <option value="{{route('AllQamarCareCard')}}">All</option>
-                                    <option value="{{route('PendingQamarCareCard')}}">Pending</option>
-                                    <option value="{{route('ApprovedQamarCareCard')}}">Approved</option>
-                                    <option value="{{route('PrintedQamarCareCard')}}">Printed</option>
-                                    <option value="{{route('ReleasedQamarCareCard')}}">Released</option>
-                                    <option value="{{route('RejectedQamarCareCard')}}">Rejected</option>
-
-
-
-                                 
+                                        @endforeach
 
                                     </select>
-        </div>
-        <div class="col-9 ">
-           <a href="{{route('CreateQamarCareCard')}}" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD CARE CARD</a>
-        </div>
+                                    @error('Province_ID')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="mb-3 position-relative">
+                                <label for="District_ID" class="form-label">District</label>
+                                <div class="input-group">
+                                    <select class="form-select  District form-select-lg @error('District_ID') is-invalid @enderror" required name="District_ID" value="{{ old('District_ID') }}" id="District_ID">
+                                        <option value="">Select Your District</option>
+
+
+                                    </select>
+                                    @error('District_ID')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="mb-3 position-relative">
+                                <label for="FamilyStatus_ID" class="form-label">Family Status</label>
+                                <div class="input-group">
+
+                                    <select class="form-select form-select-lg @error('FamilyStatus_ID') is-invalid @enderror" value="{{ old('FamilyStatus_ID') }}" required name="FamilyStatus_ID" id="FamilyStatus_ID">
+                                        <option value="">Select Your Family Status</option>
+                                        @foreach($familystatus as $familystatu)
+                                        <option value="{{ $familystatu -> id}}">{{ $familystatu -> Name}}</option>
+
+                                        @endforeach
+                                    </select>
+                                    @error('FamilyStatus_ID')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-2">
+                            <div class="mb-3 position-relative">
+                                <label for="LevelPoverty" class="form-label">Level Of Poverty</label>
+                                <div class="rating-star">
+                                    <input type="hidden" class="rating @error('LevelPoverty') is-invalid @enderror" value="{{ old('LevelPoverty') }}" data-filled="mdi mdi-star text-warning " data-empty="mdi mdi-star-outline text-muted" name="LevelPoverty" id="LevelPoverty" />
+                                    @error('LevelPoverty')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 ">
+        <a href="{{route('CreateQamarCareCard')}}" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD CARE CARD</a>
      </div>
+                    </div>
+
     <div class="row">
         <div class="col-12">
             
             <div class="card">
-            <h3 class="card-header bg-warning text-white"></h3>
+            <h3 class="card-header bg-dark text-white"></h3>
+            
                 <div class="card-body">
+                    
                     <div class="table-responsive">
-                    <table id="datatable"  class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
+                    <table id="datatable-buttons"  class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -287,6 +333,12 @@
         
     <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
 
+    
+<!-- Bootstrap rating js -->
+<script src="{{ URL::asset('/assets/libs/bootstrap-rating/bootstrap-rating.min.js') }} "></script>
+
+<script src="{{ URL::asset('/assets/js/pages/rating-init.js') }}"></script>
+
 <script>
     $('.delete-confirm').on('click', function (event) {
     event.preventDefault();
@@ -321,24 +373,24 @@ $('.release').on('click', function (event) {
 
 
 
-$('#datatable').DataTable( {
-    responsive: true,
+// $('#datatable').DataTable( {
+//     responsive: true,
  
-    lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]], 
+//     lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]], 
     	
-    dom: 'lBfrtip',           
-    buttons: [
-        {
-            autoFilter: true,
-            extend: 'excel',
-            text: 'Export To Excel',
-            exportOptions: {
-                modifier: {
-                    page: 'current'
-                }
-            }
-        }
-    ]
-} );
+//     dom: 'lBfrtip',           
+//     buttons: [
+//         {
+//             autoFilter: true,
+//             extend: 'excel',
+//             text: 'Export To Excel',
+//             exportOptions: {
+//                 modifier: {
+//                     page: 'current'
+//                 }
+//             }
+//         }
+//     ]
+// } );
 </script>
 @endsection

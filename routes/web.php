@@ -197,6 +197,8 @@ Route::get('/Education/Application/Success', [App\Http\Controllers\EducationCont
 
 // Qamar Care Card
 Route::get('/QamarCareCard', [App\Http\Controllers\QamarCareCardController::class, 'Index'])->name('IndexQamarCareCard');
+Route::get('/QamarCareCard/IndexCardCard', [App\Http\Controllers\QamarCareCardController::class, 'IndexCareCard'])->name('IndexCareCardQamarCareCard');
+
 
 
 // Create

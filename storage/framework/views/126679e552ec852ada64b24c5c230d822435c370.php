@@ -1,22 +1,22 @@
-@extends('layouts.master-layouts')
 
-@section('title') Approved Cards @endsection
 
-@section('css')
+<?php $__env->startSection('title'); ?> Approved Cards <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('css'); ?>
     <!-- DataTables -->
-    <link href="{{ URL::asset('/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
-@endsection
+    <link href="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.css')); ?>" rel="stylesheet" type="text/css" />
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
-    @component('components.breadcrumb')
-        @slot('li_1') Qamar Online @endslot
-        @slot('title') Approved Card @endslot
-    @endcomponent
+    <?php $__env->startComponent('components.breadcrumb'); ?>
+        <?php $__env->slot('li_1'); ?> Qamar Online <?php $__env->endSlot(); ?>
+        <?php $__env->slot('title'); ?> Approved Card <?php $__env->endSlot(); ?>
+    <?php echo $__env->renderComponent(); ?>
 
     <div class="row">
         <div class="col-12">
-           <a href="{{route('IndexQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+           <a href="<?php echo e(route('IndexQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         </div>
      </div>
      <div class="row">
@@ -24,7 +24,7 @@
         <div class="card border border-3">
                     <div class="card-header">
                       <blockquote class="blockquote border-success  font-size-14 mb-0">
-                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">Released CARE CARD</p>
+                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">APPROVED CARE CARD</p>
                         
                         </blockquote>
                     </div>
@@ -56,81 +56,84 @@
 
 
                         <tbody>
-                            @foreach($qamarcarecards as $qamarcarecard)
+                            <?php $__currentLoopData = $qamarcarecards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qamarcarecard): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
-                                <td>{{$qamarcarecard -> id}}</td>
+                                <td><?php echo e($qamarcarecard -> id); ?></td>
                                 <td>
-                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> FirstName}} {{$qamarcarecard -> LastName}}</a></h5>
-                                        <p class="text-muted mb-0">QCC-{{$qamarcarecard -> QCC}}</p>
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> FirstName); ?> <?php echo e($qamarcarecard -> LastName); ?></a></h5>
+                                        <p class="text-muted mb-0">QCC-<?php echo e($qamarcarecard -> QCC); ?></p>
                                 </td>
                                 <td>
                                 <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> Province}}</a></h5>
-                                    <p class="text-muted mb-0">{{$qamarcarecard -> District}}</p> 
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> Province); ?></a></h5>
+                                    <p class="text-muted mb-0"><?php echo e($qamarcarecard -> District); ?></p> 
                                
                                     </div>
                                 </td>
                                 <td>    
                                       <div>
-                                      <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$qamarcarecard -> PrimaryNumber}}</a></h5>
-                                        <p class="text-muted mb-0 badge badge-soft-warning">{{$qamarcarecard -> SecondaryNumber}}</p>
-                                         <p class="text-muted mb-0 badge badge-soft-danger">{{$qamarcarecard -> RelativeNumber}}</p>
+                                      <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($qamarcarecard -> PrimaryNumber); ?></a></h5>
+                                        <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($qamarcarecard -> SecondaryNumber); ?></p>
+                                         <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($qamarcarecard -> RelativeNumber); ?></p>
                                         </div>
                                </td> 
                                <td>
                                 <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> FamilyStatus}}</a></h5>
-                                       @if( $qamarcarecard -> LevelPoverty == 1)
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> FamilyStatus); ?></a></h5>
+                                       <?php if( $qamarcarecard -> LevelPoverty == 1): ?>
                                          <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-secondary font-size-14"></i>
                                          <i class="bx bxs-star text-secondary font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
 
-                                       @endif
-                                       @if( $qamarcarecard -> LevelPoverty == 2)
+                                       <?php endif; ?>
+                                       <?php if( $qamarcarecard -> LevelPoverty == 2): ?>
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
                                          <i class="bx bxs-star text-secondary font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $qamarcarecard -> LevelPoverty == 3)
+                                       <?php endif; ?>
+                                       <?php if( $qamarcarecard -> LevelPoverty == 3): ?>
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
                                          <i class="bx bxs-star text-secondary font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $qamarcarecard -> LevelPoverty == 4)
+                                       <?php endif; ?>
+                                       <?php if( $qamarcarecard -> LevelPoverty == 4): ?>
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
                                          <i class="bx bxs-star text-secondary font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
-                                       @if( $qamarcarecard -> LevelPoverty == 5)
+                                       <?php endif; ?>
+                                       <?php if( $qamarcarecard -> LevelPoverty == 5): ?>
                                        <i class="bx bxs-star text-warning font-size-12"></i>
                                          <i class="bx bxs-star text-warning font-size-14"></i>
                                          <i class="bx bxs-star text-secondary font-size-16"></i>
                                          <i class="bx bxs-star text-secondary font-size-18"></i>
                                          <i class="bx bxs-star text-secondary font-size-20"></i>
-                                       @endif
+                                       <?php endif; ?>
                                     </div>
                                 </td>
                                 <td>
                        <div class="d-flex flex-wrap gap-2">
-                       <a href="{{route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-warning waves-effect waves-light">
+                       <a href="<?php echo e(route('StatusQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-warning waves-effect waves-light">
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
                     </a>
                
-                    <a href="{{route('ReInitiateQamarCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-info waves-effect waves-light reinitiate">
+                    <a href="<?php echo e(route('ReInitiateQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-info waves-effect waves-light reinitiate">
                         <i class="bx bx-time-five  font-size-16 align-middle"></i>
+                    </a>
+                    <a href="<?php echo e(route('PrintingQamarCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-dark waves-effect waves-light print">
+                        <i class="bx bxs-printer   font-size-16 align-middle"></i>
                     </a>
                 </div>
             </td>
                             </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 
                        
                         </tbody>
@@ -140,16 +143,17 @@
         </div> <!-- end col -->
     </div> <!-- end row -->
 
-@endsection
-@section('script')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
     <!-- Required datatable js -->
-    <script src="{{ URL::asset('/assets/libs/datatables/datatables.min.js') }}"></script>
-    <script src="{{ URL::asset('/assets/libs/jszip/jszip.min.js') }}"></script>
-    <script src="{{ URL::asset('/assets/libs/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('/assets/libs/jszip/jszip.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('/assets/libs/pdfmake/pdfmake.min.js')); ?>"></script>
     <!-- Datatable init js -->
-    <script src="{{ URL::asset('/assets/js/pages/datatables.init.js') }}"></script>
+    <script src="<?php echo e(URL::asset('/assets/js/pages/datatables.init.js')); ?>"></script>
 
-    <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
+    
+    <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
 
 <script>
     $('.reinitiate').on('click', function (event) {
@@ -167,8 +171,25 @@
     });
 });
 
+// $('.print').on('click', function (event) {
+//     event.preventDefault();
+//     const url = $(this).attr('href');
+//     swal({
+//         title: 'Are you sure?',
+//         text: 'Are you sure that this record is printed!',
+//         icon: 'warning',
+//         buttons: ["Cancel", "Yes!"],
+//     }).then(function(value) {
+//         if (value) {
+//             window.location.href = url;
+//         }
+//     });
+// });
 
 
 </script>
 
-@endsection
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/QamarCardCard/Approved.blade.php ENDPATH**/ ?>

@@ -42,6 +42,11 @@ class QamarCareCardController extends Controller
   }
 
 
+  public function IndexCareCard()
+  {
+
+    return view('QamarCardCard.IndexCareCard');
+  }
 
 
 
@@ -317,6 +322,19 @@ class QamarCareCardController extends Controller
   // list
   public function All()
   {
+    $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+    $genders =   LookUp::where("Parent_Name", "=", "Gender")->get();
+    $tribes =   LookUp::where("Parent_Name", "=", "Tribe")->get();
+    $languages =   LookUp::where("Parent_Name", "=", "Language")->get();
+    $currentjobs =   LookUp::where("Parent_Name", "=", "CurrentJob")->get();
+    $futurejobs =   LookUp::where("Parent_Name", "=", "FutureJob")->get();
+    $educationlevels =   LookUp::where("Parent_Name", "=", "EducationLevel")->get();
+    $relationships =   LookUp::where("Parent_Name", "=", "RelativeRelationship")->get();
+    $incomestreams =   LookUp::where("Parent_Name", "=", "IncomeStream")->get();
+    $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
+    $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
+    $provinces = Location::whereNull("Parent_ID")->get();
+    $districts = Location::get();
 
     $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
       ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
@@ -327,7 +345,10 @@ class QamarCareCardController extends Controller
       ->orWhere("qamar_care_cards.Owner", "=", Auth::user()->IsManager)
 
       ->get();
-    return view('QamarCardCard.All', compact('qamarcarecards'));
+
+    return view('QamarCardCard.All', ['qamarcarecards' => $qamarcarecards,'countries' => $countries,'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+
+    // return view('QamarCardCard.All', compact('qamarcarecards'));
   }
 
 
@@ -349,6 +370,20 @@ class QamarCareCardController extends Controller
   public function Approved()
   {
 
+    $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+    $genders =   LookUp::where("Parent_Name", "=", "Gender")->get();
+    $tribes =   LookUp::where("Parent_Name", "=", "Tribe")->get();
+    $languages =   LookUp::where("Parent_Name", "=", "Language")->get();
+    $currentjobs =   LookUp::where("Parent_Name", "=", "CurrentJob")->get();
+    $futurejobs =   LookUp::where("Parent_Name", "=", "FutureJob")->get();
+    $educationlevels =   LookUp::where("Parent_Name", "=", "EducationLevel")->get();
+    $relationships =   LookUp::where("Parent_Name", "=", "RelativeRelationship")->get();
+    $incomestreams =   LookUp::where("Parent_Name", "=", "IncomeStream")->get();
+    $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
+    $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
+    $provinces = Location::whereNull("Parent_ID")->get();
+    $districts = Location::get();
+
     $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
       ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
       ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
@@ -358,12 +393,27 @@ class QamarCareCardController extends Controller
       ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
       ->orWhere("qamar_care_cards.Owner", "=", Auth::user()->IsManager)
       ->get();
-    return view('QamarCardCard.All', compact('qamarcarecards'));
+    return view('QamarCardCard.All', ['qamarcarecards' => $qamarcarecards,'countries' => $countries,'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+
+    // return view('QamarCardCard.All', compact('qamarcarecards'));
   }
 
 
   public function Rejected()
   {
+ $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+    $genders =   LookUp::where("Parent_Name", "=", "Gender")->get();
+    $tribes =   LookUp::where("Parent_Name", "=", "Tribe")->get();
+    $languages =   LookUp::where("Parent_Name", "=", "Language")->get();
+    $currentjobs =   LookUp::where("Parent_Name", "=", "CurrentJob")->get();
+    $futurejobs =   LookUp::where("Parent_Name", "=", "FutureJob")->get();
+    $educationlevels =   LookUp::where("Parent_Name", "=", "EducationLevel")->get();
+    $relationships =   LookUp::where("Parent_Name", "=", "RelativeRelationship")->get();
+    $incomestreams =   LookUp::where("Parent_Name", "=", "IncomeStream")->get();
+    $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
+    $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
+    $provinces = Location::whereNull("Parent_ID")->get();
+    $districts = Location::get();
 
     // $qamarcarecards =   QamarCareCard::where("Status", "=", 'Rejected')->get();
     $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
@@ -376,7 +426,9 @@ class QamarCareCardController extends Controller
       ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
       ->orWhere("qamar_care_cards.Owner", "=", Auth::user()->IsManager)
       ->get();
-    return view('QamarCardCard.All', compact('qamarcarecards'));
+    return view('QamarCardCard.All', ['qamarcarecards' => $qamarcarecards,'countries' => $countries,'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+
+    // return view('QamarCardCard.All', compact('qamarcarecards'));
   }
 
 
@@ -385,6 +437,19 @@ class QamarCareCardController extends Controller
 
   public function Pending()
   {
+ $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+    $genders =   LookUp::where("Parent_Name", "=", "Gender")->get();
+    $tribes =   LookUp::where("Parent_Name", "=", "Tribe")->get();
+    $languages =   LookUp::where("Parent_Name", "=", "Language")->get();
+    $currentjobs =   LookUp::where("Parent_Name", "=", "CurrentJob")->get();
+    $futurejobs =   LookUp::where("Parent_Name", "=", "FutureJob")->get();
+    $educationlevels =   LookUp::where("Parent_Name", "=", "EducationLevel")->get();
+    $relationships =   LookUp::where("Parent_Name", "=", "RelativeRelationship")->get();
+    $incomestreams =   LookUp::where("Parent_Name", "=", "IncomeStream")->get();
+    $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
+    $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
+    $provinces = Location::whereNull("Parent_ID")->get();
+    $districts = Location::get();
 
     // $qamarcarecards =   QamarCareCard::where("Status", "=", 'Pending')->get();
     $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
@@ -397,12 +462,28 @@ class QamarCareCardController extends Controller
       ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
       ->orWhere("qamar_care_cards.Owner", "=", Auth::user()->IsManager)
       ->get();
-    return view('QamarCardCard.All', compact('qamarcarecards'));
+    return view('QamarCardCard.All', ['qamarcarecards' => $qamarcarecards,'countries' => $countries,'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+
+    // return view('QamarCardCard.All', compact('qamarcarecards'));
   }
 
 
   public function Released()
   {
+
+    $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+    $genders =   LookUp::where("Parent_Name", "=", "Gender")->get();
+    $tribes =   LookUp::where("Parent_Name", "=", "Tribe")->get();
+    $languages =   LookUp::where("Parent_Name", "=", "Language")->get();
+    $currentjobs =   LookUp::where("Parent_Name", "=", "CurrentJob")->get();
+    $futurejobs =   LookUp::where("Parent_Name", "=", "FutureJob")->get();
+    $educationlevels =   LookUp::where("Parent_Name", "=", "EducationLevel")->get();
+    $relationships =   LookUp::where("Parent_Name", "=", "RelativeRelationship")->get();
+    $incomestreams =   LookUp::where("Parent_Name", "=", "IncomeStream")->get();
+    $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
+    $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
+    $provinces = Location::whereNull("Parent_ID")->get();
+    $districts = Location::get();
 
     // $qamarcarecards =   QamarCareCard::where("Status", "=", 'Released')->get();
     $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
@@ -415,7 +496,9 @@ class QamarCareCardController extends Controller
       ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
       ->orWhere("qamar_care_cards.Owner", "=", Auth::user()->IsManager)
       ->get();
-    return view('QamarCardCard.All', compact('qamarcarecards'));
+    return view('QamarCardCard.All', ['qamarcarecards' => $qamarcarecards,'countries' => $countries,'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+
+    // return view('QamarCardCard.All', compact('qamarcarecards'));
   }
 
 
@@ -547,12 +630,29 @@ class QamarCareCardController extends Controller
   public function Printed()
   {
 
+    $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+    $genders =   LookUp::where("Parent_Name", "=", "Gender")->get();
+    $tribes =   LookUp::where("Parent_Name", "=", "Tribe")->get();
+    $languages =   LookUp::where("Parent_Name", "=", "Language")->get();
+    $currentjobs =   LookUp::where("Parent_Name", "=", "CurrentJob")->get();
+    $futurejobs =   LookUp::where("Parent_Name", "=", "FutureJob")->get();
+    $educationlevels =   LookUp::where("Parent_Name", "=", "EducationLevel")->get();
+    $relationships =   LookUp::where("Parent_Name", "=", "RelativeRelationship")->get();
+    $incomestreams =   LookUp::where("Parent_Name", "=", "IncomeStream")->get();
+    $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
+    $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
+    $provinces = Location::whereNull("Parent_ID")->get();
+    $districts = Location::get();
+    
     $qamarcarecards =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Printed')
     ->join('users as d','qamar_care_cards.Created_By', '=', 'd.id')
     ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
     ->orWhere("qamar_care_cards.Owner", "=", Auth::user()->IsManager)
     ->get();
-    return view('QamarCardCard.All', compact('qamarcarecards'));
+
+    return view('QamarCardCard.All', ['qamarcarecards' => $qamarcarecards,'countries' => $countries,'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+
+    // return view('QamarCardCard.All', compact('qamarcarecards'));
   }
 
 
