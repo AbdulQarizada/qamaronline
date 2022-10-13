@@ -93,7 +93,7 @@ class QamarCareCardController extends Controller
       'TazkiraID' => 'required|unique:qamar_care_cards|max:10',
       'QamarSupport_ID' => 'required|max:255',
       'MaritalStatus' => 'required|max:255',
-      'Profile' => 'required|max:255',
+      'Profile' => 'required',
       'DOB' => 'required|max:255',
       'Gender_ID' => 'required|max:255',
       'Language_ID' => 'required|max:255',
