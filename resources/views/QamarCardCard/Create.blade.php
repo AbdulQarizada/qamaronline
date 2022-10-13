@@ -876,6 +876,26 @@
     // Create a FilePond instance
     const Profile = FilePond.create(inputProfile, {
         labelIdle: 'Profile <span class="bx bx-upload"></span >',
+        server: {
+
+url: '{{ route('Beneficiaries_Profile')}}',
+headers: {
+    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+}
+
+},
+acceptedFileTypes: ['image/png', 'image/jpeg'],
+allowFileTypeValidation: true,
+instantUpload: true,
+imagePreviewHeight: 100,
+imageCropAspectRatio: '1:1',
+imageResizeTargetWidth: 10,
+imageResizeTargetHeight: 10,
+stylePanelLayout: 'compact circle',
+styleLoadIndicatorPosition: 'center bottom',
+styleProgressIndicatorPosition: 'right bottom',
+styleButtonRemoveItemPosition: 'left bottom',
+styleButtonProcessItemPosition: 'right bottom'
  
 
     });
@@ -888,7 +908,7 @@
         allowFileTypeValidation: true,
         server: {
 
-            url: '../Beneficiaries_Tazkira',
+            url: '{{ route('Beneficiaries_Tazkira')}}',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }
@@ -901,28 +921,9 @@
 
 
 
-    Profile.setOptions({
-        server: {
-
-            url: '../Beneficiaries_Profile',
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            }
-
-        },
-        acceptedFileTypes: ['image/png', 'image/jpeg'],
-        allowFileTypeValidation: true,
-        instantUpload: true,
-        imagePreviewHeight: 100,
-        imageCropAspectRatio: '1:1',
-        imageResizeTargetWidth: 10,
-        imageResizeTargetHeight: 10,
-        stylePanelLayout: 'compact circle',
-        styleLoadIndicatorPosition: 'center bottom',
-        styleProgressIndicatorPosition: 'right bottom',
-        styleButtonRemoveItemPosition: 'left bottom',
-        styleButtonProcessItemPosition: 'right bottom'
-    });
+    // Profile.setOptions({
+      
+    // });
 
 
     $(document).ready(function() {

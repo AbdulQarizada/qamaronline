@@ -7,190 +7,102 @@
 @endsection
 @section('content')
 
-@component('components.breadcrumb')
-@slot('li_1') Home @endslot
-@slot('title') Dashboard @endslot
-@endcomponent
-
 
 @if(Auth::user()->IsEmployee == 1)
+
+
+
 <div class="row">
     <div class="col-xl-4">
-        <div class="card overflow-hidden">
-            <div class="bg-primary bg-soft">
-                <div class="row">
-                    <div class="col-7">
-                        <div class="text-primary p-3">
-                            <h5 class="text-dark">Welcome Back !</h5>
-                        </div>
-                    </div>
-                    <div class="col-5 align-self-end">
-                        <img src="{{ URL::asset('/assets/images/profile-img.png') }}" alt="" class="img-fluid">
-                    </div>
-                </div>
-            </div>
-            <div class="card-body pt-0">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <div class="avatar-md profile-user-wid mb-4">
-                            <img src="{{ isset(Auth::user()->avatar) ? asset(Auth::user()->avatar) : asset('/assets/images/users/avatar-1.jpg') }}" alt="" class="img-thumbnail rounded-circle">
-                        </div>
-                    </div>
+        <div class="card">
+            <div class="card-body">
 
-                    <div class="col-sm-8">
-                        <div class="pt-4">
+                <div class="d-flex align-items-start">
+                <div class="flex-grow-1">
+                                <div class="avatar-sm rounded-circle mini-stat-icon">
+                                    <span class="avatar-title rounded-circle bg-dark">
+                                    @if(Auth::user()->IsEmployee == 1)
+                <img class="rounded-circle header-profile-user" src="{{ isset(Auth::user()->Profile) ? asset('/uploads/User/Employees/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png') }}"
+                    alt="Profile">
 
-                            <div class="row">
-                                <div class="col-8">
-                                    <h5 class="font-size-15 text-truncate">{{ Str::ucfirst(Auth::user()->FullName) }}</h5>
-                                    <p class="text-muted mb-0 text-truncate">{{ Str::ucfirst(Auth::user()->Job) }}</p>
+                @else
+                <img class="rounded-circle header-profile-user" src="{{ isset(Auth::user()->Profile) ? asset('/uploads/User/Sponsors/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png') }}"
+                    alt="Profile">
+                @endif
+                                    </span>
                                 </div>
+                            </div>
 
-                            </div>
-                            <div class="mt-4">
-                                <a href="" class="btn btn-primary waves-effect waves-light btn-sm">View Profile <i class="mdi mdi-arrow-right ms-1"></i></a>
-                            </div>
+                    <div class="flex-grow-1">
+                        <div class="text-muted">
+                            <h5>{{ Str::ucfirst(Auth::user()->FullName) }}</h5>
+                            <p class="mb-1">{{ Str::ucfirst(Auth::user()->email) }}</p>
+                            <p class="mb-0">{{ Str::ucfirst(Auth::user()->Job) }}</p>
                         </div>
+
                     </div>
+
+          
                 </div>
             </div>
+
         </div>
     </div>
+
     <div class="col-xl-8">
-        <div class="row">
-            <div class="col-md-4">
+        <!-- <div class="row">
+            <div class="col-sm-4">
                 <div class="card mini-stats-wid">
                     <div class="card-body">
                         <div class="d-flex">
-                            <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">Date</p>
-                                <h4 class="mb-0">
-                                    <script>
-                                        document.write(new Date().getFullYear())
-                                    </script>
-                                </h4>
+                            <div class="flex-shrink-0 me-3 align-self-center">
+                                <i class="mdi mdi-bitcoin h2 text-warning mb-0"></i>
                             </div>
-
-                            <div class="flex-shrink-0 align-self-center">
-                                <div class="mini-stat-icon avatar-sm rounded-circle bg-dark">
-                                    <span class="avatar-title bg-dark">
-                                        1
-                                    </span>
-                                </div>
+                            <div class="flex-grow-1">
+                                <p class="text-muted mb-2"></p>
+                                <h5 class="mb-0"> <span class="font-size-14 text-muted"></span></h5>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-sm-4">
                 <div class="card mini-stats-wid">
                     <div class="card-body">
                         <div class="d-flex">
-                            <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">Last Login</p>
-                                <h4 class="mb-0">
-                                    <script>
-                                        document.write(new Date().getFullYear())
-                                    </script>
-                                </h4>
+                            <div class="flex-shrink-0 me-3 align-self-center">
+                                <i class="mdi mdi-ethereum h2 text-primary mb-0"></i>
                             </div>
-
-                            <div class="flex-shrink-0 align-self-center ">
-                                <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                    <span class="avatar-title rounded-circle bg-dark">
-                                        2
-                                    </span>
-                                </div>
+                            <div class="flex-grow-1">
+                                <p class="text-muted mb-2"></p>
+                                <h5 class="mb-0"><span class="font-size-14 text-muted"></span></h5>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-sm-4">
                 <div class="card mini-stats-wid">
                     <div class="card-body">
                         <div class="d-flex">
-                            <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">Average Price</p>
-                                <h4 class="mb-0">$16.2</h4>
+                            <div class="flex-shrink-0 me-3 align-self-center">
+                                <i class="mdi mdi-litecoin h2 text-info mb-0"></i>
                             </div>
-
-                            <div class="flex-shrink-0 align-self-center">
-                                <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                    <span class="avatar-title rounded-circle bg-dark">
-                                        3
-                                    </span>
-                                </div>
+                            <div class="flex-grow-1">
+                                <p class="text-muted mb-2"></p>
+                                <h5 class="mb-0"><span class="font-size-14 text-muted"></span></h5>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card mini-stats-wid">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">Average Price</p>
-                                <h4 class="mb-0">$16.2</h4>
-                            </div>
-
-                            <div class="flex-shrink-0 align-self-center">
-                                <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                    <span class="avatar-title rounded-circle bg-dark">
-                                        4
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mini-stats-wid">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">Average Price</p>
-                                <h4 class="mb-0">$16.2</h4>
-                            </div>
-
-                            <div class="flex-shrink-0 align-self-center">
-                                <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                    <span class="avatar-title rounded-circle bg-dark">
-                                        5
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card mini-stats-wid">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <div class="flex-grow-1">
-                                <p class="text-muted fw-medium">Average Price</p>
-                                <h4 class="mb-0">$16.2</h4>
-                            </div>
-
-                            <div class="flex-shrink-0 align-self-center">
-                                <div class="avatar-sm rounded-circle bg-primary mini-stat-icon">
-                                    <span class="avatar-title rounded-circle bg-dark">
-                                        6
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div> -->
         <!-- end row -->
     </div>
 </div>
 <!-- end row -->
+
+
 <br />
 <br />
 <div class="row">
