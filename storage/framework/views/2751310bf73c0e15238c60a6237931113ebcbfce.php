@@ -1456,7 +1456,6 @@ styleLoadIndicatorPosition: 'center bottom',
 styleProgressIndicatorPosition: 'right bottom',
 styleButtonRemoveItemPosition: 'left bottom',
 styleButtonProcessItemPosition: 'right bottom'
- 
 
     });
 
@@ -1482,7 +1481,7 @@ styleButtonProcessItemPosition: 'right bottom'
 
 
     // Profile.setOptions({
-      
+  
     // });
 
 

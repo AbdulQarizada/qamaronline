@@ -9,10 +9,18 @@ use MailerSend\Endpoints\Blocklist;
 use MailerSend\Endpoints\BulkEmail;
 use MailerSend\Endpoints\Domain;
 use MailerSend\Endpoints\Email;
+use MailerSend\Endpoints\EmailVerification;
 use MailerSend\Endpoints\HardBounce;
 use MailerSend\Endpoints\Inbound;
 use MailerSend\Endpoints\Message;
 use MailerSend\Endpoints\ScheduleMessages;
+use MailerSend\Endpoints\Sms;
+use MailerSend\Endpoints\SmsActivity;
+use MailerSend\Endpoints\SmsInbound;
+use MailerSend\Endpoints\SmsMessage;
+use MailerSend\Endpoints\SmsNumber;
+use MailerSend\Endpoints\SmsRecipient;
+use MailerSend\Endpoints\SmsWebhook;
 use MailerSend\Endpoints\Template;
 use MailerSend\Endpoints\SpamComplaint;
 use MailerSend\Endpoints\Unsubscribe;
@@ -57,6 +65,14 @@ class MailerSend
     public Unsubscribe $unsubscribe;
     public Inbound $inbound;
     public ScheduleMessages $scheduleMessages;
+    public EmailVerification $emailVerification;
+    public Sms $sms;
+    public SmsNumber $smsNumber;
+    public SmsMessage $smsMessage;
+    public SmsActivity $smsActivity;
+    public SmsRecipient $smsRecipient;
+    public SmsWebhook $smsWebhook;
+    public SmsInbound $smsInbound;
 
     /**
      * @param  array  $options  Additional options for the SDK
@@ -88,6 +104,14 @@ class MailerSend
         $this->unsubscribe = new Unsubscribe($this->httpLayer, $this->options);
         $this->inbound = new Inbound($this->httpLayer, $this->options);
         $this->scheduleMessages = new ScheduleMessages($this->httpLayer, $this->options);
+        $this->emailVerification = new EmailVerification($this->httpLayer, $this->options);
+        $this->sms = new Sms($this->httpLayer, $this->options);
+        $this->smsNumber = new SmsNumber($this->httpLayer, $this->options);
+        $this->smsMessage = new SmsMessage($this->httpLayer, $this->options);
+        $this->smsActivity = new SmsActivity($this->httpLayer, $this->options);
+        $this->smsRecipient = new SmsRecipient($this->httpLayer, $this->options);
+        $this->smsWebhook = new SmsWebhook($this->httpLayer, $this->options);
+        $this->smsInbound = new SmsInbound($this->httpLayer, $this->options);
     }
 
     protected function setHttpLayer(?HttpLayer $httpLayer = null): void
