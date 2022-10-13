@@ -286,8 +286,8 @@ class QamarCareCardController extends Controller
       'Owner' => 1,
 
     ]);
-    $qamarcarecards =   QamarCareCard::all();
-    return view('QamarCardCard.All', compact('qamarcarecards'));
+    // $qamarcarecards =   QamarCareCard::all();
+    return redirect()->route('AllQamarCareCard')->with('toast_success', 'Record Edited Successfully!');
   }
 
 
