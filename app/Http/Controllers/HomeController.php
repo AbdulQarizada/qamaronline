@@ -27,9 +27,6 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
-
-
     }
 
     /**
@@ -55,11 +52,11 @@ class HomeController extends Controller
     {
 
 
-        if(Auth::check() && !Auth::User()->IsActive == 1)
-        {
+        if (Auth::check() && !Auth::User()->IsActive == 1) {
             Auth::logout();
             return redirect()->route('login')->with('Your session has expired because your status changed.');
         }
+
         $catagorys =   LookUp::where("Parent_Name", "=", "None")->get();
         return view('index', compact('catagorys'));
     }
@@ -83,71 +80,61 @@ class HomeController extends Controller
     public function Employees_Profile(Request $request)
     {
 
-       if($request -> hasFile('Profile'))
-       {
+        if ($request->hasFile('Profile')) {
 
 
             $profile = $request->file('Profile');
 
-            $profilename = $profile -> getClientOriginalName();
+            $profilename = $profile->getClientOriginalName();
 
-            $profileuniquename = uniqid().'_'.$profilename;
+            $profileuniquename = uniqid() . '_' . $profilename;
 
-            $profile -> storeAs('Profiles', $profileuniquename,'Employees');
+            $profile->storeAs('Profiles', $profileuniquename, 'Employees');
 
 
             return $profileuniquename;
-
         }
         return '';
-
-
     }
 
     public function Beneficiaries_Tazkira(Request $request)
     {
-        if($request -> hasFile('Tazkira'))
-        {
+        if ($request->hasFile('Tazkira')) {
 
 
-             $Tazkira = $request->file('Tazkira');
+            $Tazkira = $request->file('Tazkira');
 
-             $Tazkiraname = $Tazkira -> getClientOriginalName();
+            $Tazkiraname = $Tazkira->getClientOriginalName();
 
-             $Tazkiruniquename = uniqid().'_'.$Tazkiraname;
+            $Tazkiruniquename = uniqid() . '_' . $Tazkiraname;
 
 
-             $Tazkira -> storeAs('Tazkiras', $Tazkiruniquename,'Beneficiaries');
+            $Tazkira->storeAs('Tazkiras', $Tazkiruniquename, 'Beneficiaries');
 
-             return $Tazkiruniquename;
-
-         }
-         return '';
+            return $Tazkiruniquename;
+        }
+        return '';
     }
 
 
     public function Beneficiaries_Profile(Request $request)
     {
 
-       if($request -> hasFile('Profile'))
-       {
+        if ($request->hasFile('Profile')) {
 
 
             $profile = $request->file('Profile');
 
-            $profilename = $profile -> getClientOriginalName();
+            $profilename = $profile->getClientOriginalName();
 
-            $profileuniquename = uniqid().'_'.$profilename;
+            $profileuniquename = uniqid() . '_' . $profilename;
 
-            $profile -> storeAs('Profiles', $profileuniquename,'Beneficiaries');
+            $profile->storeAs('Profiles', $profileuniquename, 'Beneficiaries');
 
 
             return $profileuniquename;
-
         }
         return '';
-
-
     }
 
 
@@ -157,25 +144,21 @@ class HomeController extends Controller
     public function ServiceProvider_Profile(Request $request)
     {
 
-       if($request -> hasFile('Profile'))
-       {
+        if ($request->hasFile('Profile')) {
 
 
             $profile = $request->file('Profile');
 
-            $profilename = $profile -> getClientOriginalName();
+            $profilename = $profile->getClientOriginalName();
 
-            $profileuniquename = uniqid().'_'.$profilename;
+            $profileuniquename = uniqid() . '_' . $profilename;
 
-            $profile -> storeAs('Profiles', $profileuniquename,'ServiceProvider');
+            $profile->storeAs('Profiles', $profileuniquename, 'ServiceProvider');
 
 
             return $profileuniquename;
-
         }
         return '';
-
-
     }
 
 
@@ -183,129 +166,115 @@ class HomeController extends Controller
 
     public function Scholarship(Request $request)
     {
-        if($request -> hasFile('Profile'))
-        {
+        if ($request->hasFile('Profile')) {
 
 
-             $profile = $request->file('Profile');
+            $profile = $request->file('Profile');
 
-             $profilename = $profile -> getClientOriginalName();
+            $profilename = $profile->getClientOriginalName();
 
-             $profileuniquename = uniqid().'_'.$profilename;
+            $profileuniquename = uniqid() . '_' . $profilename;
 
-             $profile -> storeAs('Profiles', $profileuniquename,'Scholarship');
+            $profile->storeAs('Profiles', $profileuniquename, 'Scholarship');
 
 
-             return $profileuniquename;
+            return $profileuniquename;
+        }
 
-         }
+        if ($request->hasFile('Tazkira')) {
 
-        if($request -> hasFile('Tazkira'))
-        {
 
+            $Tazkira = $request->file('Tazkira');
 
-             $Tazkira = $request->file('Tazkira');
+            $Tazkiraname = $Tazkira->getClientOriginalName();
 
-             $Tazkiraname = $Tazkira -> getClientOriginalName();
+            $Tazkiruniquename = uniqid() . '_' . $Tazkiraname;
 
-             $Tazkiruniquename = uniqid().'_'.$Tazkiraname;
 
+            $Tazkira->storeAs('Tazkiras', $Tazkiruniquename, 'Scholarship');
 
-             $Tazkira -> storeAs('Tazkiras', $Tazkiruniquename,'Scholarship');
+            return $Tazkiruniquename;
+        }
 
-             return $Tazkiruniquename;
 
-         }
+        if ($request->hasFile('SchoolDiploma')) {
 
 
-        if($request -> hasFile('SchoolDiploma'))
-        {
+            $SchoolDiploma = $request->file('SchoolDiploma');
 
+            $SchoolDiplomaname = $SchoolDiploma->getClientOriginalName();
 
-             $SchoolDiploma = $request->file('SchoolDiploma');
+            $SchoolDiplomauniquename = uniqid() . '_' . $SchoolDiplomaname;
 
-             $SchoolDiplomaname = $SchoolDiploma -> getClientOriginalName();
 
-             $SchoolDiplomauniquename = uniqid().'_'.$SchoolDiplomaname;
+            $SchoolDiploma->storeAs('SchoolDiplomas', $SchoolDiplomauniquename, 'Scholarship');
 
+            return $SchoolDiplomauniquename;
+        }
 
-             $SchoolDiploma -> storeAs('SchoolDiplomas', $SchoolDiplomauniquename,'Scholarship');
 
-             return $SchoolDiplomauniquename;
+        if ($request->hasFile('SchoolTranscript')) {
 
-         }
 
+            $SchoolTranscript = $request->file('SchoolTranscript');
 
-        if($request -> hasFile('SchoolTranscript'))
-        {
+            $SchoolTranscriptname = $SchoolTranscript->getClientOriginalName();
 
+            $SchoolTranscriptuniquename = uniqid() . '_' . $SchoolTranscriptname;
 
-             $SchoolTranscript = $request->file('SchoolTranscript');
 
-             $SchoolTranscriptname = $SchoolTranscript -> getClientOriginalName();
+            $SchoolTranscript->storeAs('SchoolTranscripts', $SchoolTranscriptuniquename, 'Scholarship');
 
-             $SchoolTranscriptuniquename = uniqid().'_'.$SchoolTranscriptname;
+            return $SchoolTranscriptuniquename;
+        }
 
 
-             $SchoolTranscript -> storeAs('SchoolTranscripts', $SchoolTranscriptuniquename,'Scholarship');
+        if ($request->hasFile('EnglishDiploma')) {
 
-             return $SchoolTranscriptuniquename;
 
-         }
+            $EnglishDiploma = $request->file('EnglishDiploma');
 
+            $EnglishDiplomaname = $EnglishDiploma->getClientOriginalName();
 
-        if($request -> hasFile('EnglishDiploma'))
-        {
+            $EnglishDiplomauniquename = uniqid() . '_' . $EnglishDiplomaname;
 
 
-             $EnglishDiploma = $request->file('EnglishDiploma');
+            $EnglishDiploma->storeAs('EnglishDiploma', $EnglishDiplomauniquename, 'Scholarship');
 
-             $EnglishDiplomaname = $EnglishDiploma -> getClientOriginalName();
+            return $EnglishDiplomauniquename;
+        }
 
-             $EnglishDiplomauniquename = uniqid().'_'.$EnglishDiplomaname;
+        if ($request->hasFile('WorkExperienceLetter')) {
 
 
-             $EnglishDiploma -> storeAs('EnglishDiploma', $EnglishDiplomauniquename,'Scholarship');
+            $WorkExperienceLetter = $request->file('WorkExperienceLetter');
 
-             return $EnglishDiplomauniquename;
+            $WorkExperienceLettername = $WorkExperienceLetter->getClientOriginalName();
 
-         }
+            $WorkExperienceLetteruniquename = uniqid() . '_' . $WorkExperienceLettername;
 
-         if($request -> hasFile('WorkExperienceLetter'))
-         {
 
+            $WorkExperienceLetter->storeAs('WorkExperienceLetters', $WorkExperienceLetteruniquename, 'Scholarship');
 
-              $WorkExperienceLetter = $request->file('WorkExperienceLetter');
+            return $WorkExperienceLetteruniquename;
+        }
 
-              $WorkExperienceLettername = $WorkExperienceLetter -> getClientOriginalName();
+        if ($request->hasFile('Resume')) {
 
-              $WorkExperienceLetteruniquename = uniqid().'_'.$WorkExperienceLettername;
 
+            $Resume = $request->file('Resume');
 
-              $WorkExperienceLetter -> storeAs('WorkExperienceLetters', $WorkExperienceLetteruniquename,'Scholarship');
+            $Resumename = $Resume->getClientOriginalName();
 
-              return $WorkExperienceLetteruniquename;
+            $Resumenameuniquename = uniqid() . '_' . $Resumename;
 
-          }
 
-          if($request -> hasFile('Resume'))
-          {
+            $Resume->storeAs('Resumes', $Resumenameuniquename, 'Scholarship');
 
+            return $Resumenameuniquename;
+        }
 
-               $Resume = $request->file('Resume');
-
-               $Resumename = $Resume -> getClientOriginalName();
-
-               $Resumenameuniquename = uniqid().'_'.$Resumename;
-
-
-               $Resume -> storeAs('Resumes', $Resumenameuniquename,'Scholarship');
-
-               return $Resumenameuniquename;
-
-           }
-
-         return '';
+        return '';
     }
 
 
@@ -324,90 +293,80 @@ class HomeController extends Controller
     public function Orphans_Profile(Request $request)
     {
 
-       if($request -> hasFile('Profile'))
-       {
+        if ($request->hasFile('Profile')) {
 
 
             $profile = $request->file('Profile');
 
-            $profilename = $profile -> getClientOriginalName();
+            $profilename = $profile->getClientOriginalName();
 
-            $profileuniquename = uniqid().'_'.$profilename;
+            $profileuniquename = uniqid() . '_' . $profilename;
 
-            $profile -> storeAs('Profiles', $profileuniquename,'OrphansRelief');
+            $profile->storeAs('Profiles', $profileuniquename, 'OrphansRelief');
 
 
             return $profileuniquename;
-
         }
         return '';
-
-
     }
 
 
-  public function Orphans_Tazkira(Request $request)
+    public function Orphans_Tazkira(Request $request)
     {
-        if($request -> hasFile('Tazkira'))
-        {
+        if ($request->hasFile('Tazkira')) {
 
 
-             $Tazkira = $request->file('Tazkira');
+            $Tazkira = $request->file('Tazkira');
 
-             $Tazkiraname = $Tazkira -> getClientOriginalName();
+            $Tazkiraname = $Tazkira->getClientOriginalName();
 
-             $Tazkiruniquename = uniqid().'_'.$Tazkiraname;
+            $Tazkiruniquename = uniqid() . '_' . $Tazkiraname;
 
 
-             $Tazkira -> storeAs('Tazkiras', $Tazkiruniquename,'OrphansRelief');
+            $Tazkira->storeAs('Tazkiras', $Tazkiruniquename, 'OrphansRelief');
 
-             return $Tazkiruniquename;
-
-         }
-         return '';
+            return $Tazkiruniquename;
+        }
+        return '';
     }
 
 
     public function Orphans_HousePic(Request $request)
     {
-        if($request -> hasFile('HousePic'))
-        {
+        if ($request->hasFile('HousePic')) {
 
 
-             $Tazkira = $request->file('HousePic');
+            $Tazkira = $request->file('HousePic');
 
-             $Tazkiraname = $Tazkira -> getClientOriginalName();
+            $Tazkiraname = $Tazkira->getClientOriginalName();
 
-             $Tazkiruniquename = uniqid().'_'.$Tazkiraname;
+            $Tazkiruniquename = uniqid() . '_' . $Tazkiraname;
 
 
-             $Tazkira -> storeAs('HousePic', $Tazkiruniquename,'OrphansRelief');
+            $Tazkira->storeAs('HousePic', $Tazkiruniquename, 'OrphansRelief');
 
-             return $Tazkiruniquename;
-
-         }
-         return '';
+            return $Tazkiruniquename;
+        }
+        return '';
     }
 
     public function Orphans_FamilyPic(Request $request)
     {
-        if($request -> hasFile('FamilyPic'))
-        {
+        if ($request->hasFile('FamilyPic')) {
 
 
-             $Tazkira = $request->file('FamilyPic');
+            $Tazkira = $request->file('FamilyPic');
 
-             $Tazkiraname = $Tazkira -> getClientOriginalName();
+            $Tazkiraname = $Tazkira->getClientOriginalName();
 
-             $Tazkiruniquename = uniqid().'_'.$Tazkiraname;
+            $Tazkiruniquename = uniqid() . '_' . $Tazkiraname;
 
 
-             $Tazkira -> storeAs('FamilyPic', $Tazkiruniquename,'OrphansRelief');
+            $Tazkira->storeAs('FamilyPic', $Tazkiruniquename, 'OrphansRelief');
 
-             return $Tazkiruniquename;
-
-         }
-         return '';
+            return $Tazkiruniquename;
+        }
+        return '';
     }
 
 
@@ -421,7 +380,7 @@ class HomeController extends Controller
 
     public function GetDistricts($data)
     {
-        $districts =   Location::select('id','Name')->where("Parent_ID", "=", $data)->get();
+        $districts =   Location::select('id', 'Name')->where("Parent_ID", "=", $data)->get();
         return response()->json($districts);
     }
 
@@ -431,14 +390,14 @@ class HomeController extends Controller
 
     public function GetScholarship($data)
     {
-        $scholarships =   Scholarship::select('id','ScholarshipName')->where("ScholarshipType_ID", "=", $data)->get();
+        $scholarships =   Scholarship::select('id', 'ScholarshipName')->where("ScholarshipType_ID", "=", $data)->get();
         return response()->json($scholarships);
     }
 
 
     public function GetScholarshipModule($data)
     {
-        $scholarshipmodules =   ScholarshipModule::select('id','ModuleName')->where("Parent_ID", "=", $data)->get();
+        $scholarshipmodules =   ScholarshipModule::select('id', 'ModuleName')->where("Parent_ID", "=", $data)->get();
         return response()->json($scholarshipmodules);
     }
 
@@ -447,31 +406,25 @@ class HomeController extends Controller
     public function CreateLookups(Request $request)
     {
 
-       $validator = $request->validate([
-      'Parent_Name' => 'bail|required|max:255',
-      'Name' => 'required|max:255',
+        $validator = $request->validate([
+            'Parent_Name' => 'bail|required|max:255',
+            'Name' => 'required|max:255',
 
 
-       ]);
-
-
-
-    LookUp::create([
-          'Parent_Name' => request('Parent_Name'),
-          'Name' => request('Name'),
+        ]);
 
 
 
-
-          ]);
-
-         return redirect()->route('root')->with('toast_success', 'Record Created Successfully!');
+        LookUp::create([
+            'Parent_Name' => request('Parent_Name'),
+            'Name' => request('Name'),
 
 
 
 
+        ]);
 
-
+        return redirect()->route('root')->with('toast_success', 'Record Created Successfully!');
     }
 
     /*Language Translation*/

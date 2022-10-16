@@ -19,7 +19,7 @@
     <div class="mt-4 mb-4">
                       <blockquote class="blockquote border-dark  font-size-14 mb-0">
                                 <p class="my-0   fw-medium text-dark text-muted card-title font-size-24 text-wrap">CARE CARD</p>
-                        
+
                         </blockquote>
     </div>
     <div class="col-xl-12">
@@ -43,9 +43,9 @@
                                 </div>
                             </div>
                         </div>
-                       
+
                         <div class="d-flex mt-4">
-                             
+
                         </div>
                         </blockquote>
                     </div>
@@ -61,7 +61,7 @@
                         <div class="d-flex">
                             <div class="flex-grow-1">
                                 <p class="my-0 text-primary card-title fw-medium">CARE CARDS OPERATIONS</p>
-                                <h6 class="text-muted mb-0">Here you can add new beneficiaries or see or do operations</h4>
+                                <h6 class="text-muted mb-0">CARE CARDS OPERATIONS</h4>
                             </div>
 
                             <div class="flex-shrink-0 align-self-center">
@@ -72,9 +72,9 @@
                                 </div>
                             </div>
                         </div>
-                       
+
                         <div class="d-flex mt-4">
-                             
+
                         </div>
                         </blockquote>
                     </div>
@@ -101,9 +101,9 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="d-flex mt-4">
-                       
+
                     </div>
                     </blockquote>
                 </div>
@@ -129,9 +129,9 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="d-flex mt-4">
-                       
+
                     </div>
                     </blockquote>
                 </div>
@@ -150,7 +150,7 @@
 <div class="mt-4 mb-4">
                       <blockquote class="blockquote border-primary  font-size-14 mb-0">
                                 <p class="my-0   fw-medium text-dark text-muted card-title font-size-24 text-wrap">OPERATIONS</p>
-                        
+
                         </blockquote>
     </div>
 <div class="col-xl-12">
@@ -174,7 +174,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="d-flex mt-4">
                     </div>
                     </blockquote>
@@ -202,9 +202,9 @@
                                 </div>
                             </div>
                         </div>
-                       
+
                         <div class="d-flex mt-4">
-                            
+
                         </div>
                         </blockquote>
                     </div>
@@ -230,7 +230,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="d-flex mt-4">
                     </div>
                     </blockquote>
@@ -238,8 +238,8 @@
             </div>
             </a>
         </div>
-            
-   
+
+
      <div class="col-md-4 mb-2">
             <a href="{{route('ReleasedQamarCareCard')}}">
             <div class="card-one  mini-stats-wid border border-secondary">
@@ -259,7 +259,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="d-flex mt-4">
                     </div>
                     </blockquote>
@@ -267,12 +267,12 @@
             </div>
             </a>
         </div>
-            
-   
-       
-   
 
-  
+
+
+
+
+
 
 
 
@@ -284,11 +284,11 @@
 <div class="mt-4 mb-4">
                       <blockquote class="blockquote border-primary  font-size-14 mb-0">
                                 <p class="my-0   fw-medium text-dark text-muted card-title font-size-24 text-wrap">SERVICES</p>
-                        
+
                         </blockquote>
     </div>
 <div class="col-xl-12">
-    <div class="row">      
+    <div class="row">
 
     <div class="col-md-4 mb-2">
         <a href="{{route('AssigningServiceQamarCareCard')}}">
@@ -309,9 +309,9 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="d-flex mt-4">
-                       
+
                     </div>
                     </blockquote>
                 </div>
@@ -319,7 +319,7 @@
             </a>
         </div>
 
-     
+
 
         <div class="col-md-4 mb-2">
         <a  href="#">
@@ -340,15 +340,15 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="d-flex mt-4">
-                        
+
                     </div>
                     </blockquote>
                 </div>
             </div>
             </a>
-        </div> 
+        </div>
 
         <div class="col-md-4 mb-2">
         <a  href="#">
@@ -369,15 +369,15 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="d-flex mt-4">
-                        
+
                     </div>
                     </blockquote>
                 </div>
             </div>
             </a>
-        </div> 
+        </div>
 
 
     </div> -->
@@ -389,11 +389,11 @@
 <div class="mt-4 mb-4">
                       <blockquote class="blockquote border-primary  font-size-14 mb-0">
                                 <p class="my-0   fw-medium text-dark text-muted card-title font-size-24 text-wrap">BAD CARE CARDS</p>
-                        
+
                         </blockquote>
     </div>
 <div class="col-xl-12">
-    <div class="row">      
+    <div class="row">
 
     <div class="col-md-4 mb-2">
         <a href="{{route('RejectedQamarCareCard')}}">
@@ -414,9 +414,9 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="d-flex mt-4">
-                       
+
                     </div>
                     </blockquote>
                 </div>
@@ -443,15 +443,15 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="d-flex mt-4">
-                        
+
                     </div>
                     </blockquote>
                 </div>
             </div>
             </a>
-        </div> 
+        </div>
 
         <div class="col-md-4 mb-2">
         <a  href="#">
@@ -472,15 +472,15 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="d-flex mt-4">
-                        
+
                     </div>
                     </blockquote>
                 </div>
             </div>
             </a>
-        </div> 
+        </div>
     </div> -->
     <!-- end row -->
 
@@ -491,14 +491,14 @@
 <div class="mt-4 mb-4">
                       <blockquote class="blockquote border-dark  font-size-14 mb-0">
                                 <p class="my-0   fw-medium text-dark text-muted card-title font-size-24 text-wrap">ONLINE</p>
-                        
+
                         </blockquote>
     </div>
 <div class="col-xl-12">
-    <div class="row">      
+    <div class="row">
 
-        
-        
+
+
     <div class="col-md-4 mb-2">
         <a  href="{{route('CreateQamarCareCard')}}">
             <div class="card-one  mini-stats-wid border border-secondary">
@@ -518,15 +518,15 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="d-flex mt-4">
-                        
+
                     </div>
                     </blockquote>
                 </div>
             </div>
             </a>
-        </div> 
+        </div>
 
         <div class="col-md-4 mb-2">
         <a  href="{{route('VerifyQamarCareCard')}}">
@@ -547,15 +547,15 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="d-flex mt-4">
-                        
+
                     </div>
                     </blockquote>
                 </div>
             </div>
             </a>
-        </div> 
+        </div>
 
 
     </div>
