@@ -69,9 +69,15 @@ trait AuthenticatesUsers
      */
     protected function validateLogin(Request $request)
     {
+        $user = User::where('email',$request->email)->first();
+        if( $user && !$user->IsActive == 1){
+            throw ValidationException::withMessages([$this->username() => __('Your has been De-Activated, Please contact Qamar Administration. Thanks')]);
+        }
+
         $request->validate([
             $this->username() => 'required|string',
             'password' => 'required|string',
+
         ]);
     }
 
@@ -129,7 +135,7 @@ trait AuthenticatesUsers
      */
     protected function authenticated(Request $request, $user)
     {
-        //
+
     }
 
     /**
