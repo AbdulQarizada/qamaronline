@@ -423,9 +423,10 @@ class QamarCareCardController extends Controller
       ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
       ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
       ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("qamar_care_cards.Status", "=", 'Approved')
+
       ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
-      ->Where("qamar_care_cards.Owner", "=", Auth::user()->IsManager)
+      ->orWhere("qamar_care_cards.Owner", "=", Auth::user()->IsManager)
+      ->where("qamar_care_cards.Status", "=", 'Approved')
       ->get();
     return view('QamarCardCard.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
 
