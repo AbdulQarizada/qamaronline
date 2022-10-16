@@ -425,7 +425,7 @@ class QamarCareCardController extends Controller
       ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
 
       ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
-      ->orWhere("qamar_care_cards.Owner", "=", Auth::user()->IsManager)
+      // ->orWhere("qamar_care_cards.Owner", "=", Auth::user()->IsManager)
       ->where("qamar_care_cards.Status", "=", 'Approved')
       ->get();
     return view('QamarCardCard.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
@@ -459,7 +459,7 @@ class QamarCareCardController extends Controller
       ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
       ->where("qamar_care_cards.Status", "=", 'Rejected')
       ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
-      ->orWhere("qamar_care_cards.Owner", "=", Auth::user()->IsManager)
+      // ->orWhere("qamar_care_cards.Owner", "=", Auth::user()->IsManager)
       ->get();
     return view('QamarCardCard.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
 
@@ -495,7 +495,7 @@ class QamarCareCardController extends Controller
       ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
       ->where("qamar_care_cards.Status", "=", 'Pending')
       ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
-      ->orWhere("qamar_care_cards.Owner", "=", Auth::user()->IsManager)
+      // ->orWhere("qamar_care_cards.Owner", "=", Auth::user()->IsManager)
       ->get();
     return view('QamarCardCard.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
 
@@ -529,7 +529,7 @@ class QamarCareCardController extends Controller
       ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
       ->where("qamar_care_cards.Status", "=", 'Released')
       ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
-      ->orWhere("qamar_care_cards.Owner", "=", Auth::user()->IsManager)
+      // ->orWhere("qamar_care_cards.Owner", "=", Auth::user()->IsManager)
       ->get();
     return view('QamarCardCard.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
 
@@ -682,7 +682,7 @@ class QamarCareCardController extends Controller
     $qamarcarecards =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Printed')
       ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
       ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
-      ->orWhere("qamar_care_cards.Owner", "=", Auth::user()->IsManager)
+      // ->orWhere("qamar_care_cards.Owner", "=", Auth::user()->IsManager)
       ->get();
 
     return view('QamarCardCard.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
