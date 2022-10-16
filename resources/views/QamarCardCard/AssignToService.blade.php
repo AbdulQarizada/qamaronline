@@ -26,11 +26,11 @@
                     <div class="card-header">
                       <blockquote class="blockquote border-primary  font-size-14 mb-0">
                                 <p class="my-0   card-title fw-medium font-size-24 text-wrap">ASSIGN SERVICE</p>
-                        
+
                         </blockquote>
                     </div>
                 </div>
-      
+
         </div>
      </div> -->
 <div class="row mt-4">
@@ -249,7 +249,7 @@
                                 <label for="District_ID" class="form-label">Service District</label>
                                 <div class="input-group">
                                     <select class="form-select District form-select-lg @error('District_ID') is-invalid @enderror" required name="District_ID" value="{{ old('District_ID') }}" id="District_ID" onchange="this.form.submit()">
-                                        <!--                                     
+                                        <!--
                                     <option value="None">Select District</option>
                                     <option value="None">All</option> -->
 
@@ -282,11 +282,11 @@
 
                                     <select class="form-select  form-select-lg @error('ServiceType') is-invalid @enderror" value="{{ old('ServiceType') }}" required id="ServiceType" name="ServiceType">
                                     <option>Select Option</option>
-                                    
+
                                     <option value="Food Package">Food Package</option>
                                     <option value="Doctor">Doctor</option>
-                               
-                                    
+
+
 
                                     </select>
                                     @error('ServiceType')
@@ -301,17 +301,17 @@
                                 <div class="mb-3 position-relative">
                                     <label for="ExpectedDate" class="form-label">Expected Date</label>
                                     <div class="input-group " id="example-date-input">
-                                      
+
                                     <input class="form-control  form-select-lg @error('ExpectedDate') is-invalid @enderror" value="{{ old('ExpectedDate') }}" type="date"  id="example-date-input" name="ExpectedDate" id="ExpectedDate" required>
                                     @error('ExpectedDate')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                     @enderror
-                                   
+
                                     </div>
                                 </div>
-                                
+
                             </div> -->
                     </div>
 
@@ -326,11 +326,11 @@
 
                                  </select>
                                 </div>
-                            </div> 
-                    
-                            
-                      
-                   
+                            </div>
+
+
+
+
                         </div> -->
                     <!-- <button class="btn btn-success btn-lg" type="submit">Assign</button>
                      <a class="btn btn-danger btn-lg" href="{{route('IndexQamarCareCard')}}">Cancel</a> -->
@@ -360,7 +360,7 @@
             <table class="table align-middle table-nowrap table-hover">
                 <thead class="table-light">
                     <tr>
-                    <th scope="col" style="width: 70px;">id</th>
+                        <th scope="col" style="width: 70px;">id</th>
 
                         <th scope="col" style="width: 70px;">#</th>
                         <th scope="col">Full Name</th>
@@ -374,41 +374,41 @@
 
                     </tr>
                 </thead>
-            
+
                 <tbody>
                     @foreach($serviceproviders as $serviceprovider)
-                   
+
 
                     <tr>
-                    <td>
-                    <p class="text-muted mb-0">{{$serviceprovider -> id}}</p>
-                            </td>
-                            <td>
-                                <div>
-                                    <img class="rounded avatar-sm" src="{{URL::asset('/uploads/QamarCareCard/ServiceProvider/Profiles/'.$serviceprovider -> Profile)}}" alt="">
-                                </div>
-                            </td>
-                            <td>
-                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{ $serviceprovider -> FirstName}} {{ $serviceprovider -> LastName}}</a></h5>
-                                <p class="text-muted mb-0">QCC- {{$serviceprovider -> QCC}}</p>
-                            </td>
-                            <td>
-                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{ $serviceprovider -> Profession}}</a></h5>
-                                <p class="text-muted mb-0">{{$serviceprovider -> ServiceType}}</p>
-                            </td>
-                            <td>
-                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"> {{$serviceprovider -> ServiceProvince}}</a></h5>
-                                <p class="text-muted mb-0">{{$serviceprovider -> ServiceDistrict}}</p>
-                            </td>
-                            <td>
+                        <td>
+                            <p class="text-muted mb-0">{{$serviceprovider -> id}}</p>
+                        </td>
+                        <td>
+                            <div>
+                                <img class="rounded avatar-sm" src="{{URL::asset('/uploads/QamarCareCard/ServiceProvider/Profiles/'.$serviceprovider -> Profile)}}" alt="">
+                            </div>
+                        </td>
+                        <td>
+                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{ $serviceprovider -> FirstName}} {{ $serviceprovider -> LastName}}</a></h5>
+                            <p class="text-muted mb-0">QCC- {{$serviceprovider -> QCC}}</p>
+                        </td>
+                        <td>
+                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{ $serviceprovider -> Profession}}</a></h5>
+                            <p class="text-muted mb-0">{{$serviceprovider -> ServiceType}}</p>
+                        </td>
+                        <td>
+                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"> {{$serviceprovider -> ServiceProvince}}</a></h5>
+                            <p class="text-muted mb-0">{{$serviceprovider -> ServiceDistrict}}</p>
+                        </td>
+                        <td>
 
-                                <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$serviceprovider -> PrimaryNumber}}</a></h5>
-                                    <p class="text-muted mb-0 badge badge-soft-warning">{{$serviceprovider -> SecondaryNumber}}</p>
-                                </div>
-                            </td>
-                            <td>
-                                <!-- <div>
+                            <div>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$serviceprovider -> PrimaryNumber}}</a></h5>
+                                <p class="text-muted mb-0 badge badge-soft-warning">{{$serviceprovider -> SecondaryNumber}}</p>
+                            </div>
+                        </td>
+                        <td>
+                            <!-- <div>
                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"></a></h5>
                                         <h5 type="button" class="btn btn-primary position-relative">
                                         {{$serviceprovider -> NumberOfFree}} <span class="position-absolute top-0 font-size-18 start-100 translate-middle badge rounded-pill bg-danger">5<span class="visually-hidden">unread messages</span></span>
@@ -417,32 +417,32 @@
                                     </div> -->
 
 
-                                <button type="button" class="btn btn-light position-relative p-0 avatar-xs rounded-circle font-size-18">
-                                    <span class="avatar-title bg-transparent text-reset font-size-18">
-                                        {{$serviceprovider -> NumberOfFree}}
-                                    </span><span class="position-absolute top-0 font-size-12 start-100 translate-middle badge rounded-pill bg-danger">
-                              
-                                
-                                       {{ $totalnumberoffrees}}
+                            <button type="button" class="btn btn-light position-relative p-0 avatar-xs rounded-circle font-size-18">
+                                <span class="avatar-title bg-transparent text-reset font-size-18">
+                                    {{$serviceprovider -> NumberOfFree}}
+                                </span><span class="position-absolute top-0 font-size-12 start-100 translate-middle badge rounded-pill bg-danger">
 
-                                    
-                                    
-                                    
-                                 
-                                        <span class="visually-hidden">unread messages</span></span>
-                                </button>
-                            </td>
-                            <td>
-                                <div class="avatar-sm ">
-                                    <span class="avatar-title bg-danger rounded-circle">{{$serviceprovider -> Discount}}%</span>
 
-                                </div>
-                            </td>
-                            <td>
+                                    {{ $totalnumberoffrees}}
+
+
+
+
+
+                                    <span class="visually-hidden">unread messages</span></span>
+                            </button>
+                        </td>
+                        <td>
+                            <div class="avatar-sm ">
+                                <span class="avatar-title bg-danger rounded-circle">{{$serviceprovider -> Discount}}%</span>
+
+                            </div>
+                        </td>
+                        <td>
 
                             <form action="{{route('AssignServiceQamarCareCard')}}" method="POST" enctype="multipart/form-data" id="{{$serviceprovider -> FirstName}}">
-                                                           @csrf
-                          
+                                @csrf
+
                                 <div class="col-lg-6">
                                     <div class="card">
                                         <div>
@@ -457,67 +457,67 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body text-center">
-                                                        
+
                                                             <div class="row m-3">
 
                                                                 <div class="col-6 col-sm-6">
-                                                                        <div class="form-check mb-3">
-                                                                            <input class="form-check-input" type="radio" name="IsFree" value="0" id="Discount" checked>
-                                                                            <label class="form-check-label" for="Discount">
-                                                                                Discount
-                                                                            </label>
-                                                                        </div>
+                                                                    <div class="form-check mb-3">
+                                                                        <input class="form-check-input" type="radio" name="IsFree" value="0" id="Discount" checked>
+                                                                        <label class="form-check-label" for="Discount">
+                                                                            Discount
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                               
+
 
 
                                                                 <div class="col-6 col-sm-6">
-                                                                        <div class="form-check">
-                                                                            <input class="form-check-input" type="radio" name="IsFree" value="1" id="IsFree">
-                                                                            <label class="form-check-label" for="IsFree">
-                                                                                Free
-                                                                            </label>
-                                                                        </div>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio" name="IsFree" value="1" id="IsFree">
+                                                                        <label class="form-check-label" for="IsFree">
+                                                                            Free
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
-                                                              
+
 
                                                             </div>
 
-                                                           
+
                                                             <input type="hidden" class="form-control" value="{{$serviceprovider -> Discount }}" id="Discount" name="Discount" hidden />
                                                             <input type="hidden" class="form-control" value="{{$serviceprovider -> id}}" id="ServiceProvider_ID" name="ServiceProvider_ID" hidden />
                                                             <input type="hidden" class="form-control" value="{{$serviceprovider -> ServiceProvince_ID }}" id="ServiceProvince_ID" name="ServiceProvince_ID" hidden />
                                                             <input type="hidden" class="form-control" value="{{$serviceprovider -> ServiceDistrict_ID }}" id="ServiceDistrict_ID" name="ServiceDistrict_ID" hidden />
                                                             <input type="hidden" class="form-control" value="{{$serviceprovider -> RequestedService_ID }}" id="RequestedService_ID" name="RequestedService_ID" hidden />
                                                             <input type="hidden" class="form-control" value="{{$data -> id }}" id="Assignee_ID" name="Assignee_ID" hidden />
-                                                            </form>
-                                                            <button type="submit" class="btn btn-info waves-effect waves-light " form="{{$serviceprovider -> FirstName}}">
-                                                                Assign
-                                                            </button>
-                                                        
+                            </form>
+                            <button type="submit" class="btn btn-info waves-effect waves-light " form="{{$serviceprovider -> FirstName}}">
+                                Assign
+                            </button>
 
-                                                        </div>
-                                                    </div><!-- /.modal-content -->
-                                                </div><!-- /.modal-dialog -->
-                                            </div><!-- /.modal -->
 
-                                        </div>
-                                    </div>
-                                    <!-- end card -->
-                                </div>
-                                </form>
-                            </td>
-                       
-                    </tr>
-                    
-                    @endforeach
-                 
-
-                </tbody>
-            </table>
         </div>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
-    </div>
+</div>
+</div>
+<!-- end card -->
+</div>
+</form>
+</td>
+
+</tr>
+
+@endforeach
+
+
+</tbody>
+</table>
+</div>
+
+</div>
 
 </div>
 

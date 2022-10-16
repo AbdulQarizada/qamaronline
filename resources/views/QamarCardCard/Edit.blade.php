@@ -7,37 +7,37 @@
 <link href="{{ URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-file-poster.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
 
 
- 
+
 @endsection
 @section('content')
 
 
 <div class="row">
-        <div class="col-12">
-           <a href="{{route('AllQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-        </div>
-     </div>
+    <div class="col-12">
+        <a href="{{route('AllQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+    </div>
+</div>
 
 
-     <div class="row">
-        <div class="col-12">
+<div class="row">
+    <div class="col-12">
         <div class="card border border-3">
-                    <div class="card-header">
-                      <blockquote class="blockquote border-info  font-size-14 mb-0">
-                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">EDIT CARE CARD</p>
-                        
-                        </blockquote>
-                    </div>
-                </div>
-      
+            <div class="card-header">
+                <blockquote class="blockquote border-info  font-size-14 mb-0">
+                    <p class="my-0   card-title fw-medium font-size-24 text-wrap">EDIT CARE CARD</p>
+
+                </blockquote>
+            </div>
         </div>
-     </div>
+
+    </div>
+</div>
 
 
 
-     <form  class="needs-validation" action="{{route('UpdateQamarCareCard', [$data -> id])}}" method="POST" enctype="multipart/form-data" novalidate>
-                    @method('PUT')
-                        @csrf
+<form class="needs-validation" action="{{route('UpdateQamarCareCard', [$data -> id])}}" method="POST" enctype="multipart/form-data" novalidate>
+    @method('PUT')
+    @csrf
 
     <div class="row">
         <div class="col-lg-12">
@@ -65,7 +65,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3 position-relative">
                                         <label for="FirstNameLocal" class="form-label ">First Name (Local Language) <i class="mdi mdi-asterisk text-danger"></i></label>
-                                        <input type="text" class="form-control form-control-lg @error('FirstNameLocal') is-invalid @enderror" value="{{$data -> FirstNameLocal}}"  id="FirstNameLocal" name="FirstNameLocal" required>
+                                        <input type="text" class="form-control form-control-lg @error('FirstNameLocal') is-invalid @enderror" value="{{$data -> FirstNameLocal}}" id="FirstNameLocal" name="FirstNameLocal" required>
 
                                         @error('FirstNameLocal')
                                         <span class="invalid-feedback" role="alert">
@@ -118,7 +118,7 @@
                                         <div class="hstack gap-3">
                                             <label class="form-label ">QCC-</label>
                                             <input class="form-control form-control-lg me-auto @error('QCC') is-invalid @enderror" value="{{$data -> QCC}}" type="text" name="QCC" id="QCC" readonly>
-                                          <button type="button" class="btn btn-lg btn-outline-danger" onclick="Random();"><i class=" bx bxs-magic-wand  font-size-16 align-middle"></i> </button>
+                                            <button type="button" class="btn btn-lg btn-outline-danger" onclick="Random();"><i class=" bx bxs-magic-wand  font-size-16 align-middle"></i> </button>
                                             @error('QCC')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -127,8 +127,8 @@
                                         </div>
                                     </div>
                                 </div>
-                 
-                         
+
+
                             </div>
 
                         </div>
@@ -144,39 +144,39 @@
                     </div>
 
                     <div class="row">
-                    <div class="col-md-4 ">
-                                    <div class="mb-3 position-relative">
-                                        <label for="DOB" class="form-label">Date of Birth <i class="mdi mdi-asterisk text-danger"></i></label>
-                                        <div class="input-group " id="example-date-input">
+                        <div class="col-md-4 ">
+                            <div class="mb-3 position-relative">
+                                <label for="DOB" class="form-label">Date of Birth <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <div class="input-group " id="example-date-input">
 
-                                            <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{$data -> DOB}}" type="date" id="example-date-input" name="DOB" id="DOB" required>
-                                            @error('DOB')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-
-                                        </div>
-                                    </div>
+                                    <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{$data -> DOB}}" type="date" id="example-date-input" name="DOB" id="DOB" required>
+                                    @error('DOB')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
 
                                 </div>
-                    <div class="col-md-4">
-                                    <div class="mb-3 position-relative">
-                                        <label for="Gender_ID" class="form-label">Gender <i class="mdi mdi-asterisk text-danger"></i></label>
-                                        <select class="form-select  form-select-lg @error('Gender_ID') is-invalid @enderror" value="{{$data -> Gender_ID}}" id="Gender_ID" name="Gender_ID" required>
-                                            <option value="">Select Your Gender</option>
-                                            @foreach($genders as $gender)
-                                            <option value="{{ $gender -> id}}" {{ $gender -> id == $data -> Gender_ID ? 'selected' : '' }}>{{ $gender -> Name}}</option>
+                            </div>
 
-                                            @endforeach
-                                        </select>
-                                        @error('Gender_ID')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3 position-relative">
+                                <label for="Gender_ID" class="form-label">Gender <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <select class="form-select  form-select-lg @error('Gender_ID') is-invalid @enderror" value="{{$data -> Gender_ID}}" id="Gender_ID" name="Gender_ID" required>
+                                    <option value="">Select Your Gender</option>
+                                    @foreach($genders as $gender)
+                                    <option value="{{ $gender -> id}}" {{ $gender -> id == $data -> Gender_ID ? 'selected' : '' }}>{{ $gender -> Name}}</option>
+
+                                    @endforeach
+                                </select>
+                                @error('Gender_ID')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="Country_ID" class="form-label">Country <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -204,7 +204,7 @@
                                     <select class="form-select  form-select-lg @error('Tribe') is-invalid @enderror" value="{{$data -> Tribe_ID}}" required id="Tribe_ID" name="Tribe_ID">
                                         <option>Select Your Tribe</option>
                                         @foreach($tribes as $tribe)
-                                        <option value="{{ $tribe -> id}} " {{ $tribe -> id == $data -> Tribe_ID ? 'selected' : '' }} >{{ $tribe -> Name}}</option>
+                                        <option value="{{ $tribe -> id}} " {{ $tribe -> id == $data -> Tribe_ID ? 'selected' : '' }}>{{ $tribe -> Name}}</option>
 
                                         @endforeach
 
@@ -226,7 +226,7 @@
                                     <select class="form-select  form-select-lg @error('Language_ID') is-invalid @enderror" value="{{$data -> Language_ID}}" required id="Language_ID" name="Language_ID">
                                         <option value="">Select Your Language</option>
                                         @foreach($languages as $language)
-                                        <option value="{{ $language -> id}}" {{ $language -> id == $data -> Language_ID ? 'selected' : '' }} >{{ $language -> Name}}</option>
+                                        <option value="{{ $language -> id}}" {{ $language -> id == $data -> Language_ID ? 'selected' : '' }}>{{ $language -> Name}}</option>
 
                                         @endforeach
 
@@ -332,25 +332,25 @@
                             </div>
                         </div>
                     </div>
-                    <!--                     
+                    <!--
                         <div class="row">
                         <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="DOB" class="form-label">Date of Birth</label>
                                     <div class="input-group " id="example-date-input">
-                                      
+
                                     <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{ old('DOB') }}" type="date"  id="example-date-input" name="DOB" id="DOB" required>
                                     @error('DOB')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                @enderror
-                                   
+
                                     </div>
                                 </div>
-                                
+
                             </div>
-                            
+
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Gender" class="form-label">Gender</label>
@@ -365,11 +365,11 @@
                                @enderror
                                 </div>
                             </div>
-                      
-                   
+
+
                         </div> -->
                     <div class="row">
-                      
+
                     </div>
                 </div>
             </div>
@@ -600,7 +600,7 @@
                                 @enderror
                             </div>
                         </div>
-                   
+
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="EldestSonAge" class="form-label">Eldest Child Age <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -616,11 +616,11 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="row mb-3 position-relative" >
-                            <label for="MaritalStatus" class="form-label" >Marital Status <i class="mdi mdi-asterisk text-danger"></i></label>
+                            <div class="row mb-3 position-relative">
+                                <label for="MaritalStatus" class="form-label">Marital Status <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="col-2 col-sm-3">
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="MaritalStatus" value="Single" id="Single" {{ $data->MaritalStatus =="Single" ? 'checked':'' }} >
+                                        <input class="form-check-input" type="radio" name="MaritalStatus" value="Single" id="Single" {{ $data->MaritalStatus =="Single" ? 'checked':'' }}>
                                         <label class="form-check-label" for="Single">
                                             Single
                                         </label>
@@ -657,8 +657,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
-                                <label for="SpuoseName"  class="form-label SpuoseName">Spuose's Name <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <input type="text" class="form-control  form-control-lg @error('SpuoseName') is-invalid @enderror" value="{{$data -> SpuoseName}}" id="SpuoseName" name="SpuoseName" >
+                                <label for="SpuoseName" class="form-label SpuoseName">Spuose's Name <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <input type="text" class="form-control  form-control-lg @error('SpuoseName') is-invalid @enderror" value="{{$data -> SpuoseName}}" id="SpuoseName" name="SpuoseName">
                                 @error('SpuoseName')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -668,8 +668,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
-                                <label for="SpuoseTazkiraID"  class="form-label SpuoseTazkiraID">Spuose's TazkiraID <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <input type="text" class="form-control  form-control-lg @error('SpuoseTazkiraID') is-invalid @enderror" value="{{$data -> SpuoseTazkiraID}}" id="SpuoseTazkiraID" name="SpuoseTazkiraID" >
+                                <label for="SpuoseTazkiraID" class="form-label SpuoseTazkiraID">Spuose's TazkiraID <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <input type="text" class="form-control  form-control-lg @error('SpuoseTazkiraID') is-invalid @enderror" value="{{$data -> SpuoseTazkiraID}}" id="SpuoseTazkiraID" name="SpuoseTazkiraID">
                                 @error('SpuoseTazkiraID')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -874,30 +874,30 @@
         labelIdle: 'Profile <span class="bx bx-upload"></span >',
         server: {
 
-url: '{{ route('Beneficiaries_Profile')}}',
-headers: {
-    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-}
+            url: '{{ route('
+            Beneficiaries_Profile ')}}',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
 
-},
+        },
 
-allowImagePreview: true,
-acceptedFileTypes: ['image/png', 'image/jpeg'],
-allowFileTypeValidation: true,
-instantUpload: true,
-imagePreviewHeight: 100,
-imageCropAspectRatio: '1:1',
-imageResizeTargetWidth: 10,
-imageResizeTargetHeight: 10,
-stylePanelLayout: 'compact circle',
-styleLoadIndicatorPosition: 'center bottom',
-styleProgressIndicatorPosition: 'right bottom',
-styleButtonRemoveItemPosition: 'left bottom',
-styleButtonProcessItemPosition: 'right bottom',
+        allowImagePreview: true,
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
+        instantUpload: true,
+        imagePreviewHeight: 100,
+        imageCropAspectRatio: '1:1',
+        imageResizeTargetWidth: 10,
+        imageResizeTargetHeight: 10,
+        stylePanelLayout: 'compact circle',
+        styleLoadIndicatorPosition: 'center bottom',
+        styleProgressIndicatorPosition: 'right bottom',
+        styleButtonRemoveItemPosition: 'left bottom',
+        styleButtonProcessItemPosition: 'right bottom',
 
-        files: [
-        {
-            source:'{{$data -> Profile}}',
+        files: [{
+            source: '{{$data -> Profile}}',
             options: {
                 type: 'local',
                 file: {
@@ -905,14 +905,13 @@ styleButtonProcessItemPosition: 'right bottom',
                     size: 1234,
                     type: 'image/png'
                 },
-                metadata:{
-                    poster: '{{URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)}}'
+                metadata: {
+                    poster: '{{URL::asset(' / uploads / QamarCareCard / Beneficiaries / Profiles / '.$data -> Profile)}}'
                 }
-                
+
             }
-        }
-    ],
-     
+        }],
+
 
     });
 
@@ -931,31 +930,29 @@ styleButtonProcessItemPosition: 'right bottom',
 
         },
         instantUpload: true,
-        files: [
-        {
-            source:'{{$data -> Tazkira}}',
+        files: [{
+            source: '{{$data -> Tazkira}}',
             options: {
                 type: 'local',
                 file: {
-                 
+
                     type: 'image/png'
                 },
-                metadata:{
-                    poster: '{{URL::asset('/uploads/QamarCareCard/Beneficiaries/Tazkiras/'.$data -> Tazkira)}}'
+                metadata: {
+                    poster: '{{URL::asset(' / uploads / QamarCareCard / Beneficiaries / Tazkiras / '.$data -> Tazkira)}}'
                 }
-                
+
             }
-        }
-    ],
+        }],
 
     });
 
 
 
     Profile.setOptions({
-      
-        
-     
+
+
+
     });
 
 
@@ -964,7 +961,7 @@ styleButtonProcessItemPosition: 'right bottom',
         document.getElementById('QCC').value = rnd;
     });
 
-  
+
 
 
     $(document).ready(function() {
@@ -981,7 +978,7 @@ styleButtonProcessItemPosition: 'right bottom',
                     success: function(data) {
                         if (data) {
                             $('.District').empty();
-                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                            //  $('.District').append('<option value="None" hidden>All</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="District_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
                             });
@@ -1005,42 +1002,40 @@ styleButtonProcessItemPosition: 'right bottom',
         document.getElementById('QCC').value = rnd;
     };
 
-    $(document).ready(function()
-{
-    $('#SpuoseName').hide();
-    $('.SpuoseName').hide();
-    $('#SpuoseTazkiraID').hide();
-    $('.SpuoseTazkiraID').hide();
-    $('#No').prop("checked", true);
+    $(document).ready(function() {
+        $('#SpuoseName').hide();
+        $('.SpuoseName').hide();
+        $('#SpuoseTazkiraID').hide();
+        $('.SpuoseTazkiraID').hide();
+        $('#No').prop("checked", true);
 
-});
-    $('#Yes').click(function() 
-    {
-    $('#SpuoseName').show();
-    $('.SpuoseName').show();
-    $('#SpuoseTazkiraID').show();
-    $('.SpuoseTazkiraID').show();
-});
+    });
+    $('#Yes').click(function() {
+        $('#SpuoseName').show();
+        $('.SpuoseName').show();
+        $('#SpuoseTazkiraID').show();
+        $('.SpuoseTazkiraID').show();
+    });
 
 
 
-$('#Single').click(function() {
-    $('#SpuoseName').hide();
-    $('.SpuoseName').hide();
-    $('#SpuoseTazkiraID').hide();
-    $('.SpuoseTazkiraID').hide();
-});
-$('#Divorced').click(function() {
-    $('#SpuoseName').hide();
-    $('.SpuoseName').hide();
-    $('#SpuoseTazkiraID').hide();
-    $('.SpuoseTazkiraID').hide();
-});
-$('#Widow').click(function() {
-    $('#SpuoseName').hide();
-    $('.SpuoseName').hide();
-    $('#SpuoseTazkiraID').hide();
-    $('.SpuoseTazkiraID').hide();
-});
+    $('#Single').click(function() {
+        $('#SpuoseName').hide();
+        $('.SpuoseName').hide();
+        $('#SpuoseTazkiraID').hide();
+        $('.SpuoseTazkiraID').hide();
+    });
+    $('#Divorced').click(function() {
+        $('#SpuoseName').hide();
+        $('.SpuoseName').hide();
+        $('#SpuoseTazkiraID').hide();
+        $('.SpuoseTazkiraID').hide();
+    });
+    $('#Widow').click(function() {
+        $('#SpuoseName').hide();
+        $('.SpuoseName').hide();
+        $('#SpuoseTazkiraID').hide();
+        $('.SpuoseTazkiraID').hide();
+    });
 </script>
 @endsection
