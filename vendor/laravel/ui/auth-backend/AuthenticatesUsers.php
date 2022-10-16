@@ -71,7 +71,7 @@ trait AuthenticatesUsers
     {
         $user = User::where('email',$request->email)->first();
         if( $user && !$user->IsActive == 1){
-            throw ValidationException::withMessages([$this->username() => __('Your has been De-Activated, Please contact Qamar Administration. Thanks')]);
+            throw ValidationException::withMessages([$this->username() => __('Your Account has been De-Activated, Please contact Qamar Administration. Thanks')]);
         }
 
         $request->validate([

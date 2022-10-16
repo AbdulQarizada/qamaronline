@@ -53,14 +53,14 @@ class HomeController extends Controller
 
     public function root()
     {
-        $catagorys =   LookUp::where("Parent_Name", "=", "None")->get();
+
 
         if(Auth::check() && !Auth::User()->IsActive == 1)
         {
             Auth::logout();
             return redirect()->route('login')->with('Your session has expired because your status changed.');
         }
-
+        $catagorys =   LookUp::where("Parent_Name", "=", "None")->get();
         return view('index', compact('catagorys'));
     }
 
