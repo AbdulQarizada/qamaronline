@@ -19,10 +19,10 @@
         <div class="col-12">
            <a href="<?php echo e(route('AllQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
            <a href="javascript:window.print()" class="btn btn-dark  waves-effect waves-light"><i class=" bx bxs-printer   font-size-18"></i></a>
-      
+
         </div>
      </div>
-     
+
                        <div class="row">
                             <div class="col-lg-12">
                                 <div>
@@ -31,7 +31,7 @@
                                     <table class="table table-nowrap">
                                              <tr>
                                                 <td><a href="<?php echo e(URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)); ?>" target="_blank" class="badge badge-soft-info"><img src="<?php echo e(URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)); ?>" style="width: 130px; height: 135px;" class="rounded"></a>
-                                                     
+
                                                      <p class="ml-2"><?php echo e($data -> created_at -> format("d-m-Y")); ?></p>
                                                 </td>
                                                 <td style="text-align: center;">
@@ -44,10 +44,11 @@
                                                             <h4 class="font-size-18 mb-1"><a href="#" class="badge badge-soft-success">Scan Me </a></h4>
 
                                                             <div class="mb-3" class="rounded">
-                                                                 <?php echo DNS2D::getBarcodeSVG(''.$data->QCC,  'QRCODE', 6, 6, true); ?> 
+                                                                 <?php echo DNS2D::getBarcodeSVG(''.$data->QCC,  'QRCODE', 6, 6, true); ?>
 
-                                                                 
-                                                            </div>     
+
+
+                                                            </div>
                                                          </div>
                                                      </div>
                                                 </td>
@@ -56,7 +57,7 @@
                                         </div>
                                         <div class="table-responsive">
                                             <table class="table table-nowrap">
-                                                
+
                                                 <h5 style="font-weight: bold;" class="card-header  text-dark">PEROSNAL INFORMATION</h5>
                                                     <tr>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">First Name</td>
@@ -89,7 +90,7 @@
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;" ><h4 class="font-size-18 mb-1"><a href="#" class="badge badge-soft-danger">QCC-<?php echo e($data -> QCC); ?> </a></h4>
                                                         </td>
                                                     </tr>
-                                                    
+
                                                     <!-- <tr>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Tazkira</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;">
@@ -100,7 +101,7 @@
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;"></td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> TazkiraID); ?></td>
                                                     </tr> -->
-                                                  
+
                                             </table>
 
                                             <table class="table table-nowrap">
@@ -129,7 +130,7 @@
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;"></td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;"></td>
                                                     </tr>
-                                                  
+
                                             </table>
 
                                             <table class="table table-nowrap">
@@ -157,9 +158,9 @@
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> IncomeStreem); ?></td>
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Level Of Poverty</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;">
-                                                        
-                                                        
-                                                        
+
+
+
                                 <div>
                                        <?php if( $data -> LevelPoverty == 1): ?>
                                          <i class="bx bxs-star text-warning font-size-12"></i>
@@ -198,14 +199,14 @@
                                          <i class="bx bxs-star text-warning font-size-20"></i>
                                        <?php endif; ?>
                                     </div>
-                                
-                                                    
-                                                    
-                                                    
+
+
+
+
                                                     </td>
                                                     </tr>
-                                                  
-                                                  
+
+
                                             </table>
                                             <table class="table table-nowrap">
                                                 <h5 style="font-weight: bold;" class="card-header  text-dark">DOCUMENTS</h5>
@@ -215,62 +216,62 @@
                                                         <td style="width: 20%; border: 2px solid #000; padding: 5px;">Other</td>
                                                         <td style="width: 40%; border: 2px solid #000; padding: 5px;"></td>
                                                     </tr>
-                                                                                              
+
                                             </table>
                                             <!-- <table class="table table-nowrap">
                                                     <tr>
-                                                        <td style="width: 20%;  padding: 5px;">    
+                                                        <td style="width: 20%;  padding: 5px;">
                                                         <input class="form-check-input font-size-18" type="checkbox" id="formCheck1">
                                                         <label class="form-check-label font-size-18 text-success" for="formCheck1">
                                                            Approve
                                                         </label>
                                                         </td>
-                                                        <td style="width: 20%;  padding: 5px;">    
+                                                        <td style="width: 20%;  padding: 5px;">
                                                         <input class="form-check-input font-size-18" type="checkbox" id="formCheck1">
                                                         <label class="form-check-label font-size-18 text-danger" for="formCheck1">
                                                            Reject
                                                         </label>
                                                         </td>
-                                                        <td style="width: 20%;  padding: 5px;">    
+                                                        <td style="width: 20%;  padding: 5px;">
                                                         <label class="form-check-label font-size-18" for="formCheck1">
                                                            Signature
                                                         </label>
                                                         </td>
                                                     </tr>
-                                                  
-                                                  
+
+
                                             </table> -->
-                                            
+
 
                                         </div>
                              <!-- <div class="d-print-none">
-                                    
+
                                     <div class="float-right">
 
                                         <?php if($data -> Status == 'Pending'): ?>
                                           <div class="row">
-                                            
+
                                           <div class="col-md-1">
                                           <form action="<?php echo e(route('ApproveQamarCareCard', [$data -> id])); ?>" method="POST">
                                              <?php echo method_field('PUT'); ?>
                                              <?php echo csrf_field(); ?>
-                        
-                                           <button type="submit"  class="btn btn-success waves-effect waves-light mr-1">Approve</button> 
+
+                                           <button type="submit"  class="btn btn-success waves-effect waves-light mr-1">Approve</button>
                                          </form>
                                               </div>
                                               <div class="col-md-1">
                                               <form action="<?php echo e(route('RejectQamarCareCard', [$data -> id])); ?>" method="POST">
                                              <?php echo method_field('PUT'); ?>
                                              <?php echo csrf_field(); ?>
-                        
-                                           <button type="submit"  class="btn btn-danger waves-effect waves-light mr-1">Reject</button> 
+
+                                           <button type="submit"  class="btn btn-danger waves-effect waves-light mr-1">Reject</button>
                                          </form>
                                               </div>
                                           </div>
-                                       
-                                        
 
-                                       
+
+
+
 
                                         <?php endif; ?>
 
@@ -280,9 +281,9 @@
                                         <form action="<?php echo e(route('ReInitiateQamarCareCard', [$data -> id])); ?>" method="POST">
                                              <?php echo method_field('PUT'); ?>
                                              <?php echo csrf_field(); ?>
-                        
-                                           <button type="submit"  class="btn btn-info waves-effect waves-light mr-1">Re-Initiate</button> 
-                                           <a href="<?php echo e(route('PrintQamarCareCard', [$data -> id])); ?>" class="btn btn-dark waves-effect waves-light mr-1"><i class="bx bx-printer font-size-18"></i></a> 
+
+                                           <button type="submit"  class="btn btn-info waves-effect waves-light mr-1">Re-Initiate</button>
+                                           <a href="<?php echo e(route('PrintQamarCareCard', [$data -> id])); ?>" class="btn btn-dark waves-effect waves-light mr-1"><i class="bx bx-printer font-size-18"></i></a>
 
                                          </form>
 
@@ -293,8 +294,8 @@
                                         <form action="<?php echo e(route('ReInitiateQamarCareCard', [$data -> id])); ?>" method="POST">
                                              <?php echo method_field('PUT'); ?>
                                              <?php echo csrf_field(); ?>
-                        
-                                           <button type="submit"  class="btn btn-info waves-effect waves-light mr-1">Re-Initiate</button> 
+
+                                           <button type="submit"  class="btn btn-info waves-effect waves-light mr-1">Re-Initiate</button>
                                          </form>
                                         <?php endif; ?>
 
@@ -302,9 +303,9 @@
                                         <form action="<?php echo e(route('ReInitiateQamarCareCard', [$data -> id])); ?>" method="POST">
                                              <?php echo method_field('PUT'); ?>
                                              <?php echo csrf_field(); ?>
-                        
+
                                            <button type="submit"  class="btn btn-info waves-effect waves-light mr-1">Re-Initiate</button>
-                                           <a href="<?php echo e(route('PrintQamarCareCard', [$data -> id])); ?>" class="btn btn-info waves-effect waves-light mr-1"><i class="bx bx-printer font-size-18"></i></a> 
+                                           <a href="<?php echo e(route('PrintQamarCareCard', [$data -> id])); ?>" class="btn btn-info waves-effect waves-light mr-1"><i class="bx bx-printer font-size-18"></i></a>
 
                                          </form>
 
@@ -330,7 +331,8 @@
         <div class="col-12">
            <!-- <a href="<?php echo e(route('AllQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a> -->
            <!-- <a href="javascript:window.print()" class="btn btn-dark  waves-effect waves-light"><i class=" bx bxs-printer   font-size-18"></i></a> -->
-           <?php if( $data -> Status == 'Approved' || $data -> Status == 'Rejected' || $data -> Status == 'Printed' || $data -> Status == 'Released'): ?>
+                   <?php if(Auth::user()->IsManager == 1): ?>
+                   <?php if( $data -> Status == 'Approved' || $data -> Status == 'Rejected' || $data -> Status == 'Printed' || $data -> Status == 'Released'): ?>
                     <a href="<?php echo e(route('ReInitiateQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-info waves-effect waves-light reinitiate m-3">
                         <i class="bx bx-time-five  font-size-16 align-middle"></i>Re-Initiate
                     </a>
@@ -342,6 +344,7 @@
                      <a href="<?php echo e(route('RejectQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-danger waves-effect waves-light reject m-3">
                         <i class=" bx bx-x-circle font-size-16 align-middle"></i>Reject
                     </a>
+                    <?php endif; ?>
                     <?php endif; ?>
         </div>
      </div>
@@ -411,7 +414,7 @@ $('.reject').on('click', function (event) {
     });
 });
 </script>
-  
+
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/QamarCardCard/Status.blade.php ENDPATH**/ ?>
