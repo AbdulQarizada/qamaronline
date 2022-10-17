@@ -1,48 +1,35 @@
 @extends('layouts.master-layouts')
 
-@section('title') Edit Qamar Care Card @endsection
+@section('title') ADD QAMAR CARE CARD @endsection
+
 @section('css')
 <link href="{{ URL::asset('/assets/libs/filepond/css/filepond.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <link href="{{ URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-image-preview.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-<link href="{{ URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-file-poster.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-
 
 
 @endsection
+
+
 @section('content')
 
-
-<div class="row">
-    <div class="col-12">
-        <a href="{{route('AllQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-    </div>
-</div>
-
-
-<div class="row">
-    <div class="col-12">
-        <div class="card border border-3">
-            <div class="card-header">
-                <blockquote class="blockquote border-info  font-size-14 mb-0">
-                    <p class="my-0   card-title fw-medium font-size-24 text-wrap">EDIT CARE CARD</p>
-
-                </blockquote>
-            </div>
-        </div>
-
+<div class="row mt-4">
+    <div class="col-4">
+        <a href="{{route('AllCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>ADD CARE CARD</span>
     </div>
 </div>
 
 
 
-<form class="needs-validation" action="{{route('UpdateQamarCareCard', [$data -> id])}}" method="POST" enctype="multipart/form-data" novalidate>
-    @method('PUT')
+
+<form class="needs-validation" action="{{route('CreateCareCard')}}" method="POST" enctype="multipart/form-data" novalidate>
     @csrf
+
 
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
-                <h4 class="card-header bg-primary text-white ">PEROSNAL INFORMATION</h4>
+                <h4 class="card-header bg-dark text-white ">PEROSNAL INFORMATION</h4>
 
                 <div class="card-body">
                     <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
@@ -54,7 +41,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3 position-relative">
                                         <label for="FirstName" class="form-label ">First Name <i class="mdi mdi-asterisk text-danger"></i></label>
-                                        <input type="text" class="form-control form-control-lg @error('FirstName') is-invalid @enderror" value="{{$data -> FirstName}}" id="FirstName" name="FirstName" required>
+                                        <input type="text" class="form-control form-control-lg @error('FirstName') is-invalid @enderror" value="{{ old('FirstName') }}" id="FirstName" name="FirstName" required>
                                         @error('FirstName')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -65,7 +52,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3 position-relative">
                                         <label for="FirstNameLocal" class="form-label ">First Name (Local Language) <i class="mdi mdi-asterisk text-danger"></i></label>
-                                        <input type="text" class="form-control form-control-lg @error('FirstNameLocal') is-invalid @enderror" value="{{$data -> FirstNameLocal}}" id="FirstNameLocal" name="FirstNameLocal" required>
+                                        <input type="text" class="form-control form-control-lg @error('FirstNameLocal') is-invalid @enderror" value="{{ old('FirstNameLocal') }}" id="FirstNameLocal" name="FirstNameLocal" required>
 
                                         @error('FirstNameLocal')
                                         <span class="invalid-feedback" role="alert">
@@ -78,7 +65,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3 position-relative">
                                         <label for="LastName" class="form-label ">Last Name </label>
-                                        <input type="text" class="form-control form-control-lg @error('LastName') is-invalid @enderror" value="{{$data -> LastName}}" id="LastName" name="LastName">
+                                        <input type="text" class="form-control form-control-lg @error('LastName') is-invalid @enderror" value="{{ old('LastName') }}" id="LastName" name="LastName">
 
                                         @error('LastName')
                                         <span class="invalid-feedback" role="alert">
@@ -91,7 +78,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3 position-relative">
                                         <label for="LastNameLocal" class="form-label ">Last Name (Local Language) </label>
-                                        <input type="text" class="form-control form-control-lg @error('LastNameLocal') is-invalid @enderror" value="{{$data -> LastNameLocal}}" id="LastNameLocal" name="LastNameLocal">
+                                        <input type="text" class="form-control form-control-lg @error('LastNameLocal') is-invalid @enderror" value="{{ old('LastNameLocal') }}" id="LastNameLocal" name="LastNameLocal">
 
                                         @error('LastNameLocal')
                                         <span class="invalid-feedback" role="alert">
@@ -104,7 +91,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3 position-relative">
                                         <label for="TazkiraID" class="form-label ">Tazkira ID <i class="mdi mdi-asterisk text-danger"></i></label>
-                                        <input type="number" class="form-control form-control-lg @error('TazkiraID') is-invalid @enderror" value="{{$data -> TazkiraID}}" id="TazkiraID" name="TazkiraID" max="999999999" required>
+                                        <input type="number" class="form-control form-control-lg @error('TazkiraID') is-invalid @enderror" value="{{ old('TazkiraID') }}" id="TazkiraID" name="TazkiraID" max="999999999" required>
                                         @error('TazkiraID')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -117,7 +104,7 @@
                                         <label for="QCC" class="form-label ">Qamar Care Card Number</label>
                                         <div class="hstack gap-3">
                                             <label class="form-label ">QCC-</label>
-                                            <input class="form-control form-control-lg me-auto @error('QCC') is-invalid @enderror" value="{{$data -> QCC}}" type="text" name="QCC" id="QCC" readonly>
+                                            <input class="form-control form-control-lg me-auto @error('QCC') is-invalid @enderror" value="{{ old('QCC') }}" type="text" name="QCC" id="QCC" readonly>
                                             <button type="button" class="btn btn-lg btn-outline-danger" onclick="Random();"><i class=" bx bxs-magic-wand  font-size-16 align-middle"></i> </button>
                                             @error('QCC')
                                             <span class="invalid-feedback" role="alert">
@@ -134,7 +121,7 @@
                         </div>
                         <div class="col-md-2 justify-content-center">
                             <!-- <label for="Profile" class="form-label"> <i class="mdi mdi-asterisk text-danger"></i></label> -->
-                            <input type="file" class="my-pond @error('Profile') is-invalid @enderror" value="{{$data -> Profile}}" id="Profile" name="Profile" />
+                            <input type="file" class="my-pond @error('Profile') is-invalid @enderror" value="{{ old('Profile') }}" id="Profile" name="Profile" />
                             @error('Profile')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -149,7 +136,7 @@
                                 <label for="DOB" class="form-label">Date of Birth <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group " id="example-date-input">
 
-                                    <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{$data -> DOB}}" type="date" id="example-date-input" name="DOB" id="DOB" required>
+                                    <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{ old('DOB') }}" type="date" id="example-date-input" name="DOB" id="DOB" required>
                                     @error('DOB')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -163,10 +150,10 @@
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="Gender_ID" class="form-label">Gender <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <select class="form-select  form-select-lg @error('Gender_ID') is-invalid @enderror" value="{{$data -> Gender_ID}}" id="Gender_ID" name="Gender_ID" required>
+                                <select class="form-select  form-select-lg @error('Gender_ID') is-invalid @enderror" value="{{ old('Gender_ID') }}" id="Gender_ID" name="Gender_ID" required>
                                     <option value="">Select Your Gender</option>
                                     @foreach($genders as $gender)
-                                    <option value="{{ $gender -> id}}" {{ $gender -> id == $data -> Gender_ID ? 'selected' : '' }}>{{ $gender -> Name}}</option>
+                                    <option value="{{ $gender -> id}}">{{ $gender -> Name}}</option>
 
                                     @endforeach
                                 </select>
@@ -180,10 +167,10 @@
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="Country_ID" class="form-label">Country <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <select class="form-select  form-select-lg  @error('Country_ID') is-invalid @enderror" value="{{$data -> Country_ID}}" required id="Country_ID" name="Country_ID">
+                                <select class="form-select  form-select-lg  @error('Country_ID') is-invalid @enderror" value="{{ old('Country_ID') }}" required id="Country_ID" name="Country_ID">
                                     <!-- <option value="">Select Your Country</option> -->
                                     @foreach($countries as $country)
-                                    <option value="{{ $country -> id}}" {{ $country -> id == $data -> Country_ID ? 'selected' : '' }}>{{ $country -> Name}}</option>
+                                    <option value="{{ $country -> id}}">{{ $country -> Name}}</option>
 
                                     @endforeach
 
@@ -201,10 +188,10 @@
                                 <label for="Tribe_ID" class="form-label">Tribe <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('Tribe') is-invalid @enderror" value="{{$data -> Tribe_ID}}" required id="Tribe_ID" name="Tribe_ID">
+                                    <select class="form-select  form-select-lg @error('Tribe') is-invalid @enderror" value="{{ old('Tribe_ID') }}" required id="Tribe_ID" name="Tribe_ID">
                                         <option>Select Your Tribe</option>
                                         @foreach($tribes as $tribe)
-                                        <option value="{{ $tribe -> id}} " {{ $tribe -> id == $data -> Tribe_ID ? 'selected' : '' }}>{{ $tribe -> Name}}</option>
+                                        <option value="{{ $tribe -> id}}">{{ $tribe -> Name}}</option>
 
                                         @endforeach
 
@@ -223,10 +210,10 @@
                                 <label for="Language_ID" class="form-label">Language <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('Language_ID') is-invalid @enderror" value="{{$data -> Language_ID}}" required id="Language_ID" name="Language_ID">
+                                    <select class="form-select  form-select-lg @error('Language_ID') is-invalid @enderror" value="{{ old('Language_ID') }}" required id="Language_ID" name="Language_ID">
                                         <option value="">Select Your Language</option>
                                         @foreach($languages as $language)
-                                        <option value="{{ $language -> id}}" {{ $language -> id == $data -> Language_ID ? 'selected' : '' }}>{{ $language -> Name}}</option>
+                                        <option value="{{ $language -> id}}">{{ $language -> Name}}</option>
 
                                         @endforeach
 
@@ -244,10 +231,10 @@
                                 <label for="CurrentJob_ID" class="form-label">Current Job <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('CurrentJob_ID') is-invalid @enderror" value="{{$data -> CurrentJob_ID}}" required name="CurrentJob_ID" id="CurrentJob_ID">
+                                    <select class="form-select  form-select-lg @error('CurrentJob_ID') is-invalid @enderror" value="{{ old('CurrentJob_ID') }}" required name="CurrentJob_ID" id="CurrentJob_ID">
                                         <option value="">Select Your Current Job</option>
                                         @foreach($currentjobs as $currentjob)
-                                        <option value="{{ $currentjob -> id}}" {{ $currentjob -> id == $data -> CurrentJob_ID ? 'selected' : '' }}>{{ $currentjob -> Name}}</option>
+                                        <option value="{{ $currentjob -> id}}">{{ $currentjob -> Name}}</option>
 
                                         @endforeach
 
@@ -267,10 +254,10 @@
                                 <label for="FutureJob_ID" class="form-label">What type of job you can do? <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('FutureJob_ID') is-invalid @enderror" value="{{$data -> FutureJob_ID}}" required name="FutureJob_ID" id="FutureJob_ID">
+                                    <select class="form-select  form-select-lg @error('FutureJob_ID') is-invalid @enderror" value="{{ old('FutureJob_ID') }}" required name="FutureJob_ID" id="FutureJob_ID">
                                         <option value="">Select Your Future Job</option>
                                         @foreach($futurejobs as $futurejob)
-                                        <option value="{{ $futurejob -> id}}" {{ $futurejob -> id == $data -> FutureJob_ID ? 'selected' : '' }}>{{ $futurejob -> Name}}</option>
+                                        <option value="{{ $futurejob -> id}}">{{ $futurejob -> Name}}</option>
 
                                         @endforeach
 
@@ -290,10 +277,10 @@
                                 <label for="EducationLevel_ID" class="form-label">Education Level <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('EducationLevel_ID') is-invalid @enderror" value="{{$data -> EducationLevel_ID}}" required name="EducationLevel_ID" id="EducationLevel_ID">
+                                    <select class="form-select  form-select-lg @error('EducationLevel_ID') is-invalid @enderror" value="{{ old('EducationLevel_ID') }}" required name="EducationLevel_ID" id="EducationLevel_ID">
                                         <option value="">Select Your Education Level</option>
                                         @foreach($educationlevels as $educationlevel)
-                                        <option value="{{ $educationlevel -> id}}" {{ $educationlevel -> id == $data -> EducationLevel_ID ? 'selected' : '' }}>{{ $educationlevel -> Name}}</option>
+                                        <option value="{{ $educationlevel -> id}}">{{ $educationlevel -> Name}}</option>
 
                                         @endforeach
 
@@ -313,10 +300,10 @@
                                 <label for="QamarSupport_ID" class="form-label">How Qamar Should Support You? <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('QamarSupport_ID') is-invalid @enderror" value="{{$data -> QamarSupport_ID}}" required name="QamarSupport_ID" id="QamarSupport_ID">
+                                    <select class="form-select  form-select-lg @error('QamarSupport_ID') is-invalid @enderror" value="{{ old('QamarSupport_ID') }}" required name="QamarSupport_ID" id="QamarSupport_ID">
                                         <option value="">Select How Qamar Should Support You? </option>
                                         @foreach($whatqamarcandos as $whatqamarcando)
-                                        <option value="{{ $whatqamarcando -> id}}" {{ $whatqamarcando -> id == $data -> QamarSupport_ID ? 'selected' : '' }}>{{ $whatqamarcando -> Name}}</option>
+                                        <option value="{{ $whatqamarcando -> id}}">{{ $whatqamarcando -> Name}}</option>
 
                                         @endforeach
 
@@ -385,7 +372,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
-                <h4 class="card-header bg-primary text-white ">ADDRESS AND CONTACT</h4>
+                <h4 class="card-header bg-dark text-white ">ADDRESS AND CONTACT</h4>
 
                 <div class="card-body">
                     <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
@@ -399,7 +386,7 @@
                                 <label for="PrimaryNumber" class="form-label">Primary Number <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
-                                    <input type="number" class="form-control  form-control-lg @error('PrimaryNumber') is-invalid @enderror" value="{{$data -> PrimaryNumber}}" id="PrimaryNumber" name="PrimaryNumber" max="999999999" aria-describedby="PrimaryNumber" required>
+                                    <input type="number" class="form-control  form-control-lg @error('PrimaryNumber') is-invalid @enderror" value="{{ old('PrimaryNumber') }}" id="PrimaryNumber" name="PrimaryNumber" max="999999999" aria-describedby="PrimaryNumber" required>
                                     @error('PrimaryNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -414,7 +401,7 @@
                                 <label for="SecondaryNumber" class="form-label">Secondary Number</label>
                                 <div class="input-group">
 
-                                    <input type="number" class="form-control  form-control-lg @error('SecondaryNumber') is-invalid @enderror" value="{{$data -> SecondaryNumber}}" id="SecondaryNumber" name="SecondaryNumber" max="999999999" aria-describedby="SecondaryNumber" required>
+                                    <input type="number" class="form-control  form-control-lg @error('SecondaryNumber') is-invalid @enderror" value="{{ old('SecondaryNumber') }}" id="SecondaryNumber" name="SecondaryNumber" max="999999999" aria-describedby="SecondaryNumber" required>
                                     @error('SecondaryNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -428,7 +415,7 @@
                                 <label for="Email" class="form-label">Email</label>
                                 <div class="input-group">
 
-                                    <input type="email" class="form-control  form-control-lg @error('Email') is-invalid @enderror" value="{{$data -> Email}}" id="Email" name="Email" aria-describedby="Email">
+                                    <input type="email" class="form-control  form-control-lg @error('Email') is-invalid @enderror" value="{{ old('Email') }}" id="Email" name="Email" aria-describedby="Email">
                                     @error('Email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -444,10 +431,10 @@
                             <div class="mb-3 position-relative">
                                 <label for="Province_ID" class="form-label">Province <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-                                    <select class="form-select Province form-select-lg @error('Province_ID') is-invalid @enderror" required name="Province_ID" value="{{$data -> Province_ID}}" id="Province_ID">
+                                    <select class="form-select Province form-select-lg @error('Province_ID') is-invalid @enderror" required name="Province_ID" value="{{ old('Province_ID') }}" id="Province_ID">
                                         <option value="">Select Your Province</option>
                                         @foreach($provinces as $province)
-                                        <option value="{{ $province -> id}}" {{ $province -> id == $data -> Province_ID ? 'selected' : '' }}>{{ $province -> Name}}</option>
+                                        <option value="{{ $province -> id}}">{{ $province -> Name}}</option>
 
                                         @endforeach
 
@@ -464,11 +451,10 @@
                             <div class="mb-3 position-relative">
                                 <label for="District_ID" class="form-label">District <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-                                    <select class="form-select  District form-select-lg @error('District_ID') is-invalid @enderror" required name="District_ID" value="{{$data -> District_ID}}" id="District_ID">
+                                    <select class="form-select  District form-select-lg @error('District_ID') is-invalid @enderror" required name="District_ID" value="{{ old('District_ID') }}" id="District_ID">
                                         <option value="">Select Your District</option>
-                                        @foreach($districts as $district)
-                                        <option value="{{ $district -> id}}" {{ $district -> id == $data -> District_ID ? 'selected' : '' }}>{{ $district -> Name}}</option>
-                                        @endforeach
+
+
                                     </select>
                                     @error('District_ID')
                                     <span class="invalid-feedback" role="alert">
@@ -493,7 +479,7 @@
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="Village" class="form-label">Village <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <input type="text" class="form-control  form-control-lg @error('Village') is-invalid @enderror" value="{{$data -> Village}}" id="Village" name="Village" required>
+                                <input type="text" class="form-control  form-control-lg @error('Village') is-invalid @enderror" value="{{ old('Village') }}" id="Village" name="Village" required>
                                 @error('Village')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -510,7 +496,7 @@
                                 <label for="RelativeName" class="form-label">Relative Name <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
-                                    <input type="text" class="form-control  form-control-lg @error('RelativeName') is-invalid @enderror" value="{{$data -> RelativeName}}" id="RelativeName" name="RelativeName" aria-describedby="Email" required>
+                                    <input type="text" class="form-control  form-control-lg @error('RelativeName') is-invalid @enderror" value="{{ old('RelativeName') }}" id="RelativeName" name="RelativeName" aria-describedby="Email" required>
                                     @error('RelativeName')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -524,10 +510,10 @@
                                 <label for="RelativeRelationship_ID" class="form-label">Relationship <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('RelativeRelationship_ID') is-invalid @enderror" value="{{$data -> RelativeRelationship_ID}}" required name="RelativeRelationship_ID" id="RelativeRelationship_ID">
+                                    <select class="form-select  form-select-lg @error('RelativeRelationship_ID') is-invalid @enderror" value="{{ old('RelativeRelationship_ID') }}" required name="RelativeRelationship_ID" id="RelativeRelationship_ID">
                                         <option value="">Select Your Relationship</option>
                                         @foreach($relationships as $relationship)
-                                        <option value="{{ $relationship -> id}}" {{ $relationship -> id == $data -> RelativeRelationship_ID ? 'selected' : '' }}>{{ $relationship -> Name}}</option>
+                                        <option value="{{ $relationship -> id}}">{{ $relationship -> Name}}</option>
 
                                         @endforeach
 
@@ -545,7 +531,7 @@
                                 <label for="RelativeNumber" class="form-label">Relative Number <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
-                                    <input type="number" class="form-control  form-control-lg @error('RelativeNumber') is-invalid @enderror" value="{{$data -> RelativeNumber}}" id="RelativeNumber" name="RelativeNumber" max="999999999" aria-describedby="RelativeNumber" required>
+                                    <input type="number" class="form-control  form-control-lg @error('RelativeNumber') is-invalid @enderror" value="{{ old('RelativeNumber') }}" id="RelativeNumber" name="RelativeNumber" max="999999999" aria-describedby="RelativeNumber" required>
                                     @error('RelativeNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -571,7 +557,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
-                <h4 class="card-header bg-primary text-white ">FAMILY AND INCOME INFORMATION</h4>
+                <h4 class="card-header bg-dark text-white ">FAMILY AND INCOME INFORMATION</h4>
 
                 <div class="card-body">
                     <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
@@ -581,7 +567,7 @@
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="FatherName" class="form-label">Father's Name <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <input type="text" class="form-control  form-control-lg @error('FatherName') is-invalid @enderror" value="{{$data -> FatherName}}" id="FatherName" name="FatherName" required>
+                                <input type="text" class="form-control  form-control-lg @error('FatherName') is-invalid @enderror" value="{{ old('FatherName') }}" id="FatherName" name="FatherName" required>
                                 @error('FatherName')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -592,7 +578,7 @@
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="FatherNameLocal" class="form-label">Father's Name (Local Language) <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <input type="text" class="form-control  form-control-lg @error('FatherNameLocal') is-invalid @enderror" value="{{$data -> FatherNameLocal}}" id="FatherNameLocal" name="FatherNameLocal" required>
+                                <input type="text" class="form-control  form-control-lg @error('FatherNameLocal') is-invalid @enderror" value="{{ old('FatherNameLocal') }}" id="FatherNameLocal" name="FatherNameLocal" required>
                                 @error('FatherNameLocal')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -606,7 +592,7 @@
                                 <label for="EldestSonAge" class="form-label">Eldest Child Age <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
-                                    <input type="number" class="form-control form-control-lg @error('EldestSonAge') is-invalid @enderror" value="{{$data -> EldestSonAge}}" id="EldestSonAge" name="EldestSonAge" max="150" aria-describedby="EldestSonAge" required>
+                                    <input type="number" class="form-control form-control-lg @error('EldestSonAge') is-invalid @enderror" value="{{ old('EldestSonAge') }}" id="EldestSonAge" name="EldestSonAge" max="150" aria-describedby="EldestSonAge" required>
                                     @error('EldestSonAge')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -620,7 +606,7 @@
                                 <label for="MaritalStatus" class="form-label">Marital Status <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="col-2 col-sm-3">
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="MaritalStatus" value="Single" id="Single" {{ $data->MaritalStatus =="Single" ? 'checked':'' }}>
+                                        <input class="form-check-input" type="radio" name="MaritalStatus" value="Single" id="Single" checked>
                                         <label class="form-check-label" for="Single">
                                             Single
                                         </label>
@@ -628,7 +614,7 @@
                                 </div>
                                 <div class="col-2 col-sm-3">
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="MaritalStatus" value="Divorced" id="Divorced" {{ $data->MaritalStatus =="Divorced" ? 'checked':'' }}>
+                                        <input class="form-check-input" type="radio" name="MaritalStatus" value="Divorced" id="Divorced">
                                         <label class="form-check-label" for="Divorced">
                                             Divorced
                                         </label>
@@ -636,7 +622,7 @@
                                 </div>
                                 <div class="col-2 col-sm-3">
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="MaritalStatus" value="Widow" id="Widow" {{ $data->MaritalStatus =="Widow" ? 'checked':'' }}>
+                                        <input class="form-check-input" type="radio" name="MaritalStatus" value="Widow" id="Widow">
                                         <label class="form-check-label" for="Widow">
                                             Widow
                                         </label>
@@ -645,7 +631,7 @@
 
                                 <div class="col-2 col-sm-2">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="MaritalStatus" value="Married" id="Yes" {{ $data->MaritalStatus =="Married" ? 'checked':'' }}>
+                                        <input class="form-check-input" type="radio" name="MaritalStatus" value="Married" id="Yes">
                                         <label class="form-check-label" for="Yes">
                                             Married
                                         </label>
@@ -658,7 +644,7 @@
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="SpuoseName" class="form-label SpuoseName">Spuose's Name <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <input type="text" class="form-control  form-control-lg @error('SpuoseName') is-invalid @enderror" value="{{$data -> SpuoseName}}" id="SpuoseName" name="SpuoseName">
+                                <input type="text" class="form-control  form-control-lg @error('SpuoseName') is-invalid @enderror" value="{{ old('SpuoseName') }}" id="SpuoseName" name="SpuoseName">
                                 @error('SpuoseName')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -669,7 +655,7 @@
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="SpuoseTazkiraID" class="form-label SpuoseTazkiraID">Spuose's TazkiraID <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <input type="text" class="form-control  form-control-lg @error('SpuoseTazkiraID') is-invalid @enderror" value="{{$data -> SpuoseTazkiraID}}" id="SpuoseTazkiraID" name="SpuoseTazkiraID">
+                                <input type="text" class="form-control  form-control-lg @error('SpuoseTazkiraID') is-invalid @enderror" value="{{ old('SpuoseTazkiraID') }}" id="SpuoseTazkiraID" name="SpuoseTazkiraID">
                                 @error('SpuoseTazkiraID')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -685,7 +671,7 @@
                                 <label for="MonthlyFamilyIncome" class="form-label">Monthly Family Income <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
                                     <div class="input-group-text">&#1547;</div>
-                                    <input type="number" class="form-control form-control-lg @error('MonthlyFamilyIncome') is-invalid @enderror" value="{{$data -> MonthlyFamilyIncome}}" id="MonthlyFamilyIncome" name="MonthlyFamilyIncome" max="999999" aria-describedby="MonthlyFamilyIncome" required>
+                                    <input type="number" class="form-control form-control-lg @error('MonthlyFamilyIncome') is-invalid @enderror" value="{{ old('MonthlyFamilyIncome') }}" id="MonthlyFamilyIncome" name="MonthlyFamilyIncome" max="999999" aria-describedby="MonthlyFamilyIncome" required>
                                     @error('MonthlyFamilyIncome')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -700,7 +686,7 @@
                                 <label for="MonthlyFamilyExpenses" class="form-label">Monthly Family Expenses <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
                                     <div class="input-group-text">&#1547;</div>
-                                    <input type="number" class="form-control form-control-lg @error('MonthlyFamilyExpenses') is-invalid @enderror" value="{{$data -> MonthlyFamilyExpenses}}" id="MonthlyFamilyExpenses" name="MonthlyFamilyExpenses" max="999999" aria-describedby="MonthlyFamilyExpenses" required>
+                                    <input type="number" class="form-control form-control-lg @error('MonthlyFamilyExpenses') is-invalid @enderror" value="{{ old('MonthlyFamilyExpenses') }}" id="MonthlyFamilyExpenses" name="MonthlyFamilyExpenses" max="999999" aria-describedby="MonthlyFamilyExpenses" required>
                                     @error('MonthlyFamilyExpenses')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -714,7 +700,7 @@
                                 <label for="NumberFamilyMembers" class="form-label">Number of Family Members <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
-                                    <input type="number" class="form-control form-control-lg @error('NumberFamilyMembers') is-invalid @enderror" value="{{$data -> NumberFamilyMembers}}" id="NumberFamilyMembers" name="NumberFamilyMembers" max="40" aria-describedby="NumberFamilyMembers" required>
+                                    <input type="number" class="form-control form-control-lg @error('NumberFamilyMembers') is-invalid @enderror" value="{{ old('NumberFamilyMembers') }}" id="NumberFamilyMembers" name="NumberFamilyMembers" max="40" aria-describedby="NumberFamilyMembers" required>
                                     @error('NumberFamilyMembers')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -729,10 +715,10 @@
                             <div class="mb-3 position-relative">
                                 <label for="IncomeStreem_ID" class="form-label">Income Streem <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-                                    <select class="form-select form-select-lg @error('IncomeStreem_ID') is-invalid @enderror" value="{{$data -> IncomeStreem_ID}}" required name="IncomeStreem_ID" id="IncomeStreem_ID">
+                                    <select class="form-select form-select-lg @error('IncomeStreem_ID') is-invalid @enderror" value="{{ old('IncomeStreem_ID') }}" required name="IncomeStreem_ID" id="IncomeStreem_ID">
                                         <option value="">Select Your Income Streem</option>
                                         @foreach($incomestreams as $incomestream)
-                                        <option value="{{ $incomestream -> id}}" {{ $incomestream -> id == $data -> IncomeStreem_ID ? 'selected' : '' }}>{{ $incomestream -> Name}}</option>
+                                        <option value="{{ $incomestream -> id}}">{{ $incomestream -> Name}}</option>
 
                                         @endforeach
                                     </select>
@@ -749,10 +735,10 @@
                                 <label for="FamilyStatus_ID" class="form-label">Family Status <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
 
-                                    <select class="form-select form-select-lg @error('FamilyStatus_ID') is-invalid @enderror" value="{{$data -> FamilyStatus_ID}}" required name="FamilyStatus_ID" id="FamilyStatus_ID">
+                                    <select class="form-select form-select-lg @error('FamilyStatus_ID') is-invalid @enderror" value="{{ old('FamilyStatus_ID') }}" required name="FamilyStatus_ID" id="FamilyStatus_ID">
                                         <option value="">Select Your Family Status</option>
                                         @foreach($familystatus as $familystatu)
-                                        <option value="{{ $familystatu -> id}}" {{ $familystatu -> id == $data -> FamilyStatus_ID ? 'selected' : '' }}>{{ $familystatu -> Name}}</option>
+                                        <option value="{{ $familystatu -> id}}">{{ $familystatu -> Name}}</option>
 
                                         @endforeach
                                     </select>
@@ -769,7 +755,7 @@
                             <div class="mb-3 position-relative">
                                 <label for="LevelPoverty" class="form-label">Level Of Poverty <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="rating-star">
-                                    <input type="hidden" class="rating @error('LevelPoverty') is-invalid @enderror" value="{{$data -> LevelPoverty}}" data-filled="mdi mdi-star text-warning " data-empty="mdi mdi-star-outline text-muted" name="LevelPoverty" id="LevelPoverty" />
+                                    <input type="hidden" class="rating @error('LevelPoverty') is-invalid @enderror" value="{{ old('LevelPoverty') }}" data-filled="mdi mdi-star text-warning " data-empty="mdi mdi-star-outline text-muted" name="LevelPoverty" id="LevelPoverty" />
                                     @error('LevelPoverty')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -794,7 +780,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
-                <h4 class="card-header bg-primary text-white ">DOCUMENTS</h4>
+                <h4 class="card-header bg-dark text-white ">DOCUMENTS</h4>
 
                 <div class="card-body">
                     <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
@@ -803,7 +789,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <label for="Tazkira" class="form-label">Tazkira</label>
-                            <input type="file" class="my-pond @error('Tazkira') is-invalid @enderror" value="{{ $data -> Tazkira }}" name="Tazkira" id="Tazkira" />
+                            <input type="file" class="my-pond @error('Tazkira') is-invalid @enderror" value="{{ old('Tazkira') }}" name="Tazkira" id="Tazkira" />
                             @error('Tazkira')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -822,8 +808,8 @@
     <!-- end row -->
     <div>
 
-        <button class="btn btn-primary btn-lg" type="submit">Update </button>
-        <a class="btn btn-danger btn-lg" href="{{route('IndexQamarCareCard')}}">Cancel</a>
+        <button class="btn btn-success btn-lg" type="submit">Save </button>
+        <a class="btn btn-danger btn-lg" href="{{route('AllCareCard')}}">Cancel</a>
     </div>
 
 
@@ -831,6 +817,7 @@
 
 
 </form>
+
 @endsection
 @section('script')
 <script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
@@ -841,7 +828,6 @@
 
 <script src="{{ URL::asset('/assets/libs/filepond/js/filepond.min.js') }}"></script>
 <script src="{{ URL::asset('/assets/libs/filepond/js/plugins/filepond-plugin-image-preview.min.js') }}"></script>
-<script src="{{ URL::asset('/assets/libs/filepond/js/plugins/filepond-plugin-file-poster.js') }}"></script>
 <script src="{{ URL::asset('/assets/libs/filepond/js/plugins/filepond-plugin-file-validate-type.js') }}"></script>
 
 
@@ -856,7 +842,6 @@
 <script>
     FilePond.registerPlugin(FilePondPluginImagePreview);
     FilePond.registerPlugin(FilePondPluginFileValidateType);
-    FilePond.registerPlugin(FilePondPluginFilePoster);
 
 
 
@@ -874,15 +859,12 @@
         labelIdle: 'Profile <span class="bx bx-upload"></span >',
         server: {
 
-            url: '{{ route('
-            Beneficiaries_Profile ')}}',
+            url: '{{ route('Beneficiaries_Profile')}}',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }
 
         },
-
-        allowImagePreview: true,
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
         instantUpload: true,
@@ -894,24 +876,7 @@
         styleLoadIndicatorPosition: 'center bottom',
         styleProgressIndicatorPosition: 'right bottom',
         styleButtonRemoveItemPosition: 'left bottom',
-        styleButtonProcessItemPosition: 'right bottom',
-
-        files: [{
-            source: '{{$data -> Profile}}',
-            options: {
-                type: 'local',
-                file: {
-                    name: 'No Image',
-                    size: 1234,
-                    type: 'image/png'
-                },
-                metadata: {
-                    poster: '{{URL::asset(' / uploads / QamarCareCard / Beneficiaries / Profiles / '.$data -> Profile)}}'
-                }
-
-            }
-        }],
-
+        styleButtonProcessItemPosition: 'right bottom'
 
     });
 
@@ -930,38 +895,21 @@
 
         },
         instantUpload: true,
-        files: [{
-            source: '{{$data -> Tazkira}}',
-            options: {
-                type: 'local',
-                file: {
-
-                    type: 'image/png'
-                },
-                metadata: {
-                    poster: '{{URL::asset(' / uploads / QamarCareCard / Beneficiaries / Tazkiras / '.$data -> Tazkira)}}'
-                }
-
-            }
-        }],
-
-    });
-
-
-
-    Profile.setOptions({
-
 
 
     });
+
+
+
+    // Profile.setOptions({
+
+    // });
 
 
     $(document).ready(function() {
         var rnd = Math.floor(Math.random() * 99999) + 1;
         document.getElementById('QCC').value = rnd;
     });
-
-
 
 
     $(document).ready(function() {
@@ -992,10 +940,6 @@
             }
         });
     });
-
-
-
-
 
     function Random() {
         var rnd = Math.floor(Math.random() * 99999) + 1;

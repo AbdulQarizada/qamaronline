@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
 
-class QamarCareCardController extends Controller
+class CareCardController extends Controller
 {
 
 
@@ -38,22 +38,22 @@ class QamarCareCardController extends Controller
   public function Index()
   {
 
-    return view('QamarCardCard.Index');
+    return view('CardCard.Index');
   }
 
 
-  public function IndexCareCard()
+  public function IndexCareCardOperations()
   {
 
-    return view('QamarCardCard.IndexCareCard');
+    return view('CardCard.Operations.Index');
   }
 
 
 
-  public function IndexAssignService()
+  public function IndexCareCardServices()
   {
 
-    return view('QamarCardCard.IndexAssignService');
+    return view('CardCard.Services.Index');
   }
 
 
@@ -79,7 +79,7 @@ class QamarCareCardController extends Controller
 
 
 
-    return view('QamarCardCard.Create', ['countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+    return view('QamarCardCard.CareCardOperations.Create', ['countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
   }
 
   public function Store(Request $request)
@@ -226,7 +226,7 @@ class QamarCareCardController extends Controller
     $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
     $provinces = Location::whereNull("Parent_ID")->get();
     $districts = Location::get();
-    return view('QamarCardCard.Edit', ['data' => $data, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'districts' => $districts, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+    return view('QamarCardCard.CareCardOperations.Edit', ['data' => $data, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'districts' => $districts, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
 
     // return view('QamarCardCard.Edit', ['data' => $data]);
   }
@@ -389,7 +389,7 @@ class QamarCareCardController extends Controller
       ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
       ->get();
     }
-    return view('QamarCardCard.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+    return view('QamarCardCard.CareCardOperations.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
 
 
   }
@@ -450,7 +450,7 @@ class QamarCareCardController extends Controller
       ->where("qamar_care_cards.Status", "=", 'Approved')
       ->get();
     }
-    return view('QamarCardCard.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+    return view('QamarCardCard.CareCardOperations.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
 
   }
 
@@ -479,7 +479,7 @@ class QamarCareCardController extends Controller
       ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
 
       ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("qamar_care_cards.Status", "=", 'Rejected')
+      ->where("qamar_care_cards.CareCardOperations.Status", "=", 'Rejected')
       ->get();
     }
     else
@@ -494,7 +494,7 @@ class QamarCareCardController extends Controller
       ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
       ->get();
     }
-    return view('QamarCardCard.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+    return view('QamarCardCard.CareCardOperations.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
 
   }
 
@@ -539,7 +539,7 @@ class QamarCareCardController extends Controller
       ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
       ->get();
     }
-    return view('QamarCardCard.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+    return view('QamarCardCard.CareCardOperations.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
 
     // return view('QamarCardCard.All', compact('qamarcarecards'));
   }
@@ -586,7 +586,7 @@ class QamarCareCardController extends Controller
       ->get();
 
     }
-    return view('QamarCardCard.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+    return view('QamarCardCard.CareCardOperations.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
 
     // return view('QamarCardCard.All', compact('qamarcarecards'));
   }
@@ -637,7 +637,7 @@ class QamarCareCardController extends Controller
       ->get();
     //  $qamarcarecards  = $data;
 
-    return view('QamarCardCard.Status',  ['datas' => $qamarcarecards]);
+    return view('QamarCardCard.CareCardOperations.Status',  ['datas' => $qamarcarecards]);
   }
 
   public function Approve(QamarCareCard $data)
@@ -702,7 +702,7 @@ class QamarCareCardController extends Controller
   {
 
 
-    return view('QamarCardCard.Printing', compact('data'));
+    return view('QamarCardCard.CareCardOperations.Printing', compact('data'));
   }
 
   public function Print(QamarCareCard $data)
@@ -756,7 +756,7 @@ class QamarCareCardController extends Controller
       ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
       ->get();
     }
-    return view('QamarCardCard.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+    return view('QamarCardCard.CareCardOperations.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
 
   }
 

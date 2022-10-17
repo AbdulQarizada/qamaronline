@@ -1,17 +1,17 @@
-@extends('layouts.master-layouts')
 
-@section('title') @lang('translation.Dashboards') @endsection
-@section('css')
 
-    <link href="{{ URL::asset('/assets/css/mystyle/tabstyle.css') }}" rel="stylesheet" type="text/css" />
-@endsection
-@section('content')
+<?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.Dashboards'); ?> <?php $__env->stopSection(); ?>
+<?php $__env->startSection('css'); ?>
+
+    <link href="<?php echo e(URL::asset('/assets/css/mystyle/tabstyle.css')); ?>" rel="stylesheet" type="text/css" />
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 
     <div class="row ">
 <h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">Benef. Services</h1>
 <div class="col-xl-12">
 <div class="row">
-                            @if(Auth::user()->IsFoodAppeal == 1)
+                            <?php if(Auth::user()->IsFoodAppeal == 1): ?>
                             <div class="col-md-4 mb-2">
                                 <a href="FoodAppeal">
                                     <div class="card-one  mini-stats-wid border border-secondary">
@@ -40,11 +40,11 @@
                                     </div>
                                 </a>
                             </div>
-                            @endif
-                            @if(Auth::user()->IsQamarCareCard == 1)
+                            <?php endif; ?>
+                            <?php if(Auth::user()->IsQamarCareCard == 1): ?>
 
                             <div class="col-md-4 mb-2">
-                                <a href="{{route('IndexCareCard')}}">
+                                <a href="<?php echo e(route('IndexCareCard')); ?>">
                                     <div class="card-one  mini-stats-wid border border-secondary">
                                         <div class="card-body">
                                             <blockquote class="blockquote  font-size-14 mb-0">
@@ -71,8 +71,8 @@
                                     </div>
                                 </a>
                             </div>
-                            @endif
-                            @if(Auth::user()->IsAppealsDistributions == 1)
+                            <?php endif; ?>
+                            <?php if(Auth::user()->IsAppealsDistributions == 1): ?>
 
                             <div class="col-md-4">
                                 <a href="AppealsDistributions">
@@ -102,8 +102,8 @@
                                     </div>
                                 </a>
                             </div>
-                            @endif
-                            @if(Auth::user()->IsDonorsAndDonorBoxes == 1)
+                            <?php endif; ?>
+                            <?php if(Auth::user()->IsDonorsAndDonorBoxes == 1): ?>
 
 <div class="col-md-4 mb-2">
     <a href="Donors&DonorBoxes">
@@ -134,7 +134,7 @@
     </a>
 </div>
 
-@endif
+<?php endif; ?>
 
                         </div>
                         <!-- end row -->
@@ -181,11 +181,12 @@
 </div> -->
 <!-- end modal -->
 
-@endsection
-@section('script')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
 <!-- apexcharts -->
-<script src="{{ URL::asset('/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+<script src="<?php echo e(URL::asset('/assets/libs/apexcharts/apexcharts.min.js')); ?>"></script>
 
 <!-- dashboard init -->
-<script src="{{ URL::asset('/assets/js/pages/dashboard.init.js') }}"></script>
-@endsection
+<script src="<?php echo e(URL::asset('/assets/js/pages/dashboard.init.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/BeneficiariesServices.blade.php ENDPATH**/ ?>

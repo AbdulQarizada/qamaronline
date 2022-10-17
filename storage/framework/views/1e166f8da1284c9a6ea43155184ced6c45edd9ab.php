@@ -9,10 +9,6 @@
 
 <?php $__env->startSection('content'); ?>
 
-<?php $__env->startComponent('components.breadcrumb'); ?>
-<?php $__env->slot('li_1'); ?> Qamar Care Card <?php $__env->endSlot(); ?>
-<?php $__env->slot('title'); ?> Qamar Care Card List <?php $__env->endSlot(); ?>
-<?php echo $__env->renderComponent(); ?>
 
 <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 <div class="row">
@@ -417,4 +413,4 @@
     </script>
 
     <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/QamarCardCard/Status.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/QamarCardCard/CareCardOperations/Status.blade.php ENDPATH**/ ?>

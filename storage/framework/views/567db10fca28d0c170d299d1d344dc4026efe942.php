@@ -9,15 +9,11 @@
 
 <?php $__env->startSection('content'); ?>
 
-<?php $__env->startComponent('components.breadcrumb'); ?>
-<?php $__env->slot('li_1'); ?> Qamar Care Card <?php $__env->endSlot(); ?>
-<?php $__env->slot('title'); ?> Qamar Care Card List <?php $__env->endSlot(); ?>
-<?php echo $__env->renderComponent(); ?>
 
 <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 <div class="row">
     <div class="col-12">
-        <a href="<?php echo e(route('AllQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <a href="<?php echo e(route('AllCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         <a href="javascript:window.print()" class="btn btn-dark  waves-effect waves-light"><i class=" bx bxs-printer   font-size-18"></i></a>
 
     </div>
@@ -91,17 +87,6 @@
                                 <h4 class="font-size-18 mb-1"><a href="#" class="badge badge-soft-danger">QCC-<?php echo e($data -> QCC); ?> </a></h4>
                             </td>
                         </tr>
-
-                        <!-- <tr>
-                                                        <td style="width: 20%; border: 2px solid #000; padding: 5px;">Tazkira</td>
-                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;">
-                                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target=".exampleModal">
-                                                                [View Tazkira]
-                                                            </a>
-                                                        </td>
-                                                        <td style="width: 20%; border: 2px solid #000; padding: 5px;"></td>
-                                                        <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> TazkiraID); ?></td>
-                                                    </tr> -->
 
                     </table>
 
@@ -219,108 +204,7 @@
                         </tr>
 
                     </table>
-                    <!-- <table class="table table-nowrap">
-                                                    <tr>
-                                                        <td style="width: 20%;  padding: 5px;">
-                                                        <input class="form-check-input font-size-18" type="checkbox" id="formCheck1">
-                                                        <label class="form-check-label font-size-18 text-success" for="formCheck1">
-                                                           Approve
-                                                        </label>
-                                                        </td>
-                                                        <td style="width: 20%;  padding: 5px;">
-                                                        <input class="form-check-input font-size-18" type="checkbox" id="formCheck1">
-                                                        <label class="form-check-label font-size-18 text-danger" for="formCheck1">
-                                                           Reject
-                                                        </label>
-                                                        </td>
-                                                        <td style="width: 20%;  padding: 5px;">
-                                                        <label class="form-check-label font-size-18" for="formCheck1">
-                                                           Signature
-                                                        </label>
-                                                        </td>
-                                                    </tr>
 
-
-                                            </table> -->
-
-
-                </div>
-                <!-- <div class="d-print-none">
-
-                                    <div class="float-right">
-
-                                        <?php if($data -> Status == 'Pending'): ?>
-                                          <div class="row">
-
-                                          <div class="col-md-1">
-                                          <form action="<?php echo e(route('ApproveQamarCareCard', [$data -> id])); ?>" method="POST">
-                                             <?php echo method_field('PUT'); ?>
-                                             <?php echo csrf_field(); ?>
-
-                                           <button type="submit"  class="btn btn-success waves-effect waves-light mr-1">Approve</button>
-                                         </form>
-                                              </div>
-                                              <div class="col-md-1">
-                                              <form action="<?php echo e(route('RejectQamarCareCard', [$data -> id])); ?>" method="POST">
-                                             <?php echo method_field('PUT'); ?>
-                                             <?php echo csrf_field(); ?>
-
-                                           <button type="submit"  class="btn btn-danger waves-effect waves-light mr-1">Reject</button>
-                                         </form>
-                                              </div>
-                                          </div>
-
-
-
-
-
-                                        <?php endif; ?>
-
-
-
-                                        <?php if($data -> Status == 'Approved'): ?>
-                                        <form action="<?php echo e(route('ReInitiateQamarCareCard', [$data -> id])); ?>" method="POST">
-                                             <?php echo method_field('PUT'); ?>
-                                             <?php echo csrf_field(); ?>
-
-                                           <button type="submit"  class="btn btn-info waves-effect waves-light mr-1">Re-Initiate</button>
-                                           <a href="<?php echo e(route('PrintQamarCareCard', [$data -> id])); ?>" class="btn btn-dark waves-effect waves-light mr-1"><i class="bx bx-printer font-size-18"></i></a>
-
-                                         </form>
-
-                                        <?php endif; ?>
-
-
-                                        <?php if($data -> Status == 'Rejected'): ?>
-                                        <form action="<?php echo e(route('ReInitiateQamarCareCard', [$data -> id])); ?>" method="POST">
-                                             <?php echo method_field('PUT'); ?>
-                                             <?php echo csrf_field(); ?>
-
-                                           <button type="submit"  class="btn btn-info waves-effect waves-light mr-1">Re-Initiate</button>
-                                         </form>
-                                        <?php endif; ?>
-
-                                        <?php if($data -> Status == 'Printed'): ?>
-                                        <form action="<?php echo e(route('ReInitiateQamarCareCard', [$data -> id])); ?>" method="POST">
-                                             <?php echo method_field('PUT'); ?>
-                                             <?php echo csrf_field(); ?>
-
-                                           <button type="submit"  class="btn btn-info waves-effect waves-light mr-1">Re-Initiate</button>
-                                           <a href="<?php echo e(route('PrintQamarCareCard', [$data -> id])); ?>" class="btn btn-info waves-effect waves-light mr-1"><i class="bx bx-printer font-size-18"></i></a>
-
-                                         </form>
-
-
-                                        <?php endif; ?>
-                                    </div>
-                                </div> -->
-            </div>
-            <br />
-            <div>
-                <!-- <p class="font-size-18 card-header  text-dark" >Tazkira </p>
-                                        <br />
-                                        <img src="<?php echo e(URL::asset('/uploads/Tazkiras/'.$data -> Tazkira)); ?>" style="width: 600px; height:100%" > -->
-                <div>
 
                 </div>
             </div>
@@ -330,19 +214,17 @@
 
     <div class="row">
         <div class="col-12">
-            <!-- <a href="<?php echo e(route('AllQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a> -->
-            <!-- <a href="javascript:window.print()" class="btn btn-dark  waves-effect waves-light"><i class=" bx bxs-printer   font-size-18"></i></a> -->
             <?php if(Auth::user()->IsManager == 1): ?>
             <?php if( $data -> Status == 'Approved' || $data -> Status == 'Rejected' || $data -> Status == 'Printed' || $data -> Status == 'Released'): ?>
-            <a href="<?php echo e(route('ReInitiateQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-info waves-effect waves-light reinitiate m-3">
+            <a href="<?php echo e(route('ReInitiateCareCard', ['data' => $data -> id])); ?>" class="btn btn-info waves-effect waves-light reinitiate m-3">
                 <i class="bx bx-time-five  font-size-16 align-middle"></i>Re-Initiate
             </a>
             <?php endif; ?>
             <?php if( $data -> Status == 'Pending'): ?>
-            <a href="<?php echo e(route('ApproveQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light approve m-3">
+            <a href="<?php echo e(route('ApproveCareCard', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light approve m-3">
                 <i class="bx bx-check-circle font-size-16 align-middle"></i>Approve
             </a>
-            <a href="<?php echo e(route('RejectQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-danger waves-effect waves-light reject m-3">
+            <a href="<?php echo e(route('RejectCareCard', ['data' => $data -> id])); ?>" class="btn btn-danger waves-effect waves-light reject m-3">
                 <i class=" bx bx-x-circle font-size-16 align-middle"></i>Reject
             </a>
             <?php endif; ?>
@@ -417,4 +299,4 @@
     </script>
 
     <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/QamarCardCard/Status.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/CardCard/Operations/Status.blade.php ENDPATH**/ ?>

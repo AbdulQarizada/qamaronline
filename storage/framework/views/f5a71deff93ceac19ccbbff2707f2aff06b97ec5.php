@@ -1,18 +1,18 @@
-@extends('layouts.master-layouts')
 
-@section('title') Qamar Care List @endsection
 
-@section('css')
+<?php $__env->startSection('title'); ?> Qamar Care List <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('css'); ?>
     <!-- DataTables -->
-    <link href="{{ URL::asset('/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ URL::asset('/assets/css/mystyle/tabstyle.css') }}" rel="stylesheet" type="text/css" />
-@endsection
+    <link href="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.css')); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo e(URL::asset('/assets/css/mystyle/tabstyle.css')); ?>" rel="stylesheet" type="text/css" />
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="row mt-4">
         <div class="col-4">
-           <a href="{{route('IndexQamarCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+           <a href="<?php echo e(route('IndexQamarCareCard')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
             <!-- <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i> CARE CARDS</span> -->
         </div>
      </div>
@@ -28,7 +28,7 @@
     <div class="col-xl-12">
         <div class="row">
         <!-- <div class="col-md-4 mb-2">
-                <a  href="{{route('CreateQamarCareCard')}}">
+                <a  href="<?php echo e(route('CreateQamarCareCard')); ?>">
                 <div class="card-one  mini-stats-wid border border-secondary">
                     <div class="card-body">
                       <blockquote class="blockquote font-size-14 mb-0">
@@ -57,7 +57,7 @@
             </div> -->
 
             <div class="col-md-4 mb-2">
-               <a href="{{route('AllQamarCareCard')}}">
+               <a href="<?php echo e(route('AllQamarCareCard')); ?>">
                 <div class="card-one mini-stats-wid border border-secondary">
                     <div class="card-body">
                       <blockquote class="blockquote font-size-14 mb-0">
@@ -86,7 +86,7 @@
             </div>
 
             <div class="col-md-4 mb-2">
-        <a href="{{route('PendingQamarCareCard')}}">
+        <a href="<?php echo e(route('PendingQamarCareCard')); ?>">
             <div class="card-one mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">
@@ -116,7 +116,7 @@
             </a>
         </div>
         <div class="col-md-4 mb-2">
-        <a href="{{route('ApprovedQamarCareCard')}}">
+        <a href="<?php echo e(route('ApprovedQamarCareCard')); ?>">
             <div class="card-one mini-stats-wid border border-secondary">
                 <div class="card-body">
 
@@ -149,7 +149,7 @@
 
 
         <div class="col-md-4 mb-2">
-        <a href="{{route('PrintedQamarCareCard')}}">
+        <a href="<?php echo e(route('PrintedQamarCareCard')); ?>">
             <div class="card-one mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">
@@ -181,7 +181,7 @@
 
 
         <div class="col-md-4 mb-2">
-        <a href="{{route('ReleasedQamarCareCard')}}">
+        <a href="<?php echo e(route('ReleasedQamarCareCard')); ?>">
             <div class="card-one mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">
@@ -213,7 +213,7 @@
 
 
         <div class="col-md-4 mb-2">
-        <a href="{{route('RejectedQamarCareCard')}}">
+        <a href="<?php echo e(route('RejectedQamarCareCard')); ?>">
             <div class="card-one mini-stats-wid border border-secondary">
                 <div class="card-body">
                   <blockquote class="blockquote font-size-14 mb-0">
@@ -258,12 +258,14 @@
 </div>
 <!-- end row -->
 
-@endsection
-@section('script')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
     <!-- Required datatable js -->
-    <script src="{{ URL::asset('/assets/libs/datatables/datatables.min.js') }}"></script>
-    <script src="{{ URL::asset('/assets/libs/jszip/jszip.min.js') }}"></script>
-    <script src="{{ URL::asset('/assets/libs/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('/assets/libs/jszip/jszip.min.js')); ?>"></script>
+    <script src="<?php echo e(URL::asset('/assets/libs/pdfmake/pdfmake.min.js')); ?>"></script>
     <!-- Datatable init js -->
-    <script src="{{ URL::asset('/assets/js/pages/datatables.init.js') }}"></script>
-@endsection
+    <script src="<?php echo e(URL::asset('/assets/js/pages/datatables.init.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/QamarCardCard/CareCardOperations/Index.blade.php ENDPATH**/ ?>

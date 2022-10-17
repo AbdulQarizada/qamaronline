@@ -1,20 +1,20 @@
-@extends('layouts.master-layouts')
 
-@section('title') @lang('translation.Dashboards') @endsection
-@section('css')
 
-    <link href="{{ URL::asset('/assets/css/mystyle/tabstyle.css') }}" rel="stylesheet" type="text/css" />
-@endsection
-@section('content')
+<?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.Dashboards'); ?> <?php $__env->stopSection(); ?>
+<?php $__env->startSection('css'); ?>
+
+    <link href="<?php echo e(URL::asset('/assets/css/mystyle/tabstyle.css')); ?>" rel="stylesheet" type="text/css" />
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 
 
 <div class="row">
 <h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">Projects</h1>
 <div class="col-xl-12">
 <div class="row">
-            @if(Auth::user()->IsOrphanRelief == 1)
+            <?php if(Auth::user()->IsOrphanRelief == 1): ?>
             <div class="col-md-4 mb-2">
-                <a href="{{route('IndexOrphansRelief')}}">
+                <a href="<?php echo e(route('IndexOrphansRelief')); ?>">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body">
                             <blockquote class="blockquote font-size-14 mb-0">
@@ -41,8 +41,8 @@
                     </div>
                 </a>
             </div>
-            @endif
-            @if(Auth::user()->IsAidAndRelief == 1)
+            <?php endif; ?>
+            <?php if(Auth::user()->IsAidAndRelief == 1): ?>
             <div class="col-md-4 mb-2">
                 <a href="AidAndRelief">
                     <div class="card-one  mini-stats-wid border border-secondary">
@@ -71,8 +71,8 @@
                     </div>
                 </a>
             </div>
-            @endif
-            @if(Auth::user()->IsWash == 1)
+            <?php endif; ?>
+            <?php if(Auth::user()->IsWash == 1): ?>
             <div class="col-md-4 mb-2">
                 <a href="Wash">
                     <div class="card-one  mini-stats-wid border border-secondary">
@@ -101,10 +101,10 @@
                     </div>
                 </a>
             </div>
-            @endif
-            @if(Auth::user()->IsEducation == 1)
+            <?php endif; ?>
+            <?php if(Auth::user()->IsEducation == 1): ?>
                     <div class="col-md-4 mb-2">
-                        <a href="{{route('IndexEducation')}}">
+                        <a href="<?php echo e(route('IndexEducation')); ?>">
                             <div class="card-one  mini-stats-wid border border-secondary">
                                 <div class="card-body">
                                     <blockquote class="blockquote font-size-14 mb-0">
@@ -131,9 +131,9 @@
                             </div>
                         </a>
                     </div>
-                    @endif
+                    <?php endif; ?>
 
-                    @if(Auth::user()->IsInitiative == 1)
+                    <?php if(Auth::user()->IsInitiative == 1): ?>
                     <div class="col-md-4 mb-2">
                         <a href="Initiative">
                             <div class="card-one  mini-stats-wid border border-secondary">
@@ -162,9 +162,9 @@
                             </div>
                         </a>
                     </div>
-                    @endif
+                    <?php endif; ?>
 
-                    @if(Auth::user()->IsMedicalSector == 1)
+                    <?php if(Auth::user()->IsMedicalSector == 1): ?>
                     <div class="col-md-4 mb-2">
                         <a href="MedicalSector">
                             <div class="card-one  mini-stats-wid border border-secondary">
@@ -193,7 +193,7 @@
                             </div>
                         </a>
                     </div>
-                    @endif
+                    <?php endif; ?>
         </div>
     <!-- end row -->
 
@@ -240,11 +240,12 @@
 </div> -->
 <!-- end modal -->
 
-@endsection
-@section('script')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
 <!-- apexcharts -->
-<script src="{{ URL::asset('/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+<script src="<?php echo e(URL::asset('/assets/libs/apexcharts/apexcharts.min.js')); ?>"></script>
 
 <!-- dashboard init -->
-<script src="{{ URL::asset('/assets/js/pages/dashboard.init.js') }}"></script>
-@endsection
+<script src="<?php echo e(URL::asset('/assets/js/pages/dashboard.init.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/Projects.blade.php ENDPATH**/ ?>

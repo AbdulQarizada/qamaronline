@@ -11,14 +11,14 @@ table  td {
     white-space: nowrap;
 }
 
-html { background-color: #000; } 
+html { background-color: #000; }
 .CardSize {
     position: fixed;
     height: 580px;
     width: 680px;
-    background-color: papayawhip; 
+    background-color: papayawhip;
     margin:  auto;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
 }
 </style>
 
@@ -28,9 +28,9 @@ html { background-color: #000; }
 
 <div class="row">
     <div class="col-12">
-        <a href="{{route('AllQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <a href="{{route('AllCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         <a href="javascript:window.print()" class="btn btn-dark waves-effect waves-light mr-1"><i class="fa fa-print"></i></a>
-        <a href="{{route('PrintQamarCareCard', ['data' => $data -> id])}}" class="btn btn-success waves-effect waves-light print"><i class="bx bxs-printer   font-size-16 align-middle"></i>Confirm Print</a>
+        <a href="{{route('PrintCareCard', ['data' => $data -> id])}}" class="btn btn-success waves-effect waves-light print"><i class="bx bxs-printer   font-size-16 align-middle"></i>Confirm Print</a>
     </div>
 </div>
 
@@ -72,18 +72,18 @@ html { background-color: #000; }
             <table style="margin-left:232px; margin-top:22px;">
 
                 <tr>
-                    <td >
+                    <!-- <td >
                         <div class="rating-star">
                             <input type="hidden" class="rating" data-filled="mdi mdi-star text-warning " data-empty="mdi mdi-star-outline text-muted" value="{{$data -> LevelPoverty}}" name="LevelPoverty" id="LevelPoverty" readonly />
                         </div>
-                    </td>
+                    </td> -->
                 </tr>
             </table>
         <!-- </div> -->
     </div>
 </div>
 </div>
-<!-- 
+<!--
 <div class="row">
 
     <div style=" background-image: url('{{ URL::asset('/assets/images/qcc/back.jpeg') }}'); 40vh; background-repeat: no-repeat; ">
