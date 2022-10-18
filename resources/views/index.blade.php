@@ -115,7 +115,10 @@
                         <div class="card-body">
                             <blockquote class="blockquote font-size-14 mb-0">
                                 <div class="d-flex">
-
+                                    <div class="flex-grow-1">
+                                        <p class="my-0 text-primary card-title fw-semibold">Orphans Relief</p>
+                                        <h6 class="text-muted mb-0">Orphans</h4>
+                                    </div>
 
                                     <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
