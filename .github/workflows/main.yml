@@ -11,6 +11,6 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@4.3.2
       with:
         server: ftp://45.9.189.160
-        username: ${{ u778979963.qamaronline }}
-        password: ${{ 9d@M|mShu }}
+        username: u778979963.qamaronline
+        password: 9d@M|mShu
         server-dir: /public_html/subdomains/online/
