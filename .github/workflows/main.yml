@@ -7,11 +7,10 @@ jobs:
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v2
-
-   - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.3.2
       with:
-        server: ${{ secrets.LARAVEL_SITE_SERVER}}
-        username: ${{ secrets.LARAVEL_SITE_USER}}
-        password: ${{ secrets.LARAVEL_SITE_PASS}}
+        server: ftp://45.9.189.160
+        username: ${{ u778979963.qamaronline }}
+        password: ${{ 9d@M|mShu }}
         server-dir: /public_html/subdomains/online/
