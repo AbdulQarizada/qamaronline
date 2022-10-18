@@ -10,7 +10,7 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.2
       with:
-        server: ${{ ftp://45.9.189.160 }}
-        username: ${{ u778979963 }}
-        password: ${{ 9d@M|mShu }}
+        server: ftp://45.9.189.160:21
+        username: u778979963
+        password: 9d@M|mShu
         server-dir: /public_html/subdomains/online/
