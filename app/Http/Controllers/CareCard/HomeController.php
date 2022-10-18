@@ -26,15 +26,6 @@ class HomeController extends Controller
 
 
 
-
-
-  public function __construct()
-  {
-    $this->middleware('auth', ['except' => ['Verify', 'Search']]);
-  }
-
-
-
   // index
   public function Index()
   {
@@ -42,39 +33,64 @@ class HomeController extends Controller
     return view('CardCard.Index');
   }
 
-
-  public function IndexCareCardOperations()
+  // FileUpload
+  public function Beneficiaries_Profile(Request $request)
   {
 
-    return view('CardCard.Operations.Index');
+      if ($request->hasFile('Profile')) {
+
+
+          $profile = $request->file('Profile');
+
+          $profilename = $profile->getClientOriginalName();
+
+          $profileuniquename = uniqid() . '_' . $profilename;
+
+          $profile->storeAs('Profiles', $profileuniquename, 'Beneficiaries');
+
+
+          return $profileuniquename;
+      }
+      return '';
   }
 
+  public function Beneficiaries_Tazkira(Request $request)
+  {
+      if ($request->hasFile('Tazkira')) {
 
 
-  public function IndexCareCardServices()
+          $Tazkira = $request->file('Tazkira');
+
+          $Tazkiraname = $Tazkira->getClientOriginalName();
+
+          $Tazkiruniquename = uniqid() . '_' . $Tazkiraname;
+
+
+          $Tazkira->storeAs('Tazkiras', $Tazkiruniquename, 'Beneficiaries');
+
+          return $Tazkiruniquename;
+      }
+      return '';
+  }
+
+  public function ServiceProvider_Profile(Request $request)
   {
 
-    return view('CardCard.Services.Index');
+      if ($request->hasFile('Profile')) {
+
+
+          $profile = $request->file('Profile');
+
+          $profilename = $profile->getClientOriginalName();
+
+          $profileuniquename = uniqid() . '_' . $profilename;
+
+          $profile->storeAs('Profiles', $profileuniquename, 'ServiceProvider');
+
+
+          return $profileuniquename;
+      }
+      return '';
   }
 
-
-
-
-
-
-
-  // Verify
-  public function Verify()
-  {
-    $qamarcarecards = null;
-    return view('QamarCardCard.Verify', compact('qamarcarecards'));
-  }
-
-
-  public function Search()
-  {
-
-    $qamarcarecards =   QamarCareCard::where("QCC", "=",  request('ID'))->get();
-    return view('QamarCardCard.Verify', compact('qamarcarecards'));
-  }
 }

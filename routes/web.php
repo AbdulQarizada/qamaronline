@@ -63,10 +63,8 @@ Route::post('UserManagement/Employees_Profile', [App\Http\Controllers\HomeContro
 Route::post('/Employees_Profile', [App\Http\Controllers\HomeController::class, 'Employees_Profile'])->name('Employees_Profile');
 
 
-Route::post('/QamarCareCard/Beneficiaries_Tazkira', [App\Http\Controllers\HomeController::class, 'Beneficiaries_Tazkira'])->name('Beneficiaries_Tazkira');
-Route::post('/QamarCareCard/Beneficiaries_Profile', [App\Http\Controllers\HomeController::class, 'Beneficiaries_Profile'])->name('Beneficiaries_Profile');
 
-Route::post('/ServiceProvider_Profile', [App\Http\Controllers\HomeController::class, 'ServiceProvider_Profile'])->name('ServiceProvider_Profile');
+
 
 
 Route::post('/Education/Scholarship', [App\Http\Controllers\HomeController::class, 'Scholarship'])->name('Scholarship');
@@ -151,51 +149,9 @@ Route::get('/Education/Application/Success', [App\Http\Controllers\EducationCont
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Care Card
+//=======================================================================================================================================
+// Index
 Route::get('/CareCard', [App\Http\Controllers\CareCard\HomeController::class, 'Index'])->name('IndexCareCard');
 
 // Operation
@@ -228,30 +184,15 @@ Route::get('/CareCard/Operations/Printing/{data}', [App\Http\Controllers\CareCar
 // Verify Card
 Route::get('/CareCard/Operations/Verify', [App\Http\Controllers\CareCard\OperationsController::class, 'Verify'])->name('VerifyCareCard');
 Route::post('/CareCard/Operations/Verify', [App\Http\Controllers\CareCard\OperationsController::class, 'Search'])->name('SearchCareCard');
-
+// FileUploads
+Route::post('/CareCard/Operations/Beneficiaries_Tazkira', [App\Http\Controllers\CareCard\HomeController::class, 'Beneficiaries_Tazkira'])->name('Beneficiaries_Tazkira');
+Route::post('/CareCard/Operations/Beneficiaries_Profile', [App\Http\Controllers\CareCard\HomeController::class, 'Beneficiaries_Profile'])->name('Beneficiaries_Profile');
 
 // Services
 //Index
 Route::get('/CareCard/Services', [App\Http\Controllers\CareCard\HomeController::class, 'IndexCareCardServices'])->name('IndexCareCardServices');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // assign to servies
 Route::get('/CareCard/AssignToService/{data}', [App\Http\Controllers\CareCard\CareCardController::class, 'AssignToService'])->name('AssignToServiceQamarCareCard');
-
 
 // list
 Route::get('/CareCard/AssigningService', [App\Http\Controllers\CareCard\CareCardController::class, 'AssigningService'])->name('AssigningServiceQamarCareCard');
@@ -308,9 +249,10 @@ Route::post('/QamarCareCard/AssignService', [App\Http\Controllers\CareCard\CareC
 
 
 Route::post('/QamarCareCard/AssignServices', [App\Http\Controllers\CareCard\CareCardController::class, 'AssignService'])->name('AssignServicesQamarCareCard');
+// FileUploads
+Route::post('/ServiceProvider_Profile', [App\Http\Controllers\HomeController::class, 'ServiceProvider_Profile'])->name('ServiceProvider_Profile');
 
-
-
+//=======================================================================================================================================
 
 
 

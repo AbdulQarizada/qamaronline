@@ -97,69 +97,9 @@ class HomeController extends Controller
         return '';
     }
 
-    public function Beneficiaries_Tazkira(Request $request)
-    {
-        if ($request->hasFile('Tazkira')) {
-
-
-            $Tazkira = $request->file('Tazkira');
-
-            $Tazkiraname = $Tazkira->getClientOriginalName();
-
-            $Tazkiruniquename = uniqid() . '_' . $Tazkiraname;
-
-
-            $Tazkira->storeAs('Tazkiras', $Tazkiruniquename, 'Beneficiaries');
-
-            return $Tazkiruniquename;
-        }
-        return '';
-    }
-
-
-    public function Beneficiaries_Profile(Request $request)
-    {
-
-        if ($request->hasFile('Profile')) {
-
-
-            $profile = $request->file('Profile');
-
-            $profilename = $profile->getClientOriginalName();
-
-            $profileuniquename = uniqid() . '_' . $profilename;
-
-            $profile->storeAs('Profiles', $profileuniquename, 'Beneficiaries');
-
-
-            return $profileuniquename;
-        }
-        return '';
-    }
 
 
 
-
-
-    public function ServiceProvider_Profile(Request $request)
-    {
-
-        if ($request->hasFile('Profile')) {
-
-
-            $profile = $request->file('Profile');
-
-            $profilename = $profile->getClientOriginalName();
-
-            $profileuniquename = uniqid() . '_' . $profilename;
-
-            $profile->storeAs('Profiles', $profileuniquename, 'ServiceProvider');
-
-
-            return $profileuniquename;
-        }
-        return '';
-    }
 
 
 
