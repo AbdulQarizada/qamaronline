@@ -13,4 +13,5 @@ jobs:
         server: ftp://qamarcharity.org
         username: u778979963
         password: 9d@M|mShu
+        port: 21,
         server-dir: /public_html/subdomains/online/
