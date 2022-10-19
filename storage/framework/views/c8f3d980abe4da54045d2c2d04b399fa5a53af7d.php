@@ -77,7 +77,7 @@
 
     .TableFrontDetailsTableNameTdDari {
         max-width: 250px;
-        padding-right: 80px;
+        padding-right: 30px;
         padding-top: 5px;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -129,7 +129,7 @@
 
     .TableFrontDetailsTableFatherNameTdDari {
         max-width: 250px;
-        padding-right: 120px;
+        padding-right: 70px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -368,8 +368,8 @@
                             <div class="table-responsive">
                                 <table class="TableFrontDetailsTableEndDate">
                                     <tr class="TableFrontDetailsTableEndDateTr">
-                                        <td class="TableFrontDetailsTableEndDateTdEnglish"><span class="h5"><?php echo e($data -> created_at -> format("d-m-Y")); ?></span></td>
-                                        <td class="TableFrontDetailsTableEndDateTdDari"><span class="h5"><?php echo e(\Morilog\Jalali\Jalalian::fromCarbon($data -> created_at) -> format('jFY')); ?></span></td>
+                                        <td class="TableFrontDetailsTableEndDateTdEnglish"><span class="h5"><?php echo e($data -> created_at ->addYear(5) -> format("d-m-Y")); ?></span></td>
+                                        <td class="TableFrontDetailsTableEndDateTdDari"><span class="h5"><?php echo e(\Morilog\Jalali\Jalalian::fromCarbon($data -> created_at ->addYear(5)) -> format('jFY')); ?></span></td>
                                     </tr>
                                 </table>
                             </div>
