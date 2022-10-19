@@ -120,19 +120,19 @@
 
                                         <?php if($qamarcarecard -> Status == 'Pending'): ?>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary"><?php echo e($qamarcarecard -> Status); ?></a></h5>
-                                        <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at -> format("d-m-Y")); ?></p>
+                                        <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at -> format("j F Y")); ?></p>
 
                                         <?php endif; ?>
 
                                         <?php if($qamarcarecard -> Status == 'Approved'): ?>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success"><?php echo e($qamarcarecard -> Status); ?> </a></h5>
-                                        <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at -> format("d-m-Y")); ?></p>
+                                        <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at -> format("j F Y")); ?></p>
 
                                         <?php endif; ?>
 
                                         <?php if($qamarcarecard -> Status == 'Rejected'): ?>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger"><?php echo e($qamarcarecard -> Status); ?> </a></h5>
-                                        <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at -> format("d-m-Y")); ?></p>
+                                        <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at -> format("j F Y")); ?></p>
 
                                         <?php endif; ?>
 
@@ -140,19 +140,19 @@
 
                                         <?php if($qamarcarecard -> Status == 'ReInitiated'): ?>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info"><?php echo e($qamarcarecard -> Status); ?></a></h5>
-                                        <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at -> format("d-m-Y")); ?></p>
+                                        <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at -> format("j F Y")); ?></p>
 
                                         <?php endif; ?>
 
                                         <?php if($qamarcarecard -> Status == 'Released'): ?>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success"><?php echo e($qamarcarecard -> Status); ?></a></h5>
-                                        <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at -> format("d-m-Y")); ?></p>
+                                        <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at -> format("j F Y")); ?></p>
 
                                         <?php endif; ?>
 
                                         <?php if($qamarcarecard -> Status == 'Printed'): ?>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark"><?php echo e($qamarcarecard -> Status); ?></a></h5>
-                                        <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at -> format("d-m-Y")); ?></p>
+                                        <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at -> format("j F Y")); ?></p>
 
                                         <?php endif; ?>
 

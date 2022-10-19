@@ -179,7 +179,7 @@
 
     .TableFrontDetailsTableStartDateTdDari {
         max-width: 250px;
-        padding-right: 110px;
+        padding-right: 105px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -224,7 +224,7 @@
 
     .TableFrontDetailsTableEndDateTdDari {
         max-width: 250px;
-        padding-right: 110px;
+        padding-right: 95px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -361,7 +361,7 @@
                                 <table class="TableFrontDetailsTableStartDate">
                                     <tr class="TableFrontDetailsTableStartDateTr">
                                         <td class="TableFrontDetailsTableStartDateTdEnglish"><span class="h5"><?php echo e($data -> created_at -> format("d-m-Y")); ?></span></td>
-                                        <td class="TableFrontDetailsTableStartDateTdDari"><span class="h5"><?php echo e($data -> created_at -> format("d-m-Y")); ?></span></td>
+                                        <td class="TableFrontDetailsTableStartDateTdDari"><span class="h5"><?php echo e(\Morilog\Jalali\Jalalian::fromCarbon($data -> created_at) -> format('jFY')); ?></span></td>
                                     </tr>
                                 </table>
                             </div>
@@ -369,7 +369,7 @@
                                 <table class="TableFrontDetailsTableEndDate">
                                     <tr class="TableFrontDetailsTableEndDateTr">
                                         <td class="TableFrontDetailsTableEndDateTdEnglish"><span class="h5"><?php echo e($data -> created_at -> format("d-m-Y")); ?></span></td>
-                                        <td class="TableFrontDetailsTableEndDateTdDari"><span class="h5"><?php echo e($data -> created_at -> format("d-m-Y")); ?></span></td>
+                                        <td class="TableFrontDetailsTableEndDateTdDari"><span class="h5"><?php echo e(\Morilog\Jalali\Jalalian::fromCarbon($data -> created_at) -> format('jFY')); ?></span></td>
                                     </tr>
                                 </table>
                             </div>

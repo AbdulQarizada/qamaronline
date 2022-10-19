@@ -28,7 +28,7 @@
                         <tr>
                             <td><a href="{{URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)}}" target="_blank" class="badge badge-soft-info"><img src="{{URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)}}" style="width: 130px; height: 135px;" class="rounded"></a>
 
-                                <p class="ml-2">{{$data -> created_at -> format("d-m-Y")}}</p>
+                                <p class="ml-2">{{$data -> created_at -> format("j F Y")}}</p>
                             </td>
                             <td style="text-align: center;">
                                 <!-- <img src="{{URL::asset('/assets/images/letterhead.png')}}" style="width: 400px; height: 100%;" class="rounded-circle"> -->
@@ -64,7 +64,7 @@
                             <td style="width: 20%; border: 2px solid #000; padding: 5px;">Tazkira ID</td>
                             <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> TazkiraID}}</td>
                             <td style="width: 20%; border: 2px solid #000; padding: 5px;">Date of Birth</td>
-                            <td style="width: 40%; border: 2px solid #000; padding: 5px;"> {{\Carbon\Carbon::parse($data -> DOB)->format("d-m-Y");}}</td>
+                            <td style="width: 40%; border: 2px solid #000; padding: 5px;"> {{\Carbon\Carbon::parse($data -> DOB)->format("j F Y");}}</td>
                         </tr>
                         <tr>
                             <td style="width: 20%; border: 2px solid #000; padding: 5px;">Gender</td>
