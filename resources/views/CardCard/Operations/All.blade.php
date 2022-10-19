@@ -12,14 +12,33 @@
 
 
 <div class="row mt-4">
-    <div class="col-4">
+    <div class="col-6">
         <a href="{{route('IndexCareCardOperations')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>CARE CARDS</span>
+        @if($PageInfo == 'All')
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>ALL CARE CARDS</span>
+        @endif
+        @if($PageInfo == 'Pending')
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>PENDING CARE CARDS</span>
+        @endif
+        @if($PageInfo == 'Approved')
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>APPROVED CARE CARDS</span>
+        @endif
+        @if($PageInfo == 'Printed')
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>PRINTED CARE CARDS</span>
+        @endif
+        @if($PageInfo == 'Released')
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>RELEASED CARE CARDS</span>
+        @endif
+        @if($PageInfo == 'Rejected')
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>REJECTED CARE CARDS</span>
+        @endif
     </div>
 </div>
 <div class="row">
     <div class="col-12 ">
+    @if($PageInfo == 'All')
         <a href="{{route('CreateCareCard')}}" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD CARE CARD</a>
+    @endif
     </div>
 </div>
 
