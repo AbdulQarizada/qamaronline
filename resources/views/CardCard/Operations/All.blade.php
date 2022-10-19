@@ -34,13 +34,13 @@
         @endif
     </div>
 </div>
-<div class="row">
+<!-- <div class="row">
     <div class="col-12 ">
     @if($PageInfo == 'All')
         <a href="{{route('CreateCareCard')}}" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD CARE CARD</a>
     @endif
     </div>
-</div>
+</div> -->
 
 <div class="row">
     <div class="col-12">

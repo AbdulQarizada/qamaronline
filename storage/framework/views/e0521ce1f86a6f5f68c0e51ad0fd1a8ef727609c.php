@@ -25,6 +25,11 @@
     </div>
 </div>
 <div class="row">
+    <div class="col-12 ">
+        <a href="<?php echo e(route('CreateCareCard')); ?>" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD CARE CARD</a>
+    </div>
+</div>
+<div class="row">
     <div class="col-xl-12">
         <div class="row">
 
