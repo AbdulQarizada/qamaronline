@@ -6,38 +6,27 @@
 <!-- DataTables -->
 <link href="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.css')); ?>" rel="stylesheet" type="text/css" />
 <style>
-    /* html {
-        background-color: #000;
-    } */
+
 
 
     /* This is the front side of card */
 
     .CardSizeFront {
-        /* position: fixed; */
         height: 580px;
         width: 680px;
-        /* background-color: papayawhip; */
-        /* margin: auto; */
-        margin-top: 30px;
         background-repeat: no-repeat;
     }
 
     .TableFront {
         width: 640px;
         margin-top: 145px;
-        /* margin-left: 100px; */
         white-space: nowrap;
-        /* border: 5px solid black; */
 
     }
 
     .TableFrontTr {
         width: 640px;
-        /* margin-top: 155px; */
-        /* margin-left: 100px; */
         white-space: nowrap;
-        /* border: 5px solid black; */
 
     }
 
@@ -45,7 +34,6 @@
     .TableFrontDetailsTd {
         width: 500px;
         white-space: nowrap;
-        /* border: 5px solid black; */
     }
 
 
@@ -69,17 +57,14 @@
     /* table in details name  */
     .TableFrontDetailsTableName {
         width: 450px;
-        /* border: 5px solid black; */
     }
 
     .TableFrontDetailsTableNameTr {
         width: 450px;
-        /* border: 5px solid black; */
     }
 
     .TableFrontDetailsTableNameTdEnglish {
         max-width: 250px;
-        /* border: 5px solid black; */
         padding-left: 80px;
         padding-top: 5px;
         overflow: hidden;
@@ -92,7 +77,6 @@
 
     .TableFrontDetailsTableNameTdDari {
         max-width: 250px;
-        /* border: 5px solid black; */
         padding-right: 80px;
         padding-top: 5px;
         overflow: hidden;
@@ -126,19 +110,15 @@
     .TableFrontDetailsTableFatherName {
         width: 450px;
         margin-top: 10px;
-        /* border: 5px solid black; */
     }
 
     .TableFrontDetailsTableFatherNameTr {
         width: 450px;
-        /* border: 5px solid black; */
     }
 
     .TableFrontDetailsTableFatherNameTdEnglish {
         max-width: 250px;
-        /* border: 5px solid black; */
         padding-left: 90px;
-        /* padding-top: 2px; */
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -149,7 +129,6 @@
 
     .TableFrontDetailsTableFatherNameTdDari {
         max-width: 250px;
-        /* border: 5px solid black; */
         padding-right: 120px;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -180,17 +159,14 @@
 
     .TableFrontDetailsTableStartDate {
         width: 450px;
-        /* border: 5px solid black; */
     }
 
     .TableFrontDetailsTableStartDateTr {
         width: 450px;
-        /* border: 5px solid black; */
     }
 
     .TableFrontDetailsTableStartDateTdEnglish {
         max-width: 250px;
-        /* border: 5px solid black; */
         padding-left: 105px;
         padding-top: 5px;
         overflow: hidden;
@@ -203,7 +179,6 @@
 
     .TableFrontDetailsTableStartDateTdDari {
         max-width: 250px;
-        /* border: 5px solid black; */
         padding-right: 110px;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -229,17 +204,14 @@
 
     .TableFrontDetailsTableEndDate {
         width: 450px;
-        /* border: 5px solid black; */
     }
 
     .TableFrontDetailsTableEndDateTr {
         width: 450px;
-        /* border: 5px solid black; */
     }
 
     .TableFrontDetailsTableEndDateTdEnglish {
         max-width: 250px;
-        /* border: 5px solid black; */
         padding-left: 110px;
         padding-top: 5px;
         overflow: hidden;
@@ -252,7 +224,6 @@
 
     .TableFrontDetailsTableEndDateTdDari {
         max-width: 250px;
-        /* border: 5px solid black; */
         padding-right: 110px;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -276,17 +247,14 @@
 
     .TableFrontDetailsTableQCC {
         width: 450px;
-        /* border: 5px solid black; */
     }
 
     .TableFrontDetailsTableQCCTr {
         width: 450px;
-        /* border: 5px solid black; */
     }
 
     .TableFrontDetailsTableQCCTdEnglish {
         max-width: 250px;
-        /* border: 5px solid black; */
         padding-left: 125px;
         padding-top: 8px;
         overflow: hidden;
@@ -299,7 +267,6 @@
 
     .TableFrontDetailsTableQCCTdDari {
         max-width: 250px;
-        /* border: 5px solid black; */
         padding-right: 110px;
         padding-top: 8px;
         overflow: hidden;
@@ -323,7 +290,6 @@
         width: 140px;
         padding-left: 5px;
         white-space: nowrap;
-        /* border: 5px solid black; */
     }
 
 
@@ -335,11 +301,8 @@
 
     /* This is the back side of card */
     .CardSizeBack {
-        /* position: fixed; */
         height: 580px;
         width: 680px;
-        /* background-color: papayawhip; */
-        /* margin: auto; */
         margin-top: 400px;
         background-repeat: no-repeat;
     }
@@ -347,7 +310,6 @@
     .TableBack {
         width: 680px;
         white-space: nowrap;
-        /* border: 5px solid black; */
     }
 
     .TableBackTr {}
@@ -357,7 +319,6 @@
         float: right;
         margin-top: 290px;
         margin-right: 50px;
-        /* border: 5px solid black; */
     }
 </style>
 
