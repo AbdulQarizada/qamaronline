@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\CareCard;
+namespace App\Http\Controllers\CareCard\Operations;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -508,7 +508,7 @@ class OperationsController extends Controller
 
     ]);
 
-    return redirect()->route('IndexCareCardOperations')->with('toast_success', 'Record Created Successfully!');
+    return redirect()->route('PendingCareCard')->with('toast_success', 'Record Created Successfully!');
   }
 
 // Update

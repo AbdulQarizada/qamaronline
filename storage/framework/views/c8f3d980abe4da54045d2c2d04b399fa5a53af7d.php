@@ -317,7 +317,7 @@
     .TableBackTd {
         white-space: nowrap;
         float: right;
-        margin-top: 290px;
+        margin-top: 340px;
         margin-right: 50px;
     }
 </style>
@@ -344,16 +344,16 @@
                             <div class="table-responsive">
                                 <table class="TableFrontDetailsTableName">
                                     <tr class="TableFrontDetailsTableNameTr">
-                                        <td class="TableFrontDetailsTableNameTdEnglish"><span class="h4"><?php echo e($data -> FirstName); ?></span></td>
-                                        <td class="TableFrontDetailsTableNameTdDari"><span class="h4"><?php echo e($data -> FirstNameLocal); ?></span></td>
+                                        <td class="TableFrontDetailsTableNameTdEnglish"><span class="h5"><?php echo e($data -> FirstName); ?></span></td>
+                                        <td class="TableFrontDetailsTableNameTdDari"><span class="h5"><?php echo e($data -> FirstNameLocal); ?></span></td>
                                     </tr>
                                 </table>
                             </div>
                             <div class="table-responsive">
                                 <table class="TableFrontDetailsTableFatherName">
                                     <tr class="TableFrontDetailsTableFatherNameTr">
-                                        <td class="TableFrontDetailsTableFatherNameTdEnglish"><span class="h4"><?php echo e($data -> FatherName); ?></span></td>
-                                        <td class="TableFrontDetailsTableFatherNameTdDari"><span class="h4"><?php echo e($data -> FatherNameLocal); ?></span></td>
+                                        <td class="TableFrontDetailsTableFatherNameTdEnglish"><span class="h5"><?php echo e($data -> FatherName); ?></span></td>
+                                        <td class="TableFrontDetailsTableFatherNameTdDari"><span class="h5"><?php echo e($data -> FatherNameLocal); ?></span></td>
                                     </tr>
                                 </table>
                             </div>
@@ -361,7 +361,7 @@
                                 <table class="TableFrontDetailsTableStartDate">
                                     <tr class="TableFrontDetailsTableStartDateTr">
                                         <td class="TableFrontDetailsTableStartDateTdEnglish"><span class="h5"><?php echo e($data -> created_at -> format("d-m-Y")); ?></span></td>
-                                        <td class="TableFrontDetailsTableStartDateTdDari"><span class="h5"><?php echo e(\Morilog\Jalali\Jalalian::fromCarbon($data -> created_at) -> format('jFY')); ?></span></td>
+                                        <td class="TableFrontDetailsTableStartDateTdDari"><span class="h5"><?php echo e(\Morilog\Jalali\Jalalian::fromCarbon($data -> created_at) -> format('j-F-Y')); ?></span></td>
                                     </tr>
                                 </table>
                             </div>
@@ -369,7 +369,7 @@
                                 <table class="TableFrontDetailsTableEndDate">
                                     <tr class="TableFrontDetailsTableEndDateTr">
                                         <td class="TableFrontDetailsTableEndDateTdEnglish"><span class="h5"><?php echo e($data -> created_at ->addYear(5) -> format("d-m-Y")); ?></span></td>
-                                        <td class="TableFrontDetailsTableEndDateTdDari"><span class="h5"><?php echo e(\Morilog\Jalali\Jalalian::fromCarbon($data -> created_at ->addYear(5)) -> format('jFY')); ?></span></td>
+                                        <td class="TableFrontDetailsTableEndDateTdDari"><span class="h5"><?php echo e(\Morilog\Jalali\Jalalian::fromCarbon($data -> created_at ->addYear(5)) -> format('j-F-Y')); ?></span></td>
                                     </tr>
                                 </table>
                             </div>
@@ -389,17 +389,6 @@
 
                 </table>
             </div>
-            <!-- <table style="margin-left:232px; margin-top:22px;">
-
-                <tr>
-                    <td class="TableFrontTd ">
-                        <div class="rating-star">
-                            <input type="hidden" class="rating" data-filled="mdi mdi-star text-warning " data-empty="mdi mdi-star-outline text-muted" value="<?php echo e($data -> LevelPoverty); ?>" name="LevelPoverty" id="LevelPoverty" readonly />
-                        </div>
-                    </td>
-                </tr>
-            </table> -->
-            <!-- <td rowspan="4" class="TableFrontTd "> </td> -->
 
         </div>
     </div>
@@ -413,7 +402,7 @@
             <table class="TableBack">
 
                 <tr>
-                    <td class="TableBackTd"><?php echo DNS2D::getBarcodeSVG(''.$data->QCC, 'QRCODE', 6, 6, 'black',true); ?></td>
+                    <td class="TableBackTd"><?php echo DNS2D::getBarcodeSVG(''.$data->QCC, 'QRCODE', 4, 4, 'white',true); ?></td>
                 </tr>
             </table>
         </div>

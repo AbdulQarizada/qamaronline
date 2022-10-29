@@ -34,14 +34,22 @@
         @endif
     </div>
 </div>
-<!-- <div class="row">
-    <div class="col-12 ">
-    @if($PageInfo == 'All')
-        <a href="{{route('CreateCareCard')}}" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD CARE CARD</a>
-    @endif
+<div class="row">
+    <div class="col-2">
+        <select class="form-select  form-select-lg mb-3 @error('Country') is-invalid @enderror" onchange="window.location.href=this.value;">
+            <option value="{{route('AllCareCard')}}">Please Filter Your Choices</option>
+            <option value="{{route('AllCareCard')}}">All</option>
+            <option value="{{route('PendingCareCard')}}">Pending</option>
+            <option value="{{route('ApprovedCareCard')}}">Approved</option>
+            <option value="{{route('PrintedCareCard')}}">Printed</option>
+            <option value="{{route('ReleasedCareCard')}}">Released</option>
+            <option value="{{route('RejectedCareCard')}}">Rejected</option>
+        </select>
     </div>
-</div> -->
-
+    <div class="col-10 ">
+        <a href="{{route('CreateCareCard')}}" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD CARE CARD</a>
+    </div>
+</div>
 <div class="row">
     <div class="col-12">
 

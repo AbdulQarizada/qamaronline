@@ -1,13 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\CareCard\Services;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DataTables;
 use App\Models\QamarCareCard;
 use App\Models\AssignCareCardServices;
 use App\Models\ServiceType;
 use App\Models\ServiceProviders;
+use App\Models\Fookpacks;
+use App\Models\BeneficiariesToFoodPacks;
+
 use Auth;
 
 use App\Models\Location;
@@ -20,11 +24,8 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
 
-class CareCardController extends Controller
+class FoodPacksController extends Controller
 {
-
-
-
 
 
   public function __construct()
@@ -38,29 +39,116 @@ class CareCardController extends Controller
   public function Index()
   {
 
-    return view('CardCard.Index');
-  }
-
-
-  public function IndexCareCardOperations()
-  {
-
-    return view('CardCard.Operations.Index');
-  }
-
-
-
-  public function IndexCareCardServices()
-  {
-
     return view('CardCard.Services.Index');
   }
 
-
-  // create
-  public function Create()
+  public function IndexFoodPack()
   {
 
+    return view('CardCard.Services.FoodPack.Index');
+  }
+
+
+  public function All()
+  {
+    $datas =   Fookpacks::join('locations as a', 'fookpacks.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'fookpacks.District_ID', '=', 'b.id')
+      ->join('users as d', 'fookpacks.Created_By', '=', 'd.id')
+      ->select(['fookpacks.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+      ->get();
+    return view('CardCard.Services.FoodPack.All', ['datas' => $datas]);
+  }
+
+  // Create New Food Pack
+
+  public function Create()
+  {
+    $provinces = Location::whereNull("Parent_ID")->get();
+    return view('CardCard.Services.FoodPack.Create', ['provinces' => $provinces,]);
+  }
+
+
+  public function Store(Request $request)
+  {
+
+    $validator = $request->validate([
+      'Name' => 'bail|required|max:255',
+      'ExpectedDate' => 'required|max:255',
+      'Province_ID' => 'required|max:255',
+      'District_ID' => 'required|max:255',
+      'TotalBudget' => 'required|max:255',
+      'TargetBeneficiaries' => 'required|max:255',
+      'Description' => 'required|max:255',
+
+
+
+
+    ]);
+
+    Fookpacks::create([
+      'Name' => request('Name'),
+      'ExpectedDate' => request('ExpectedDate'),
+      'Province_ID' => request('Province_ID'),
+      'District_ID' => request('District_ID'),
+      'TotalBudget' => request('TotalBudget'),
+      'TargetBeneficiaries' => request('TargetBeneficiaries'),
+      'Description' => request('Description'),
+      'Created_By' => auth()->user()->id,
+      'Owner' => 1,
+
+
+
+    ]);
+
+    return redirect()->route('AllFoodPack')->with('toast_success', 'Record Created Successfully!');
+  }
+
+
+
+  public function Edit(Fookpacks $data)
+  {
+    $provinces = Location::whereNull("Parent_ID")->get();
+    $districts = Location::get();
+    return view('CardCard.Services.FoodPack.Edit', ['data' => $data, 'provinces' => $provinces, 'districts' => $districts,]);
+  }
+
+
+  public function Update(Fookpacks $data)
+  {
+
+    $data->update([
+
+      'Name' => request('Name'),
+      'ExpectedDate' => request('ExpectedDate'),
+      'Province_ID' => request('Province_ID'),
+      'District_ID' => request('District_ID'),
+      'TotalBudget' => request('TotalBudget'),
+      'TargetBeneficiaries' => request('TargetBeneficiaries'),
+      'Description' => request('Description'),
+      'Owner' => 1,
+
+    ]);
+
+    return redirect()->route('AllFoodPack')->with('toast_success', 'Record Created Successfully!');
+  }
+
+
+  // Delete
+  public function Delete(Fookpacks $data)
+  {
+
+    $data->delete();
+    return back()->with('success', 'Record deleted successfully');
+  }
+
+
+
+
+
+
+
+  public function EligibleBeneficiariesFoodPack()
+  {
     $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
     $genders =   LookUp::where("Parent_Name", "=", "Gender")->get();
     $tribes =   LookUp::where("Parent_Name", "=", "Tribe")->get();
@@ -73,146 +161,157 @@ class CareCardController extends Controller
     $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
     $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
     $provinces = Location::whereNull("Parent_ID")->get();
-
-
-
-
-
-
-    return view('QamarCardCard.CareCardOperations.Create', ['countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+    $foodpacks = Fookpacks::get();
+    $districts = Location::get();
+    $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+      ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+      ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+      ->where("qamar_care_cards.Status", "=", 'Approved')
+      ->get();
+    return view('CardCard.Services.FoodPack.EligibalBeneficieries', ['qamarcarecards' => $qamarcarecards, 'foodpacks' => $foodpacks,  'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
   }
 
-  public function Store(Request $request)
+
+
+  public function SearchEligibleBeneficieries()
+  {
+    $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+    $genders =   LookUp::where("Parent_Name", "=", "Gender")->get();
+    $tribes =   LookUp::where("Parent_Name", "=", "Tribe")->get();
+    $languages =   LookUp::where("Parent_Name", "=", "Language")->get();
+    $currentjobs =   LookUp::where("Parent_Name", "=", "CurrentJob")->get();
+    $futurejobs =   LookUp::where("Parent_Name", "=", "FutureJob")->get();
+    $educationlevels =   LookUp::where("Parent_Name", "=", "EducationLevel")->get();
+    $relationships =   LookUp::where("Parent_Name", "=", "RelativeRelationship")->get();
+    $incomestreams =   LookUp::where("Parent_Name", "=", "IncomeStream")->get();
+    $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
+    $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
+    $provinces = Location::whereNull("Parent_ID")->get();
+    $foodpacks = Fookpacks::get();
+    $districts = Location::get();
+
+    if (request('Province_ID') != null) {
+      if (request('District_ID') != "All" && request('FamilyStatus_ID') != "All" && request('LevelPoverty') != null) {
+        $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
+          ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+          ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+          ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+          ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+          ->where("qamar_care_cards.Status", "=", 'Approved')
+          ->where("qamar_care_cards.Province_ID", "=", request('Province_ID'))
+          ->where("qamar_care_cards.District_ID", "=", request('District_ID'))
+          ->where("qamar_care_cards.FamilyStatus_ID", "=", request('FamilyStatus_ID'))
+          ->where("qamar_care_cards.LevelPoverty", "=", request('LevelPoverty'))
+          ->get();
+      } else if (request('District_ID') == "All" && request('FamilyStatus_ID') != "All" && request('LevelPoverty') != null) {
+        $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
+          ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+          ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+          ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+          ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+          ->where("qamar_care_cards.Status", "=", 'Approved')
+          ->where("qamar_care_cards.Province_ID", "=", request('Province_ID'))
+          ->where("qamar_care_cards.FamilyStatus_ID", "=", request('FamilyStatus_ID'))
+          ->where("qamar_care_cards.LevelPoverty", "=", request('LevelPoverty'))
+          ->get();
+      } else if (request('District_ID') == "All" && request('FamilyStatus_ID') == "All" && request('LevelPoverty') != null) {
+        $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
+          ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+          ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+          ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+          ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+          ->where("qamar_care_cards.Status", "=", 'Approved')
+          ->where("qamar_care_cards.Province_ID", "=", request('Province_ID'))
+          ->where("qamar_care_cards.LevelPoverty", "=", request('LevelPoverty'))
+          ->get();
+      } else if (request('District_ID') == "All" && request('FamilyStatus_ID') == "All" && request('LevelPoverty') == null) {
+        $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
+          ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+          ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+          ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+          ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+          ->where("qamar_care_cards.Status", "=", 'Approved')
+          ->where("qamar_care_cards.Province_ID", "=", request('Province_ID'))
+          ->get();
+      } else {
+        $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
+          ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+          ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+          ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+          ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+          ->where("qamar_care_cards.Status", "=", 'Approved')
+          ->get();
+      }
+    } else if (request('FamilyStatus_ID') != "All") {
+      $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
+        ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+        ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+        ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+        ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+        ->where("qamar_care_cards.Status", "=", 'Approved')
+        ->where("qamar_care_cards.FamilyStatus_ID", "=", request('FamilyStatus_ID'))
+        ->get();
+    } else if (request('LevelPoverty') != null) {
+      $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
+        ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+        ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+        ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+        ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+        ->where("qamar_care_cards.Status", "=", 'Approved')
+        ->where("qamar_care_cards.LevelPoverty", "=", request('LevelPoverty'))
+        ->get();
+    } else {
+      $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
+        ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+        ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+        ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+        ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+        ->where("qamar_care_cards.Status", "=", 'Approved')
+        ->get();
+    }
+
+
+
+    return view('CardCard.Services.FoodPack.EligibalBeneficieries', ['qamarcarecards' => $qamarcarecards, 'foodpacks' => $foodpacks,  'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+  }
+
+
+
+  // Assign To Food Pack
+  public function AssignToFoodPack(Request $request)
   {
 
     $validator = $request->validate([
-      'FirstName' => 'bail|required|max:255',
-      'FirstNameLocal' => 'required|max:255',
-
-      // 'LastName' => 'required|max:255',
-      'TazkiraID' => 'required|unique:qamar_care_cards|max:10',
-      'QamarSupport_ID' => 'required|max:255',
-      'MaritalStatus' => 'required|max:255',
-      'Profile' => 'required',
-      'DOB' => 'required|max:255',
-      'Gender_ID' => 'required|max:255',
-      'Language_ID' => 'required|max:255',
-      'CurrentJob_ID' => 'required|max:255',
-      'FutureJob_ID' => 'required|max:255',
-      'EducationLevel_ID' => 'required|max:255',
-      'PrimaryNumber' => 'required|max:10',
-      'SecondaryNumber' => 'required|max:10',
-      'RelativeNumber' => 'required|max:10',
-      'Province_ID' => 'required|max:255',
-      'District_ID' => 'required|max:255',
-      'Village' => 'required|max:255',
-      // 'Email' => 'required|email|max:255',
-      'FatherName' => 'required|max:255',
-      'FatherNameLocal' => 'required|max:255',
-
-      // 'SpuoseName' => 'required|max:255',
-      // 'SpuoseTazkiraID' => 'unique:qamar_care_cards|max:255',
-      'EldestSonAge' => 'required|max:255',
-      'MonthlyFamilyIncome' => 'required|max:10',
-      'MonthlyFamilyExpenses' => 'required|max:10',
-      'NumberFamilyMembers' => 'required|max:10',
-      'IncomeStreem_ID' => 'required|max:255',
-      'LevelPoverty' => 'required|max:255',
-      // 'Tazkira' => 'required|max:255',
-
-      'RelativeNumber' => 'required|max:10',
-      'RelativeRelationship_ID' => 'required|max:255',
-      'RelativeName' => 'required|max:255',
-      'FamilyStatus_ID' => 'required|max:255',
-      'Country_ID' => 'required|max:255',
-      'Tribe_ID' => 'required|max:255',
-
-    ]);
-
-
-    //    if ($validator->fails()) {
-    //     $error = $validator->errors()->first();
-    //  }
-
-
-
-    QamarCareCard::create([
-      'FirstName' => request('FirstName'),
-      'FirstNameLocal' => request('FirstNameLocal'),
-
-
-      'LastName' => request('LastName'),
-      'LastNameLocal' => request('LastNameLocal'),
-
-
-      'TazkiraID' => request('TazkiraID'),
-      'Profile' => request('Profile'),
-      'DOB' => request('DOB'),
-      'QCC' => request('QCC'),
-      'Gender_ID' => request('Gender_ID'),
-      'Language_ID' => request('Language_ID'),
-      'CurrentJob_ID' => request('CurrentJob_ID'),
-      'FutureJob_ID' => request('FutureJob_ID'),
-      'EducationLevel_ID' => request('EducationLevel_ID'),
-      'QamarSupport_ID' => request('QamarSupport_ID'),
-      'PrimaryNumber' => request('PrimaryNumber'),
-      'SecondaryNumber' => request('SecondaryNumber'),
-      'RelativeNumber' => request('RelativeNumber'),
-      'Province_ID' => request('Province_ID'),
-      'District_ID' => request('District_ID'),
-      'Village' => request('Village'),
-      'Email' => request('Email'),
-      'FatherName' => request('FatherName'),
-      'FatherNameLocal' => request('FatherNameLocal'),
-
-      'MaritalStatus' => request('MaritalStatus'),
-      'SpuoseName' => request('SpuoseName'),
-      'SpuoseTazkiraID' => request('SpuoseTazkiraID'),
-      'EldestSonAge' => request('EldestSonAge'),
-      'MonthlyFamilyIncome' => request('MonthlyFamilyIncome'),
-      'MonthlyFamilyExpenses' => request('MonthlyFamilyExpenses'),
-      'NumberFamilyMembers' => request('NumberFamilyMembers'),
-      'IncomeStreem_ID' => request('IncomeStreem_ID'),
-      'LevelPoverty' => request('LevelPoverty'),
-      'Tazkira' => request('Tazkira'),
-      'Status' => 'Pending',
-      'Created_By' => auth()->user()->id,
-
-      'RelativeNumber' => request('RelativeNumber'),
-      'RelativeRelationship_ID' => request('RelativeRelationship_ID'),
-      'RelativeName' => request('RelativeName'),
-      'FamilyStatus_ID' => request('FamilyStatus_ID'),
-      'Country_ID' => request('Country_ID'),
-      'Tribe_ID' => request('Tribe_ID'),
-      'Owner' => 1,
-
+      'FoodPack_ID' => 'bail|required|max:255',
+      'Beneficiary_ID' => 'required|max:255',
 
 
     ]);
 
-    return redirect()->route('AllQamarCareCard')->with('toast_success', 'Record Created Successfully!');
+
+    foreach (request('Beneficiary_ID') as $BeneficiaryID) {
+      BeneficiariesToFoodPacks::create([
+        'FoodPack_ID' => request('FoodPack_ID'),
+        'Beneficiary_ID' => $BeneficiaryID,
+        'Created_By' => auth()->user()->id,
+        'Owner' => 1,
+
+
+
+      ]);
+    }
+
+
+    return redirect()->route('AssignedBeneficiariesFoodPack')->with('toast_success', 'Record Created Successfully!');
   }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // update
-  public function Edit(QamarCareCard $data)
+  // list
+  public function AssignedBeneficiariesFoodPack()
   {
-
     $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
     $genders =   LookUp::where("Parent_Name", "=", "Gender")->get();
     $tribes =   LookUp::where("Parent_Name", "=", "Tribe")->get();
@@ -226,68 +325,10 @@ class CareCardController extends Controller
     $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
     $provinces = Location::whereNull("Parent_ID")->get();
     $districts = Location::get();
-    return view('QamarCardCard.CareCardOperations.Edit', ['data' => $data, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'districts' => $districts, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
 
-    // return view('QamarCardCard.Edit', ['data' => $data]);
-  }
+    $qamarcarecards =   BeneficiariesToFoodPacks::get();
 
-  public function Update(QamarCareCard $data)
-  {
-
-    $data->update([
-
-      'FirstName' => request('FirstName'),
-      'FirstNameLocal' => request('FirstNameLocal'),
-
-
-      'LastName' => request('LastName'),
-      'LastNameLocal' => request('LastNameLocal'),
-
-
-      'TazkiraID' => request('TazkiraID'),
-      'Profile' => request('Profile'),
-      'DOB' => request('DOB'),
-      'QCC' => request('QCC'),
-      'Gender_ID' => request('Gender_ID'),
-      'Language_ID' => request('Language_ID'),
-      'CurrentJob_ID' => request('CurrentJob_ID'),
-      'FutureJob_ID' => request('FutureJob_ID'),
-      'EducationLevel_ID' => request('EducationLevel_ID'),
-      'QamarSupport_ID' => request('QamarSupport_ID'),
-      'PrimaryNumber' => request('PrimaryNumber'),
-      'SecondaryNumber' => request('SecondaryNumber'),
-      'RelativeNumber' => request('RelativeNumber'),
-      'Province_ID' => request('Province_ID'),
-      'District_ID' => request('District_ID'),
-      'Village' => request('Village'),
-      'Email' => request('Email'),
-      'FatherName' => request('FatherName'),
-      'FatherNameLocal' => request('FatherNameLocal'),
-
-      'MaritalStatus' => request('MaritalStatus'),
-      'SpuoseName' => request('SpuoseName'),
-      'SpuoseTazkiraID' => request('SpuoseTazkiraID'),
-      'EldestSonAge' => request('EldestSonAge'),
-      'MonthlyFamilyIncome' => request('MonthlyFamilyIncome'),
-      'MonthlyFamilyExpenses' => request('MonthlyFamilyExpenses'),
-      'NumberFamilyMembers' => request('NumberFamilyMembers'),
-      'IncomeStreem_ID' => request('IncomeStreem_ID'),
-      'LevelPoverty' => request('LevelPoverty'),
-      'Tazkira' => request('Tazkira'),
-      'Status' => 'Pending',
-      'Created_By' => auth()->user()->id,
-
-      'RelativeNumber' => request('RelativeNumber'),
-      'RelativeRelationship_ID' => request('RelativeRelationship_ID'),
-      'RelativeName' => request('RelativeName'),
-      'FamilyStatus_ID' => request('FamilyStatus_ID'),
-      'Country_ID' => request('Country_ID'),
-      'Tribe_ID' => request('Tribe_ID'),
-      'Owner' => 1,
-
-    ]);
-    // $qamarcarecards =   QamarCareCard::all();
-    return redirect()->route('AllQamarCareCard')->with('toast_success', 'Record Edited Successfully!');
+    return view('CardCard.Services.FoodPack.AssignedBeneficiaries', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
   }
 
 
@@ -304,13 +345,14 @@ class CareCardController extends Controller
 
 
 
-  // Delete
-  public function Delete(QamarCareCard $data)
-  {
 
-    $data->delete();
-    return back()->with('success', 'Record deleted successfully');
-  }
+
+
+
+
+
+
+
 
 
 
@@ -354,45 +396,7 @@ class CareCardController extends Controller
 
 
   // list
-  public function All()
-  {
-    $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
-    $genders =   LookUp::where("Parent_Name", "=", "Gender")->get();
-    $tribes =   LookUp::where("Parent_Name", "=", "Tribe")->get();
-    $languages =   LookUp::where("Parent_Name", "=", "Language")->get();
-    $currentjobs =   LookUp::where("Parent_Name", "=", "CurrentJob")->get();
-    $futurejobs =   LookUp::where("Parent_Name", "=", "FutureJob")->get();
-    $educationlevels =   LookUp::where("Parent_Name", "=", "EducationLevel")->get();
-    $relationships =   LookUp::where("Parent_Name", "=", "RelativeRelationship")->get();
-    $incomestreams =   LookUp::where("Parent_Name", "=", "IncomeStream")->get();
-    $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
-    $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
-    $provinces = Location::whereNull("Parent_ID")->get();
-    $districts = Location::get();
 
-    if(Auth::user()->IsManager == 1 )
-    {
-    $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->get();
-    }
-    else
-    {
-      $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
-      ->get();
-    }
-    return view('QamarCardCard.CareCardOperations.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
-
-
-  }
 
 
   // public function AllAjax()
@@ -427,31 +431,26 @@ class CareCardController extends Controller
     $provinces = Location::whereNull("Parent_ID")->get();
     $districts = Location::get();
 
-    if(Auth::user()->IsManager == 1 )
-    {
+    if (Auth::user()->IsManager == 1) {
       $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
-      ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("qamar_care_cards.Status", "=", 'Approved')
-      ->get();
-    }
-
-    else
-    {
+        ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+        ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+        ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+        ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+        ->where("qamar_care_cards.Status", "=", 'Approved')
+        ->get();
+    } else {
       $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
-      ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+        ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+        ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+        ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+        ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
 
-      ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
-      ->where("qamar_care_cards.Status", "=", 'Approved')
-      ->get();
+        ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
+        ->where("qamar_care_cards.Status", "=", 'Approved')
+        ->get();
     }
     return view('QamarCardCard.CareCardOperations.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
-
   }
 
 
@@ -471,31 +470,27 @@ class CareCardController extends Controller
     $provinces = Location::whereNull("Parent_ID")->get();
     $districts = Location::get();
 
-    if(Auth::user()->IsManager == 1 )
-    {
-    $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
-
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("qamar_care_cards.CareCardOperations.Status", "=", 'Rejected')
-      ->get();
-    }
-    else
-    {
+    if (Auth::user()->IsManager == 1) {
       $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+        ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+        ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+        ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
 
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("qamar_care_cards.Status", "=", 'Rejected')
-      ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
-      ->get();
+        ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+        ->where("qamar_care_cards.CareCardOperations.Status", "=", 'Rejected')
+        ->get();
+    } else {
+      $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
+        ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+        ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+        ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+
+        ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+        ->where("qamar_care_cards.Status", "=", 'Rejected')
+        ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
+        ->get();
     }
     return view('QamarCardCard.CareCardOperations.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
-
   }
 
 
@@ -518,26 +513,23 @@ class CareCardController extends Controller
     $provinces = Location::whereNull("Parent_ID")->get();
     $districts = Location::get();
 
-    if(Auth::user()->IsManager == 1 )
-    {
-    $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("qamar_care_cards.Status", "=", 'Pending')
-      ->get();
-    }
-    else
-    {
+    if (Auth::user()->IsManager == 1) {
       $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("qamar_care_cards.Status", "=", 'Pending')
-      ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
-      ->get();
+        ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+        ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+        ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+        ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+        ->where("qamar_care_cards.Status", "=", 'Pending')
+        ->get();
+    } else {
+      $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
+        ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+        ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+        ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+        ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+        ->where("qamar_care_cards.Status", "=", 'Pending')
+        ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
+        ->get();
     }
     return view('QamarCardCard.CareCardOperations.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
 
@@ -562,29 +554,25 @@ class CareCardController extends Controller
     $provinces = Location::whereNull("Parent_ID")->get();
     $districts = Location::get();
 
-    if(Auth::user()->IsManager == 1 )
-    {
-    $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
-
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("qamar_care_cards.Status", "=", 'Released')
-      ->get();
-    }
-    else
-    {
+    if (Auth::user()->IsManager == 1) {
       $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+        ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+        ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+        ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
 
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("qamar_care_cards.Status", "=", 'Released')
-      ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
-      ->get();
+        ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+        ->where("qamar_care_cards.Status", "=", 'Released')
+        ->get();
+    } else {
+      $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
+        ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+        ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+        ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
 
+        ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+        ->where("qamar_care_cards.Status", "=", 'Released')
+        ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
+        ->get();
     }
     return view('QamarCardCard.CareCardOperations.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
 
@@ -734,30 +722,27 @@ class CareCardController extends Controller
     $provinces = Location::whereNull("Parent_ID")->get();
     $districts = Location::get();
 
-    if(Auth::user()->IsManager == 1 )
-    {
+    if (Auth::user()->IsManager == 1) {
 
-    $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-    ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-    ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-    ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
-    ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-    ->where("qamar_care_cards.Status", "=", 'Printed')
-    ->get();
-    }
-    else{
       $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-      ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-      ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+        ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+        ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+        ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+        ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+        ->where("qamar_care_cards.Status", "=", 'Printed')
+        ->get();
+    } else {
+      $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
+        ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+        ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+        ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
 
-      ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("qamar_care_cards.Status", "=", 'Printed')
-      ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
-      ->get();
+        ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+        ->where("qamar_care_cards.Status", "=", 'Printed')
+        ->where("qamar_care_cards.Created_By", "=", Auth::user()->id)
+        ->get();
     }
     return view('QamarCardCard.CareCardOperations.All', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
-
   }
 
 

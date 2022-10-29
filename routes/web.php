@@ -156,92 +156,125 @@ Route::get('/CareCard', [App\Http\Controllers\CareCard\HomeController::class, 'I
 
 // Operation
 // Index
-Route::get('/CareCard/Operations', [App\Http\Controllers\CareCard\OperationsController::class, 'Index'])->name('IndexCareCardOperations');
+Route::get('/CareCard/Operations', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'Index'])->name('IndexCareCardOperations');
 // List
-Route::get('/CareCard/Operations/All', [App\Http\Controllers\CareCard\OperationsController::class, 'All'])->name('AllCareCard');
-Route::get('/CareCard/Operations/Pending', [App\Http\Controllers\CareCard\OperationsController::class, 'Pending'])->name('PendingCareCard');
-Route::get('/CareCard/Operations/Approved', [App\Http\Controllers\CareCard\OperationsController::class, 'Approved'])->name('ApprovedCareCard');
-Route::get('/CareCard/Operations/Printed', [App\Http\Controllers\CareCard\OperationsController::class, 'Printed'])->name('PrintedCareCard');
-Route::get('/CareCard/Operations/Released', [App\Http\Controllers\CareCard\OperationsController::class, 'Released'])->name('ReleasedCareCard');
-Route::get('/CareCard/Operations/Rejected', [App\Http\Controllers\CareCard\OperationsController::class, 'Rejected'])->name('RejectedCareCard');
+Route::get('/CareCard/Operations/All', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'All'])->name('AllCareCard');
+Route::get('/CareCard/Operations/Pending', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'Pending'])->name('PendingCareCard');
+Route::get('/CareCard/Operations/Approved', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'Approved'])->name('ApprovedCareCard');
+Route::get('/CareCard/Operations/Printed', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'Printed'])->name('PrintedCareCard');
+Route::get('/CareCard/Operations/Released', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'Released'])->name('ReleasedCareCard');
+Route::get('/CareCard/Operations/Rejected', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'Rejected'])->name('RejectedCareCard');
 // Change Status
-Route::get('/CareCard/Operations/Status/{data}', [App\Http\Controllers\CareCard\OperationsController::class, 'Status'])->name('StatusCareCard');
-Route::get('/CareCard/Operations/Approve/{data}', [App\Http\Controllers\CareCard\OperationsController::class, 'Approve'])->name('ApproveCareCard');
-Route::get('/CareCard/Operations/Print/{data}', [App\Http\Controllers\CareCard\OperationsController::class, 'Print'])->name('PrintCareCard');
-Route::get('/CareCard/Operations/Release/{data}', [App\Http\Controllers\CareCard\OperationsController::class, 'Release'])->name('ReleaseCareCard');
-Route::get('/CareCard/Operations/Reject/{data}', [App\Http\Controllers\CareCard\OperationsController::class, 'Reject'])->name('RejectCareCard');
-Route::get('/CareCard/Operations/ReInitiate/{data}', [App\Http\Controllers\CareCard\OperationsController::class, 'ReInitiate'])->name('ReInitiateCareCard');
+Route::get('/CareCard/Operations/Status/{data}', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'Status'])->name('StatusCareCard');
+Route::get('/CareCard/Operations/Approve/{data}', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'Approve'])->name('ApproveCareCard');
+Route::get('/CareCard/Operations/Print/{data}', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'Print'])->name('PrintCareCard');
+Route::get('/CareCard/Operations/Release/{data}', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'Release'])->name('ReleaseCareCard');
+Route::get('/CareCard/Operations/Reject/{data}', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'Reject'])->name('RejectCareCard');
+Route::get('/CareCard/Operations/ReInitiate/{data}', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'ReInitiate'])->name('ReInitiateCareCard');
 // Create
-Route::get('/CareCard/Operations/Create', [App\Http\Controllers\CareCard\OperationsController::class, 'Create'])->name('CreateCareCard');
-Route::post('/CareCard/Operations/Create', [App\Http\Controllers\CareCard\OperationsController::class, 'Store'])->name('CreateCareCard');
+Route::get('/CareCard/Operations/Create', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'Create'])->name('CreateCareCard');
+Route::post('/CareCard/Operations/Create', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'Store'])->name('CreateCareCard');
 // Update
-Route::get('/CareCard/Operations/Edit/{data}', [App\Http\Controllers\CareCard\OperationsController::class, 'Edit'])->name('EditCareCard');
-Route::put('/CareCard/Operations/Edit/{data}', [App\Http\Controllers\CareCard\OperationsController::class, 'Update'])->name('UpdateCareCard');
+Route::get('/CareCard/Operations/Edit/{data}', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'Edit'])->name('EditCareCard');
+Route::put('/CareCard/Operations/Edit/{data}', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'Update'])->name('UpdateCareCard');
 // Delete
-Route::get('/CareCard/Operations/Delete/{data}', [App\Http\Controllers\CareCard\OperationsController::class, 'Delete'])->name('DeleteCareCard');
+Route::get('/CareCard/Operations/Delete/{data}', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'Delete'])->name('DeleteCareCard');
 // Print
-Route::get('/CareCard/Operations/Printing/{data}', [App\Http\Controllers\CareCard\OperationsController::class, 'Printing'])->name('PrintingCareCard');
+Route::get('/CareCard/Operations/Printing/{data}', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'Printing'])->name('PrintingCareCard');
 // Verify Card
-Route::get('/CareCard/Operations/Verify', [App\Http\Controllers\CareCard\OperationsController::class, 'Verify'])->name('VerifyCareCard');
-Route::post('/CareCard/Operations/Verify', [App\Http\Controllers\CareCard\OperationsController::class, 'Search'])->name('SearchCareCard');
+Route::get('/CareCard/Operations/Verify', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'Verify'])->name('VerifyCareCard');
+Route::post('/CareCard/Operations/Verify', [App\Http\Controllers\CareCard\Operations\OperationsController::class, 'Search'])->name('SearchCareCard');
 // FileUploads
 Route::post('/CareCard/Operations/Beneficiaries_Tazkira', [App\Http\Controllers\CareCard\HomeController::class, 'Beneficiaries_Tazkira'])->name('Beneficiaries_Tazkira');
 Route::post('/CareCard/Operations/Beneficiaries_Profile', [App\Http\Controllers\CareCard\HomeController::class, 'Beneficiaries_Profile'])->name('Beneficiaries_Profile');
 
 // Services
 //Index
-Route::get('/CareCard/Services', [App\Http\Controllers\CareCard\HomeController::class, 'IndexCareCardServices'])->name('IndexCareCardServices');
+Route::get('/CareCard/Services', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'Index'])->name('IndexCareCardServices');
+
+// Food Packs
+//Index
+Route::get('/CareCard/Services/FoodPacks/Index', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'IndexFoodPack'])->name('IndexFoodPack');
+// List
+Route::get('/CareCard/Services/FoodPacks/All', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'All'])->name('AllFoodPack');
+// Create
+Route::get('/CareCard/Services/FoodPacks/Create', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'Create'])->name('CreateFoodPack');
+Route::post('/CareCard/Services/FoodPacks/Create', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'Store'])->name('CreateFoodPack');
+// update
+Route::get('/CareCard/Services/FoodPacks/Edit/{data}', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'Edit'])->name('EditFoodPack');
+Route::put('/CareCard/Services/FoodPacks/Update/{data}', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'Update'])->name('UpdateFoodPack');
+// delete
+Route::get('/CareCard/Services/FoodPacks/Delete/{data}', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'Delete'])->name('DeleteFoodPack');
+
+
+
+
+
+
+// Assign To Food Pack
+Route::post('/CareCard/Services/FoodPacks/EligibleBeneficiaries', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'AssignToFoodPack'])->name('AssignToFoodPack');
+Route::get('/CareCard/Services/FoodPacks/EligibleBeneficiaries', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'EligibleBeneficiariesFoodPack'])->name('EligibleBeneficiariesFoodPack');
+Route::get('/CareCard/Services/FoodPacks/AssignedBeneficiaries', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'AssignedBeneficiariesFoodPack'])->name('AssignedBeneficiariesFoodPack');
+Route::post('/CareCard/Services/FoodPacks/SearchEligibleBeneficieries', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'SearchEligibleBeneficieries'])->name('SearchEligibleBeneficieriesFoodPack');
+
+
+
+
+
+
+
+
 // assign to servies
-Route::get('/CareCard/AssignToService/{data}', [App\Http\Controllers\CareCard\CareCardController::class, 'AssignToService'])->name('AssignToServiceQamarCareCard');
+Route::get('/CareCard/AssignToService/{data}', [App\Http\Controllers\CareCard\ServicesController::class, 'AssignToService'])->name('AssignToServiceQamarCareCard');
 
 // list
-Route::get('/CareCard/AssigningService', [App\Http\Controllers\CareCard\CareCardController::class, 'AssigningService'])->name('AssigningServiceQamarCareCard');
-Route::get('/CareCard/AssignedServices', [App\Http\Controllers\CareCard\CareCardController::class, 'AssignedServices'])->name('AssignedServicesQamarCareCard');
+Route::get('/CareCard/AssigningService', [App\Http\Controllers\CareCard\ServicesController::class, 'AssigningService'])->name('AssigningServiceQamarCareCard');
+Route::get('/CareCard/AssignedServices', [App\Http\Controllers\CareCard\ServicesController::class, 'AssignedServices'])->name('AssignedServicesQamarCareCard');
 
 
-Route::get('/CareCard/RecievedServices', [App\Http\Controllers\CareCard\CareCardController::class, 'RecievedServices'])->name('RecievedServicesQamarCareCard');
-Route::get('/CareCard/RejectedServices', [App\Http\Controllers\CareCard\CareCardController::class, 'RejectedServices'])->name('RejectedServicesQamarCareCard');
+Route::get('/CareCard/RecievedServices', [App\Http\Controllers\CareCard\ServicesController::class, 'RecievedServices'])->name('RecievedServicesQamarCareCard');
+Route::get('/CareCard/RejectedServices', [App\Http\Controllers\CareCard\ServicesController::class, 'RejectedServices'])->name('RejectedServicesQamarCareCard');
 
 
 
 // update
-Route::get('/QamarCareCard/ServiceEdit/{data}', [App\Http\Controllers\CareCard\CareCardController::class, 'ServiceEdit'])->name('ServiceEditQamarCareCard');
-Route::put('/QamarCareCard/ServiceEdit/{data}', [App\Http\Controllers\CareCard\CareCardController::class, 'ServiceUpdate'])->name('ServiceUpdateQamarCareCard');
+Route::get('/QamarCareCard/ServiceEdit/{data}', [App\Http\Controllers\CareCard\ServicesController::class, 'ServiceEdit'])->name('ServiceEditQamarCareCard');
+Route::put('/QamarCareCard/ServiceEdit/{data}', [App\Http\Controllers\CareCard\ServicesController::class, 'ServiceUpdate'])->name('ServiceUpdateQamarCareCard');
 
 // delete
-Route::get('/QamarCareCard/ServiceDelete/{data}', [App\Http\Controllers\CareCard\CareCardController::class, 'ServiceDeleteDelete'])->name('ServiceDeleteQamarCareCard');
+Route::get('/QamarCareCard/ServiceDelete/{data}', [App\Http\Controllers\CareCard\ServicesController::class, 'ServiceDeleteDelete'])->name('ServiceDeleteQamarCareCard');
 
 // Serivce Status change
-Route::get('/QamarCareCard/ServiceReleased/{data}', [App\Http\Controllers\CareCard\CareCardController::class, 'ServiceReleased'])->name('ServiceReleasedQamarCareCard');
+Route::get('/QamarCareCard/ServiceReleased/{data}', [App\Http\Controllers\CareCard\ServicesController::class, 'ServiceReleased'])->name('ServiceReleasedQamarCareCard');
 
 
 // Service Provider
-Route::get('/QamarCareCard/ServiceProviders', [App\Http\Controllers\CareCard\CareCardController::class, 'ServiceProviders'])->name('ServiceProvidersQamarCareCard');
-Route::get('/QamarCareCard/ServiceProviderIndex', [App\Http\Controllers\CareCard\CareCardController::class, 'ServiceProviderIndex'])->name('ServiceProviderIndexQamarCareCard');
-Route::get('/QamarCareCard/CreateServiceProviderIndividual', [App\Http\Controllers\CareCard\CareCardController::class, 'CreateServiceProviderIndividual'])->name('CreateServiceProviderIndividual');
-Route::get('/QamarCareCard/CreateServiceProviderOrganization', [App\Http\Controllers\CareCard\CareCardController::class, 'CreateServiceProviderOrganization'])->name('CreateServiceProviderOrganization');
+Route::get('/QamarCareCard/ServiceProviders', [App\Http\Controllers\CareCard\ServicesController::class, 'ServiceProviders'])->name('ServiceProvidersQamarCareCard');
+Route::get('/QamarCareCard/ServiceProviderIndex', [App\Http\Controllers\CareCard\ServicesController::class, 'ServiceProviderIndex'])->name('ServiceProviderIndexQamarCareCard');
+Route::get('/QamarCareCard/CreateServiceProviderIndividual', [App\Http\Controllers\CareCard\ServicesController::class, 'CreateServiceProviderIndividual'])->name('CreateServiceProviderIndividual');
+Route::get('/QamarCareCard/CreateServiceProviderOrganization', [App\Http\Controllers\CareCard\ServicesController::class, 'CreateServiceProviderOrganization'])->name('CreateServiceProviderOrganization');
 
 // qamar care list
-Route::get('/CareCard/FoodPack', [App\Http\Controllers\CareCard\OperationsController::class, 'FoodPack'])->name('FoodPackQamarCareCard');
+Route::get('/CareCard/FoodPack', [App\Http\Controllers\CareCard\ServicesController::class, 'FoodPack'])->name('FoodPackQamarCareCard');
 //create
-Route::post('/QamarCareCard/CreateServiceProviderIndividual', [App\Http\Controllers\CareCard\CareCardController::class, 'StoreServiceProviderIndividual'])->name('CreateServiceProviderIndividual');
+Route::post('/QamarCareCard/CreateServiceProviderIndividual', [App\Http\Controllers\CareCard\ServicesController::class, 'StoreServiceProviderIndividual'])->name('CreateServiceProviderIndividual');
 
-Route::get('/QamarCareCard/StatusServiceProviderQamarCareCard/{data}', [App\Http\Controllers\CareCard\CareCardController::class, 'StatusServiceProvider'])->name('StatusServiceProviderQamarCareCard');
-Route::get('/QamarCareCard/ApproveServiceProviderQamarCareCard/{data}', [App\Http\Controllers\CareCard\CareCardController::class, 'ApproveServiceProvider'])->name('ApproveServiceProviderQamarCareCard');
-Route::get('/QamarCareCard/RejectServiceProviderQamarCareCard/{data}', [App\Http\Controllers\CareCard\CareCardController::class, 'RejectServiceProvider'])->name('RejectServiceProviderQamarCareCard');
-Route::get('/QamarCareCard/DeleteServiceProviderQamarCareCard/{data}', [App\Http\Controllers\CareCard\CareCardController::class, 'DeleteServiceProvider'])->name('DeleteServiceProviderQamarCareCard');
-Route::get('/QamarCareCard/ReInitiateServiceProviderQamarCareCard/{data}', [App\Http\Controllers\CareCard\CareCardController::class, 'ReInitiateServiceProvider'])->name('ReInitiateServiceProviderQamarCareCard');
+Route::get('/QamarCareCard/StatusServiceProviderQamarCareCard/{data}', [App\Http\Controllers\CareCard\ServicesController::class, 'StatusServiceProvider'])->name('StatusServiceProviderQamarCareCard');
+Route::get('/QamarCareCard/ApproveServiceProviderQamarCareCard/{data}', [App\Http\Controllers\CareCard\ServicesController::class, 'ApproveServiceProvider'])->name('ApproveServiceProviderQamarCareCard');
+Route::get('/QamarCareCard/RejectServiceProviderQamarCareCard/{data}', [App\Http\Controllers\CareCard\ServicesController::class, 'RejectServiceProvider'])->name('RejectServiceProviderQamarCareCard');
+Route::get('/QamarCareCard/DeleteServiceProviderQamarCareCard/{data}', [App\Http\Controllers\CareCard\ServicesController::class, 'DeleteServiceProvider'])->name('DeleteServiceProviderQamarCareCard');
+Route::get('/QamarCareCard/ReInitiateServiceProviderQamarCareCard/{data}', [App\Http\Controllers\CareCard\ServicesController::class, 'ReInitiateServiceProvider'])->name('ReInitiateServiceProviderQamarCareCard');
 
 
 // find service provider
 //    Route::get('/QamarCareCard/FindServiceProvider/{Province}/{District}/{RequestedService}', [App\Http\Controllers\QamarCareCardController:: class, 'FindServiceProvider'])->name('FindServiceProvider');
 
-Route::post('/QamarCareCard/FindServiceProvider/{data}', [App\Http\Controllers\CareCard\CareCardController::class, 'FindServiceProvider'])->name('FindServiceProvider');
+Route::post('/QamarCareCard/FindServiceProvider/{data}', [App\Http\Controllers\CareCard\ServicesController::class, 'FindServiceProvider'])->name('FindServiceProvider');
 
 
 
 // create
-Route::post('/QamarCareCard/AssignService', [App\Http\Controllers\CareCard\CareCardController::class, 'AssignService'])->name('AssignServiceQamarCareCard');
+Route::post('/QamarCareCard/AssignService', [App\Http\Controllers\CareCard\ServicesController::class, 'AssignService'])->name('AssignServiceQamarCareCard');
 
 
 
@@ -269,59 +302,59 @@ Route::post('/ServiceProvider_Profile', [App\Http\Controllers\HomeController::cl
 // OrphansRelief
 
 // index
-Route::get('/OrphansRelief', [App\Http\Controllers\OrphansReliefController::class, 'Index'])->name('IndexOrphansRelief');
+Route::get('/OrphansRelief', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Index'])->name('IndexOrphansRelief');
 
 
 // Orphan
 // Create
-Route::get('/OrphansRelief/Orphan/Create', [App\Http\Controllers\OrphansReliefController::class, 'Create'])->name('CreateOrphans');
-Route::post('/OrphansRelief/Orphan/Create', [App\Http\Controllers\OrphansReliefController::class, 'Store'])->name('CreateOrphans');
+Route::get('/OrphansRelief/Orphan/Create', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Create'])->name('CreateOrphans');
+Route::post('/OrphansRelief/Orphan/Create', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Store'])->name('CreateOrphans');
 
 // delete
-Route::get('/OrphansRelief/Orphan/Delete/{data}', [App\Http\Controllers\OrphansReliefController::class, 'Delete'])->name('DeleteOrphan');
+Route::get('/OrphansRelief/Orphan/Delete/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Delete'])->name('DeleteOrphan');
 
 
 // qamar care list
-Route::get('/OrphansRelief/Orphan/All', [App\Http\Controllers\OrphansReliefController::class, 'All'])->name('AllOrphans');
-Route::get('/OrphansRelief/Orphan/AllGrid', [App\Http\Controllers\OrphansReliefController::class, 'AllGrid'])->name('AllGridOrphans');
+Route::get('/OrphansRelief/Orphan/All', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'All'])->name('AllOrphans');
+Route::get('/OrphansRelief/Orphan/AllGrid', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'AllGrid'])->name('AllGridOrphans');
 
-Route::get('/OrphansRelief/Orphan/OrphanDetail/{data}', [App\Http\Controllers\OrphansReliefController::class, 'OrphanDetail'])->name('OrphanDetailOrphans');
+Route::get('/OrphansRelief/Orphan/OrphanDetail/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'OrphanDetail'])->name('OrphanDetailOrphans');
 
-Route::get('/OrphansRelief/Orphan/Pending', [App\Http\Controllers\OrphansReliefController::class, 'Pending'])->name('PendingOrphans');
-Route::get('/OrphansRelief/Orphan/Approved', [App\Http\Controllers\OrphansReliefController::class, 'Approved'])->name('ApprovedOrphans');
-Route::get('/OrphansRelief/Orphan/Active', [App\Http\Controllers\OrphansReliefController::class, 'Active'])->name('ActiveOrphans');
-Route::get('/OrphansRelief/Orphan/InActive', [App\Http\Controllers\OrphansReliefController::class, 'InActive'])->name('InActiveOrphans');
-Route::get('/OrphansRelief/Orphan/Rejected', [App\Http\Controllers\OrphansReliefController::class, 'Rejected'])->name('RejectedOrphans');
-Route::get('/OrphansRelief/Orphan/Assigned', [App\Http\Controllers\OrphansReliefController::class, 'Assigned'])->name('AssignedOrphans');
+Route::get('/OrphansRelief/Orphan/Pending', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Pending'])->name('PendingOrphans');
+Route::get('/OrphansRelief/Orphan/Approved', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Approved'])->name('ApprovedOrphans');
+Route::get('/OrphansRelief/Orphan/Active', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Active'])->name('ActiveOrphans');
+Route::get('/OrphansRelief/Orphan/InActive', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'InActive'])->name('InActiveOrphans');
+Route::get('/OrphansRelief/Orphan/Rejected', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Rejected'])->name('RejectedOrphans');
+Route::get('/OrphansRelief/Orphan/Assigned', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Assigned'])->name('AssignedOrphans');
 
 
 // status list and change status
-Route::get('/OrphansRelief/Orphan/Status/{data}', [App\Http\Controllers\OrphansReliefController::class, 'Status'])->name('StatusOrphans');
+Route::get('/OrphansRelief/Orphan/Status/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Status'])->name('StatusOrphans');
 
-Route::get('/OrphansRelief/Orphan/Approve/{data}', [App\Http\Controllers\OrphansReliefController::class, 'Approve'])->name('ApproveOrphans');
+Route::get('/OrphansRelief/Orphan/Approve/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Approve'])->name('ApproveOrphans');
 
-Route::get('/OrphansRelief/Orphan/Reject/{data}', [App\Http\Controllers\OrphansReliefController::class, 'Reject'])->name('RejectOrphans');
+Route::get('/OrphansRelief/Orphan/Reject/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Reject'])->name('RejectOrphans');
 
-Route::get('/OrphansRelief/Orphan/ReInitiate/{data}', [App\Http\Controllers\OrphansReliefController::class, 'ReInitiate'])->name('ReInitiateOrphans');
+Route::get('/OrphansRelief/Orphan/ReInitiate/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'ReInitiate'])->name('ReInitiateOrphans');
 
-Route::get('/OrphansRelief/Orphan/AssignToSponsor/{data}', [App\Http\Controllers\OrphansReliefController::class, 'AssignToSponsor'])->name('AssignToSponsorOrphan');
-Route::put('/OrphansRelief/Orphan/AssignSponsor/{data}', [App\Http\Controllers\OrphansReliefController::class, 'AssignSponsor'])->name('AssignSponsorOrphan');
-
-
+Route::get('/OrphansRelief/Orphan/AssignToSponsor/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'AssignToSponsor'])->name('AssignToSponsorOrphan');
+Route::put('/OrphansRelief/Orphan/AssignSponsor/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'AssignSponsor'])->name('AssignSponsorOrphan');
 
 
 
-Route::get('/OrphansRelief/Orphan/Checkout/', [App\Http\Controllers\OrphansReliefController::class, 'Checkout'])->name('CheckoutOrphans');
-Route::get('/OrphansRelief/Orphan/AddToCart/{data}', [App\Http\Controllers\OrphansReliefController::class, 'AddToCart'])->name('AddToCartOrphans');
-Route::get('/OrphansRelief/Orphan/RemoveFromCart/{data}', [App\Http\Controllers\OrphansReliefController::class, 'RemoveFromCart'])->name('RemoveFromCartOrphans');
-Route::post('/OrphansRelief/Orphan/Payment/', [App\Http\Controllers\OrphansReliefController::class, 'Payment'])->name('PaymentOrphan');
+
+
+Route::get('/OrphansRelief/Orphan/Checkout/', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Checkout'])->name('CheckoutOrphans');
+Route::get('/OrphansRelief/Orphan/AddToCart/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'AddToCart'])->name('AddToCartOrphans');
+Route::get('/OrphansRelief/Orphan/RemoveFromCart/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'RemoveFromCart'])->name('RemoveFromCartOrphans');
+Route::post('/OrphansRelief/Orphan/Payment/', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Payment'])->name('PaymentOrphan');
 
 
 // sponsors
-Route::get('/OrphansRelief/Sponsor/All', [App\Http\Controllers\OrphansReliefController::class, 'AllSponsor'])->name('AllSponsor');
-Route::get('/OrphansRelief/Payment', [App\Http\Controllers\OrphansReliefController::class, 'AllPayments'])->name('AllPayment');
-Route::get('/OrphansRelief/Sponsor/MyOrphans', [App\Http\Controllers\OrphansReliefController::class, 'MyOrphans'])->name('MyOrphansSponsor');
-Route::get('/OrphansRelief/Sponsor/MyPyaments', [App\Http\Controllers\OrphansReliefController::class, 'MyPayments'])->name('MyPaymentsSponsor');
+Route::get('/OrphansRelief/Sponsor/All', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'AllSponsor'])->name('AllSponsor');
+Route::get('/OrphansRelief/Payment', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'AllPayments'])->name('AllPayment');
+Route::get('/OrphansRelief/Sponsor/MyOrphans', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'MyOrphans'])->name('MyOrphansSponsor');
+Route::get('/OrphansRelief/Sponsor/MyPyaments', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'MyPayments'])->name('MyPaymentsSponsor');
 
 
 

@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\OrphanRelief;
+
+use App\Http\Controllers\Controller;
 
 use App\Mail\OrphanMails;
 use Illuminate\Support\Facades\Mail;
@@ -45,7 +47,7 @@ class OrphansReliefController extends Controller
   // index
   public function Index()
   {
-   
+
     return view('OrphansRelief.Index');
   }
 
@@ -561,7 +563,7 @@ class OrphansReliefController extends Controller
 
 
 
-  // services 
+  // services
 
   public function AssigningService()
   {
@@ -651,15 +653,15 @@ class OrphansReliefController extends Controller
         'qamar_care_cards.*',
         'a.Name as Province',
         'b.Name as District',
-        // 'c.Name as Country', 
-        // 'd.Name as Gender', 
-        // 'e.Name as Language', 
-        // 'f.Name as CurrentJob', 
-        // 'g.Name as FutureJob', 
-        // 'h.Name as EducationLevel', 
-        // 'i.Name as RelativeRelationship', 
+        // 'c.Name as Country',
+        // 'd.Name as Gender',
+        // 'e.Name as Language',
+        // 'f.Name as CurrentJob',
+        // 'g.Name as FutureJob',
+        // 'h.Name as EducationLevel',
+        // 'i.Name as RelativeRelationship',
         'j.Name as FamilyStatus',
-        // 'k.Name as Tribe', 
+        // 'k.Name as Tribe',
         // 'l.Name as IncomeStreem'
       )
 
@@ -697,15 +699,15 @@ class OrphansReliefController extends Controller
         'qamar_care_cards.*',
         'a.Name as Province',
         'b.Name as District',
-        // 'c.Name as Country', 
-        // 'd.Name as Gender', 
-        // 'e.Name as Language', 
-        // 'f.Name as CurrentJob', 
-        // 'g.Name as FutureJob', 
-        // 'h.Name as EducationLevel', 
-        // 'i.Name as RelativeRelationship', 
+        // 'c.Name as Country',
+        // 'd.Name as Gender',
+        // 'e.Name as Language',
+        // 'f.Name as CurrentJob',
+        // 'g.Name as FutureJob',
+        // 'h.Name as EducationLevel',
+        // 'i.Name as RelativeRelationship',
         'j.Name as FamilyStatus',
-        // 'k.Name as Tribe', 
+        // 'k.Name as Tribe',
         // 'l.Name as IncomeStreem'
       )
 
@@ -1067,7 +1069,7 @@ class OrphansReliefController extends Controller
         'service_providers.*',
         'a.Name as Province',
         'b.Name as District',
-        // 'c.Name as Country', 
+        // 'c.Name as Country',
         'd.Name as Gender',
         'e.Name as Language',
         'f.Name as CurrentJob',
@@ -1076,7 +1078,7 @@ class OrphansReliefController extends Controller
         'i.Name as ProvinceService',
         'j.Name as DistrictService',
         'k.Name as ServiceType',
-        // 'k.Name as Tribe', 
+        // 'k.Name as Tribe',
         // 'l.Name as IncomeStreem'
       )
 
@@ -1368,7 +1370,7 @@ class OrphansReliefController extends Controller
       return view('OrphansRelief.Orphan.Success', ['datas' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     } else {
       $AmountInCents = $request->input('PaymentAmount') * 100;
-    
+
 
 
       Stripe::setApiKey('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');
@@ -1411,7 +1413,7 @@ class OrphansReliefController extends Controller
 
         }
           $details = ['Email' => request('Email'),'Password' => $RandomPassword,'FullName' => request('FullName')];
-        
+
         Mail::to(request('Email'))->send(new OrphanMails($details));
       } catch (\Exception $e) {
         return redirect()->route('CheckoutOrphans')->with('error', $e->getMessage());
@@ -1421,7 +1423,7 @@ class OrphansReliefController extends Controller
       return view('OrphansRelief.Orphan.Success', ['datas' => $cart->items, 'totalPrice' => $cart->totalPrice]);
     }
   }
-  
+
 
   public function AllPayments()
   {
@@ -1450,7 +1452,7 @@ class OrphansReliefController extends Controller
   }
 
 
-  
+
   public function MyOrphans()
   {
 
@@ -1467,7 +1469,7 @@ class OrphansReliefController extends Controller
     return view('OrphansRelief.Sponsor.MyOrphan', ['datas' => $myorphans]);
   }
 
-  
+
   public function MyPayments()
   {
 
@@ -1511,15 +1513,15 @@ class OrphansReliefController extends Controller
         'orphans.*',
         'a.Name as Province',
         'b.Name as District',
-        // 'c.Name as Country', 
-        // 'd.Name as Gender', 
-        // 'e.Name as Language', 
-        // 'f.Name as CurrentJob', 
-        // 'g.Name as FutureJob', 
-        // 'h.Name as EducationLevel', 
-        // 'i.Name as RelativeRelationship', 
+        // 'c.Name as Country',
+        // 'd.Name as Gender',
+        // 'e.Name as Language',
+        // 'f.Name as CurrentJob',
+        // 'g.Name as FutureJob',
+        // 'h.Name as EducationLevel',
+        // 'i.Name as RelativeRelationship',
         // 'j.Name as FamilyStatus',
-        // 'k.Name as Tribe', 
+        // 'k.Name as Tribe',
         // 'l.Name as IncomeStreem'
       )
 
@@ -1544,5 +1546,5 @@ class OrphansReliefController extends Controller
   }
 
 
-  
+
 }

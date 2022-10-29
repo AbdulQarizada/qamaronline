@@ -24,11 +24,11 @@
         </blockquote>
     </div>
 </div>
-<div class="row">
+<!-- <div class="row">
     <div class="col-12 ">
         <a href="{{route('CreateCareCard')}}" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD CARE CARD</a>
     </div>
-</div>
+</div> -->
 <div class="row">
     <div class="col-xl-12">
         <div class="row">
@@ -40,7 +40,7 @@
                             <blockquote class="blockquote font-size-14 mb-0">
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
-                                        <p class="my-0 text-primary card-title fw-medium">All CARE CARDS</p>
+                                        <p class="my-0 text-primary card-title fw-medium">CARE CARDS</p>
                                         <h6 class="text-muted mb-0">All CARE CARDS</h4>
                                     </div>
 
@@ -61,7 +61,7 @@
                     </div>
                 </a>
             </div>
-
+<!--
             <div class="col-md-4 mb-2">
                 <a href="{{route('PendingCareCard')}}">
                     <div class="card-one mini-stats-wid border border-secondary">
@@ -76,7 +76,7 @@
                                     <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
-                                                <!-- <i class="bx bxs-user-rectangle    font-size-24"></i> -->
+                                                 <i class="bx bxs-user-rectangle    font-size-24"></i>
                                                 <h1 class="mb-0 text-white">1</h1>
 
                                             </span>
@@ -107,7 +107,7 @@
                                     <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
-                                                <!-- <i class="bx bxs-user-rectangle    font-size-24"></i> -->
+                                                 <i class="bx bxs-user-rectangle    font-size-24"></i>
                                                 <h1 class="mb-0 text-white">2</h1>
                                             </span>
                                         </div>
@@ -139,7 +139,7 @@
                                     <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
-                                                <!-- <i class="bx bxs-user-rectangle    font-size-24"></i> -->
+                                                <i class="bx bxs-user-rectangle    font-size-24"></i>
                                                 <h1 class="mb-0 text-white">3</h1>
 
                                             </span>
@@ -171,7 +171,7 @@
                                     <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
-                                                <!-- <i class="bx bxs-user-rectangle    font-size-24"></i> -->
+                                                 <i class="bx bxs-user-rectangle    font-size-24"></i>
                                                 <h1 class="mb-0 text-white">4</h1>
 
                                             </span>
@@ -204,7 +204,6 @@
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-danger">
                                                 <i class="bx bx-block text-white  font-size-24"></i>
-                                                <!-- <h1 class="mb-0 text-danger">5</h1> -->
 
                                             </span>
                                         </div>
@@ -218,7 +217,7 @@
                         </div>
                     </div>
                 </a>
-            </div>
+            </div> -->
 
 
         </div>

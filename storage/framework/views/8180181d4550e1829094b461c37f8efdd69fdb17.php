@@ -34,14 +34,29 @@
         <?php endif; ?>
     </div>
 </div>
-<!-- <div class="row">
-    <div class="col-12 ">
-    <?php if($PageInfo == 'All'): ?>
-        <a href="<?php echo e(route('CreateCareCard')); ?>" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD CARE CARD</a>
-    <?php endif; ?>
+<div class="row">
+    <div class="col-2">
+        <select class="form-select  form-select-lg mb-3 <?php $__errorArgs = ['Country'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
+            <option value="<?php echo e(route('AllCareCard')); ?>">Please Filter Your Choices</option>
+            <option value="<?php echo e(route('AllCareCard')); ?>">All</option>
+            <option value="<?php echo e(route('PendingCareCard')); ?>">Pending</option>
+            <option value="<?php echo e(route('ApprovedCareCard')); ?>">Approved</option>
+            <option value="<?php echo e(route('PrintedCareCard')); ?>">Printed</option>
+            <option value="<?php echo e(route('ReleasedCareCard')); ?>">Released</option>
+            <option value="<?php echo e(route('RejectedCareCard')); ?>">Rejected</option>
+        </select>
     </div>
-</div> -->
-
+    <div class="col-10 ">
+        <a href="<?php echo e(route('CreateCareCard')); ?>" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD CARE CARD</a>
+    </div>
+</div>
 <div class="row">
     <div class="col-12">
 

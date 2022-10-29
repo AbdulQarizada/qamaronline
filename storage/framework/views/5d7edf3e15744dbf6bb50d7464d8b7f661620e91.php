@@ -16,6 +16,9 @@
            <a href="<?php echo e(route('IndexOrphansRelief')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
 
         </div>
+        <!-- <div class="col-6">
+                                <h1 class="fw-medium font-size-24 ">Orphans List</h1>
+        </div> -->
      </div>
 
      <div class="row">
@@ -23,7 +26,7 @@
         <div class="card border border-3">
                     <div class="card-header">
                       <blockquote class="blockquote border-warning  font-size-14 mb-0">
-                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">ORPHANS</p>
+                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">SPONSORS</p>
 
                         </blockquote>
                     </div>
@@ -61,7 +64,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
         <!-- <i class="bx bx-plus-circle  font-size-24 label-icon"></i> btn-label -->
           <div class="button">
            <a href="<?php echo e(route('AllGridOrphans')); ?>" class="btn  btn-lg waves-effect  waves-light mb-3 m-1 float-end"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a>
-           <a href="<?php echo e(route('CreateOrphans')); ?>" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 m-1 float-end">ADD ORPHAN</a>
+           <a href="<?php echo e(route('CreateOrphans')); ?>" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 m-1 float-end">ADD SPONSOR</a>
            </div>
 
         </div>
@@ -94,7 +97,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                                 <tr>
                                 <td><?php echo e($data -> id); ?></td>
                                 <td>
-                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> FirstName); ?> <?php echo e($data -> LastName); ?></a></h5>
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> FullName); ?></a></h5>
                                         <p class="text-muted mb-0"><?php echo e($data -> IntroducerName); ?></p>
                                 </td>
                                 <td>
@@ -221,7 +224,7 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
                     </a>
                     <?php if($data -> Status == 'Pending'): ?>
-                    </a> -->
+
                      <a href="<?php echo e(route('DeleteOrphan', ['data' => $data -> id])); ?>" class="btn btn-danger waves-effect waves-light delete-confirm">
                         <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
                     </a>
@@ -229,13 +232,12 @@ unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;"
 
 
                     <?php if( $data -> Status == 'Approved'): ?>
-                    <a href="<?php echo e(route('AssignToSponsorOrphan', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light">
+                    <a href="<?php echo e(route('AssignToServiceQamarCareCard', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light">
                         <i class="bx bx-user-plus   font-size-16 align-middle"></i>
                     </a>
                     <?php endif; ?>
 
                     <?php if( $data -> Status == 'Rejected'): ?>
-                    </a> -->
                      <a href="<?php echo e(route('DeleteOrphan', ['data' => $data -> id])); ?>" class="btn btn-danger waves-effect waves-light delete-confirm">
                         <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
                     </a>
@@ -302,4 +304,4 @@ $('.release').on('click', function (event) {
 </script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Orphan/All.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Sponsor/All.blade.php ENDPATH**/ ?>

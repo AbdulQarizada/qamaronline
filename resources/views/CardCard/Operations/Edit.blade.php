@@ -887,11 +887,6 @@
     });
 
 
-    $(document).ready(function() {
-        var rnd = Math.floor(Math.random() * 99999) + 1;
-        document.getElementById('QCC').value = rnd;
-    });
-
 
 
 
