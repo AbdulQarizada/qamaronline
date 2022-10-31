@@ -59,9 +59,9 @@ class HomeController extends Controller
 
         $cookies = Cookie::forever('Layout', "LayoutNoSidebar");
        $cookies = Cookie::get('Layout');
-        dd($cookies);
+        // dd($cookies);
         $catagorys =   LookUp::where("Parent_Name", "=", "None")->get();
-        return view('index', compact('catagorys'));
+        return view('index', compact('catagorys'))->with('Layout', $cookies);
     }
 
     public function Projects()
