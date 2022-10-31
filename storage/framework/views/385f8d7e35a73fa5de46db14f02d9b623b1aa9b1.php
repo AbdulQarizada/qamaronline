@@ -9,6 +9,8 @@
 
 <?php $__env->startSection('content'); ?>
 
+
+<?php if(Cookie::get('Layout') == 'LayoutNoSidebar'): ?>
 <div class="row">
     <div class="col-12">
         <a href="<?php echo e(route('root')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
@@ -22,6 +24,9 @@
         </blockquote>
     </div>
 </div>
+
+
+
 <div class="col-xl-12">
     <div class="col-xl-12">
         <div class="row">
@@ -199,9 +204,11 @@
     </div>
 </div>
 <!-- end row -->
+<?php endif; ?>
+
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/CardCard/Index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/CardCard/Index.blade.php ENDPATH**/ ?>

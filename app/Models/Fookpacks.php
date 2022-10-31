@@ -17,6 +17,7 @@ class Fookpacks extends Model
       'Province_ID',
       'District_ID',
       'TotalBudget',
+      'OrganizationName',
       'TargetBeneficiaries',
       'Description',
       'Created_By',

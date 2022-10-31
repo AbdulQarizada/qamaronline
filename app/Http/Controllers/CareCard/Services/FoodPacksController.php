@@ -74,6 +74,7 @@ class FoodPacksController extends Controller
     $validator = $request->validate([
       'Name' => 'bail|required|max:255',
       'ExpectedDate' => 'required|max:255',
+      'OrganizationName' => 'required|max:255',
       'Province_ID' => 'required|max:255',
       'District_ID' => 'required|max:255',
       'TotalBudget' => 'required|max:255',
@@ -91,6 +92,7 @@ class FoodPacksController extends Controller
       'Province_ID' => request('Province_ID'),
       'District_ID' => request('District_ID'),
       'TotalBudget' => request('TotalBudget'),
+      'OrganizationName' => request('OrganizationName'),
       'TargetBeneficiaries' => request('TargetBeneficiaries'),
       'Description' => request('Description'),
       'Created_By' => auth()->user()->id,
@@ -312,29 +314,35 @@ class FoodPacksController extends Controller
   // list
   public function AssignedBeneficiariesFoodPack()
   {
-    $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
-    $genders =   LookUp::where("Parent_Name", "=", "Gender")->get();
-    $tribes =   LookUp::where("Parent_Name", "=", "Tribe")->get();
-    $languages =   LookUp::where("Parent_Name", "=", "Language")->get();
-    $currentjobs =   LookUp::where("Parent_Name", "=", "CurrentJob")->get();
-    $futurejobs =   LookUp::where("Parent_Name", "=", "FutureJob")->get();
-    $educationlevels =   LookUp::where("Parent_Name", "=", "EducationLevel")->get();
-    $relationships =   LookUp::where("Parent_Name", "=", "RelativeRelationship")->get();
-    $incomestreams =   LookUp::where("Parent_Name", "=", "IncomeStream")->get();
-    $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
-    $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
-    $provinces = Location::whereNull("Parent_ID")->get();
-    $districts = Location::get();
-
-    $qamarcarecards =   BeneficiariesToFoodPacks::get();
-
-    return view('CardCard.Services.FoodPack.AssignedBeneficiaries', ['qamarcarecards' => $qamarcarecards, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+    $qamarcarecards =   BeneficiariesToFoodPacks::
+      join('users as a', 'beneficiaries_to_food_packs.Created_By', '=', 'a.id')
+    ->join('qamar_care_cards as b', 'beneficiaries_to_food_packs.Beneficiary_ID', '=', 'b.id')
+    ->join('fookpacks as c', 'beneficiaries_to_food_packs.FoodPack_ID', '=', 'c.id')
+    ->select([ 'b.*',  'a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob', 'c.Name as FoodPackName', 'c.OrganizationName as OrganizationName',])
+    ->get();
+    $foodpacks = Fookpacks::get();
+    return view('CardCard.Services.FoodPack.AssignedBeneficiaries', ['foodpacks' => $foodpacks, 'qamarcarecards' => $qamarcarecards,]);
   }
 
 
 
 
+  // search assigned food pack to beneficierites list
+  public function SearchAssignedBeneficiariesFoodPack($data)
+  {
 
+    $qamarcarecards =   BeneficiariesToFoodPacks::
+    join('users as a', 'beneficiaries_to_food_packs.Created_By', '=', 'a.id')
+  ->join('qamar_care_cards as b', 'beneficiaries_to_food_packs.Beneficiary_ID', '=', 'b.id')
+  ->join('fookpacks as c', 'beneficiaries_to_food_packs.FoodPack_ID', '=', 'c.id')
+  ->select([ 'b.*',  'a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob', 'c.Name as FoodPackName', 'c.OrganizationName as OrganizationName',])
+  ->where('beneficiaries_to_food_packs.FoodPack_ID', '=', $data)
+  ->get();
+  $foodpacks = Fookpacks::get();
+
+  return view('CardCard.Services.FoodPack.AssignedBeneficiaries', [ 'foodpacks' => $foodpacks, 'qamarcarecards' => $qamarcarecards,]);
+
+}
 
 
 

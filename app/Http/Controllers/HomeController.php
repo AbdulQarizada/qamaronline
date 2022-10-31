@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Location;
 use App\Models\Scholarship;
 use App\Models\ScholarshipModule;
-
+use Illuminate\Support\Facades\Cookie;
 use App\Models\LookUp;
 
 
@@ -57,6 +57,8 @@ class HomeController extends Controller
             return redirect()->route('login')->with('Your session has expired because your status changed.');
         }
 
+
+
         $catagorys =   LookUp::where("Parent_Name", "=", "None")->get();
         return view('index', compact('catagorys'));
     }
@@ -75,6 +77,10 @@ class HomeController extends Controller
     {
         return view('Reports');
     }
+
+
+
+
 
 
     public function Employees_Profile(Request $request)
@@ -366,6 +372,29 @@ class HomeController extends Controller
 
         return redirect()->route('root')->with('toast_success', 'Record Created Successfully!');
     }
+
+
+        /*set cookies for layout */
+        public function LayoutSidebar()
+        {
+            Cookie::forget('Layout');
+            $cookies = Cookie::forever('Layout', "LayoutSidebar");
+            // $cookies = Cookie::get('Layout');
+            // dd($cookies);
+            return redirect()->back() -> cookie($cookies);
+        }
+
+
+        public function LayoutNoSidebar()
+        {
+
+            Cookie::forget('Layout');
+            $cookies = Cookie::forever('Layout', "LayoutNoSidebar");
+            // $cookies = Cookie::get('Layout');
+            // dd($cookies);
+
+            return redirect()->back()-> cookie($cookies);
+        }
 
     /*Language Translation*/
     public function lang($locale)

@@ -49,6 +49,17 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3 position-relative">
+                                        <label for="OrganizationName" class="form-label ">Supporting Organization Name <i class="mdi mdi-asterisk text-danger"></i></label>
+                                        <input type="text" class="form-control form-control-lg @error('OrganizationName') is-invalid @enderror" value="{{ old('OrganizationName') }}" id="OrganizationName" name="OrganizationName" required>
+                                        @error('OrganizationName')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3 position-relative">
                                         <label for="TotalBudget" class="form-label ">Total Budget <i class="mdi mdi-asterisk text-danger"></i></label>
                                         <input type="number" class="form-control form-control-lg @error('TotalBudget') is-invalid @enderror" value="{{ old('TotalBudget') }}" id="TotalBudget" name="TotalBudget" max="999999999" required>
                                         @error('TotalBudget')

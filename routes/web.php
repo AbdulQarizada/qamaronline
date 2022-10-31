@@ -49,6 +49,13 @@ Route::get('/GetDistricts/{data}', [App\Http\Controllers\HomeController::class, 
 Route::post('/CreateLookups', [App\Http\Controllers\HomeController::class, 'CreateLookups'])->name('CreateLookups');
 
 
+// set cookies for layout
+Route::get('/Layout/LayoutSidebar', [App\Http\Controllers\HomeController::class, 'LayoutSidebar'])->name('LayoutSidebar');
+Route::get('/Layout/LayoutNoSidebar', [App\Http\Controllers\HomeController::class, 'LayoutNoSidebar'])->name('LayoutNoSidebar');
+
+
+
+
 Route::get('/Projects', [App\Http\Controllers\HomeController::class, 'Projects'])->name('Projects');
 
 Route::get('/BeneficiariesServices', [App\Http\Controllers\HomeController::class, 'BeneficiariesServices'])->name('BeneficiariesServices');
@@ -216,6 +223,7 @@ Route::post('/CareCard/Services/FoodPacks/EligibleBeneficiaries', [App\Http\Cont
 Route::get('/CareCard/Services/FoodPacks/EligibleBeneficiaries', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'EligibleBeneficiariesFoodPack'])->name('EligibleBeneficiariesFoodPack');
 Route::get('/CareCard/Services/FoodPacks/AssignedBeneficiaries', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'AssignedBeneficiariesFoodPack'])->name('AssignedBeneficiariesFoodPack');
 Route::post('/CareCard/Services/FoodPacks/SearchEligibleBeneficieries', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'SearchEligibleBeneficieries'])->name('SearchEligibleBeneficieriesFoodPack');
+Route::get('/CareCard/Services/FoodPacks/SearchAssignedBeneficiariesFoodPack/{data}', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'SearchAssignedBeneficiariesFoodPack'])->name('SearchAssignedBeneficiariesFoodPack');
 
 
 

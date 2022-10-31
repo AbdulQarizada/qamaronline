@@ -8,7 +8,7 @@
                 <a href="<?php echo e(route('root')); ?>" class="logo logo-light">
                     <span class="logo-sm">
                        <img src="<?php echo e(URL::asset('/assets/images/logo.png')); ?>" alt="" height="22">
-                        
+
                     </span>
                     <span class="logo-lg">
                         <img src="<?php echo e(URL::asset('/assets/images/side_logo.png')); ?>" alt="" height="45">
@@ -27,7 +27,7 @@
                 <span class="bx bx-search-alt"></span>
             </div>
         </form>
-        <?php if(Auth::check()): ?> 
+        <?php if(Auth::check()): ?>
         <div class="dropdown dropdown-mega d-none d-lg-block ms-2">
             <!-- <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
                 <span key="t-megamenu"><?php echo app('translator')->get('translation.Mega_Menu'); ?></span>
@@ -288,7 +288,7 @@
                 <i class="bx bx-fullscreen"></i>
             </button>
         </div> -->
-        
+
         <div class="dropdown d-inline-block">
             <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -391,7 +391,7 @@
                 </div>
             </div>
         </div>
-  
+
         <div class="dropdown d-inline-block">
             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -403,7 +403,7 @@
                 <img class="rounded-circle header-profile-user" src="<?php echo e(isset(Auth::user()->Profile) ? asset('/uploads/User/Sponsors/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png')); ?>"
                     alt="Profile">
                 <?php endif; ?>
-                    
+
                 <span class="d-none d-xl-inline-block ms-1" key="t-henry"><?php echo e(ucfirst(Auth::user()->FullName)); ?> </span>
                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
             </button>
@@ -414,6 +414,12 @@
                 <a class="dropdown-item d-block" href="#" data-bs-toggle="modal" data-bs-target=".change-password"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings"><?php echo app('translator')->get('translation.Settings'); ?></span></a>
                 -->
                 <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".change-password"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Change Password</span></a>
+                <?php if(Cookie::get('Layout') == 'LayoutNoSidebar'): ?>
+                <a class="dropdown-item" href="<?php echo e(route('LayoutSidebar')); ?>"><i class="bx bx-layout font-size-16 align-middle me-1"></i> <span key="t-profile">Change Layout</span></a>
+                <?php endif; ?>
+                <?php if(Cookie::get('Layout') == 'LayoutSidebar'): ?>
+                <a class="dropdown-item" href="<?php echo e(route('LayoutNoSidebar')); ?>"><i class="bx bx-layout font-size-16 align-middle me-1"></i> <span key="t-profile">Change Layout</span></a>
+                <?php endif; ?>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item text-danger" href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout"><?php echo app('translator')->get('translation.Logout'); ?></span></a>
                 <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">

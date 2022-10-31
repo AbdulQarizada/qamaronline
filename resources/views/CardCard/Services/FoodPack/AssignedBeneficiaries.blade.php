@@ -1,6 +1,6 @@
 @extends('layouts.master-layouts')
 
-@section('title') Assigned Beneficiaries.blade @endsection
+@section('title') Food Packs @endsection
 
 @section('css')
 <!-- DataTables -->
@@ -19,259 +19,76 @@
 </div>
 
 <div class="row">
-    <div class="col-md-2">
-        <div class="mb-3 position-relative">
-            <label for="Province_ID" class="form-label">Province</label>
-            <div class="input-group">
-                <select class="form-select Province form-select-lg @error('Province_ID') is-invalid @enderror" required name="Province_ID" value="{{ old('Province_ID') }}" id="Province_ID">
-                    <option value="">Select Your Province</option>
-                    @foreach($provinces as $province)
-                    <option value="{{ $province -> id}}">{{ $province -> Name}}</option>
+    <div class="col-2">
+        <select class="form-select  form-select-lg mb-3 @error('Country') is-invalid @enderror" onchange="window.location.href=this.value;" id="item" name="item">
+            <option value="{{route('AssignedBeneficiariesFoodPack')}}">Please Filter Your Choices</option>
+            <option value="{{route('AssignedBeneficiariesFoodPack')}}">All</option>
+            @foreach($foodpacks as $foodpack)
+            <option value="{{route('SearchAssignedBeneficiariesFoodPack', ['data' => $foodpack -> id])}}">{{ $foodpack -> Name}} - {{ $foodpack -> ExpectedDate}}</option>
 
-                    @endforeach
-
-                </select>
-                @error('Province_ID')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-        </div>
+            @endforeach
+        </select>
     </div>
-    <div class="col-md-2">
-        <div class="mb-3 position-relative">
-            <label for="District_ID" class="form-label">District</label>
-            <div class="input-group">
-                <select class="form-select  District form-select-lg @error('District_ID') is-invalid @enderror" required name="District_ID" value="{{ old('District_ID') }}" id="District_ID">
-                    <option value="">Select Your District</option>
-
-
-                </select>
-                @error('District_ID')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-        </div>
-    </div>
-    <div class="col-md-2">
-        <div class="mb-3 position-relative">
-            <label for="FamilyStatus_ID" class="form-label">Family Status</label>
-            <div class="input-group">
-
-                <select class="form-select form-select-lg @error('FamilyStatus_ID') is-invalid @enderror" value="{{ old('FamilyStatus_ID') }}" required name="FamilyStatus_ID" id="FamilyStatus_ID">
-                    <option value="">Select Your Family Status</option>
-                    @foreach($familystatus as $familystatu)
-                    <option value="{{ $familystatu -> id}}">{{ $familystatu -> Name}}</option>
-
-                    @endforeach
-                </select>
-                @error('FamilyStatus_ID')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-        </div>
-
-    </div>
-    <div class="col-md-2">
-        <div class="mb-3 position-relative">
-            <label for="LevelPoverty" class="form-label">Level Of Poverty</label>
-            <div class="rating-star">
-                <input type="hidden" class="rating @error('LevelPoverty') is-invalid @enderror" value="{{ old('LevelPoverty') }}" data-filled="mdi mdi-star text-warning " data-empty="mdi mdi-star-outline text-muted" name="LevelPoverty" id="LevelPoverty" />
-                @error('LevelPoverty')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-        </div>
-    </div>
+    <!-- <div class="col-10 ">
+        <a href="{{route('CreateCareCard')}}" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD CARE CARD</a>
+    </div> -->
 </div>
 
+<div class="row">
+    <div class="col-12">
 
-    <div class="row">
-        <div class="col-12">
+        <div class="card">
+            <h3 class="card-header bg-dark text-white"></h3>
 
-            <div class="card">
-                <h3 class="card-header bg-dark text-white"></h3>
+            <div class="card-body">
 
-                <div class="card-body">
+                <div class="table-responsive">
+                    <table id="datatable-buttons" class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Card Number</th>
+                                <th>Full Name</th>
+                                <th>Father Name</th>
+                                <th>Primary Phone Number</th>
+                                <th>Secondary Phone Number</th>
+                                <th>Food Pack</th>
+                                <th>Supporting Organization</th>
+                                <th>Created By</th>
+                                <th>Finger Print</th>
+                                <!-- <th>Actions</th> -->
 
-                    <div class="table-responsive">
-                        <table id="datatable-buttons" class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>FirstName</th>
-                                    <th>Address</th>
-                                    <th>Phone Numbers</th>
-                                    <th>Family Status</th>
-                                    <th>Food Pack</th>
-                                    <th>Created By</th>
-                                    <th>Select</th>
-                                    <!-- <th>Actions</th> -->
-
-                                </tr>
-                            </thead>
-
-
-                            <tbody>
-                                @foreach($qamarcarecards as $qamarcarecard)
-                                <tr>
-                                    <!-- <td>{{ $qamarcarecard->id }}</td> -->
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>
-                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> FirstName}} {{$qamarcarecard -> LastName}}</a></h5>
-                                        <p class="text-muted mb-0">QCC-{{$qamarcarecard -> QCC}}</p>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> ProvinceName}}</a></h5>
-                                            <p class="text-muted mb-0">{{$qamarcarecard -> DistrictName}}</p>
-                                            <!-- <p class="text-muted mb-0">{{$qamarcarecard -> Village}}</p> -->
-
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$qamarcarecard -> PrimaryNumber}}</a></h5>
-                                            <p class="text-muted mb-0 badge badge-soft-warning">{{$qamarcarecard -> SecondaryNumber}}</p>
-                                            <p class="text-muted mb-0 badge badge-soft-danger">{{$qamarcarecard -> RelativeNumber}}</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> FamilyStatus}}</a></h5>
-                                            @if( $qamarcarecard -> LevelPoverty == 1)
-                                            <i class="bx bxs-star text-warning font-size-12"></i>
-                                            <i class="bx bxs-star text-secondary font-size-14"></i>
-                                            <i class="bx bxs-star text-secondary font-size-16"></i>
-                                            <i class="bx bxs-star text-secondary font-size-18"></i>
-                                            <i class="bx bxs-star text-secondary font-size-20"></i>
-
-                                            @endif
-                                            @if( $qamarcarecard -> LevelPoverty == 2)
-                                            <i class="bx bxs-star text-warning font-size-12"></i>
-                                            <i class="bx bxs-star text-warning font-size-14"></i>
-                                            <i class="bx bxs-star text-secondary font-size-16"></i>
-                                            <i class="bx bxs-star text-secondary font-size-18"></i>
-                                            <i class="bx bxs-star text-secondary font-size-20"></i>
-                                            @endif
-                                            @if( $qamarcarecard -> LevelPoverty == 3)
-                                            <i class="bx bxs-star text-warning font-size-12"></i>
-                                            <i class="bx bxs-star text-warning font-size-14"></i>
-                                            <i class="bx bxs-star text-warning font-size-16"></i>
-                                            <i class="bx bxs-star text-secondary font-size-18"></i>
-                                            <i class="bx bxs-star text-secondary font-size-20"></i>
-                                            @endif
-                                            @if( $qamarcarecard -> LevelPoverty == 4)
-                                            <i class="bx bxs-star text-warning font-size-12"></i>
-                                            <i class="bx bxs-star text-warning font-size-14"></i>
-                                            <i class="bx bxs-star text-warning font-size-16"></i>
-                                            <i class="bx bxs-star text-warning font-size-18"></i>
-                                            <i class="bx bxs-star text-secondary font-size-20"></i>
-                                            @endif
-                                            @if( $qamarcarecard -> LevelPoverty == 5)
-                                            <i class="bx bxs-star text-warning font-size-12"></i>
-                                            <i class="bx bxs-star text-warning font-size-14"></i>
-                                            <i class="bx bxs-star text-warning font-size-16"></i>
-                                            <i class="bx bxs-star text-warning font-size-18"></i>
-                                            <i class="bx bxs-star text-warning font-size-20"></i>
-                                            @endif
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div>
+                            </tr>
+                        </thead>
 
 
-                                            @if($qamarcarecard -> Status == 'Pending')
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary">{{$qamarcarecard -> Status}}</a></h5>
-                                            <p class="text-muted mb-0">{{$qamarcarecard -> created_at -> format("d-m-Y")}}</p>
-
-                                            @endif
-
-                                            @if($qamarcarecard -> Status == 'Approved')
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">{{$qamarcarecard -> Status}} </a></h5>
-                                            <p class="text-muted mb-0">{{$qamarcarecard -> created_at -> format("d-m-Y")}}</p>
-
-                                            @endif
-
-                                            @if($qamarcarecard -> Status == 'Rejected')
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">{{$qamarcarecard -> Status}} </a></h5>
-                                            <p class="text-muted mb-0">{{$qamarcarecard -> created_at -> format("d-m-Y")}}</p>
-
-                                            @endif
+                        <tbody>
+                            @foreach($qamarcarecards as $qamarcarecard)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>QCC - {{$qamarcarecard -> QCC}}</td>
+                                <td><h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> FirstName}} {{$qamarcarecard -> LastName}}</a></h5> </td>
+                                <td><h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> FatherName}}</a></h5></td>
+                                <td><h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$qamarcarecard -> PrimaryNumber}}</a></h5></td>
+                                <td><h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-warning">{{$qamarcarecard -> SecondaryNumber}}</a></h5></td>
+                                <td><h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-warning">{{$qamarcarecard -> FoodPackName}}</a></h5></td>
+                                <td><h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-warning">{{$qamarcarecard -> OrganizationName}}</a></h5></td>
+                                <td><h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard ->  UFirstName }} {{$qamarcarecard ->  ULastName }}</a></h5></td>
+                                <td></td>
+                            </tr>
+                            @endforeach
 
 
-
-                                            @if($qamarcarecard -> Status == 'ReInitiated')
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info">{{$qamarcarecard -> Status}}</a></h5>
-                                            <p class="text-muted mb-0">{{$qamarcarecard -> created_at -> format("d-m-Y")}}</p>
-
-                                            @endif
-
-                                            @if($qamarcarecard -> Status == 'Released')
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">{{$qamarcarecard -> Status}}</a></h5>
-                                            <p class="text-muted mb-0">{{$qamarcarecard -> created_at -> format("d-m-Y")}}</p>
-
-                                            @endif
-
-                                            @if($qamarcarecard -> Status == 'Printed')
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark">{{$qamarcarecard -> Status}}</a></h5>
-                                            <p class="text-muted mb-0">{{$qamarcarecard -> created_at -> format("d-m-Y")}}</p>
-
-                                            @endif
-
-                                        </div>
-                                    </td>
-                                    <td>
-                                        @if( $qamarcarecard -> Created_By !="")
-
-                                        <div>
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard ->  UFirstName }} {{$qamarcarecard ->  ULastName }}</a></h5>
-                                            <p class="text-muted mb-0">{{$qamarcarecard ->  UJob }}</p>
-
-                                        </div>
-                                        @endif
-                                        @if( $qamarcarecard -> Created_By =="")
-
-                                        <div>
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
-                                            <p class="text-muted mb-0">Requested</p>
-
-                                        </div>
-                                        @endif
-                                    </td>
-                                    <td>
-
-                                        <input class="form-check-input" type="checkbox" id="formCheck1" name="Beneficiary_ID[]" value="{{$qamarcarecard ->  id }}">
-                                    </td>
-                                    <!-- <td>
-                                    <div class="d-flex flex-wrap gap-2">
-                                        <a class="btn btn-warning waves-effect waves-light">
-                                            <i class="bx bx-show-alt font-size-16 align-middle"></i>
-                                        </a>
-                                    </div>
-                                </td> -->
-                                </tr>
-                                @endforeach
-
-
-                            </tbody>
-                        </table>
-
-                    </div>
+                        </tbody>
+                    </table>
 
                 </div>
 
             </div>
-        </div> <!-- end col -->
-    </div> <!-- end row -->
+
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
 
 
 

@@ -1,4 +1,4 @@
-@extends('layouts.master-layouts')
+@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
 
 @section('title') Qamar Care List @endsection
 
@@ -9,6 +9,8 @@
 
 @section('content')
 
+
+@if(Cookie::get('Layout') == 'LayoutNoSidebar')
 <div class="row">
     <div class="col-12">
         <a href="{{route('root')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
@@ -22,6 +24,9 @@
         </blockquote>
     </div>
 </div>
+
+
+
 <div class="col-xl-12">
     <div class="col-xl-12">
         <div class="row">
@@ -199,6 +204,8 @@
     </div>
 </div>
 <!-- end row -->
+@endif
+
 
 @endsection
 @section('script')

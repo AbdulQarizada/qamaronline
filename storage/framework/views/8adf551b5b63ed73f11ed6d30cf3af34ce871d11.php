@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('title'); ?> Assigned Beneficiaries.blade <?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?> Food Packs <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
 <!-- DataTables -->
@@ -19,315 +19,83 @@
 </div>
 
 <div class="row">
-    <div class="col-md-2">
-        <div class="mb-3 position-relative">
-            <label for="Province_ID" class="form-label">Province</label>
-            <div class="input-group">
-                <select class="form-select Province form-select-lg <?php $__errorArgs = ['Province_ID'];
+    <div class="col-2">
+        <select class="form-select  form-select-lg mb-3 <?php $__errorArgs = ['Country'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" required name="Province_ID" value="<?php echo e(old('Province_ID')); ?>" id="Province_ID">
-                    <option value="">Select Your Province</option>
-                    <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <option value="<?php echo e($province -> id); ?>"><?php echo e($province -> Name); ?></option>
+unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id="item" name="item">
+            <option value="<?php echo e(route('AssignedBeneficiariesFoodPack')); ?>">Please Filter Your Choices</option>
+            <option value="<?php echo e(route('AssignedBeneficiariesFoodPack')); ?>">All</option>
+            <?php $__currentLoopData = $foodpacks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $foodpack): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <option value="<?php echo e(route('SearchAssignedBeneficiariesFoodPack', ['data' => $foodpack -> id])); ?>"><?php echo e($foodpack -> Name); ?> - <?php echo e($foodpack -> ExpectedDate); ?></option>
 
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-                </select>
-                <?php $__errorArgs = ['Province_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                <span class="invalid-feedback" role="alert">
-                    <strong><?php echo e($message); ?></strong>
-                </span>
-                <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-            </div>
-        </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </select>
     </div>
-    <div class="col-md-2">
-        <div class="mb-3 position-relative">
-            <label for="District_ID" class="form-label">District</label>
-            <div class="input-group">
-                <select class="form-select  District form-select-lg <?php $__errorArgs = ['District_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" required name="District_ID" value="<?php echo e(old('District_ID')); ?>" id="District_ID">
-                    <option value="">Select Your District</option>
-
-
-                </select>
-                <?php $__errorArgs = ['District_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                <span class="invalid-feedback" role="alert">
-                    <strong><?php echo e($message); ?></strong>
-                </span>
-                <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-2">
-        <div class="mb-3 position-relative">
-            <label for="FamilyStatus_ID" class="form-label">Family Status</label>
-            <div class="input-group">
-
-                <select class="form-select form-select-lg <?php $__errorArgs = ['FamilyStatus_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FamilyStatus_ID')); ?>" required name="FamilyStatus_ID" id="FamilyStatus_ID">
-                    <option value="">Select Your Family Status</option>
-                    <?php $__currentLoopData = $familystatus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $familystatu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <option value="<?php echo e($familystatu -> id); ?>"><?php echo e($familystatu -> Name); ?></option>
-
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </select>
-                <?php $__errorArgs = ['FamilyStatus_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                <span class="invalid-feedback" role="alert">
-                    <strong><?php echo e($message); ?></strong>
-                </span>
-                <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-            </div>
-        </div>
-
-    </div>
-    <div class="col-md-2">
-        <div class="mb-3 position-relative">
-            <label for="LevelPoverty" class="form-label">Level Of Poverty</label>
-            <div class="rating-star">
-                <input type="hidden" class="rating <?php $__errorArgs = ['LevelPoverty'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('LevelPoverty')); ?>" data-filled="mdi mdi-star text-warning " data-empty="mdi mdi-star-outline text-muted" name="LevelPoverty" id="LevelPoverty" />
-                <?php $__errorArgs = ['LevelPoverty'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                <span class="invalid-feedback" role="alert">
-                    <strong><?php echo e($message); ?></strong>
-                </span>
-                <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-            </div>
-        </div>
-    </div>
+    <!-- <div class="col-10 ">
+        <a href="<?php echo e(route('CreateCareCard')); ?>" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD CARE CARD</a>
+    </div> -->
 </div>
 
+<div class="row">
+    <div class="col-12">
 
-    <div class="row">
-        <div class="col-12">
+        <div class="card">
+            <h3 class="card-header bg-dark text-white"></h3>
 
-            <div class="card">
-                <h3 class="card-header bg-dark text-white"></h3>
+            <div class="card-body">
 
-                <div class="card-body">
+                <div class="table-responsive">
+                    <table id="datatable-buttons" class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Card Number</th>
+                                <th>Full Name</th>
+                                <th>Father Name</th>
+                                <th>Primary Phone Number</th>
+                                <th>Secondary Phone Number</th>
+                                <th>Food Pack</th>
+                                <th>Supporting Organization</th>
+                                <th>Created By</th>
+                                <th>Finger Print</th>
+                                <!-- <th>Actions</th> -->
 
-                    <div class="table-responsive">
-                        <table id="datatable-buttons" class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>FirstName</th>
-                                    <th>Address</th>
-                                    <th>Phone Numbers</th>
-                                    <th>Family Status</th>
-                                    <th>Food Pack</th>
-                                    <th>Created By</th>
-                                    <th>Select</th>
-                                    <!-- <th>Actions</th> -->
-
-                                </tr>
-                            </thead>
-
-
-                            <tbody>
-                                <?php $__currentLoopData = $qamarcarecards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qamarcarecard): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <tr>
-                                    <!-- <td><?php echo e($qamarcarecard->id); ?></td> -->
-                                    <td><?php echo e($loop->iteration); ?></td>
-                                    <td>
-                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> FirstName); ?> <?php echo e($qamarcarecard -> LastName); ?></a></h5>
-                                        <p class="text-muted mb-0">QCC-<?php echo e($qamarcarecard -> QCC); ?></p>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> ProvinceName); ?></a></h5>
-                                            <p class="text-muted mb-0"><?php echo e($qamarcarecard -> DistrictName); ?></p>
-                                            <!-- <p class="text-muted mb-0"><?php echo e($qamarcarecard -> Village); ?></p> -->
-
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($qamarcarecard -> PrimaryNumber); ?></a></h5>
-                                            <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($qamarcarecard -> SecondaryNumber); ?></p>
-                                            <p class="text-muted mb-0 badge badge-soft-danger"><?php echo e($qamarcarecard -> RelativeNumber); ?></p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> FamilyStatus); ?></a></h5>
-                                            <?php if( $qamarcarecard -> LevelPoverty == 1): ?>
-                                            <i class="bx bxs-star text-warning font-size-12"></i>
-                                            <i class="bx bxs-star text-secondary font-size-14"></i>
-                                            <i class="bx bxs-star text-secondary font-size-16"></i>
-                                            <i class="bx bxs-star text-secondary font-size-18"></i>
-                                            <i class="bx bxs-star text-secondary font-size-20"></i>
-
-                                            <?php endif; ?>
-                                            <?php if( $qamarcarecard -> LevelPoverty == 2): ?>
-                                            <i class="bx bxs-star text-warning font-size-12"></i>
-                                            <i class="bx bxs-star text-warning font-size-14"></i>
-                                            <i class="bx bxs-star text-secondary font-size-16"></i>
-                                            <i class="bx bxs-star text-secondary font-size-18"></i>
-                                            <i class="bx bxs-star text-secondary font-size-20"></i>
-                                            <?php endif; ?>
-                                            <?php if( $qamarcarecard -> LevelPoverty == 3): ?>
-                                            <i class="bx bxs-star text-warning font-size-12"></i>
-                                            <i class="bx bxs-star text-warning font-size-14"></i>
-                                            <i class="bx bxs-star text-warning font-size-16"></i>
-                                            <i class="bx bxs-star text-secondary font-size-18"></i>
-                                            <i class="bx bxs-star text-secondary font-size-20"></i>
-                                            <?php endif; ?>
-                                            <?php if( $qamarcarecard -> LevelPoverty == 4): ?>
-                                            <i class="bx bxs-star text-warning font-size-12"></i>
-                                            <i class="bx bxs-star text-warning font-size-14"></i>
-                                            <i class="bx bxs-star text-warning font-size-16"></i>
-                                            <i class="bx bxs-star text-warning font-size-18"></i>
-                                            <i class="bx bxs-star text-secondary font-size-20"></i>
-                                            <?php endif; ?>
-                                            <?php if( $qamarcarecard -> LevelPoverty == 5): ?>
-                                            <i class="bx bxs-star text-warning font-size-12"></i>
-                                            <i class="bx bxs-star text-warning font-size-14"></i>
-                                            <i class="bx bxs-star text-warning font-size-16"></i>
-                                            <i class="bx bxs-star text-warning font-size-18"></i>
-                                            <i class="bx bxs-star text-warning font-size-20"></i>
-                                            <?php endif; ?>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div>
+                            </tr>
+                        </thead>
 
 
-                                            <?php if($qamarcarecard -> Status == 'Pending'): ?>
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary"><?php echo e($qamarcarecard -> Status); ?></a></h5>
-                                            <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at -> format("d-m-Y")); ?></p>
-
-                                            <?php endif; ?>
-
-                                            <?php if($qamarcarecard -> Status == 'Approved'): ?>
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success"><?php echo e($qamarcarecard -> Status); ?> </a></h5>
-                                            <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at -> format("d-m-Y")); ?></p>
-
-                                            <?php endif; ?>
-
-                                            <?php if($qamarcarecard -> Status == 'Rejected'): ?>
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger"><?php echo e($qamarcarecard -> Status); ?> </a></h5>
-                                            <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at -> format("d-m-Y")); ?></p>
-
-                                            <?php endif; ?>
+                        <tbody>
+                            <?php $__currentLoopData = $qamarcarecards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qamarcarecard): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tr>
+                                <td><?php echo e($loop->iteration); ?></td>
+                                <td>QCC - <?php echo e($qamarcarecard -> QCC); ?></td>
+                                <td><h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> FirstName); ?> <?php echo e($qamarcarecard -> LastName); ?></a></h5> </td>
+                                <td><h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> FatherName); ?></a></h5></td>
+                                <td><h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($qamarcarecard -> PrimaryNumber); ?></a></h5></td>
+                                <td><h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-warning"><?php echo e($qamarcarecard -> SecondaryNumber); ?></a></h5></td>
+                                <td><h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-warning"><?php echo e($qamarcarecard -> FoodPackName); ?></a></h5></td>
+                                <td><h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-warning"><?php echo e($qamarcarecard -> OrganizationName); ?></a></h5></td>
+                                <td><h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard ->  UFirstName); ?> <?php echo e($qamarcarecard ->  ULastName); ?></a></h5></td>
+                                <td></td>
+                            </tr>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
-
-                                            <?php if($qamarcarecard -> Status == 'ReInitiated'): ?>
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info"><?php echo e($qamarcarecard -> Status); ?></a></h5>
-                                            <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at -> format("d-m-Y")); ?></p>
-
-                                            <?php endif; ?>
-
-                                            <?php if($qamarcarecard -> Status == 'Released'): ?>
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success"><?php echo e($qamarcarecard -> Status); ?></a></h5>
-                                            <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at -> format("d-m-Y")); ?></p>
-
-                                            <?php endif; ?>
-
-                                            <?php if($qamarcarecard -> Status == 'Printed'): ?>
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark"><?php echo e($qamarcarecard -> Status); ?></a></h5>
-                                            <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at -> format("d-m-Y")); ?></p>
-
-                                            <?php endif; ?>
-
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <?php if( $qamarcarecard -> Created_By !=""): ?>
-
-                                        <div>
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard ->  UFirstName); ?> <?php echo e($qamarcarecard ->  ULastName); ?></a></h5>
-                                            <p class="text-muted mb-0"><?php echo e($qamarcarecard ->  UJob); ?></p>
-
-                                        </div>
-                                        <?php endif; ?>
-                                        <?php if( $qamarcarecard -> Created_By ==""): ?>
-
-                                        <div>
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
-                                            <p class="text-muted mb-0">Requested</p>
-
-                                        </div>
-                                        <?php endif; ?>
-                                    </td>
-                                    <td>
-
-                                        <input class="form-check-input" type="checkbox" id="formCheck1" name="Beneficiary_ID[]" value="<?php echo e($qamarcarecard ->  id); ?>">
-                                    </td>
-                                    <!-- <td>
-                                    <div class="d-flex flex-wrap gap-2">
-                                        <a class="btn btn-warning waves-effect waves-light">
-                                            <i class="bx bx-show-alt font-size-16 align-middle"></i>
-                                        </a>
-                                    </div>
-                                </td> -->
-                                </tr>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-
-                            </tbody>
-                        </table>
-
-                    </div>
+                        </tbody>
+                    </table>
 
                 </div>
 
             </div>
-        </div> <!-- end col -->
-    </div> <!-- end row -->
+
+        </div>
+    </div> <!-- end col -->
+</div> <!-- end row -->
 
 
 

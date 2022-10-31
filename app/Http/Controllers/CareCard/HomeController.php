@@ -10,6 +10,7 @@ use App\Models\AssignCareCardServices;
 use App\Models\ServiceType;
 use App\Models\ServiceProviders;
 use Auth;
+use Illuminate\Support\Facades\Cookie;
 
 use App\Models\Location;
 use App\Models\LookUp;
@@ -29,7 +30,6 @@ class HomeController extends Controller
   // index
   public function Index()
   {
-
     return view('CardCard.Index');
   }
 

@@ -21,6 +21,7 @@ return new class extends Migration
             $table -> integer('District_ID')->nullable();
             $table -> integer('TotalBudget')->nullable();
             $table -> integer('TargetBeneficiaries')->nullable();
+            $table -> string('OrganizationName')->nullable();
             $table -> string('Description')->nullable();
             $table -> string('Created_By')->nullable();
             $table -> string('Owner')->nullable();
