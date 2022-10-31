@@ -10,7 +10,7 @@
 @section('content')
 
 
-<!-- @if(\Cookie::get('Layout') == 'LayoutNoSidebar') -->
+
 <div class="row">
     <div class="col-12">
         <a href="{{route('root')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
@@ -204,7 +204,6 @@
     </div>
 </div>
 <!-- end row -->
-<!-- @endif -->
 
 
 @endsection
