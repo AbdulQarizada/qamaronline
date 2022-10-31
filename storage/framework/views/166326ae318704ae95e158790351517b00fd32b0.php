@@ -257,10 +257,10 @@
                 <a class="dropdown-item d-block" href="#" data-bs-toggle="modal" data-bs-target=".change-password"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings"><?php echo app('translator')->get('translation.Settings'); ?></span></a>
                 -->
                 <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".change-password"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Change Password</span></a>
-                <?php if(Illuminate\Support\Facades\Cookie::get('Layout') == 'LayoutNoSidebar'): ?>
+                <?php if(\Cookie::get('Layout') == 'LayoutNoSidebar'): ?>
                 <a class="dropdown-item" href="<?php echo e(route('LayoutSidebar')); ?>"><i class="bx bx-layout font-size-16 align-middle me-1"></i> <span key="t-profile">Change Layout</span></a>
                 <?php endif; ?>
-                <?php if(Illuminate\Support\Facades\Cookie::get('Layout') == 'LayoutSidebar'): ?>
+                <?php if(\Cookie::get('Layout') == 'LayoutSidebar'): ?>
                 <a class="dropdown-item" href="<?php echo e(route('LayoutNoSidebar')); ?>"><i class="bx bx-layout font-size-16 align-middle me-1"></i> <span key="t-profile">Change Layout</span></a>
                 <?php endif; ?>
 
