@@ -1,5 +1,13 @@
 
 
+
+
+<?php if(Cookie::get('Layout') == null): ?>
+ Illuminate\Support\Facades\Cookie::forever('Layout', "LayoutSidebar");
+<?php endif; ?>
+
+
+
 <?php $__env->startSection('title'); ?> <?php echo app('translator')->get('translation.Dashboards'); ?> <?php $__env->stopSection(); ?>
 <?php $__env->startSection('css'); ?>
 

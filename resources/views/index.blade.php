@@ -1,4 +1,12 @@
+
+
 @extends(Auth::user()->IsEmployee == 1 ? 'layouts.master-layouts' : 'layouts.master')
+
+@if(Cookie::get('Layout') == null)
+ Illuminate\Support\Facades\Cookie::forever('Layout', "LayoutSidebar");
+@endif
+
+
 
 @section('title') @lang('translation.Dashboards') @endsection
 @section('css')

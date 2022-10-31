@@ -26,6 +26,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+
         $this->middleware('auth');
     }
 
@@ -56,7 +57,16 @@ class HomeController extends Controller
             Auth::logout();
             return redirect()->route('login')->with('Your session has expired because your status changed.');
         }
-        $this->LayoutSidebar();
+
+        if(Cookie::get('Layout') == null)
+        {
+        $cookies = Cookie::forever('Layout', "LayoutSidebar");
+
+        return redirect()->route('root')-> cookie($cookies);
+        }
+        // $cookies = Cookie::get('Layout');
+
+        // dd(Cookie::get('Layout'));
         $catagorys =   LookUp::where("Parent_Name", "=", "None")->get();
         return view('index', compact('catagorys'));
     }
