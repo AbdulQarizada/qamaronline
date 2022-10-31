@@ -11,6 +11,9 @@ use App\Models\ServiceType;
 use App\Models\ServiceProviders;
 use App\Models\Fookpacks;
 use App\Models\BeneficiariesToFoodPacks;
+use Notification;
+use App\Notifications\CareCardNotification;
+
 
 use Auth;
 
@@ -101,7 +104,8 @@ class FoodPacksController extends Controller
 
 
     ]);
-
+    $CareCardUsers = User::where('IsQamarCareCard', '=', 1)->where('IsManager', '=', 1)->get();
+    Notification::send($CareCardUsers, new CareCardNotification(request('Name')));
     return redirect()->route('AllFoodPack')->with('toast_success', 'Record Created Successfully!');
   }
 

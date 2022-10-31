@@ -64,11 +64,13 @@ class HomeController extends Controller
 
         return redirect()->route('root')-> cookie($cookies);
         }
-        // $cookies = Cookie::get('Layout');
 
-        // dd(Cookie::get('Layout'));
+
+        $notifications = auth()->user()->unreadNotifications;
+
+
         $catagorys =   LookUp::where("Parent_Name", "=", "None")->get();
-        return view('index', compact('catagorys'));
+        return view('index', compact('catagorys', 'notifications'));
     }
 
     public function Projects()

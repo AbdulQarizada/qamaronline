@@ -192,7 +192,7 @@
                 <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="bx bx-bell bx-tada"></i>
-                    <span class="badge bg-danger rounded-pill">0</span>
+                    <span class="badge bg-danger rounded-pill"><?php echo e(auth()->user()->unreadNotifications -> count()); ?></span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
                     aria-labelledby="page-header-notifications-dropdown">
@@ -214,13 +214,25 @@
                                         <i class="bx bx-cart"></i>
                                     </span>
                                 </div>
+                                <?php $__empty_1 = true; $__currentLoopData = auth()->user()->unreadNotifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                 <div class="flex-grow-1">
+                                    <h6 class="mt-0 mb-1 text-danger" key="t-your-order">New Notification</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-1" key="t-grammer"> <?php echo e($notification->data['Name']); ?></p>
+                                        <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago"><?php echo e($notification->created_at); ?></span></p>
+
+                                    </div>
+                                </div>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                           <div class="flex-grow-1">
                                     <h6 class="mt-0 mb-1" key="t-your-order">No New Notification</h6>
                                     <div class="font-size-12 text-muted">
                                         <p class="mb-1" key="t-grammer">No New Notification</p>
                                         <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">Now</span></p>
                                     </div>
                                 </div>
+                        <?php endif; ?>
+
                             </div>
                         </a>
                     </div>

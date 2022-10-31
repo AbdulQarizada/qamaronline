@@ -30,12 +30,12 @@ class User extends Authenticatable
         'Village',
         'email',
         'password',
-        'DOB', 
+        'DOB',
         'Profile',
 
 
 
-        
+
         'IsEmployee',
         'IsActive',
         'IsSuperAdmin',
@@ -56,7 +56,7 @@ class User extends Authenticatable
       'Owner',
 
 
-       
+
     ];
 
     /**
