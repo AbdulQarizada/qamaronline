@@ -257,12 +257,7 @@
                 <a class="dropdown-item d-block" href="#" data-bs-toggle="modal" data-bs-target=".change-password"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">@lang('translation.Settings')</span></a>
                 -->
                 <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".change-password"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Change Password</span></a>
-                @if(Cookie::get('Layout') == 'LayoutNoSidebar')
-                <a class="dropdown-item" href="{{route('LayoutSidebar')}}"><i class="bx bx-layout font-size-16 align-middle me-1"></i> <span key="t-profile">Change Layout</span></a>
-                @endif
-                @if(Cookie::get('Layout') == 'LayoutSidebar')
-                <a class="dropdown-item" href="{{route('LayoutNoSidebar')}}"><i class="bx bx-layout font-size-16 align-middle me-1"></i> <span key="t-profile">Change Layout</span></a>
-                @endif
+
 
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item text-danger" href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">@lang('translation.Logout')</span></a>
