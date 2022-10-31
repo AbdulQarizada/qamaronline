@@ -58,9 +58,6 @@ class HomeController extends Controller
             return redirect()->route('login')->with('Your session has expired because your status changed.');
         }
 
-
-       $cookies = Cookie::get('Layout');
-            dd($cookies);
         $catagorys =   LookUp::where("Parent_Name", "=", "None")->get();
         return view('index', compact('catagorys'));
     }
