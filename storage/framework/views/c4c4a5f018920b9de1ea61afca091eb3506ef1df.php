@@ -58,7 +58,6 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
     </div>
     <div class="col-9 ">
         <div class="button">
-            <!-- <a href="<?php echo e(route('AllGridOrphans')); ?>" class="btn  btn-lg waves-effect  waves-light mb-3 m-1 float-end"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a> -->
             <a href="<?php echo e(route('CreateUser')); ?>" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 m-1 float-end">ADD USER</a>
         </div>
 
@@ -70,35 +69,6 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
         <div class="card">
             <h3 class="card-header bg-warning text-white"></h3>
             <div class="card-body">
-                <!-- <div class="row">
-                            <div class="col-md-4">
-                                <div class="mb-3 position-relative">
-                                    <select class="form-select  form-select-lg  <?php $__errorArgs = ['Country'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>"  onchange="window.location.href=this.value;" 
->
-                                   <option value="<?php echo e(route('AllQamarCareCard')); ?>">Please Filter Your Choices</option>
-
-                                    <option value="<?php echo e(route('AllQamarCareCard')); ?>">All</option>
-                                    <option value="<?php echo e(route('PendingQamarCareCard')); ?>">Pending</option>
-                                    <option value="<?php echo e(route('ApprovedQamarCareCard')); ?>">Approved</option>
-                                    <option value="<?php echo e(route('PrintedQamarCareCard')); ?>">Printed</option>
-                                    <option value="<?php echo e(route('ReleasedQamarCareCard')); ?>">Released</option>
-                                    <option value="<?php echo e(route('RejectedQamarCareCard')); ?>">Rejected</option>
-
-
-
-                                 
-
-                                    </select>
-                                </div>
-                            </div>
-                    </div> -->
 
                 <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
                     <thead>

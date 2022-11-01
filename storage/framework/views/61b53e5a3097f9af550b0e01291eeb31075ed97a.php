@@ -89,6 +89,8 @@ unset($__errorArgs, $__bag); ?>
                                 <div class="col-md-4">
                                     <div class="mb-3 position-relative">
                                         <label for="TotalBudget" class="form-label ">Total Budget <i class="mdi mdi-asterisk text-danger"></i></label>
+                                        <div class="input-group">
+                                        <div class="input-group-text">&dollar;</div>
                                         <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['TotalBudget'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -109,6 +111,7 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">

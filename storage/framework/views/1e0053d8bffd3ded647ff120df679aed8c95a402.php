@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('title'); ?> ADD ROLE TO USER@endsection
+<?php $__env->startSection('title'); ?> ADD ROLE TO USER <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/filepond.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -13,24 +13,11 @@
 <?php $__env->startSection('content'); ?>
 
 <?php if(Auth::user()->IsEmployee == 1): ?>
-<div class="row">
-    <div class="col-12">
-        <a href="<?php echo e(route('AllUser')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-    </div>
-</div>
 
-
-<div class="row">
-    <div class="col-12">
-        <div class="card border border-3">
-            <div class="card-header">
-                <blockquote class="blockquote border-primary  font-size-14 mb-0">
-                    <p class="my-0   card-title fw-medium font-size-24 text-wrap">ROLE USER</p>
-
-                </blockquote>
-            </div>
-        </div>
-
+<div class="row mt-4">
+    <div class="col-4">
+        <a href="<?php echo e(route('AllUser')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>ASSIGN ROLE TO USER</span>
     </div>
 </div>
 
@@ -78,7 +65,7 @@
                                 <td>
                                 <p class="text-muted mb-0 text-danger"><?php echo e($data -> Job); ?></p>
                                 <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> created_at -> format("d-m-Y")); ?></a></h5>
-                                       
+
 
                                 </td>
                             </tr>
@@ -93,7 +80,7 @@
         </div>
     </div>
 </div>
-<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
 <form class="needs-validation" action="<?php echo e(route('AssignRoleUser', [$data -> id])); ?>" method="POST" enctype="multipart/form-data" novalidate>
 <?php echo method_field('PUT'); ?>
 
@@ -107,7 +94,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
-                <h4 class="card-header bg-primary text-white ">ROLE AND PERMISSION</h4>
+                <h4 class="card-header bg-dark text-white ">ROLE AND PERMISSION</h4>
 
                 <div class="card-body">
                     <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
@@ -182,7 +169,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsSuperAdmin" name="IsSuperAdmin">
+unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsSuperAdmin" name="IsSuperAdmin" <?php echo e($data->IsSuperAdmin=="1"? 'checked':''); ?>>
                                     <label class="form-check-label" for="IsSuperAdmin">
                                     IsSuperAdmin
                                     </label>
@@ -240,7 +227,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsOrphanRelief" name="IsOrphanRelief">
+unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsOrphanRelief" name="IsOrphanRelief" <?php echo e($data->IsOrphanRelief=="1"? 'checked':''); ?>>
                                     <label class="form-check-label" for="IsOrphanRelief">
                                     IsOrphanRelief
                                     </label>
@@ -269,7 +256,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsAidAndRelief" name="IsAidAndRelief">
+unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsAidAndRelief" name="IsAidAndRelief" <?php echo e($data->IsAidAndRelief=="1"? 'checked':''); ?> >
                                     <label class="form-check-label" for="IsAidAndRelief">
                                     IsAidAndRelief
                                     </label>
@@ -298,7 +285,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsWash" name="IsWash">
+unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsWash" name="IsWash" <?php echo e($data->IsWash=="1"? 'checked':''); ?>>
                                     <label class="form-check-label" for="IsWash">
                                     IsWash
                                     </label>
@@ -327,7 +314,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsEducation" name="IsEducation">
+unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsEducation" name="IsEducation" <?php echo e($data->IsEducation=="1"? 'checked':''); ?>>
                                     <label class="form-check-label" for="IsEducation">
                                     IsEducation
                                     </label>
@@ -356,7 +343,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsInitiative" name="IsInitiative">
+unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsInitiative" name="IsInitiative" <?php echo e($data->IsInitiative=="1"? 'checked':''); ?>>
                                     <label class="form-check-label" for="IsInitiative">
                                     IsInitiative
                                     </label>
@@ -385,7 +372,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsMedicalSector" name="IsMedicalSector">
+unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsMedicalSector" name="IsMedicalSector" <?php echo e($data->IsMedicalSector=="1"? 'checked':''); ?>>
                                     <label class="form-check-label" for="IsMedicalSector">
                                     IsMedicalSector
                                     </label>
@@ -414,7 +401,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsFoodAppeal" name="IsFoodAppeal">
+unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsFoodAppeal" name="IsFoodAppeal" <?php echo e($data->IsFoodAppeal=="1"? 'checked':''); ?>>
                                     <label class="form-check-label" for="IsFoodAppeal">
                                     IsFoodAppeal
                                     </label>
@@ -443,7 +430,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsQamarCareCard" name="IsQamarCareCard">
+unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsQamarCareCard" name="IsQamarCareCard" <?php echo e($data->IsQamarCareCard=="1"? 'checked':''); ?>>
                                     <label class="form-check-label" for="IsQamarCareCard">
                                     IsQamarCareCard
                                     </label>
@@ -472,7 +459,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsAppealsDistributions" name="IsAppealsDistributions">
+unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsAppealsDistributions" name="IsAppealsDistributions" <?php echo e($data->IsAppealsDistributions=="1"? 'checked':''); ?>>
                                     <label class="form-check-label" for="IsAppealsDistributions">
                                     IsAppealsDistributions
                                     </label>
@@ -501,7 +488,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsDonorsAndDonorBoxes" name="IsDonorsAndDonorBoxes">
+unset($__errorArgs, $__bag); ?>" type="checkbox" value="1" id="IsDonorsAndDonorBoxes" name="IsDonorsAndDonorBoxes" <?php echo e($data->IsDonorsAndDonorBoxes=="1"? 'checked':''); ?>>
                                     <label class="form-check-label" for="IsDonorsAndDonorBoxes">
                                     IsDonorsAndDonorBoxes
                                     </label>
@@ -582,7 +569,7 @@ unset($__errorArgs, $__bag); ?>
 
 
 </form>
-
+<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
 <script src="<?php echo e(URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js')); ?>"></script>
@@ -671,7 +658,7 @@ unset($__errorArgs, $__bag); ?>
     });
 
 
-    
+
 
 
     $(document).ready(function() {
@@ -688,7 +675,7 @@ unset($__errorArgs, $__bag); ?>
                     success: function(data) {
                         if (data) {
                             $('.District').empty();
-                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                            //  $('.District').append('<option value="None" hidden>All</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="District_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
                             });

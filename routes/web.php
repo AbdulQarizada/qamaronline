@@ -374,32 +374,32 @@ Route::get('/OrphansRelief/Sponsor/MyPyaments', [App\Http\Controllers\OrphanReli
 
 
 //User Management
-Route::get('/UserManagement', [App\Http\Controllers\UserManagementController::class, 'Index'])->middleware('IsSuperAdmin')->name('IndexUserManagement');
+Route::get('/UserManagement', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Index'])->middleware('IsSuperAdmin')->name('IndexUserManagement');
 
-Route::get('/UserManagement/All', [App\Http\Controllers\UserManagementController::class, 'All'])->middleware('IsSuperAdmin')->name('AllUser');
+Route::get('/UserManagement/All', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'All'])->middleware('IsSuperAdmin')->name('AllUser');
 // Create
-Route::get('/UserManagement/Create', [App\Http\Controllers\UserManagementController::class, 'Create'])->name('CreateUser');
-Route::post('/UserManagement/Create', [App\Http\Controllers\UserManagementController::class, 'Store'])->name('CreateUser');
+Route::get('/UserManagement/Create', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Create'])->name('CreateUser');
+Route::post('/UserManagement/Create', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Store'])->name('CreateUser');
 // update
-Route::get('/UserManagement/Edit/{data}', [App\Http\Controllers\UserManagementController::class, 'Edit'])->name('EditUser');
-Route::put('/UserManagement/Edit/{data}', [App\Http\Controllers\UserManagementController::class, 'Update'])->name('UpdateUser');
+Route::get('/UserManagement/Edit/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Edit'])->name('EditUser');
+Route::put('/UserManagement/Edit/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Update'])->name('UpdateUser');
 
 // delete
-Route::get('/UserManagement/Delete/{data}', [App\Http\Controllers\UserManagementController::class, 'Delete'])->name('DeleteUser');
+Route::get('/UserManagement/Delete/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Delete'])->name('DeleteUser');
 
 
 
-Route::get('/UserManagement/Status/{data}', [App\Http\Controllers\UserManagementController::class, 'Status'])->name('StatusUser');
+Route::get('/UserManagement/Status/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Status'])->name('StatusUser');
 
-Route::get('/UserManagement/Activate/{data}', [App\Http\Controllers\UserManagementController::class, 'Activate'])->name('ActivateUser');
+Route::get('/UserManagement/Activate/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Activate'])->name('ActivateUser');
 
-Route::get('/UserManagement/DeActivate/{data}', [App\Http\Controllers\UserManagementController::class, 'DeActivate'])->name('DeActivateUser');
+Route::get('/UserManagement/DeActivate/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'DeActivate'])->name('DeActivateUser');
 
-Route::get('/UserManagement/Activated', [App\Http\Controllers\UserManagementController::class, 'Activated'])->name('ActivatedUser');
+Route::get('/UserManagement/Activated', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Activated'])->name('ActivatedUser');
 
-Route::get('/UserManagement/DeActivated', [App\Http\Controllers\UserManagementController::class, 'DeActivated'])->name('DeActivatedUser');
+Route::get('/UserManagement/DeActivated', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'DeActivated'])->name('DeActivatedUser');
 // role
-Route::get('/UserManagement/Role/{data}', [App\Http\Controllers\UserManagementController::class, 'Role'])->name('RoleUser');
-Route::put('/UserManagement/AssignRole/{data}', [App\Http\Controllers\UserManagementController::class, 'AssignRole'])->name('AssignRoleUser');
+Route::get('/UserManagement/Role/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Role'])->name('RoleUser');
+Route::put('/UserManagement/AssignRole/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'AssignRole'])->name('AssignRoleUser');
 
-Route::put('/UserManagement/ResetPassword/{data}', [App\Http\Controllers\UserManagementController::class, 'ResetPassword'])->name('ResetPasswordUser');
+Route::put('/UserManagement/ResetPassword/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'ResetPassword'])->name('ResetPasswordUser');

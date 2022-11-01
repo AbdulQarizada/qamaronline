@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\SystemManagement\UserManagement;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 use App\Models\QamarCareCard;
 use App\Models\AssignCareCardServices;
@@ -19,7 +20,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
 
-class UserManagementController extends Controller
+class UserController extends Controller
 {
 
 
@@ -510,7 +511,7 @@ class UserManagementController extends Controller
 
 
 
-  // services 
+  // services
 
   public function AssigningService()
   {
@@ -600,15 +601,15 @@ class UserManagementController extends Controller
         'qamar_care_cards.*',
         'a.Name as Province',
         'b.Name as District',
-        // 'c.Name as Country', 
-        // 'd.Name as Gender', 
-        // 'e.Name as Language', 
-        // 'f.Name as CurrentJob', 
-        // 'g.Name as FutureJob', 
-        // 'h.Name as EducationLevel', 
-        // 'i.Name as RelativeRelationship', 
+        // 'c.Name as Country',
+        // 'd.Name as Gender',
+        // 'e.Name as Language',
+        // 'f.Name as CurrentJob',
+        // 'g.Name as FutureJob',
+        // 'h.Name as EducationLevel',
+        // 'i.Name as RelativeRelationship',
         'j.Name as FamilyStatus',
-        // 'k.Name as Tribe', 
+        // 'k.Name as Tribe',
         // 'l.Name as IncomeStreem'
       )
 
@@ -646,15 +647,15 @@ class UserManagementController extends Controller
         'qamar_care_cards.*',
         'a.Name as Province',
         'b.Name as District',
-        // 'c.Name as Country', 
-        // 'd.Name as Gender', 
-        // 'e.Name as Language', 
-        // 'f.Name as CurrentJob', 
-        // 'g.Name as FutureJob', 
-        // 'h.Name as EducationLevel', 
-        // 'i.Name as RelativeRelationship', 
+        // 'c.Name as Country',
+        // 'd.Name as Gender',
+        // 'e.Name as Language',
+        // 'f.Name as CurrentJob',
+        // 'g.Name as FutureJob',
+        // 'h.Name as EducationLevel',
+        // 'i.Name as RelativeRelationship',
         'j.Name as FamilyStatus',
-        // 'k.Name as Tribe', 
+        // 'k.Name as Tribe',
         // 'l.Name as IncomeStreem'
       )
 
@@ -1016,7 +1017,7 @@ class UserManagementController extends Controller
         'service_providers.*',
         'a.Name as Province',
         'b.Name as District',
-        // 'c.Name as Country', 
+        // 'c.Name as Country',
         'd.Name as Gender',
         'e.Name as Language',
         'f.Name as CurrentJob',
@@ -1025,7 +1026,7 @@ class UserManagementController extends Controller
         'i.Name as ProvinceService',
         'j.Name as DistrictService',
         'k.Name as ServiceType',
-        // 'k.Name as Tribe', 
+        // 'k.Name as Tribe',
         // 'l.Name as IncomeStreem'
       )
 

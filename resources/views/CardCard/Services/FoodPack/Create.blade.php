@@ -61,12 +61,15 @@
                                 <div class="col-md-4">
                                     <div class="mb-3 position-relative">
                                         <label for="TotalBudget" class="form-label ">Total Budget <i class="mdi mdi-asterisk text-danger"></i></label>
+                                        <div class="input-group">
+                                        <div class="input-group-text">&dollar;</div>
                                         <input type="number" class="form-control form-control-lg @error('TotalBudget') is-invalid @enderror" value="{{ old('TotalBudget') }}" id="TotalBudget" name="TotalBudget" max="999999999" required>
                                         @error('TotalBudget')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">

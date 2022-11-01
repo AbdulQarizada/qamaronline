@@ -191,12 +191,12 @@
                                     </div>
                                 </div>
 
-                         <!-- 
+                         <!--
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="Country_ID" class="form-label">Country <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <select class="form-select  form-select-lg  @error('Country_ID') is-invalid @enderror" value="{{ old('Country_ID') }}" required id="Country_ID" name="Country_ID">
-                              
+
                                     @foreach($countries as $country)
                                     <option value="{{ $country -> id}}">{{ $country -> Name}}</option>
 
@@ -347,25 +347,25 @@
                             </div>
                         </div> -->
                     </div>
-                    <!--                     
+                    <!--
                         <div class="row">
                         <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="DOB" class="form-label">Date of Birth</label>
                                     <div class="input-group " id="example-date-input">
-                                      
+
                                     <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{ old('DOB') }}" type="date"  id="example-date-input" name="DOB" id="DOB" required>
                                     @error('DOB')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                @enderror
-                                   
+
                                     </div>
                                 </div>
-                                
+
                             </div>
-                            
+
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Gender" class="form-label">Gender</label>
@@ -380,8 +380,8 @@
                                @enderror
                                 </div>
                             </div>
-                      
-                   
+
+
                         </div> -->
                     <div class="row">
 
@@ -598,7 +598,6 @@
     <div>
 
         <button class="btn btn-success btn-lg" type="submit">Save </button>
-        <a class="btn btn-danger btn-lg" href="{{route('IndexQamarCareCard')}}">Cancel</a>
     </div>
 
 
@@ -695,7 +694,7 @@
     });
 
 
-    
+
 
 
     $(document).ready(function() {
@@ -712,7 +711,7 @@
                     success: function(data) {
                         if (data) {
                             $('.District').empty();
-                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                            //  $('.District').append('<option value="None" hidden>All</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="District_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
                             });

@@ -51,7 +51,6 @@
     </div>
     <div class="col-9 ">
         <div class="button">
-            <!-- <a href="{{route('AllGridOrphans')}}" class="btn  btn-lg waves-effect  waves-light mb-3 m-1 float-end"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a> -->
             <a href="{{route('CreateUser')}}" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 m-1 float-end">ADD USER</a>
         </div>
 
@@ -63,28 +62,6 @@
         <div class="card">
             <h3 class="card-header bg-warning text-white"></h3>
             <div class="card-body">
-                <!-- <div class="row">
-                            <div class="col-md-4">
-                                <div class="mb-3 position-relative">
-                                    <select class="form-select  form-select-lg  @error('Country') is-invalid @enderror"  onchange="window.location.href=this.value;" 
->
-                                   <option value="{{route('AllQamarCareCard')}}">Please Filter Your Choices</option>
-
-                                    <option value="{{route('AllQamarCareCard')}}">All</option>
-                                    <option value="{{route('PendingQamarCareCard')}}">Pending</option>
-                                    <option value="{{route('ApprovedQamarCareCard')}}">Approved</option>
-                                    <option value="{{route('PrintedQamarCareCard')}}">Printed</option>
-                                    <option value="{{route('ReleasedQamarCareCard')}}">Released</option>
-                                    <option value="{{route('RejectedQamarCareCard')}}">Rejected</option>
-
-
-
-                                 
-
-                                    </select>
-                                </div>
-                            </div>
-                    </div> -->
 
                 <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
                     <thead>

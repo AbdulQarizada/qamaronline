@@ -1,6 +1,6 @@
 @extends(Auth::user()->IsEmployee == 1 ? 'layouts.master-layouts' : 'layouts.master')
 
-@section('title') ADD ROLE TO USER@endsection
+@section('title') ADD ROLE TO USER @endsection
 
 @section('css')
 <link href="{{ URL::asset('/assets/libs/filepond/css/filepond.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -13,24 +13,11 @@
 @section('content')
 
 @if(Auth::user()->IsEmployee == 1)
-<div class="row">
-    <div class="col-12">
-        <a href="{{route('AllUser')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-    </div>
-</div>
 
-
-<div class="row">
-    <div class="col-12">
-        <div class="card border border-3">
-            <div class="card-header">
-                <blockquote class="blockquote border-primary  font-size-14 mb-0">
-                    <p class="my-0   card-title fw-medium font-size-24 text-wrap">ROLE USER</p>
-
-                </blockquote>
-            </div>
-        </div>
-
+<div class="row mt-4">
+    <div class="col-4">
+        <a href="{{route('AllUser')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>ASSIGN ROLE TO USER</span>
     </div>
 </div>
 
@@ -78,7 +65,7 @@
                                 <td>
                                 <p class="text-muted mb-0 text-danger">{{$data -> Job}}</p>
                                 <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> created_at -> format("d-m-Y") }}</a></h5>
-                                       
+
 
                                 </td>
                             </tr>
@@ -93,7 +80,7 @@
         </div>
     </div>
 </div>
-@endforeach
+
 <form class="needs-validation" action="{{route('AssignRoleUser', [$data -> id])}}" method="POST" enctype="multipart/form-data" novalidate>
 @method('PUT')
 
@@ -107,7 +94,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
-                <h4 class="card-header bg-primary text-white ">ROLE AND PERMISSION</h4>
+                <h4 class="card-header bg-dark text-white ">ROLE AND PERMISSION</h4>
 
                 <div class="card-body">
                     <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
@@ -147,7 +134,7 @@
                         <div class="col-md-2">
                             <div class="mb-3 position-relative">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input @error('IsSuperAdmin') is-invalid @enderror" type="checkbox" value="1" id="IsSuperAdmin" name="IsSuperAdmin">
+                                    <input class="form-check-input @error('IsSuperAdmin') is-invalid @enderror" type="checkbox" value="1" id="IsSuperAdmin" name="IsSuperAdmin" {{ $data->IsSuperAdmin=="1"? 'checked':'' }}>
                                     <label class="form-check-label" for="IsSuperAdmin">
                                     IsSuperAdmin
                                     </label>
@@ -177,7 +164,7 @@
                         <div class="col-md-2">
                             <div class="mb-3 position-relative">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input @error('IsOrphanRelief') is-invalid @enderror" type="checkbox" value="1" id="IsOrphanRelief" name="IsOrphanRelief">
+                                    <input class="form-check-input @error('IsOrphanRelief') is-invalid @enderror" type="checkbox" value="1" id="IsOrphanRelief" name="IsOrphanRelief" {{ $data->IsOrphanRelief=="1"? 'checked':'' }}>
                                     <label class="form-check-label" for="IsOrphanRelief">
                                     IsOrphanRelief
                                     </label>
@@ -192,7 +179,7 @@
                         <div class="col-md-2">
                             <div class="mb-3 position-relative">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input @error('IsAidAndRelief') is-invalid @enderror" type="checkbox" value="1" id="IsAidAndRelief" name="IsAidAndRelief">
+                                    <input class="form-check-input @error('IsAidAndRelief') is-invalid @enderror" type="checkbox" value="1" id="IsAidAndRelief" name="IsAidAndRelief" {{ $data->IsAidAndRelief=="1"? 'checked':'' }} >
                                     <label class="form-check-label" for="IsAidAndRelief">
                                     IsAidAndRelief
                                     </label>
@@ -207,7 +194,7 @@
                         <div class="col-md-2">
                             <div class="mb-3 position-relative">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input @error('IsWash') is-invalid @enderror" type="checkbox" value="1" id="IsWash" name="IsWash">
+                                    <input class="form-check-input @error('IsWash') is-invalid @enderror" type="checkbox" value="1" id="IsWash" name="IsWash" {{ $data->IsWash=="1"? 'checked':'' }}>
                                     <label class="form-check-label" for="IsWash">
                                     IsWash
                                     </label>
@@ -222,7 +209,7 @@
                         <div class="col-md-2">
                             <div class="mb-3 position-relative">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input @error('IsEducation') is-invalid @enderror" type="checkbox" value="1" id="IsEducation" name="IsEducation">
+                                    <input class="form-check-input @error('IsEducation') is-invalid @enderror" type="checkbox" value="1" id="IsEducation" name="IsEducation" {{ $data->IsEducation=="1"? 'checked':'' }}>
                                     <label class="form-check-label" for="IsEducation">
                                     IsEducation
                                     </label>
@@ -237,7 +224,7 @@
                         <div class="col-md-2">
                             <div class="mb-3 position-relative">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input @error('IsInitiative') is-invalid @enderror" type="checkbox" value="1" id="IsInitiative" name="IsInitiative">
+                                    <input class="form-check-input @error('IsInitiative') is-invalid @enderror" type="checkbox" value="1" id="IsInitiative" name="IsInitiative" {{ $data->IsInitiative=="1"? 'checked':'' }}>
                                     <label class="form-check-label" for="IsInitiative">
                                     IsInitiative
                                     </label>
@@ -252,7 +239,7 @@
                         <div class="col-md-2">
                             <div class="mb-3 position-relative">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input @error('IsMedicalSector') is-invalid @enderror" type="checkbox" value="1" id="IsMedicalSector" name="IsMedicalSector">
+                                    <input class="form-check-input @error('IsMedicalSector') is-invalid @enderror" type="checkbox" value="1" id="IsMedicalSector" name="IsMedicalSector" {{ $data->IsMedicalSector=="1"? 'checked':'' }}>
                                     <label class="form-check-label" for="IsMedicalSector">
                                     IsMedicalSector
                                     </label>
@@ -267,7 +254,7 @@
                         <div class="col-md-2">
                             <div class="mb-3 position-relative">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input @error('IsFoodAppeal') is-invalid @enderror" type="checkbox" value="1" id="IsFoodAppeal" name="IsFoodAppeal">
+                                    <input class="form-check-input @error('IsFoodAppeal') is-invalid @enderror" type="checkbox" value="1" id="IsFoodAppeal" name="IsFoodAppeal" {{ $data->IsFoodAppeal=="1"? 'checked':'' }}>
                                     <label class="form-check-label" for="IsFoodAppeal">
                                     IsFoodAppeal
                                     </label>
@@ -282,7 +269,7 @@
                         <div class="col-md-2">
                             <div class="mb-3 position-relative">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input @error('IsQamarCareCard') is-invalid @enderror" type="checkbox" value="1" id="IsQamarCareCard" name="IsQamarCareCard">
+                                    <input class="form-check-input @error('IsQamarCareCard') is-invalid @enderror" type="checkbox" value="1" id="IsQamarCareCard" name="IsQamarCareCard" {{ $data->IsQamarCareCard=="1"? 'checked':'' }}>
                                     <label class="form-check-label" for="IsQamarCareCard">
                                     IsQamarCareCard
                                     </label>
@@ -297,7 +284,7 @@
                         <div class="col-md-2">
                             <div class="mb-3 position-relative">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input @error('IsAppealsDistributions') is-invalid @enderror" type="checkbox" value="1" id="IsAppealsDistributions" name="IsAppealsDistributions">
+                                    <input class="form-check-input @error('IsAppealsDistributions') is-invalid @enderror" type="checkbox" value="1" id="IsAppealsDistributions" name="IsAppealsDistributions" {{ $data->IsAppealsDistributions=="1"? 'checked':'' }}>
                                     <label class="form-check-label" for="IsAppealsDistributions">
                                     IsAppealsDistributions
                                     </label>
@@ -312,7 +299,7 @@
                         <div class="col-md-2">
                             <div class="mb-3 position-relative">
                                 <div class="form-check mb-3">
-                                    <input class="form-check-input @error('IsDonorsAndDonorBoxes') is-invalid @enderror" type="checkbox" value="1" id="IsDonorsAndDonorBoxes" name="IsDonorsAndDonorBoxes">
+                                    <input class="form-check-input @error('IsDonorsAndDonorBoxes') is-invalid @enderror" type="checkbox" value="1" id="IsDonorsAndDonorBoxes" name="IsDonorsAndDonorBoxes" {{ $data->IsDonorsAndDonorBoxes=="1"? 'checked':'' }}>
                                     <label class="form-check-label" for="IsDonorsAndDonorBoxes">
                                     IsDonorsAndDonorBoxes
                                     </label>
@@ -372,7 +359,7 @@
 
 
 </form>
-
+@endforeach
 @endsection
 @section('script')
 <script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
@@ -461,7 +448,7 @@
     });
 
 
-    
+
 
 
     $(document).ready(function() {
@@ -478,7 +465,7 @@
                     success: function(data) {
                         if (data) {
                             $('.District').empty();
-                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                            //  $('.District').append('<option value="None" hidden>All</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="District_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
                             });

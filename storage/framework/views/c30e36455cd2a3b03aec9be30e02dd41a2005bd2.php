@@ -331,7 +331,7 @@ unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
 
-                         <!-- 
+                         <!--
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="Country_ID" class="form-label">Country <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -343,7 +343,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Country_ID')); ?>" required id="Country_ID" name="Country_ID">
-                              
+
                                     <?php $__currentLoopData = $countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <option value="<?php echo e($country -> id); ?>"><?php echo e($country -> Name); ?></option>
 
@@ -585,13 +585,13 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                         </div> -->
                     </div>
-                    <!--                     
+                    <!--
                         <div class="row">
                         <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="DOB" class="form-label">Date of Birth</label>
                                     <div class="input-group " id="example-date-input">
-                                      
+
                                     <input class="form-control form-select-lg <?php $__errorArgs = ['DOB'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -612,12 +612,12 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                   
+
                                     </div>
                                 </div>
-                                
+
                             </div>
-                            
+
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="Gender" class="form-label">Gender</label>
@@ -646,8 +646,8 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
-                      
-                   
+
+
                         </div> -->
                     <div class="row">
 
@@ -1004,7 +1004,6 @@ unset($__errorArgs, $__bag); ?>
     <div>
 
         <button class="btn btn-success btn-lg" type="submit">Save </button>
-        <a class="btn btn-danger btn-lg" href="<?php echo e(route('IndexQamarCareCard')); ?>">Cancel</a>
     </div>
 
 
@@ -1101,7 +1100,7 @@ unset($__errorArgs, $__bag); ?>
     });
 
 
-    
+
 
 
     $(document).ready(function() {
@@ -1118,7 +1117,7 @@ unset($__errorArgs, $__bag); ?>
                     success: function(data) {
                         if (data) {
                             $('.District').empty();
-                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                            //  $('.District').append('<option value="None" hidden>All</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="District_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
                             });
