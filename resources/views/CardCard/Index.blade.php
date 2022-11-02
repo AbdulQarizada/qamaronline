@@ -187,36 +187,26 @@
     <div class="card">
                 <div class="card-body">
 
-                    <h4 class="card-title">With indicators</h4>
-                    <p class="card-title-desc">You can also add the indicators to the
-                        carousel, alongside the controls, too.</p>
+                    <h4 class="card-title">Slides only</h4>
+                    <p class="card-title-desc">Here’s a carousel with slides only.
+                        Note the presence of the <code>.d-block</code>
+                        and <code>.img-fluid</code> on carousel images
+                        to prevent browser default image alignment.</p>
 
-                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                        <ol class="carousel-indicators">
-                          @foreach($qamarcarecards as $qamarcarecard)
-                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $qamarcarecard -> id }}" class="active"></li>
-                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $qamarcarecard -> id }}"></li>
-                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $qamarcarecard -> id }}"></li>
-                            @endforeach
-                        </ol>
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel"
+                        data-bs-interval="3000">
                         <div class="carousel-inner" role="listbox">
-                          @foreach($qamarcarecards as $qamarcarecard)
-                            <div class="carousel-item">
-                                <img class="d-block img-fluid" src="{{URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$qamarcarecard -> Profile)}}"
-                                    alt="{{ $qamarcarecard -> id }}">
+                        <div class="carousel-item active">
+                                <img class="d-block img-fluid" src=""
+                                    alt="First slide">
+                            </div>
+                        @foreach($qamarcarecards as $qamarcarecard)
+                            <div class="carousel-item ">
+                                <img class="d-block img-fluid" src="{{URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)}}"
+                                    alt="First slide">
                             </div>
                             @endforeach
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
                     </div>
                 </div>
             </div>

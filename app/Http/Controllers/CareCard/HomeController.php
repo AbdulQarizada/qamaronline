@@ -30,7 +30,7 @@ class HomeController extends Controller
   // index
   public function Index()
   {
-    $qamarcarecards =   QamarCareCard::paginate(10);
+    $qamarcarecards =   QamarCareCard::orderBy('id', 'desc')->take(5)->get();
 
     return view('CardCard.Index', ['qamarcarecards' => $qamarcarecards]);
   }
