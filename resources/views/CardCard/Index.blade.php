@@ -187,7 +187,7 @@
     <div class="card">
                 <div class="card-body">
 
-                    <h4 class="card-title">Slides only</h4>
+                    <h4 class="card-title">Qamar Care Beneficiaries</h4>
                     <p class="card-title-desc">Here’s a carousel with slides only.
                         Note the presence of the <code>.d-block</code>
                         and <code>.img-fluid</code> on carousel images
@@ -202,7 +202,7 @@
                             </div>
                         @foreach($qamarcarecards as $qamarcarecard)
                             <div class="carousel-item ">
-                                <img class="d-block img-fluid" src="{{URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$data -> Profile)}}"
+                                <img class="d-block img-fluid" src="{{URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$qamarcarecard -> Profile)}}"
                                     alt="First slide">
                             </div>
                             @endforeach

@@ -187,7 +187,7 @@
     <div class="card">
                 <div class="card-body">
 
-                    <h4 class="card-title">Slides only</h4>
+                    <h4 class="card-title">Qamar Care Beneficiaries</h4>
                     <p class="card-title-desc">Here’s a carousel with slides only.
                         Note the presence of the <code>.d-block</code>
                         and <code>.img-fluid</code> on carousel images
@@ -197,12 +197,12 @@
                         data-bs-interval="3000">
                         <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                                <img class="d-block img-fluid" src="<?php echo e(URL::asset('/assets/images/small/img-3.jpg')); ?>"
+                                <img class="d-block img-fluid" src=""
                                     alt="First slide">
                             </div>
                         <?php $__currentLoopData = $qamarcarecards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qamarcarecard): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="carousel-item ">
-                                <img class="d-block img-fluid" src="<?php echo e(URL::asset('/assets/images/small/img-3.jpg')); ?>"
+                                <img class="d-block img-fluid" src="<?php echo e(URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$qamarcarecard -> Profile)); ?>"
                                     alt="First slide">
                             </div>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
