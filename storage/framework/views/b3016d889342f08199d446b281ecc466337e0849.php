@@ -626,7 +626,7 @@ unset($__errorArgs, $__bag); ?>
 <div class="row">
     <div class="col-md-4">
         <div class="card">
-            <h4 class="card-header bg-dark text-white">Qamar Care Beneficiaries</h4>
+            <h4 class="card-header text-dark">Qamar Care Beneficiaries</h4>
             <div class="card-body">
 
                 <!-- <p class="text-muted fw-medium">Beneficiaries</p> -->
@@ -706,6 +706,8 @@ unset($__errorArgs, $__bag); ?>
 <div class="row">
 
     <div class="col-xl-12">
+    <div id="DataInsertionChart" class="apex-charts" dir="ltr"></div>
+
     </div>
     <!-- end col -->
 </div>
@@ -942,6 +944,13 @@ unset($__errorArgs, $__bag); ?>
             height: 400,
             type: "donut"
         },
+        title: {
+            text: "Family Status Base Classification",
+            align: "left",
+            style: {
+                fontWeight: "500"
+            }
+        },
         series: [<?php echo e($qamarcarecardsPoor); ?>, <?php echo e($qamarcarecardsLowIncome); ?>,<?php echo e($qamarcarecardsWidow); ?>, <?php echo e($qamarcarecardsOrphans); ?>,<?php echo e($qamarcarecardsDisabledIndividual); ?>, <?php echo e($qamarcarecardsElderlyIndividual); ?>,<?php echo e($qamarcarecardsDisplacedFamily); ?>, <?php echo e($qamarcarecardsDisasterAffected); ?>],
         labels: ['Poor', 'Low Income',  'Widow', 'Orphans', 'Disabled Individual', 'Elderly Individual', 'Displaced Family', 'Disaster Affected'],
         colors: ["#34c38f", "#556ee6", "#f46a6a", "#50a5f1", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c"],
@@ -969,6 +978,114 @@ unset($__errorArgs, $__bag); ?>
 
     var FamilyStatusChart = new ApexCharts(document.querySelector("#FamilyStatusChart"), FamilyStatusChart);
     FamilyStatusChart.render();
+
+
+    var DataInsertionChart = {
+
+chart: {
+    height: 350,
+    type: "bar",
+    toolbar: {
+        show: !1
+    }
+},
+plotOptions: {
+    bar: {
+        dataLabels: {
+            position: "top"
+        }
+    }
+},
+dataLabels: {
+    enabled: !0,
+    formatter: function(e) {
+        return e + "%"
+    },
+    offsetY: -22,
+    style: {
+        fontSize: "12px",
+        colors: ["#304758"]
+    }
+},
+series: [{
+    name: "Card Inserted",
+    data: [2.5, 3.2, 5, 10.1, 4.2, 3.8, 3, 2.4, 4, 1.2, 3.5, .8]
+}],
+colors: ["#556ee6"],
+grid: {
+    borderColor: "#f1f1f1"
+},
+xaxis: {
+    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    position: "top",
+    labels: {
+        offsetY: -18
+    },
+    axisBorder: {
+        show: !1
+    },
+    axisTicks: {
+        show: !1
+    },
+    crosshairs: {
+        fill: {
+            type: "gradient",
+            gradient: {
+                colorFrom: "#D8E3F0",
+                colorTo: "#BED1E6",
+                stops: [0, 100],
+                opacityFrom: .4,
+                opacityTo: .5
+            }
+        }
+    },
+    tooltip: {
+        enabled: !0,
+        offsetY: -35
+    }
+},
+fill: {
+    gradient: {
+        shade: "light",
+        type: "horizontal",
+        shadeIntensity: .25,
+        gradientToColors: void 0,
+        inverseColors: !0,
+        opacityFrom: 1,
+        opacityTo: 1,
+        stops: [50, 0, 100, 100]
+    }
+},
+yaxis: {
+    axisBorder: {
+        show: !1
+    },
+    axisTicks: {
+        show: !1
+    },
+    labels: {
+        show: !1,
+        formatter: function(e) {
+            return e + "%"
+        }
+    }
+},
+title: {
+    text: "Montly Data Insertion, 2002",
+    floating: !0,
+    offsetY: 330,
+    align: "center",
+    style: {
+        color: "#444",
+        fontWeight: "500"
+    }
+}
+    };
+
+    var DataInsertionChart = new ApexCharts(document.querySelector("#DataInsertionChart"), DataInsertionChart);
+    DataInsertionChart.render();
+
+
 </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/index.blade.php ENDPATH**/ ?>
