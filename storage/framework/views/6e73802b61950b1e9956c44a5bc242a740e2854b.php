@@ -1,5 +1,6 @@
 
 
+
 <?php $__env->startSection('title'); ?> Edit Qamar Care Card <?php $__env->stopSection(); ?>
 <?php $__env->startSection('css'); ?>
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/filepond.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -13,8 +14,14 @@
 
 <div class="row mt-4">
         <div class="col-4">
+        <?php if(Cookie::get('Layout') == 'LayoutNoSidebar'): ?>
            <a href="<?php echo e(route('AllCareCard')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-            <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>EDIT CARE CARDS</span>
+           <?php endif; ?>
+           <?php if(Cookie::get('Layout') == 'LayoutSidebar'): ?>
+
+<a href="<?php echo e(route('IndexCareCard')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+<?php endif; ?>
+           <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>EDIT CARE CARDS</span>
         </div>
      </div>
 
@@ -1405,11 +1412,6 @@ unset($__errorArgs, $__bag); ?>
     });
 
 
-    $(document).ready(function() {
-        var rnd = Math.floor(Math.random() * 99999) + 1;
-        document.getElementById('QCC').value = rnd;
-    });
-
 
 
 
@@ -1488,4 +1490,4 @@ unset($__errorArgs, $__bag); ?>
     });
 </script>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/CardCard/Operations/Edit.blade.php ENDPATH**/ ?>
+<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/CardCard/Operations/Edit.blade.php ENDPATH**/ ?>

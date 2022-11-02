@@ -1,6 +1,7 @@
-@extends('layouts.master-layouts')
+@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
 
-@section('title') Qamar Care List @endsection
+
+@section('title') Qamar Care Cards @endsection
 
 @section('css')
 <!-- DataTables -->

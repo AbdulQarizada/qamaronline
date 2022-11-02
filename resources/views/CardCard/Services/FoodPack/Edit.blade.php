@@ -1,6 +1,7 @@
-@extends('layouts.master-layouts')
+@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
 
-@section('title') Edit Food Packs @endsection
+
+@section('title') Food Packs @endsection
 @section('css')
 <link href="{{ URL::asset('/assets/libs/filepond/css/filepond.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <link href="{{ URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-image-preview.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -14,7 +15,7 @@
 <div class="row mt-4">
         <div class="col-4">
            <a href="{{route('AllFoodPack')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-            <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>EDIT FOOD PACKS</span>
+           <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>EDIT FOOD PACKS</span>
         </div>
      </div>
 

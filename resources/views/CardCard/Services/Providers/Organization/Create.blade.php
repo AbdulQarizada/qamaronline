@@ -1,4 +1,5 @@
-@extends('layouts.master-layouts')
+@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
+
 
 @section('title') Service Provider @endsection
 
@@ -14,8 +15,14 @@
 
 <div class="row mt-4">
     <div class="col-6">
-        <a href="{{route('OrganizationServiceProviders')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        @if(Cookie::get('Layout') == 'LayoutNoSidebar')
 
+<a href="{{route('OrganizationServiceProviders')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+@endif
+@if(Cookie::get('Layout') == 'LayoutSidebar')
+
+<a href="{{route('IndexCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+@endif
         <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20 text-uppercase"></i>ADD ORGANIZATIONAL SERVICE PROVIDER</span>
 
     </div>

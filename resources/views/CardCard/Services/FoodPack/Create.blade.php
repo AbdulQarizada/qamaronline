@@ -1,6 +1,7 @@
-@extends('layouts.master-layouts')
+@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
 
-@section('title') ADD FOOD PACKS @endsection
+
+@section('title') Food Packs @endsection
 
 @section('css')
 <link href="{{ URL::asset('/assets/libs/filepond/css/filepond.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -14,7 +15,14 @@
 
 <div class="row mt-4">
     <div class="col-4">
-        <a href="{{route('AllFoodPack')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        @if(Cookie::get('Layout') == 'LayoutNoSidebar')
+
+<a href="{{route('AllFoodPack')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+@endif
+@if(Cookie::get('Layout') == 'LayoutSidebar')
+
+<a href="{{route('IndexCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+@endif
         <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>ADD FOOD PACK</span>
     </div>
 </div>

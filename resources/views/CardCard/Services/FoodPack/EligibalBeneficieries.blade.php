@@ -1,6 +1,7 @@
-@extends('layouts.master-layouts')
+@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
 
-@section('title') Eligible Beneficiaries @endsection
+
+@section('title') Food Packs @endsection
 
 @section('css')
 <!-- DataTables -->
@@ -13,7 +14,14 @@
 
 <div class="row mt-4">
     <div class="col-4">
-        <a href="{{route('IndexFoodPack')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        @if(Cookie::get('Layout') == 'LayoutNoSidebar')
+
+<a href="{{route('IndexFoodPack')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+@endif
+@if(Cookie::get('Layout') == 'LayoutSidebar')
+
+<a href="{{route('IndexCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+@endif
         <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20 "></i>Eligible Beneficiaries</span>
     </div>
 </div>

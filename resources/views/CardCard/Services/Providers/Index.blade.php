@@ -1,11 +1,12 @@
-@extends('layouts.master-layouts')
+@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
+
 
 @section('title') Assign Services @endsection
 
 @section('css')
 <link href="{{ URL::asset('/assets/css/mystyle/tab.css') }}" rel="stylesheet" type="text/css" />
 
- 
+
 @endsection
 
 

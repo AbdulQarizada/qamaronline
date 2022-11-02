@@ -1,7 +1,8 @@
 
 
 
-<?php $__env->startSection('title'); ?> Qamar Care List <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('title'); ?> Qamar Care Cards <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
 <link href="<?php echo e(URL::asset('/assets/css/mystyle/tabstyle.css')); ?>" rel="stylesheet" type="text/css" />

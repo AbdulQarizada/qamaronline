@@ -30,7 +30,9 @@ class HomeController extends Controller
   // index
   public function Index()
   {
-    return view('CardCard.Index');
+    $qamarcarecards =   QamarCareCard::paginate(10);
+
+    return view('CardCard.Index', ['qamarcarecards' => $qamarcarecards]);
   }
 
   // FileUpload

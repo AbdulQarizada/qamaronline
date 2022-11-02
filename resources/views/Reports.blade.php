@@ -1,8 +1,9 @@
-@extends('layouts.master-layouts')
+@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
+
 
 @section('title') @lang('translation.Dashboards') @endsection
 @section('css')
-    
+
     <link href="{{ URL::asset('/assets/css/mystyle/tabstyle.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
@@ -36,7 +37,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="d-flex mt-4">
                          <a href="MonthlyReports" class="btn btn-info btn-lg">Enter</a>
                     </div>
@@ -62,7 +63,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="d-flex mt-4">
                          <a href="QuartlyReports" class="btn btn-info btn-lg">Enter</a>
                     </div>
@@ -88,7 +89,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="d-flex mt-4">
                          <a href="YearlyReports" class="btn btn-info btn-lg">Enter</a>
                     </div>
@@ -96,7 +97,7 @@
                 </div>
             </div>
         </div>
-        
+
 
     </div>
     <!-- end row -->

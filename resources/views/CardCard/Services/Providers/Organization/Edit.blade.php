@@ -1,12 +1,13 @@
-@extends('layouts.master-layouts')
+@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
 
-@section('title') Assign Services @endsection
+
+@section('title') Service Provider @endsection
 
 @section('css')
 <link href="{{ URL::asset('/assets/libs/filepond/css/filepond.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <link href="{{ URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-image-preview.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
 
- 
+
 @endsection
 
 
@@ -30,11 +31,11 @@
                     <div class="card-header">
                       <blockquote class="blockquote border-primary  font-size-14 mb-0">
                                 <p class="my-0   card-title fw-medium font-size-24 text-wrap">ASSIGN SERVICE</p>
-                        
+
                         </blockquote>
                     </div>
                 </div>
-      
+
         </div>
      </div> -->
 
@@ -42,14 +43,14 @@
 
 <form class="needs-validation"  action="{{route('AssignServiceQamarCareCard')}}" method="POST" enctype="multipart/form-data" novalidate>
      @csrf
-     
+
      <div class="row">
         <div class="col-lg-12">
             <div>
                 <div>
                     <div class="table-responsive">
                         <table class="table align-middle table-nowrap table-hover">
-     
+
                             <tbody>
                                 <tr>
                                 <td>
@@ -69,17 +70,17 @@
                                 <td>
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> Province}}</a></h5>
-                                    <p class="text-muted mb-0">{{$data -> District}}</p> 
-                               
+                                    <p class="text-muted mb-0">{{$data -> District}}</p>
+
                                     </div>
                                 </td>
-                                <td>    
+                                <td>
                                       <div>
                                       <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$data -> PrimaryNumber}}</a></h5>
                                         <p class="text-muted mb-0 badge badge-soft-warning">{{$data -> SecondaryNumber}}</p>
                                          <p class="text-muted mb-0 badge badge-soft-danger">{{$data -> RelativeNumber}}</p>
                                         </div>
-                               </td> 
+                               </td>
                                <td>
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> FamilyStatus}}</a></h5>
@@ -126,23 +127,23 @@
 
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> Created_By }}</a></h5>
-                                    <p class="text-muted mb-0">Employee</p> 
-                               
+                                    <p class="text-muted mb-0">Employee</p>
+
                                 </div>
                                 @endif
                                 @if( $data -> Created_By =="")
 
                                    <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
-                                    <p class="text-muted mb-0">Requested</p> 
+                                    <p class="text-muted mb-0">Requested</p>
 
                                   </div>
                                 @endif
                                 </td>
                                 </tr>
-                           
-                        
-                             
+
+
+
                             </tbody>
                         </table>
                     </div>
@@ -170,19 +171,19 @@
                     <input type="text"  value="{{$data -> TazkiraID }}" id="TazkiraID" name="TazkiraID" hidden />
                     <input type="text"  value="{{$data -> Created_By }}" id="Created_By" name="Created_By" hidden />
 
-                         
+
 
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="mb-3 position-relative">
                                     <label for="AssignedTo" class="form-label">Assigned To</label>
                                     <select class="form-select  form-select-lg  @error('AssignedTo') is-invalid @enderror" value="{{ old('AssignedTo') }}" required id="AssignedTo" name="AssignedTo">
-                                  
+
                                     @foreach ($users as $user)
                                      <option value="Afghanistan">{{ $user->name }}</option>
                                     @endforeach
-                                    
-                                 
+
+
 
                                     </select>
                                     @error('AssignedTo')
@@ -249,7 +250,7 @@
 
                                     <select class="form-select  form-select-lg @error('ServiceType') is-invalid @enderror" value="{{ old('ServiceType') }}" required id="ServiceType" name="ServiceType">
                                     <option>Select Option</option>
-                                    
+
                                     <option value="Food Package">Food Package</option>
                                     <option value="Doctor">Doctor</option>
                                     <!-- <option value="Pashai">Pashai</option>
@@ -257,7 +258,7 @@
                                     <option value="Uzbaki">Uzbaki</option>
                                     <option value="Turkmani">Turkmani</option>
                                     <option value="Balochi">Balochi</option> -->
-                                    
+
 
                                     </select>
                                     @error('ServiceType')
@@ -268,9 +269,9 @@
                                 </div>
                             </div>
                             </div>
-                   
+
                         </div>
-                    
+
                         <div class="row">
                         <!-- <div class="col-md-4">
                                 <div class="mb-3 position-relative">
@@ -287,23 +288,23 @@
                                 <div class="mb-3 position-relative">
                                     <label for="ExpectedService" class="form-label">Expected Service</label>
                                     <div class="input-group " id="example-date-input">
-                                      
+
                                     <input class="form-control form-select-lg @error('ExpectedService') is-invalid @enderror" value="{{ old('ExpectedService') }}" type="date"  id="example-date-input" name="ExpectedService" id="ExpectedService" required>
                                     @error('ExpectedService')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                @enderror
-                                   
+
                                     </div>
                                 </div>
-                                
+
                             </div>
-                            
-                      
-                   
+
+
+
                         </div>
-                     
+
                 </div>
             </div>
         <!-- end card -->
@@ -361,7 +362,7 @@
       // Get a reference to the file input element
 	  const inputTazkira = document.querySelector('input[name="Tazkira"]');
 
-      
+
 
 	  // Create a FilePond instance
 	  const Profile = FilePond.create(inputProfile,
