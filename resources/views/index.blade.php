@@ -115,7 +115,14 @@
 
         </div>
     </div>
+    <div class="col-md-2">
+        <div class="mb-3 mt-4">
+            <label class="form-label"></label>
 
+            <button class="btn btn-primary form-control">Filter</button>
+
+        </div>
+    </div>
 </div>
 
 @if(Auth::user()->IsEmployee == 1)
@@ -605,16 +612,33 @@
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                            <img class="d-block img-fluid" src="assets/images/small/img-4.jpg" height="300px" width="100%" alt="First slide">
+                        <td><img class="d-block img-thumbnail" src="{{ URL::asset('/assets/images/qcc/front.jpeg') }}" alt="First slide"></td>
+
                         </div>
                         @foreach($qamarcarecardsLastFive as $qamarcarecard)
                         <div class="carousel-item ">
-                            <img class="d-block " src="{{URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$qamarcarecard -> Profile)}}" alt="First slide" height="300px" width="100%">
-                            <div class="carousel-caption d-none d-md-block text-white-50">
+                            <table class="table project-list-table table-nowrap align-middle table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <td><img class="d-block img-thumbnail rounded-circle avatar-xl" src="{{URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$qamarcarecard -> Profile)}}" alt="First slide"></td>
+                                        <td>
+                                            <h5 class="text-truncate font-size-18 fw-semibold "><a href="#" class="text-dark">{{ $qamarcarecard -> FirstName }} </a></h5>
+                                            <h6 class="text-truncate font-size-18 "><a href="#" class="text-dark">{{ $qamarcarecard -> FamilyStatus }} </a></h6>
 
-                                <h5 class="card-footer text-white">{{ $qamarcarecard -> FirstName }}</h5>
-                            </div>
+                                            <span class="text-danger text-uppercase">Created At: </span>{{ $qamarcarecard -> created_at -> format("d-m-Y")}}
+                                            <div class="d-flex flex-wrap gap-2">
+                                        <a href="{{route('StatusCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-warning waves-effect waves-light">
+                                            <i class="bx bx-show-alt font-size-16 align-middle"></i> Visit Profile
+                                        </a>
+                                        </div>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+
+                            </table>
                         </div>
+
                         @endforeach
                     </div>
                 </div>
@@ -678,7 +702,7 @@
 <div class="row">
 
     <div class="col-xl-12">
-    <div id="DataInsertionChart" class="apex-charts" dir="ltr"></div>
+        <div id="DataInsertionChart" class="apex-charts" dir="ltr"></div>
 
     </div>
     <!-- end col -->
@@ -879,7 +903,15 @@
 <script src="{{ URL::asset('/assets/js/pages/form-advanced.init.js') }}"></script>
 <script>
     var GenderChart = {
-        series: [{{$qamarcarecardsMale}}, {{$qamarcarecardsFemale}}],
+        series: [{
+            {
+                $qamarcarecardsMale
+            }
+        }, {
+            {
+                $qamarcarecardsFemale
+            }
+        }],
         chart: {
             width: 380,
             type: 'pie',
@@ -922,8 +954,40 @@
                 fontWeight: "500"
             }
         },
-        series: [{{$qamarcarecardsPoor}}, {{$qamarcarecardsLowIncome}},{{$qamarcarecardsWidow}}, {{$qamarcarecardsOrphans}},{{$qamarcarecardsDisabledIndividual}}, {{$qamarcarecardsElderlyIndividual}},{{$qamarcarecardsDisplacedFamily}}, {{$qamarcarecardsDisasterAffected}}],
-        labels: ['Poor', 'Low Income',  'Widow', 'Orphans', 'Disabled Individual', 'Elderly Individual', 'Displaced Family', 'Disaster Affected'],
+        series: [{
+            {
+                $qamarcarecardsPoor
+            }
+        }, {
+            {
+                $qamarcarecardsLowIncome
+            }
+        }, {
+            {
+                $qamarcarecardsWidow
+            }
+        }, {
+            {
+                $qamarcarecardsOrphans
+            }
+        }, {
+            {
+                $qamarcarecardsDisabledIndividual
+            }
+        }, {
+            {
+                $qamarcarecardsElderlyIndividual
+            }
+        }, {
+            {
+                $qamarcarecardsDisplacedFamily
+            }
+        }, {
+            {
+                $qamarcarecardsDisasterAffected
+            }
+        }],
+        labels: ['Poor', 'Low Income', 'Widow', 'Orphans', 'Disabled Individual', 'Elderly Individual', 'Displaced Family', 'Disaster Affected'],
         colors: ["#34c38f", "#556ee6", "#f46a6a", "#50a5f1", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c"],
         legend: {
             show: !0,
@@ -953,109 +1017,107 @@
 
     var DataInsertionChart = {
 
-chart: {
-    height: 350,
-    type: "bar",
-    toolbar: {
-        show: !1
-    }
-},
-plotOptions: {
-    bar: {
+        chart: {
+            height: 350,
+            type: "bar",
+            toolbar: {
+                show: !1
+            }
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    position: "top"
+                }
+            }
+        },
         dataLabels: {
-            position: "top"
-        }
-    }
-},
-dataLabels: {
-    enabled: !0,
-    formatter: function(e) {
-        return e + "%"
-    },
-    offsetY: -22,
-    style: {
-        fontSize: "12px",
-        colors: ["#304758"]
-    }
-},
-series: [{
-    name: "Card Inserted",
-    data: [2.5, 3.2, 5, 10.1, 4.2, 3.8, 3, 2.4, 4, 1.2, 3.5, .8]
-}],
-colors: ["#556ee6"],
-grid: {
-    borderColor: "#f1f1f1"
-},
-xaxis: {
-    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    position: "top",
-    labels: {
-        offsetY: -18
-    },
-    axisBorder: {
-        show: !1
-    },
-    axisTicks: {
-        show: !1
-    },
-    crosshairs: {
+            enabled: !0,
+            formatter: function(e) {
+                return e + "%"
+            },
+            offsetY: -22,
+            style: {
+                fontSize: "12px",
+                colors: ["#304758"]
+            }
+        },
+        series: [{
+            name: "Card Inserted",
+            data: [2.5, 3.2, 5, 10.1, 4.2, 3.8, 3, 2.4, 4, 1.2, 3.5, .8]
+        }],
+        colors: ["#556ee6"],
+        grid: {
+            borderColor: "#f1f1f1"
+        },
+        xaxis: {
+            categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            position: "top",
+            labels: {
+                offsetY: -18
+            },
+            axisBorder: {
+                show: !1
+            },
+            axisTicks: {
+                show: !1
+            },
+            crosshairs: {
+                fill: {
+                    type: "gradient",
+                    gradient: {
+                        colorFrom: "#D8E3F0",
+                        colorTo: "#BED1E6",
+                        stops: [0, 100],
+                        opacityFrom: .4,
+                        opacityTo: .5
+                    }
+                }
+            },
+            tooltip: {
+                enabled: !0,
+                offsetY: -35
+            }
+        },
         fill: {
-            type: "gradient",
             gradient: {
-                colorFrom: "#D8E3F0",
-                colorTo: "#BED1E6",
-                stops: [0, 100],
-                opacityFrom: .4,
-                opacityTo: .5
+                shade: "light",
+                type: "horizontal",
+                shadeIntensity: .25,
+                gradientToColors: void 0,
+                inverseColors: !0,
+                opacityFrom: 1,
+                opacityTo: 1,
+                stops: [50, 0, 100, 100]
+            }
+        },
+        yaxis: {
+            axisBorder: {
+                show: !1
+            },
+            axisTicks: {
+                show: !1
+            },
+            labels: {
+                show: !1,
+                formatter: function(e) {
+                    return e + "%"
+                }
+            }
+        },
+        title: {
+            text: "Montly Data Insertion, 2002",
+            floating: !0,
+            offsetY: 330,
+            align: "center",
+            style: {
+                color: "#444",
+                fontWeight: "500"
             }
         }
-    },
-    tooltip: {
-        enabled: !0,
-        offsetY: -35
-    }
-},
-fill: {
-    gradient: {
-        shade: "light",
-        type: "horizontal",
-        shadeIntensity: .25,
-        gradientToColors: void 0,
-        inverseColors: !0,
-        opacityFrom: 1,
-        opacityTo: 1,
-        stops: [50, 0, 100, 100]
-    }
-},
-yaxis: {
-    axisBorder: {
-        show: !1
-    },
-    axisTicks: {
-        show: !1
-    },
-    labels: {
-        show: !1,
-        formatter: function(e) {
-            return e + "%"
-        }
-    }
-},
-title: {
-    text: "Montly Data Insertion, 2002",
-    floating: !0,
-    offsetY: 330,
-    align: "center",
-    style: {
-        color: "#444",
-        fontWeight: "500"
-    }
-}
     };
 
     var DataInsertionChart = new ApexCharts(document.querySelector("#DataInsertionChart"), DataInsertionChart);
     DataInsertionChart.render();
-
-
 </script>
 @endsection
