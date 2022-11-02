@@ -1,10 +1,5 @@
 
-
-
-
-<?php if(Cookie::get('Layout') == null): ?>
- Illuminate\Support\Facades\Cookie::forever('Layout', "LayoutSidebar");
-<?php endif; ?>
+ 
 
 
 
@@ -17,6 +12,7 @@
 
 
 <?php if(Auth::user()->IsEmployee == 1): ?>
+ <?php if(Cookie::get('Layout') == 'LayoutNoSidebar'): ?>
 <div class="row">
     <div class="col-xl-4">
         <div class="card">
@@ -603,7 +599,7 @@ unset($__errorArgs, $__bag); ?>
     </div>
 </div>
 <!-- end row -->
-
+<?php endif; ?>
 
 <?php else: ?>
 <div class="row">
@@ -795,4 +791,4 @@ unset($__errorArgs, $__bag); ?>
 <!-- dashboard init -->
 <script src="<?php echo e(URL::asset('/assets/js/pages/dashboard.init.js')); ?>"></script>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make(Auth::user()->IsEmployee == 1 ? 'layouts.master-layouts' : 'layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/index.blade.php ENDPATH**/ ?>

@@ -44,12 +44,12 @@ return [
             'root'   => public_path() . '/uploads/QamarCareCard/Beneficiaries',
         ],
 
-        'ServiceProvider' => [
+        'IndividualServiceProvider' => [
             'driver' => 'local',
-            'root'   => public_path() . '/uploads/QamarCareCard/ServiceProvider',
+            'root'   => public_path() . '/uploads/QamarCareCard/ServiceProvider/Individual',
         ],
 
-       
+
         'Scholarship' => [
             'driver' => 'local',
             'root'   => public_path() . '/uploads/Scholarship/Applicant',

@@ -90,9 +90,9 @@ Route::post('/OrphansRelief/Orphans_HousePic', [App\Http\Controllers\HomeControl
 
 // Education
 
-Route::get('/Education', [App\Http\Controllers\EducationController::class, 'Index'])->name('IndexEducation');
+Route::get('/Education', [App\Http\Controllers\Education\EducationController::class, 'Index'])->name('IndexEducation');
 
-Route::get('/Education/Scholarship', [App\Http\Controllers\EducationController::class, 'AllScholarship'])->name('AllScholarshipEducation');
+Route::get('/Education/Scholarship', [App\Http\Controllers\Education\EducationController::class, 'AllScholarship'])->name('AllScholarshipEducation');
 
 // create scholarship
 Route::get('/Education/Scholarship/Create', [App\Http\Controllers\EducationController::class, 'CreateScholarship'])->name('CreateScholarship');
@@ -108,33 +108,33 @@ Route::get('/Education/Scholarship/Closed', [App\Http\Controllers\EducationContr
 
 
 //create CreateScholarshipModule
-Route::post('/Education/Scholarship/CreateScholarshipModule', [App\Http\Controllers\EducationController::class, 'CreateScholarshipModule'])->name('CreateScholarshipModule');
+Route::post('/Education/Scholarship/CreateScholarshipModule', [App\Http\Controllers\Education\EducationController::class, 'CreateScholarshipModule'])->name('CreateScholarshipModule');
 
 
-Route::get('/Education/Applicant', [App\Http\Controllers\EducationController::class, 'AllApplicant'])->name('AllApplicantEducation');
-Route::get('/Education/Applicant/Approved', [App\Http\Controllers\EducationController::class, 'ApprovedApplicants'])->name('ApprovedApplicantsEducation');
-Route::get('/Education/Applicant/Rejected', [App\Http\Controllers\EducationController::class, 'RejectedApplicants'])->name('RejectedApplicantsEducation');
-Route::get('/Education/Applicant/Pending', [App\Http\Controllers\EducationController::class, 'PendingApplicants'])->name('PendingApplicantsEducation');
+Route::get('/Education/Applicant', [App\Http\Controllers\Education\EducationController::class, 'AllApplicant'])->name('AllApplicantEducation');
+Route::get('/Education/Applicant/Approved', [App\Http\Controllers\Education\EducationController::class, 'ApprovedApplicants'])->name('ApprovedApplicantsEducation');
+Route::get('/Education/Applicant/Rejected', [App\Http\Controllers\Education\EducationController::class, 'RejectedApplicants'])->name('RejectedApplicantsEducation');
+Route::get('/Education/Applicant/Pending', [App\Http\Controllers\Education\EducationController::class, 'PendingApplicants'])->name('PendingApplicantsEducation');
 
 // status list and change status
-Route::get('/Education/Applicant/Status/{data}', [App\Http\Controllers\EducationController::class, 'Status'])->name('StatusApplicantEducation');
+Route::get('/Education/Applicant/Status/{data}', [App\Http\Controllers\Education\EducationController::class, 'Status'])->name('StatusApplicantEducation');
 
-Route::get('/Education/Applicant/Approve/{data}', [App\Http\Controllers\EducationController::class, 'Approve'])->name('ApproveApplicantEducation');
+Route::get('/Education/Applicant/Approve/{data}', [App\Http\Controllers\Education\EducationController::class, 'Approve'])->name('ApproveApplicantEducation');
 
-Route::get('/Education/Applicant/Reject/{data}', [App\Http\Controllers\EducationController::class, 'Reject'])->name('RejectApplicantEducation');
+Route::get('/Education/Applicant/Reject/{data}', [App\Http\Controllers\Education\EducationController::class, 'Reject'])->name('RejectApplicantEducation');
 
-Route::get('/Education/Applicant/ReInitiate/{data}', [App\Http\Controllers\EducationController::class, 'ReInitiate'])->name('ReInitiateApplicantEducation');
+Route::get('/Education/Applicant/ReInitiate/{data}', [App\Http\Controllers\Education\EducationController::class, 'ReInitiate'])->name('ReInitiateApplicantEducation');
 
 
 
 
 
 // create Application
-Route::get('/Education/Application/Create', [App\Http\Controllers\EducationController::class, 'CreateApplication'])->name('CreateApplicationEducation');
-Route::post('/Education/Application/Create', [App\Http\Controllers\EducationController::class, 'StoreApplication'])->name('CreateApplicationEducation');
+Route::get('/Education/Application/Create', [App\Http\Controllers\Education\EducationController::class, 'CreateApplication'])->name('CreateApplicationEducation');
+Route::post('/Education/Application/Create', [App\Http\Controllers\Education\EducationController::class, 'StoreApplication'])->name('CreateApplicationEducation');
 
 // success applicant
-Route::get('/Education/Application/Success', [App\Http\Controllers\EducationController::class, 'SuccessApplication'])->name('SuccessApplicationEducation');
+Route::get('/Education/Application/Success', [App\Http\Controllers\Education\EducationController::class, 'SuccessApplication'])->name('SuccessApplicationEducation');
 
 
 
@@ -215,9 +215,6 @@ Route::get('/CareCard/Services/FoodPacks/Delete/{data}', [App\Http\Controllers\C
 
 
 
-
-
-
 // Assign To Food Pack
 Route::post('/CareCard/Services/FoodPacks/EligibleBeneficiaries', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'AssignToFoodPack'])->name('AssignToFoodPack');
 Route::get('/CareCard/Services/FoodPacks/EligibleBeneficiaries', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'EligibleBeneficiariesFoodPack'])->name('EligibleBeneficiariesFoodPack');
@@ -226,8 +223,45 @@ Route::post('/CareCard/Services/FoodPacks/SearchEligibleBeneficieries', [App\Htt
 Route::get('/CareCard/Services/FoodPacks/SearchAssignedBeneficiariesFoodPack/{data}', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'SearchAssignedBeneficiariesFoodPack'])->name('SearchAssignedBeneficiariesFoodPack');
 
 
+// Service Provider
+Route::get('/CareCard/Services/ServiceProviders/', [App\Http\Controllers\CareCard\ServicesController::class, 'ServiceProviderIndex'])->name('ServiceProviderIndexQamarCareCard');
+// Individual
+Route::get('/CareCard/Services/ServiceProviders/Individual/All', [App\Http\Controllers\CareCard\Services\Providers\IndividualController::class, 'All'])->name('IndividualServiceProviders');
+// Create
+Route::get('/CareCard/Services/ServiceProviders/Individual/Create', [App\Http\Controllers\CareCard\Services\Providers\IndividualController::class, 'Create'])->name('CreateIndividualServiceProviders');
+Route::post('/CareCard/Services/ServiceProviders/Individual/Create', [App\Http\Controllers\CareCard\Services\Providers\IndividualController::class, 'Store'])->name('CreateIndividualServiceProviders');
+// FileUploads
+Route::post('/IndividualServiceProvider_Profile', [App\FileUpload\ServiceProvider::class, 'Individual_Profile'])->name('IndividualServiceProvider_Profile');
+Route::post('/IndividualServiceProvider_Tazkira', [App\FileUpload\ServiceProvider::class, 'Individual_Tazkira'])->name('IndividualServiceProvider_Tazkira');
+// Change Status
+Route::get('/CareCard/Services/ServiceProviders/Individual/Status/{data}', [App\Http\Controllers\CareCard\Services\Providers\IndividualController::class, 'Status'])->name('StatusIndividualServiceProviders');
+Route::get('/CareCard/Services/ServiceProviders/Individual/Approve/{data}', [App\Http\Controllers\CareCard\Services\Providers\IndividualController::class, 'Approve'])->name('ApproveIndividualServiceProviders');
+Route::get('/CareCard/Services/ServiceProviders/Individual/Reject/{data}', [App\Http\Controllers\CareCard\Services\Providers\IndividualController::class, 'Reject'])->name('RejectIndividualServiceProviders');
+Route::get('/CareCard/Services/ServiceProviders/Individual/Delete/{data}', [App\Http\Controllers\CareCard\Services\Providers\IndividualController::class, 'Delete'])->name('DeleteIndividualServiceProviders');
+Route::get('/CareCard/Services/ServiceProviders/Individual/ReInitiate/{data}', [App\Http\Controllers\CareCard\Services\Providers\IndividualController::class, 'ReInitiate'])->name('ReInitiateIndividualServiceProviders');
+
+// Organization
+Route::get('/CareCard/Services/ServiceProviders/Organization/All', [App\Http\Controllers\CareCard\Services\Providers\OrganizationController::class, 'All'])->name('OrganizationServiceProviders');
+// Create
+Route::get('/CareCard/Services/ServiceProviders/Organization/Create', [App\Http\Controllers\CareCard\Services\Providers\OrganizationController::class, 'Create'])->name('CreateOrganizationServiceProviders');
+Route::post('/CareCard/Services/ServiceProviders/Organization/Create', [App\Http\Controllers\CareCard\Services\Providers\OrganizationController::class, 'Store'])->name('CreateOrganizationServiceProviders');
+// FileUploads
+Route::post('/OrganizationServiceProvider_Profile', [App\FileUpload\ServiceProvider::class, 'Individual_Profile'])->name('IndividualServiceProvider_Profile');
+Route::post('/OrganizationServiceProvider_Tazkira', [App\FileUpload\ServiceProvider::class, 'Individual_Tazkira'])->name('IndividualServiceProvider_Tazkira');
+// Change Status
+Route::get('/CareCard/Services/ServiceProviders/Organization/Status/{data}', [App\Http\Controllers\CareCard\Services\Providers\OrganizationController::class, 'Status'])->name('StatusOrganizationServiceProviders');
+Route::get('/CareCard/Services/ServiceProviders/Organization/Approve/{data}', [App\Http\Controllers\CareCard\Services\Providers\OrganizationController::class, 'Approve'])->name('ApproveOrganizationServiceProviders');
+Route::get('/CareCard/Services/ServiceProviders/Organization/Reject/{data}', [App\Http\Controllers\CareCard\Services\Providers\OrganizationController::class, 'Reject'])->name('RejectOrganizationServiceProviders');
+Route::get('/CareCard/Services/ServiceProviders/Organization/Delete/{data}', [App\Http\Controllers\CareCard\Services\Providers\OrganizationController::class, 'Delete'])->name('DeleteOrganizationServiceProviders');
+Route::get('/CareCard/Services/ServiceProviders/Organization/ReInitiate/{data}', [App\Http\Controllers\CareCard\Services\Providers\OrganizationController::class, 'ReInitiate'])->name('ReInitiateOrganizationServiceProviders');
 
 
+
+
+
+
+
+Route::get('/CareCard/Services/ServiceProviders/Organization/EligibleBeneficiaries', [App\Http\Controllers\CareCard\ServicesController::class, 'CreateServiceProviderOrganization'])->name('CreateServiceProviderOrganization');
 
 
 
@@ -257,21 +291,11 @@ Route::get('/QamarCareCard/ServiceReleased/{data}', [App\Http\Controllers\CareCa
 
 
 // Service Provider
-Route::get('/QamarCareCard/ServiceProviders', [App\Http\Controllers\CareCard\ServicesController::class, 'ServiceProviders'])->name('ServiceProvidersQamarCareCard');
-Route::get('/QamarCareCard/ServiceProviderIndex', [App\Http\Controllers\CareCard\ServicesController::class, 'ServiceProviderIndex'])->name('ServiceProviderIndexQamarCareCard');
-Route::get('/QamarCareCard/CreateServiceProviderIndividual', [App\Http\Controllers\CareCard\ServicesController::class, 'CreateServiceProviderIndividual'])->name('CreateServiceProviderIndividual');
-Route::get('/QamarCareCard/CreateServiceProviderOrganization', [App\Http\Controllers\CareCard\ServicesController::class, 'CreateServiceProviderOrganization'])->name('CreateServiceProviderOrganization');
 
 // qamar care list
 Route::get('/CareCard/FoodPack', [App\Http\Controllers\CareCard\ServicesController::class, 'FoodPack'])->name('FoodPackQamarCareCard');
 //create
-Route::post('/QamarCareCard/CreateServiceProviderIndividual', [App\Http\Controllers\CareCard\ServicesController::class, 'StoreServiceProviderIndividual'])->name('CreateServiceProviderIndividual');
 
-Route::get('/QamarCareCard/StatusServiceProviderQamarCareCard/{data}', [App\Http\Controllers\CareCard\ServicesController::class, 'StatusServiceProvider'])->name('StatusServiceProviderQamarCareCard');
-Route::get('/QamarCareCard/ApproveServiceProviderQamarCareCard/{data}', [App\Http\Controllers\CareCard\ServicesController::class, 'ApproveServiceProvider'])->name('ApproveServiceProviderQamarCareCard');
-Route::get('/QamarCareCard/RejectServiceProviderQamarCareCard/{data}', [App\Http\Controllers\CareCard\ServicesController::class, 'RejectServiceProvider'])->name('RejectServiceProviderQamarCareCard');
-Route::get('/QamarCareCard/DeleteServiceProviderQamarCareCard/{data}', [App\Http\Controllers\CareCard\ServicesController::class, 'DeleteServiceProvider'])->name('DeleteServiceProviderQamarCareCard');
-Route::get('/QamarCareCard/ReInitiateServiceProviderQamarCareCard/{data}', [App\Http\Controllers\CareCard\ServicesController::class, 'ReInitiateServiceProvider'])->name('ReInitiateServiceProviderQamarCareCard');
 
 
 // find service provider
@@ -290,8 +314,6 @@ Route::post('/QamarCareCard/AssignService', [App\Http\Controllers\CareCard\Servi
 
 
 Route::post('/QamarCareCard/AssignServices', [App\Http\Controllers\CareCard\CareCardController::class, 'AssignService'])->name('AssignServicesQamarCareCard');
-// FileUploads
-Route::post('/ServiceProvider_Profile', [App\Http\Controllers\HomeController::class, 'ServiceProvider_Profile'])->name('ServiceProvider_Profile');
 
 //=======================================================================================================================================
 

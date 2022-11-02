@@ -27,11 +27,11 @@
                 $('#current_passwordError').text('');
                 $('#passwordError').text('');
                 $('#password_confirmError').text('');
-                if(response.isSuccess == false){ 
+                if(response.isSuccess == false){
                     $('#current_passwordError').text(response.Message);
                 }else if(response.isSuccess == true){
-                    setTimeout(function () {   
-                        window.location.href = "<?php echo e(route('root')); ?>"; 
+                    setTimeout(function () {
+                        window.location.href = "<?php echo e(route('root')); ?>";
                     }, 1000);
                 }
             },
@@ -45,6 +45,8 @@
 </script>
 
 <?php echo $__env->yieldContent('script'); ?>
+
+
 
 <!-- App js -->
 <script src="<?php echo e(URL::asset('assets/js/app.min.js')); ?>"></script>

@@ -1,10 +1,5 @@
 
-
-@extends(Auth::user()->IsEmployee == 1 ? 'layouts.master-layouts' : 'layouts.master')
-
-@if(Cookie::get('Layout') == null)
- Illuminate\Support\Facades\Cookie::forever('Layout', "LayoutSidebar");
-@endif
+ @extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
 
 
 
@@ -17,6 +12,7 @@
 
 
 @if(Auth::user()->IsEmployee == 1)
+ @if(Cookie::get('Layout') == 'LayoutNoSidebar')
 <div class="row">
     <div class="col-xl-4">
         <div class="card">
@@ -575,7 +571,7 @@
     </div>
 </div>
 <!-- end row -->
-
+@endif
 
 @else
 <div class="row">

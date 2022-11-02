@@ -23,6 +23,19 @@
 @section('body')
     <body data-sidebar="dark">
 @show
+      <!-- Loader -->
+      <div id="preloader">
+            <div id="status">
+                <div class="spinner-chase">
+                    <div class="chase-dot"></div>
+                    <div class="chase-dot"></div>
+                    <div class="chase-dot"></div>
+                    <div class="chase-dot"></div>
+                    <div class="chase-dot"></div>
+                    <div class="chase-dot"></div>
+                </div>
+            </div>
+        </div>
     <!-- Begin page -->
     <div id="layout-wrapper">
         @include('layouts.topbar')
@@ -44,7 +57,9 @@
     </div>
     <!-- END layout-wrapper -->
 
+
     <!-- /Right-bar -->
+
 
     <!-- JAVASCRIPT -->
     @include('layouts.vendor-scripts')

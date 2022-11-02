@@ -14,23 +14,36 @@
     <link href="{{ URL::asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ URL::asset('/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
-    
+
     @yield('css')
 
 </head>
 
 @section('body')
-    <body  data-topbar="dark" data-layout="horizontal">
-      
-   
 
-@show
-@include('sweetalert::alert')
+<body data-topbar="dark" data-layout="horizontal">
+    <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner-chase">
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
+            </div>
+        </div>
+    </div>
+
+
+    @show
+    @include('sweetalert::alert')
 
     <!-- Begin page -->
     <div id="layout-wrapper">
-    
-   
+
+
         @include('layouts.horizontal')
         <!-- ============================================================== -->
         <!-- Start right Content here -->
@@ -55,8 +68,8 @@
     </div>
     <!-- END wrapper -->
 
-    <!-- END Right Sidebar -->
-
+       <!-- Right bar overlay-->
+       <!-- <div class="rightbar-overlay"></div> -->
     @include('layouts.vendor-scripts')
 </body>
 

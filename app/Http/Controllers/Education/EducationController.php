@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Education;
 use Carbon\Carbon;
+use App\Http\Controllers\Controller;
 
 use App\Models\Scholarship;
 use App\Models\Application;
@@ -44,7 +45,7 @@ class EducationController extends Controller
 
 
 
-  
+
   // create
   public function CreateScholarship()
   {
@@ -212,16 +213,16 @@ class EducationController extends Controller
 
   public function CreateScholarshipModule(Request $request)
   {
-    
+
      $validator = $request->validate([
     'Parent_ID' => 'bail|required|max:255',
     'ModuleName' => 'required|max:255',
 
 
      ]);
-   
 
-   
+
+
      ScholarshipModule::create([
         'Parent_ID' => request('Parent_ID'),
         'ModuleName' => request('ModuleName'),
@@ -233,7 +234,7 @@ class EducationController extends Controller
 
        return redirect()->route('AllScholarshipEducation')->with('toast_success', 'Record Created Successfully!');
 
-    
+
 
 
 
@@ -241,7 +242,7 @@ class EducationController extends Controller
   }
 
 
-  
+
   public function AllApplicant()
   {
     $applicants =   Application::join('look_ups as a', 'applications.ScholarshipType_ID', '=', 'a.id')
@@ -265,7 +266,7 @@ class EducationController extends Controller
     -> get();
   return view('Education.Application.All', compact('applicants'));
   }
-  
+
   public function RejectedApplicants()
   {
     $applicants =   Application::join('look_ups as a', 'applications.ScholarshipType_ID', '=', 'a.id')
@@ -295,11 +296,11 @@ class EducationController extends Controller
    // status
    public function Status(Application $data)
    {
- 
+
      $applicants =   Application::where("applications.id", "=", $data->id)
- 
- 
- 
+
+
+
        ->join('locations as a', 'applications.CurrentProvince_ID', '=', 'a.id')
        ->join('locations as b', 'applications.CurrentDistrict_ID', '=', 'b.id')
        ->join('look_ups as c', 'applications.Country_ID', '=', 'c.id')
@@ -312,8 +313,8 @@ class EducationController extends Controller
        ->join('look_ups as j', 'applications.FamilyStatus_ID', '=', 'j.id')
        ->join('look_ups as k', 'applications.Tribe_ID', '=', 'k.id')
        ->join('look_ups as l', 'applications.IncomeStreem_ID', '=', 'l.id')
- 
- 
+
+
        ->select(
          'applications.*',
          'a.Name as Province',
@@ -329,47 +330,47 @@ class EducationController extends Controller
          'k.Name as Tribe',
          'l.Name as IncomeStreem'
        )
- 
+
        ->get();
      //  $qamarcarecards  = $data;
- 
+
      return view('Education.Application.Status',  ['datas' => $applicants]);
    }
- 
+
    public function Approve(Application $data)
    {
- 
+
      $data->update([
- 
+
        'Status' => 'Approved',
        'Status_By' => auth()->user()->id
- 
- 
+
+
      ]);
      return redirect()->route('ApprovedApplicantsEducation')->with('toast_success', 'Record Approved Successfully!');
    }
- 
+
    public function Reject(Application $data)
    {
- 
+
      $data->update([
        'Status_By' => auth()->user()->id,
- 
+
        'Status' => 'Rejected'
- 
+
      ]);
      return redirect()->route('RejectedApplicantsEducation')->with('toast_error', 'Record Rejected Successfully!');
    }
- 
- 
+
+
    public function ReInitiate(Application $data)
    {
- 
+
      $data->update([
        'Status_By' => auth()->user()->id,
- 
+
        'Status' => 'Pending'
- 
+
      ]);
      return redirect()->route('PendingApplicantsEducation')->with('toast_warning', 'Record Re-Initiated Successfully!');
    }
@@ -460,7 +461,7 @@ class EducationController extends Controller
 
 
 
-      
+
 
 
 
@@ -469,7 +470,7 @@ class EducationController extends Controller
       // 'OrganizationStartDate'=> 'required|max:255',
       // 'OrganizationEndDate'=> 'required|max:255',
 
-   
+
       // 'WorkExperienceLetter'=> 'required|max:10',
       // 'Resume'=> 'required|max:10',
 
@@ -546,7 +547,7 @@ class EducationController extends Controller
 
 
 
-      
+
 
 
 
@@ -560,7 +561,7 @@ class EducationController extends Controller
       'Resume' => request('Resume'),
 
 
-      
+
       'WhyChosenPersonalStatement' => request('WhyChosenPersonalStatement'),
       'WhyChosenTHisCountryPersonalStatement' => request('WhyChosenTHisCountryPersonalStatement'),
       'PlanAfterGraduationPersonalStatement' => request('PlanAfterGraduationPersonalStatement'),
@@ -586,7 +587,7 @@ class EducationController extends Controller
     // success applicant
     public function SuccessApplication()
     {
-  
+
       return view('Education.Application.Success');
     }
 
