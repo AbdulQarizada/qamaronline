@@ -887,7 +887,9 @@
 
 @endif
 @endsection
+
 @apexchartsScripts
+
 @section('script')
 
 <script src="{{ URL::asset('/assets/libs/jquery-knob/jquery-knob.min.js') }}"></script>
