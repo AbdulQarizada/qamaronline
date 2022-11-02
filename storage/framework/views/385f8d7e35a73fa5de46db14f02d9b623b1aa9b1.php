@@ -183,31 +183,45 @@
 <!-- start page title -->
 
 <div class="row">
-    <div class="col-xl-4">
-            <div class="card">
+    <div class="col-md-4">
+    <div class="card">
                 <div class="card-body">
 
-                    <h4 class="card-title">Qamar Care Cards Beneficiaries</h4>
-                    <p class="card-title-desc">Here’s a carousel with slides only.
-                        Note the presence of the <code>.d-block</code>
-                        and <code>.img-fluid</code> on carousel images
-                        to prevent browser default image alignment.</p>
+                    <h4 class="card-title">With indicators</h4>
+                    <p class="card-title-desc">You can also add the indicators to the
+                        carousel, alongside the controls, too.</p>
 
-                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel"
-                        data-bs-interval="3000">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <ol class="carousel-indicators">
+                          <?php $__currentLoopData = $qamarcarecards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qamarcarecard): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?php echo e($qamarcarecard -> id); ?>" class="active"></li>
+                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?php echo e($qamarcarecard -> id); ?>"></li>
+                            <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<?php echo e($qamarcarecard -> id); ?>"></li>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </ol>
                         <div class="carousel-inner" role="listbox">
-                           <?php $__currentLoopData = $qamarcarecards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qamarcarecard): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="carousel-item active">
+                          <?php $__currentLoopData = $qamarcarecards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qamarcarecard): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="carousel-item">
                                 <img class="d-block img-fluid" src="<?php echo e(URL::asset('/uploads/QamarCareCard/Beneficiaries/Profiles/'.$qamarcarecard -> Profile)); ?>"
-                                    alt="First slide">
+                                    alt="<?php echo e($qamarcarecard -> id); ?>">
                             </div>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
                     </div>
                 </div>
             </div>
     </div>
-    <div class="col-xl-8">
+    <div class="col-md-8">
         <div class="row">
             <div class="col-md-4">
                 <div class="card mini-stats-wid">
