@@ -21,7 +21,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
-
 class HomeController extends Controller
 {
 
@@ -30,18 +29,10 @@ class HomeController extends Controller
   // index
   public function Index()
   {
-    $qamarcarecardsCount =   QamarCareCard::get() -> count();
-    $qamarcarecardsApproved =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Approved')-> get() -> count();
-    $qamarcarecardsRejected =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Rejected')->get() -> count();
-    $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
-    ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
-    ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
-    ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
-    ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-    -> orderBy('id', 'desc')->take(5)->get();
 
 
-    return view('CardCard.Index', ['qamarcarecards' => $qamarcarecards, 'qamarcarecardsCount' => $qamarcarecardsCount, 'qamarcarecardsApproved' => $qamarcarecardsApproved, 'qamarcarecardsRejected' => $qamarcarecardsRejected]);
+
+    return view('CardCard.Index');
   }
 
   // FileUpload

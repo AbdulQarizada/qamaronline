@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\QamarCareCard;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -67,11 +68,70 @@ class HomeController extends Controller
 
 
         $notifications = auth()->user()->unreadNotifications;
-
-
         $catagorys =   LookUp::where("Parent_Name", "=", "None")->get();
-        return view('index', compact('catagorys', 'notifications'));
+
+
+        // Reporting for dashboard
+
+
+
+   $qamarcarecardsCount =   QamarCareCard::get() -> count();
+   $qamarcarecardsPending =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Pending')-> get() -> count();
+   $qamarcarecardsApproved =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Approved')-> get() -> count();
+   $qamarcarecardsPrinted =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Printed')->get() -> count();
+   $qamarcarecardsReleased =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Released')->get() -> count();
+   $qamarcarecardsRejected =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Rejected')->get() -> count();
+
+   $qamarcarecardsMale =   QamarCareCard::where("qamar_care_cards.Gender_ID", "=", 60)->get() -> count();
+   $qamarcarecardsFemale =   QamarCareCard::where("qamar_care_cards.Gender_ID", "=", 61)->get() -> count();
+
+
+
+   $qamarcarecardsPoor =   QamarCareCard::where("qamar_care_cards.FamilyStatus_ID", "=", 91)->get() -> count();
+   $qamarcarecardsLowIncome =   QamarCareCard::where("qamar_care_cards.FamilyStatus_ID", "=", 92)->get() -> count();
+   $qamarcarecardsWidow =   QamarCareCard::where("qamar_care_cards.FamilyStatus_ID", "=", 93)->get() -> count();
+   $qamarcarecardsOrphans =   QamarCareCard::where("qamar_care_cards.FamilyStatus_ID", "=", 94)->get() -> count();
+   $qamarcarecardsDisabledIndividual =   QamarCareCard::where("qamar_care_cards.FamilyStatus_ID", "=", 95)->get() -> count();
+   $qamarcarecardsElderlyIndividual =   QamarCareCard::where("qamar_care_cards.FamilyStatus_ID", "=", 96)->get() -> count();
+   $qamarcarecardsDisplacedFamily =   QamarCareCard::where("qamar_care_cards.FamilyStatus_ID", "=", 97)->get() -> count();
+   $qamarcarecardsDisasterAffected =   QamarCareCard::where("qamar_care_cards.FamilyStatus_ID", "=", 98)->get() -> count();
+
+
+
+
+
+
+
+   $qamarcarecardsLastFive =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
+   ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
+   ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
+   ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
+   ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+   -> orderBy('id', 'desc')->take(5)->get();
+
+
+
+
+
+
+    return view('index', compact('qamarcarecardsDisabledIndividual','qamarcarecardsElderlyIndividual','qamarcarecardsDisplacedFamily','qamarcarecardsDisasterAffected','qamarcarecardsPoor','qamarcarecardsLowIncome','qamarcarecardsWidow','qamarcarecardsOrphans','catagorys', 'notifications', 'qamarcarecardsMale', 'qamarcarecardsFemale', 'qamarcarecardsCount', 'qamarcarecardsPending', 'qamarcarecardsApproved', 'qamarcarecardsPrinted', 'qamarcarecardsReleased', 'qamarcarecardsRejected', 'qamarcarecardsLastFive'));
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function Projects()
     {

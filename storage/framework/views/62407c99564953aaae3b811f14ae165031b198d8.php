@@ -1,0 +1,1 @@
+<div id="<?php echo $chart->getId(); ?>"></div><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/vendor/apexcharts/container.blade.php ENDPATH**/ ?>

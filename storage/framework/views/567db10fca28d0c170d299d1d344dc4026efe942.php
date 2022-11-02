@@ -1,6 +1,7 @@
 
 
-<?php $__env->startSection('title'); ?> Qamar Care List <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('title'); ?> Qamar Care Cards <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
 <!-- DataTables -->
@@ -317,4 +318,4 @@
     </script>
 
     <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/CardCard/Operations/Status.blade.php ENDPATH**/ ?>
+<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/CardCard/Operations/Status.blade.php ENDPATH**/ ?>

@@ -12,7 +12,7 @@
                 <li><a href="{{route('root')}}" key="t-home"><i class="bx bx-store"></i>Home</a></li>
 
 
-                @if(Auth::user()->IsSponsor == 1)
+                @if(Auth::user()->IsOrphanSponsor == 1)
                 <li><a href="{{route('MyOrphansSponsor')}}" key="t-orphan"><i class="bx bx-store"></i>My Orphans</a></li>
                 <li><a href="{{route('MyPaymentsSponsor')}}" key="t-payment"><i class="bx bx-store"></i>My Payments</a></li>
                 @endif
@@ -30,7 +30,6 @@
                         <span key="t-layouts">Qamar Care Card</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="{{route('IndexCareCard')}}" key="t-light-sidebar">Dashboard</a></li>
                         <li>
                             <a href="javascript: void(0);" class="has-arrow" key="t-vertical">Operations</a>
                             <ul class="sub-menu" aria-expanded="true">

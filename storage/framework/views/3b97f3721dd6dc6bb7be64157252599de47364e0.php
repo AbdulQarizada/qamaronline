@@ -12,7 +12,7 @@
                 <li><a href="<?php echo e(route('root')); ?>" key="t-home"><i class="bx bx-store"></i>Home</a></li>
 
 
-                <?php if(Auth::user()->IsSponsor == 1): ?>
+                <?php if(Auth::user()->IsOrphanSponsor == 1): ?>
                 <li><a href="<?php echo e(route('MyOrphansSponsor')); ?>" key="t-orphan"><i class="bx bx-store"></i>My Orphans</a></li>
                 <li><a href="<?php echo e(route('MyPaymentsSponsor')); ?>" key="t-payment"><i class="bx bx-store"></i>My Payments</a></li>
                 <?php endif; ?>
@@ -30,7 +30,6 @@
                         <span key="t-layouts">Qamar Care Card</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="<?php echo e(route('IndexCareCard')); ?>" key="t-light-sidebar">Dashboard</a></li>
                         <li>
                             <a href="javascript: void(0);" class="has-arrow" key="t-vertical">Operations</a>
                             <ul class="sub-menu" aria-expanded="true">

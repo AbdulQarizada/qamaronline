@@ -198,12 +198,14 @@ class ComposerStaticInit266fa5b06966592293d7b7eb2a841bf9
         'B' => 
         array (
             'Brick\\Math\\' => 11,
+            'Balping\\JsonRaw\\' => 16,
         ),
         'A' => 
         array (
             'Assert\\' => 7,
             'Asm89\\Stack\\' => 12,
             'App\\' => 4,
+            'Akaunting\\Apexcharts\\' => 21,
         ),
     );
 
@@ -609,6 +611,10 @@ class ComposerStaticInit266fa5b06966592293d7b7eb2a841bf9
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
         ),
+        'Balping\\JsonRaw\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/balping/json-raw-encoder/src',
+        ),
         'Assert\\' => 
         array (
             0 => __DIR__ . '/..' . '/beberlei/assert/lib/Assert',
@@ -620,6 +626,10 @@ class ComposerStaticInit266fa5b06966592293d7b7eb2a841bf9
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
+        ),
+        'Akaunting\\Apexcharts\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src',
         ),
     );
 
@@ -638,9 +648,45 @@ class ComposerStaticInit266fa5b06966592293d7b7eb2a841bf9
     );
 
     public static $classMap = array (
+        'Akaunting\\Apexcharts\\Chart' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Chart.php',
+        'Akaunting\\Apexcharts\\Facade' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Facade.php',
+        'Akaunting\\Apexcharts\\Options\\Annotations' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Options/Annotations.php',
+        'Akaunting\\Apexcharts\\Options\\Chart' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Options/Chart.php',
+        'Akaunting\\Apexcharts\\Options\\DataLabels' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Options/DataLabels.php',
+        'Akaunting\\Apexcharts\\Options\\Fill' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Options/Fill.php',
+        'Akaunting\\Apexcharts\\Options\\ForecastDataPoints' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Options/ForecastDataPoints.php',
+        'Akaunting\\Apexcharts\\Options\\Grid' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Options/Grid.php',
+        'Akaunting\\Apexcharts\\Options\\Legend' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Options/Legend.php',
+        'Akaunting\\Apexcharts\\Options\\Markers' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Options/Markers.php',
+        'Akaunting\\Apexcharts\\Options\\NoData' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Options/NoData.php',
+        'Akaunting\\Apexcharts\\Options\\PlotOptions' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Options/PlotOptions.php',
+        'Akaunting\\Apexcharts\\Options\\Responsive' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Options/Responsive.php',
+        'Akaunting\\Apexcharts\\Options\\States' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Options/States.php',
+        'Akaunting\\Apexcharts\\Options\\Stroke' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Options/Stroke.php',
+        'Akaunting\\Apexcharts\\Options\\Subtitle' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Options/Subtitle.php',
+        'Akaunting\\Apexcharts\\Options\\Theme' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Options/Theme.php',
+        'Akaunting\\Apexcharts\\Options\\Title' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Options/Title.php',
+        'Akaunting\\Apexcharts\\Options\\Tooltip' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Options/Tooltip.php',
+        'Akaunting\\Apexcharts\\Options\\Xaxis' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Options/Xaxis.php',
+        'Akaunting\\Apexcharts\\Options\\Yaxis' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Options/Yaxis.php',
+        'Akaunting\\Apexcharts\\Provider' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Provider.php',
+        'Akaunting\\Apexcharts\\Support\\DatasetClass' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Support/DatasetClass.php',
+        'Akaunting\\Apexcharts\\Traits\\Formatter' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Traits/Formatter.php',
+        'Akaunting\\Apexcharts\\Traits\\Types' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Traits/Types.php',
+        'Akaunting\\Apexcharts\\Types\\Area' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Types/Area.php',
+        'Akaunting\\Apexcharts\\Types\\Bar' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Types/Bar.php',
+        'Akaunting\\Apexcharts\\Types\\Donut' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Types/Donut.php',
+        'Akaunting\\Apexcharts\\Types\\HeatMap' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Types/HeatMap.php',
+        'Akaunting\\Apexcharts\\Types\\HorizontalBar' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Types/HorizontalBar.php',
+        'Akaunting\\Apexcharts\\Types\\Line' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Types/Line.php',
+        'Akaunting\\Apexcharts\\Types\\Pie' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Types/Pie.php',
+        'Akaunting\\Apexcharts\\Types\\PolarArea' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Types/PolarArea.php',
+        'Akaunting\\Apexcharts\\Types\\Radar' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Types/Radar.php',
+        'Akaunting\\Apexcharts\\Types\\Radial' => __DIR__ . '/..' . '/akaunting/laravel-apexcharts/src/Types/Radial.php',
         'App\\Cart' => __DIR__ . '/../..' . '/app/Cart.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\FileUpload\\ServiceProvider' => __DIR__ . '/../..' . '/app/FileUpload/ServiceProvider.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -650,9 +696,13 @@ class ComposerStaticInit266fa5b06966592293d7b7eb2a841bf9
         'App\\Http\\Controllers\\CareCard\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/CareCard/HomeController.php',
         'App\\Http\\Controllers\\CareCard\\Operations\\OperationsController' => __DIR__ . '/../..' . '/app/Http/Controllers/CareCard/Operations/OperationsController.php',
         'App\\Http\\Controllers\\CareCard\\Services\\FoodPacksController' => __DIR__ . '/../..' . '/app/Http/Controllers/CareCard/Services/FoodPacksController.php',
+        'App\\Http\\Controllers\\CareCard\\Services\\Providers\\IndividualController' => __DIR__ . '/../..' . '/app/Http/Controllers/CareCard/Services/Providers/IndividualController.php',
+        'App\\Http\\Controllers\\CareCard\\Services\\Providers\\OrganizationController' => __DIR__ . '/../..' . '/app/Http/Controllers/CareCard/Services/Providers/OrganizationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\Education\\EducationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Education/EducationController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\OrphanRelief\\OrphansReliefController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrphanRelief/OrphansReliefController.php',
+        'App\\Http\\Controllers\\SystemManagement\\UserManagement\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/SystemManagement/UserManagement/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -664,6 +714,7 @@ class ComposerStaticInit266fa5b06966592293d7b7eb2a841bf9
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Listeners\\SendCareCardNotification' => __DIR__ . '/../..' . '/app/Listeners/SendCareCardNotification.php',
         'App\\Mail\\OrphanMails' => __DIR__ . '/../..' . '/app/Mail/OrphanMails.php',
         'App\\Models\\Application' => __DIR__ . '/../..' . '/app/Models/Application.php',
         'App\\Models\\AssignCareCardServices' => __DIR__ . '/../..' . '/app/Models/AssignCareCardServices.php',
@@ -679,6 +730,7 @@ class ComposerStaticInit266fa5b06966592293d7b7eb2a841bf9
         'App\\Models\\ServiceProviders' => __DIR__ . '/../..' . '/app/Models/ServiceProviders.php',
         'App\\Models\\ServiceType' => __DIR__ . '/../..' . '/app/Models/ServiceType.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Notifications\\CareCardNotification' => __DIR__ . '/../..' . '/app/Notifications/CareCardNotification.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -694,6 +746,9 @@ class ComposerStaticInit266fa5b06966592293d7b7eb2a841bf9
         'Assert\\LazyAssertion' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/LazyAssertion.php',
         'Assert\\LazyAssertionException' => __DIR__ . '/..' . '/beberlei/assert/lib/Assert/LazyAssertionException.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+        'Balping\\JsonRaw\\Encoder' => __DIR__ . '/..' . '/balping/json-raw-encoder/src/Encoder.php',
+        'Balping\\JsonRaw\\Raw' => __DIR__ . '/..' . '/balping/json-raw-encoder/src/Raw.php',
+        'Balping\\JsonRaw\\Replacer' => __DIR__ . '/..' . '/balping/json-raw-encoder/src/Replacer.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
         'Brick\\Math\\BigNumber' => __DIR__ . '/..' . '/brick/math/src/BigNumber.php',
