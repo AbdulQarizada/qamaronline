@@ -8,6 +8,9 @@
 <link href="<?php echo e(URL::asset('/assets/css/mystyle/tabstyle.css')); ?>" rel="stylesheet" type="text/css" />
 <link href="<?php echo e(URL::asset('/assets/libs/select2/select2.min.css')); ?>" rel="stylesheet" type="text/css" />
 
+<!-- tui charts Css -->
+<link href="<?php echo e(URL::asset('/assets/libs/tui-chart/tui-chart.min.css')); ?>" rel="stylesheet" type="text/css" />
+
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 
@@ -630,7 +633,7 @@ unset($__errorArgs, $__bag); ?>
 
 <!-- start page title -->
 
-<div class="row">
+<div class="row mb-4">
     <div class="col-md-4">
         <div class="card">
             <h4 class="card-header text-dark">Qamar Care Beneficiaries</h4>
@@ -640,7 +643,7 @@ unset($__errorArgs, $__bag); ?>
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                        <td><img class="d-block img-thumbnail" src="<?php echo e(URL::asset('/assets/images/qcc/front.jpeg')); ?>" alt="First slide"></td>
+                        <td><img class="d-block" src="<?php echo e(URL::asset('/assets/images/qcc/front.jpeg')); ?>" height="185px" alt="First slide"></td>
 
                         </div>
                         <?php $__currentLoopData = $qamarcarecardsLastFive; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qamarcarecard): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -673,6 +676,13 @@ unset($__errorArgs, $__bag); ?>
                 </div>
             </div>
         </div>
+        <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+        <div id="AllInOne" class="apex-charts" dir="ltr"></div>
+            </div>
+            </div>
+        </div>
     </div>
     <div class="col-md-8">
         <div class="row">
@@ -681,57 +691,76 @@ unset($__errorArgs, $__bag); ?>
                 <h2 class=" rounded display-2 bg-warning text-white"><?php echo e($qamarcarecardsCount); ?></h2>
             </div>
             <div class="col-md-4">
+            <div class="card">
+            <h4 class="card-header text-dark text-center">Pending Care Cards</h4>
+              <div class="card-body">
                 <div class="text-center" dir="ltr">
-                    <h5 class="font-size-14 mb-3">Pending Care Cards </h5>
+                    <!-- <h5 class="font-size-14 mb-3"> </h5> -->
                     <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsPending); ?>" data-linecap="round" data-fgcolor="#74788d">
                 </div>
+                </div>
+            </div>
             </div>
             <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
                 <div class="text-center" dir="ltr">
                     <h5 class="font-size-14 mb-3">Approved Care Cards </h5>
                     <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsApproved); ?>" data-linecap="round" data-fgcolor="#34c38f">
                 </div>
             </div>
+            </div></div>
             <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
                 <div class="text-center" dir="ltr">
                     <h5 class="font-size-14 mb-3">Printed Care Cards </h5>
                     <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsPrinted); ?>" data-linecap="round" data-fgcolor="#343a40">
                 </div>
             </div>
+            </div></div>
             <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
                 <div class="text-center" dir="ltr">
                     <h5 class="font-size-14 mb-3">Released Care Cards </h5>
                     <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsReleased); ?>" data-linecap="round" data-fgcolor="#34c38f">
                 </div>
             </div>
+            </div></div>
             <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
                 <div class="text-center" dir="ltr">
                     <h5 class="font-size-14 mb-3">Rejected Care Cards </h5>
                     <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsRejected); ?>" data-linecap="round" data-fgcolor="#f46a6a">
                 </div>
             </div>
+            </div></div>
         </div>
         <!-- end row -->
     </div>
 </div>
 <!-- end row -->
-<div class="row">
-
-
-
-    <div class="col-xl-4">
+<div class="row mb-4">
+<div class="col-xl-4">
         <div id="GenderChart" class="apex-charts" dir="ltr"></div>
     </div>
-
-    <div class="col-xl-5">
+</div>
+<div class="row mb-4">
+    <div class="col-xl-6">
         <div id="FamilyStatusChart" class="apex-charts" dir="ltr"></div>
     </div>
 
+    <div class="col-xl-6">
+
+                <div id="AfghanistanChart" ></div>
+    </div>
 </div>
-<div class="row">
+<div class="row mb-4">
 
     <div class="col-xl-12">
-        <div id="DataInsertionChart" class="apex-charts" dir="ltr"></div>
+    <div id="DataInsertionChart" class="apex-charts" dir="ltr"></div>
 
     </div>
     <!-- end col -->
@@ -916,13 +945,32 @@ unset($__errorArgs, $__bag); ?>
 
 <?php endif; ?>
 <?php $__env->stopSection(); ?>
+
 <?php echo \Akaunting\Apexcharts\Chart::loadScript(); ?>
+
 
 <?php $__env->startSection('script'); ?>
 
 <script src="<?php echo e(URL::asset('/assets/libs/jquery-knob/jquery-knob.min.js')); ?>"></script>
 
 <script src="<?php echo e(URL::asset('/assets/js/pages/jquery-knob.init.js')); ?>"></script>
+
+<!-- tui charts plugins -->
+
+<script src="<?php echo e(URL::asset('/assets/libs/tui-chart/tui-chart-all.min.js')); ?>"></script>
+
+<!-- tui charts map -->
+<script src="<?php echo e(URL::asset('/assets/libs/tui-chart/maps/usa.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('/assets/libs/tui-chart/maps/afghanistan.js')); ?>"></script>
+
+
+<!-- tui charts plugins -->
+<script src="<?php echo e(URL::asset('/assets/js/pages/tui-charts.init.js')); ?>"></script>
+
+<!-- Afghanistan Map -->
+<script src="<?php echo e(URL::asset('/assets/libs/afghanistanmap/highmaps.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('/assets/libs/afghanistanmap/exporting.js')); ?>"></script>
+
 
 <script src="<?php echo e(URL::asset('/assets/libs/select2/select2.min.js')); ?>"></script>
 
@@ -932,6 +980,138 @@ unset($__errorArgs, $__bag); ?>
 <!-- form advanced init -->
 <script src="<?php echo e(URL::asset('/assets/js/pages/form-advanced.init.js')); ?>"></script>
 <script>
+options = {
+chart: {
+    height: 350,
+    type: "line",
+    stacked: !1,
+    toolbar: {
+        show: !1
+    }
+},
+stroke: {
+    width: [0, 2, 4],
+    curve: "smooth"
+},
+plotOptions: {
+    bar: {
+        columnWidth: "50%"
+    }
+},
+colors: ["#f46a6a", "#556ee6", "#34c38f"],
+series: [{
+    name: "New Care Card",
+    type: "column",
+    data: [ <?php echo e($PendingJan); ?>,<?php echo e($PendingFeb); ?>, <?php echo e($PendingMarch); ?>, <?php echo e($PendingApril); ?>, <?php echo e($PendingMay); ?>, <?php echo e($PendingJun); ?>, <?php echo e($PendingJuly); ?>, <?php echo e($PendingAugust); ?>, <?php echo e($PendingSep); ?>, <?php echo e($PendingOct); ?>, <?php echo e($PendingNov); ?>, <?php echo e($PendingDec); ?>,]
+}, {
+    name: "Approved Care Card",
+    type: "area",
+    data: [<?php echo e($ApprovedJan); ?>, <?php echo e($ApprovedFeb); ?>, <?php echo e($ApprovedMarch); ?>, <?php echo e($ApprovedApril); ?>, <?php echo e($ApprovedMay); ?>, <?php echo e($ApprovedJun); ?>, <?php echo e($ApprovedJuly); ?>, <?php echo e($ApprovedAugust); ?>, <?php echo e($ApprovedSep); ?>, <?php echo e($ApprovedOct); ?>, <?php echo e($ApprovedNov); ?>, <?php echo e($ApprovedDec); ?>,]},
+    {
+    name: "Printed Care Card",
+    type: "line",
+    data: [<?php echo e($PrintedJan); ?>, <?php echo e($PrintedFeb); ?>, <?php echo e($PrintedMarch); ?>, <?php echo e($PrintedApril); ?>, <?php echo e($PrintedMay); ?>, <?php echo e($PrintedJun); ?>, <?php echo e($PrintedJuly); ?>, <?php echo e($PrintedAugust); ?>, <?php echo e($PrintedSep); ?>, <?php echo e($PrintedOct); ?>, <?php echo e($PrintedNov); ?>, <?php echo e($PrintedDec); ?>, ]}],
+fill: {
+    opacity: [.85, .25, 1],
+    gradient: {
+        inverseColors: !1,
+        shade: "light",
+        type: "vertical",
+        opacityFrom: .85,
+        opacityTo: .55,
+        stops: [0, 100, 100, 100]
+    }
+},
+labels: ["Jan", "Feb", "March", "April", "May", "Jun", "July", "August", "Sep", "Oct", "Nov", "Dec"],
+markers: {
+    size: 0
+},
+xaxis: {
+    type: "date"
+},
+yaxis: {
+    title: {
+        text: "Points"
+    }
+},
+tooltip: {
+    shared: !0,
+    intersect: !1,
+    y: {
+        formatter: function(e) {
+            return void 0 !== e ? e.toFixed(0) + " points" : e
+        }
+    }
+},
+grid: {
+    borderColor: "#f1f1f1"
+}
+};
+(chart = new ApexCharts(document.querySelector("#DataInsertionChart"), options)).render();
+
+
+    var options = {
+          series: [<?php echo e($qamarcarecardsCount); ?>, <?php echo e($qamarcarecardsApproved); ?>, <?php echo e($qamarcarecardsRejected); ?>],
+          chart: {
+          height: 270,
+          type: 'radialBar',
+        },
+        plotOptions: {
+          radialBar: {
+            offsetY: 0,
+            startAngle: 0,
+            endAngle: 270,
+            hollow: {
+              margin: 5,
+              size: '30%',
+              background: 'transparent',
+              image: undefined,
+            },
+            dataLabels: {
+              name: {
+                show: false,
+              },
+              value: {
+                show: false,
+              }
+            }
+          }
+        },
+        colors: ['#cd9941', '#34c38f', '#f46a6a',],
+        labels: ['All', 'Approved', 'Rejected'],
+        legend: {
+          show: true,
+          floating: true,
+          fontSize: '12px',
+          position: 'left',
+          offsetX: 0,
+          offsetY: 0,
+          labels: {
+            useSeriesColors: true,
+          },
+          markers: {
+            size: 0
+          },
+          formatter: function(seriesName, opts) {
+            return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex]
+          },
+          itemMargin: {
+            vertical: 3
+          }
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            legend: {
+                show: false
+            }
+          }
+        }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#AllinOne"), options);
+        chart.render();
+
     var GenderChart = {
         series: [<?php echo e($qamarcarecardsMale); ?>, <?php echo e($qamarcarecardsFemale); ?>],
         chart: {
@@ -1005,110 +1185,81 @@ unset($__errorArgs, $__bag); ?>
     FamilyStatusChart.render();
 
 
-    var DataInsertionChart = {
 
-chart: {
-    height: 350,
-    type: "bar",
-    toolbar: {
-        show: !1
-    }
-},
-plotOptions: {
-    bar: {
-        dataLabels: {
-            position: "top"
-        }
-    }
-},
-dataLabels: {
-    enabled: !0,
-    formatter: function(e) {
-        return e + "%"
+
+
+
+
+
+
+
+
+
+
+    (async () => {
+
+const topology = await fetch('<?php echo e(URL::asset('/assets/libs/afghanistanmap/af-all.topo.json')); ?>').then(response => response.json());
+
+
+
+
+const data = [
+    ['af-kt', <?php echo e($khost); ?>], ['af-pk', <?php echo e($paktika); ?>], ['af-gz', <?php echo e($ghazni); ?>], ['af-bd', <?php echo e($badakhshan); ?>],
+    ['af-nr', <?php echo e($nuristan); ?>], ['af-kr', <?php echo e($kunar); ?>], ['af-kz', <?php echo e($kunduz); ?>], ['af-ng', <?php echo e($nangarhar); ?>],
+    ['af-tk', <?php echo e($takhar); ?>], ['af-bl', <?php echo e($baghlan); ?>], ['af-kb', <?php echo e($kabul); ?>], ['af-kp', <?php echo e($kapisa); ?>],
+    ['af-2030', <?php echo e($panjshir); ?>], ['af-la', <?php echo e($laghman); ?>], ['af-lw', <?php echo e($logar); ?>], ['af-pv', <?php echo e($parwan); ?>],
+    ['af-sm', <?php echo e($samangan); ?>], ['af-vr', <?php echo e($wardak); ?>], ['af-pt', <?php echo e($paktya); ?>], ['af-bg', <?php echo e($badghis); ?>],
+    ['af-hr', <?php echo e($herat); ?>], ['af-bk', <?php echo e($balkh); ?>], ['af-jw', <?php echo e($jawzjan); ?>], ['af-bm', <?php echo e($bamyan); ?>],
+    ['af-gr', <?php echo e($ghor); ?>], ['af-fb', <?php echo e($faryab); ?>], ['af-sp', <?php echo e($sar_e_pol); ?>], ['af-fh', <?php echo e($farah); ?>],
+    ['af-hm', <?php echo e($helmand); ?>], ['af-nm', <?php echo e($nimroz); ?>], ['af-2014', <?php echo e($daykundi); ?>], ['af-oz', <?php echo e($uruzgan); ?>],
+    ['af-kd', <?php echo e($kandahar); ?>], ['af-zb', <?php echo e($zabul); ?>]
+];
+
+// Create the chart
+Highcharts.mapChart('AfghanistanChart', {
+    chart: {
+        map: topology
     },
-    offsetY: -22,
-    style: {
-        fontSize: "12px",
-        colors: ["#304758"]
-    }
-},
-series: [{
-    name: "Card Inserted",
-    data: [2.5, 3.2, 5, 10.1, 4.2, 3.8, 3, 2.4, 4, 1.2, 3.5, .8]
-}],
-colors: ["#556ee6"],
-grid: {
-    borderColor: "#f1f1f1"
-},
-xaxis: {
-    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    position: "top",
-    labels: {
-        offsetY: -18
-    },
-    axisBorder: {
-        show: !1
-    },
-    axisTicks: {
-        show: !1
-    },
-    crosshairs: {
-        fill: {
-            type: "gradient",
-            gradient: {
-                colorFrom: "#D8E3F0",
-                colorTo: "#BED1E6",
-                stops: [0, 100],
-                opacityFrom: .4,
-                opacityTo: .5
+
+    title: {
+        text: 'QCC Provincail Data',
+        align: "left",
+            style: {
+                color: "#444",
+                fontWeight: "500"
             }
-        }
     },
-    tooltip: {
-        enabled: !0,
-        offsetY: -35
-    }
-},
-fill: {
-    gradient: {
-        shade: "light",
-        type: "horizontal",
-        shadeIntensity: .25,
-        gradientToColors: void 0,
-        inverseColors: !0,
-        opacityFrom: 1,
-        opacityTo: 1,
-        stops: [50, 0, 100, 100]
-    }
-},
-yaxis: {
-    axisBorder: {
-        show: !1
-    },
-    axisTicks: {
-        show: !1
-    },
-    labels: {
-        show: !1,
-        formatter: function(e) {
-            return e + "%"
-        }
-    }
-},
-title: {
-    text: "Montly Data Insertion, 2002",
-    floating: !0,
-    offsetY: 330,
-    align: "center",
-    style: {
-        color: "#444",
-        fontWeight: "500"
-    }
-}
-    };
 
-    var DataInsertionChart = new ApexCharts(document.querySelector("#DataInsertionChart"), DataInsertionChart);
-    DataInsertionChart.render();
+
+
+    mapNavigation: {
+        enabled: true,
+        buttonOptions: {
+            verticalAlign: 'bottom'
+        }
+    },
+
+    colorAxis: {
+        min: 0
+    },
+
+    series: [{
+        data: data,
+        name: 'Total',
+        states: {
+            hover: {
+                color: '#556ee6'
+            }
+        },
+        dataLabels: {
+            enabled: true,
+            format: '{point.name}'
+        }
+    }]
+});
+
+})();
+
 
 
 </script>

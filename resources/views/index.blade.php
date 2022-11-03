@@ -8,6 +8,9 @@
 <link href="{{ URL::asset('/assets/css/mystyle/tabstyle.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ URL::asset('/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
 
+<!-- tui charts Css -->
+<link href="{{ URL::asset('/assets/libs/tui-chart/tui-chart.min.css') }}" rel="stylesheet" type="text/css" />
+
 @endsection
 @section('content')
 
@@ -602,7 +605,7 @@
 
 <!-- start page title -->
 
-<div class="row">
+<div class="row mb-4">
     <div class="col-md-4">
         <div class="card">
             <h4 class="card-header text-dark">Qamar Care Beneficiaries</h4>
@@ -612,7 +615,7 @@
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                        <td><img class="d-block img-thumbnail" src="{{ URL::asset('/assets/images/qcc/front.jpeg') }}" alt="First slide"></td>
+                        <td><img class="d-block" src="{{ URL::asset('/assets/images/qcc/front.jpeg') }}" height="185px" alt="First slide"></td>
 
                         </div>
                         @foreach($qamarcarecardsLastFive as $qamarcarecard)
@@ -644,6 +647,13 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+        <div id="AllInOne" class="apex-charts" dir="ltr"></div>
+            </div>
+            </div>
+        </div>
     </div>
     <div class="col-md-8">
         <div class="row">
@@ -652,57 +662,76 @@
                 <h2 class=" rounded display-2 bg-warning text-white">{{$qamarcarecardsCount}}</h2>
             </div>
             <div class="col-md-4">
+            <div class="card">
+            <h4 class="card-header text-dark text-center">Pending Care Cards</h4>
+              <div class="card-body">
                 <div class="text-center" dir="ltr">
-                    <h5 class="font-size-14 mb-3">Pending Care Cards </h5>
+                    <!-- <h5 class="font-size-14 mb-3"> </h5> -->
                     <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsPending}}" data-linecap="round" data-fgcolor="#74788d">
                 </div>
+                </div>
+            </div>
             </div>
             <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
                 <div class="text-center" dir="ltr">
                     <h5 class="font-size-14 mb-3">Approved Care Cards </h5>
                     <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsApproved}}" data-linecap="round" data-fgcolor="#34c38f">
                 </div>
             </div>
+            </div></div>
             <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
                 <div class="text-center" dir="ltr">
                     <h5 class="font-size-14 mb-3">Printed Care Cards </h5>
                     <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsPrinted}}" data-linecap="round" data-fgcolor="#343a40">
                 </div>
             </div>
+            </div></div>
             <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
                 <div class="text-center" dir="ltr">
                     <h5 class="font-size-14 mb-3">Released Care Cards </h5>
                     <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsReleased}}" data-linecap="round" data-fgcolor="#34c38f">
                 </div>
             </div>
+            </div></div>
             <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
                 <div class="text-center" dir="ltr">
                     <h5 class="font-size-14 mb-3">Rejected Care Cards </h5>
                     <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsRejected}}" data-linecap="round" data-fgcolor="#f46a6a">
                 </div>
             </div>
+            </div></div>
         </div>
         <!-- end row -->
     </div>
 </div>
 <!-- end row -->
-<div class="row">
-
-
-
-    <div class="col-xl-4">
+<div class="row mb-4">
+<div class="col-xl-4">
         <div id="GenderChart" class="apex-charts" dir="ltr"></div>
     </div>
-
-    <div class="col-xl-5">
+</div>
+<div class="row mb-4">
+    <div class="col-xl-6">
         <div id="FamilyStatusChart" class="apex-charts" dir="ltr"></div>
     </div>
 
+    <div class="col-xl-6">
+
+                <div id="AfghanistanChart" ></div>
+    </div>
 </div>
-<div class="row">
+<div class="row mb-4">
 
     <div class="col-xl-12">
-        <div id="DataInsertionChart" class="apex-charts" dir="ltr"></div>
+    <div id="DataInsertionChart" class="apex-charts" dir="ltr"></div>
 
     </div>
     <!-- end col -->
@@ -896,6 +925,23 @@
 
 <script src="{{ URL::asset('/assets/js/pages/jquery-knob.init.js') }}"></script>
 
+<!-- tui charts plugins -->
+
+<script src="{{ URL::asset('/assets/libs/tui-chart/tui-chart-all.min.js') }}"></script>
+
+<!-- tui charts map -->
+<script src="{{ URL::asset('/assets/libs/tui-chart/maps/usa.js') }}"></script>
+<script src="{{ URL::asset('/assets/libs/tui-chart/maps/afghanistan.js') }}"></script>
+
+
+<!-- tui charts plugins -->
+<script src="{{ URL::asset('/assets/js/pages/tui-charts.init.js') }}"></script>
+
+<!-- Afghanistan Map -->
+<script src="{{ URL::asset('/assets/libs/afghanistanmap/highmaps.js') }}"></script>
+<script src="{{ URL::asset('/assets/libs/afghanistanmap/exporting.js') }}"></script>
+
+
 <script src="{{ URL::asset('/assets/libs/select2/select2.min.js') }}"></script>
 
 <!-- dashboard init -->
@@ -904,6 +950,138 @@
 <!-- form advanced init -->
 <script src="{{ URL::asset('/assets/js/pages/form-advanced.init.js') }}"></script>
 <script>
+options = {
+chart: {
+    height: 350,
+    type: "line",
+    stacked: !1,
+    toolbar: {
+        show: !1
+    }
+},
+stroke: {
+    width: [0, 2, 4],
+    curve: "smooth"
+},
+plotOptions: {
+    bar: {
+        columnWidth: "50%"
+    }
+},
+colors: ["#f46a6a", "#556ee6", "#34c38f"],
+series: [{
+    name: "New Care Card",
+    type: "column",
+    data: [ {{ $PendingJan}},{{ $PendingFeb}}, {{ $PendingMarch}}, {{ $PendingApril}}, {{ $PendingMay}}, {{ $PendingJun}}, {{ $PendingJuly}}, {{ $PendingAugust}}, {{ $PendingSep}}, {{ $PendingOct}}, {{ $PendingNov}}, {{ $PendingDec}},]
+}, {
+    name: "Approved Care Card",
+    type: "area",
+    data: [{{ $ApprovedJan}}, {{ $ApprovedFeb}}, {{ $ApprovedMarch}}, {{ $ApprovedApril}}, {{ $ApprovedMay}}, {{ $ApprovedJun}}, {{ $ApprovedJuly}}, {{ $ApprovedAugust}}, {{ $ApprovedSep}}, {{ $ApprovedOct}}, {{ $ApprovedNov}}, {{ $ApprovedDec}},]},
+    {
+    name: "Printed Care Card",
+    type: "line",
+    data: [{{ $PrintedJan}}, {{ $PrintedFeb}}, {{ $PrintedMarch}}, {{ $PrintedApril}}, {{ $PrintedMay}}, {{ $PrintedJun}}, {{ $PrintedJuly}}, {{ $PrintedAugust}}, {{ $PrintedSep}}, {{ $PrintedOct}}, {{ $PrintedNov}}, {{ $PrintedDec}}, ]}],
+fill: {
+    opacity: [.85, .25, 1],
+    gradient: {
+        inverseColors: !1,
+        shade: "light",
+        type: "vertical",
+        opacityFrom: .85,
+        opacityTo: .55,
+        stops: [0, 100, 100, 100]
+    }
+},
+labels: ["Jan", "Feb", "March", "April", "May", "Jun", "July", "August", "Sep", "Oct", "Nov", "Dec"],
+markers: {
+    size: 0
+},
+xaxis: {
+    type: "date"
+},
+yaxis: {
+    title: {
+        text: "Points"
+    }
+},
+tooltip: {
+    shared: !0,
+    intersect: !1,
+    y: {
+        formatter: function(e) {
+            return void 0 !== e ? e.toFixed(0) + " points" : e
+        }
+    }
+},
+grid: {
+    borderColor: "#f1f1f1"
+}
+};
+(chart = new ApexCharts(document.querySelector("#DataInsertionChart"), options)).render();
+
+
+    var options = {
+          series: [{{$qamarcarecardsCount}}, {{$qamarcarecardsApproved}}, {{$qamarcarecardsRejected}}],
+          chart: {
+          height: 270,
+          type: 'radialBar',
+        },
+        plotOptions: {
+          radialBar: {
+            offsetY: 0,
+            startAngle: 0,
+            endAngle: 270,
+            hollow: {
+              margin: 5,
+              size: '30%',
+              background: 'transparent',
+              image: undefined,
+            },
+            dataLabels: {
+              name: {
+                show: false,
+              },
+              value: {
+                show: false,
+              }
+            }
+          }
+        },
+        colors: ['#cd9941', '#34c38f', '#f46a6a',],
+        labels: ['All', 'Approved', 'Rejected'],
+        legend: {
+          show: true,
+          floating: true,
+          fontSize: '12px',
+          position: 'left',
+          offsetX: 0,
+          offsetY: 0,
+          labels: {
+            useSeriesColors: true,
+          },
+          markers: {
+            size: 0
+          },
+          formatter: function(seriesName, opts) {
+            return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex]
+          },
+          itemMargin: {
+            vertical: 3
+          }
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            legend: {
+                show: false
+            }
+          }
+        }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#AllinOne"), options);
+        chart.render();
+
     var GenderChart = {
         series: [{{$qamarcarecardsMale}}, {{$qamarcarecardsFemale}}],
         chart: {
@@ -977,110 +1155,81 @@
     FamilyStatusChart.render();
 
 
-    var DataInsertionChart = {
 
-chart: {
-    height: 350,
-    type: "bar",
-    toolbar: {
-        show: !1
-    }
-},
-plotOptions: {
-    bar: {
-        dataLabels: {
-            position: "top"
-        }
-    }
-},
-dataLabels: {
-    enabled: !0,
-    formatter: function(e) {
-        return e + "%"
+
+
+
+
+
+
+
+
+
+
+    (async () => {
+
+const topology = await fetch('{{ URL::asset('/assets/libs/afghanistanmap/af-all.topo.json')}}').then(response => response.json());
+
+
+
+
+const data = [
+    ['af-kt', {{$khost}}], ['af-pk', {{$paktika}}], ['af-gz', {{$ghazni}}], ['af-bd', {{$badakhshan}}],
+    ['af-nr', {{$nuristan}}], ['af-kr', {{$kunar}}], ['af-kz', {{$kunduz}}], ['af-ng', {{$nangarhar}}],
+    ['af-tk', {{$takhar}}], ['af-bl', {{$baghlan}}], ['af-kb', {{$kabul}}], ['af-kp', {{$kapisa}}],
+    ['af-2030', {{$panjshir}}], ['af-la', {{$laghman}}], ['af-lw', {{$logar}}], ['af-pv', {{$parwan}}],
+    ['af-sm', {{$samangan}}], ['af-vr', {{$wardak}}], ['af-pt', {{$paktya}}], ['af-bg', {{$badghis}}],
+    ['af-hr', {{$herat}}], ['af-bk', {{$balkh}}], ['af-jw', {{$jawzjan}}], ['af-bm', {{$bamyan}}],
+    ['af-gr', {{$ghor}}], ['af-fb', {{$faryab}}], ['af-sp', {{$sar_e_pol}}], ['af-fh', {{$farah}}],
+    ['af-hm', {{$helmand}}], ['af-nm', {{$nimroz}}], ['af-2014', {{$daykundi}}], ['af-oz', {{$uruzgan}}],
+    ['af-kd', {{$kandahar}}], ['af-zb', {{$zabul}}]
+];
+
+// Create the chart
+Highcharts.mapChart('AfghanistanChart', {
+    chart: {
+        map: topology
     },
-    offsetY: -22,
-    style: {
-        fontSize: "12px",
-        colors: ["#304758"]
-    }
-},
-series: [{
-    name: "Card Inserted",
-    data: [2.5, 3.2, 5, 10.1, 4.2, 3.8, 3, 2.4, 4, 1.2, 3.5, .8]
-}],
-colors: ["#556ee6"],
-grid: {
-    borderColor: "#f1f1f1"
-},
-xaxis: {
-    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    position: "top",
-    labels: {
-        offsetY: -18
-    },
-    axisBorder: {
-        show: !1
-    },
-    axisTicks: {
-        show: !1
-    },
-    crosshairs: {
-        fill: {
-            type: "gradient",
-            gradient: {
-                colorFrom: "#D8E3F0",
-                colorTo: "#BED1E6",
-                stops: [0, 100],
-                opacityFrom: .4,
-                opacityTo: .5
+
+    title: {
+        text: 'QCC Provincail Data',
+        align: "left",
+            style: {
+                color: "#444",
+                fontWeight: "500"
             }
-        }
     },
-    tooltip: {
-        enabled: !0,
-        offsetY: -35
-    }
-},
-fill: {
-    gradient: {
-        shade: "light",
-        type: "horizontal",
-        shadeIntensity: .25,
-        gradientToColors: void 0,
-        inverseColors: !0,
-        opacityFrom: 1,
-        opacityTo: 1,
-        stops: [50, 0, 100, 100]
-    }
-},
-yaxis: {
-    axisBorder: {
-        show: !1
-    },
-    axisTicks: {
-        show: !1
-    },
-    labels: {
-        show: !1,
-        formatter: function(e) {
-            return e + "%"
-        }
-    }
-},
-title: {
-    text: "Montly Data Insertion, 2002",
-    floating: !0,
-    offsetY: 330,
-    align: "center",
-    style: {
-        color: "#444",
-        fontWeight: "500"
-    }
-}
-    };
 
-    var DataInsertionChart = new ApexCharts(document.querySelector("#DataInsertionChart"), DataInsertionChart);
-    DataInsertionChart.render();
+
+
+    mapNavigation: {
+        enabled: true,
+        buttonOptions: {
+            verticalAlign: 'bottom'
+        }
+    },
+
+    colorAxis: {
+        min: 0
+    },
+
+    series: [{
+        data: data,
+        name: 'Total',
+        states: {
+            hover: {
+                color: '#556ee6'
+            }
+        },
+        dataLabels: {
+            enabled: true,
+            format: '{point.name}'
+        }
+    }]
+});
+
+})();
+
 
 
 </script>

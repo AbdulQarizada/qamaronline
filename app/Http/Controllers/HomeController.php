@@ -15,7 +15,7 @@ use App\Models\Scholarship;
 use App\Models\ScholarshipModule;
 use Illuminate\Support\Facades\Cookie;
 use App\Models\LookUp;
-
+use Carbon\Carbon;
 
 
 class HomeController extends Controller
@@ -74,6 +74,56 @@ class HomeController extends Controller
         // Reporting for dashboard
 
 
+   $qamarcarecards =   QamarCareCard::get();
+
+
+
+   // montly data
+   //pending
+
+   $PendingJan = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 1) -> where("qamar_care_cards.Status", "=", 'Pending') -> count();
+   $PendingFeb = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 2) -> where("qamar_care_cards.Status", "=", 'Pending')-> count();
+   $PendingMarch = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 3) -> where("qamar_care_cards.Status", "=", 'Pending')-> count();
+   $PendingApril = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 4) -> where("qamar_care_cards.Status", "=", 'Pending')-> count();
+   $PendingMay = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 5) -> where("qamar_care_cards.Status", "=", 'Pending')-> count();
+   $PendingJun = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 6) -> where("qamar_care_cards.Status", "=", 'Pending')-> count();
+   $PendingJuly = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 7) -> where("qamar_care_cards.Status", "=", 'Pending')-> count();
+   $PendingAugust = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 8) -> where("qamar_care_cards.Status", "=", 'Pending')-> count();
+   $PendingSep = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 9) -> where("qamar_care_cards.Status", "=", 'Pending') -> count();
+   $PendingOct = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 10)-> where("qamar_care_cards.Status", "=", 'Pending') -> count();
+   $PendingNov = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 11) -> where("qamar_care_cards.Status", "=", 'Pending')-> count();
+   $PendingDec = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 12) -> where("qamar_care_cards.Status", "=", 'Pending')-> count();
+
+
+   //Approved
+   $ApprovedJan = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 1) -> where("qamar_care_cards.Status", "=", 'Approved') -> count();
+   $ApprovedFeb = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 2) -> where("qamar_care_cards.Status", "=", 'Approved')-> count();
+   $ApprovedMarch = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 3) -> where("qamar_care_cards.Status", "=", 'Approved')-> count();
+   $ApprovedApril = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 4) -> where("qamar_care_cards.Status", "=", 'Approved')-> count();
+   $ApprovedMay = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 5) -> where("qamar_care_cards.Status", "=", 'Approved')-> count();
+   $ApprovedJun = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 6) -> where("qamar_care_cards.Status", "=", 'Approved')-> count();
+   $ApprovedJuly = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 7) -> where("qamar_care_cards.Status", "=", 'Approved')-> count();
+   $ApprovedAugust = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 8) -> where("qamar_care_cards.Status", "=", 'Approved')-> count();
+   $ApprovedSep = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 9) -> where("qamar_care_cards.Status", "=", 'Approved') -> count();
+   $ApprovedOct = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 10)-> where("qamar_care_cards.Status", "=", 'Approved') -> count();
+   $ApprovedNov = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 11) -> where("qamar_care_cards.Status", "=", 'Approved')-> count();
+   $ApprovedDec = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 12) -> where("qamar_care_cards.Status", "=", 'Approved')-> count();
+
+      //Printed
+      $PrintedJan = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 1) -> where("qamar_care_cards.Status", "=", 'Printed') -> count();
+      $PrintedFeb = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 2) -> where("qamar_care_cards.Status", "=", 'Printed')-> count();
+      $PrintedMarch = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 3) -> where("qamar_care_cards.Status", "=", 'Printed')-> count();
+      $PrintedApril = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 4) -> where("qamar_care_cards.Status", "=", 'Printed')-> count();
+      $PrintedMay = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 5) -> where("qamar_care_cards.Status", "=", 'Printed')-> count();
+      $PrintedJun = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 6) -> where("qamar_care_cards.Status", "=", 'Printed')-> count();
+      $PrintedJuly = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 7) -> where("qamar_care_cards.Status", "=", 'Printed')-> count();
+      $PrintedAugust = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 8) -> where("qamar_care_cards.Status", "=", 'Printed')-> count();
+      $PrintedSep = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 9) -> where("qamar_care_cards.Status", "=", 'Printed') -> count();
+      $PrintedOct = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 10)-> where("qamar_care_cards.Status", "=", 'Printed') -> count();
+      $PrintedNov = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 11) -> where("qamar_care_cards.Status", "=", 'Printed')-> count();
+      $PrintedDec = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now() -> year) -> whereMonth('qamar_care_cards.created_at', '=', 12) -> where("qamar_care_cards.Status", "=", 'Printed')-> count();
+
+
 
    $qamarcarecardsCount =   QamarCareCard::get() -> count();
    $qamarcarecardsPending =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Pending')-> get() -> count();
@@ -97,8 +147,40 @@ class HomeController extends Controller
    $qamarcarecardsDisasterAffected =   QamarCareCard::where("qamar_care_cards.FamilyStatus_ID", "=", 98)->get() -> count();
 
 
-
-
+   $badakhshan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 1)->get() -> count();
+   $baghlan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 2)->get() -> count();
+   $kunduz =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 3)->get() -> count();
+   $takhar =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 4)->get() -> count();
+   $balkh =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 5)->get() -> count();
+   $faryab =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 6)->get() -> count();
+   $jawzjan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 7)->get() -> count();
+   $samangan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 8)->get() -> count();
+   $sar_e_pol =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 9)->get() -> count();
+   $kabul =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 10)->get() -> count();
+   $kapisa =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 11)->get() -> count();
+   $logar =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 12)->get() -> count();
+   $panjshir =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 13)->get() -> count();
+   $parwan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 14)->get() -> count();
+   $wardak =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 15)->get() -> count();
+   $kunar =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 16)->get() -> count();
+   $laghman =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 17)->get() -> count();
+   $nangarhar =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 18)->get() -> count();
+   $nuristan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 19)->get() -> count();
+   $badghis =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 20)->get() -> count();
+   $bamyan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 21)->get() -> count();
+   $farah =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 22)->get() -> count();
+   $ghor =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 23)->get() -> count();
+   $herat =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 24)->get() -> count();
+   $ghazni =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 25)->get() -> count();
+   $khost =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 26)->get() -> count();
+   $paktya =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 27)->get() -> count();
+   $paktika =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 28)->get() -> count();
+   $daykundi =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 29)->get() -> count();
+   $helmand =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 30)->get() -> count();
+   $kandahar =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 31)->get() -> count();
+   $nimroz =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 32)->get() -> count();
+   $uruzgan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 33)->get() -> count();
+   $zabul =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 34)->get() -> count();
 
 
 
@@ -112,9 +194,74 @@ class HomeController extends Controller
 
 
 
-
-
-    return view('index', compact('qamarcarecardsDisabledIndividual','qamarcarecardsElderlyIndividual','qamarcarecardsDisplacedFamily','qamarcarecardsDisasterAffected','qamarcarecardsPoor','qamarcarecardsLowIncome','qamarcarecardsWidow','qamarcarecardsOrphans','catagorys', 'notifications', 'qamarcarecardsMale', 'qamarcarecardsFemale', 'qamarcarecardsCount', 'qamarcarecardsPending', 'qamarcarecardsApproved', 'qamarcarecardsPrinted', 'qamarcarecardsReleased', 'qamarcarecardsRejected', 'qamarcarecardsLastFive'));
+    return view('index', compact('badakhshan',
+    'baghlan',
+    'kunduz',
+    'takhar',
+    'balkh',
+    'faryab',
+    'jawzjan',
+    'samangan',
+    'sar_e_pol',
+    'kabul',
+    'kapisa',
+    'logar',
+    'panjshir',
+    'parwan',
+    'wardak',
+    'kunar',
+    'laghman',
+    'nangarhar',
+    'nuristan',
+    'badghis',
+    'bamyan',
+    'farah',
+    'ghor',
+    'herat',
+    'ghazni',
+    'khost',
+    'paktya',
+    'paktika',
+    'daykundi',
+    'helmand',
+    'kandahar',
+    'nimroz',
+    'uruzgan',
+    'zabul',
+    'qamarcarecardsDisabledIndividual',
+    'qamarcarecardsElderlyIndividual',
+    'qamarcarecardsDisplacedFamily',
+    'qamarcarecardsDisasterAffected',
+    'qamarcarecardsPoor',
+    'qamarcarecardsLowIncome',
+    'qamarcarecardsWidow',
+    'qamarcarecardsOrphans',
+    'catagorys',
+    'notifications',
+    'qamarcarecardsMale',
+    'qamarcarecardsFemale',
+     'qamarcarecardsCount',
+     'qamarcarecardsPending',
+     'qamarcarecardsApproved',
+     'qamarcarecardsPrinted',
+     'qamarcarecardsReleased',
+     'qamarcarecardsRejected',
+     'qamarcarecardsLastFive',
+     'PendingJan',
+'PendingFeb',
+ 'PendingMarch',
+ 'PendingApril',
+ 'PendingMay',
+  'PendingJun',
+   'PendingJuly',
+    'PendingAugust',
+     'PendingSep',
+'PendingOct',
+'PendingNov',
+ 'PendingDec',
+ 'ApprovedJan', 'ApprovedFeb', 'ApprovedMarch', 'ApprovedApril', 'ApprovedMay', 'ApprovedJun', 'ApprovedJuly', 'ApprovedAugust', 'ApprovedSep', 'ApprovedOct', 'ApprovedNov', 'ApprovedDec',
+ 'PrintedJan', 'PrintedFeb', 'PrintedMarch', 'PrintedApril', 'PrintedMay', 'PrintedJun', 'PrintedJuly', 'PrintedAugust', 'PrintedSep', 'PrintedOct', 'PrintedNov', 'PrintedDec',
+    ));
 
     }
 
