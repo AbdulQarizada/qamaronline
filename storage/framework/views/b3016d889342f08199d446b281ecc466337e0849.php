@@ -643,7 +643,7 @@ unset($__errorArgs, $__bag); ?>
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                        <td><img class="d-block" src="<?php echo e(URL::asset('/assets/images/qcc/front.jpeg')); ?>" height="185px" alt="First slide"></td>
+                            <td><img class="d-block" src="<?php echo e(URL::asset('/assets/images/qcc/front.jpeg')); ?>" height="185px" alt="First slide"></td>
 
                         </div>
                         <?php $__currentLoopData = $qamarcarecardsLastFive; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qamarcarecard): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -659,10 +659,10 @@ unset($__errorArgs, $__bag); ?>
                                             <span class="text-danger text-uppercase">Created At: </span><?php echo e($qamarcarecard -> created_at -> format("d-m-Y")); ?>
 
                                             <div class="d-flex flex-wrap gap-2">
-                                        <a href="<?php echo e(route('StatusCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-warning waves-effect waves-light">
-                                            <i class="bx bx-show-alt font-size-16 align-middle"></i> Visit Profile
-                                        </a>
-                                        </div>
+                                                <a href="<?php echo e(route('StatusCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-warning waves-effect waves-light">
+                                                    <i class="bx bx-show-alt font-size-16 align-middle"></i> Visit Profile
+                                                </a>
+                                            </div>
                                         </td>
 
                                     </tr>
@@ -678,9 +678,9 @@ unset($__errorArgs, $__bag); ?>
         </div>
         <div class="col-md-12">
             <div class="card">
-              <div class="card-body">
-        <div id="AllInOne" class="apex-charts" dir="ltr"></div>
-            </div>
+                <div class="card-body">
+                    <div id="AllInOne" class="apex-charts" dir="ltr"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -691,60 +691,79 @@ unset($__errorArgs, $__bag); ?>
                 <h2 class=" rounded display-2 bg-warning text-white"><?php echo e($qamarcarecardsCount); ?></h2>
             </div>
             <div class="col-md-4">
-            <div class="card">
-            <h4 class="card-header text-dark text-center">Pending Care Cards</h4>
-              <div class="card-body">
-                <div class="text-center" dir="ltr">
-                    <!-- <h5 class="font-size-14 mb-3"> </h5> -->
-                    <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsPending); ?>" data-linecap="round" data-fgcolor="#74788d">
+                <div class="card">
+                    <h4 class="card-header text-dark text-center">Pending Care Cards</h4>
+                    <div class="card-body">
+                        <div class="text-center" dir="ltr">
+                            <!-- <h5 class="font-size-14 mb-3"> </h5> -->
+                            <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsPending); ?>" data-linecap="round" data-fgcolor="#74788d">
+                        </div>
+                    </div>
                 </div>
-                </div>
-            </div>
             </div>
             <div class="col-md-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="text-center" dir="ltr">
-                    <h5 class="font-size-14 mb-3">Approved Care Cards </h5>
-                    <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsApproved); ?>" data-linecap="round" data-fgcolor="#34c38f">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center" dir="ltr">
+                            <h5 class="font-size-14 mb-3">Approved Care Cards </h5>
+                            <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsApproved); ?>" data-linecap="round" data-fgcolor="#34c38f">
+                        </div>
+                    </div>
                 </div>
             </div>
-            </div></div>
             <div class="col-md-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="text-center" dir="ltr">
-                    <h5 class="font-size-14 mb-3">Printed Care Cards </h5>
-                    <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsPrinted); ?>" data-linecap="round" data-fgcolor="#343a40">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center" dir="ltr">
+                            <h5 class="font-size-14 mb-3">Printed Care Cards </h5>
+                            <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsPrinted); ?>" data-linecap="round" data-fgcolor="#343a40">
+                        </div>
+                    </div>
                 </div>
             </div>
-            </div></div>
             <div class="col-md-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="text-center" dir="ltr">
-                    <h5 class="font-size-14 mb-3">Released Care Cards </h5>
-                    <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsReleased); ?>" data-linecap="round" data-fgcolor="#34c38f">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center" dir="ltr">
+                            <h5 class="font-size-14 mb-3">Released Care Cards </h5>
+                            <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsReleased); ?>" data-linecap="round" data-fgcolor="#34c38f">
+                        </div>
+                    </div>
                 </div>
             </div>
-            </div></div>
             <div class="col-md-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="text-center" dir="ltr">
-                    <h5 class="font-size-14 mb-3">Rejected Care Cards </h5>
-                    <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsRejected); ?>" data-linecap="round" data-fgcolor="#f46a6a">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center" dir="ltr">
+                            <h5 class="font-size-14 mb-3">Rejected Care Cards </h5>
+                            <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsRejected); ?>" data-linecap="round" data-fgcolor="#f46a6a">
+                        </div>
+                    </div>
                 </div>
             </div>
-            </div></div>
         </div>
         <!-- end row -->
     </div>
 </div>
 <!-- end row -->
 <div class="row mb-4">
-<div class="col-xl-4">
-        <div id="GenderChart" class="apex-charts" dir="ltr"></div>
+    <div class="col-xl-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center">
+                    <div id="GenderChart" class="apex-charts" dir="ltr"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center">
+                    <div id="TribeChart" class="apex-charts" dir="ltr"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="row mb-4">
@@ -754,16 +773,15 @@ unset($__errorArgs, $__bag); ?>
 
     <div class="col-xl-6">
 
-                <div id="AfghanistanChart" ></div>
+        <div id="AfghanistanChart"></div>
     </div>
 </div>
 <div class="row mb-4">
 
     <div class="col-xl-12">
-    <div id="DataInsertionChart" class="apex-charts" dir="ltr"></div>
+        <div id="DataInsertionChart" class="apex-charts" dir="ltr"></div>
 
     </div>
-    <!-- end col -->
 </div>
 <div class="row">
     <div class="col-lg-12">
@@ -1191,6 +1209,36 @@ grid: {
 
 
 
+    var TribeChart = {
+        series: [<?php echo e($Pashtun); ?>, <?php echo e($Tajik); ?>,<?php echo e($Hazara); ?>, <?php echo e($Uzbek); ?>,<?php echo e($Turkman); ?>, <?php echo e($Pashayi); ?>,<?php echo e($Aimaq); ?>, <?php echo e($Baloch); ?>, <?php echo e($Pamiri); ?>, <?php echo e($Sadat); ?>, <?php echo e($Nooristani); ?>, <?php echo e($Arab); ?>, <?php echo e($Gojar); ?>, <?php echo e($Brahawi); ?>, <?php echo e($qazalbash); ?>, <?php echo e($kochi); ?>],
+        labels: ['Pashtun', 'Tajik',  'Hazara', 'Uzbek', 'Turkman', 'Pashayi', 'Aimaq', 'Baloch', 'Pamiri', 'Sadat', 'Nooristani', 'Arab', 'Gojar', 'Brahawi', 'qazalbash', 'kochi'],
+        colors: ["#34c38f", "#556ee6", "#f46a6a", "#50a5f1", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c"],
+        chart: {
+            width: 380,
+            type: 'pie',
+        },
+        title: {
+            text: "Tribe Base Classification",
+            align: "left",
+            style: {
+                fontWeight: "500"
+            }
+        },
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+
+    var TribeChart = new ApexCharts(document.querySelector("#TribeChart"), TribeChart);
+    TribeChart.render();
 
 
 

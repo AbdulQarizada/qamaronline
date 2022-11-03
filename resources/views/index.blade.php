@@ -615,7 +615,7 @@
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
-                        <td><img class="d-block" src="{{ URL::asset('/assets/images/qcc/front.jpeg') }}" height="185px" alt="First slide"></td>
+                            <td><img class="d-block" src="{{ URL::asset('/assets/images/qcc/front.jpeg') }}" height="185px" alt="First slide"></td>
 
                         </div>
                         @foreach($qamarcarecardsLastFive as $qamarcarecard)
@@ -630,10 +630,10 @@
 
                                             <span class="text-danger text-uppercase">Created At: </span>{{ $qamarcarecard -> created_at -> format("d-m-Y")}}
                                             <div class="d-flex flex-wrap gap-2">
-                                        <a href="{{route('StatusCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-warning waves-effect waves-light">
-                                            <i class="bx bx-show-alt font-size-16 align-middle"></i> Visit Profile
-                                        </a>
-                                        </div>
+                                                <a href="{{route('StatusCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-warning waves-effect waves-light">
+                                                    <i class="bx bx-show-alt font-size-16 align-middle"></i> Visit Profile
+                                                </a>
+                                            </div>
                                         </td>
 
                                     </tr>
@@ -649,9 +649,9 @@
         </div>
         <div class="col-md-12">
             <div class="card">
-              <div class="card-body">
-        <div id="AllInOne" class="apex-charts" dir="ltr"></div>
-            </div>
+                <div class="card-body">
+                    <div id="AllInOne" class="apex-charts" dir="ltr"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -662,60 +662,79 @@
                 <h2 class=" rounded display-2 bg-warning text-white">{{$qamarcarecardsCount}}</h2>
             </div>
             <div class="col-md-4">
-            <div class="card">
-            <h4 class="card-header text-dark text-center">Pending Care Cards</h4>
-              <div class="card-body">
-                <div class="text-center" dir="ltr">
-                    <!-- <h5 class="font-size-14 mb-3"> </h5> -->
-                    <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsPending}}" data-linecap="round" data-fgcolor="#74788d">
+                <div class="card">
+                    <h4 class="card-header text-dark text-center">Pending Care Cards</h4>
+                    <div class="card-body">
+                        <div class="text-center" dir="ltr">
+                            <!-- <h5 class="font-size-14 mb-3"> </h5> -->
+                            <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsPending}}" data-linecap="round" data-fgcolor="#74788d">
+                        </div>
+                    </div>
                 </div>
-                </div>
-            </div>
             </div>
             <div class="col-md-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="text-center" dir="ltr">
-                    <h5 class="font-size-14 mb-3">Approved Care Cards </h5>
-                    <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsApproved}}" data-linecap="round" data-fgcolor="#34c38f">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center" dir="ltr">
+                            <h5 class="font-size-14 mb-3">Approved Care Cards </h5>
+                            <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsApproved}}" data-linecap="round" data-fgcolor="#34c38f">
+                        </div>
+                    </div>
                 </div>
             </div>
-            </div></div>
             <div class="col-md-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="text-center" dir="ltr">
-                    <h5 class="font-size-14 mb-3">Printed Care Cards </h5>
-                    <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsPrinted}}" data-linecap="round" data-fgcolor="#343a40">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center" dir="ltr">
+                            <h5 class="font-size-14 mb-3">Printed Care Cards </h5>
+                            <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsPrinted}}" data-linecap="round" data-fgcolor="#343a40">
+                        </div>
+                    </div>
                 </div>
             </div>
-            </div></div>
             <div class="col-md-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="text-center" dir="ltr">
-                    <h5 class="font-size-14 mb-3">Released Care Cards </h5>
-                    <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsReleased}}" data-linecap="round" data-fgcolor="#34c38f">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center" dir="ltr">
+                            <h5 class="font-size-14 mb-3">Released Care Cards </h5>
+                            <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsReleased}}" data-linecap="round" data-fgcolor="#34c38f">
+                        </div>
+                    </div>
                 </div>
             </div>
-            </div></div>
             <div class="col-md-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="text-center" dir="ltr">
-                    <h5 class="font-size-14 mb-3">Rejected Care Cards </h5>
-                    <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsRejected}}" data-linecap="round" data-fgcolor="#f46a6a">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center" dir="ltr">
+                            <h5 class="font-size-14 mb-3">Rejected Care Cards </h5>
+                            <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsRejected}}" data-linecap="round" data-fgcolor="#f46a6a">
+                        </div>
+                    </div>
                 </div>
             </div>
-            </div></div>
         </div>
         <!-- end row -->
     </div>
 </div>
 <!-- end row -->
 <div class="row mb-4">
-<div class="col-xl-4">
-        <div id="GenderChart" class="apex-charts" dir="ltr"></div>
+    <div class="col-xl-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center">
+                    <div id="GenderChart" class="apex-charts" dir="ltr"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center">
+                    <div id="TribeChart" class="apex-charts" dir="ltr"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="row mb-4">
@@ -725,16 +744,15 @@
 
     <div class="col-xl-6">
 
-                <div id="AfghanistanChart" ></div>
+        <div id="AfghanistanChart"></div>
     </div>
 </div>
 <div class="row mb-4">
 
     <div class="col-xl-12">
-    <div id="DataInsertionChart" class="apex-charts" dir="ltr"></div>
+        <div id="DataInsertionChart" class="apex-charts" dir="ltr"></div>
 
     </div>
-    <!-- end col -->
 </div>
 <div class="row">
     <div class="col-lg-12">
@@ -1161,6 +1179,36 @@ grid: {
 
 
 
+    var TribeChart = {
+        series: [{{$Pashtun}}, {{$Tajik}},{{$Hazara}}, {{$Uzbek}},{{$Turkman}}, {{$Pashayi}},{{$Aimaq}}, {{$Baloch}}, {{$Pamiri}}, {{$Sadat}}, {{$Nooristani}}, {{$Arab}}, {{$Gojar}}, {{$Brahawi}}, {{$qazalbash}}, {{$kochi}}],
+        labels: ['Pashtun', 'Tajik',  'Hazara', 'Uzbek', 'Turkman', 'Pashayi', 'Aimaq', 'Baloch', 'Pamiri', 'Sadat', 'Nooristani', 'Arab', 'Gojar', 'Brahawi', 'qazalbash', 'kochi'],
+        colors: ["#34c38f", "#556ee6", "#f46a6a", "#50a5f1", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c"],
+        chart: {
+            width: 380,
+            type: 'pie',
+        },
+        title: {
+            text: "Tribe Base Classification",
+            align: "left",
+            style: {
+                fontWeight: "500"
+            }
+        },
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+
+    var TribeChart = new ApexCharts(document.querySelector("#TribeChart"), TribeChart);
+    TribeChart.render();
 
 
 

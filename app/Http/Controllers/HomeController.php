@@ -184,6 +184,28 @@ class HomeController extends Controller
 
 
 
+   $Pashtun =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 33)->get() -> count();
+   $Tajik =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 34)->get() -> count();
+   $Hazara =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 35)->get() -> count();
+   $Uzbek =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 36)->get() -> count();
+   $Turkman =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 37)->get() -> count();
+   $Pashayi =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 38)->get() -> count();
+   $Aimaq =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 39)->get() -> count();
+   $Baloch =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 40)->get() -> count();
+   $Pamiri =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 41)->get() -> count();
+   $Sadat =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 42)->get() -> count();
+   $Nooristani =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 43)->get() -> count();
+   $Arab =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 44)->get() -> count();
+   $Gojar =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 45)->get() -> count();
+   $Brahawi =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 46)->get() -> count();
+   $qazalbash =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 47)->get() -> count();
+   $kochi =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 48)->get() -> count();
+
+
+
+
+
+
    $qamarcarecardsLastFive =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
    ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
    ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
@@ -261,6 +283,22 @@ class HomeController extends Controller
  'PendingDec',
  'ApprovedJan', 'ApprovedFeb', 'ApprovedMarch', 'ApprovedApril', 'ApprovedMay', 'ApprovedJun', 'ApprovedJuly', 'ApprovedAugust', 'ApprovedSep', 'ApprovedOct', 'ApprovedNov', 'ApprovedDec',
  'PrintedJan', 'PrintedFeb', 'PrintedMarch', 'PrintedApril', 'PrintedMay', 'PrintedJun', 'PrintedJuly', 'PrintedAugust', 'PrintedSep', 'PrintedOct', 'PrintedNov', 'PrintedDec',
+ 'Pashtun',
+ 'Tajik',
+ 'Hazara',
+ 'Uzbek',
+ 'Turkman',
+ 'Pashayi',
+ 'Aimaq',
+ 'Baloch',
+ 'Pamiri',
+ 'Sadat',
+ 'Nooristani',
+ 'Arab',
+ 'Gojar',
+ 'Brahawi',
+ 'qazalbash',
+ 'kochi',
     ));
 
     }
