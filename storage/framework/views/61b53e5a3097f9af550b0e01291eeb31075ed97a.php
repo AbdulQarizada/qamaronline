@@ -1,7 +1,7 @@
 
 
 
-<?php $__env->startSection('title'); ?> ADD FOOD PACKS <?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?> Food Packs <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/filepond.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />

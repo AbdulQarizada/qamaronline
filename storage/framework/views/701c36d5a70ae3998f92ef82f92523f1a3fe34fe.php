@@ -1,7 +1,7 @@
 
 
 
-<?php $__env->startSection('title'); ?> Eligible Beneficiaries <?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?> Food Packs <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
 <!-- DataTables -->

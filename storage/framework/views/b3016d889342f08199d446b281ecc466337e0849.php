@@ -22,13 +22,13 @@
 
                 <div class="d-flex align-items-start">
                     <div class="flex-grow-1">
-                        <div class="avatar-sm rounded-circle mini-stat-icon">
+                        <div class="avatar-xl rounded-circle mini-stat-icon">
                             <span class="avatar-title rounded-circle bg-dark">
                                 <?php if(Auth::user()->IsEmployee == 1): ?>
-                                <img class="rounded-circle header-profile-user" src="<?php echo e(isset(Auth::user()->Profile) ? asset('/uploads/User/Employees/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png')); ?>" alt="Profile">
+                                <img class="rounded-circle header-profile-user avatar-xl" src="<?php echo e(isset(Auth::user()->Profile) ? asset('/uploads/User/Employees/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png')); ?>" alt="Profile">
 
                                 <?php else: ?>
-                                <img class="rounded-circle header-profile-user" src="<?php echo e(isset(Auth::user()->Profile) ? asset('/uploads/User/Sponsors/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png')); ?>" alt="Profile">
+                                <img class="rounded-circle header-profile-user avatar-xl" src="<?php echo e(isset(Auth::user()->Profile) ? asset('/uploads/User/Sponsors/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png')); ?>" alt="Profile">
                                 <?php endif; ?>
                             </span>
                         </div>
@@ -636,7 +636,7 @@ unset($__errorArgs, $__bag); ?>
 <div class="row mb-4">
     <div class="col-md-4">
         <div class="card">
-            <h4 class="card-header text-dark">Qamar Care Beneficiaries</h4>
+            <h5 class="card-header text-dark bg-secondary bg-soft">Lastest Beneficiaries</h5>
             <div class="card-body">
 
                 <!-- <p class="text-muted fw-medium">Beneficiaries</p> -->
@@ -678,6 +678,7 @@ unset($__errorArgs, $__bag); ?>
         </div>
         <div class="col-md-12">
             <div class="card">
+                <h5 class="card-header text-dark bg-secondary bg-soft">General</h5>
                 <div class="card-body">
                     <div id="AllInOne" class="apex-charts" dir="ltr"></div>
                 </div>
@@ -687,15 +688,18 @@ unset($__errorArgs, $__bag); ?>
     <div class="col-md-8">
         <div class="row">
             <div class="col-md-4 text-center ">
-                <p class="font-size-14 mb-3">Total Number of Care Cards</p>
-                <h2 class=" rounded display-2 bg-warning text-white"><?php echo e($qamarcarecardsCount); ?></h2>
+                <div class="card">
+                    <h5 class="card-header text-dark bg-secondary bg-soft">Total Care Cards</h5>
+                    <div class="card-body">
+                        <h2 class=" rounded display-2 bg-warning text-white"><?php echo e($qamarcarecardsCount); ?></h2>
+                    </div>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <h4 class="card-header text-dark text-center">Pending Care Cards</h4>
+                    <h5 class="card-header text-dark bg-secondary bg-soft">Pending Care Cards</h5>
                     <div class="card-body">
-                        <div class="text-center" dir="ltr">
-                            <!-- <h5 class="font-size-14 mb-3"> </h5> -->
+                        <div class="" dir="ltr">
                             <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsPending); ?>" data-linecap="round" data-fgcolor="#74788d">
                         </div>
                     </div>
@@ -703,9 +707,9 @@ unset($__errorArgs, $__bag); ?>
             </div>
             <div class="col-md-4">
                 <div class="card">
+                    <h5 class="card-header text-dark bg-secondary bg-soft">Approved Care Cards</h5>
                     <div class="card-body">
-                        <div class="text-center" dir="ltr">
-                            <h5 class="font-size-14 mb-3">Approved Care Cards </h5>
+                        <div class="" dir="ltr">
                             <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsApproved); ?>" data-linecap="round" data-fgcolor="#34c38f">
                         </div>
                     </div>
@@ -713,9 +717,9 @@ unset($__errorArgs, $__bag); ?>
             </div>
             <div class="col-md-4">
                 <div class="card">
+                    <h5 class="card-header text-dark bg-secondary bg-soft">Printed Care Cards</h5>
                     <div class="card-body">
-                        <div class="text-center" dir="ltr">
-                            <h5 class="font-size-14 mb-3">Printed Care Cards </h5>
+                        <div class="" dir="ltr">
                             <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsPrinted); ?>" data-linecap="round" data-fgcolor="#343a40">
                         </div>
                     </div>
@@ -723,9 +727,9 @@ unset($__errorArgs, $__bag); ?>
             </div>
             <div class="col-md-4">
                 <div class="card">
+                    <h5 class="card-header text-dark bg-secondary bg-soft">Released Care Cards</h5>
                     <div class="card-body">
-                        <div class="text-center" dir="ltr">
-                            <h5 class="font-size-14 mb-3">Released Care Cards </h5>
+                        <div class="" dir="ltr">
                             <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsReleased); ?>" data-linecap="round" data-fgcolor="#34c38f">
                         </div>
                     </div>
@@ -733,9 +737,9 @@ unset($__errorArgs, $__bag); ?>
             </div>
             <div class="col-md-4">
                 <div class="card">
+                    <h5 class="card-header text-dark bg-secondary bg-soft">Rejected Care Cards</h5>
                     <div class="card-body">
-                        <div class="text-center" dir="ltr">
-                            <h5 class="font-size-14 mb-3">Rejected Care Cards </h5>
+                        <div class="" dir="ltr">
                             <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="<?php echo e($qamarcarecardsCount); ?>" data-displayprevious="false" value="<?php echo e($qamarcarecardsRejected); ?>" data-linecap="round" data-fgcolor="#f46a6a">
                         </div>
                     </div>
@@ -745,12 +749,15 @@ unset($__errorArgs, $__bag); ?>
         <!-- end row -->
     </div>
 </div>
+
+
 <!-- end row -->
 <div class="row mb-4">
     <div class="col-xl-4 mb-4">
         <div class="card">
+            <h5 class="card-header text-dark bg-secondary bg-soft">Gender</h5>
             <div class="card-body">
-                <div class="text-center">
+                <div class="">
                     <div id="GenderChart" class="apex-charts" dir="ltr"></div>
                 </div>
             </div>
@@ -758,8 +765,9 @@ unset($__errorArgs, $__bag); ?>
     </div>
     <div class="col-xl-4 mb-4">
         <div class="card">
+            <h5 class="card-header text-dark bg-secondary bg-soft">Tribes</h5>
             <div class="card-body">
-                <div class="text-center">
+                <div class="">
                     <div id="TribeChart" class="apex-charts" dir="ltr"></div>
                 </div>
             </div>
@@ -768,26 +776,43 @@ unset($__errorArgs, $__bag); ?>
 </div>
 <div class="row mb-4">
     <div class="col-xl-6">
-        <div id="FamilyStatusChart" class="apex-charts" dir="ltr"></div>
+        <div class="card">
+            <h5 class="card-header text-dark bg-secondary bg-soft">Family Status</h5>
+            <div class="card-body">
+                <div class="">
+                    <div id="FamilyStatusChart" class="apex-charts" dir="ltr"></div>
+                </div>
+            </div>
+        </div>
     </div>
-
     <div class="col-xl-6">
-
-        <div id="AfghanistanChart"></div>
+        <div class="card">
+            <h5 class="card-header text-dark bg-secondary bg-soft">Provincial Care Cards</h5>
+            <div class="card-body">
+                <div class="">
+                    <div id="AfghanistanChart"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="row mb-4">
-
     <div class="col-xl-12">
-        <div id="DataInsertionChart" class="apex-charts" dir="ltr"></div>
-
+        <div class="card">
+            <h5 class="card-header text-dark bg-secondary bg-soft">Cards Insertion Timeline</h5>
+            <div class="card-body">
+                <div class="">
+                    <div id="DataInsertionChart" class="apex-charts" dir="ltr"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
+        <h4 class="card-header text-dark bg-secondary bg-soft">Latest Transaction</h4>
             <div class="card-body">
-                <h4 class="card-title mb-4">Latest Transaction</h4>
                 <div class="table-responsive">
                     <table id="datatable-buttons" class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>
@@ -1137,7 +1162,7 @@ grid: {
             type: 'pie',
         },
         title: {
-            text: "Gender Base Classification",
+            text: "",
             align: "left",
             style: {
                 fontWeight: "500"
@@ -1168,7 +1193,7 @@ grid: {
             type: "donut"
         },
         title: {
-            text: "Family Status Base Classification",
+            text: "",
             align: "left",
             style: {
                 fontWeight: "500"
@@ -1218,7 +1243,7 @@ grid: {
             type: 'pie',
         },
         title: {
-            text: "Tribe Base Classification",
+            text: "",
             align: "left",
             style: {
                 fontWeight: "500"
@@ -1270,7 +1295,7 @@ Highcharts.mapChart('AfghanistanChart', {
     },
 
     title: {
-        text: 'QCC Provincail Data',
+        text: '',
         align: "left",
             style: {
                 color: "#444",
