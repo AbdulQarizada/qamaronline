@@ -84,16 +84,18 @@
             </div>
             <div class="col-sm-4">
                 <div class="card mini-stats-wid">
+                     <h5 class="card-header text-dark bg-info text-white">Report Filter</h5>
+
                     <div class="card-body">
-                        <div class="d-flex">
-                            <div class="flex-shrink-0 me-3 align-self-center">
-                                <i class="mdi mdi-litecoin h2 text-info mb-0"></i>
-                            </div>
-                            <div class="flex-grow-1">
-                                <p class="text-muted mb-2"></p>
-                                <h5 class="mb-0"><span class="font-size-14 text-muted"></span></h5>
-                            </div>
-                        </div>
+
+                    <select class="select2 form-control select2-multiple" multiple="multiple" data-placeholder="Choose ...">
+                <optgroup label="Qamar Care Card">
+                    <option value="AK">Operatons</option>
+                    <option value="HI">Food Packs</option>
+                </optgroup>
+            </select>
+            <button class="btn btn-primary form-control mt-3">Filter</button>
+
                     </div>
                 </div>
             </div>
@@ -104,29 +106,7 @@
 <!-- end row -->
 <br />
 <br />
-<div class="row mb-4">
-    <div class="col-md-4">
-        <div class="mb-3">
-            <label class="form-label">Select Dashboard Reports</label>
 
-            <select class="select2 form-control select2-multiple" multiple="multiple" data-placeholder="Choose ...">
-                <optgroup label="Qamar Care Card">
-                    <option value="AK">Operatons</option>
-                    <option value="HI">Food Packs</option>
-                </optgroup>
-            </select>
-
-        </div>
-    </div>
-    <div class="col-md-2">
-        <div class="mb-3 mt-4">
-            <label class="form-label"></label>
-
-            <button class="btn btn-primary form-control">Filter</button>
-
-        </div>
-    </div>
-</div>
 
 @if(Auth::user()->IsEmployee == 1)
 @if(Cookie::get('Layout') == 'LayoutNoSidebar')
@@ -134,30 +114,30 @@
 <div class="row">
     @if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsAidAndRelief == 1 || Auth::user()->IsWash == 1 || Auth::user()->IsEducation == 1 || Auth::user()->IsInitiative == 1|| Auth::user()->IsMedicalSector == 1)
 
-    <h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">Projects</h1>
+    <h1 class="font-size-24 mt-4 mb-4 fw-medium text-dark text-muted">Projects</h1>
     @endif
 
     <div class="col-xl-12">
         <div class="row">
             @if(Auth::user()->IsOrphanRelief == 1)
-            <div class="col-md-4 mb-2">
+            <div class="col-md-2 mb-2">
                 <a href="{{route('IndexOrphansRelief')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
-                        <div class="card-body">
-                            <blockquote class="blockquote font-size-14 mb-0">
+                        <div class="card-body text-center">
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
-                                        <p class="my-0 text-primary card-title fw-semibold">Orphans Relief</p>
-                                        <h6 class="text-muted mb-0">Orphans</h4>
+                                         <i class="bx bx-smile display-5 "></i>
+                                        <p class="my-0 text-dark mt-2 font-size-18">Orphans Relief</p>
+                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                     </div>
 
-                                    <div class="flex-shrink-0 align-self-center">
+                                    <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
-                                                <i class="bx bx-smile font-size-24"></i>
+
                                             </span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="d-flex mt-4">
@@ -170,24 +150,24 @@
             </div>
             @endif
             @if(Auth::user()->IsAidAndRelief == 1)
-            <div class="col-md-4 mb-2">
-                <a href="AidAndRelief">
+            <div class="col-md-2 mb-2">
+                <a href="{{route('IndexOrphansRelief')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
-                        <div class="card-body">
-                            <blockquote class="blockquote  font-size-14 mb-0">
+                        <div class="card-body text-center">
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
-                                        <p class="my-0 text-primary card-title fw-semibold">Aid and Relief</p>
-                                        <h6 class="text-muted mb-0">Aid and Relief</h4>
+                                         <i class="bx bx-briefcase-alt-2 display-5 "></i>
+                                        <p class="my-0 text-dark mt-2 font-size-18">Aid and Relief</p>
+                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                     </div>
 
-                                    <div class="flex-shrink-0 align-self-center">
+                                    <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-dark">
-                                                <i class="bx bx-briefcase-alt-2 font-size-24"></i>
+                                            <span class="avatar-title bg-info">
+
                                             </span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="d-flex mt-4">
@@ -200,24 +180,24 @@
             </div>
             @endif
             @if(Auth::user()->IsWash == 1)
-            <div class="col-md-4 mb-2">
-                <a href="Wash">
+            <div class="col-md-2 mb-2">
+                <a href="{{route('IndexOrphansRelief')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
-                        <div class="card-body">
-                            <blockquote class="blockquote  font-size-14 mb-0">
+                        <div class="card-body text-center">
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
-                                        <p class="my-0 text-primary card-title fw-semibold">Wash</p>
-                                        <h6 class="text-muted mb-0">Wash</h4>
+                                         <i class="bx bx-gas-pump  display-5 "></i>
+                                        <p class="my-0 text-dark mt-2 font-size-18">Wash</p>
+                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                     </div>
 
-                                    <div class="flex-shrink-0 align-self-center">
+                                    <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-dark">
-                                                <i class="bx bx-gas-pump font-size-24"></i>
+                                            <span class="avatar-title bg-info">
+
                                             </span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="d-flex mt-4">
@@ -230,24 +210,24 @@
             </div>
             @endif
             @if(Auth::user()->IsEducation == 1)
-            <div class="col-md-4 mb-2">
+            <div class="col-md-2 mb-2">
                 <a href="{{route('IndexEducation')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
-                        <div class="card-body">
-                            <blockquote class="blockquote font-size-14 mb-0">
+                        <div class="card-body text-center">
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
-                                        <p class="my-0 text-primary card-title fw-semibold">Education</p>
-                                        <h6 class="text-muted mb-0">Education</h4>
+                                         <i class="bx bxs-graduation  display-5 "></i>
+                                        <p class="my-0 text-dark mt-2 font-size-18">Education</p>
+                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                     </div>
 
-                                    <div class="flex-shrink-0 align-self-center">
+                                    <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
-                                                <i class="bx bxs-graduation font-size-24"></i>
+
                                             </span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="d-flex mt-4">
@@ -261,24 +241,24 @@
             @endif
 
             @if(Auth::user()->IsInitiative == 1)
-            <div class="col-md-4 mb-2">
-                <a href="Initiative">
+            <div class="col-md-2 mb-2">
+                <a href="{{route('IndexEducation')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
-                        <div class="card-body">
-                            <blockquote class="blockquote  font-size-14 mb-0">
+                        <div class="card-body text-center">
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
-                                        <p class="my-0 text-primary card-title fw-semibold">Initiative</p>
-                                        <h6 class="text-muted mb-0">Initiative</h4>
+                                         <i class="bx bx-bulb  display-5 "></i>
+                                        <p class="my-0 text-dark mt-2 font-size-18">Initiative</p>
+                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                     </div>
 
-                                    <div class="flex-shrink-0 align-self-center">
+                                    <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-dark">
-                                                <i class="bx bx-bulb font-size-24"></i>
+                                            <span class="avatar-title bg-info">
+
                                             </span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="d-flex mt-4">
@@ -292,24 +272,24 @@
             @endif
 
             @if(Auth::user()->IsMedicalSector == 1)
-            <div class="col-md-4 mb-2">
-                <a href="MedicalSector">
+            <div class="col-md-2 mb-2">
+                <a href="{{route('IndexEducation')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
-                        <div class="card-body">
-                            <blockquote class="blockquote  font-size-14 mb-0">
+                        <div class="card-body text-center">
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
-                                        <p class="my-0 text-primary card-title fw-semibold">Medical Sector</p>
-                                        <h6 class="text-muted mb-0">Medical Sector</h4>
+                                         <i class="bx bxs-ambulance  display-5 "></i>
+                                        <p class="my-0 text-dark mt-2 font-size-18">Medical Sector</p>
+                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                     </div>
 
-                                    <div class="flex-shrink-0 align-self-center">
+                                    <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-dark">
-                                                <i class="bx bxs-ambulance font-size-24"></i>
+                                            <span class="avatar-title bg-info">
+
                                             </span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="d-flex mt-4">
@@ -329,30 +309,31 @@
 
 <div class="row ">
     @if(Auth::user()->IsFoodAppeal == 1 || Auth::user()->IsQamarCareCard == 1 || Auth::user()->IsAppealsDistributions == 1 || Auth::user()->IsDonorsAndDonorBoxes == 1)
-    <h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">Benef. Services</h1>
+    <h1 class="font-size-24 mt-4 mb-4 fw-medium text-dark text-muted">Benefeciary Services</h1>
     @endif
 
     <div class="col-xl-12">
         <div class="row">
-            @if(Auth::user()->IsFoodAppeal == 1)
-            <div class="col-md-4 mb-2">
-                <a href="FoodAppeal">
+
+        @if(Auth::user()->IsQamarCareCard == 1)
+            <div class="col-md-2 mb-2">
+                <a href="{{route('IndexCareCard')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
-                        <div class="card-body">
-                            <blockquote class="blockquote font-size-14 mb-0">
+                        <div class="card-body text-center">
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
-                                        <p class="my-0 text-primary card-title fw-semibold">Food Appeal</p>
-                                        <h6 class="text-muted mb-0">Food Appeal</h4>
+                                         <i class="bx bx-credit-card display-5 "></i>
+                                        <p class="my-0 text-dark mt-2 font-size-18">Care Card</p>
+                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                     </div>
 
-                                    <div class="flex-shrink-0 align-self-center">
+                                    <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-dark">
-                                                <i class="bx bx-fingerprint  font-size-24"></i>
+                                            <span class="avatar-title bg-info">
+
                                             </span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="d-flex mt-4">
@@ -364,25 +345,25 @@
                 </a>
             </div>
             @endif
-            @if(Auth::user()->IsQamarCareCard == 1)
-            <div class="col-md-4 mb-2">
-                <a href="{{route('IndexCareCard')}}">
+            @if(Auth::user()->IsFoodAppeal == 1)
+            <div class="col-md-2 mb-2">
+                <a href="{{route('IndexEducation')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
-                        <div class="card-body">
-                            <blockquote class="blockquote  font-size-14 mb-0">
+                        <div class="card-body text-center">
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
-                                        <p class="my-0 text-primary card-title fw-semibold">Care Card</p>
-                                        <h6 class="text-muted mb-0">Care Card</h4>
+                                         <i class="bx bx-fingerprint display-5 "></i>
+                                        <p class="my-0 text-dark mt-2 font-size-18">Appeals</p>
+                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                     </div>
 
-                                    <div class="flex-shrink-0 align-self-center">
+                                    <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
-                                                <i class="bx bx-credit-card font-size-24"></i>
+
                                             </span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="d-flex mt-4">
@@ -395,24 +376,24 @@
             </div>
             @endif
             @if(Auth::user()->IsAppealsDistributions == 1)
-            <div class="col-md-4 mb-2">
-                <a href="AppealsDistributions">
+            <div class="col-md-2 mb-2">
+                <a href="{{route('IndexCareCard')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
-                        <div class="card-body">
-                            <blockquote class="blockquote  font-size-14 mb-0">
+                        <div class="card-body text-center">
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
-                                        <p class="my-0 text-primary card-title fw-semibold">Appeals' Distributions</p>
-                                        <h6 class="text-muted mb-0">Appeals' Distributions</h4>
+                                         <i class="bx bx-task display-5 "></i>
+                                        <p class="my-0 text-dark mt-2 font-size-18">Distribution</p>
+                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                     </div>
 
-                                    <div class="flex-shrink-0 align-self-center">
+                                    <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-dark">
-                                                <i class="bx bx-task font-size-24"></i>
+                                            <span class="avatar-title bg-info">
+
                                             </span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="d-flex mt-4">
@@ -425,25 +406,24 @@
             </div>
             @endif
             @if(Auth::user()->IsDonorsAndDonorBoxes == 1)
-
-            <div class="col-md-4 mb-2">
-                <a href="Donors&DonorBoxes">
+            <div class="col-md-2 mb-2">
+                <a href="{{route('IndexCareCard')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
-                        <div class="card-body">
-                            <blockquote class="blockquote font-size-14 mb-0">
+                        <div class="card-body text-center">
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
-                                        <p class="my-0 text-primary card-title fw-semibold">Donors & Donor Boxes</p>
-                                        <h6 class="text-muted mb-0">Donors & Donor Boxes</h4>
+                                         <i class="bx bxs-box display-5 "></i>
+                                        <p class="my-0 text-dark mt-2 font-size-18">Donors</p>
+                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                     </div>
 
-                                    <div class="flex-shrink-0 align-self-center">
+                                    <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-dark">
-                                                <i class="bx bxs-box font-size-24"></i>
+                                            <span class="avatar-title bg-info">
+
                                             </span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="d-flex mt-4">
@@ -467,29 +447,29 @@
 
 <div class="row">
     @if(Auth::user()->IsSuperAdmin == 1)
-    <h1 class="display-6 mt-4 mb-4 fw-medium text-dark text-muted">System Management</h1>
+    <h1 class="font-size-24 mt-4 mb-4 fw-medium text-dark text-muted">System Management</h1>
     @endif
     <div class="col-xl-12">
         <div class="row">
             @if(Auth::user()->IsSuperAdmin == 1)
-            <div class="col-md-4 mb-2">
+            <div class="col-md-2 mb-2">
                 <a href="{{route('IndexUserManagement')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
-                        <div class="card-body">
-                            <blockquote class="blockquote  font-size-14 mb-0">
+                        <div class="card-body text-center">
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
-                                        <p class="my-0 text-primary card-title fw-semibold">User Managements</p>
-                                        <h6 class="text-muted mb-0">Users Management</h4>
+                                         <i class="bx bxs-box display-5 "></i>
+                                        <p class="my-0 text-dark mt-2 font-size-18">Users</p>
+                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                     </div>
 
-                                    <div class="flex-shrink-0 align-self-center">
+                                    <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
-                                                <i class="bx bxs-report  font-size-24"></i>
+
                                             </span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="d-flex mt-4">
@@ -502,24 +482,24 @@
             </div>
             @endif
             @if(Auth::user()->IsSuperAdmin == 1)
-            <div class="col-md-4 mb-2">
+            <div class="col-md-2 mb-2">
                 <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">
                     <div class="card-one  mini-stats-wid border border-secondary">
-                        <div class="card-body">
-                            <blockquote class="blockquote font-size-14 mb-0">
+                        <div class="card-body text-center">
                                 <div class="d-flex">
                                     <div class="flex-grow-1">
-                                        <p class="my-0 text-primary card-title fw-semibold">ADD LOOK UPS</p>
-                                        <!-- <h6 class="text-muted mb-0">Monthly Reports</h4> -->
+                                         <i class="bx bxs-report display-5 "></i>
+                                        <p class="my-0 text-dark mt-2 font-size-18">ADD LOOK UPS</p>
+                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                     </div>
 
-                                    <div class="flex-shrink-0 align-self-center">
+                                    <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
-                                                <i class="bx bxs-report  font-size-24"></i>
+
                                             </span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="d-flex mt-4">

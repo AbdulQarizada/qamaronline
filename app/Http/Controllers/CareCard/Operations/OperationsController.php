@@ -66,6 +66,7 @@ class OperationsController extends Controller
         ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
         ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
         ->get();
+
     } else {
       $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
         ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
