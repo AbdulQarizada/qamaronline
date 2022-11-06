@@ -57,11 +57,12 @@
                    <div class="d-flex align-items-start">
 
                       <div class="flex-grow-1">
-                            <p class="mb-0 display-6" dir="rtl" style="float: right;"> <?php echo e($QuranArabic); ?></p>
+                            <p class="mb-0 display-6 p-3" dir="rtl" style="float: right;"> <?php echo e($QuranArabic); ?></p>
                             <p class="mb-0 font-size-18"> <?php echo e($QuranEnglish); ?></p>
                       </div>
                       <div class="me-3">
                            <i class="bx bxs-quote-alt-right text-mute font-size-24"></i>
+                      </div>
                       </div>
                 </blockquote>
 

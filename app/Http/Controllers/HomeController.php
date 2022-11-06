@@ -80,9 +80,9 @@ class HomeController extends Controller
     $randomSurah = rand(2,114);
     $randomAya =  rand(2,5);
 
-   $quran = $quran -> translation('ar,en')->get($randomSurah.':'.$randomAya);
+   $quran = $quran -> translation('ar,ps')->get($randomSurah.':'.$randomAya);
    $QuranArabic =  $quran['ar'];
-   $QuranEnglish =  $quran['en'];
+   $QuranEnglish =  $quran['ps'];
 
 
 
