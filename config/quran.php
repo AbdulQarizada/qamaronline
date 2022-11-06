@@ -155,5 +155,5 @@ return [
     |
     */
 
-    'translations' => ['ps.abdulwali'],
+    'translations' => ['en.sahih'],
 ];
