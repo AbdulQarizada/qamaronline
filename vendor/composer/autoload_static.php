@@ -172,6 +172,7 @@ class ComposerStaticInit266fa5b06966592293d7b7eb2a841bf9
         array (
             'Fruitcake\\Cors\\' => 15,
             'Faker\\' => 6,
+            'FaizShukri\\Quran\\' => 17,
         ),
         'E' => 
         array (
@@ -554,6 +555,10 @@ class ComposerStaticInit266fa5b06966592293d7b7eb2a841bf9
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fakerphp/faker/src/Faker',
+        ),
+        'FaizShukri\\Quran\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/faizshukri/phpquran/src',
         ),
         'Egulias\\EmailValidator\\' => 
         array (
@@ -1069,6 +1074,27 @@ class ComposerStaticInit266fa5b06966592293d7b7eb2a841bf9
         'Egulias\\EmailValidator\\Warning\\QuotedString' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/QuotedString.php',
         'Egulias\\EmailValidator\\Warning\\TLD' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/TLD.php',
         'Egulias\\EmailValidator\\Warning\\Warning' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/Warning.php',
+        'FaizShukri\\Quran\\Commands\\ConfigViewCommand' => __DIR__ . '/..' . '/faizshukri/phpquran/src/Commands/ConfigViewCommand.php',
+        'FaizShukri\\Quran\\Commands\\SurahCommand' => __DIR__ . '/..' . '/faizshukri/phpquran/src/Commands/SurahCommand.php',
+        'FaizShukri\\Quran\\Commands\\TranslationAddCommand' => __DIR__ . '/..' . '/faizshukri/phpquran/src/Commands/TranslationAddCommand.php',
+        'FaizShukri\\Quran\\Commands\\TranslationListCommand' => __DIR__ . '/..' . '/faizshukri/phpquran/src/Commands/TranslationListCommand.php',
+        'FaizShukri\\Quran\\Exceptions\\AyahInvalid' => __DIR__ . '/..' . '/faizshukri/phpquran/src/Exceptions/AyahInvalid.php',
+        'FaizShukri\\Quran\\Exceptions\\AyahNotProvided' => __DIR__ . '/..' . '/faizshukri/phpquran/src/Exceptions/AyahNotProvided.php',
+        'FaizShukri\\Quran\\Exceptions\\ExceedLimit' => __DIR__ . '/..' . '/faizshukri/phpquran/src/Exceptions/ExceedLimit.php',
+        'FaizShukri\\Quran\\Exceptions\\SurahInvalid' => __DIR__ . '/..' . '/faizshukri/phpquran/src/Exceptions/SurahInvalid.php',
+        'FaizShukri\\Quran\\Exceptions\\TranslationNotExists' => __DIR__ . '/..' . '/faizshukri/phpquran/src/Exceptions/TranslationNotExists.php',
+        'FaizShukri\\Quran\\Exceptions\\WrongArgument' => __DIR__ . '/..' . '/faizshukri/phpquran/src/Exceptions/WrongArgument.php',
+        'FaizShukri\\Quran\\Facades\\Quran' => __DIR__ . '/..' . '/faizshukri/phpquran/src/Facades/Quran.php',
+        'FaizShukri\\Quran\\Quran' => __DIR__ . '/..' . '/faizshukri/phpquran/src/Quran.php',
+        'FaizShukri\\Quran\\QuranServiceProvider' => __DIR__ . '/..' . '/faizshukri/phpquran/src/QuranServiceProvider.php',
+        'FaizShukri\\Quran\\Repositories\\Source\\SQLRepository' => __DIR__ . '/..' . '/faizshukri/phpquran/src/Repositories/Source/SQLRepository.php',
+        'FaizShukri\\Quran\\Repositories\\Source\\SourceInterface' => __DIR__ . '/..' . '/faizshukri/phpquran/src/Repositories/Source/SourceInterface.php',
+        'FaizShukri\\Quran\\Repositories\\Source\\XMLRepository' => __DIR__ . '/..' . '/faizshukri/phpquran/src/Repositories/Source/XMLRepository.php',
+        'FaizShukri\\Quran\\Supports\\Config' => __DIR__ . '/..' . '/faizshukri/phpquran/src/Supports/Config.php',
+        'FaizShukri\\Quran\\Supports\\Downloader' => __DIR__ . '/..' . '/faizshukri/phpquran/src/Supports/Downloader.php',
+        'FaizShukri\\Quran\\Supports\\Levenshtein' => __DIR__ . '/..' . '/faizshukri/phpquran/src/Supports/Levenshtein.php',
+        'FaizShukri\\Quran\\Supports\\XML' => __DIR__ . '/..' . '/faizshukri/phpquran/src/Supports/XML.php',
+        'FaizShukri\\Quran\\TanzilTranslations' => __DIR__ . '/..' . '/faizshukri/phpquran/src/TanzilTranslations.php',
         'Faker\\Calculator\\Ean' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Calculator/Ean.php',
         'Faker\\Calculator\\Iban' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Calculator/Iban.php',
         'Faker\\Calculator\\Inn' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Calculator/Inn.php',

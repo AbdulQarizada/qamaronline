@@ -177,6 +177,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        FaizShukri\Quran\QuranServiceProvider::class
 
     ],
 
@@ -235,6 +236,7 @@ return [
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Quran' => FaizShukri\Quran\Facades\Quran::class
 
     ],
 

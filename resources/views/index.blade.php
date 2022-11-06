@@ -52,35 +52,19 @@
 
     <div class="col-xl-8">
         <div class="row">
-            <div class="col-sm-4">
-                <div class="card mini-stats-wid">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <div class="flex-shrink-0 me-3 align-self-center">
-                                <i class="mdi mdi-bitcoin h2 text-warning mb-0"></i>
-                            </div>
-                            <div class="flex-grow-1">
-                                <p class="text-muted mb-2"></p>
-                                <h5 class="mb-0"> <span class="font-size-14 text-muted"></span></h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card mini-stats-wid">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <div class="flex-shrink-0 me-3 align-self-center">
-                                <i class="mdi mdi-ethereum h2 text-primary mb-0"></i>
-                            </div>
-                            <div class="flex-grow-1">
-                                <p class="text-muted mb-2"></p>
-                                <h5 class="mb-0"><span class="font-size-14 text-muted"></span></h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-sm-8">
+            <blockquote class="p-4 border-light border rounded mb-4">
+                   <div class="d-flex align-items-start">
+
+                      <div class="flex-grow-1">
+                            <p class="mb-0 display-6" dir="rtl" style="float: right;"> {{ $QuranArabic }}</p>
+                            <p class="mb-0 font-size-18"> {{ $QuranEnglish }}</p>
+                      </div>
+                      <div class="me-3">
+                           <i class="bx bxs-quote-alt-right text-dark font-size-24"></i>
+                      </div>
+                </blockquote>
+
             </div>
             <div class="col-sm-4">
                 <div class="card mini-stats-wid">

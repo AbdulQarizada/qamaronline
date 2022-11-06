@@ -16,7 +16,7 @@ use App\Models\ScholarshipModule;
 use Illuminate\Support\Facades\Cookie;
 use App\Models\LookUp;
 use Carbon\Carbon;
-
+use FaizShukri\Quran\Quran;
 
 class HomeController extends Controller
 {
@@ -75,6 +75,14 @@ class HomeController extends Controller
 
 
    $qamarcarecards =   QamarCareCard::get();
+
+    $quran = new Quran();
+    $randomSurah = rand(2,114);
+    $randomAya =  rand(2,5);
+
+   $quran = $quran -> translation('ar,en')->get($randomSurah.':'.$randomAya);
+   $QuranArabic =  $quran['ar'];
+   $QuranEnglish =  $quran['en'];
 
 
 
@@ -216,7 +224,7 @@ class HomeController extends Controller
 
 
 
-    return view('index', compact('badakhshan',
+    return view('index', compact( 'QuranArabic', 'QuranEnglish', 'badakhshan',
     'baghlan',
     'kunduz',
     'takhar',
