@@ -29,8 +29,6 @@
 <div class="row">
 <div class="col-2">
         <select class="form-select  form-select-lg mb-3 @error('Country') is-invalid @enderror" onchange="window.location.href=this.value;" id="item" name="item">
-            <option value="{{route('AssignedBeneficiariesFoodPack')}}">Please Filter Your Choices</option>
-            <option value="{{route('AssignedBeneficiariesFoodPack')}}">All</option>
             @foreach($provinces as $province)
             <option value="{{route('SearchAllList', ['data' => $province -> id])}}">{{ $province -> Name}}</option>
 
