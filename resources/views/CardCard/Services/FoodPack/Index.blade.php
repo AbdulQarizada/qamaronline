@@ -58,6 +58,34 @@
                     </div>
                 </a>
             </div>
+            <div class="col-md-2 mb-2">
+                <a href="{{route('AllListFoodPack')}}">
+                    <div class="card-one  mini-stats-wid border border-secondary">
+                        <div class="card-body text-center">
+                                <div class="d-flex">
+                                    <div class="flex-grow-1">
+                                         <i class="bx bx-smile display-5 "></i>
+                                        <p class="my-0 text-dark mt-2 font-size-18">QCC list</p>
+                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                    </div>
+
+                                    <!-- <div class="flex-shrink-0 align-self-center">
+                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
+                                            <span class="avatar-title bg-info">
+
+                                            </span>
+                                        </div>
+                                    </div> -->
+                                </div>
+
+                                <div class="d-flex mt-4">
+
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                </a>
+            </div>
             <div class="col-md-4 mb-2">
                 <a href="{{route('EligibleBeneficiariesFoodPack')}}">
                     <div class="card-one mini-stats-wid border border-secondary">

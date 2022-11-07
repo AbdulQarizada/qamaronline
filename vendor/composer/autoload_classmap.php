@@ -88,6 +88,7 @@ return array(
     'App\\Models\\ServiceProviders' => $baseDir . '/app/Models/ServiceProviders.php',
     'App\\Models\\ServiceType' => $baseDir . '/app/Models/ServiceType.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
+    'App\\Models\\beneficiarylist' => $baseDir . '/app/Models/beneficiarylist.php',
     'App\\Notifications\\CareCardNotification' => $baseDir . '/app/Notifications/CareCardNotification.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',

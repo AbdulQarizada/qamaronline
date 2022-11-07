@@ -11,6 +11,7 @@ use App\Models\ServiceType;
 use App\Models\ServiceProviders;
 use App\Models\Fookpacks;
 use App\Models\BeneficiariesToFoodPacks;
+use App\Models\beneficiarylist;
 use Notification;
 use App\Notifications\CareCardNotification;
 
@@ -61,6 +62,82 @@ class FoodPacksController extends Controller
       ->get();
     return view('CardCard.Services.FoodPack.All', ['datas' => $datas]);
   }
+
+
+  public function AllList()
+  {
+    $provinces = Location::whereNull("Parent_ID")->get();
+    $datas =   beneficiarylist::join('locations as a', 'beneficiarylists.Province_ID', '=', 'a.id')
+      ->join('users as d', 'beneficiarylists.Created_By', '=', 'd.id')
+      ->join('users as e', 'beneficiarylists.Reference_ID', '=', 'e.id')
+      ->select(['beneficiarylists.*', 'a.Name as ProvinceName','d.FirstName as UFirstName', 'd.LastName as ULastName', 'e.FirstName as RefernceFirstName', 'e.LastName as RefernceLastName',])
+      ->get();
+    return view('CardCard.Services.FoodPack.AllList', ['provinces' => $provinces, 'datas' => $datas]);
+  }
+
+    // Create New Food Pack
+
+    public function AllCreate()
+    {
+      $provinces = Location::whereNull("Parent_ID")->get();
+      $users = User::where("IsEmployee", "=", 1)->get();
+      return view('CardCard.Services.FoodPack.CreateList', ['provinces' => $provinces, 'users' => $users,]);
+    }
+
+
+    public function AllStore(Request $request)
+    {
+
+      $validator = $request->validate([
+        'FullName' => 'bail|required|max:255',
+        'FatherName' => 'required|max:255',
+        'TazkiraID' => 'required|max:255',
+        'PrimaryNumber' => 'required|max:255',
+        'SecondaryNumber' => 'required|max:255',
+        'Province_ID' => 'required|max:255',
+        'Reference_ID' => 'required|max:255',
+
+
+
+      ]);
+
+      beneficiarylist::create([
+        'FullName' => request('FullName'),
+        'FatherName' => request('FatherName'),
+        'TazkiraID' => request('TazkiraID'),
+        'PrimaryNumber' => request('PrimaryNumber'),
+        'SecondaryNumber' => request('SecondaryNumber'),
+        'Province_ID' => request('Province_ID'),
+        'Reference_ID' => request('Reference_ID'),
+        'Created_By' => auth()->user()->id,
+        'Owner' => 1,
+
+
+
+      ]);
+      return redirect()->route('AllListFoodPack')->with('toast_success', 'Record Created Successfully!');
+    }
+
+
+    public function SearchAllList($data)
+    {
+
+      $provinces = Location::whereNull("Parent_ID")->get();
+      $datas =   beneficiarylist::join('locations as a', 'beneficiarylists.Province_ID', '=', 'a.id')
+        ->join('users as d', 'beneficiarylists.Created_By', '=', 'd.id')
+        ->join('users as e', 'beneficiarylists.Reference_ID', '=', 'e.id')
+        ->select(['beneficiarylists.*', 'a.Name as ProvinceName','d.FirstName as UFirstName', 'd.LastName as ULastName', 'e.FirstName as RefernceFirstName', 'e.LastName as RefernceLastName',])
+        ->where('beneficiarylists.Province_ID', '=', $data)
+        ->get();
+      return view('CardCard.Services.FoodPack.AllList', ['provinces' => $provinces, 'datas' => $datas]);
+
+
+
+
+  }
+
+
+
 
   // Create New Food Pack
 

@@ -222,6 +222,13 @@ Route::get('/CareCard/Services/FoodPacks/AssignedBeneficiaries', [App\Http\Contr
 Route::post('/CareCard/Services/FoodPacks/SearchEligibleBeneficieries', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'SearchEligibleBeneficieries'])->name('SearchEligibleBeneficieriesFoodPack');
 Route::get('/CareCard/Services/FoodPacks/SearchAssignedBeneficiariesFoodPack/{data}', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'SearchAssignedBeneficiariesFoodPack'])->name('SearchAssignedBeneficiariesFoodPack');
 
+// Food Pack List
+// List
+Route::get('/CareCard/Services/FoodPacks/AllList', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'AllList'])->name('AllListFoodPack');
+Route::get('/CareCard/Services/FoodPacks/AllCreate', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'AllCreate'])->name('AllCreateFoodPack');
+Route::post('/CareCard/Services/FoodPacks/AllCreate', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'AllStore'])->name('AllCreateFoodPack');
+Route::get('/CareCard/Services/FoodPacks/SearchAllList/{data}', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'SearchAllList'])->name('SearchAllList');
+
 
 // Service Provider
 Route::get('/CareCard/Services/ServiceProviders/', [App\Http\Controllers\CareCard\ServicesController::class, 'ServiceProviderIndex'])->name('ServiceProviderIndexQamarCareCard');
