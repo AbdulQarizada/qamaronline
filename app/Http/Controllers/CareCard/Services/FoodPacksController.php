@@ -66,11 +66,12 @@ class FoodPacksController extends Controller
 
   public function AllList()
   {
+    // 'd.FirstName as UFirstName', 'd.LastName as ULastName',
     $provinces = Location::whereNull("Parent_ID")->get();
     $datas =   beneficiarylist::join('locations as a', 'beneficiarylists.Province_ID', '=', 'a.id')
-      ->join('users as d', 'beneficiarylists.Created_By', '=', 'd.id')
+      // ->join('users as d', 'beneficiarylists.Created_By', '=', 'd.id')
       ->join('users as e', 'beneficiarylists.Reference_ID', '=', 'e.id')
-      ->select(['beneficiarylists.*', 'a.Name as ProvinceName','d.FirstName as UFirstName', 'd.LastName as ULastName', 'e.FirstName as RefernceFirstName', 'e.LastName as RefernceLastName',])
+      ->select(['beneficiarylists.*', 'a.Name as ProvinceName', 'e.FirstName as RefernceFirstName', 'e.LastName as RefernceLastName',])
       ->get();
     return view('CardCard.Services.FoodPack.AllList', ['provinces' => $provinces, 'datas' => $datas]);
   }
