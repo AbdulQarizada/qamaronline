@@ -58,7 +58,7 @@
                                 <th>Secondary Number</th>
                                 <!-- <th>TazkiraID</th> -->
                                 <th>Referenced By</th>
-                                <th>Action</th>
+                                <th>Created By</th>
 
                             </tr>
                         </thead>
@@ -89,7 +89,7 @@
                                 </td>
                                 <td>
                                     <div>
-                                        <!-- <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data ->  UFirstName }} {{$data ->  ULastName }}</a></h5> -->
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data ->  UFirstName }} {{$data ->  ULastName }}</a></h5>
 
                                     </div>
                                 </td>

@@ -34,6 +34,7 @@
                         </div>
                     </div>
 
+                    
                     <div class="flex-grow-1">
                         <div class="text-muted">
                             <h5>{{ Str::ucfirst(Auth::user()->FullName) }}</h5>

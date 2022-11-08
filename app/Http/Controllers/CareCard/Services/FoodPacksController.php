@@ -34,7 +34,7 @@ class FoodPacksController extends Controller
 
   public function __construct()
   {
-    $this->middleware('auth', ['except' => ['SearchAllList', 'AllCreate', 'AllStore', 'AllList']]);
+    $this->middleware('auth', ['except' => ['verify']]);
   }
 
 
@@ -66,12 +66,12 @@ class FoodPacksController extends Controller
 
   public function AllList()
   {
-    // 'd.FirstName as UFirstName', 'd.LastName as ULastName',
+    //
     $provinces = Location::whereNull("Parent_ID")->get();
     $datas =   beneficiarylist::join('locations as a', 'beneficiarylists.Province_ID', '=', 'a.id')
-      // ->join('users as d', 'beneficiarylists.Created_By', '=', 'd.id')
+      ->join('users as d', 'beneficiarylists.Created_By', '=', 'd.id')
       ->join('users as e', 'beneficiarylists.Reference_ID', '=', 'e.id')
-      ->select(['beneficiarylists.*', 'a.Name as ProvinceName', 'e.FirstName as RefernceFirstName', 'e.LastName as RefernceLastName',])
+      ->select(['beneficiarylists.*', 'a.Name as ProvinceName', 'e.FirstName as RefernceFirstName', 'e.LastName as RefernceLastName', 'd.FirstName as UFirstName', 'd.LastName as ULastName',])
       ->get();
     return view('CardCard.Services.FoodPack.AllList', ['provinces' => $provinces, 'datas' => $datas]);
   }
@@ -110,7 +110,7 @@ class FoodPacksController extends Controller
         'SecondaryNumber' => request('SecondaryNumber'),
         'Province_ID' => request('Province_ID'),
         'Reference_ID' => request('Reference_ID'),
-        // 'Created_By' => auth()->user()->id,
+        'Created_By' => auth()->user()->id,
         'Owner' => 1,
 
 
@@ -122,12 +122,12 @@ class FoodPacksController extends Controller
 
     public function SearchAllList($data)
     {
-      // 'd.FirstName as UFirstName', 'd.LastName as ULastName',
+
       $provinces = Location::whereNull("Parent_ID")->get();
       $datas =   beneficiarylist::join('locations as a', 'beneficiarylists.Province_ID', '=', 'a.id')
-        // ->join('users as d', 'beneficiarylists.Created_By', '=', 'd.id')
+         ->join('users as d', 'beneficiarylists.Created_By', '=', 'd.id')
         ->join('users as e', 'beneficiarylists.Reference_ID', '=', 'e.id')
-        ->select(['beneficiarylists.*', 'a.Name as ProvinceName', 'e.FirstName as RefernceFirstName', 'e.LastName as RefernceLastName',])
+        ->select(['beneficiarylists.*', 'a.Name as ProvinceName', 'e.FirstName as RefernceFirstName', 'e.LastName as RefernceLastName', 'd.FirstName as UFirstName', 'd.LastName as ULastName',])
         ->where('beneficiarylists.Province_ID', '=', $data)
         ->get();
       return view('CardCard.Services.FoodPack.AllList', ['provinces' => $provinces, 'datas' => $datas]);

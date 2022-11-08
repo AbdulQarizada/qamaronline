@@ -34,6 +34,7 @@
                         </div>
                     </div>
 
+                    
                     <div class="flex-grow-1">
                         <div class="text-muted">
                             <h5><?php echo e(Str::ucfirst(Auth::user()->FullName)); ?></h5>
@@ -1302,4 +1303,5 @@ Highcharts.mapChart('AfghanistanChart', {
 
 </script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/index.blade.php ENDPATH**/ ?>
