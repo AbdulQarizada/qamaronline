@@ -180,7 +180,7 @@
                                     <div class="mb-3 position-relative">
                                         <label for="password" class="form-label ">New Password <i class="mdi mdi-asterisk text-danger"></i></label>
                                         <div class="hstack gap-3">
-                                            <input class="form-control form-control-lg me-auto @error('password') is-invalid @enderror" value="{{ old('password') }}" type="text" name="password" id="QCC" readonly>
+                                            <input class="form-control form-control-lg me-auto @error('password') is-invalid @enderror" value="{{ old('password') }}" type="text" name="password" id="QCC" >
                                             <button type="button" class="btn btn-lg btn-outline-danger" onclick="Random();"><i class=" bx bxs-magic-wand  font-size-16 align-middle"></i> </button>
                                             @error('password')
                                             <span class="invalid-feedback" role="alert">
