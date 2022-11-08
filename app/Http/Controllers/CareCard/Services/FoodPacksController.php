@@ -34,7 +34,7 @@ class FoodPacksController extends Controller
 
   public function __construct()
   {
-    $this->middleware('auth', ['except' => ['Verify', 'Search']]);
+    $this->middleware('auth', ['except' => ['SearchAllList', 'AllCreate', 'AllStore', 'AllList']]);
   }
 
 
