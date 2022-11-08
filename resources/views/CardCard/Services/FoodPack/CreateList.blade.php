@@ -65,7 +65,7 @@
                                         </span>
                                         @enderror
                                     </div>
-                                </div>
+                                <!-- </div>
                                 <div class="col-md-4">
                                     <div class="mb-3 position-relative">
                                         <label for="TazkiraID" class="form-label ">Tazkira ID <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -77,7 +77,7 @@
                                         </span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-4">
                                     <div class="mb-3 position-relative">
                                         <label for="PrimaryNumber" class="form-label ">Primary Number <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -91,8 +91,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="mb-3 position-relative">
-                                        <label for="SecondaryNumber" class="form-label ">Secondary Number <i class="mdi mdi-asterisk text-danger"></i></label>
-                                        <input type="number" class="form-control form-control-lg @error('SecondaryNumber') is-invalid @enderror" value="{{ old('SecondaryNumber') }}" id="SecondaryNumber" name="SecondaryNumber" max="999999999" required>
+                                        <label for="SecondaryNumber" class="form-label ">Secondary Number </label>
+                                        <input type="number" class="form-control form-control-lg @error('SecondaryNumber') is-invalid @enderror" value="{{ old('SecondaryNumber') }}" id="SecondaryNumber" name="SecondaryNumber" max="999999999" >
                                         @error('SecondaryNumber')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
