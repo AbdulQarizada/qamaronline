@@ -63,9 +63,12 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
                                 <th>Province</th>
                                 <th>Primary Number</th>
                                 <th>Secondary Number</th>
-                                <!-- <th>TazkiraID</th> -->
+
                                 <th>Referenced By</th>
                                 <th>Created By</th>
+                                <th>Created At</th>
+
+                                 <!-- <th>TazkiraID</th> -->
 
                             </tr>
                         </thead>
@@ -97,6 +100,12 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
                                 <td>
                                     <div>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data ->  UFirstName); ?> <?php echo e($data ->  ULastName); ?></a></h5>
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data ->  created_at -> format("j F Y")); ?></a></h5>
 
                                     </div>
                                 </td>

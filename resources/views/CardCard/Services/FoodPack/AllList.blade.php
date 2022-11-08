@@ -56,9 +56,12 @@
                                 <th>Province</th>
                                 <th>Primary Number</th>
                                 <th>Secondary Number</th>
-                                <!-- <th>TazkiraID</th> -->
+
                                 <th>Referenced By</th>
                                 <th>Created By</th>
+                                <th>Created At</th>
+
+                                 <!-- <th>TazkiraID</th> -->
 
                             </tr>
                         </thead>
@@ -90,6 +93,12 @@
                                 <td>
                                     <div>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data ->  UFirstName }} {{$data ->  ULastName }}</a></h5>
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data ->  created_at -> format("j F Y") }}</a></h5>
 
                                     </div>
                                 </td>
