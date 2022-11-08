@@ -65,7 +65,7 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
                                 <th>Secondary Number</th>
                                 <th>TazkiraID</th>
                                 <th>Referenced By</th>
-                                <th>Created By</th>
+                                <th>Action</th>
 
                             </tr>
                         </thead>
@@ -96,7 +96,7 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
                                 </td>
                                 <td>
                                     <div>
-                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data ->  UFirstName); ?> <?php echo e($data ->  ULastName); ?></a></h5>
+                                        <!-- <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data ->  UFirstName); ?> <?php echo e($data ->  ULastName); ?></a></h5> -->
 
                                     </div>
                                 </td>
