@@ -56,7 +56,7 @@
                                 <th>Province</th>
                                 <th>Primary Number</th>
                                 <th>Secondary Number</th>
-                                <th>TazkiraID</th>
+                                <!-- <th>TazkiraID</th> -->
                                 <th>Referenced By</th>
                                 <th>Action</th>
 
@@ -80,7 +80,7 @@
                                 <td> {{$data -> PrimaryNumber}} </td>
                                 <td> {{$data -> SecondaryNumber}} </td>
 
-                                <td> {{$data -> TazkiraID}} </td>
+                                <!-- <td> {{$data -> TazkiraID}} </td> -->
                                 <td>
                                 <div>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data ->  RefernceFirstName }} {{$data ->  RefernceLastName }}</a></h5>
