@@ -53,6 +53,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Beneficairy Name</th>
+                                <th>Father Name</th>
                                 <th>Province</th>
                                 <th>Primary Number</th>
                                 <th>Secondary Number</th>
@@ -73,6 +74,9 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> FullName}}</a></h5>
+                                </td>
+                                <td>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> FatherName}}</a></h5>
                                 </td>
                                 <td>
                                     <div>
