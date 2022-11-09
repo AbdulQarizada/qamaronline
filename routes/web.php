@@ -73,6 +73,19 @@ Route::post('/Employees_Profile', [App\Http\Controllers\HomeController::class, '
 
 
 
+// charts
+Route::get('/Tribe_Chart', [App\Http\Controllers\HomeController::class, 'Tribe_Chart'])->name('Tribe_Chart');
+Route::get('/Montly_Insertion', [App\Http\Controllers\HomeController::class, 'Montly_Insertion'])->name('MontlyInsertion_Chart');
+Route::get('/Gender_Chart', [App\Http\Controllers\HomeController::class, 'Gender_Chart'])->name('Gender_Chart');
+Route::get('/FamilyStatus_Chart', [App\Http\Controllers\HomeController::class, 'FamilyStatus_Chart'])->name('FamilyStatus_Chart');
+Route::get('/AllinOne_Chart', [App\Http\Controllers\HomeController::class, 'AllinOne_Chart'])->name('AllinOne_Chart');
+
+
+
+
+
+
+
 
 Route::post('/Education/Scholarship', [App\Http\Controllers\HomeController::class, 'Scholarship'])->name('Scholarship');
 

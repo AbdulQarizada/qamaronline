@@ -4,6 +4,23 @@
 
 <script src="{{ URL::asset('/assets/js/pages/jquery-knob.init.js') }}"></script>
 
+<!-- tui charts plugins -->
+
+<script src="{{ URL::asset('/assets/libs/tui-chart/tui-chart-all.min.js') }}"></script>
+
+<!-- tui charts map -->
+<script src="{{ URL::asset('/assets/libs/tui-chart/maps/usa.js') }}"></script>
+<script src="{{ URL::asset('/assets/libs/tui-chart/maps/afghanistan.js') }}"></script>
+
+
+<!-- tui charts plugins -->
+<script src="{{ URL::asset('/assets/js/pages/tui-charts.init.js') }}"></script>
+
+<!-- Afghanistan Map -->
+<script src="{{ URL::asset('/assets/libs/afghanistanmap/highmaps.js') }}"></script>
+<script src="{{ URL::asset('/assets/libs/afghanistanmap/exporting.js') }}"></script>
+
+
 <script src="{{ URL::asset('/assets/libs/select2/select2.min.js') }}"></script>
 
 <!-- dashboard init -->
@@ -12,6 +29,138 @@
 <!-- form advanced init -->
 <script src="{{ URL::asset('/assets/js/pages/form-advanced.init.js') }}"></script>
 <script>
+options = {
+chart: {
+    height: 350,
+    type: "line",
+    stacked: !1,
+    toolbar: {
+        show: !1
+    }
+},
+stroke: {
+    width: [0, 2, 4],
+    curve: "smooth"
+},
+plotOptions: {
+    bar: {
+        columnWidth: "50%"
+    }
+},
+colors: ["#f46a6a", "#556ee6", "#34c38f"],
+series: [{
+    name: "New Care Card",
+    type: "column",
+    data: [ {{ $PendingJan}},{{ $PendingFeb}}, {{ $PendingMarch}}, {{ $PendingApril}}, {{ $PendingMay}}, {{ $PendingJun}}, {{ $PendingJuly}}, {{ $PendingAugust}}, {{ $PendingSep}}, {{ $PendingOct}}, {{ $PendingNov}}, {{ $PendingDec}},]
+}, {
+    name: "Approved Care Card",
+    type: "area",
+    data: [{{ $ApprovedJan}}, {{ $ApprovedFeb}}, {{ $ApprovedMarch}}, {{ $ApprovedApril}}, {{ $ApprovedMay}}, {{ $ApprovedJun}}, {{ $ApprovedJuly}}, {{ $ApprovedAugust}}, {{ $ApprovedSep}}, {{ $ApprovedOct}}, {{ $ApprovedNov}}, {{ $ApprovedDec}},]},
+    {
+    name: "Printed Care Card",
+    type: "line",
+    data: [{{ $PrintedJan}}, {{ $PrintedFeb}}, {{ $PrintedMarch}}, {{ $PrintedApril}}, {{ $PrintedMay}}, {{ $PrintedJun}}, {{ $PrintedJuly}}, {{ $PrintedAugust}}, {{ $PrintedSep}}, {{ $PrintedOct}}, {{ $PrintedNov}}, {{ $PrintedDec}}, ]}],
+fill: {
+    opacity: [.85, .25, 1],
+    gradient: {
+        inverseColors: !1,
+        shade: "light",
+        type: "vertical",
+        opacityFrom: .85,
+        opacityTo: .55,
+        stops: [0, 100, 100, 100]
+    }
+},
+labels: ["Jan", "Feb", "March", "April", "May", "Jun", "July", "August", "Sep", "Oct", "Nov", "Dec"],
+markers: {
+    size: 0
+},
+xaxis: {
+    type: "date"
+},
+yaxis: {
+    title: {
+        text: "Points"
+    }
+},
+tooltip: {
+    shared: !0,
+    intersect: !1,
+    y: {
+        formatter: function(e) {
+            return void 0 !== e ? e.toFixed(0) + " points" : e
+        }
+    }
+},
+grid: {
+    borderColor: "#f1f1f1"
+}
+};
+(chart = new ApexCharts(document.querySelector("#DataInsertionChart"), options)).render();
+
+
+    var options = {
+          series: [{{$qamarcarecardsCount}}, {{$qamarcarecardsApproved}}, {{$qamarcarecardsRejected}}],
+          chart: {
+          height: 270,
+          type: 'radialBar',
+        },
+        plotOptions: {
+          radialBar: {
+            offsetY: 0,
+            startAngle: 0,
+            endAngle: 270,
+            hollow: {
+              margin: 5,
+              size: '30%',
+              background: 'transparent',
+              image: undefined,
+            },
+            dataLabels: {
+              name: {
+                show: false,
+              },
+              value: {
+                show: false,
+              }
+            }
+          }
+        },
+        colors: ['#cd9941', '#34c38f', '#f46a6a',],
+        labels: ['All', 'Approved', 'Rejected'],
+        legend: {
+          show: true,
+          floating: true,
+          fontSize: '12px',
+          position: 'left',
+          offsetX: 0,
+          offsetY: 0,
+          labels: {
+            useSeriesColors: true,
+          },
+          markers: {
+            size: 0
+          },
+          formatter: function(seriesName, opts) {
+            return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex]
+          },
+          itemMargin: {
+            vertical: 3
+          }
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            legend: {
+                show: false
+            }
+          }
+        }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#AllinOne"), options);
+        chart.render();
+
     var GenderChart = {
         series: [{{$qamarcarecardsMale}}, {{$qamarcarecardsFemale}}],
         chart: {
@@ -19,7 +168,7 @@
             type: 'pie',
         },
         title: {
-            text: "Gender Base Classification",
+            text: "",
             align: "left",
             style: {
                 fontWeight: "500"
@@ -50,7 +199,7 @@
             type: "donut"
         },
         title: {
-            text: "Family Status Base Classification",
+            text: "",
             align: "left",
             style: {
                 fontWeight: "500"
@@ -85,110 +234,111 @@
     FamilyStatusChart.render();
 
 
-    var DataInsertionChart = {
 
-chart: {
-    height: 350,
-    type: "bar",
-    toolbar: {
-        show: !1
-    }
-},
-plotOptions: {
-    bar: {
-        dataLabels: {
-            position: "top"
-        }
-    }
-},
-dataLabels: {
-    enabled: !0,
-    formatter: function(e) {
-        return e + "%"
-    },
-    offsetY: -22,
-    style: {
-        fontSize: "12px",
-        colors: ["#304758"]
-    }
-},
-series: [{
-    name: "Card Inserted",
-    data: [2.5, 3.2, 5, 10.1, 4.2, 3.8, 3, 2.4, 4, 1.2, 3.5, .8]
-}],
-colors: ["#556ee6"],
-grid: {
-    borderColor: "#f1f1f1"
-},
-xaxis: {
-    categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    position: "top",
-    labels: {
-        offsetY: -18
-    },
-    axisBorder: {
-        show: !1
-    },
-    axisTicks: {
-        show: !1
-    },
-    crosshairs: {
-        fill: {
-            type: "gradient",
-            gradient: {
-                colorFrom: "#D8E3F0",
-                colorTo: "#BED1E6",
-                stops: [0, 100],
-                opacityFrom: .4,
-                opacityTo: .5
+
+
+
+
+
+    var TribeChart = {
+        series: [{{$Pashtun}}, {{$Tajik}},{{$Hazara}}, {{$Uzbek}},{{$Turkman}}, {{$Pashayi}},{{$Aimaq}}, {{$Baloch}}, {{$Pamiri}}, {{$Sadat}}, {{$Nooristani}}, {{$Arab}}, {{$Gojar}}, {{$Brahawi}}, {{$qazalbash}}, {{$kochi}}],
+        labels: ['Pashtun', 'Tajik',  'Hazara', 'Uzbek', 'Turkman', 'Pashayi', 'Aimaq', 'Baloch', 'Pamiri', 'Sadat', 'Nooristani', 'Arab', 'Gojar', 'Brahawi', 'qazalbash', 'kochi'],
+        colors: ["#34c38f", "#556ee6", "#f46a6a", "#50a5f1", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c"],
+        chart: {
+            width: 380,
+            type: 'pie',
+        },
+        title: {
+            text: "",
+            align: "left",
+            style: {
+                fontWeight: "500"
             }
-        }
-    },
-    tooltip: {
-        enabled: !0,
-        offsetY: -35
-    }
-},
-fill: {
-    gradient: {
-        shade: "light",
-        type: "horizontal",
-        shadeIntensity: .25,
-        gradientToColors: void 0,
-        inverseColors: !0,
-        opacityFrom: 1,
-        opacityTo: 1,
-        stops: [50, 0, 100, 100]
-    }
-},
-yaxis: {
-    axisBorder: {
-        show: !1
-    },
-    axisTicks: {
-        show: !1
-    },
-    labels: {
-        show: !1,
-        formatter: function(e) {
-            return e + "%"
-        }
-    }
-},
-title: {
-    text: "Montly Data Insertion, 2002",
-    floating: !0,
-    offsetY: 330,
-    align: "center",
-    style: {
-        color: "#444",
-        fontWeight: "500"
-    }
-}
+        },
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
     };
 
-    var DataInsertionChart = new ApexCharts(document.querySelector("#DataInsertionChart"), DataInsertionChart);
-    DataInsertionChart.render();
+    var TribeChart = new ApexCharts(document.querySelector("#TribeChart"), TribeChart);
+    TribeChart.render();
+
+
+
+
+
+    (async () => {
+
+const topology = await fetch('{{ URL::asset('/assets/libs/afghanistanmap/af-all.topo.json')}}').then(response => response.json());
+
+
+
+
+const data = [
+    ['af-kt', {{$khost}}], ['af-pk', {{$paktika}}], ['af-gz', {{$ghazni}}], ['af-bd', {{$badakhshan}}],
+    ['af-nr', {{$nuristan}}], ['af-kr', {{$kunar}}], ['af-kz', {{$kunduz}}], ['af-ng', {{$nangarhar}}],
+    ['af-tk', {{$takhar}}], ['af-bl', {{$baghlan}}], ['af-kb', {{$kabul}}], ['af-kp', {{$kapisa}}],
+    ['af-2030', {{$panjshir}}], ['af-la', {{$laghman}}], ['af-lw', {{$logar}}], ['af-pv', {{$parwan}}],
+    ['af-sm', {{$samangan}}], ['af-vr', {{$wardak}}], ['af-pt', {{$paktya}}], ['af-bg', {{$badghis}}],
+    ['af-hr', {{$herat}}], ['af-bk', {{$balkh}}], ['af-jw', {{$jawzjan}}], ['af-bm', {{$bamyan}}],
+    ['af-gr', {{$ghor}}], ['af-fb', {{$faryab}}], ['af-sp', {{$sar_e_pol}}], ['af-fh', {{$farah}}],
+    ['af-hm', {{$helmand}}], ['af-nm', {{$nimroz}}], ['af-2014', {{$daykundi}}], ['af-oz', {{$uruzgan}}],
+    ['af-kd', {{$kandahar}}], ['af-zb', {{$zabul}}]
+];
+
+// Create the chart
+Highcharts.mapChart('AfghanistanChart', {
+    chart: {
+        map: topology
+    },
+
+    title: {
+        text: '',
+        align: "left",
+            style: {
+                color: "#444",
+                fontWeight: "500"
+            }
+    },
+
+
+
+    mapNavigation: {
+        enabled: true,
+        buttonOptions: {
+            verticalAlign: 'bottom'
+        }
+    },
+
+    colorAxis: {
+        min: 0
+    },
+
+    series: [{
+        data: data,
+        name: 'Total',
+        states: {
+            hover: {
+                color: '#556ee6'
+            }
+        },
+        dataLabels: {
+            enabled: true,
+            format: '{point.name}'
+        }
+    }]
+});
+
+})();
+
 
 
 </script>

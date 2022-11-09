@@ -34,7 +34,7 @@
                         </div>
                     </div>
 
-                    
+
                     <div class="flex-grow-1">
                         <div class="text-muted">
                             <h5>{{ Str::ucfirst(Auth::user()->FullName) }}</h5>
@@ -959,38 +959,98 @@
 <!-- form advanced init -->
 <script src="{{ URL::asset('/assets/js/pages/form-advanced.init.js') }}"></script>
 <script>
-options = {
-chart: {
+
+
+
+
+
+
+
+// Tribe base Chart
+
+(async () => {
+    const Tribe = await fetch('{{ route('Tribe_Chart')}}').then(response => response.json());
+
+    var TribeChart = {
+        series: [Tribe.Pashtun, Tribe.Tajik, Tribe.Hazara, Tribe.Uzbek, Tribe.Turkman, Tribe.Pashayi, Tribe.Aimaq, Tribe.Baloch, Tribe.Pamiri, Tribe.Sadat, Tribe.Nooristani, Tribe.Arab, Tribe.Gojar, Tribe.Brahawi, Tribe.qazalbash, Tribe.kochi,],
+        labels: ['Pashtun', 'Tajik',  'Hazara', 'Uzbek', 'Turkman', 'Pashayi', 'Aimaq', 'Baloch', 'Pamiri', 'Sadat', 'Nooristani', 'Arab', 'Gojar', 'Brahawi', 'qazalbash', 'kochi'],
+        colors: ["#34c38f", "#556ee6", "#f46a6a", "#50a5f1", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c"],
+        chart: {
+            width: 380,
+            type: 'pie',
+        },
+        dataLabels: {
+          enabled: true
+        },
+        title: {
+            text: "",
+            align: "left",
+            style: {
+                fontWeight: "500"
+            }
+        },
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+
+    var TribeChart = new ApexCharts(document.querySelector("#TribeChart"), TribeChart);
+    TribeChart.render();
+
+})();
+
+
+
+
+
+// Montly Insetion base Chart
+(async () => {
+    const MontlyInsertionJson = await fetch('{{ route('MontlyInsertion_Chart')}}').then(response => response.json());
+
+    var MontlyInsertion = {
+    chart: {
     height: 350,
     type: "line",
     stacked: !1,
     toolbar: {
         show: !1
-    }
-},
-stroke: {
+             }
+    },
+    stroke: {
     width: [0, 2, 4],
     curve: "smooth"
-},
-plotOptions: {
+     },
+     plotOptions: {
     bar: {
         columnWidth: "50%"
-    }
-},
-colors: ["#f46a6a", "#556ee6", "#34c38f"],
-series: [{
-    name: "New Care Card",
-    type: "column",
-    data: [ {{ $PendingJan}},{{ $PendingFeb}}, {{ $PendingMarch}}, {{ $PendingApril}}, {{ $PendingMay}}, {{ $PendingJun}}, {{ $PendingJuly}}, {{ $PendingAugust}}, {{ $PendingSep}}, {{ $PendingOct}}, {{ $PendingNov}}, {{ $PendingDec}},]
-}, {
-    name: "Approved Care Card",
-    type: "area",
-    data: [{{ $ApprovedJan}}, {{ $ApprovedFeb}}, {{ $ApprovedMarch}}, {{ $ApprovedApril}}, {{ $ApprovedMay}}, {{ $ApprovedJun}}, {{ $ApprovedJuly}}, {{ $ApprovedAugust}}, {{ $ApprovedSep}}, {{ $ApprovedOct}}, {{ $ApprovedNov}}, {{ $ApprovedDec}},]},
+         }
+    },
+    colors: ["#cd9941", "#34c38f", "#74788d"],
+    series: [
     {
-    name: "Printed Care Card",
+    name: "New Cards",
+    type: "column",
+    data: [ MontlyInsertionJson.PendingJan, MontlyInsertionJson.PendingFeb, MontlyInsertionJson.PendingMarch, MontlyInsertionJson.PendingApril, MontlyInsertionJson.PendingMay, MontlyInsertionJson.PendingJun, MontlyInsertionJson.PendingJuly, MontlyInsertionJson.PendingAugust, MontlyInsertionJson.PendingSep, MontlyInsertionJson.PendingOct, MontlyInsertionJson.PendingNov, MontlyInsertionJson.PendingDec,]
+      },
+     {
+    name: "Approved Cards",
+    type: "area",
+    data: [ MontlyInsertionJson.ApprovedJan, MontlyInsertionJson.ApprovedFeb, MontlyInsertionJson.ApprovedMarch, MontlyInsertionJson.ApprovedApril, MontlyInsertionJson.ApprovedMay, MontlyInsertionJson.ApprovedJun, MontlyInsertionJson.ApprovedJuly, MontlyInsertionJson.ApprovedAugust, MontlyInsertionJson.ApprovedSep, MontlyInsertionJson.ApprovedOct, MontlyInsertionJson.ApprovedNov, MontlyInsertionJson.ApprovedDec,]
+     },
+    {
+    name: "Printed Cards",
     type: "line",
-    data: [{{ $PrintedJan}}, {{ $PrintedFeb}}, {{ $PrintedMarch}}, {{ $PrintedApril}}, {{ $PrintedMay}}, {{ $PrintedJun}}, {{ $PrintedJuly}}, {{ $PrintedAugust}}, {{ $PrintedSep}}, {{ $PrintedOct}}, {{ $PrintedNov}}, {{ $PrintedDec}}, ]}],
-fill: {
+    data: [ MontlyInsertionJson.PrintedJan, MontlyInsertionJson.PrintedFeb, MontlyInsertionJson.PrintedMarch, MontlyInsertionJson.PrintedApril, MontlyInsertionJson.PrintedMay, MontlyInsertionJson.PrintedJun, MontlyInsertionJson.PrintedJuly, MontlyInsertionJson.PrintedAugust, MontlyInsertionJson.PrintedSep, MontlyInsertionJson.PrintedOct, MontlyInsertionJson.PrintedNov, MontlyInsertionJson.PrintedDec,]
+     }],
+     fill: {
     opacity: [.85, .25, 1],
     gradient: {
         inverseColors: !1,
@@ -999,21 +1059,21 @@ fill: {
         opacityFrom: .85,
         opacityTo: .55,
         stops: [0, 100, 100, 100]
-    }
-},
-labels: ["Jan", "Feb", "March", "April", "May", "Jun", "July", "August", "Sep", "Oct", "Nov", "Dec"],
-markers: {
-    size: 0
-},
-xaxis: {
+           }
+     },
+    labels: ["Jan", "Feb", "March", "April", "May", "Jun", "July", "August", "Sep", "Oct", "Nov", "Dec"],
+     markers: {
+           size: 0
+      },
+    xaxis: {
     type: "date"
-},
-yaxis: {
+    },
+     yaxis: {
     title: {
         text: "Points"
     }
-},
-tooltip: {
+     },
+    tooltip: {
     shared: !0,
     intersect: !1,
     y: {
@@ -1021,16 +1081,117 @@ tooltip: {
             return void 0 !== e ? e.toFixed(0) + " points" : e
         }
     }
-},
-grid: {
+     },
+    grid: {
     borderColor: "#f1f1f1"
-}
+    }
 };
-(chart = new ApexCharts(document.querySelector("#DataInsertionChart"), options)).render();
+
+var MontlyDataInsertion = new ApexCharts(document.querySelector("#DataInsertionChart"), MontlyInsertion);
+MontlyDataInsertion.render();
 
 
-    var options = {
-          series: [{{$qamarcarecardsCount}}, {{$qamarcarecardsApproved}}, {{$qamarcarecardsRejected}}],
+})();
+
+
+
+
+
+// Gender base Chart
+(async () => {
+    const Gender_ChartJson = await fetch('{{ route('Gender_Chart')}}').then(response => response.json());
+
+    var GenderChart = {
+        series: [Gender_ChartJson.Male, Gender_ChartJson.Female],
+        chart: {
+            width: 380,
+            type: 'pie',
+        },
+        title: {
+            text: "",
+            align: "left",
+            style: {
+                fontWeight: "500"
+            }
+        },
+        labels: ['Male', 'Female'],
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+
+    var GenderChart = new ApexCharts(document.querySelector("#GenderChart"), GenderChart);
+    GenderChart.render();
+
+
+})();
+
+
+
+
+// Family Status base Chart
+(async () => {
+    const FamilyStatus_ChartJson = await fetch('{{ route('FamilyStatus_Chart')}}').then(response => response.json());
+    var FamilyStatusChart = {
+        chart: {
+            height: 400,
+            type: "donut"
+        },
+        title: {
+            text: "",
+            align: "left",
+            style: {
+                fontWeight: "500"
+            }
+        },
+        series: [FamilyStatus_ChartJson.Poor, FamilyStatus_ChartJson.LowIncome, FamilyStatus_ChartJson.Widow, FamilyStatus_ChartJson.Orphans, FamilyStatus_ChartJson.DisabledIndividual, FamilyStatus_ChartJson.ElderlyIndividual, FamilyStatus_ChartJson.DisplacedFamily, FamilyStatus_ChartJson.DisasterAffected],
+        labels: ['Poor', 'Low Income',  'Widow', 'Orphans', 'Disabled Individual', 'Elderly Individual', 'Displaced Family', 'Disaster Affected'],
+        colors: ["#34c38f", "#556ee6", "#f46a6a", "#50a5f1", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c"],
+        legend: {
+            show: !0,
+            position: "right",
+            horizontalAlign: "center",
+            verticalAlign: "middle",
+            floating: !1,
+            fontSize: "14px",
+            offsetX: 0
+        },
+        responsive: [{
+            breakpoint: 600,
+            options: {
+                chart: {
+                    height: 240
+                },
+                legend: {
+                    show: !1
+                }
+            }
+        }]
+    };
+
+    var FamilyStatusChart = new ApexCharts(document.querySelector("#FamilyStatusChart"), FamilyStatusChart);
+    FamilyStatusChart.render();
+
+
+})();
+
+
+
+
+
+// all in one care card operation Chart
+(async () => {
+    const FamilyStatus_ChartJson = await fetch('{{ route('AllinOne_Chart')}}').then(response => response.json());
+    var AllinOne = {
+          series: [FamilyStatus_ChartJson.All, FamilyStatus_ChartJson.Approved, FamilyStatus_ChartJson.Printed,],
           chart: {
           height: 270,
           type: 'radialBar',
@@ -1088,80 +1249,10 @@ grid: {
         }]
         };
 
-        var chart = new ApexCharts(document.querySelector("#AllinOne"), options);
-        chart.render();
+        var AllinOneChart = new ApexCharts(document.querySelector("#AllinOne"), AllinOne);
+        AllinOneChart.render();
 
-    var GenderChart = {
-        series: [{{$qamarcarecardsMale}}, {{$qamarcarecardsFemale}}],
-        chart: {
-            width: 380,
-            type: 'pie',
-        },
-        title: {
-            text: "",
-            align: "left",
-            style: {
-                fontWeight: "500"
-            }
-        },
-        labels: ['Male', 'Female'],
-        responsive: [{
-            breakpoint: 480,
-            options: {
-                chart: {
-                    width: 200
-                },
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }]
-    };
-
-    var GenderChart = new ApexCharts(document.querySelector("#GenderChart"), GenderChart);
-    GenderChart.render();
-
-
-
-    var FamilyStatusChart = {
-        chart: {
-            height: 400,
-            type: "donut"
-        },
-        title: {
-            text: "",
-            align: "left",
-            style: {
-                fontWeight: "500"
-            }
-        },
-        series: [{{$qamarcarecardsPoor}}, {{$qamarcarecardsLowIncome}},{{$qamarcarecardsWidow}}, {{$qamarcarecardsOrphans}},{{$qamarcarecardsDisabledIndividual}}, {{$qamarcarecardsElderlyIndividual}},{{$qamarcarecardsDisplacedFamily}}, {{$qamarcarecardsDisasterAffected}}],
-        labels: ['Poor', 'Low Income',  'Widow', 'Orphans', 'Disabled Individual', 'Elderly Individual', 'Displaced Family', 'Disaster Affected'],
-        colors: ["#34c38f", "#556ee6", "#f46a6a", "#50a5f1", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c"],
-        legend: {
-            show: !0,
-            position: "right",
-            horizontalAlign: "center",
-            verticalAlign: "middle",
-            floating: !1,
-            fontSize: "14px",
-            offsetX: 0
-        },
-        responsive: [{
-            breakpoint: 600,
-            options: {
-                chart: {
-                    height: 240
-                },
-                legend: {
-                    show: !1
-                }
-            }
-        }]
-    };
-
-    var FamilyStatusChart = new ApexCharts(document.querySelector("#FamilyStatusChart"), FamilyStatusChart);
-    FamilyStatusChart.render();
+})();
 
 
 
@@ -1170,36 +1261,7 @@ grid: {
 
 
 
-    var TribeChart = {
-        series: [{{$Pashtun}}, {{$Tajik}},{{$Hazara}}, {{$Uzbek}},{{$Turkman}}, {{$Pashayi}},{{$Aimaq}}, {{$Baloch}}, {{$Pamiri}}, {{$Sadat}}, {{$Nooristani}}, {{$Arab}}, {{$Gojar}}, {{$Brahawi}}, {{$qazalbash}}, {{$kochi}}],
-        labels: ['Pashtun', 'Tajik',  'Hazara', 'Uzbek', 'Turkman', 'Pashayi', 'Aimaq', 'Baloch', 'Pamiri', 'Sadat', 'Nooristani', 'Arab', 'Gojar', 'Brahawi', 'qazalbash', 'kochi'],
-        colors: ["#34c38f", "#556ee6", "#f46a6a", "#50a5f1", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c"],
-        chart: {
-            width: 380,
-            type: 'pie',
-        },
-        title: {
-            text: "",
-            align: "left",
-            style: {
-                fontWeight: "500"
-            }
-        },
-        responsive: [{
-            breakpoint: 480,
-            options: {
-                chart: {
-                    width: 200
-                },
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }]
-    };
 
-    var TribeChart = new ApexCharts(document.querySelector("#TribeChart"), TribeChart);
-    TribeChart.render();
 
 
 
