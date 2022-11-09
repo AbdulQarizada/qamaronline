@@ -141,9 +141,45 @@
                                     <a href="{{route('RoleUser', ['data' => $data -> id])}}" class="btn btn-success waves-effect waves-light">
                                         <i class="bx bx-user-plus    font-size-16 align-middle"></i>
                                     </a>
-                                    <a href="{{route('RoleUser', ['data' => $data -> id])}}" data-bs-toggle="modal" data-bs-target=".bs-example-modal-center" class="btn btn-danger waves-effect waves-light">
+                                    <a data-bs-toggle="modal" data-bs-target=".bs-{{$data ->  id }}-modal-center" class="btn btn-danger waves-effect waves-light">
                                         <i class="mdi mdi-lock-reset    font-size-16 align-middle"></i>
                                     </a>
+                                    <div class="modal fade bs-{{$data ->  id }}-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Reset Password</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+
+
+                                                    <form class="needs-validation" action="{{route('ResetPasswordUser', [$data -> id])}}" method="POST" enctype="multipart/form-data" novalidate>
+                                                        @method('PUT')
+                                                        @csrf
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="mb-3 position-relative">
+                                                                    <label for="password" class="form-label ">New Password <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                                    <div class="hstack gap-3">
+                                                                        <input class="form-control form-control-lg me-auto @error('password') is-invalid @enderror" value="{{ old('password') }}" type="text" name="password" id="qcc">
+                                                                        <!-- <button type="button" class="btn btn-lg btn-outline-danger" onclick="Random();"><i class=" bx bxs-magic-wand  font-size-16 align-middle"></i> </button> -->
+                                                                        @error('password')
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong>{{ $message }}</strong>
+                                                                        </span>
+                                                                        @enderror
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <button class="btn btn-success btn-lg" type="submit">Change </button>
+                                                    </form>
+                                                </div>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal-dialog -->
+                                    </div><!-- /.modal -->
                                     @endif
 
 
@@ -162,42 +198,7 @@
 
 
 
-<div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Reset Password</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
 
-
-                <form class="needs-validation" action="{{route('ResetPasswordUser', [$data -> id])}}" method="POST" enctype="multipart/form-data" novalidate>
-                    @method('PUT')
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-12">
-                                    <div class="mb-3 position-relative">
-                                        <label for="password" class="form-label ">New Password <i class="mdi mdi-asterisk text-danger"></i></label>
-                                        <div class="hstack gap-3">
-                                            <input class="form-control form-control-lg me-auto @error('password') is-invalid @enderror" value="{{ old('password') }}" type="text" name="password" id="QCC" >
-                                            <button type="button" class="btn btn-lg btn-outline-danger" onclick="Random();"><i class=" bx bxs-magic-wand  font-size-16 align-middle"></i> </button>
-                                            @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-
-                    </div>
-                    <button class="btn btn-success btn-lg" type="submit">Change </button>
-                </form>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
 
 @endsection
@@ -246,9 +247,8 @@
 
 
     function Random() {
-        const result = Math.random().toString(36).substring(2,7);
-        document.getElementById('QCC').value = result;
+        const result = Math.random().toString(36).substring(2, 7);
+        document.getElementById('qcc').value = result;
     };
-
 </script>
 @endsection

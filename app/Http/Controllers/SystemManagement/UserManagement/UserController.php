@@ -280,7 +280,6 @@ class UserController extends Controller
 
     ]);
 
-
     $data->update([
 
       'password' => Hash::make(request('password')),
