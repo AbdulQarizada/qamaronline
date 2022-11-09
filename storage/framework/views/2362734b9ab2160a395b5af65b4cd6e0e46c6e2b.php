@@ -16,7 +16,7 @@
     <div class="col-6">
         <?php if(Cookie::get('Layout') == 'LayoutNoSidebar'): ?>
 
-<a href="<?php echo e(route('IndexFoodPack')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+<a href="<?php echo e(route('IndexCareCard')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
 <?php endif; ?>
 <?php if(Cookie::get('Layout') == 'LayoutSidebar'): ?>
 

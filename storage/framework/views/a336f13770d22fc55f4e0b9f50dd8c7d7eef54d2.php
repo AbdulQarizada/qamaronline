@@ -16,7 +16,7 @@
     <div class="col-6">
         <?php if(Cookie::get('Layout') == 'LayoutNoSidebar'): ?>
 
-<a href="<?php echo e(route('IndexFoodPack')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+<a href="<?php echo e(route('IndexCareCard')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
 <?php endif; ?>
 <?php if(Cookie::get('Layout') == 'LayoutSidebar'): ?>
 
@@ -60,6 +60,7 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
                             <tr>
                                 <th>ID</th>
                                 <th>Beneficairy Name</th>
+                                <th>Father Name</th>
                                 <th>Province</th>
                                 <th>Primary Number</th>
                                 <th>Secondary Number</th>
@@ -80,6 +81,9 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
                                 <td><?php echo e($loop->iteration); ?></td>
                                 <td>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> FullName); ?></a></h5>
+                                </td>
+                                <td>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> FatherName); ?></a></h5>
                                 </td>
                                 <td>
                                     <div>

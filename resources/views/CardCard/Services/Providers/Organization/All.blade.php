@@ -14,7 +14,7 @@
     <div class="col-6">
         @if(Cookie::get('Layout') == 'LayoutNoSidebar')
 
-<a href="{{route('IndexCareCardServices')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+<a href="{{route('IndexCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
 @endif
 @if(Cookie::get('Layout') == 'LayoutSidebar')
 
