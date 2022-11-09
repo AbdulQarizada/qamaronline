@@ -122,7 +122,7 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-card-account-details-outline text-warning display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">All Care Cards</p>
+                                    <p class="my-0 text-dark mt-2 font-size-18">All Cards</p>
                                     <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
 
@@ -152,7 +152,7 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-credit-card-clock-outline text-secondary display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">Pending Care Cards</p>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Pending Cards</p>
                                     <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
 
@@ -182,7 +182,7 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-card-account-details-star-outline text-success display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">Approved Care Cared</p>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Approved Cards</p>
                                     <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
 
@@ -212,7 +212,7 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-printer-check text-dark display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">Printed Care Cards</p>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Printed Cards</p>
                                     <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
 
@@ -243,7 +243,7 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-credit-card-marker-outline text-success display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">Released Care Cards</p>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Released Cards</p>
                                     <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
 
@@ -274,7 +274,7 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-credit-card-remove-outline text-danger display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">Rejected Care Cards</p>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Rejected Cards</p>
                                     <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
 
@@ -323,7 +323,8 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-food text-info display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">Food Packs</p>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Food Packs </p>
+
                                     <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
 
@@ -544,7 +545,7 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-card-search-outline text-info display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">Verify Care Card</p>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Verify Card</p>
                                     <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
 

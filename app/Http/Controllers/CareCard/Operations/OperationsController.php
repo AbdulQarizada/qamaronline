@@ -509,7 +509,7 @@ class OperationsController extends Controller
 
     ]);
 
-    return redirect()->route('PendingCareCard')->with('toast_success', 'Record Created Successfully!');
+    return redirect()->route('IndexCareCard')->with('toast_success', 'Record Created Successfully!');
   }
 
 // Update
