@@ -40,7 +40,6 @@
                                 <li><a href="<?php echo e(route('PrintedCareCard')); ?>" key="t-boxed-width">Printed Cards</a></li>
                                 <li><a href="<?php echo e(route('ReleasedCareCard')); ?>" key="t-preloader">Released Cards</a></li>
                                 <li><a href="<?php echo e(route('RejectedCareCard')); ?>" key="t-colored-sidebar">Rejected Cards</a></li>
-                                <li><a href="<?php echo e(route('VerifyCareCard')); ?>" key="t-colored-verify">Verify Cards</a></li>
 
                             </ul>
                         </li>
@@ -68,6 +67,13 @@
                                         <li><a href="<?php echo e(route('OrganizationServiceProviders')); ?>" key="t-preloader">All Organization Ser.Pro.</a></li>
                                     </ul>
                                 </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow" key="t-vertical">Online</a>
+                            <ul class="sub-menu" aria-expanded="true">
+                                <li><a href="<?php echo e(route('VerifyCareCard')); ?>" key="t-colored-verify">Verify Cards</a></li>
+
                             </ul>
                         </li>
                     </ul>

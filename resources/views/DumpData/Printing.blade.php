@@ -15,11 +15,6 @@ table  td {
 @endsection
 
 @section('content')
-
-@component('components.breadcrumb')
-@slot('li_1') Qamar Care Card @endslot
-@slot('title') Qamar Care Card List @endslot
-@endcomponent
 <div class="row">
     <div class="col-12">
         <a href="{{route('AllQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
@@ -47,7 +42,7 @@ table  td {
                 </tr>
                 <tr >
                     <td ><span class="h5">{{$data -> FatherName}} </span></td>
-                    
+
                 </tr>
                 <tr>
                     <td ><span class="h5">{{$data -> Gender}} </span></td>

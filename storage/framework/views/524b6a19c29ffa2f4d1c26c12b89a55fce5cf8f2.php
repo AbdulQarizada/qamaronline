@@ -1,6 +1,6 @@
 
 
-<?php $__env->startSection('title'); ?> ADD ORPHAN <?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?> Orphan and Sponsorships <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/filepond.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -14,42 +14,22 @@
 
 
 
-<div class="row">
-    <div class="col-12">
-        <a href="<?php echo e(route('AllOrphans')); ?>" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+<div class="row mt-4">
+    <div class="col-4">
+        <a href="<?php echo e(route('AllOrphans')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Add Orphan</span>
     </div>
 </div>
-
-
-<div class="row">
-    <div class="col-12">
-        <div class="card border border-3">
-            <div class="card-header">
-                <blockquote class="blockquote border-primary  font-size-14 mb-0">
-                    <p class="my-0   card-title fw-medium font-size-24 text-wrap">ADD ORPHAN</p>
-
-                </blockquote>
-            </div>
-        </div>
-
-    </div>
-</div>
-
 
 
 <form class="needs-validation" action="<?php echo e(route('CreateOrphans')); ?>" method="POST" enctype="multipart/form-data" novalidate>
     <?php echo csrf_field(); ?>
 
-
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
-                <h4 class="card-header bg-primary text-white ">PEROSNAL INFORMATION</h4>
-
+                <h4 class="card-header bg-dark text-white ">PEROSNAL INFORMATION</h4>
                 <div class="card-body">
-                    <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
-                    </p> -->
-
                     <div class="row">
                         <div class="col-md-10">
                             <div class="row">
@@ -185,7 +165,7 @@ unset($__errorArgs, $__bag); ?>
                                     </div>
 
                                 </div>
-                          <div class="col-md-6">
+                                <div class="col-md-6">
                                     <div class="mb-3 position-relative">
                                         <label for="Gender_ID" class="form-label">Gender <i class="mdi mdi-asterisk text-danger"></i></label>
                                         <select class="form-select  form-select-lg <?php $__errorArgs = ['Gender_ID'];
@@ -351,17 +331,17 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                         </div>
-                                            <div class="col-md-12">
-                                                <label for="WhyShouldYouHelpMe" class="form-label">Why Should You Help Me?  <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                <textarea id="textarea" class="form-control <?php $__errorArgs = ['WhyShouldYouHelpMe'];
+                        <div class="col-md-12">
+                            <label for="WhyShouldYouHelpMe" class="form-label">Why Should You Help Me? <i class="mdi mdi-asterisk text-danger"></i></label>
+                            <textarea id="textarea" class="form-control <?php $__errorArgs = ['WhyShouldYouHelpMe'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" maxlength="2205" rows="10"   value="<?php echo e(old('WhyShouldYouHelpMe')); ?>" required name="WhyShouldYouHelpMe" id="WhyShouldYouHelpMe" required></textarea>
-                                                <!-- <input type="textarea" class="my-pond <?php $__errorArgs = ['Tazkira'];
+unset($__errorArgs, $__bag); ?>" maxlength="2205" rows="10" value="<?php echo e(old('WhyShouldYouHelpMe')); ?>" required name="WhyShouldYouHelpMe" id="WhyShouldYouHelpMe" required></textarea>
+                            <!-- <input type="textarea" class="my-pond <?php $__errorArgs = ['Tazkira'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -369,19 +349,19 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Tazkira')); ?>" name="Tazkira" id="Tazkira" /> -->
-                                                <?php $__errorArgs = ['WhyShouldYouHelpMe'];
+                            <?php $__errorArgs = ['WhyShouldYouHelpMe'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong><?php echo e($message); ?></strong>
-                                                </span>
-                                                <?php unset($message);
+                            <span class="invalid-feedback" role="alert">
+                                <strong><?php echo e($message); ?></strong>
+                            </span>
+                            <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                            </div>
+                        </div>
                     </div>
                     <div class="row">
 
@@ -400,7 +380,7 @@ unset($__errorArgs, $__bag); ?>
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
-                <h4 class="card-header bg-primary text-white ">ADDRESS AND CONTACT</h4>
+                <h4 class="card-header bg-dark text-white ">ADDRESS AND CONTACT</h4>
 
                 <div class="card-body">
                     <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
@@ -603,7 +583,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('InCareName')); ?>" id="InCareName" name="InCareName"  required>
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('InCareName')); ?>" id="InCareName" name="InCareName" required>
                                     <?php $__errorArgs = ['InCareName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -683,9 +663,9 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
                         <div class="col-md-4">
-                                    <div class="mb-3 position-relative">
-                                        <label for="InCareTazkiraID" class="form-label ">InCare Tazkira ID <i class="mdi mdi-asterisk text-danger"></i></label>
-                                        <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['InCareTazkiraID'];
+                            <div class="mb-3 position-relative">
+                                <label for="InCareTazkiraID" class="form-label ">InCare Tazkira ID <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['InCareTazkiraID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -693,20 +673,20 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('InCareTazkiraID')); ?>" id="InCareTazkiraID" name="InCareTazkiraID" max="999999999" required>
-                                        <?php $__errorArgs = ['InCareTazkiraID'];
+                                <?php $__errorArgs = ['InCareTazkiraID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong><?php echo e($message); ?></strong>
-                                        </span>
-                                        <?php unset($message);
+                                <span class="invalid-feedback" role="alert">
+                                    <strong><?php echo e($message); ?></strong>
+                                </span>
+                                <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -720,16 +700,16 @@ unset($__errorArgs, $__bag); ?>
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
-                <h4 class="card-header bg-primary text-white ">EDUCATION</h4>
+                <h4 class="card-header bg-dark text-white ">EDUCATION</h4>
 
                 <div class="card-body">
                     <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
                     </p> -->
 
                     <div class="row">
-                      <div class="col-md-4">
-                            <div class="row mb-3 position-relative" >
-                            <label for="CurrentlyInSchool" class="form-label" >Currently In School? <i class="mdi mdi-asterisk text-danger"></i></label>
+                        <div class="col-md-4">
+                            <div class="row mb-3 position-relative">
+                                <label for="CurrentlyInSchool" class="form-label">Currently In School? <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="col-6 col-sm-6">
                                     <div class="form-check mb-3">
                                         <input class="form-check-input" type="radio" name="CurrentlyInSchool" value="No" id="No" checked>
@@ -758,9 +738,9 @@ unset($__errorArgs, $__bag); ?>
 
                     </div>
                     <div class="row InSchoolDiv" id="InSchoolDiv">
-                       <div class="col-md-4">
+                        <div class="col-md-4">
                             <div class="mb-3 position-relative">
-                                <label for="SchoolName"  class="form-label">School Name <i class="mdi mdi-asterisk text-danger"></i></label>
+                                <label for="SchoolName" class="form-label">School Name <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['SchoolName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -768,7 +748,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SchoolName')); ?>" id="SchoolName" name="SchoolName" >
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SchoolName')); ?>" id="SchoolName" name="SchoolName">
                                 <?php $__errorArgs = ['SchoolName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -794,7 +774,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>"  name="SchoolProvince_ID" value="<?php echo e(old('SchoolProvince_ID')); ?>" id="SchoolProvince_ID">
+unset($__errorArgs, $__bag); ?>" name="SchoolProvince_ID" value="<?php echo e(old('SchoolProvince_ID')); ?>" id="SchoolProvince_ID">
                                         <option value="">Select Your Province</option>
                                         <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?php echo e($province -> id); ?>"><?php echo e($province -> Name); ?></option>
@@ -828,7 +808,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>"  name="SchoolDistrict_ID" value="<?php echo e(old('SchoolDistrict_ID')); ?>" id="SchoolDistrict_ID">
+unset($__errorArgs, $__bag); ?>" name="SchoolDistrict_ID" value="<?php echo e(old('SchoolDistrict_ID')); ?>" id="SchoolDistrict_ID">
                                         <option value="">Select Your District</option>
 
 
@@ -858,7 +838,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SchoolVillage')); ?>" id="SchoolVillage" name="SchoolVillage" >
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SchoolVillage')); ?>" id="SchoolVillage" name="SchoolVillage">
                                 <?php $__errorArgs = ['SchoolVillage'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -942,10 +922,9 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Class')); ?>" required id="Class" name="Class">
                                     <!-- <option value="">Select Your Country</option> -->
-                                    <?php for($i = 1; $i < 13; $i++): ?>
-                                    <option value="<?php echo e($i); ?>"><?php echo e($i); ?> </option>
+                                    <?php for($i = 1; $i < 13; $i++): ?> <option value="<?php echo e($i); ?>"><?php echo e($i); ?> </option>
 
-                                    <?php endfor; ?>
+                                        <?php endfor; ?>
 
 
                                 </select>
@@ -972,13 +951,13 @@ unset($__errorArgs, $__bag); ?>
         </div>
         <!-- end col -->
     </div>
-  <!-- end row -->
+    <!-- end row -->
 
 
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
-                <h4 class="card-header bg-primary text-white ">FAMILY AND INCOME INFORMATION</h4>
+                <h4 class="card-header bg-dark text-white ">FAMILY AND INCOME INFORMATION</h4>
 
                 <div class="card-body">
                     <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
@@ -987,7 +966,7 @@ unset($__errorArgs, $__bag); ?>
                     <div class="row">
                     </div>
                     <div class="row">
-                    <div class="col-md-4">
+                        <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="FatherName" class="form-label">Father's Name <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['FatherName'];
@@ -1211,7 +1190,7 @@ unset($__errorArgs, $__bag); ?>
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
-                <h4 class="card-header bg-primary text-white ">DOCUMENTS</h4>
+                <h4 class="card-header bg-dark text-white ">DOCUMENTS</h4>
 
                 <div class="card-body">
                     <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
@@ -1341,11 +1320,11 @@ unset($__errorArgs, $__bag); ?>
     // Get a reference to the file input element
     const inputTazkira = document.querySelector('input[name="Tazkira"]');
 
- // Get a reference to the file input element
- const inputFamilyPic = document.querySelector('input[name="FamilyPic"]');
+    // Get a reference to the file input element
+    const inputFamilyPic = document.querySelector('input[name="FamilyPic"]');
 
-// Get a reference to the file input element
-const inputHousePic = document.querySelector('input[name="HousePic"]');
+    // Get a reference to the file input element
+    const inputHousePic = document.querySelector('input[name="HousePic"]');
 
 
 
@@ -1374,8 +1353,8 @@ const inputHousePic = document.querySelector('input[name="HousePic"]');
 
     });
 
-       // Create a FilePond instance
-       const FamilyPic = FilePond.create(inputFamilyPic, {
+    // Create a FilePond instance
+    const FamilyPic = FilePond.create(inputFamilyPic, {
         labelIdle: 'Click to upload Family Picture <span class="bx bx-upload"></span >',
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
@@ -1392,8 +1371,8 @@ const inputHousePic = document.querySelector('input[name="HousePic"]');
 
     });
 
-       // Create a FilePond instance
-       const HousePic = FilePond.create(inputHousePic, {
+    // Create a FilePond instance
+    const HousePic = FilePond.create(inputHousePic, {
         labelIdle: 'Click to upload House Picture <span class="bx bx-upload"></span >',
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
@@ -1501,29 +1480,24 @@ const inputHousePic = document.querySelector('input[name="HousePic"]');
 
 
 
-    $(document).ready(function()
-{
-    $('#InSchoolDiv').hide();
-    $('.InSchoolDiv').hide();
-    $('#No').prop("checked", true);
+    $(document).ready(function() {
+        $('#InSchoolDiv').hide();
+        $('.InSchoolDiv').hide();
+        $('#No').prop("checked", true);
 
-});
-    $('#Yes').click(function()
-    {
-    $('#InSchoolDiv').show();
-    $('.InSchoolDiv').show();
+    });
+    $('#Yes').click(function() {
+        $('#InSchoolDiv').show();
+        $('.InSchoolDiv').show();
 
-});
+    });
 
 
 
-$('#No').click(function() {
-    $('#InSchoolDiv').hide();
-    $('.InSchoolDiv').hide();
-});
-
-
-
+    $('#No').click(function() {
+        $('#InSchoolDiv').hide();
+        $('.InSchoolDiv').hide();
+    });
 </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make(Auth::user()->IsEmployee == 1 ? 'layouts.master-layouts' : 'layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Orphan/Create.blade.php ENDPATH**/ ?>

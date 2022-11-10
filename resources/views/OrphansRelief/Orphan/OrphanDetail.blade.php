@@ -8,23 +8,7 @@
         <a href="{{route('AllGridOrphans')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
 
     </div>
-    <!-- <div class="col-6">
-                                <h1 class="fw-medium font-size-24 ">Orphans List</h1>
-        </div> -->
 </div>
-<!-- <div class="row">
-        <div class="col-12 ">
-        <div class="card border border-3">
-                    <div class="card-header">
-                      <blockquote class="blockquote border-warning  font-size-14 mb-0">
-                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">ORPHANS DETAILS</p>
-                        
-                        </blockquote>
-                    </div>
-                </div>
-      
-        </div>
-     </div> -->
 <div class="row">
     @foreach($datas as $data)
     <div class="col-lg-12">
@@ -148,7 +132,7 @@
                                     <a href="{{route('StatusOrphans', ['data' => $data -> id])}}" class="btn btn-warning waves-effect waves-light mt-2 me-1">
                             <i class="bx bx-happy-beaming me-2"></i> Sponsor Me
 </a>
-                        
+
                                     </div> -->
                             </div>
                             <!-- <div class="row mb-3">
@@ -200,7 +184,7 @@
                         <table class="table mb-0 table-bordered">
                             <tbody>
                                 <tr>
-                                  
+
                                     <th scope="row" style="width: 400px;">Gender</th>
                                     <td>{{$data -> Gender }}</td>
                                     <th scope="row" style="width: 400px;">Date Of Birth</th>
@@ -217,7 +201,7 @@
                                     <td>{{$data -> FatherName }}</td>
                                     <th scope="row">In Care Of</th>
                                     <td>{{$data -> InCareName }}</td>
-                                  
+
                                 </tr>
                                 <tr>
                                     <th scope="row">Monthly Family Income</th>

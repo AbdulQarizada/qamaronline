@@ -12,35 +12,10 @@
 
 
 @section('content')
-
-<!-- <div class="row">
-        <div class="col-12">
-           <a href="{{route('AssigningServiceQamarCareCard')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-        </div>
-     </div> -->
-
-
-<!-- <div class="row">
-        <div class="col-12">
-        <div class="card border border-3">
-                    <div class="card-header">
-                      <blockquote class="blockquote border-primary  font-size-14 mb-0">
-                                <p class="my-0   card-title fw-medium font-size-24 text-wrap">ASSIGN SERVICE</p>
-                        
-                        </blockquote>
-                    </div>
-                </div>
-      
-        </div>
-     </div> -->
 <div class="row mt-4">
     <div class="col-4">
-        <a href="{{route('AssigningServiceQamarCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light "><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-        <a href="{{route('AssignedServicesQamarCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light assign2" hidden></a>
-
-    </div>
-    <div class="col-6">
-        <h1 class="fw-medium font-size-24 ">ORPHANS TO SPONSOR</h1>
+        <a href="{{route('AllOrphans')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light "><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Assign To Sponsor</span>
     </div>
 </div>
 
@@ -126,9 +101,9 @@
                                     </div>
                                 </td>
                                 <td>
-                                <p class="text-muted mb-0 text-danger">Waiting Since</p>
-                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> created_at -> format("d-m-Y") }}</a></h5>
-                                       
+                                    <p class="text-muted mb-0 text-danger">Waiting Since</p>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> created_at -> format("d-m-Y") }}</a></h5>
+
 
                                 </td>
                             </tr>
@@ -150,8 +125,6 @@
 
     </div>
     <div class="col-8 ">
-        <!-- <i class="bx bx-plus-circle  font-size-24 label-icon"></i> btn-label -->
-        <!-- <a href="{{route('CreateQamarCareCard')}}" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 float-end">ADD SERVICE PROVIDER</a> -->
     </div>
 </div>
 <div class="row">
@@ -163,8 +136,8 @@
                 <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
                     </p> -->
                 <form class="needs-validation" action="{{route('AssignSponsorOrphan', ['data' => $data -> id])}}" method="POST" enctype="multipart/form-data" novalidate>
-                @method('PUT')
-                @csrf
+                    @method('PUT')
+                    @csrf
                     <!-- <input type="text"  value="{{$data -> id }}" id="Assignee_ID" name="Assignee_ID" hidden /> -->
 
 
@@ -186,11 +159,10 @@
                             </div>
 
                         </div>
-                        </div>
+                    </div>
 
-                    
-                          <button class="btn btn-success btn-lg m-3" type="submit">Assign</button>
-                     <a class="btn btn-danger btn-lg" href="{{route('IndexQamarCareCard')}}">Cancel</a> 
+
+                    <button class="btn btn-success btn-lg m-3" type="submit">Assign</button>
                 </form>
             </div>
         </div>

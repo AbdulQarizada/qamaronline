@@ -19,8 +19,8 @@
         @endif
         @if(Cookie::get('Layout') == 'LayoutSidebar')
 
-<a href="{{route('IndexCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-@endif
+         <a href="{{route('IndexCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+       @endif
         @if($PageInfo == 'All')
         <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>ALL CARE CARDS</span>
         @endif
