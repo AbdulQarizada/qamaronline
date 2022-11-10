@@ -54,33 +54,33 @@
     <div class="col-xl-8">
         <div class="row">
             <div class="col-sm-8">
-            <blockquote class="p-4 border-light border rounded mb-4">
-                   <div class="d-flex align-items-start">
+                <blockquote class="p-4 border-light border rounded mb-4">
+                    <div class="d-flex align-items-start">
 
-                      <div class="flex-grow-1">
+                        <div class="flex-grow-1">
                             <p class="mb-0 display-6 p-3" dir="rtl" style="float: right;"> {{ $QuranArabic }}</p>
                             <p class="mb-0 font-size-18"> {{ $QuranEnglish }}</p>
-                      </div>
-                      <div class="me-3">
-                           <i class="bx bxs-quote-alt-right text-mute font-size-24"></i>
-                      </div>
-                      </div>
+                        </div>
+                        <div class="me-3">
+                            <i class="bx bxs-quote-alt-right text-mute font-size-24"></i>
+                        </div>
+                    </div>
                 </blockquote>
 
             </div>
             <div class="col-sm-4">
                 <div class="card mini-stats-wid">
-                     <h5 class="card-header text-dark bg-info text-white">Report Filter</h5>
+                    <h5 class="card-header text-dark bg-info text-white">Report Filter</h5>
 
                     <div class="card-body">
 
-                    <select class="select2 form-control select2-multiple" multiple="multiple" data-placeholder="Choose ...">
-                <optgroup label="Qamar Care Card">
-                    <option value="AK">Operatons</option>
-                    <option value="HI">Food Packs</option>
-                </optgroup>
-            </select>
-            <button class="btn btn-primary form-control mt-3">Filter</button>
+                        <select class="select2 form-control select2-multiple" multiple="multiple" data-placeholder="Choose ...">
+                            <optgroup label="Qamar Care Card">
+                                <option value="AK">Operatons</option>
+                                <option value="HI">Food Packs</option>
+                            </optgroup>
+                        </select>
+                        <button class="btn btn-primary form-control mt-3">Filter</button>
 
                     </div>
                 </div>
@@ -110,25 +110,25 @@
                 <a href="{{route('IndexOrphansRelief')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                         <i class="bx bx-smile display-5 "></i>
-                                        <p class="my-0 text-dark mt-2 font-size-18">Orphans Relief</p>
-                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
-                                    </div>
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="bx bx-smile display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Orphans Relief</p>
+                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                </div>
 
-                                    <!-- <div class="flex-shrink-0 align-self-center">
+                                <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
 
                                             </span>
                                         </div>
                                     </div> -->
-                                </div>
+                            </div>
 
-                                <div class="d-flex mt-4">
+                            <div class="d-flex mt-4">
 
-                                </div>
+                            </div>
                             </blockquote>
                         </div>
                     </div>
@@ -140,25 +140,25 @@
                 <a href="{{route('IndexOrphansRelief')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                         <i class="bx bx-briefcase-alt-2 display-5 "></i>
-                                        <p class="my-0 text-dark mt-2 font-size-18">Aid and Relief</p>
-                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
-                                    </div>
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="bx bx-briefcase-alt-2 display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Aid and Relief</p>
+                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                </div>
 
-                                    <!-- <div class="flex-shrink-0 align-self-center">
+                                <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
 
                                             </span>
                                         </div>
                                     </div> -->
-                                </div>
+                            </div>
 
-                                <div class="d-flex mt-4">
+                            <div class="d-flex mt-4">
 
-                                </div>
+                            </div>
                             </blockquote>
                         </div>
                     </div>
@@ -170,25 +170,25 @@
                 <a href="{{route('IndexOrphansRelief')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                         <i class="bx bx-gas-pump  display-5 "></i>
-                                        <p class="my-0 text-dark mt-2 font-size-18">Wash</p>
-                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
-                                    </div>
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="bx bx-gas-pump  display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Wash</p>
+                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                </div>
 
-                                    <!-- <div class="flex-shrink-0 align-self-center">
+                                <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
 
                                             </span>
                                         </div>
                                     </div> -->
-                                </div>
+                            </div>
 
-                                <div class="d-flex mt-4">
+                            <div class="d-flex mt-4">
 
-                                </div>
+                            </div>
                             </blockquote>
                         </div>
                     </div>
@@ -200,25 +200,25 @@
                 <a href="{{route('IndexEducation')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                         <i class="bx bxs-graduation  display-5 "></i>
-                                        <p class="my-0 text-dark mt-2 font-size-18">Education</p>
-                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
-                                    </div>
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="bx bxs-graduation  display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Education</p>
+                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                </div>
 
-                                    <!-- <div class="flex-shrink-0 align-self-center">
+                                <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
 
                                             </span>
                                         </div>
                                     </div> -->
-                                </div>
+                            </div>
 
-                                <div class="d-flex mt-4">
+                            <div class="d-flex mt-4">
 
-                                </div>
+                            </div>
                             </blockquote>
                         </div>
                     </div>
@@ -231,25 +231,25 @@
                 <a href="{{route('IndexEducation')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                         <i class="bx bx-bulb  display-5 "></i>
-                                        <p class="my-0 text-dark mt-2 font-size-18">Initiative</p>
-                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
-                                    </div>
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="bx bx-bulb  display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Initiative</p>
+                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                </div>
 
-                                    <!-- <div class="flex-shrink-0 align-self-center">
+                                <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
 
                                             </span>
                                         </div>
                                     </div> -->
-                                </div>
+                            </div>
 
-                                <div class="d-flex mt-4">
+                            <div class="d-flex mt-4">
 
-                                </div>
+                            </div>
                             </blockquote>
                         </div>
                     </div>
@@ -262,25 +262,25 @@
                 <a href="{{route('IndexEducation')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                         <i class="bx bxs-ambulance  display-5 "></i>
-                                        <p class="my-0 text-dark mt-2 font-size-18">Medical Sector</p>
-                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
-                                    </div>
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="bx bxs-ambulance  display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Medical Sector</p>
+                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                </div>
 
-                                    <!-- <div class="flex-shrink-0 align-self-center">
+                                <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
 
                                             </span>
                                         </div>
                                     </div> -->
-                                </div>
+                            </div>
 
-                                <div class="d-flex mt-4">
+                            <div class="d-flex mt-4">
 
-                                </div>
+                            </div>
                             </blockquote>
                         </div>
                     </div>
@@ -301,30 +301,30 @@
     <div class="col-xl-12">
         <div class="row">
 
-        @if(Auth::user()->IsQamarCareCard == 1)
+            @if(Auth::user()->IsQamarCareCard == 1)
             <div class="col-md-2 mb-2">
                 <a href="{{route('IndexCareCard')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                         <i class="bx bx-credit-card display-5 "></i>
-                                        <p class="my-0 text-dark mt-2 font-size-18">Care Card</p>
-                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
-                                    </div>
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="bx bx-credit-card display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Care Card</p>
+                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                </div>
 
-                                    <!-- <div class="flex-shrink-0 align-self-center">
+                                <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
 
                                             </span>
                                         </div>
                                     </div> -->
-                                </div>
+                            </div>
 
-                                <div class="d-flex mt-4">
+                            <div class="d-flex mt-4">
 
-                                </div>
+                            </div>
                             </blockquote>
                         </div>
                     </div>
@@ -336,25 +336,25 @@
                 <a href="{{route('IndexEducation')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                         <i class="bx bx-fingerprint display-5 "></i>
-                                        <p class="my-0 text-dark mt-2 font-size-18">Appeals</p>
-                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
-                                    </div>
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="bx bx-fingerprint display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Appeals</p>
+                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                </div>
 
-                                    <!-- <div class="flex-shrink-0 align-self-center">
+                                <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
 
                                             </span>
                                         </div>
                                     </div> -->
-                                </div>
+                            </div>
 
-                                <div class="d-flex mt-4">
+                            <div class="d-flex mt-4">
 
-                                </div>
+                            </div>
                             </blockquote>
                         </div>
                     </div>
@@ -366,25 +366,25 @@
                 <a href="{{route('IndexCareCard')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                         <i class="bx bx-task display-5 "></i>
-                                        <p class="my-0 text-dark mt-2 font-size-18">Distribution</p>
-                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
-                                    </div>
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="bx bx-task display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Distribution</p>
+                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                </div>
 
-                                    <!-- <div class="flex-shrink-0 align-self-center">
+                                <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
 
                                             </span>
                                         </div>
                                     </div> -->
-                                </div>
+                            </div>
 
-                                <div class="d-flex mt-4">
+                            <div class="d-flex mt-4">
 
-                                </div>
+                            </div>
                             </blockquote>
                         </div>
                     </div>
@@ -396,25 +396,25 @@
                 <a href="{{route('IndexCareCard')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                         <i class="bx bxs-box display-5 "></i>
-                                        <p class="my-0 text-dark mt-2 font-size-18">Donors</p>
-                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
-                                    </div>
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="bx bxs-box display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Donors</p>
+                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                </div>
 
-                                    <!-- <div class="flex-shrink-0 align-self-center">
+                                <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
 
                                             </span>
                                         </div>
                                     </div> -->
-                                </div>
+                            </div>
 
-                                <div class="d-flex mt-4">
+                            <div class="d-flex mt-4">
 
-                                </div>
+                            </div>
                             </blockquote>
                         </div>
                     </div>
@@ -442,25 +442,25 @@
                 <a href="{{route('IndexUserManagement')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                         <i class="bx bxs-box display-5 "></i>
-                                        <p class="my-0 text-dark mt-2 font-size-18">Users</p>
-                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
-                                    </div>
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="bx bxs-box display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Users</p>
+                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                </div>
 
-                                    <!-- <div class="flex-shrink-0 align-self-center">
+                                <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
 
                                             </span>
                                         </div>
                                     </div> -->
-                                </div>
+                            </div>
 
-                                <div class="d-flex mt-4">
+                            <div class="d-flex mt-4">
 
-                                </div>
+                            </div>
                             </blockquote>
                         </div>
                     </div>
@@ -472,25 +472,25 @@
                 <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
-                                <div class="d-flex">
-                                    <div class="flex-grow-1">
-                                         <i class="bx bxs-report display-5 "></i>
-                                        <p class="my-0 text-dark mt-2 font-size-18">ADD LOOK UPS</p>
-                                        <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
-                                    </div>
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="bx bxs-report display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">ADD LOOK UPS</p>
+                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                </div>
 
-                                    <!-- <div class="flex-shrink-0 align-self-center">
+                                <!-- <div class="flex-shrink-0 align-self-center">
                                         <div class="mini-stat-icon avatar-sm rounded-circle ">
                                             <span class="avatar-title bg-info">
 
                                             </span>
                                         </div>
                                     </div> -->
-                                </div>
+                            </div>
 
-                                <div class="d-flex mt-4">
+                            <div class="d-flex mt-4">
 
-                                </div>
+                            </div>
                             </blockquote>
                         </div>
                     </div>
@@ -613,14 +613,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12">
-            <div class="card">
-                <h5 class="card-header text-dark bg-secondary bg-soft">General</h5>
-                <div class="card-body">
-                    <div id="AllInOne" class="apex-charts" dir="ltr"></div>
-                </div>
-            </div>
-        </div>
+
     </div>
     <div class="col-md-8">
         <div class="row">
@@ -632,56 +625,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <h5 class="card-header text-dark bg-secondary bg-soft">Pending Care Cards</h5>
-                    <div class="card-body">
-                        <div class="" dir="ltr">
-                            <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsPending}}" data-linecap="round" data-fgcolor="#74788d">
-                        </div>
-                    </div>
+            <div class="col-md-8">
+            <div class="card">
+                <h5 class="card-header text-dark bg-secondary bg-soft"></h5>
+                <div class="card-body">
+                    <div id="AllInOne" class="apex-charts" dir="ltr"></div>
+                    <h5 class=" text-dark text-center">Care Cards</h5>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <h5 class="card-header text-dark bg-secondary bg-soft">Approved Care Cards</h5>
-                    <div class="card-body">
-                        <div class="" dir="ltr">
-                            <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsApproved}}" data-linecap="round" data-fgcolor="#34c38f">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <h5 class="card-header text-dark bg-secondary bg-soft">Printed Care Cards</h5>
-                    <div class="card-body">
-                        <div class="" dir="ltr">
-                            <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsPrinted}}" data-linecap="round" data-fgcolor="#343a40">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <h5 class="card-header text-dark bg-secondary bg-soft">Released Care Cards</h5>
-                    <div class="card-body">
-                        <div class="" dir="ltr">
-                            <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsReleased}}" data-linecap="round" data-fgcolor="#34c38f">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <h5 class="card-header text-dark bg-secondary bg-soft">Rejected Care Cards</h5>
-                    <div class="card-body">
-                        <div class="" dir="ltr">
-                            <input class="knob" data-width="150" data-readOnly=true data-angleoffset="0" data-max="{{$qamarcarecardsCount}}" data-displayprevious="false" value="{{$qamarcarecardsRejected}}" data-linecap="round" data-fgcolor="#f46a6a">
-                        </div>
-                    </div>
-                </div>
-            </div>
+        </div>
+
         </div>
         <!-- end row -->
     </div>
@@ -692,20 +645,24 @@
 <div class="row mb-4">
     <div class="col-xl-4 mb-4">
         <div class="card">
-            <h5 class="card-header text-dark bg-secondary bg-soft">Gender</h5>
+            <h5 class="card-header text-dark bg-secondary bg-soft"></h5>
             <div class="card-body">
                 <div class="">
                     <div id="GenderChart" class="apex-charts" dir="ltr"></div>
+                    <h5 class=" text-dark text-center">Gender</h5>
+
                 </div>
             </div>
         </div>
     </div>
     <div class="col-xl-4 mb-4">
         <div class="card">
-            <h5 class="card-header text-dark bg-secondary bg-soft">Tribes</h5>
+            <h5 class="card-header text-dark bg-secondary bg-soft"></h5>
             <div class="card-body">
                 <div class="">
                     <div id="TribeChart" class="apex-charts" dir="ltr"></div>
+                    <h5 class=" text-dark text-center">Tribes</h5>
+
                 </div>
             </div>
         </div>
@@ -714,20 +671,24 @@
 <div class="row mb-4">
     <div class="col-xl-6">
         <div class="card">
-            <h5 class="card-header text-dark bg-secondary bg-soft">Family Status</h5>
+            <h5 class="card-header text-dark bg-secondary bg-soft"></h5>
             <div class="card-body">
                 <div class="">
                     <div id="FamilyStatusChart" class="apex-charts" dir="ltr"></div>
+                    <h5 class=" text-dark text-center">Family Status</h5>
+
                 </div>
             </div>
         </div>
     </div>
     <div class="col-xl-6">
         <div class="card">
-            <h5 class="card-header text-dark bg-secondary bg-soft">Provincial Care Cards</h5>
+            <h5 class="card-header text-dark bg-secondary bg-soft"></h5>
             <div class="card-body">
                 <div class="">
                     <div id="AfghanistanChart"></div>
+                    <h5 class=" text-dark text-center">Provincial Care Cards</h5>
+
                 </div>
             </div>
         </div>
@@ -736,10 +697,12 @@
 <div class="row mb-4">
     <div class="col-xl-12">
         <div class="card">
-            <h5 class="card-header text-dark bg-secondary bg-soft">Cards Insertion Timeline</h5>
+            <h5 class="card-header text-dark bg-secondary bg-soft"></h5>
             <div class="card-body">
                 <div class="">
                     <div id="DataInsertionChart" class="apex-charts" dir="ltr"></div>
+                    <h5 class=" text-dark text-center">Cards Insertion Timeline</h5>
+
                 </div>
             </div>
         </div>
@@ -748,7 +711,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-        <h4 class="card-header text-dark bg-secondary bg-soft">Latest Transaction</h4>
+            <h4 class="card-header text-dark bg-secondary bg-soft">Latest Transaction</h4>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="datatable-buttons" class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
@@ -959,300 +922,293 @@
 <!-- form advanced init -->
 <script src="{{ URL::asset('/assets/js/pages/form-advanced.init.js') }}"></script>
 <script>
+    // Tribe base Chart
 
+    (async () => {
+        const Tribe = await fetch('{{ route('Tribe_Chart')}}').then(response => response.json());
 
-
-
-
-
-
-// Tribe base Chart
-
-(async () => {
-    const Tribe = await fetch('{{ route('Tribe_Chart')}}').then(response => response.json());
-
-    var TribeChart = {
-        series: [Tribe.Pashtun, Tribe.Tajik, Tribe.Hazara, Tribe.Uzbek, Tribe.Turkman, Tribe.Pashayi, Tribe.Aimaq, Tribe.Baloch, Tribe.Pamiri, Tribe.Sadat, Tribe.Nooristani, Tribe.Arab, Tribe.Gojar, Tribe.Brahawi, Tribe.qazalbash, Tribe.kochi,],
-        labels: ['Pashtun', 'Tajik',  'Hazara', 'Uzbek', 'Turkman', 'Pashayi', 'Aimaq', 'Baloch', 'Pamiri', 'Sadat', 'Nooristani', 'Arab', 'Gojar', 'Brahawi', 'qazalbash', 'kochi'],
-        colors: ["#34c38f", "#556ee6", "#f46a6a", "#50a5f1", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c"],
-        chart: {
-            width: 380,
-            type: 'pie',
-        },
-        dataLabels: {
-          enabled: true
-        },
-        title: {
-            text: "",
-            align: "left",
-            style: {
-                fontWeight: "500"
-            }
-        },
-        responsive: [{
-            breakpoint: 480,
-            options: {
-                chart: {
-                    width: 200
-                },
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }]
-    };
-
-    var TribeChart = new ApexCharts(document.querySelector("#TribeChart"), TribeChart);
-    TribeChart.render();
-
-})();
-
-
-
-
-
-// Montly Insetion base Chart
-(async () => {
-    const MontlyInsertionJson = await fetch('{{ route('MontlyInsertion_Chart')}}').then(response => response.json());
-
-    var MontlyInsertion = {
-    chart: {
-    height: 350,
-    type: "line",
-    stacked: !1,
-    toolbar: {
-        show: !1
-             }
-    },
-    stroke: {
-    width: [0, 2, 4],
-    curve: "smooth"
-     },
-     plotOptions: {
-    bar: {
-        columnWidth: "50%"
-         }
-    },
-    colors: ["#cd9941", "#34c38f", "#74788d"],
-    series: [
-    {
-    name: "New Cards",
-    type: "column",
-    data: [ MontlyInsertionJson.PendingJan, MontlyInsertionJson.PendingFeb, MontlyInsertionJson.PendingMarch, MontlyInsertionJson.PendingApril, MontlyInsertionJson.PendingMay, MontlyInsertionJson.PendingJun, MontlyInsertionJson.PendingJuly, MontlyInsertionJson.PendingAugust, MontlyInsertionJson.PendingSep, MontlyInsertionJson.PendingOct, MontlyInsertionJson.PendingNov, MontlyInsertionJson.PendingDec,]
-      },
-     {
-    name: "Approved Cards",
-    type: "area",
-    data: [ MontlyInsertionJson.ApprovedJan, MontlyInsertionJson.ApprovedFeb, MontlyInsertionJson.ApprovedMarch, MontlyInsertionJson.ApprovedApril, MontlyInsertionJson.ApprovedMay, MontlyInsertionJson.ApprovedJun, MontlyInsertionJson.ApprovedJuly, MontlyInsertionJson.ApprovedAugust, MontlyInsertionJson.ApprovedSep, MontlyInsertionJson.ApprovedOct, MontlyInsertionJson.ApprovedNov, MontlyInsertionJson.ApprovedDec,]
-     },
-    {
-    name: "Printed Cards",
-    type: "line",
-    data: [ MontlyInsertionJson.PrintedJan, MontlyInsertionJson.PrintedFeb, MontlyInsertionJson.PrintedMarch, MontlyInsertionJson.PrintedApril, MontlyInsertionJson.PrintedMay, MontlyInsertionJson.PrintedJun, MontlyInsertionJson.PrintedJuly, MontlyInsertionJson.PrintedAugust, MontlyInsertionJson.PrintedSep, MontlyInsertionJson.PrintedOct, MontlyInsertionJson.PrintedNov, MontlyInsertionJson.PrintedDec,]
-     }],
-     fill: {
-    opacity: [.85, .25, 1],
-    gradient: {
-        inverseColors: !1,
-        shade: "light",
-        type: "vertical",
-        opacityFrom: .85,
-        opacityTo: .55,
-        stops: [0, 100, 100, 100]
-           }
-     },
-    labels: ["Jan", "Feb", "March", "April", "May", "Jun", "July", "August", "Sep", "Oct", "Nov", "Dec"],
-     markers: {
-           size: 0
-      },
-    xaxis: {
-    type: "date"
-    },
-     yaxis: {
-    title: {
-        text: "Cards"
-    }
-     },
-    tooltip: {
-    shared: !0,
-    intersect: !1,
-    y: {
-        formatter: function(e) {
-            return void 0 !== e ? e.toFixed(0) + " Cards" : e
-        }
-    }
-     },
-    grid: {
-    borderColor: "#f1f1f1"
-    }
-};
-
-var MontlyDataInsertion = new ApexCharts(document.querySelector("#DataInsertionChart"), MontlyInsertion);
-MontlyDataInsertion.render();
-
-
-})();
-
-
-
-
-
-// Gender base Chart
-(async () => {
-    const Gender_ChartJson = await fetch('{{ route('Gender_Chart')}}').then(response => response.json());
-
-    var GenderChart = {
-        series: [Gender_ChartJson.Male, Gender_ChartJson.Female],
-        chart: {
-            width: 380,
-            type: 'pie',
-        },
-        title: {
-            text: "",
-            align: "left",
-            style: {
-                fontWeight: "500"
-            }
-        },
-        labels: ['Male', 'Female'],
-        responsive: [{
-            breakpoint: 480,
-            options: {
-                chart: {
-                    width: 200
-                },
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }]
-    };
-
-    var GenderChart = new ApexCharts(document.querySelector("#GenderChart"), GenderChart);
-    GenderChart.render();
-
-
-})();
-
-
-
-
-// Family Status base Chart
-(async () => {
-    const FamilyStatus_ChartJson = await fetch('{{ route('FamilyStatus_Chart')}}').then(response => response.json());
-    var FamilyStatusChart = {
-        chart: {
-            height: 400,
-            type: "donut"
-        },
-        title: {
-            text: "",
-            align: "left",
-            style: {
-                fontWeight: "500"
-            }
-        },
-        series: [FamilyStatus_ChartJson.Poor, FamilyStatus_ChartJson.LowIncome, FamilyStatus_ChartJson.Widow, FamilyStatus_ChartJson.Orphans, FamilyStatus_ChartJson.DisabledIndividual, FamilyStatus_ChartJson.ElderlyIndividual, FamilyStatus_ChartJson.DisplacedFamily, FamilyStatus_ChartJson.DisasterAffected],
-        labels: ['Poor', 'Low Income',  'Widow', 'Orphans', 'Disabled Individual', 'Elderly Individual', 'Displaced Family', 'Disaster Affected'],
-        colors: ["#34c38f", "#556ee6", "#f46a6a", "#50a5f1", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c"],
-        legend: {
-            show: !0,
-            position: "right",
-            horizontalAlign: "center",
-            verticalAlign: "middle",
-            floating: !1,
-            fontSize: "14px",
-            offsetX: 0
-        },
-        responsive: [{
-            breakpoint: 600,
-            options: {
-                chart: {
-                    height: 240
-                },
-                legend: {
-                    show: !1
-                }
-            }
-        }]
-    };
-
-    var FamilyStatusChart = new ApexCharts(document.querySelector("#FamilyStatusChart"), FamilyStatusChart);
-    FamilyStatusChart.render();
-
-
-})();
-
-
-
-
-
-// all in one care card operation Chart
-(async () => {
-    const FamilyStatus_ChartJson =  await fetch('{{ route('AllinOne_Chart')}}').then(response => response.json());
-    var AllinOne = {
-          series: [FamilyStatus_ChartJson.All, FamilyStatus_ChartJson.Approved, FamilyStatus_ChartJson.Printed,],
-          chart: {
-          height: 270,
-          type: 'radialBar',
-        },
-        plotOptions: {
-          radialBar: {
-            offsetY: 0,
-            startAngle: 0,
-            endAngle: 270,
-            hollow: {
-              margin: 5,
-              size: '30%',
-              background: 'transparent',
-              image: undefined,
+        var TribeChart = {
+            series: [Tribe.Pashtun, Tribe.Tajik, Tribe.Hazara, Tribe.Uzbek, Tribe.Turkman, Tribe.Pashayi, Tribe.Aimaq, Tribe.Baloch, Tribe.Pamiri, Tribe.Sadat, Tribe.Nooristani, Tribe.Arab, Tribe.Gojar, Tribe.Brahawi, Tribe.qazalbash, Tribe.kochi, ],
+            labels: ['Pashtun', 'Tajik', 'Hazara', 'Uzbek', 'Turkman', 'Pashayi', 'Aimaq', 'Baloch', 'Pamiri', 'Sadat', 'Nooristani', 'Arab', 'Gojar', 'Brahawi', 'qazalbash', 'kochi'],
+            colors: ["#34c38f", "#556ee6", "#f46a6a", "#50a5f1", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c"],
+            chart: {
+                width: 380,
+                type: 'pie',
             },
             dataLabels: {
-              name: {
-                show: false,
-              },
-              value: {
-                show: false,
-              }
+                enabled: true
+            },
+            title: {
+                text: "",
+                align: "left",
+                style: {
+                    fontWeight: "500"
+                }
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+
+        var TribeChart = new ApexCharts(document.querySelector("#TribeChart"), TribeChart);
+        TribeChart.render();
+
+    })();
+
+
+
+
+
+    // Montly Insetion base Chart
+    (async () => {
+        const MontlyInsertionJson = await fetch('{{ route('MontlyInsertion_Chart')}}').then(response => response.json());
+
+        var MontlyInsertion = {
+            chart: {
+                height: 350,
+                type: "line",
+                stacked: !1,
+                toolbar: {
+                    show: !1
+                }
+            },
+            stroke: {
+                width: [0, 2, 4],
+                curve: "smooth"
+            },
+            plotOptions: {
+                bar: {
+                    columnWidth: "50%"
+                }
+            },
+            colors: ["#cd9941", "#34c38f", "#74788d"],
+            series: [{
+                    name: "New Cards",
+                    type: "column",
+                    data: [MontlyInsertionJson.PendingJan, MontlyInsertionJson.PendingFeb, MontlyInsertionJson.PendingMarch, MontlyInsertionJson.PendingApril, MontlyInsertionJson.PendingMay, MontlyInsertionJson.PendingJun, MontlyInsertionJson.PendingJuly, MontlyInsertionJson.PendingAugust, MontlyInsertionJson.PendingSep, MontlyInsertionJson.PendingOct, MontlyInsertionJson.PendingNov, MontlyInsertionJson.PendingDec, ]
+                },
+                {
+                    name: "Approved Cards",
+                    type: "area",
+                    data: [MontlyInsertionJson.ApprovedJan, MontlyInsertionJson.ApprovedFeb, MontlyInsertionJson.ApprovedMarch, MontlyInsertionJson.ApprovedApril, MontlyInsertionJson.ApprovedMay, MontlyInsertionJson.ApprovedJun, MontlyInsertionJson.ApprovedJuly, MontlyInsertionJson.ApprovedAugust, MontlyInsertionJson.ApprovedSep, MontlyInsertionJson.ApprovedOct, MontlyInsertionJson.ApprovedNov, MontlyInsertionJson.ApprovedDec, ]
+                },
+                {
+                    name: "Printed Cards",
+                    type: "line",
+                    data: [MontlyInsertionJson.PrintedJan, MontlyInsertionJson.PrintedFeb, MontlyInsertionJson.PrintedMarch, MontlyInsertionJson.PrintedApril, MontlyInsertionJson.PrintedMay, MontlyInsertionJson.PrintedJun, MontlyInsertionJson.PrintedJuly, MontlyInsertionJson.PrintedAugust, MontlyInsertionJson.PrintedSep, MontlyInsertionJson.PrintedOct, MontlyInsertionJson.PrintedNov, MontlyInsertionJson.PrintedDec, ]
+                }
+            ],
+            fill: {
+                opacity: [.85, .25, 1],
+                gradient: {
+                    inverseColors: !1,
+                    shade: "light",
+                    type: "vertical",
+                    opacityFrom: .85,
+                    opacityTo: .55,
+                    stops: [0, 100, 100, 100]
+                }
+            },
+            labels: ["Jan", "Feb", "March", "April", "May", "Jun", "July", "August", "Sep", "Oct", "Nov", "Dec"],
+            markers: {
+                size: 0
+            },
+            xaxis: {
+                type: "date"
+            },
+            yaxis: {
+                title: {
+                    text: "Cards"
+                }
+            },
+            tooltip: {
+                shared: !0,
+                intersect: !1,
+                y: {
+                    formatter: function(e) {
+                        return void 0 !== e ? e.toFixed(0) + " Cards" : e
+                    }
+                }
+            },
+            grid: {
+                borderColor: "#f1f1f1"
             }
-          }
-        },
-        colors: ['#cd9941', '#34c38f', '#f46a6a',],
-        labels: ['All', 'Approved', 'Rejected'],
-        legend: {
-          show: true,
-          floating: true,
-          fontSize: '12px',
-          position: 'left',
-          offsetX: 0,
-          offsetY: 0,
-          labels: {
-            useSeriesColors: true,
-          },
-          markers: {
-            size: 0
-          },
-          formatter: function(seriesName, opts) {
-            return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex]
-          },
-          itemMargin: {
-            vertical: 3
-          }
-        },
-        responsive: [{
-          breakpoint: 480,
-          options: {
+        };
+
+        var MontlyDataInsertion = new ApexCharts(document.querySelector("#DataInsertionChart"), MontlyInsertion);
+        MontlyDataInsertion.render();
+
+
+    })();
+
+
+
+
+
+    // Gender base Chart
+    (async () => {
+        const Gender_ChartJson = await fetch('{{ route('Gender_Chart')}}').then(response => response.json());
+
+        var GenderChart = {
+            series: [Gender_ChartJson.Male, Gender_ChartJson.Female],
+            chart: {
+                width: 380,
+                type: 'pie',
+            },
+            title: {
+                text: "",
+                align: "left",
+                style: {
+                    fontWeight: "500"
+                }
+            },
+            labels: ['Male', 'Female'],
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+
+        var GenderChart = new ApexCharts(document.querySelector("#GenderChart"), GenderChart);
+        GenderChart.render();
+
+
+    })();
+
+
+
+
+    // Family Status base Chart
+    (async () => {
+        const FamilyStatus_ChartJson = await fetch('{{ route('FamilyStatus_Chart')}}').then(response => response.json());
+        var FamilyStatusChart = {
+            chart: {
+                height: 400,
+                type: "donut"
+            },
+            title: {
+                text: "",
+                align: "left",
+                style: {
+                    fontWeight: "500"
+                }
+            },
+            series: [FamilyStatus_ChartJson.Poor, FamilyStatus_ChartJson.LowIncome, FamilyStatus_ChartJson.Widow, FamilyStatus_ChartJson.Orphans, FamilyStatus_ChartJson.DisabledIndividual, FamilyStatus_ChartJson.ElderlyIndividual, FamilyStatus_ChartJson.DisplacedFamily, FamilyStatus_ChartJson.DisasterAffected],
+            labels: ['Poor', 'Low Income', 'Widow', 'Orphans', 'Disabled Individual', 'Elderly Individual', 'Displaced Family', 'Disaster Affected'],
+            colors: ["#34c38f", "#556ee6", "#f46a6a", "#50a5f1", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c"],
             legend: {
-                show: false
-            }
-          }
-        }]
+                show: !0,
+                position: "right",
+                horizontalAlign: "center",
+                verticalAlign: "middle",
+                floating: !1,
+                fontSize: "14px",
+                offsetX: 0
+            },
+            responsive: [{
+                breakpoint: 600,
+                options: {
+                    chart: {
+                        height: 240
+                    },
+                    legend: {
+                        show: !1
+                    }
+                }
+            }]
+        };
+
+        var FamilyStatusChart = new ApexCharts(document.querySelector("#FamilyStatusChart"), FamilyStatusChart);
+        FamilyStatusChart.render();
+
+
+    })();
+
+
+
+
+
+    // all in one care card operation Chart
+    (async () => {
+        const AllinOne_ChartJson = await fetch('{{ route('AllinOne_Chart')}}').then(response => response.json());
+        var AllinOne = {
+            series: [AllinOne_ChartJson.Pending, AllinOne_ChartJson.Approved, AllinOne_ChartJson.Printed,  AllinOne_ChartJson.Rejected],
+            chart: {
+                height: 270,
+                type: 'radialBar',
+            },
+            plotOptions: {
+                radialBar: {
+                    offsetY: 0,
+                    startAngle: 0,
+                    endAngle: 270,
+                    hollow: {
+                        margin: 5,
+                        size: '30%',
+                        background: 'transparent',
+                        image: undefined,
+                    },
+                    dataLabels: {
+                        name: {
+                            show: false,
+                        },
+                        value: {
+                            show: false,
+                        }
+                    }
+                }
+            },
+            colors: ['#f1b44c',  '#34c38f', '#74788d', '#f46a6a', ],
+            labels: ['Pending',  'Approved', 'Printed', 'Rejected'],
+            legend: {
+                show: true,
+                floating: true,
+                fontSize: '12px',
+                position: 'left',
+                offsetX: 0,
+                offsetY: 0,
+                labels: {
+                    useSeriesColors: true,
+                },
+                markers: {
+                    size: 0
+                },
+                formatter: function(seriesName, opts) {
+                    return seriesName + ":  " + opts.w.globals.series[opts.seriesIndex]
+                },
+                itemMargin: {
+                    vertical: 3
+                }
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    legend: {
+                        show: false
+                    }
+                }
+            }]
         };
 
         var AllinOneChart = new ApexCharts(document.querySelector("#AllinOne"), AllinOne);
         AllinOneChart.render();
 
-})();
+    })();
 
 
 
@@ -1273,64 +1229,86 @@ MontlyDataInsertion.render();
 
 
 
-const data = [
-    ['af-kt', ProvincialData.khost], ['af-pk', ProvincialData.paktika], ['af-gz', ProvincialData.ghazni], ['af-bd', ProvincialData.badakhshan],
-    ['af-nr', ProvincialData.nuristan], ['af-kr', ProvincialData.kunar], ['af-kz', ProvincialData.kunduz], ['af-ng', ProvincialData.nangarhar],
-    ['af-tk', ProvincialData.takhar], ['af-bl', ProvincialData.baghlan], ['af-kb', ProvincialData.kabul], ['af-kp', ProvincialData.kapisa],
-    ['af-2030', ProvincialData.panjshir], ['af-la', ProvincialData.laghman], ['af-lw', ProvincialData.logar], ['af-pv', ProvincialData.parwan],
-    ['af-sm', ProvincialData.samangan], ['af-vr', ProvincialData.wardak], ['af-pt', ProvincialData.paktya], ['af-bg', ProvincialData.badghis],
-    ['af-hr', ProvincialData.herat], ['af-bk', ProvincialData.balkh], ['af-jw', ProvincialData.jawzjan], ['af-bm', ProvincialData.bamyan],
-    ['af-gr', ProvincialData.ghor], ['af-fb', ProvincialData.faryab], ['af-sp', ProvincialData.sar_e_pol], ['af-fh', ProvincialData.farah],
-    ['af-hm', ProvincialData.helmand], ['af-nm', ProvincialData.nimroz], ['af-2014', ProvincialData.daykundi], ['af-oz', ProvincialData.uruzgan],
-    ['af-kd', ProvincialData.kandahar], ['af-zb', ProvincialData.zabul]
-];
+        const data = [
+            ['af-kt', ProvincialData.khost],
+            ['af-pk', ProvincialData.paktika],
+            ['af-gz', ProvincialData.ghazni],
+            ['af-bd', ProvincialData.badakhshan],
+            ['af-nr', ProvincialData.nuristan],
+            ['af-kr', ProvincialData.kunar],
+            ['af-kz', ProvincialData.kunduz],
+            ['af-ng', ProvincialData.nangarhar],
+            ['af-tk', ProvincialData.takhar],
+            ['af-bl', ProvincialData.baghlan],
+            ['af-kb', ProvincialData.kabul],
+            ['af-kp', ProvincialData.kapisa],
+            ['af-2030', ProvincialData.panjshir],
+            ['af-la', ProvincialData.laghman],
+            ['af-lw', ProvincialData.logar],
+            ['af-pv', ProvincialData.parwan],
+            ['af-sm', ProvincialData.samangan],
+            ['af-vr', ProvincialData.wardak],
+            ['af-pt', ProvincialData.paktya],
+            ['af-bg', ProvincialData.badghis],
+            ['af-hr', ProvincialData.herat],
+            ['af-bk', ProvincialData.balkh],
+            ['af-jw', ProvincialData.jawzjan],
+            ['af-bm', ProvincialData.bamyan],
+            ['af-gr', ProvincialData.ghor],
+            ['af-fb', ProvincialData.faryab],
+            ['af-sp', ProvincialData.sar_e_pol],
+            ['af-fh', ProvincialData.farah],
+            ['af-hm', ProvincialData.helmand],
+            ['af-nm', ProvincialData.nimroz],
+            ['af-2014', ProvincialData.daykundi],
+            ['af-oz', ProvincialData.uruzgan],
+            ['af-kd', ProvincialData.kandahar],
+            ['af-zb', ProvincialData.zabul]
+        ];
 
-// Create the chart
-Highcharts.mapChart('AfghanistanChart', {
-    chart: {
-        map: topology
-    },
+        // Create the chart
+        Highcharts.mapChart('AfghanistanChart', {
+            chart: {
+                map: topology
+            },
 
-    title: {
-        text: '',
-        align: "left",
-            style: {
-                color: "#444",
-                fontWeight: "500"
-            }
-    },
-
-
-
-    mapNavigation: {
-        enabled: true,
-        buttonOptions: {
-            verticalAlign: 'bottom'
-        }
-    },
-
-    colorAxis: {
-        min: 0
-    },
-
-    series: [{
-        data: data,
-        name: 'Total',
-        states: {
-            hover: {
-                color: '#556ee6'
-            }
-        },
-        dataLabels: {
-            enabled: true,
-            format: '{point.name}'
-        }
-    }]
-});
-
-})();
+            title: {
+                text: '',
+                align: "left",
+                style: {
+                    color: "#444",
+                    fontWeight: "500"
+                }
+            },
 
 
 
+            mapNavigation: {
+                enabled: true,
+                buttonOptions: {
+                    verticalAlign: 'bottom'
+                }
+            },
+
+            colorAxis: {
+                min: 0
+            },
+
+            series: [{
+                data: data,
+                name: 'Total',
+                states: {
+                    hover: {
+                        color: '#556ee6'
+                    }
+                },
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
+            }]
+        });
+
+    })();
 </script>
 @endsection

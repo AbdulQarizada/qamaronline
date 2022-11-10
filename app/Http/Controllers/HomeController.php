@@ -75,31 +75,37 @@ class HomeController extends Controller
         }
 
 
+
+
+        // Notification
         $notifications = auth()->user()->unreadNotifications;
+
+
+        // Look up
         $catagorys =   LookUp::where("Parent_Name", "=", "None")->get();
 
 
-        // Reporting for dashboard
 
-
-        $qamarcarecards =   QamarCareCard::get();
-
+        // Quran part
         $quran = new Quran();
         $randomSurah = rand(2, 100);
         $randomAya =  rand(2, 5);
-
         $quran = $quran->translation('ar,en')->get($randomSurah . ':' . $randomAya);
         $QuranArabic =  $quran['ar'];
         $QuranEnglish =  $quran['en'];
 
 
         $qamarcarecardsCount =   QamarCareCard::get()->count();
-        $qamarcarecardsPending =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Pending')->get()->count();
-        $qamarcarecardsApproved =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Approved')->get()->count();
-        $qamarcarecardsPrinted =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Printed')->get()->count();
-        $qamarcarecardsReleased =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Released')->get()->count();
-        $qamarcarecardsRejected =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Rejected')->get()->count();
-
+        // $qamarcarecardsPending =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Pending')->get()->count();
+        // $qamarcarecardsApproved =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Approved')->get()->count();
+        // $qamarcarecardsPrinted =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Printed')->get()->count();
+        // $qamarcarecardsReleased =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Released')->get()->count();
+        // $qamarcarecardsRejected =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Rejected')->get()->count();
+        // 'qamarcarecardsPending',
+        // 'qamarcarecardsApproved',
+        // 'qamarcarecardsPrinted',
+        // 'qamarcarecardsReleased',
+        // 'qamarcarecardsRejected',
 
 
 
@@ -127,11 +133,6 @@ class HomeController extends Controller
             'catagorys',
             'notifications',
             'qamarcarecardsCount',
-            'qamarcarecardsPending',
-            'qamarcarecardsApproved',
-            'qamarcarecardsPrinted',
-            'qamarcarecardsReleased',
-            'qamarcarecardsRejected',
             'qamarcarecardsLastFive',
         ));
     }
@@ -342,15 +343,21 @@ class HomeController extends Controller
        public function AllinOne_Chart()
        {
 
-        $qamarcarecardsCount =   QamarCareCard::get()->count();
+        // $qamarcarecardsCount =   QamarCareCard::get()->count();
         $qamarcarecardsPending =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Pending')->get()->count();
         $qamarcarecardsApproved =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Approved')->get()->count();
+        $qamarcarecardsPrinted=   QamarCareCard::where("qamar_care_cards.Status", "=", 'Printed')->get()->count();
+        $qamarcarecardsRejected =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Rejected')->get()->count();
+
 
 
            return response()->json([
-               'All' => $qamarcarecardsCount,
-               'Approved' => $qamarcarecardsPending,
-               'Printed' => $qamarcarecardsApproved,
+            //    'All' => $qamarcarecardsCount,
+               'Pending' => $qamarcarecardsPending,
+               'Approved' => $qamarcarecardsApproved,
+               'Printed' => $qamarcarecardsPrinted,
+               'Rejected' => $qamarcarecardsRejected,
+
 
            ]);
        }
