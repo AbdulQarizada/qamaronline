@@ -409,7 +409,7 @@
                                 <label for="CurrentlyInSchool" class="form-label">Currently In School? <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="col-6 col-sm-6">
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="radio" name="CurrentlyInSchool" value="0" id="No" {{ $data->CurrentlyInSchool=="0"? 'checked':'' }}>
+                                        <input class="form-check-input" type="radio" name="CurrentlyInSchool" value="Yes" id="No" {{ $data->CurrentlyInSchool=="No"? 'checked':'' }}>
                                         <label class="form-check-label" for="No">
                                             No
                                         </label>
@@ -420,7 +420,7 @@
 
                                 <div class="col-6 col-sm-6">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="CurrentlyInSchool" value="1" id="Yes" {{ $data->CurrentlyInSchool=="1"? 'checked':'' }}>
+                                        <input class="form-check-input" type="radio" name="CurrentlyInSchool" value="Yes" id="Yes" {{ $data->CurrentlyInSchool=="Yes"? 'checked':'' }}>
                                         <label class="form-check-label" for="Yes">
                                             Yes
                                         </label>
