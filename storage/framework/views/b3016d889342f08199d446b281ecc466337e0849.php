@@ -1100,7 +1100,7 @@ unset($__errorArgs, $__bag); ?>
     },
      yaxis: {
     title: {
-        text: "Points"
+        text: "Cards"
     }
      },
     tooltip: {
@@ -1108,7 +1108,7 @@ unset($__errorArgs, $__bag); ?>
     intersect: !1,
     y: {
         formatter: function(e) {
-            return void 0 !== e ? e.toFixed(0) + " points" : e
+            return void 0 !== e ? e.toFixed(0) + " Cards" : e
         }
     }
      },
