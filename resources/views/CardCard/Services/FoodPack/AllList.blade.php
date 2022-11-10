@@ -16,19 +16,20 @@
     <div class="col-6">
         @if(Cookie::get('Layout') == 'LayoutNoSidebar')
 
-<a href="{{route('IndexCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-@endif
-@if(Cookie::get('Layout') == 'LayoutSidebar')
+        <a href="{{route('IndexCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        @endif
+        @if(Cookie::get('Layout') == 'LayoutSidebar')
 
-<a href="{{route('IndexCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-@endif
+        <a href="{{route('IndexCareCard')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        @endif
         <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Beneficiary List</span>
 
     </div>
 </div>
 <div class="row">
-<div class="col-2">
+    <div class="col-2">
         <select class="form-select  form-select-lg mb-3 @error('Country') is-invalid @enderror" onchange="window.location.href=this.value;" id="item" name="item">
+            <option value="{{route('AllListFoodPack')}}">All</option>
             @foreach($provinces as $province)
             <option value="{{route('SearchAllList', ['data' => $province -> id])}}">{{ $province -> Name}}</option>
 
@@ -61,9 +62,10 @@
                                 <th>Referenced By</th>
                                 <th>Created By</th>
                                 <th>Created At</th>
-
-                                 <!-- <th>TazkiraID</th> -->
-
+                                <th>Status</th>
+                                @if(Auth::user()->IsGeneralManager == 1)
+                                <th>Action</th>
+                                @endif
                             </tr>
                         </thead>
 
@@ -89,7 +91,7 @@
 
                                 <!-- <td> {{$data -> TazkiraID}} </td> -->
                                 <td>
-                                <div>
+                                    <div>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data ->  RefernceFirstName }} {{$data ->  RefernceLastName }}</a></h5>
 
                                     </div>
@@ -107,6 +109,45 @@
                                     </div>
                                 </td>
 
+                                <td>
+                                    <div>
+
+
+                                        @if($data -> Status == 'Pending')
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary">Pending Decicion</a></h5>
+
+                                        @endif
+
+                                        @if($data -> Status == 'Approved')
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">{{$data -> Status}} </a></h5>
+
+                                        @endif
+
+                                        @if($data -> Status == 'Rejected')
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">{{$data -> Status}} </a></h5>
+
+                                        @endif
+
+
+                                    </div>
+                                </td>
+                                @if(Auth::user()->IsGeneralManager == 1)
+                                <td>
+                                    @if( $data -> Status == 'Approved' || $data -> Status == 'Rejected')
+                                    <a href="{{route('AlllistReInitiate', ['data' => $data -> id])}}" class="btn btn-info waves-effect waves-light reinitiate m-3">
+                                        <i class="bx bx-time-five  font-size-16 align-middle"></i>Re-Initiate
+                                    </a>
+                                    @endif
+                                    @if( $data -> Status == 'Pending')
+                                    <a href="{{route('AlllistApprove', ['data' => $data -> id])}}" class="btn btn-success waves-effect waves-light approve m-3">
+                                        <i class="bx bx-check-circle font-size-16 align-middle"></i>Approve
+                                    </a>
+                                    <a href="{{route('AlllistReject', ['data' => $data -> id])}}" class="btn btn-danger waves-effect waves-light reject m-3">
+                                        <i class=" bx bx-x-circle font-size-16 align-middle"></i>Reject
+                                    </a>
+                                    @endif
+                                </td>
+                                @endif
                             </tr>
                             @endforeach
 
@@ -140,12 +181,12 @@
 <script src="{{ URL::asset('/assets/js/pages/rating-init.js') }}"></script>
 
 <script>
-    $('.delete-confirm').on('click', function(event) {
+    $('.approve').on('click', function(event) {
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
             title: 'Are you sure?',
-            text: 'This record and it`s details will be permanantly deleted!',
+            text: 'This record and it`s details will be approved!',
             icon: 'warning',
             buttons: ["Cancel", "Yes!"],
         }).then(function(value) {
@@ -155,7 +196,35 @@
         });
     });
 
+    $('.reject').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?',
+            text: 'This record and it`s details will be rejected!',
+            icon: 'warning',
+            buttons: ["Cancel", "Yes!"],
+        }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
 
+    $('.reinitiate').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?',
+            text: 'This record and it`s details will be re initiated!',
+            icon: 'warning',
+            buttons: ["Cancel", "Yes!"],
+        }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
 
 
     // $('#datatable').DataTable( {

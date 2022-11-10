@@ -23,11 +23,9 @@ return new class extends Migration
             $table -> string('Province_ID')->nullable();
             $table -> string('Reference_ID')->nullable();
             $table -> string('Created_By')->nullable();
+            $table -> string('Status')->nullable();
+            $table -> integer('Status_By')->nullable();
             $table -> string('Owner')->nullable();
-
-
-
-
             $table->timestamps();
         });
     }

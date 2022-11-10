@@ -238,12 +238,14 @@ Route::post('/CareCard/Services/FoodPacks/SearchEligibleBeneficieries', [App\Htt
 Route::get('/CareCard/Services/FoodPacks/SearchAssignedBeneficiariesFoodPack/{data}', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'SearchAssignedBeneficiariesFoodPack'])->name('SearchAssignedBeneficiariesFoodPack');
 
 // Food Pack List
-// List
+// Staff Beneficiaries
 Route::get('/CareCard/Services/FoodPacks/AllList', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'AllList'])->name('AllListFoodPack');
 Route::get('/CareCard/Services/FoodPacks/AllCreate', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'AllCreate'])->name('AllCreateFoodPack');
 Route::post('/CareCard/Services/FoodPacks/AllCreate', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'AllStore'])->name('AllCreateFoodPack');
 Route::get('/CareCard/Services/FoodPacks/SearchAllList/{data}', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'SearchAllList'])->name('SearchAllList');
-
+Route::get('/CareCard/Services/FoodPacks/AllApprove/{data}', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'AllApprove'])->name('AlllistApprove');
+Route::get('/CareCard/Services/FoodPacks/AllReject/{data}', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'AllReject'])->name('AlllistReject');
+Route::get('/CareCard/Services/FoodPacks/AllReInitiate/{data}', [App\Http\Controllers\CareCard\Services\FoodPacksController::class, 'AllReInitiate'])->name('AlllistReInitiate');
 
 // Service Provider
 Route::get('/CareCard/Services/ServiceProviders/', [App\Http\Controllers\CareCard\ServicesController::class, 'ServiceProviderIndex'])->name('ServiceProviderIndexQamarCareCard');

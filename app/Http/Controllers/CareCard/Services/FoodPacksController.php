@@ -110,6 +110,7 @@ class FoodPacksController extends Controller
         'SecondaryNumber' => request('SecondaryNumber'),
         'Province_ID' => request('Province_ID'),
         'Reference_ID' => request('Reference_ID'),
+        'Status' => "Pending",
         'Created_By' => auth()->user()->id,
         'Owner' => 1,
 
@@ -129,6 +130,7 @@ class FoodPacksController extends Controller
         ->join('users as e', 'beneficiarylists.Reference_ID', '=', 'e.id')
         ->select(['beneficiarylists.*', 'a.Name as ProvinceName', 'e.FirstName as RefernceFirstName', 'e.LastName as RefernceLastName', 'd.FirstName as UFirstName', 'd.LastName as ULastName',])
         ->where('beneficiarylists.Province_ID', '=', $data)
+        ->where('beneficiarylists.Status', '=', 'Approved')
         ->get();
       return view('CardCard.Services.FoodPack.AllList', ['provinces' => $provinces, 'datas' => $datas]);
 
@@ -136,6 +138,47 @@ class FoodPacksController extends Controller
 
 
   }
+
+  public function AllApprove(beneficiarylist $data)
+  {
+
+    $data->update([
+
+      'Status' => 'Approved',
+      'Status_By' => auth()->user()->id
+
+
+    ]);
+    return redirect()->route('AllListFoodPack')->with('toast_success', 'Record Approved Successfully!');
+  }
+
+
+
+  public function AllReject(beneficiarylist $data)
+  {
+
+    $data->update([
+      'Status_By' => auth()->user()->id,
+      'Status' => 'Rejected'
+
+    ]);
+    return redirect()->route('AllListFoodPack')->with('toast_error', 'Record Rejected Successfully!');
+  }
+
+  public function AllReInitiate(beneficiarylist $data)
+  {
+
+    $data->update([
+      'Status_By' => auth()->user()->id,
+      'Status' => 'Pending'
+
+    ]);
+    return redirect()->route('AllListFoodPack')->with('toast_success', 'Record Re-Initiated Successfully!');
+  }
+
+
+
+
 
 
 

@@ -19,6 +19,8 @@ class beneficiarylist extends Model
      'FullName',
      'FatherName',
      'Created_By',
+     'Status',
+     'Status_By',
      'Owner'
 
 

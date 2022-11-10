@@ -16,18 +16,18 @@
     <div class="col-6">
         <?php if(Cookie::get('Layout') == 'LayoutNoSidebar'): ?>
 
-<a href="<?php echo e(route('IndexCareCard')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-<?php endif; ?>
-<?php if(Cookie::get('Layout') == 'LayoutSidebar'): ?>
+        <a href="<?php echo e(route('IndexCareCard')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <?php endif; ?>
+        <?php if(Cookie::get('Layout') == 'LayoutSidebar'): ?>
 
-<a href="<?php echo e(route('IndexCareCard')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-<?php endif; ?>
+        <a href="<?php echo e(route('IndexCareCard')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <?php endif; ?>
         <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Beneficiary List</span>
 
     </div>
 </div>
 <div class="row">
-<div class="col-2">
+    <div class="col-2">
         <select class="form-select  form-select-lg mb-3 <?php $__errorArgs = ['Country'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -36,6 +36,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id="item" name="item">
+            <option value="<?php echo e(route('AllListFoodPack')); ?>">All</option>
             <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <option value="<?php echo e(route('SearchAllList', ['data' => $province -> id])); ?>"><?php echo e($province -> Name); ?></option>
 
@@ -68,9 +69,10 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
                                 <th>Referenced By</th>
                                 <th>Created By</th>
                                 <th>Created At</th>
-
-                                 <!-- <th>TazkiraID</th> -->
-
+                                <th>Status</th>
+                                <?php if(Auth::user()->IsGeneralManager == 1): ?>
+                                <th>Action</th>
+                                <?php endif; ?>
                             </tr>
                         </thead>
 
@@ -96,7 +98,7 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
 
                                 <!-- <td> <?php echo e($data -> TazkiraID); ?> </td> -->
                                 <td>
-                                <div>
+                                    <div>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data ->  RefernceFirstName); ?> <?php echo e($data ->  RefernceLastName); ?></a></h5>
 
                                     </div>
@@ -114,6 +116,45 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
                                     </div>
                                 </td>
 
+                                <td>
+                                    <div>
+
+
+                                        <?php if($data -> Status == 'Pending'): ?>
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary">Pending Decicion</a></h5>
+
+                                        <?php endif; ?>
+
+                                        <?php if($data -> Status == 'Approved'): ?>
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success"><?php echo e($data -> Status); ?> </a></h5>
+
+                                        <?php endif; ?>
+
+                                        <?php if($data -> Status == 'Rejected'): ?>
+                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger"><?php echo e($data -> Status); ?> </a></h5>
+
+                                        <?php endif; ?>
+
+
+                                    </div>
+                                </td>
+                                <?php if(Auth::user()->IsGeneralManager == 1): ?>
+                                <td>
+                                    <?php if( $data -> Status == 'Approved' || $data -> Status == 'Rejected'): ?>
+                                    <a href="<?php echo e(route('AlllistReInitiate', ['data' => $data -> id])); ?>" class="btn btn-info waves-effect waves-light reinitiate m-3">
+                                        <i class="bx bx-time-five  font-size-16 align-middle"></i>Re-Initiate
+                                    </a>
+                                    <?php endif; ?>
+                                    <?php if( $data -> Status == 'Pending'): ?>
+                                    <a href="<?php echo e(route('AlllistApprove', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light approve m-3">
+                                        <i class="bx bx-check-circle font-size-16 align-middle"></i>Approve
+                                    </a>
+                                    <a href="<?php echo e(route('AlllistReject', ['data' => $data -> id])); ?>" class="btn btn-danger waves-effect waves-light reject m-3">
+                                        <i class=" bx bx-x-circle font-size-16 align-middle"></i>Reject
+                                    </a>
+                                    <?php endif; ?>
+                                </td>
+                                <?php endif; ?>
                             </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
@@ -147,12 +188,12 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
 <script src="<?php echo e(URL::asset('/assets/js/pages/rating-init.js')); ?>"></script>
 
 <script>
-    $('.delete-confirm').on('click', function(event) {
+    $('.approve').on('click', function(event) {
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
             title: 'Are you sure?',
-            text: 'This record and it`s details will be permanantly deleted!',
+            text: 'This record and it`s details will be approved!',
             icon: 'warning',
             buttons: ["Cancel", "Yes!"],
         }).then(function(value) {
@@ -162,7 +203,35 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
         });
     });
 
+    $('.reject').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?',
+            text: 'This record and it`s details will be rejected!',
+            icon: 'warning',
+            buttons: ["Cancel", "Yes!"],
+        }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
 
+    $('.reinitiate').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?',
+            text: 'This record and it`s details will be re initiated!',
+            icon: 'warning',
+            buttons: ["Cancel", "Yes!"],
+        }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
 
 
     // $('#datatable').DataTable( {
