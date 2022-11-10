@@ -108,12 +108,6 @@ class OrphansReliefController extends Controller
     $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
     $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
     $provinces = Location::whereNull("Parent_ID")->get();
-
-
-
-
-
-
     return view('OrphansRelief.Orphan.Create', ['countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
   }
 
@@ -227,29 +221,88 @@ class OrphansReliefController extends Controller
 
 
   // update
-  public function Edit(QamarCareCard $data)
+  public function Edit(Orphan $data)
   {
 
+    $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+    $genders =   LookUp::where("Parent_Name", "=", "Gender")->get();
+    $tribes =   LookUp::where("Parent_Name", "=", "Tribe")->get();
+    $languages =   LookUp::where("Parent_Name", "=", "Language")->get();
+    $currentjobs =   LookUp::where("Parent_Name", "=", "CurrentJob")->get();
+    $futurejobs =   LookUp::where("Parent_Name", "=", "FutureJob")->get();
+    $educationlevels =   LookUp::where("Parent_Name", "=", "EducationLevel")->get();
+    $relationships =   LookUp::where("Parent_Name", "=", "RelativeRelationship")->get();
+    $incomestreams =   LookUp::where("Parent_Name", "=", "IncomeStream")->get();
+    $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
+    $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
+    $provinces = Location::whereNull("Parent_ID")->get();
+    $districts = Location::get();
+    return view('OrphansRelief.Orphan.Edit', ['data' => $data, 'countries' => $countries, 'districts' => $districts, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
 
-    return view('QamarCardCard.Edit', ['data' => $data]);
   }
 
-  public function Update(QamarCareCard $data)
+  public function Update(Orphan $data)
   {
 
     $data->update([
 
       'FirstName' => request('FirstName'),
       'LastName' => request('LastName'),
-      'Email' => request('Email'),
-      'PNumber' => request('PNumber'),
-      'SNumber' => request('SNumber'),
-      'Province' => request('Province'),
-      'District' => request('District')
+      'IntroducerName' => request('IntroducerName'),
+      'TazkiraID' => request('TazkiraID'),
+      'Profile' => request('Profile'),
+      'DOB' => request('DOB'),
+      'Gender_ID' => request('Gender_ID'),
+      'Country_ID' => request('Country_ID'),
+      'Tribe_ID' => request('Tribe_ID'),
+      'Language_ID' => request('Language_ID'),
+
+      'PrimaryNumber' => request('PrimaryNumber'),
+      'SecondaryNumber' => request('SecondaryNumber'),
+      'EmergencyNumber' => request('EmergencyNumber'),
+      'Province_ID' => request('Province_ID'),
+      'District_ID' => request('District_ID'),
+      'Village' => request('Village'),
+      'InCareName' => request('InCareName'),
+      'InCareRelationship_ID' => request('InCareRelationship_ID'),
+      'InCareNumber' => request('InCareNumber'),
+      'InCareTazkiraID' => request('InCareTazkiraID'),
+
+
+      'CurrentlyInSchool' => request('CurrentlyInSchool'),
+      'SchoolName' => request('SchoolName'),
+      'SchoolProvince_ID' => request('SchoolProvince_ID'),
+      'SchoolDistrict_ID' => request('SchoolDistrict_ID'),
+      'SchoolVillage' => request('SchoolVillage'),
+      'SchoolNumber' => request('SchoolNumber'),
+      'SchoolEmail' => request('SchoolEmail'),
+      'Class' => request('Class'),
+
+
+
+      'FatherName' => request('FatherName'),
+      'MonthlyFamilyIncome' => request('MonthlyFamilyIncome'),
+      'MonthlyFamilyExpenses' => request('MonthlyFamilyExpenses'),
+      'NumberFamilyMembers' => request('NumberFamilyMembers'),
+      'IncomeStreem_ID' => request('IncomeStreem_ID'),
+      'LevelPoverty' => request('LevelPoverty'),
+      'FamilyStatus_ID' => request('FamilyStatus_ID'),
+      'WhyShouldYouHelpMe' => request('WhyShouldYouHelpMe'),
+
+
+
+      'Tazkira' => request('Tazkira'),
+      'HousePic' => request('HousePic'),
+      'FamilyPic' => request('FamilyPic'),
+
+
+
+      'Status' => 'Pending',
+      'Owner' => 1,
 
     ]);
-    $orphans =   QamarCareCard::all();
-    return view('QamarCardCard.All', ['datas' => $orphans]);
+    return redirect()->route('AllOrphans')->with('toast_success', 'Record Edited Successfully!');
+
   }
 
 

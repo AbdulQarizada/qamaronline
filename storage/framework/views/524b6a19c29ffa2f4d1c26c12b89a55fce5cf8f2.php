@@ -1317,6 +1317,37 @@ unset($__errorArgs, $__bag); ?>
     // Get a reference to the file input element
     const inputProfile = document.querySelector('input[name="Profile"]');
 
+    // Create a FilePond instance
+    const Profile = FilePond.create(inputProfile, {
+        labelIdle: 'Profile <span class="bx bx-upload"></span >',
+        server: {
+
+            url: '<?php echo e(route('Orphans_Profile')); ?>',
+            headers: {
+                'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
+            }
+
+        },
+        acceptedFileTypes: ['image/png', 'image/jpeg'],
+        allowFileTypeValidation: true,
+        instantUpload: true,
+        imagePreviewHeight: 100,
+        imageCropAspectRatio: '1:1',
+        imageResizeTargetWidth: 10,
+        imageResizeTargetHeight: 10,
+        stylePanelLayout: 'compact circle',
+        styleLoadIndicatorPosition: 'center bottom',
+        styleProgressIndicatorPosition: 'right bottom',
+        styleButtonRemoveItemPosition: 'left bottom',
+        styleButtonProcessItemPosition: 'right bottom'
+
+
+    });
+
+
+
+
+
     // Get a reference to the file input element
     const inputTazkira = document.querySelector('input[name="Tazkira"]');
 
@@ -1325,10 +1356,6 @@ unset($__errorArgs, $__bag); ?>
 
     // Get a reference to the file input element
     const inputHousePic = document.querySelector('input[name="HousePic"]');
-
-
-
-
     // Create a FilePond instance
     const Tazkira = FilePond.create(inputTazkira, {
         labelIdle: 'Click to upload Tazkira <span class="bx bx-upload"></span >',
@@ -1346,12 +1373,9 @@ unset($__errorArgs, $__bag); ?>
 
 
     });
-    // Create a FilePond instance
-    const Profile = FilePond.create(inputProfile, {
-        labelIdle: 'Profile <span class="bx bx-upload"></span >',
 
 
-    });
+
 
     // Create a FilePond instance
     const FamilyPic = FilePond.create(inputFamilyPic, {
@@ -1392,26 +1416,7 @@ unset($__errorArgs, $__bag); ?>
 
 
     Profile.setOptions({
-        server: {
 
-            url: '../Orphans_Profile',
-            headers: {
-                'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
-            }
-
-        },
-        acceptedFileTypes: ['image/png', 'image/jpeg'],
-        allowFileTypeValidation: true,
-        instantUpload: true,
-        imagePreviewHeight: 100,
-        imageCropAspectRatio: '1:1',
-        imageResizeTargetWidth: 10,
-        imageResizeTargetHeight: 10,
-        stylePanelLayout: 'compact circle',
-        styleLoadIndicatorPosition: 'center bottom',
-        styleProgressIndicatorPosition: 'right bottom',
-        styleButtonRemoveItemPosition: 'left bottom',
-        styleButtonProcessItemPosition: 'right bottom'
     });
 
 

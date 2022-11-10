@@ -798,10 +798,6 @@
     // Get a reference to the file input element
     const inputProfile = document.querySelector('input[name="Profile"]');
 
-    // Get a reference to the file input element
-    const inputTazkira = document.querySelector('input[name="Tazkira"]');
-
-
 
     // Create a FilePond instance
     const Profile = FilePond.create(inputProfile, {
@@ -828,7 +824,6 @@
         styleProgressIndicatorPosition: 'right bottom',
         styleButtonRemoveItemPosition: 'left bottom',
         styleButtonProcessItemPosition: 'right bottom',
-
         files: [{
             source: '{{$data -> Profile}}',
             options: {
@@ -847,6 +842,10 @@
 
 
     });
+
+
+       // Get a reference to the file input element
+       const inputTazkira = document.querySelector('input[name="Tazkira"]');
 
 
     // Create a FilePond instance
@@ -880,13 +879,6 @@
 
     });
 
-
-
-    Profile.setOptions({
-
-
-
-    });
 
 
 

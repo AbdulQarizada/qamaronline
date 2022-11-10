@@ -66,7 +66,6 @@ class OperationsController extends Controller
         ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
         ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
         ->get();
-
     } else {
       $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
         ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
@@ -381,7 +380,7 @@ class OperationsController extends Controller
   }
 
 
-// Create
+  // Create
   public function Create()
   {
 
@@ -512,7 +511,7 @@ class OperationsController extends Controller
     return redirect()->route('IndexCareCard')->with('toast_success', 'Record Created Successfully!');
   }
 
-// Update
+  // Update
   public function Edit(QamarCareCard $data)
   {
 
@@ -530,7 +529,6 @@ class OperationsController extends Controller
     $provinces = Location::whereNull("Parent_ID")->get();
     $districts = Location::get();
     return view('CardCard.Operations.Edit', ['data' => $data, 'countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'districts' => $districts, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
-
   }
 
   public function Update(QamarCareCard $data)
@@ -618,5 +616,4 @@ class OperationsController extends Controller
     $qamarcarecards =   QamarCareCard::where("QCC", "=",  request('ID'))->get();
     return view('CardCard.Operations.Verify', compact('qamarcarecards'));
   }
-
 }

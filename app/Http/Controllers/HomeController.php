@@ -54,22 +54,17 @@ class HomeController extends Controller
     {
 
 
-        if (Auth::check() && !Auth::User()->IsActive == 1)
-        {
+        if (Auth::check() && !Auth::User()->IsActive == 1) {
             Auth::logout();
             return redirect()->route('login')->with('Your session has expired because your status changed.');
         }
 
-        if (Cookie::get('Layout') == null)
-        {
-              if (Auth::User()->IsOrphanSponsor == 1)
-               {
-                  $cookies = Cookie::forever('Layout', "LayoutSidebar");
-               }
-               else
-               {
+        if (Cookie::get('Layout') == null) {
+            if (Auth::User()->IsOrphanSponsor == 1) {
+                $cookies = Cookie::forever('Layout', "LayoutSidebar");
+            } else {
                 $cookies = Cookie::forever('Layout', "LayoutNoSidebar");
-               }
+            }
 
             return redirect()->route('root')->cookie($cookies);
         }
@@ -93,28 +88,6 @@ class HomeController extends Controller
         $quran = $quran->translation('ar,en')->get($randomSurah . ':' . $randomAya);
         $QuranArabic =  $quran['ar'];
         $QuranEnglish =  $quran['en'];
-
-
-        // $qamarcarecardsCount =   QamarCareCard::get()->count();
-        // $qamarcarecardsPending =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Pending')->get()->count();
-        // $qamarcarecardsApproved =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Approved')->get()->count();
-        // $qamarcarecardsPrinted =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Printed')->get()->count();
-        // $qamarcarecardsReleased =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Released')->get()->count();
-        // $qamarcarecardsRejected =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Rejected')->get()->count();
-        // 'qamarcarecardsCount',
-        // 'qamarcarecardsPending',
-        // 'qamarcarecardsApproved',
-        // 'qamarcarecardsPrinted',
-        // 'qamarcarecardsReleased',
-        // 'qamarcarecardsRejected',
-
-
-
-
-
-
-
-
 
 
 
@@ -329,43 +302,43 @@ class HomeController extends Controller
             'LowIncome' => $qamarcarecardsLowIncome,
             'Widow' => $qamarcarecardsWidow,
             'Orphans' => $qamarcarecardsOrphans,
-             'DisabledIndividual' => $qamarcarecardsDisabledIndividual,
+            'DisabledIndividual' => $qamarcarecardsDisabledIndividual,
             'ElderlyIndividual' => $qamarcarecardsElderlyIndividual,
-             'DisplacedFamily' => $qamarcarecardsDisplacedFamily,
+            'DisplacedFamily' => $qamarcarecardsDisplacedFamily,
             'DisasterAffected' => $qamarcarecardsDisasterAffected,
         ]);
     }
 
 
 
-       // All in one operation care card Chart
+    // All in one operation care card Chart
 
-       public function AllinOne_Chart()
-       {
+    public function AllinOne_Chart()
+    {
 
         $qamarcarecardsCount =   QamarCareCard::get()->count();
         $qamarcarecardsPending =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Pending')->get()->count();
         $qamarcarecardsApproved =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Approved')->get()->count();
-        $qamarcarecardsPrinted=   QamarCareCard::where("qamar_care_cards.Status", "=", 'Printed')->get()->count();
+        $qamarcarecardsPrinted =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Printed')->get()->count();
         $qamarcarecardsRejected =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Rejected')->get()->count();
 
 
 
-           return response()->json([
-                'All' => $qamarcarecardsCount,
-               'Pending' => $qamarcarecardsPending,
-               'Approved' => $qamarcarecardsApproved,
-               'Printed' => $qamarcarecardsPrinted,
-               'Rejected' => $qamarcarecardsRejected,
+        return response()->json([
+            'All' => $qamarcarecardsCount,
+            'Pending' => $qamarcarecardsPending,
+            'Approved' => $qamarcarecardsApproved,
+            'Printed' => $qamarcarecardsPrinted,
+            'Rejected' => $qamarcarecardsRejected,
 
 
-           ]);
-       }
+        ]);
+    }
 
 
 
 
-          // Provincial Chart
+    // Provincial Chart
 
     public function ProvincialData_Chart()
     {

@@ -5,7 +5,7 @@
 @section('css')
 <!-- ION Slider -->
 <link href="{{ URL::asset('/assets/css/mystyle/OrphanGrid.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ URL::asset('/assets/libs/ion-rangeslider/ion-rangeslider.min.css') }}" rel="stylesheet" type="text/css" />
+
 
 @endsection
 
@@ -21,106 +21,6 @@
 </div>
 
 <div class="row">
-    <!-- <div class="col-lg-3">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title mb-4">Filter</h4>
-
-                    <div>
-                        <h5 class="font-size-14 mb-3">Clothes</h5>
-                        <ul class="list-unstyled product-list">
-                            <li><a href="#"><i class="mdi mdi-chevron-right me-1"></i> T-shirts</a></li>
-                            <li><a href="#"><i class="mdi mdi-chevron-right me-1"></i> Shirts</a></li>
-                            <li><a href="#"><i class="mdi mdi-chevron-right me-1"></i> Jeans</a></li>
-                            <li><a href="#"><i class="mdi mdi-chevron-right me-1"></i> Jackets</a></li>
-                        </ul>
-                    </div>
-                    <div class="mt-4 pt-3">
-                        <h5 class="font-size-14 mb-3">Price</h5>
-                        <input type="text" id="pricerange">
-                    </div>
-
-                    <div class="mt-4 pt-3">
-                        <h5 class="font-size-14 mb-3">Discount</h5>
-                        <div class="form-check mt-2">
-                            <input class="form-check-input" type="checkbox" id="productdiscountCheck1">
-                            <label class="form-check-label" for="productdiscountCheck1">
-                                Less than 10%
-                            </label>
-                        </div>
-
-                        <div class="form-check mt-2">
-                            <input class="form-check-input" type="checkbox" id="productdiscountCheck2">
-                            <label class="form-check-label" for="productdiscountCheck2">
-                                10% or more
-                            </label>
-                        </div>
-
-                        <div class="form-check mt-2">
-                            <input class="form-check-input" type="checkbox" id="productdiscountCheck3" checked>
-                            <label class="form-check-label" for="productdiscountCheck3">
-                                20% or more
-                            </label>
-                        </div>
-
-                        <div class="form-check mt-2">
-                            <input class="form-check-input" type="checkbox" id="productdiscountCheck4">
-                            <label class="form-check-label" for="productdiscountCheck4">
-                                30% or more
-                            </label>
-                        </div>
-
-                        <div class="form-check mt-2">
-                            <input class="form-check-input" type="checkbox" id="productdiscountCheck5">
-                            <label class="form-check-label" for="productdiscountCheck5">
-                                40% or more
-                            </label>
-                        </div>
-
-                        <div class="form-check mt-2">
-                            <input class="form-check-input" type="checkbox" id="productdiscountCheck6">
-                            <label class="form-check-label" for="productdiscountCheck6">
-                                50% or more
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mt-4 pt-3">
-                        <h5 class="font-size-14 mb-3">Customer Rating</h5>
-                        <div>
-                            <div class="form-check mt-2">
-                                <input class="form-check-input" type="checkbox" id="productratingCheck1">
-                                <label class="form-check-label" for="productratingCheck1">
-                                    4 <i class="bx bxs-star text-warning"></i> & Above
-                                </label>
-                            </div>
-                            <div class="form-check mt-2">
-                                <input class="form-check-input" type="checkbox" id="productratingCheck2">
-                                <label class="form-check-label" for="productratingCheck2">
-                                    3 <i class="bx bxs-star text-warning"></i> & Above
-                                </label>
-                            </div>
-                            <div class="form-check mt-2">
-                                <input class="form-check-input" type="checkbox" id="productratingCheck3">
-                                <label class="form-check-label" for="productratingCheck3">
-                                    2 <i class="bx bxs-star text-warning"></i> & Above
-                                </label>
-                            </div>
-
-                            <div class="form-check mt-2">
-                                <input class="form-check-input" type="checkbox" id="productratingCheck4">
-                                <label class="form-check-label" for="productratingCheck4">
-                                    1 <i class="bx bxs-star text-warning"></i>
-                                </label>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div> -->
     <div class="row mb-3">
         <div class="col-md-4 col-sm-4">
             <div class="mt-2">
@@ -155,24 +55,24 @@
             <div class="product-container">
                 <div class="product-image">
 
-                    <a  href="{{route('AddToCartOrphans', ['data' => $data -> id])}}" class="product-link">Sponsor Me</a>
-                    <img class="img-responsive" src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}" alt="" >
+                    <a href="{{route('AddToCartOrphans', ['data' => $data -> id])}}" class="product-link btn bg-success text-white rounded">Sponsor Me</a>
+                    <img class="img-responsive" src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}" alt="">
                 </div>
                 <div class="product-description">
                     <div class="product-label">
 
-                        <div class="product-name textoverflow" >
+                        <div class="product-name textoverflow">
                             <h1>{{$data -> FirstName}} / {{\Carbon\Carbon::parse($data -> DOB)->diff(\Carbon\Carbon::now())->format('%y');}} </h1>
 
 
-                        <div class="row mb-3">
+                            <div class="row mb-3">
                                 <div class="col-md-12">
                                     <div>
-                                    <li class="list-inline-item me-3">
-                            <span class="text-danger text-uppercase">Waiting Since:</span>
-                            {{$data -> created_at -> format("d-m-Y") }}
+                                        <li class="list-inline-item me-3">
+                                            <span class="text-danger text-uppercase">Waiting Since:</span>
+                                            {{$data -> created_at -> format("j F Y")  }}
 
-                        </li>
+                                        </li>
                                         <p class="text-muted text-uppercase"><i class="bx bx-home-alt  font-size-16 align-middle text-primary me-1 "></i> {{$data -> ProvinceName}} - Afghanistan </p>
 
                                     </div>
@@ -209,9 +109,6 @@
 
 @endsection
 @section('script')
-<!-- Ion Range Slider-->
-<script src="{{ URL::asset('/assets/libs/ion-rangeslider/ion-rangeslider.min.js') }}"></script>
 
-<!-- init js -->
-<script src="{{ URL::asset('/assets/js/pages/product-filter-range.init.js') }}"></script>
+
 @endsection

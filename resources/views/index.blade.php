@@ -444,7 +444,7 @@
                         <div class="card-body text-center">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <i class="bx bxs-box display-5 "></i>
+                                    <i class="mdi mdi-account-group-outline display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Users</p>
                                     <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>

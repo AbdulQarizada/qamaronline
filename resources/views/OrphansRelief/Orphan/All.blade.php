@@ -14,7 +14,7 @@
 <div class="row mt-4">
     <div class="col-4">
         <a href="{{route('IndexOrphansRelief')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>ALL Orphans</span>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>All Orphans</span>
     </div>
 </div>
 <div class="row">
@@ -194,6 +194,9 @@
                                     </a>
                                     <a href="{{route('DeleteOrphan', ['data' => $data -> id])}}" class="btn btn-danger waves-effect waves-light delete-confirm">
                                         <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
+                                    </a>
+                                    <a href="{{route('EditOrphan', ['data' => $data -> id])}}" class="btn btn-info waves-effect waves-light">
+                                        <i class=" bx bx-edit font-size-16 align-middle"></i>
                                     </a>
                                     @endif
 

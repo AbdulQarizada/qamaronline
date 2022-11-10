@@ -10,10 +10,10 @@
 @section('content')
 
 <div class="row mt-4">
-@if (Auth::check()) 
+@if (Auth::check())
         <div class="col-4">
            <a href="{{route('IndexOrphansRelief')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-    
+
         </div>
         @endif
         <!-- <div class="col-6">
@@ -27,11 +27,11 @@
                     <div class="card-header">
                       <blockquote class="blockquote border-warning  font-size-14 mb-0">
                                 <p class="my-0   card-title fw-medium font-size-24 text-wrap">ORPHANS</p>
-                        
+
                         </blockquote>
                     </div>
                 </div>
-      
+
         </div>
      </div> -->
 <div class="row">
@@ -149,7 +149,7 @@
                         <i class="bx bx-search-alt search-icon"></i>
                     </div>
                 </div>
-                @if (Auth::check()) 
+                @if (Auth::check())
                 <ul class="nav nav-pills product-view-nav justify-content-end mt-3 mt-sm-0">
                     <li class="nav-item">
                         <a class="nav-link active" href="{{route('AllGridOrphans')}}"><i class="bx bx-grid-alt"></i></a>

@@ -1,4 +1,4 @@
-@extends('layouts.master-layouts')
+@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
 
 @section('title') Users List @endsection
 
@@ -16,9 +16,6 @@
         <a href="{{route('IndexUserManagement')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
 
     </div>
-    <!-- <div class="col-6">
-                                <h1 class="fw-medium font-size-24 ">Orphans List</h1>
-        </div> -->
 </div>
 
 <div class="row">

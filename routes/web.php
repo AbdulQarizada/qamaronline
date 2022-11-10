@@ -97,11 +97,7 @@ Route::get('/GetScholarship/{data}', [App\Http\Controllers\HomeController::class
 // Get Scholarship Module
 Route::get('/GetScholarshipModule/{data}', [App\Http\Controllers\HomeController::class, 'GetScholarshipModule'])->name('GetScholarshipModule');
 
-// uploads of orphans
-Route::post('/OrphansRelief/Orphans_Tazkira', [App\Http\Controllers\HomeController::class, 'Orphans_Tazkira'])->name('Orphans_Tazkira');
-Route::post('/OrphansRelief/Orphans_Profile', [App\Http\Controllers\HomeController::class, 'Orphans_Profile'])->name('Orphans_Profile');
-Route::post('/OrphansRelief/Orphans_FamilyPic', [App\Http\Controllers\HomeController::class, 'Orphans_FamilyPic'])->name('Orphans_FamilyPic');
-Route::post('/OrphansRelief/Orphans_HousePic', [App\Http\Controllers\HomeController::class, 'Orphans_HousePic'])->name('Orphans_HousePic');
+
 
 // Education
 
@@ -354,62 +350,51 @@ Route::post('/QamarCareCard/AssignServices', [App\Http\Controllers\CareCard\Care
 
 
 // OrphansRelief
-
 // index
 Route::get('/OrphansRelief', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Index'])->name('IndexOrphansRelief');
-
-
 // Orphan
+// Orphan list
+Route::get('/OrphansRelief/Orphan/All', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'All'])->name('AllOrphans');
+Route::get('/OrphansRelief/Orphan/AllGrid', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'AllGrid'])->name('AllGridOrphans');
+Route::get('/OrphansRelief/Orphan/OrphanDetail/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'OrphanDetail'])->name('OrphanDetailOrphans');
 // Create
 Route::get('/OrphansRelief/Orphan/Create', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Create'])->name('CreateOrphans');
 Route::post('/OrphansRelief/Orphan/Create', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Store'])->name('CreateOrphans');
-
 // delete
 Route::get('/OrphansRelief/Orphan/Delete/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Delete'])->name('DeleteOrphan');
-
-
-// qamar care list
-Route::get('/OrphansRelief/Orphan/All', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'All'])->name('AllOrphans');
-Route::get('/OrphansRelief/Orphan/AllGrid', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'AllGrid'])->name('AllGridOrphans');
-
-Route::get('/OrphansRelief/Orphan/OrphanDetail/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'OrphanDetail'])->name('OrphanDetailOrphans');
-
+// Update
+Route::get('/OrphansRelief/Orphan/Edit/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Edit'])->name('EditOrphan');
+Route::put('/OrphansRelief/Orphan/Edit/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Update'])->name('UpdateOrphan');
+// status list
 Route::get('/OrphansRelief/Orphan/Pending', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Pending'])->name('PendingOrphans');
 Route::get('/OrphansRelief/Orphan/Approved', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Approved'])->name('ApprovedOrphans');
 Route::get('/OrphansRelief/Orphan/Active', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Active'])->name('ActiveOrphans');
 Route::get('/OrphansRelief/Orphan/InActive', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'InActive'])->name('InActiveOrphans');
 Route::get('/OrphansRelief/Orphan/Rejected', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Rejected'])->name('RejectedOrphans');
 Route::get('/OrphansRelief/Orphan/Assigned', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Assigned'])->name('AssignedOrphans');
-
-
-// status list and change status
+// change status
 Route::get('/OrphansRelief/Orphan/Status/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Status'])->name('StatusOrphans');
-
 Route::get('/OrphansRelief/Orphan/Approve/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Approve'])->name('ApproveOrphans');
-
 Route::get('/OrphansRelief/Orphan/Reject/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Reject'])->name('RejectOrphans');
-
 Route::get('/OrphansRelief/Orphan/ReInitiate/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'ReInitiate'])->name('ReInitiateOrphans');
-
 Route::get('/OrphansRelief/Orphan/AssignToSponsor/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'AssignToSponsor'])->name('AssignToSponsorOrphan');
 Route::put('/OrphansRelief/Orphan/AssignSponsor/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'AssignSponsor'])->name('AssignSponsorOrphan');
-
-
-
-
-
+// checkout and payment
 Route::get('/OrphansRelief/Orphan/Checkout/', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Checkout'])->name('CheckoutOrphans');
 Route::get('/OrphansRelief/Orphan/AddToCart/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'AddToCart'])->name('AddToCartOrphans');
 Route::get('/OrphansRelief/Orphan/RemoveFromCart/{data}', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'RemoveFromCart'])->name('RemoveFromCartOrphans');
 Route::post('/OrphansRelief/Orphan/Payment/', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'Payment'])->name('PaymentOrphan');
-
 
 // sponsors
 Route::get('/OrphansRelief/Sponsor/All', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'AllSponsor'])->name('AllSponsor');
 Route::get('/OrphansRelief/Payment', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'AllPayments'])->name('AllPayment');
 Route::get('/OrphansRelief/Sponsor/MyOrphans', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'MyOrphans'])->name('MyOrphansSponsor');
 Route::get('/OrphansRelief/Sponsor/MyPyaments', [App\Http\Controllers\OrphanRelief\OrphansReliefController::class, 'MyPayments'])->name('MyPaymentsSponsor');
-
+// uploads of orphans
+Route::post('/OrphansRelief/Orphans_Profile', [App\Http\Controllers\HomeController::class, 'Orphans_Profile'])->name('Orphans_Profile');
+Route::post('/OrphansRelief/Orphans_Tazkira', [App\Http\Controllers\HomeController::class, 'Orphans_Tazkira'])->name('Orphans_Tazkira');
+Route::post('/OrphansRelief/Orphans_FamilyPic', [App\Http\Controllers\HomeController::class, 'Orphans_FamilyPic'])->name('Orphans_FamilyPic');
+Route::post('/OrphansRelief/Orphans_HousePic', [App\Http\Controllers\HomeController::class, 'Orphans_HousePic'])->name('Orphans_HousePic');
 
 
 
