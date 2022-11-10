@@ -55,6 +55,8 @@
                                         <li><a href="<?php echo e(route('AllFoodPack')); ?>" key="t-topbar-light">All Food Packs</a></li>
                                         <li><a href="<?php echo e(route('EligibleBeneficiariesFoodPack')); ?>" key="t-boxed-width">Eligible Beneficiaries</a></li>
                                         <li><a href="<?php echo e(route('AssignedBeneficiariesFoodPack')); ?>" key="t-preloader">Assigned Beneficiaries</a></li>
+                                        <li><a href="<?php echo e(route('AllListFoodPack')); ?>" key="t-preloader">Staff Beneficiaries</a></li>
+
                                     </ul>
                                 </li>
                                 <li>

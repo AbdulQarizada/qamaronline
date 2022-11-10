@@ -948,6 +948,7 @@ unset($__errorArgs, $__bag); ?>
             labels: ['Pashtun', 'Tajik', 'Hazara', 'Uzbek', 'Turkman', 'Pashayi', 'Aimaq', 'Baloch', 'Pamiri', 'Sadat', 'Nooristani', 'Arab', 'Gojar', 'Brahawi', 'qazalbash', 'kochi'],
             colors: ["#34c38f", "#556ee6", "#f46a6a", "#50a5f1", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c"],
             chart: {
+                height: 270,
                 width: 380,
                 type: 'pie',
             },
@@ -1076,6 +1077,7 @@ unset($__errorArgs, $__bag); ?>
         var GenderChart = {
             series: [Gender_ChartJson.Male, Gender_ChartJson.Female],
             chart: {
+                height: 270,
                 width: 380,
                 type: 'pie',
             },
@@ -1172,16 +1174,16 @@ unset($__errorArgs, $__bag); ?>
                 radialBar: {
                     offsetY: 0,
                     startAngle: 0,
-                    endAngle: 270,
+                    endAngle: AllinOne_ChartJson.All,
                     hollow: {
                         margin: 5,
-                        size: '30%',
+                        size: '50%',
                         background: 'transparent',
                         image: undefined,
                     },
                     dataLabels: {
                         name: {
-                            show: false,
+                            show: true,
                         },
                         value: {
                             show: false,
