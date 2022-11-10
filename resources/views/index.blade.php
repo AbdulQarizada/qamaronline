@@ -1189,7 +1189,7 @@ MontlyDataInsertion.render();
 
 // all in one care card operation Chart
 (async () => {
-    const FamilyStatus_ChartJson = await fetch('{{ route('AllinOne_Chart')}}').then(response => response.json());
+    const FamilyStatus_ChartJson =  await fetch('{{ route('AllinOne_Chart')}}').then(response => response.json());
     var AllinOne = {
           series: [FamilyStatus_ChartJson.All, FamilyStatus_ChartJson.Approved, FamilyStatus_ChartJson.Printed,],
           chart: {
@@ -1265,25 +1265,24 @@ MontlyDataInsertion.render();
 
 
 
-
-
     (async () => {
 
-const topology = await fetch('{{ URL::asset('/assets/libs/afghanistanmap/af-all.topo.json')}}').then(response => response.json());
+        const ProvincialData = await fetch('{{ route('ProvincialData_Chart')}}').then(response => response.json());
+        const topology = await fetch('{{ URL::asset('/assets/libs/afghanistanmap/af-all.topo.json')}}').then(response => response.json());
 
 
 
 
 const data = [
-    ['af-kt', {{$khost}}], ['af-pk', {{$paktika}}], ['af-gz', {{$ghazni}}], ['af-bd', {{$badakhshan}}],
-    ['af-nr', {{$nuristan}}], ['af-kr', {{$kunar}}], ['af-kz', {{$kunduz}}], ['af-ng', {{$nangarhar}}],
-    ['af-tk', {{$takhar}}], ['af-bl', {{$baghlan}}], ['af-kb', {{$kabul}}], ['af-kp', {{$kapisa}}],
-    ['af-2030', {{$panjshir}}], ['af-la', {{$laghman}}], ['af-lw', {{$logar}}], ['af-pv', {{$parwan}}],
-    ['af-sm', {{$samangan}}], ['af-vr', {{$wardak}}], ['af-pt', {{$paktya}}], ['af-bg', {{$badghis}}],
-    ['af-hr', {{$herat}}], ['af-bk', {{$balkh}}], ['af-jw', {{$jawzjan}}], ['af-bm', {{$bamyan}}],
-    ['af-gr', {{$ghor}}], ['af-fb', {{$faryab}}], ['af-sp', {{$sar_e_pol}}], ['af-fh', {{$farah}}],
-    ['af-hm', {{$helmand}}], ['af-nm', {{$nimroz}}], ['af-2014', {{$daykundi}}], ['af-oz', {{$uruzgan}}],
-    ['af-kd', {{$kandahar}}], ['af-zb', {{$zabul}}]
+    ['af-kt', ProvincialData.khost], ['af-pk', ProvincialData.paktika], ['af-gz', ProvincialData.ghazni], ['af-bd', ProvincialData.badakhshan],
+    ['af-nr', ProvincialData.nuristan], ['af-kr', ProvincialData.kunar], ['af-kz', ProvincialData.kunduz], ['af-ng', ProvincialData.nangarhar],
+    ['af-tk', ProvincialData.takhar], ['af-bl', ProvincialData.baghlan], ['af-kb', ProvincialData.kabul], ['af-kp', ProvincialData.kapisa],
+    ['af-2030', ProvincialData.panjshir], ['af-la', ProvincialData.laghman], ['af-lw', ProvincialData.logar], ['af-pv', ProvincialData.parwan],
+    ['af-sm', ProvincialData.samangan], ['af-vr', ProvincialData.wardak], ['af-pt', ProvincialData.paktya], ['af-bg', ProvincialData.badghis],
+    ['af-hr', ProvincialData.herat], ['af-bk', ProvincialData.balkh], ['af-jw', ProvincialData.jawzjan], ['af-bm', ProvincialData.bamyan],
+    ['af-gr', ProvincialData.ghor], ['af-fb', ProvincialData.faryab], ['af-sp', ProvincialData.sar_e_pol], ['af-fh', ProvincialData.farah],
+    ['af-hm', ProvincialData.helmand], ['af-nm', ProvincialData.nimroz], ['af-2014', ProvincialData.daykundi], ['af-oz', ProvincialData.uruzgan],
+    ['af-kd', ProvincialData.kandahar], ['af-zb', ProvincialData.zabul]
 ];
 
 // Create the chart

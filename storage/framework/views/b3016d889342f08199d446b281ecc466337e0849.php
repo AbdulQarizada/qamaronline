@@ -1219,7 +1219,7 @@ MontlyDataInsertion.render();
 
 // all in one care card operation Chart
 (async () => {
-    const FamilyStatus_ChartJson = await fetch('<?php echo e(route('AllinOne_Chart')); ?>').then(response => response.json());
+    const FamilyStatus_ChartJson =  await fetch('<?php echo e(route('AllinOne_Chart')); ?>').then(response => response.json());
     var AllinOne = {
           series: [FamilyStatus_ChartJson.All, FamilyStatus_ChartJson.Approved, FamilyStatus_ChartJson.Printed,],
           chart: {
@@ -1295,25 +1295,24 @@ MontlyDataInsertion.render();
 
 
 
-
-
     (async () => {
 
-const topology = await fetch('<?php echo e(URL::asset('/assets/libs/afghanistanmap/af-all.topo.json')); ?>').then(response => response.json());
+        const ProvincialData = await fetch('<?php echo e(route('ProvincialData_Chart')); ?>').then(response => response.json());
+        const topology = await fetch('<?php echo e(URL::asset('/assets/libs/afghanistanmap/af-all.topo.json')); ?>').then(response => response.json());
 
 
 
 
 const data = [
-    ['af-kt', <?php echo e($khost); ?>], ['af-pk', <?php echo e($paktika); ?>], ['af-gz', <?php echo e($ghazni); ?>], ['af-bd', <?php echo e($badakhshan); ?>],
-    ['af-nr', <?php echo e($nuristan); ?>], ['af-kr', <?php echo e($kunar); ?>], ['af-kz', <?php echo e($kunduz); ?>], ['af-ng', <?php echo e($nangarhar); ?>],
-    ['af-tk', <?php echo e($takhar); ?>], ['af-bl', <?php echo e($baghlan); ?>], ['af-kb', <?php echo e($kabul); ?>], ['af-kp', <?php echo e($kapisa); ?>],
-    ['af-2030', <?php echo e($panjshir); ?>], ['af-la', <?php echo e($laghman); ?>], ['af-lw', <?php echo e($logar); ?>], ['af-pv', <?php echo e($parwan); ?>],
-    ['af-sm', <?php echo e($samangan); ?>], ['af-vr', <?php echo e($wardak); ?>], ['af-pt', <?php echo e($paktya); ?>], ['af-bg', <?php echo e($badghis); ?>],
-    ['af-hr', <?php echo e($herat); ?>], ['af-bk', <?php echo e($balkh); ?>], ['af-jw', <?php echo e($jawzjan); ?>], ['af-bm', <?php echo e($bamyan); ?>],
-    ['af-gr', <?php echo e($ghor); ?>], ['af-fb', <?php echo e($faryab); ?>], ['af-sp', <?php echo e($sar_e_pol); ?>], ['af-fh', <?php echo e($farah); ?>],
-    ['af-hm', <?php echo e($helmand); ?>], ['af-nm', <?php echo e($nimroz); ?>], ['af-2014', <?php echo e($daykundi); ?>], ['af-oz', <?php echo e($uruzgan); ?>],
-    ['af-kd', <?php echo e($kandahar); ?>], ['af-zb', <?php echo e($zabul); ?>]
+    ['af-kt', ProvincialData.khost], ['af-pk', ProvincialData.paktika], ['af-gz', ProvincialData.ghazni], ['af-bd', ProvincialData.badakhshan],
+    ['af-nr', ProvincialData.nuristan], ['af-kr', ProvincialData.kunar], ['af-kz', ProvincialData.kunduz], ['af-ng', ProvincialData.nangarhar],
+    ['af-tk', ProvincialData.takhar], ['af-bl', ProvincialData.baghlan], ['af-kb', ProvincialData.kabul], ['af-kp', ProvincialData.kapisa],
+    ['af-2030', ProvincialData.panjshir], ['af-la', ProvincialData.laghman], ['af-lw', ProvincialData.logar], ['af-pv', ProvincialData.parwan],
+    ['af-sm', ProvincialData.samangan], ['af-vr', ProvincialData.wardak], ['af-pt', ProvincialData.paktya], ['af-bg', ProvincialData.badghis],
+    ['af-hr', ProvincialData.herat], ['af-bk', ProvincialData.balkh], ['af-jw', ProvincialData.jawzjan], ['af-bm', ProvincialData.bamyan],
+    ['af-gr', ProvincialData.ghor], ['af-fb', ProvincialData.faryab], ['af-sp', ProvincialData.sar_e_pol], ['af-fh', ProvincialData.farah],
+    ['af-hm', ProvincialData.helmand], ['af-nm', ProvincialData.nimroz], ['af-2014', ProvincialData.daykundi], ['af-oz', ProvincialData.uruzgan],
+    ['af-kd', ProvincialData.kandahar], ['af-zb', ProvincialData.zabul]
 ];
 
 // Create the chart

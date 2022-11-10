@@ -54,13 +54,22 @@ class HomeController extends Controller
     {
 
 
-        if (Auth::check() && !Auth::User()->IsActive == 1) {
+        if (Auth::check() && !Auth::User()->IsActive == 1)
+        {
             Auth::logout();
             return redirect()->route('login')->with('Your session has expired because your status changed.');
         }
 
-        if (Cookie::get('Layout') == null) {
-            $cookies = Cookie::forever('Layout', "LayoutSidebar");
+        if (Cookie::get('Layout') == null)
+        {
+              if (Auth::User()->IsOrphanSponsor == 1)
+               {
+                  $cookies = Cookie::forever('Layout', "LayoutSidebar");
+               }
+               else
+               {
+                $cookies = Cookie::forever('Layout', "LayoutNoSidebar");
+               }
 
             return redirect()->route('root')->cookie($cookies);
         }
@@ -95,40 +104,6 @@ class HomeController extends Controller
 
 
 
-        $badakhshan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 1)->get()->count();
-        $baghlan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 2)->get()->count();
-        $kunduz =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 3)->get()->count();
-        $takhar =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 4)->get()->count();
-        $balkh =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 5)->get()->count();
-        $faryab =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 6)->get()->count();
-        $jawzjan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 7)->get()->count();
-        $samangan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 8)->get()->count();
-        $sar_e_pol =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 9)->get()->count();
-        $kabul =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 10)->get()->count();
-        $kapisa =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 11)->get()->count();
-        $logar =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 12)->get()->count();
-        $panjshir =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 13)->get()->count();
-        $parwan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 14)->get()->count();
-        $wardak =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 15)->get()->count();
-        $kunar =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 16)->get()->count();
-        $laghman =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 17)->get()->count();
-        $nangarhar =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 18)->get()->count();
-        $nuristan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 19)->get()->count();
-        $badghis =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 20)->get()->count();
-        $bamyan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 21)->get()->count();
-        $farah =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 22)->get()->count();
-        $ghor =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 23)->get()->count();
-        $herat =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 24)->get()->count();
-        $ghazni =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 25)->get()->count();
-        $khost =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 26)->get()->count();
-        $paktya =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 27)->get()->count();
-        $paktika =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 28)->get()->count();
-        $daykundi =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 29)->get()->count();
-        $helmand =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 30)->get()->count();
-        $kandahar =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 31)->get()->count();
-        $nimroz =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 32)->get()->count();
-        $uruzgan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 33)->get()->count();
-        $zabul =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 34)->get()->count();
 
 
 
@@ -149,40 +124,6 @@ class HomeController extends Controller
         return view('index', compact(
             'QuranArabic',
             'QuranEnglish',
-            'badakhshan',
-            'baghlan',
-            'kunduz',
-            'takhar',
-            'balkh',
-            'faryab',
-            'jawzjan',
-            'samangan',
-            'sar_e_pol',
-            'kabul',
-            'kapisa',
-            'logar',
-            'panjshir',
-            'parwan',
-            'wardak',
-            'kunar',
-            'laghman',
-            'nangarhar',
-            'nuristan',
-            'badghis',
-            'bamyan',
-            'farah',
-            'ghor',
-            'herat',
-            'ghazni',
-            'khost',
-            'paktya',
-            'paktika',
-            'daykundi',
-            'helmand',
-            'kandahar',
-            'nimroz',
-            'uruzgan',
-            'zabul',
             'catagorys',
             'notifications',
             'qamarcarecardsCount',
@@ -194,8 +135,6 @@ class HomeController extends Controller
             'qamarcarecardsLastFive',
         ));
     }
-
-
 
 
 
@@ -416,6 +355,87 @@ class HomeController extends Controller
            ]);
        }
 
+
+
+
+          // Provincial Chart
+
+    public function ProvincialData_Chart()
+    {
+
+        $badakhshan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 1)->get()->count();
+        $baghlan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 2)->get()->count();
+        $kunduz =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 3)->get()->count();
+        $takhar =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 4)->get()->count();
+        $balkh =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 5)->get()->count();
+        $faryab =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 6)->get()->count();
+        $jawzjan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 7)->get()->count();
+        $samangan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 8)->get()->count();
+        $sar_e_pol =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 9)->get()->count();
+        $kabul =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 10)->get()->count();
+        $kapisa =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 11)->get()->count();
+        $logar =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 12)->get()->count();
+        $panjshir =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 13)->get()->count();
+        $parwan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 14)->get()->count();
+        $wardak =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 15)->get()->count();
+        $kunar =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 16)->get()->count();
+        $laghman =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 17)->get()->count();
+        $nangarhar =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 18)->get()->count();
+        $nuristan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 19)->get()->count();
+        $badghis =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 20)->get()->count();
+        $bamyan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 21)->get()->count();
+        $farah =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 22)->get()->count();
+        $ghor =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 23)->get()->count();
+        $herat =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 24)->get()->count();
+        $ghazni =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 25)->get()->count();
+        $khost =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 26)->get()->count();
+        $paktya =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 27)->get()->count();
+        $paktika =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 28)->get()->count();
+        $daykundi =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 29)->get()->count();
+        $helmand =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 30)->get()->count();
+        $kandahar =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 31)->get()->count();
+        $nimroz =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 32)->get()->count();
+        $uruzgan =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 33)->get()->count();
+        $zabul =   QamarCareCard::where("qamar_care_cards.Province_ID", "=", 34)->get()->count();
+
+
+        return response()->json([
+            'badakhshan' => $badakhshan,
+            'baghlan' => $baghlan,
+            'kunduz' => $kunduz,
+            'takhar' => $takhar,
+            'balkh' => $balkh,
+            'faryab' => $faryab,
+            'jawzjan' => $jawzjan,
+            'samangan' => $samangan,
+            'sar_e_pol' => $sar_e_pol,
+            'kabul' => $kabul,
+            'kapisa' => $kapisa,
+            'logar' => $logar,
+            'panjshir' => $panjshir,
+            'parwan' => $parwan,
+            'wardak' => $wardak,
+            'kunar' => $kunar,
+            'laghman' => $laghman,
+            'nangarhar' => $nangarhar,
+            'nuristan' => $nuristan,
+            'badghis' => $badghis,
+            'bamyan' => $bamyan,
+            'farah' => $farah,
+            'ghor' => $ghor,
+            'herat' => $herat,
+            'ghazni' => $ghazni,
+            'khost' => $khost,
+            'paktya' => $paktya,
+            'paktika' => $paktika,
+            'daykundi' => $daykundi,
+            'helmand' => $helmand,
+            'kandahar' => $kandahar,
+            'nimroz' => $nimroz,
+            'uruzgan' => $uruzgan,
+            'zabul' => $zabul,
+        ]);
+    }
 
 
 

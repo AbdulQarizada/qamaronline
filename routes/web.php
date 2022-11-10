@@ -79,6 +79,8 @@ Route::get('/Montly_Insertion', [App\Http\Controllers\HomeController::class, 'Mo
 Route::get('/Gender_Chart', [App\Http\Controllers\HomeController::class, 'Gender_Chart'])->name('Gender_Chart');
 Route::get('/FamilyStatus_Chart', [App\Http\Controllers\HomeController::class, 'FamilyStatus_Chart'])->name('FamilyStatus_Chart');
 Route::get('/AllinOne_Chart', [App\Http\Controllers\HomeController::class, 'AllinOne_Chart'])->name('AllinOne_Chart');
+Route::get('/ProvincialData_Chart', [App\Http\Controllers\HomeController::class, 'ProvincialData_Chart'])->name('ProvincialData_Chart');
+
 
 
 
