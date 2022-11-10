@@ -572,14 +572,112 @@
 </div>
 <!-- end row -->
 
+
+<div class="row mb-4">
+    <div class="col-xl-12">
+                    <div id="DataInsertionChart" class="apex-charts" dir="ltr"></div>
+                    <h5 class=" text-dark text-center">Cards Insertion Timeline</h5>
+    </div>
+</div>
+
+
 <?php endif; ?>
 
 
 
 
 <?php $__env->stopSection(); ?>
+<?php echo \Akaunting\Apexcharts\Chart::loadScript(); ?>
+
 <?php $__env->startSection('script'); ?>
 
+<!-- dashboard init -->
+<script src="<?php echo e(URL::asset('/assets/js/pages/dashboard.init.js')); ?>"></script>
+<script>
+
+// Montly Insetion base Chart
+    (async () => {
+        const MontlyInsertionJson = await fetch('<?php echo e(route('MontlyInsertion_Chart')); ?>').then(response => response.json());
+
+        var MontlyInsertion = {
+            chart: {
+                height: 350,
+                type: "line",
+                stacked: !1,
+                toolbar: {
+                    show: !1
+                }
+            },
+            stroke: {
+                width: [0, 2, 4],
+                curve: "smooth"
+            },
+            plotOptions: {
+                bar: {
+                    columnWidth: "50%"
+                }
+            },
+            colors: ["#cd9941", "#34c38f", "#74788d"],
+            series: [{
+                    name: "New Cards",
+                    type: "column",
+                    data: [MontlyInsertionJson.PendingJan, MontlyInsertionJson.PendingFeb, MontlyInsertionJson.PendingMarch, MontlyInsertionJson.PendingApril, MontlyInsertionJson.PendingMay, MontlyInsertionJson.PendingJun, MontlyInsertionJson.PendingJuly, MontlyInsertionJson.PendingAugust, MontlyInsertionJson.PendingSep, MontlyInsertionJson.PendingOct, MontlyInsertionJson.PendingNov, MontlyInsertionJson.PendingDec, ]
+                },
+                {
+                    name: "Approved Cards",
+                    type: "area",
+                    data: [MontlyInsertionJson.ApprovedJan, MontlyInsertionJson.ApprovedFeb, MontlyInsertionJson.ApprovedMarch, MontlyInsertionJson.ApprovedApril, MontlyInsertionJson.ApprovedMay, MontlyInsertionJson.ApprovedJun, MontlyInsertionJson.ApprovedJuly, MontlyInsertionJson.ApprovedAugust, MontlyInsertionJson.ApprovedSep, MontlyInsertionJson.ApprovedOct, MontlyInsertionJson.ApprovedNov, MontlyInsertionJson.ApprovedDec, ]
+                },
+                {
+                    name: "Printed Cards",
+                    type: "line",
+                    data: [MontlyInsertionJson.PrintedJan, MontlyInsertionJson.PrintedFeb, MontlyInsertionJson.PrintedMarch, MontlyInsertionJson.PrintedApril, MontlyInsertionJson.PrintedMay, MontlyInsertionJson.PrintedJun, MontlyInsertionJson.PrintedJuly, MontlyInsertionJson.PrintedAugust, MontlyInsertionJson.PrintedSep, MontlyInsertionJson.PrintedOct, MontlyInsertionJson.PrintedNov, MontlyInsertionJson.PrintedDec, ]
+                }
+            ],
+            fill: {
+                opacity: [.85, .25, 1],
+                gradient: {
+                    inverseColors: !1,
+                    shade: "light",
+                    type: "vertical",
+                    opacityFrom: .85,
+                    opacityTo: .55,
+                    stops: [0, 100, 100, 100]
+                }
+            },
+            labels: ["Jan", "Feb", "March", "April", "May", "Jun", "July", "August", "Sep", "Oct", "Nov", "Dec"],
+            markers: {
+                size: 0
+            },
+            xaxis: {
+                type: "date"
+            },
+            yaxis: {
+                title: {
+                    text: "Cards"
+                }
+            },
+            tooltip: {
+                shared: !0,
+                intersect: !1,
+                y: {
+                    formatter: function(e) {
+                        return void 0 !== e ? e.toFixed(0) + " Cards" : e
+                    }
+                }
+            },
+            grid: {
+                borderColor: "#f1f1f1"
+            }
+        };
+
+        var MontlyDataInsertion = new ApexCharts(document.querySelector("#DataInsertionChart"), MontlyInsertion);
+        MontlyDataInsertion.render();
+
+
+    })();
+
+    </script>
 
 
 <?php $__env->stopSection(); ?>

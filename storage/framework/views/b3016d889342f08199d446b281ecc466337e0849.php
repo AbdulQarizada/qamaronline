@@ -909,21 +909,7 @@ unset($__errorArgs, $__bag); ?>
 
 <?php $__env->startSection('script'); ?>
 
-<script src="<?php echo e(URL::asset('/assets/libs/jquery-knob/jquery-knob.min.js')); ?>"></script>
 
-<script src="<?php echo e(URL::asset('/assets/js/pages/jquery-knob.init.js')); ?>"></script>
-
-<!-- tui charts plugins -->
-
-<script src="<?php echo e(URL::asset('/assets/libs/tui-chart/tui-chart-all.min.js')); ?>"></script>
-
-<!-- tui charts map -->
-<script src="<?php echo e(URL::asset('/assets/libs/tui-chart/maps/usa.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('/assets/libs/tui-chart/maps/afghanistan.js')); ?>"></script>
-
-
-<!-- tui charts plugins -->
-<script src="<?php echo e(URL::asset('/assets/js/pages/tui-charts.init.js')); ?>"></script>
 
 <!-- Afghanistan Map -->
 <script src="<?php echo e(URL::asset('/assets/libs/afghanistanmap/highmaps.js')); ?>"></script>
@@ -948,7 +934,6 @@ unset($__errorArgs, $__bag); ?>
             labels: ['Pashtun', 'Tajik', 'Hazara', 'Uzbek', 'Turkman', 'Pashayi', 'Aimaq', 'Baloch', 'Pamiri', 'Sadat', 'Nooristani', 'Arab', 'Gojar', 'Brahawi', 'qazalbash', 'kochi'],
             colors: ["#34c38f", "#556ee6", "#f46a6a", "#50a5f1", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c", "#f1b44c"],
             chart: {
-                height: 270,
                 width: 380,
                 type: 'pie',
             },
@@ -1077,7 +1062,6 @@ unset($__errorArgs, $__bag); ?>
         var GenderChart = {
             series: [Gender_ChartJson.Male, Gender_ChartJson.Female],
             chart: {
-                height: 270,
                 width: 380,
                 type: 'pie',
             },
@@ -1174,16 +1158,16 @@ unset($__errorArgs, $__bag); ?>
                 radialBar: {
                     offsetY: 0,
                     startAngle: 0,
-                    endAngle: AllinOne_ChartJson.All,
+                    endAngle: 270,
                     hollow: {
                         margin: 5,
-                        size: '50%',
+                        size: '30%',
                         background: 'transparent',
                         image: undefined,
                     },
                     dataLabels: {
                         name: {
-                            show: true,
+                            show: false,
                         },
                         value: {
                             show: false,
