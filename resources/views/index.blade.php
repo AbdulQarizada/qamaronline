@@ -615,29 +615,6 @@
         </div>
 
     </div>
-    <div class="col-md-8">
-        <div class="row">
-            <div class="col-md-4 text-center ">
-                <div class="card">
-                    <h5 class="card-header text-dark bg-secondary bg-soft">Total Care Cards</h5>
-                    <div class="card-body">
-                        <h2 class=" rounded display-2 bg-warning text-white">{{$qamarcarecardsCount}}</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8">
-            <div class="card">
-                <h5 class="card-header text-dark bg-secondary bg-soft"></h5>
-                <div class="card-body">
-                    <div id="AllInOne" class="apex-charts" dir="ltr"></div>
-                    <h5 class=" text-dark text-center">Care Cards</h5>
-                </div>
-            </div>
-        </div>
-
-        </div>
-        <!-- end row -->
-    </div>
 </div>
 
 
@@ -667,6 +644,15 @@
             </div>
         </div>
     </div>
+    <div class="col-md-4">
+            <div class="card">
+                <h5 class="card-header text-dark bg-secondary bg-soft"></h5>
+                <div class="card-body">
+                    <div id="AllInOne" class="apex-charts" dir="ltr"></div>
+                    <h5 class=" text-dark text-center">Care Cards</h5>
+                </div>
+            </div>
+        </div>
 </div>
 <div class="row mb-4">
     <div class="col-xl-6">
@@ -1147,7 +1133,7 @@
     (async () => {
         const AllinOne_ChartJson = await fetch('{{ route('AllinOne_Chart')}}').then(response => response.json());
         var AllinOne = {
-            series: [AllinOne_ChartJson.Pending, AllinOne_ChartJson.Approved, AllinOne_ChartJson.Printed,  AllinOne_ChartJson.Rejected],
+            series: [AllinOne_ChartJson.All, AllinOne_ChartJson.Pending, AllinOne_ChartJson.Approved, AllinOne_ChartJson.Printed,  AllinOne_ChartJson.Rejected],
             chart: {
                 height: 270,
                 type: 'radialBar',
@@ -1173,8 +1159,8 @@
                     }
                 }
             },
-            colors: ['#f1b44c',  '#34c38f', '#74788d', '#f46a6a', ],
-            labels: ['Pending',  'Approved', 'Printed', 'Rejected'],
+            colors: ['#f1b44c', '#74788d',  '#34c38f', '#050505', '#f46a6a', ],
+            labels: ['All','Pending',  'Approved', 'Printed', 'Rejected'],
             legend: {
                 show: true,
                 floating: true,

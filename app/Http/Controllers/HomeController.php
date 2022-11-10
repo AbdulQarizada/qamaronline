@@ -95,12 +95,13 @@ class HomeController extends Controller
         $QuranEnglish =  $quran['en'];
 
 
-        $qamarcarecardsCount =   QamarCareCard::get()->count();
+        // $qamarcarecardsCount =   QamarCareCard::get()->count();
         // $qamarcarecardsPending =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Pending')->get()->count();
         // $qamarcarecardsApproved =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Approved')->get()->count();
         // $qamarcarecardsPrinted =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Printed')->get()->count();
         // $qamarcarecardsReleased =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Released')->get()->count();
         // $qamarcarecardsRejected =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Rejected')->get()->count();
+        // 'qamarcarecardsCount',
         // 'qamarcarecardsPending',
         // 'qamarcarecardsApproved',
         // 'qamarcarecardsPrinted',
@@ -132,7 +133,6 @@ class HomeController extends Controller
             'QuranEnglish',
             'catagorys',
             'notifications',
-            'qamarcarecardsCount',
             'qamarcarecardsLastFive',
         ));
     }
@@ -343,7 +343,7 @@ class HomeController extends Controller
        public function AllinOne_Chart()
        {
 
-        // $qamarcarecardsCount =   QamarCareCard::get()->count();
+        $qamarcarecardsCount =   QamarCareCard::get()->count();
         $qamarcarecardsPending =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Pending')->get()->count();
         $qamarcarecardsApproved =   QamarCareCard::where("qamar_care_cards.Status", "=", 'Approved')->get()->count();
         $qamarcarecardsPrinted=   QamarCareCard::where("qamar_care_cards.Status", "=", 'Printed')->get()->count();
@@ -352,7 +352,7 @@ class HomeController extends Controller
 
 
            return response()->json([
-            //    'All' => $qamarcarecardsCount,
+                'All' => $qamarcarecardsCount,
                'Pending' => $qamarcarecardsPending,
                'Approved' => $qamarcarecardsApproved,
                'Printed' => $qamarcarecardsPrinted,
