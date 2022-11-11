@@ -1,6 +1,6 @@
-@extends('layouts.master-layouts')
+@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
 
-@section('title') Orphans List @endsection
+@section('title') Orphan and Sponsorships @endsection
 
 @section('css')
 <!-- ION Slider -->
@@ -55,7 +55,7 @@
             <div class="product-container">
                 <div class="product-image">
 
-                    <a href="{{route('AddToCartOrphans', ['data' => $data -> id])}}" class="product-link btn bg-success text-white rounded">Sponsor Me</a>
+                    <a href="{{route('AddToCartOrphans', ['data' => $data -> id])}}" class="product-link btn bg-warning text-white rounded">Sponsor Me</a>
                     <img class="img-responsive" src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}" alt="">
                 </div>
                 <div class="product-description">
