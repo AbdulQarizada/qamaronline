@@ -157,8 +157,23 @@
 
                                 </div>
                             </div>
-
                         </div>
+                        <div class="col-md-4 ">
+                                    <div class="mb-3 position-relative">
+                                        <label for="Sponsored_At" class="form-label">Date of Birth <i class="mdi mdi-asterisk text-danger"></i></label>
+                                        <div class="input-group " id="example-date-input">
+
+                                            <input class="form-control form-select-lg @error('Sponsored_At') is-invalid @enderror" value="{{ old('Sponsored_At') }}" type="date" id="example-date-input" name="Sponsored_At" id="Sponsored_At" required>
+                                            @error('Sponsored_At')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+
+                                        </div>
+                                    </div>
+
+                                </div>
                     </div>
 
 

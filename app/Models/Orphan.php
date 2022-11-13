@@ -9,8 +9,8 @@ class Orphan extends Model
 {
     use HasFactory;
     protected $fillable =
-    [    
-   
+    [
+
         'FirstName',
         'LastName',
         'IntroducerName',
@@ -22,7 +22,7 @@ class Orphan extends Model
         'Tribe_ID',
         'Language_ID',
         'WhyShouldYouHelpMe',
-        
+
 
         'PrimaryNumber',
         'SecondaryNumber',
@@ -36,13 +36,13 @@ class Orphan extends Model
         'InCareTazkiraID',
 
 
-       
 
 
-       
-       
 
-        'CurrentlyInSchool',            
+
+
+
+        'CurrentlyInSchool',
         'SchoolName',
         'SchoolProvince_ID',
         'SchoolDistrict_ID',
@@ -51,8 +51,8 @@ class Orphan extends Model
         'SchoolEmail',
         'Class',
 
- 
-      
+
+
 
         'FatherName',
         'MonthlyFamilyIncome',
@@ -62,7 +62,7 @@ class Orphan extends Model
         'LevelPoverty',
         'FamilyStatus_ID',
 
-        
+
         'Tazkira',
         'HousePic',
         'FamilyPic',
@@ -73,6 +73,7 @@ class Orphan extends Model
 
         'Status',
         'IsSponsored',
+        'Sponsored_At',
         'Status_By',
         'Created_By',
         'Owner',

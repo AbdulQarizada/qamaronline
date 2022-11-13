@@ -65,6 +65,7 @@ return new class extends Migration
 
             $table -> integer('IsSponsored')->nullable();
             $table -> integer('Sponsor_ID')->nullable();
+            $table -> date('Sponsored_At')->nullable();
 
 
 
@@ -72,7 +73,7 @@ return new class extends Migration
             $table -> string('FamilyPic')->nullable();
             $table -> string('HousePic')->nullable();
 
-            
+
             $table -> string('Status')->nullable();
             $table -> integer('Status_By')->nullable();
             $table -> integer('Created_By')->nullable();

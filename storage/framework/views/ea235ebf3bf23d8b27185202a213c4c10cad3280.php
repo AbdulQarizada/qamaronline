@@ -59,6 +59,7 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                             <th>Phone Numbers</th>
                             <th>Family Status</th>
                             <th>Status</th>
+                            <th>IsSponsored</th>
                             <th>Created By</th>
                             <th>Actions</th>
 
@@ -173,6 +174,19 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                     <?php endif; ?>
 
                                 </div>
+                            </td>
+                            <td>
+                                <?php if( $data -> IsSponsored !=""): ?>
+                                    <h3 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">Not Yet Sponsored</a></h3>
+                                <?php endif; ?>
+                                <?php if( $data -> IsSponsored ==""): ?>
+
+                                <div>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
+                                    <p class="text-muted mb-0">Requested</p>
+
+                                </div>
+                                <?php endif; ?>
                             </td>
                             <td>
                                 <?php if( $data -> Created_By !=""): ?>

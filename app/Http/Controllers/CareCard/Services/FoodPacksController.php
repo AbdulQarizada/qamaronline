@@ -93,7 +93,7 @@ class FoodPacksController extends Controller
         'FullName' => 'bail|required|max:255',
         'FatherName' => 'required|max:255',
         // 'TazkiraID' => 'required|max:255',
-        'PrimaryNumber' => 'required|max:255',
+        'PrimaryNumber' => 'required|unique:beneficiarylists|max:255',
         // 'SecondaryNumber' => 'required|max:255',
         'Province_ID' => 'required|max:255',
         'Reference_ID' => 'required|max:255',

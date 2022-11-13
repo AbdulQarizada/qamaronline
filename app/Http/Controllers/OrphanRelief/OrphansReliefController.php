@@ -1517,12 +1517,17 @@ class OrphansReliefController extends Controller
   }
 
 
-  public function AssignSponsor(Orphan $data)
+  public function AssignSponsor(Request $request, Orphan $data )
   {
-    $data->update([
-      // 'Assigned_By' => auth()->user()->id,
+    $validator = $request->validate([
+      'Sponsor_ID' => 'bail|required|max:255',
+      'Sponsored_At' => 'required|max:255',
+    ]);
 
+
+    $data->update([
       'Sponsor_ID' => request('Sponsor_ID'),
+      'Sponsored_At' => request('Sponsored_At'),
       'IsSponsored' => 1
 
 

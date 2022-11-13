@@ -101,8 +101,8 @@
                                     </div>
                                 </td>
                                 <td>
-                                <p class="text-muted mb-0 text-danger">Waiting Since</p>
-                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> created_at -> format("d-m-Y")); ?></a></h5>
+                                    <p class="text-muted mb-0 text-danger">Waiting Since</p>
+                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> created_at -> format("d-m-Y")); ?></a></h5>
 
 
                                 </td>
@@ -136,8 +136,8 @@
                 <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
                     </p> -->
                 <form class="needs-validation" action="<?php echo e(route('AssignSponsorOrphan', ['data' => $data -> id])); ?>" method="POST" enctype="multipart/form-data" novalidate>
-                <?php echo method_field('PUT'); ?>
-                <?php echo csrf_field(); ?>
+                    <?php echo method_field('PUT'); ?>
+                    <?php echo csrf_field(); ?>
                     <!-- <input type="text"  value="<?php echo e($data -> id); ?>" id="Assignee_ID" name="Assignee_ID" hidden /> -->
 
 
@@ -157,12 +157,41 @@
 
                                 </div>
                             </div>
-
                         </div>
-                        </div>
+                        <div class="col-md-4 ">
+                                    <div class="mb-3 position-relative">
+                                        <label for="Sponsored_At" class="form-label">Date of Birth <i class="mdi mdi-asterisk text-danger"></i></label>
+                                        <div class="input-group " id="example-date-input">
+
+                                            <input class="form-control form-select-lg <?php $__errorArgs = ['Sponsored_At'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Sponsored_At')); ?>" type="date" id="example-date-input" name="Sponsored_At" id="Sponsored_At" required>
+                                            <?php $__errorArgs = ['Sponsored_At'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong><?php echo e($message); ?></strong>
+                                            </span>
+                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                    </div>
 
 
-                          <button class="btn btn-success btn-lg m-3" type="submit">Assign</button>
+                    <button class="btn btn-success btn-lg m-3" type="submit">Assign</button>
                 </form>
             </div>
         </div>
