@@ -41,7 +41,7 @@
             <h3 class="card-header bg-warning text-white"></h3>
                 <div class="card-body">
 
-                    <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
+                    <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -198,5 +198,27 @@ $('.release').on('click', function (event) {
         }
     });
 });
+
+$('#datatable').DataTable( {
+        responsive: true,
+
+        lengthMenu: [[100, 200, 300, 400, 500, 1000, -1], [100, 200, 300, 400, 500, 1000, "All"]],
+
+        dom: 'lBfrtip',
+        buttons: [
+            {
+                autoFilter: true,
+                extend: 'excel',
+                text: 'Download To Excel',
+                exportOptions: {
+                    modifier: {
+                        page: 'current'
+                    }
+                }
+            }
+        ]
+    } );
+
+
 </script>
 @endsection

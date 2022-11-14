@@ -189,111 +189,111 @@
 
 
 
-        <div class="dropdown d-none d-lg-inline-block ms-1">
-            <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
-                <i class="bx bx-fullscreen"></i>
-            </button>
-        </div>
+            <div class="dropdown d-none d-lg-inline-block ms-1">
+                <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
+                    <i class="bx bx-fullscreen"></i>
+                </button>
+            </div>
 
-        <div class="dropdown d-inline-block">
-            <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="bx bx-bell bx-tada"></i>
-                <span class="badge bg-danger rounded-pill"><?php echo e(auth()->user()->unreadNotifications -> count()); ?></span>
-            </button>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-notifications-dropdown">
-                <div class="p-3">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <h6 class="m-0" key="t-notifications"> <?php echo app('translator')->get('translation.Notifications'); ?> </h6>
-                        </div>
-                        <div class="col-auto">
-                            <a href="#!" class="small" key="t-view-all"> <?php echo app('translator')->get('translation.View_All'); ?></a>
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bx bx-bell bx-tada"></i>
+                    <span class="badge bg-danger rounded-pill"><?php echo e(auth()->user()->unreadNotifications -> count()); ?></span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-notifications-dropdown">
+                    <div class="p-3">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h6 class="m-0" key="t-notifications"> <?php echo app('translator')->get('translation.Notifications'); ?> </h6>
+                            </div>
+                            <div class="col-auto">
+                                <a href="#!" class="small" key="t-view-all"> <?php echo app('translator')->get('translation.View_All'); ?></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div data-simplebar style="max-height: 230px;">
-                    <a href="" class="text-reset notification-item">
-                        <div class="d-flex">
-                            <div class="avatar-xs me-3">
-                                <span class="avatar-title bg-primary rounded-circle font-size-16">
-                                    <i class="bx bx-cart"></i>
-                                </span>
-                            </div>
-                            <?php $__empty_1 = true; $__currentLoopData = auth()->user()->unreadNotifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                            <div class="flex-grow-1">
-                                <h6 class="mt-0 mb-1 text-danger" key="t-your-order">New Notification</h6>
-                                <div class="font-size-12 text-muted">
-                                    <p class="mb-1" key="t-grammer"> <?php echo e($notification->data['Name']); ?></p>
-                                    <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago"><?php echo e($notification->created_at); ?></span></p>
-
+                    <div data-simplebar style="max-height: 230px;">
+                        <a href="" class="text-reset notification-item">
+                            <div class="d-flex">
+                                <div class="avatar-xs me-3">
+                                    <span class="avatar-title bg-primary rounded-circle font-size-16">
+                                        <i class="bx bx-cart"></i>
+                                    </span>
                                 </div>
-                            </div>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                            <div class="flex-grow-1">
-                                <h6 class="mt-0 mb-1" key="t-your-order">No New Notification</h6>
-                                <div class="font-size-12 text-muted">
-                                    <p class="mb-1" key="t-grammer">No New Notification</p>
-                                    <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">Now</span></p>
-                                </div>
-                            </div>
-                            <?php endif; ?>
+                                <?php $__empty_1 = true; $__currentLoopData = auth()->user()->unreadNotifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                <div class="flex-grow-1">
+                                    <h6 class="mt-0 mb-1 text-danger" key="t-your-order">New Notification</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-1" key="t-grammer"> <?php echo e($notification->data['Name']); ?></p>
+                                        <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago"><?php echo e($notification->created_at); ?></span></p>
 
-                        </div>
-                    </a>
-                </div>
-                <div class="p-2 border-top d-grid">
-                    <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
-                        <i class="mdi mdi-arrow-right-circle me-1"></i> <span key="t-view-more"><?php echo app('translator')->get('translation.View_More'); ?></span>
-                    </a>
+                                    </div>
+                                </div>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                <div class="flex-grow-1">
+                                    <h6 class="mt-0 mb-1" key="t-your-order">No New Notification</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-1" key="t-grammer">No New Notification</p>
+                                        <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">Now</span></p>
+                                    </div>
+                                </div>
+                                <?php endif; ?>
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="p-2 border-top d-grid">
+                        <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
+                            <i class="mdi mdi-arrow-right-circle me-1"></i> <span key="t-view-more"><?php echo app('translator')->get('translation.View_More'); ?></span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="dropdown d-inline-block">
-            <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <?php if(Auth::user()->IsEmployee == 1): ?>
-                <img class="rounded-circle header-profile-user" src="<?php echo e(isset(Auth::user()->Profile) ? asset('/uploads/User/Employees/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png')); ?>" alt="Profile">
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?php if(Auth::user()->IsEmployee == 1): ?>
+                    <img class="rounded-circle header-profile-user" src="<?php echo e(isset(Auth::user()->Profile) ? asset('/uploads/User/Employees/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png')); ?>" alt="Profile">
 
-                <?php else: ?>
-                <img class="rounded-circle header-profile-user" src="<?php echo e(isset(Auth::user()->Profile) ? asset('/uploads/User/Sponsors/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png')); ?>" alt="Profile">
-                <?php endif; ?>
+                    <?php else: ?>
+                    <img class="rounded-circle header-profile-user" src="<?php echo e(isset(Auth::user()->Profile) ? asset('/uploads/User/Sponsors/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png')); ?>" alt="Profile">
+                    <?php endif; ?>
 
-                <span class="d-none d-xl-inline-block ms-1" key="t-henry"><?php echo e(ucfirst(Auth::user()->FullName)); ?></span>
-
+                    <span class="d-none d-xl-inline-block ms-1" key="t-henry"><?php echo e(ucfirst(Auth::user()->FullName)); ?></span>
 
 
-                <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-end">
-                <!-- item-->
-                <a class="dropdown-item" href="<?php echo e(route('EditUser', ['data' => Auth::user()->id])); ?>"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile"><?php echo app('translator')->get('translation.Profile'); ?></span></a>
-                <!-- <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet"><?php echo app('translator')->get('translation.My_Wallet'); ?></span></a>
+
+                    <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <!-- item-->
+                    <a class="dropdown-item" href="<?php echo e(route('EditUser', ['data' => Auth::user()->id])); ?>"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile"><?php echo app('translator')->get('translation.Profile'); ?></span></a>
+                    <!-- <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet"><?php echo app('translator')->get('translation.My_Wallet'); ?></span></a>
                 <a class="dropdown-item d-block" href="#" data-bs-toggle="modal" data-bs-target=".change-password"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings"><?php echo app('translator')->get('translation.Settings'); ?></span></a>
                 -->
-                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".change-password"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Change Password</span></a>
-                <?php if(\Cookie::get('Layout') == 'LayoutNoSidebar'): ?>
-                <a class="dropdown-item" href="<?php echo e(route('LayoutSidebar')); ?>"><i class="bx bx-layout font-size-16 align-middle me-1"></i> <span key="t-profile">Change Layout</span></a>
-                <?php endif; ?>
-                <?php if(\Cookie::get('Layout') == 'LayoutSidebar'): ?>
-                <a class="dropdown-item" href="<?php echo e(route('LayoutNoSidebar')); ?>"><i class="bx bx-layout font-size-16 align-middle me-1"></i> <span key="t-profile">Change Layout</span></a>
-                <?php endif; ?>
+                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".change-password"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Change Password</span></a>
+                    <?php if(\Cookie::get('Layout') == 'LayoutNoSidebar'): ?>
+                    <a class="dropdown-item" href="<?php echo e(route('LayoutSidebar')); ?>"><i class="bx bx-layout font-size-16 align-middle me-1"></i> <span key="t-profile">Change Layout</span></a>
+                    <?php endif; ?>
+                    <?php if(\Cookie::get('Layout') == 'LayoutSidebar'): ?>
+                    <a class="dropdown-item" href="<?php echo e(route('LayoutNoSidebar')); ?>"><i class="bx bx-layout font-size-16 align-middle me-1"></i> <span key="t-profile">Change Layout</span></a>
+                    <?php endif; ?>
 
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-danger" href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout"><?php echo app('translator')->get('translation.Logout'); ?></span></a>
-                <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
-                    <?php echo csrf_field(); ?>
-                </form>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout"><?php echo app('translator')->get('translation.Logout'); ?></span></a>
+                    <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                        <?php echo csrf_field(); ?>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div class="dropdown d-inline-block">
-            <!-- <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+            <div class="dropdown d-inline-block">
+                <!-- <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
                     <i class="bx bx-cog bx-spin"></i>
                 </button> -->
+            </div>
         </div>
-    </div>
 
 
-    <?php endif; ?>
+        <?php endif; ?>
     </div>
 </header>
 <?php if(Auth::check()): ?>
@@ -332,7 +332,6 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button">
                             <i class="bx bx-file me-2"></i><span key="t-extra-pages">System Management</span>
-                            <div class="arrow-down"></div>
                         </a>
                     </li>
                     <?php endif; ?>

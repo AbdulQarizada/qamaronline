@@ -3,8 +3,6 @@
 <?php $__env->startSection('title'); ?> Orphan and Sponsorships <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
-<!-- DataTables -->
-<link href="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.css')); ?>" rel="stylesheet" type="text/css" />
 <link href="<?php echo e(URL::asset('/assets/css/mystyle/tabstyle.css')); ?>" rel="stylesheet" type="text/css" />
 <?php $__env->stopSection(); ?>
 
@@ -22,7 +20,6 @@
     <?php if(Auth::user()->IsOrphanRelief == 1): ?>
     <h1 class="font-size-24 mt-4 mb-4 fw-medium text-dark text-muted">Orphans</h1>
     <?php endif; ?>
-
     <div class="col-xl-12">
         <div class="row">
             <?php if(Auth::user()->IsOrphanRelief == 1): ?>
@@ -32,22 +29,9 @@
                         <div class="card-body text-center">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <i class="mdi mdi-account-alert text-primary display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">All Orphans</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                    <i class="mdi mdi-account-details-outline text-warning display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Orphans</p>
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
-                            </div>
-
-                            <div class="d-flex mt-4">
-
                             </div>
                         </div>
                     </div>
@@ -56,27 +40,62 @@
             <?php endif; ?>
             <?php if(Auth::user()->IsOrphanRelief == 1): ?>
             <div class="col-md-2 mb-2">
-                <a href="<?php echo e(route('AllOrphans')); ?>">
+                <a href="<?php echo e(route('PendingOrphans')); ?>">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <i class="mdi mdi-account-alert text-secondary display-5 "></i>
+                                    <i class="mdi mdi-account-convert text-dark display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Pending</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <?php endif; ?>
+            <?php if(Auth::user()->IsOrphanRelief == 1): ?>
+            <div class="col-md-2 mb-2">
+                <a href="<?php echo e(route('ApprovedOrphans')); ?>">
+                    <div class="card-one  mini-stats-wid border border-secondary">
+                        <div class="card-body text-center">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="mdi mdi-account-check text-success display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Approved</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <?php endif; ?>
+            <?php if(Auth::user()->IsOrphanRelief == 1): ?>
+            <div class="col-md-2 mb-2">
+                <a href="<?php echo e(route('RejectedOrphans')); ?>">
+                    <div class="card-one  mini-stats-wid border border-secondary">
+                        <div class="card-body text-center">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="mdi mdi-account-cancel-outline text-danger display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Rejected</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <?php endif; ?>
+            <?php if(Auth::user()->IsOrphanRelief == 1): ?>
+            <div class="col-md-2 mb-2">
+                <a href="<?php echo e(route('WaitingOrphans')); ?>">
+                    <div class="card-one  mini-stats-wid border border-secondary">
+                        <div class="card-body text-center">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="mdi mdi-account-clock-outline text-secondary display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Waiting</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
-                            </div>
-
-                            <div class="d-flex mt-4">
-
                             </div>
                         </div>
                     </div>
@@ -85,43 +104,23 @@
             <?php endif; ?>
             <?php if(Auth::user()->IsOrphanRelief == 1): ?>
             <div class="col-md-2 mb-2">
-                <a href="<?php echo e(route('AllOrphans')); ?>">
+                <a href="<?php echo e(route('SponsoredOrphans')); ?>">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <i class="mdi mdi-account-alert text-success display-5 "></i>
+                                    <i class="mdi mdi-account-child text-info display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Sponsored</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
-                            </div>
-
-                            <div class="d-flex mt-4">
-
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
             <?php endif; ?>
-
         </div>
-        <!-- end row -->
-
     </div>
 </div>
-<!-- end row -->
-
-
-
 <div class="row">
     <?php if(Auth::user()->IsOrphanRelief == 1): ?>
     <h1 class="font-size-24 mt-4 mb-4 fw-medium text-dark text-muted">Sponsors</h1>
@@ -135,22 +134,9 @@
                         <div class="card-body text-center">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <i class="bx bx-male text-info display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">All Sponsors</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                    <i class="mdi mdi-account-heart-outline text-warning display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Sponsors</p>
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
-                            </div>
-
-                            <div class="d-flex mt-4">
-
                             </div>
                         </div>
                     </div>
@@ -159,27 +145,14 @@
             <?php endif; ?>
             <?php if(Auth::user()->IsOrphanRelief == 1): ?>
             <div class="col-md-2 mb-2">
-                <a href="<?php echo e(route('AllSponsor')); ?>">
+                <a href="<?php echo e(route('ActiveSponsor')); ?>">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <i class="bx bx-male text-success display-5 "></i>
+                                    <i class="mdi mdi-account-tie-outline text-primary display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Active</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
-                            </div>
-
-                            <div class="d-flex mt-4">
-
                             </div>
                         </div>
                     </div>
@@ -188,41 +161,23 @@
             <?php endif; ?>
             <?php if(Auth::user()->IsOrphanRelief == 1): ?>
             <div class="col-md-2 mb-2">
-                <a href="<?php echo e(route('AllSponsor')); ?>">
+                <a href="<?php echo e(route('InActiveSponsor')); ?>">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <i class="bx bx-male text-secondary display-5 "></i>
+                                    <i class="mdi mdi-account-tie-voice-off-outline text-secondary display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">InActive</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
-                            </div>
-
-                            <div class="d-flex mt-4">
-
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
             <?php endif; ?>
-
         </div>
-        <!-- end row -->
-
     </div>
 </div>
-<!-- end row -->
-
 
 <div class="row">
     <?php if(Auth::user()->IsOrphanRelief == 1): ?>
@@ -238,21 +193,8 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-account-cash-outline text-success display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">All Payments</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                    <p class="my-0 text-dark mt-2 font-size-18">Payments</p>
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
-                            </div>
-
-                            <div class="d-flex mt-4">
-
                             </div>
                         </div>
                     </div>
@@ -267,21 +209,8 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-account-cash-outline text-secondary display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">Pending</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                    <p class="my-0 text-dark mt-2 font-size-18">Due</p>
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
-                            </div>
-
-                            <div class="d-flex mt-4">
-
                             </div>
                         </div>
                     </div>
@@ -297,20 +226,7 @@
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-account-cash-outline text-success display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Successfull</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
-                            </div>
-
-                            <div class="d-flex mt-4">
-
                             </div>
                         </div>
                     </div>
@@ -326,37 +242,16 @@
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-account-cash-outline text-danger display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Failed</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
-                            </div>
-
-                            <div class="d-flex mt-4">
-
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
             <?php endif; ?>
-
-
         </div>
-        <!-- end row -->
-
     </div>
 </div>
-<!-- end row -->
-
-
-
 <?php endif; ?>
 
 <?php $__env->stopSection(); ?>

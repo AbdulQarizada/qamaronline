@@ -73,7 +73,8 @@ class Orphan extends Model
 
         'Status',
         'IsSponsored',
-        'Sponsored_At',
+        'Sponsored_StartDate',
+        'Sponsored_EndDate',
         'Status_By',
         'Created_By',
         'Owner',

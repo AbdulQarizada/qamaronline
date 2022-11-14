@@ -45,7 +45,7 @@
                         <td><span class="text-danger text-uppercase">Waiting Since: </span>{{$data['item']['created_at'] -> format("j F Y")}}</td>
                         <td><span class="badge bg-success">Verified</span></td>
                         <td>
-                            <a href="{{route('RemoveFromCartOrphans', $data['item']['id'])}}" class="btn btn-danger waves-effect waves-light delete-confirm">
+                            <a href="{{route('RemoveFromCartPayment', $data['item']['id'])}}" class="btn btn-danger waves-effect waves-light delete-confirm">
                                 <i class=" bx bx-x-circle  font-size-16 align-middle"></i>
                             </a>
                         </td>
@@ -64,7 +64,7 @@
     </div>
 </div>
 
-<form method="POST" class="form-horizontal" action="{{ route('PaymentOrphan') }}" enctype="multipart/form-data" id="Payment">
+<form method="POST" class="form-horizontal" action="{{ route('StorePayment') }}" enctype="multipart/form-data" id="Payment">
     @csrf
     <div class="row justify-content-center">
         <div class="col-lg-12">

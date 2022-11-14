@@ -101,13 +101,7 @@ class HomeController extends Controller
 
 
 
-        return view('index', compact(
-            'QuranArabic',
-            'QuranEnglish',
-            'catagorys',
-            'notifications',
-            'qamarcarecardsLastFive',
-        ));
+        return view('index', compact('QuranArabic','QuranEnglish','notifications','qamarcarecardsLastFive'));
     }
 
 
@@ -439,21 +433,13 @@ class HomeController extends Controller
 
 
 
-    public function Employees_Profile(Request $request)
+    public function Users_Profile(Request $request)
     {
-
         if ($request->hasFile('Profile')) {
-
-
             $profile = $request->file('Profile');
-
             $profilename = $profile->getClientOriginalName();
-
             $profileuniquename = uniqid() . '_' . $profilename;
-
-            $profile->storeAs('Profiles', $profileuniquename, 'Employees');
-
-
+            $profile->storeAs('Profiles', $profileuniquename, 'Users');
             return $profileuniquename;
         }
         return '';
@@ -590,86 +576,6 @@ class HomeController extends Controller
 
 
 
-
-
-    public function Orphans_Profile(Request $request)
-    {
-
-        if ($request->hasFile('Profile')) {
-
-
-            $profile = $request->file('Profile');
-
-            $profilename = $profile->getClientOriginalName();
-
-            $profileuniquename = uniqid() . '_' . $profilename;
-
-            $profile->storeAs('Profiles', $profileuniquename, 'OrphansRelief');
-
-
-            return $profileuniquename;
-        }
-        return '';
-    }
-
-
-    public function Orphans_Tazkira(Request $request)
-    {
-        if ($request->hasFile('Tazkira')) {
-
-
-            $Tazkira = $request->file('Tazkira');
-
-            $Tazkiraname = $Tazkira->getClientOriginalName();
-
-            $Tazkiruniquename = uniqid() . '_' . $Tazkiraname;
-
-
-            $Tazkira->storeAs('Tazkiras', $Tazkiruniquename, 'OrphansRelief');
-
-            return $Tazkiruniquename;
-        }
-        return '';
-    }
-
-
-    public function Orphans_HousePic(Request $request)
-    {
-        if ($request->hasFile('HousePic')) {
-
-
-            $Tazkira = $request->file('HousePic');
-
-            $Tazkiraname = $Tazkira->getClientOriginalName();
-
-            $Tazkiruniquename = uniqid() . '_' . $Tazkiraname;
-
-
-            $Tazkira->storeAs('HousePic', $Tazkiruniquename, 'OrphansRelief');
-
-            return $Tazkiruniquename;
-        }
-        return '';
-    }
-
-    public function Orphans_FamilyPic(Request $request)
-    {
-        if ($request->hasFile('FamilyPic')) {
-
-
-            $Tazkira = $request->file('FamilyPic');
-
-            $Tazkiraname = $Tazkira->getClientOriginalName();
-
-            $Tazkiruniquename = uniqid() . '_' . $Tazkiraname;
-
-
-            $Tazkira->storeAs('FamilyPic', $Tazkiruniquename, 'OrphansRelief');
-
-            return $Tazkiruniquename;
-        }
-        return '';
-    }
 
 
     // location

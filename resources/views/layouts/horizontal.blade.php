@@ -189,111 +189,111 @@
 
 
 
-        <div class="dropdown d-none d-lg-inline-block ms-1">
-            <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
-                <i class="bx bx-fullscreen"></i>
-            </button>
-        </div>
+            <div class="dropdown d-none d-lg-inline-block ms-1">
+                <button type="button" class="btn header-item noti-icon waves-effect" data-bs-toggle="fullscreen">
+                    <i class="bx bx-fullscreen"></i>
+                </button>
+            </div>
 
-        <div class="dropdown d-inline-block">
-            <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="bx bx-bell bx-tada"></i>
-                <span class="badge bg-danger rounded-pill">{{ auth()->user()->unreadNotifications -> count() }}</span>
-            </button>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-notifications-dropdown">
-                <div class="p-3">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <h6 class="m-0" key="t-notifications"> @lang('translation.Notifications') </h6>
-                        </div>
-                        <div class="col-auto">
-                            <a href="#!" class="small" key="t-view-all"> @lang('translation.View_All')</a>
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="bx bx-bell bx-tada"></i>
+                    <span class="badge bg-danger rounded-pill">{{ auth()->user()->unreadNotifications -> count() }}</span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-notifications-dropdown">
+                    <div class="p-3">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h6 class="m-0" key="t-notifications"> @lang('translation.Notifications') </h6>
+                            </div>
+                            <div class="col-auto">
+                                <a href="#!" class="small" key="t-view-all"> @lang('translation.View_All')</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div data-simplebar style="max-height: 230px;">
-                    <a href="" class="text-reset notification-item">
-                        <div class="d-flex">
-                            <div class="avatar-xs me-3">
-                                <span class="avatar-title bg-primary rounded-circle font-size-16">
-                                    <i class="bx bx-cart"></i>
-                                </span>
-                            </div>
-                            @forelse(auth()->user()->unreadNotifications as $notification)
-                            <div class="flex-grow-1">
-                                <h6 class="mt-0 mb-1 text-danger" key="t-your-order">New Notification</h6>
-                                <div class="font-size-12 text-muted">
-                                    <p class="mb-1" key="t-grammer"> {{ $notification->data['Name'] }}</p>
-                                    <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">{{ $notification->created_at }}</span></p>
-
+                    <div data-simplebar style="max-height: 230px;">
+                        <a href="" class="text-reset notification-item">
+                            <div class="d-flex">
+                                <div class="avatar-xs me-3">
+                                    <span class="avatar-title bg-primary rounded-circle font-size-16">
+                                        <i class="bx bx-cart"></i>
+                                    </span>
                                 </div>
-                            </div>
-                            @empty
-                            <div class="flex-grow-1">
-                                <h6 class="mt-0 mb-1" key="t-your-order">No New Notification</h6>
-                                <div class="font-size-12 text-muted">
-                                    <p class="mb-1" key="t-grammer">No New Notification</p>
-                                    <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">Now</span></p>
-                                </div>
-                            </div>
-                            @endforelse
+                                @forelse(auth()->user()->unreadNotifications as $notification)
+                                <div class="flex-grow-1">
+                                    <h6 class="mt-0 mb-1 text-danger" key="t-your-order">New Notification</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-1" key="t-grammer"> {{ $notification->data['Name'] }}</p>
+                                        <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">{{ $notification->created_at }}</span></p>
 
-                        </div>
-                    </a>
-                </div>
-                <div class="p-2 border-top d-grid">
-                    <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
-                        <i class="mdi mdi-arrow-right-circle me-1"></i> <span key="t-view-more">@lang('translation.View_More')</span>
-                    </a>
+                                    </div>
+                                </div>
+                                @empty
+                                <div class="flex-grow-1">
+                                    <h6 class="mt-0 mb-1" key="t-your-order">No New Notification</h6>
+                                    <div class="font-size-12 text-muted">
+                                        <p class="mb-1" key="t-grammer">No New Notification</p>
+                                        <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">Now</span></p>
+                                    </div>
+                                </div>
+                                @endforelse
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="p-2 border-top d-grid">
+                        <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
+                            <i class="mdi mdi-arrow-right-circle me-1"></i> <span key="t-view-more">@lang('translation.View_More')</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="dropdown d-inline-block">
-            <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                @if(Auth::user()->IsEmployee == 1)
-                <img class="rounded-circle header-profile-user" src="{{ isset(Auth::user()->Profile) ? asset('/uploads/User/Employees/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png') }}" alt="Profile">
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @if(Auth::user()->IsEmployee == 1)
+                    <img class="rounded-circle header-profile-user" src="{{ isset(Auth::user()->Profile) ? asset('/uploads/User/Employees/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png') }}" alt="Profile">
 
-                @else
-                <img class="rounded-circle header-profile-user" src="{{ isset(Auth::user()->Profile) ? asset('/uploads/User/Sponsors/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png') }}" alt="Profile">
-                @endif
+                    @else
+                    <img class="rounded-circle header-profile-user" src="{{ isset(Auth::user()->Profile) ? asset('/uploads/User/Sponsors/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png') }}" alt="Profile">
+                    @endif
 
-                <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{ucfirst(Auth::user()->FullName)}}</span>
-
+                    <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{ucfirst(Auth::user()->FullName)}}</span>
 
 
-                <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-end">
-                <!-- item-->
-                <a class="dropdown-item" href="{{route('EditUser', ['data' => Auth::user()->id])}}"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">@lang('translation.Profile')</span></a>
-                <!-- <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet">@lang('translation.My_Wallet')</span></a>
+
+                    <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <!-- item-->
+                    <a class="dropdown-item" href="{{route('EditUser', ['data' => Auth::user()->id])}}"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile">@lang('translation.Profile')</span></a>
+                    <!-- <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet">@lang('translation.My_Wallet')</span></a>
                 <a class="dropdown-item d-block" href="#" data-bs-toggle="modal" data-bs-target=".change-password"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">@lang('translation.Settings')</span></a>
                 -->
-                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".change-password"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Change Password</span></a>
-                @if(\Cookie::get('Layout') == 'LayoutNoSidebar')
-                <a class="dropdown-item" href="{{route('LayoutSidebar')}}"><i class="bx bx-layout font-size-16 align-middle me-1"></i> <span key="t-profile">Change Layout</span></a>
-                @endif
-                @if(\Cookie::get('Layout') == 'LayoutSidebar')
-                <a class="dropdown-item" href="{{route('LayoutNoSidebar')}}"><i class="bx bx-layout font-size-16 align-middle me-1"></i> <span key="t-profile">Change Layout</span></a>
-                @endif
+                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".change-password"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Change Password</span></a>
+                    @if(\Cookie::get('Layout') == 'LayoutNoSidebar')
+                    <a class="dropdown-item" href="{{route('LayoutSidebar')}}"><i class="bx bx-layout font-size-16 align-middle me-1"></i> <span key="t-profile">Change Layout</span></a>
+                    @endif
+                    @if(\Cookie::get('Layout') == 'LayoutSidebar')
+                    <a class="dropdown-item" href="{{route('LayoutNoSidebar')}}"><i class="bx bx-layout font-size-16 align-middle me-1"></i> <span key="t-profile">Change Layout</span></a>
+                    @endif
 
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-danger" href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">@lang('translation.Logout')</span></a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="javascript:void();" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i> <span key="t-logout">@lang('translation.Logout')</span></a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
             </div>
-        </div>
-        <div class="dropdown d-inline-block">
-            <!-- <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+            <div class="dropdown d-inline-block">
+                <!-- <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
                     <i class="bx bx-cog bx-spin"></i>
                 </button> -->
+            </div>
         </div>
-    </div>
 
 
-    @endif
+        @endif
     </div>
 </header>
 @if (Auth::check())
@@ -332,7 +332,6 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button">
                             <i class="bx bx-file me-2"></i><span key="t-extra-pages">System Management</span>
-                            <div class="arrow-down"></div>
                         </a>
                     </li>
                     @endif

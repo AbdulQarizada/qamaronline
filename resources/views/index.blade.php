@@ -86,10 +86,8 @@
                 </div>
             </div>
         </div>
-        <!-- end row -->
     </div>
 </div>
-<!-- end row -->
 <br />
 <br />
 
@@ -112,24 +110,10 @@
                         <div class="card-body text-center">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <i class="bx bx-smile display-5 "></i>
+                                    <i class="mdi mdi-account-child  display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Orphans Relief</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -144,22 +128,8 @@
                                 <div class="flex-grow-1">
                                     <i class="bx bx-briefcase-alt-2 display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Aid and Relief</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -174,22 +144,8 @@
                                 <div class="flex-grow-1">
                                     <i class="bx bx-gas-pump  display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Wash</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -204,22 +160,8 @@
                                 <div class="flex-grow-1">
                                     <i class="bx bxs-graduation  display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Education</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -235,22 +177,8 @@
                                 <div class="flex-grow-1">
                                     <i class="bx bx-bulb  display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Initiative</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -266,22 +194,8 @@
                                 <div class="flex-grow-1">
                                     <i class="bx bxs-ambulance  display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Medical Sector</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -290,7 +204,6 @@
         </div>
     </div>
 </div>
-<!-- end row -->
 
 
 <div class="row ">
@@ -310,22 +223,8 @@
                                 <div class="flex-grow-1">
                                     <i class="bx bx-credit-card display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Care Card</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -340,22 +239,8 @@
                                 <div class="flex-grow-1">
                                     <i class="bx bx-fingerprint display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Appeals</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -370,22 +255,8 @@
                                 <div class="flex-grow-1">
                                     <i class="bx bx-task display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Distribution</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -400,22 +271,8 @@
                                 <div class="flex-grow-1">
                                     <i class="bx bxs-box display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Donors</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -426,7 +283,6 @@
         </div>
     </div>
 </div>
-<!-- end row -->
 
 
 
@@ -444,133 +300,23 @@
                         <div class="card-body text-center">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <i class="mdi mdi-account-group-outline display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">Users</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                    <i class="mdi mdi-application-cog display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">System</p>
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
             </div>
             @endif
-            @if(Auth::user()->IsSuperAdmin == 1)
-            <div class="col-md-2 mb-2">
-                <a data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">
-                    <div class="card-one  mini-stats-wid border border-secondary">
-                        <div class="card-body text-center">
-                            <div class="d-flex">
-                                <div class="flex-grow-1">
-                                    <i class="bx bxs-report display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">ADD LOOK UPS</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
-                                </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
-                            </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <!-- center modal -->
-
-                    <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">ADD LOOK UP</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-
-
-                                    <form class="needs-validation" action="{{route('CreateLookups')}}" method="POST" enctype="multipart/form-data" novalidate>
-                                        @csrf
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="mb-3 position-relative">
-                                                    <label for="Parent_Name" class="form-label">Main Catagory <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                    <div class="input-group">
-
-                                                        <select class="form-select  form-select-lg @error('Parent_Name') is-invalid @enderror" value="{{ old('Parent_Name') }}" required id="Parent_Name" name="Parent_Name">
-                                                            <!-- <option value="None">Main Catagory</option> -->
-
-                                                            @foreach($catagorys as $catagory)
-                                                            <option value="{{ $catagory -> Name}}">{{ $catagory -> Name}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                        @error('Parent_Name')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="mb-3 position-relative">
-                                                    <label for="Name" class="form-label ">Name<i class="mdi mdi-asterisk text-danger"></i></label>
-                                                    <input type="text" class="form-control form-control-lg @error('Name') is-invalid @enderror" value="{{ old('Name') }}" id="Name" name="Name" required>
-                                                    @error('Name')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <button class="btn btn-success btn-lg" type="submit">Save </button>
-                                        <a class="btn btn-danger btn-lg" href="{{route('root')}}">Cancel</a>
-                                    </form>
-                                </div>
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
-
-                    <!-- end card -->
-                </div>
-            </div>
-            @endif
-
 
         </div>
     </div>
 </div>
-<!-- end row -->
 @endif
 
 
 @if(Cookie::get('Layout') == 'LayoutSidebar')
-
-<!-- start page title -->
-
 <div class="row mb-4">
     <div class="col-md-4">
         <div class="card">

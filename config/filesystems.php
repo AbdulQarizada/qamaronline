@@ -34,9 +34,9 @@ return [
             'driver' => 'local',
             'root' => storage_path('app'),
         ],
-        'Employees' => [
+        'Users' => [
             'driver' => 'local',
-            'root'   => public_path() . '/uploads/User/Employees',
+            'root'   => public_path() . '/uploads/Users',
         ],
 
         'Beneficiaries' => [
@@ -55,11 +55,14 @@ return [
             'root'   => public_path() . '/uploads/Scholarship/Applicant',
         ],
 
-        'OrphansRelief' => [
+        'Orphans' => [
             'driver' => 'local',
             'root'   => public_path() . '/uploads/OrphansRelief/Orphans',
         ],
-
+        'Sponsors' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/OrphansRelief/Sponsors',
+        ],
 
         'public' => [
             'driver' => 'local',

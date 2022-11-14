@@ -6,8 +6,6 @@
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/filepond.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-image-preview.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-file-poster.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
-
-
 <?php $__env->stopSection(); ?>
 
 
@@ -26,7 +24,6 @@
 <form class="needs-validation" action="<?php echo e(route('UpdateOrphan', [$data -> id])); ?>" method="POST" enctype="multipart/form-data" novalidate>
     <?php echo method_field('PUT'); ?>
     <?php echo csrf_field(); ?>
-
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
@@ -71,7 +68,6 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> LastName); ?>" id="LastName" name="LastName">
-
                                         <?php $__errorArgs = ['LastName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -84,7 +80,6 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -141,7 +136,6 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="mb-3 position-relative">
                                         <label for="DOB" class="form-label">Date of Birth <i class="mdi mdi-asterisk text-danger"></i></label>
                                         <div class="input-group " id="example-date-input">
-
                                             <input class="form-control form-select-lg <?php $__errorArgs = ['DOB'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -162,7 +156,6 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-
                                         </div>
                                     </div>
 
@@ -181,7 +174,6 @@ unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> Gender_ID); ?>" id
                                             <option value="">Select Your Gender</option>
                                             <?php $__currentLoopData = $genders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $gender): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <option value="<?php echo e($gender -> id); ?>" <?php echo e($gender -> id == $data -> Gender_ID ? 'selected' : ''); ?>><?php echo e($gender -> Name); ?></option>
-
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
                                         <?php $__errorArgs = ['Gender_ID'];
@@ -198,12 +190,9 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
                         <div class="col-md-2 justify-content-center">
-                            <!-- <label for="Profile" class="form-label"> <i class="mdi mdi-asterisk text-danger"></i></label> -->
                             <input type="file" class="my-pond <?php $__errorArgs = ['Profile'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -226,9 +215,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                         </div>
                     </div>
-
                     <div class="row">
-
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="Country_ID" class="form-label">Country <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -240,13 +227,9 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> Country_ID); ?>" required id="Country_ID" name="Country_ID">
-                                    <!-- <option value="">Select Your Country</option> -->
                                     <?php $__currentLoopData = $countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <option value="<?php echo e($country -> id); ?>" <?php echo e($country -> id == $data -> Country_ID ? 'selected' : ''); ?>><?php echo e($country -> Name); ?></option>
-
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-
                                 </select>
                                 <?php $__errorArgs = ['Country_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -266,7 +249,6 @@ unset($__errorArgs, $__bag); ?>
                             <div class="mb-3 position-relative">
                                 <label for="Tribe_ID" class="form-label">Tribe <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-
                                     <select class="form-select  form-select-lg <?php $__errorArgs = ['Tribe_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -278,10 +260,7 @@ unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> Tribe_ID); ?>" req
                                         <option>Select Your Tribe</option>
                                         <?php $__currentLoopData = $tribes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tribe): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?php echo e($tribe -> id); ?>" <?php echo e($tribe -> id == $data -> Tribe_ID ? 'selected' : ''); ?>><?php echo e($tribe -> Name); ?></option>
-
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-
                                     </select>
                                     <?php $__errorArgs = ['Tribe_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -302,7 +281,6 @@ unset($__errorArgs, $__bag); ?>
                             <div class="mb-3 position-relative">
                                 <label for="Language_ID" class="form-label">Language <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-
                                     <select class="form-select  form-select-lg <?php $__errorArgs = ['Language_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -314,9 +292,7 @@ unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> Language_ID); ?>" 
                                         <option value="">Select Your Language</option>
                                         <?php $__currentLoopData = $languages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $language): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?php echo e($language -> id); ?>" <?php echo e($language -> id == $data -> Language_ID ? 'selected' : ''); ?>><?php echo e($language -> Name); ?></option>
-
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
                                     </select>
                                     <?php $__errorArgs = ['Language_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -342,7 +318,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" maxlength="2205" rows="10" value="<?php echo e($data -> WhyShouldYouHelpMe); ?>" required name="WhyShouldYouHelpMe" id="WhyShouldYouHelpMe" required></textarea>
+unset($__errorArgs, $__bag); ?>" maxlength="2205" rows="10" value="<?php echo e($data -> WhyShouldYouHelpMe); ?>" required name="WhyShouldYouHelpMe" id="WhyShouldYouHelpMe" required><?php echo e($data -> WhyShouldYouHelpMe); ?></textarea>
                             <?php $__errorArgs = ['WhyShouldYouHelpMe'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -357,33 +333,20 @@ endif;
 unset($__errorArgs, $__bag); ?>
                         </div>
                     </div>
-                    <div class="row">
-
-                    </div>
                 </div>
             </div>
-            <!-- end card -->
         </div>
-        <!-- end col -->
     </div>
-    <!-- end row -->
-
-
-
-
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
                 <h4 class="card-header bg-dark text-white ">ADDRESS AND CONTACT</h4>
-
                 <div class="card-body">
                     <div class="row">
-
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="PrimaryNumber" class="form-label">Primary Number <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-
                                     <input type="number" class="form-control  form-control-lg <?php $__errorArgs = ['PrimaryNumber'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -407,12 +370,10 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="SecondaryNumber" class="form-label">Secondary Number</label>
                                 <div class="input-group">
-
                                     <input type="number" class="form-control  form-control-lg <?php $__errorArgs = ['SecondaryNumber'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -440,7 +401,6 @@ unset($__errorArgs, $__bag); ?>
                             <div class="mb-3 position-relative">
                                 <label for="EmergencyNumber" class="form-label">Emergency Number</label>
                                 <div class="input-group">
-
                                     <input type="number" class="form-control  form-control-lg <?php $__errorArgs = ['EmergencyNumber'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -464,9 +424,6 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="Province_ID" class="form-label">Province <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -482,9 +439,7 @@ unset($__errorArgs, $__bag); ?>" required name="Province_ID" value="<?php echo e
                                         <option value="">Select Your Province</option>
                                         <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?php echo e($province -> id); ?>" <?php echo e($province -> id == $data -> Province_ID ? 'selected' : ''); ?>><?php echo e($province -> Name); ?></option>
-
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
                                     </select>
                                     <?php $__errorArgs = ['Province_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -558,15 +513,10 @@ endif;
 unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
-
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="InCareName" class="form-label">InCare Name <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-
                                     <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['InCareName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -594,7 +544,6 @@ unset($__errorArgs, $__bag); ?>
                             <div class="mb-3 position-relative">
                                 <label for="InCareRelationship_ID" class="form-label">Relationship <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-
                                     <select class="form-select  form-select-lg <?php $__errorArgs = ['InCareRelationship_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -606,9 +555,7 @@ unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> InCareRelationship
                                         <option value="">Select Your Relationship</option>
                                         <?php $__currentLoopData = $relationships; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $relationship): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?php echo e($relationship -> id); ?>" <?php echo e($relationship -> id == $data -> InCareRelationship_ID ? 'selected' : ''); ?>><?php echo e($relationship -> Name); ?></option>
-
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
                                     </select>
                                     <?php $__errorArgs = ['InCareRelationship_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -629,7 +576,6 @@ unset($__errorArgs, $__bag); ?>
                             <div class="mb-3 position-relative">
                                 <label for="InCareNumber" class="form-label">InCare Number <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-
                                     <input type="number" class="form-control  form-control-lg <?php $__errorArgs = ['InCareNumber'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -681,22 +627,13 @@ unset($__errorArgs, $__bag); ?>
                     </div>
                 </div>
             </div>
-            <!-- end card -->
         </div>
-        <!-- end col -->
     </div>
-    <!-- end row -->
-
-
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
                 <h4 class="card-header bg-dark text-white ">EDUCATION</h4>
-
                 <div class="card-body">
-                    <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
-                    </p> -->
-
                     <div class="row">
                         <div class="col-md-4">
                             <div class="row mb-3 position-relative">
@@ -709,9 +646,6 @@ unset($__errorArgs, $__bag); ?>
                                         </label>
                                     </div>
                                 </div>
-
-
-
                                 <div class="col-6 col-sm-6">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="CurrentlyInSchool" value="Yes" id="Yes" <?php echo e($data->CurrentlyInSchool=="Yes"? 'checked':''); ?>>
@@ -720,13 +654,8 @@ unset($__errorArgs, $__bag); ?>
                                         </label>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
-
-
-
                     </div>
                     <div class="row InSchoolDiv" id="InSchoolDiv">
                         <div class="col-md-4">
@@ -769,9 +698,7 @@ unset($__errorArgs, $__bag); ?>" name="SchoolProvince_ID" value="<?php echo e($d
                                         <option value="">Select Your Province</option>
                                         <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?php echo e($province -> id); ?>" <?php echo e($province -> id == $data -> SchoolProvince_ID ? 'selected' : ''); ?>><?php echo e($province -> Name); ?></option>
-
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
                                     </select>
                                     <?php $__errorArgs = ['SchoolProvince_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -849,7 +776,6 @@ unset($__errorArgs, $__bag); ?>
                             <div class="mb-3 position-relative">
                                 <label for="SchoolNumber" class="form-label">School Number</label>
                                 <div class="input-group">
-
                                     <input type="number" class="form-control  form-control-lg <?php $__errorArgs = ['SchoolNumber'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -877,7 +803,6 @@ unset($__errorArgs, $__bag); ?>
                             <div class="mb-3 position-relative">
                                 <label for="SchoolEmail" class="form-label">School Email</label>
                                 <div class="input-group">
-
                                     <input type="email" class="form-control  form-control-lg <?php $__errorArgs = ['SchoolEmail'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -901,7 +826,6 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="Class" class="form-label">Class <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -913,12 +837,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> Class); ?>" required id="Class" name="Class">
-                                    <!-- <option value="">Select Your Country</option> -->
-                                    <?php for($i = 1; $i < 13; $i++): ?> <option value="<?php echo e($i); ?>"><?php echo e($i); ?> </option>
-
-                                        <?php endfor; ?>
-
-
+                                    <?php for($i = 1; $i < 13; $i++): ?> <option value="<?php echo e($i); ?>"><?php echo e($i); ?> </option><?php endfor; ?>
                                 </select>
                                 <?php $__errorArgs = ['Class'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -935,28 +854,15 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
-            <!-- end card -->
         </div>
-        <!-- end col -->
     </div>
-    <!-- end row -->
-
-
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
                 <h4 class="card-header bg-dark text-white ">FAMILY AND INCOME INFORMATION</h4>
-
                 <div class="card-body">
-                    <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
-                    </p> -->
-
-                    <div class="row">
-                    </div>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
@@ -1011,7 +917,6 @@ unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="MonthlyFamilyExpenses" class="form-label">Monthly Family Expenses <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -1044,7 +949,6 @@ unset($__errorArgs, $__bag); ?>
                             <div class="mb-3 position-relative">
                                 <label for="NumberFamilyMembers" class="form-label">Number of Family Members <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-
                                     <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['NumberFamilyMembers'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -1083,7 +987,6 @@ unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> IncomeStreem_ID); 
                                         <option value="">Select Your Income Streem</option>
                                         <?php $__currentLoopData = $incomestreams; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $incomestream): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?php echo e($incomestream -> id); ?>" <?php echo e($incomestream -> id == $data -> IncomeStreem_ID ? 'selected' : ''); ?>><?php echo e($incomestream -> Name); ?></option>
-
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <?php $__errorArgs = ['IncomeStreem_ID'];
@@ -1132,7 +1035,6 @@ unset($__errorArgs, $__bag); ?>
                             <div class="mb-3 position-relative">
                                 <label for="FamilyStatus_ID" class="form-label">Family Status <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-
                                     <select class="form-select form-select-lg <?php $__errorArgs = ['FamilyStatus_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -1144,7 +1046,6 @@ unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> FamilyStatus_ID); 
                                         <option value="">Select Your Family Status</option>
                                         <?php $__currentLoopData = $familystatus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $familystatu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <option value="<?php echo e($familystatu -> id); ?>" <?php echo e($familystatu -> id == $data -> FamilyStatus_ID ? 'selected' : ''); ?>><?php echo e($familystatu -> Name); ?></option>
-
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <?php $__errorArgs = ['FamilyStatus_ID'];
@@ -1161,33 +1062,17 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                 </div>
                             </div>
-
                         </div>
-
-                    </div>
-                    <div class="row">
-
-
                     </div>
                 </div>
             </div>
-            <!-- end card -->
         </div>
-        <!-- end col -->
     </div>
-    <!-- end row -->
-
-
-
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
                 <h4 class="card-header bg-dark text-white ">DOCUMENTS</h4>
-
                 <div class="card-body">
-                    <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
-                    </p> -->
-
                     <div class="row">
                         <div class="col-md-4">
                             <label for="Tazkira" class="form-label">Tazkira</label>
@@ -1262,15 +1147,9 @@ unset($__errorArgs, $__bag); ?>
 
                 </div>
             </div>
-            <!-- end card -->
         </div>
-        <!-- end col -->
     </div>
-    <!-- end row -->
-    <div>
-
-        <button class="btn btn-success btn-lg" type="submit">Save </button>
-    </div>
+    <div><button class="btn btn-success btn-lg" type="submit">Save </button></div>
 
 
 
@@ -1281,7 +1160,6 @@ unset($__errorArgs, $__bag); ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
 <script src="<?php echo e(URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js')); ?>"></script>
-
 <script src="<?php echo e(URL::asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js')); ?>"></script>
 
 
@@ -1296,7 +1174,6 @@ unset($__errorArgs, $__bag); ?>
 
 <!-- Bootstrap rating js -->
 <script src="<?php echo e(URL::asset('/assets/libs/bootstrap-rating/bootstrap-rating.min.js')); ?> "></script>
-
 <script src="<?php echo e(URL::asset('/assets/js/pages/rating-init.js')); ?>"></script>
 
 
@@ -1473,7 +1350,6 @@ unset($__errorArgs, $__bag); ?>
                     success: function(data) {
                         if (data) {
                             $('.District').empty();
-                            //  $('.District').append('<option value="None" hidden>All</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="District_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
                             });
@@ -1504,7 +1380,6 @@ unset($__errorArgs, $__bag); ?>
                     success: function(data) {
                         if (data) {
                             $('.SchoolDistrict').empty();
-                            //  $('.District').append('<option value="None" hidden>All</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="SchoolDistrict_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
                             });

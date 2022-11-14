@@ -46,23 +46,9 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-card-account-details-outline text-warning display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">All Cards</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                    <p class="my-0 text-dark mt-2 font-size-18">Cards</p>
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -76,23 +62,9 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-credit-card-clock-outline text-secondary display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">Pending Cards</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                    <p class="my-0 text-dark mt-2 font-size-18">Pending</p>
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -106,23 +78,9 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-card-account-details-star-outline text-success display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">Approved Cards</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                    <p class="my-0 text-dark mt-2 font-size-18">Approved</p>
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -136,23 +94,9 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-printer-check text-dark display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">Printed Cards</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                    <p class="my-0 text-dark mt-2 font-size-18">Printed</p>
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -167,23 +111,9 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-credit-card-marker-outline text-success display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">Released Cards</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                    <p class="my-0 text-dark mt-2 font-size-18">Released</p>
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -198,23 +128,9 @@
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-credit-card-remove-outline text-danger display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">Rejected Cards</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
+                                    <p class="my-0 text-dark mt-2 font-size-18">Rejected</p>
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -223,7 +139,6 @@
         </div>
     </div>
 </div>
-<!-- end row -->
 
 <br />
 
@@ -233,11 +148,6 @@
     <h1 class="font-size-24 mt-4 mb-4 fw-medium text-dark text-muted">Services: Food Packs</h1>
     @endif
     <div class="col-xl-12">
-        <!-- <div class="row">
-            <div class="col-12 ">
-                <a href="{{route('CreateFoodPack')}}" class="btn btn-success btn-lg waves-effect  waves-light mb-3  btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD FOOD PACK</a>
-            </div>
-        </div> -->
         <div class="row">
             @if(Auth::user()->IsQamarCareCard == 1)
             <div class="col-md-2 mb-2">
@@ -249,22 +159,8 @@
                                     <i class="mdi mdi-food text-info display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Food Packs </p>
 
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -279,22 +175,8 @@
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-account-arrow-right text-secondary display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Assign Beneficiaries</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -309,22 +191,8 @@
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-account-check text-success display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Assigned Beneficiaries</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -339,22 +207,8 @@
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-account-group-outline text-dark display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18 ">Staff Beneficiaries</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -363,7 +217,6 @@
         </div>
     </div>
 </div>
-<!-- end row -->
 
 
 
@@ -375,11 +228,6 @@
     <h1 class="font-size-24 mt-4 mb-4 fw-medium text-dark text-muted">Service Providers</h1>
     @endif
     <div class="col-xl-12">
-        <!-- <div class="row">
-            <div class="col-12 ">
-                <a href="{{route('CreateFoodPack')}}" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD FOOD PACK</a>
-            </div>
-        </div> -->
         <div class="row">
             @if(Auth::user()->IsQamarCareCard == 1)
             <div class="col-md-2 mb-2">
@@ -390,22 +238,8 @@
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-doctor text-primary display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Individual</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -420,22 +254,8 @@
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-hospital-building text-info display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Organization</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -444,7 +264,6 @@
         </div>
     </div>
 </div>
-<!-- end row -->
 
 
 <br />
@@ -455,11 +274,6 @@
     <h1 class="font-size-24 mt-4 mb-4 fw-medium text-dark text-muted">Online</h1>
     @endif
     <div class="col-xl-12">
-        <!-- <div class="row">
-            <div class="col-12 ">
-                <a href="{{route('CreateFoodPack')}}" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD FOOD PACK</a>
-            </div>
-        </div> -->
         <div class="row">
             @if(Auth::user()->IsQamarCareCard == 1)
             <div class="col-md-2 mb-2">
@@ -470,22 +284,8 @@
                                 <div class="flex-grow-1">
                                     <i class="mdi mdi-card-search-outline text-info display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Verify Card</p>
-                                    <!-- <h6 class="text-muted mb-0">Orphans</h4> -->
                                 </div>
-
-                                <!-- <div class="flex-shrink-0 align-self-center">
-                                        <div class="mini-stat-icon avatar-sm rounded-circle ">
-                                            <span class="avatar-title bg-info">
-
-                                            </span>
-                                        </div>
-                                    </div> -->
                             </div>
-
-                            <div class="d-flex mt-4">
-
-                            </div>
-                            </blockquote>
                         </div>
                     </div>
                 </a>
@@ -494,13 +294,11 @@
         </div>
     </div>
 </div>
-<!-- end row -->
-
 
 <div class="row mb-4">
     <div class="col-xl-12">
-                    <div id="DataInsertionChart" class="apex-charts" dir="ltr"></div>
-                    <h5 class=" text-dark text-center">Cards Insertion Timeline</h5>
+        <div id="DataInsertionChart" class="apex-charts" dir="ltr"></div>
+        <h5 class=" text-dark text-center">Cards Insertion Timeline</h5>
     </div>
 </div>
 
@@ -517,8 +315,7 @@
 <!-- dashboard init -->
 <script src="{{ URL::asset('/assets/js/pages/dashboard.init.js') }}"></script>
 <script>
-
-// Montly Insetion base Chart
+    // Montly Insetion base Chart
     (async () => {
         const MontlyInsertionJson = await fetch('{{ route('MontlyInsertion_Chart')}}').then(response => response.json());
 
@@ -599,8 +396,7 @@
 
 
     })();
-
-    </script>
+</script>
 
 
 @endsection

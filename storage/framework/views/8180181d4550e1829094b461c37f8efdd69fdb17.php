@@ -42,7 +42,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-2">
+    <div class="col-3">
         <select class="form-select  form-select-lg mb-3 <?php $__errorArgs = ['Country'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -60,7 +60,7 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
             <option value="<?php echo e(route('RejectedCareCard')); ?>">Rejected</option>
         </select>
     </div>
-    <div class="col-10 ">
+    <div class="col-9 ">
         <a href="<?php echo e(route('CreateCareCard')); ?>" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD CARE CARD</a>
     </div>
 </div>
@@ -71,9 +71,8 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
             <h3 class="card-header bg-dark text-white"></h3>
 
             <div class="card-body">
-
                 <div class="table-responsive">
-                    <table id="datatable-buttons" class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
+                    <table id="datatable" class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -325,25 +324,25 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
 
 
 
-    // $('#datatable').DataTable( {
-    //     responsive: true,
+    $('#datatable').DataTable( {
+        responsive: true,
 
-    //     lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+        lengthMenu: [[100, 200, 300, 400, 500, 1000, -1], [100, 200, 300, 400, 500, 1000, "All"]],
 
-    //     dom: 'lBfrtip',
-    //     buttons: [
-    //         {
-    //             autoFilter: true,
-    //             extend: 'excel',
-    //             text: 'Export To Excel',
-    //             exportOptions: {
-    //                 modifier: {
-    //                     page: 'current'
-    //                 }
-    //             }
-    //         }
-    //     ]
-    // } );
+        dom: 'lBfrtip',
+        buttons: [
+            {
+                autoFilter: true,
+                extend: 'excel',
+                text: 'Download To Excel',
+                exportOptions: {
+                    modifier: {
+                        page: 'current'
+                    }
+                }
+            }
+        ]
+    } );
 </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/CardCard/Operations/All.blade.php ENDPATH**/ ?>

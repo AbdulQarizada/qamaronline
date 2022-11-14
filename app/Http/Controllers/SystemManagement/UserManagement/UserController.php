@@ -38,7 +38,10 @@ class UserController extends Controller
   public function Index()
   {
 
-    return view('SystemManagement.Index');
+     // Look up
+    $catagorys =   LookUp::where("Parent_Name", "=", "None")->get();
+
+    return view('SystemManagement.Index', compact('catagorys'));
   }
 
 
@@ -313,6 +316,7 @@ class UserController extends Controller
   public function All()
   {
 
+    $PageInfo = 'All';
     $datas =   User::join('locations as a', 'users.Province_ID', '=', 'a.id')
       ->join('locations as b', 'users.District_ID', '=', 'b.id')
       ->join('users as d', 'users.Created_By', '=', 'd.id')
@@ -320,7 +324,7 @@ class UserController extends Controller
       ->select(['users.*',  'a.Name as ProvinceName', 'b.Name as DistrictName', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
       ->where("users.IsEmployee", "=", 1)
       ->get();
-    return view('SystemManagement.User.All', compact('datas'));
+    return view('SystemManagement.User.All', compact('datas', 'PageInfo'));
   }
 
 
@@ -328,6 +332,7 @@ class UserController extends Controller
   public function Activated()
   {
 
+    $PageInfo = 'Active';
     $datas =   User::join('locations as a', 'users.Province_ID', '=', 'a.id')
       ->join('locations as b', 'users.District_ID', '=', 'b.id')
       ->join('users as d', 'users.Created_By', '=', 'd.id')
@@ -335,14 +340,14 @@ class UserController extends Controller
       ->where("users.IsEmployee", "=", 1)
       ->where("users.IsActive", "=", 1)
       ->get();
-    return view('SystemManagement.User.All', compact('datas'));
+    return view('SystemManagement.User.All', compact('datas', 'PageInfo'));
   }
 
 
   public function DeActivated()
   {
 
-    // $qamarcarecards =   QamarCareCard::where("Status", "=", 'Rejected')->get();
+    $PageInfo = 'InActive';
     $datas =   User::join('locations as a', 'users.Province_ID', '=', 'a.id')
       ->join('locations as b', 'users.District_ID', '=', 'b.id')
       ->join('users as d', 'users.Created_By', '=', 'd.id')
@@ -351,7 +356,7 @@ class UserController extends Controller
       ->where("users.IsActive", "!=", 1)
 
       ->get();
-    return view('SystemManagement.User.All', compact('datas'));
+    return view('SystemManagement.User.All', compact('datas', 'PageInfo'));
   }
 
 

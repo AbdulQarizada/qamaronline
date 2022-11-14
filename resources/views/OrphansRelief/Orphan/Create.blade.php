@@ -5,14 +5,10 @@
 @section('css')
 <link href="{{ URL::asset('/assets/libs/filepond/css/filepond.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <link href="{{ URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-image-preview.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-
-
 @endsection
 
 
 @section('content')
-
-
 
 <div class="row mt-4">
     <div class="col-4">
@@ -20,11 +16,8 @@
         <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Add Orphan</span>
     </div>
 </div>
-
-
 <form class="needs-validation" action="{{route('CreateOrphans')}}" method="POST" enctype="multipart/form-data" novalidate>
     @csrf
-
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
@@ -48,13 +41,11 @@
                                     <div class="mb-3 position-relative">
                                         <label for="LastName" class="form-label ">Last Name </label>
                                         <input type="text" class="form-control form-control-lg @error('LastName') is-invalid @enderror" value="{{ old('LastName') }}" id="LastName" name="LastName">
-
                                         @error('LastName')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
-
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -83,17 +74,14 @@
                                     <div class="mb-3 position-relative">
                                         <label for="DOB" class="form-label">Date of Birth <i class="mdi mdi-asterisk text-danger"></i></label>
                                         <div class="input-group " id="example-date-input">
-
                                             <input class="form-control form-select-lg @error('DOB') is-invalid @enderror" value="{{ old('DOB') }}" type="date" id="example-date-input" name="DOB" id="DOB" required>
                                             @error('DOB')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                             @enderror
-
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3 position-relative">
@@ -102,7 +90,6 @@
                                             <option value="">Select Your Gender</option>
                                             @foreach($genders as $gender)
                                             <option value="{{ $gender -> id}}">{{ $gender -> Name}}</option>
-
                                             @endforeach
                                         </select>
                                         @error('Gender_ID')
@@ -112,12 +99,9 @@
                                         @enderror
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
                         <div class="col-md-2 justify-content-center">
-                            <!-- <label for="Profile" class="form-label"> <i class="mdi mdi-asterisk text-danger"></i></label> -->
                             <input type="file" class="my-pond @error('Profile') is-invalid @enderror" value="{{ old('Profile') }}" id="Profile" name="Profile" />
                             @error('Profile')
                             <span class="invalid-feedback" role="alert">
@@ -126,20 +110,14 @@
                             @enderror
                         </div>
                     </div>
-
                     <div class="row">
-
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="Country_ID" class="form-label">Country <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <select class="form-select  form-select-lg  @error('Country_ID') is-invalid @enderror" value="{{ old('Country_ID') }}" required id="Country_ID" name="Country_ID">
-                                    <!-- <option value="">Select Your Country</option> -->
                                     @foreach($countries as $country)
                                     <option value="{{ $country -> id}}">{{ $country -> Name}}</option>
-
                                     @endforeach
-
-
                                 </select>
                                 @error('Country_ID')
                                 <span class="invalid-feedback" role="alert">
@@ -152,15 +130,11 @@
                             <div class="mb-3 position-relative">
                                 <label for="Tribe_ID" class="form-label">Tribe <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-
                                     <select class="form-select  form-select-lg @error('Tribe_ID') is-invalid @enderror" value="{{ old('Tribe_ID') }}" required id="Tribe_ID" name="Tribe_ID">
                                         <option>Select Your Tribe</option>
                                         @foreach($tribes as $tribe)
                                         <option value="{{ $tribe -> id}}">{{ $tribe -> Name}}</option>
-
                                         @endforeach
-
-
                                     </select>
                                     @error('Tribe_ID')
                                     <span class="invalid-feedback" role="alert">
@@ -174,14 +148,11 @@
                             <div class="mb-3 position-relative">
                                 <label for="Language_ID" class="form-label">Language <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-
                                     <select class="form-select  form-select-lg @error('Language_ID') is-invalid @enderror" value="{{ old('Language_ID') }}" required id="Language_ID" name="Language_ID">
                                         <option value="">Select Your Language</option>
                                         @foreach($languages as $language)
                                         <option value="{{ $language -> id}}">{{ $language -> Name}}</option>
-
                                         @endforeach
-
                                     </select>
                                     @error('Language_ID')
                                     <span class="invalid-feedback" role="alert">
@@ -193,8 +164,7 @@
                         </div>
                         <div class="col-md-12">
                             <label for="WhyShouldYouHelpMe" class="form-label">Why Should You Help Me? <i class="mdi mdi-asterisk text-danger"></i></label>
-                            <textarea id="textarea" class="form-control @error('WhyShouldYouHelpMe') is-invalid @enderror" maxlength="2205" rows="10" value="{{ old('WhyShouldYouHelpMe') }}" required name="WhyShouldYouHelpMe" id="WhyShouldYouHelpMe" required></textarea>
-                            <!-- <input type="textarea" class="my-pond @error('Tazkira') is-invalid @enderror" value="{{ old('Tazkira') }}" name="Tazkira" id="Tazkira" /> -->
+                            <textarea id="textarea" class="form-control @error('WhyShouldYouHelpMe') is-invalid @enderror" maxlength="220000" rows="10" value="{{ old('WhyShouldYouHelpMe') }}" required name="WhyShouldYouHelpMe" id="WhyShouldYouHelpMe" required></textarea>
                             @error('WhyShouldYouHelpMe')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -207,32 +177,19 @@
                     </div>
                 </div>
             </div>
-            <!-- end card -->
         </div>
-        <!-- end col -->
     </div>
-    <!-- end row -->
-
-
-
 
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
                 <h4 class="card-header bg-dark text-white ">ADDRESS AND CONTACT</h4>
-
                 <div class="card-body">
-                    <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
-                    </p> -->
-
-
                     <div class="row">
-
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="PrimaryNumber" class="form-label">Primary Number <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-
                                     <input type="number" class="form-control  form-control-lg @error('PrimaryNumber') is-invalid @enderror" value="{{ old('PrimaryNumber') }}" id="PrimaryNumber" name="PrimaryNumber" max="999999999" aria-describedby="PrimaryNumber" required>
                                     @error('PrimaryNumber')
                                     <span class="invalid-feedback" role="alert">
@@ -242,12 +199,10 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="SecondaryNumber" class="form-label">Secondary Number</label>
                                 <div class="input-group">
-
                                     <input type="number" class="form-control  form-control-lg @error('SecondaryNumber') is-invalid @enderror" value="{{ old('SecondaryNumber') }}" id="SecondaryNumber" name="SecondaryNumber" max="999999999" aria-describedby="SecondaryNumber">
                                     @error('SecondaryNumber')
                                     <span class="invalid-feedback" role="alert">
@@ -261,7 +216,6 @@
                             <div class="mb-3 position-relative">
                                 <label for="EmergencyNumber" class="form-label">Emergency Number</label>
                                 <div class="input-group">
-
                                     <input type="number" class="form-control  form-control-lg @error('EmergencyNumber') is-invalid @enderror" value="{{ old('EmergencyNumber') }}" id="EmergencyNumber" name="EmergencyNumber" max="999999999" aria-describedby="EmergencyNumber">
                                     @error('EmergencyNumber')
                                     <span class="invalid-feedback" role="alert">
@@ -272,7 +226,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
@@ -282,9 +235,7 @@
                                         <option value="">Select Your Province</option>
                                         @foreach($provinces as $province)
                                         <option value="{{ $province -> id}}">{{ $province -> Name}}</option>
-
                                         @endforeach
-
                                     </select>
                                     @error('Province_ID')
                                     <span class="invalid-feedback" role="alert">
@@ -300,8 +251,6 @@
                                 <div class="input-group">
                                     <select class="form-select  District form-select-lg @error('District_ID') is-invalid @enderror" required name="District_ID" value="{{ old('District_ID') }}" id="District_ID">
                                         <option value="">Select Your District</option>
-
-
                                     </select>
                                     @error('District_ID')
                                     <span class="invalid-feedback" role="alert">
@@ -325,7 +274,6 @@
                     </div>
 
                     <div class="row">
-
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="InCareName" class="form-label">InCare Name <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -344,14 +292,11 @@
                             <div class="mb-3 position-relative">
                                 <label for="InCareRelationship_ID" class="form-label">Relationship <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-
                                     <select class="form-select  form-select-lg @error('InCareRelationship_ID') is-invalid @enderror" value="{{ old('InCareRelationship_ID') }}" required name="InCareRelationship_ID" id="InCareRelationship_ID">
                                         <option value="">Select Your Relationship</option>
                                         @foreach($relationships as $relationship)
                                         <option value="{{ $relationship -> id}}">{{ $relationship -> Name}}</option>
-
                                         @endforeach
-
                                     </select>
                                     @error('InCareRelationship_ID')
                                     <span class="invalid-feedback" role="alert">
@@ -365,7 +310,6 @@
                             <div class="mb-3 position-relative">
                                 <label for="InCareNumber" class="form-label">InCare Number <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-
                                     <input type="number" class="form-control  form-control-lg @error('InCareNumber') is-invalid @enderror" value="{{ old('InCareNumber') }}" id="InCareNumber" name="InCareNumber" max="999999999" aria-describedby="InCareNumber" required>
                                     @error('InCareNumber')
                                     <span class="invalid-feedback" role="alert">
@@ -389,22 +333,15 @@
                     </div>
                 </div>
             </div>
-            <!-- end card -->
         </div>
-        <!-- end col -->
     </div>
-    <!-- end row -->
 
 
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
                 <h4 class="card-header bg-dark text-white ">EDUCATION</h4>
-
                 <div class="card-body">
-                    <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
-                    </p> -->
-
                     <div class="row">
                         <div class="col-md-4">
                             <div class="row mb-3 position-relative">
@@ -417,9 +354,6 @@
                                         </label>
                                     </div>
                                 </div>
-
-
-
                                 <div class="col-6 col-sm-6">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="CurrentlyInSchool" value="Yes" id="Yes">
@@ -428,13 +362,8 @@
                                         </label>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
-
-
-
                     </div>
                     <div class="row InSchoolDiv" id="InSchoolDiv">
                         <div class="col-md-4">
@@ -456,9 +385,7 @@
                                         <option value="">Select Your Province</option>
                                         @foreach($provinces as $province)
                                         <option value="{{ $province -> id}}">{{ $province -> Name}}</option>
-
                                         @endforeach
-
                                     </select>
                                     @error('SchoolProvince_ID')
                                     <span class="invalid-feedback" role="alert">
@@ -474,8 +401,6 @@
                                 <div class="input-group">
                                     <select class="form-select  SchoolDistrict form-select-lg @error('SchoolDistrict_ID') is-invalid @enderror" name="SchoolDistrict_ID" value="{{ old('SchoolDistrict_ID') }}" id="SchoolDistrict_ID">
                                         <option value="">Select Your District</option>
-
-
                                     </select>
                                     @error('SchoolDistrict_ID')
                                     <span class="invalid-feedback" role="alert">
@@ -500,7 +425,6 @@
                             <div class="mb-3 position-relative">
                                 <label for="SchoolNumber" class="form-label">School Number</label>
                                 <div class="input-group">
-
                                     <input type="number" class="form-control  form-control-lg @error('SchoolNumber') is-invalid @enderror" value="{{ old('SchoolNumber') }}" id="SchoolNumber" name="SchoolNumber" max="999999999" aria-describedby="SchoolNumber">
                                     @error('SchoolNumber')
                                     <span class="invalid-feedback" role="alert">
@@ -514,7 +438,6 @@
                             <div class="mb-3 position-relative">
                                 <label for="SchoolEmail" class="form-label">School Email</label>
                                 <div class="input-group">
-
                                     <input type="email" class="form-control  form-control-lg @error('SchoolEmail') is-invalid @enderror" value="{{ old('SchoolEmail') }}" id="SchoolEmail" name="SchoolEmail" aria-describedby="SchoolEmail">
                                     @error('SchoolEmail')
                                     <span class="invalid-feedback" role="alert">
@@ -524,17 +447,11 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="Class" class="form-label">Class <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <select class="form-select  form-select-lg  @error('Class') is-invalid @enderror" value="{{ old('Class') }}" required id="Class" name="Class">
-                                    <!-- <option value="">Select Your Country</option> -->
-                                    @for($i = 1; $i < 13; $i++) <option value="{{ $i}}">{{ $i}} </option>
-
-                                        @endfor
-
-
+                                    @for($i = 1; $i < 13; $i++) <option value="{{ $i}}">{{ $i}} </option>@endfor
                                 </select>
                                 @error('Class')
                                 <span class="invalid-feedback" role="alert">
@@ -544,28 +461,15 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
-            <!-- end card -->
         </div>
-        <!-- end col -->
     </div>
-    <!-- end row -->
-
-
     <div class="row">
         <div class="col-lg-12">
             <div class="card ">
                 <h4 class="card-header bg-dark text-white ">FAMILY AND INCOME INFORMATION</h4>
-
                 <div class="card-body">
-                    <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
-                    </p> -->
-
-                    <div class="row">
-                    </div>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
@@ -592,7 +496,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="MonthlyFamilyExpenses" class="form-label">Monthly Family Expenses <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -611,7 +514,6 @@
                             <div class="mb-3 position-relative">
                                 <label for="NumberFamilyMembers" class="form-label">Number of Family Members <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-
                                     <input type="number" class="form-control form-control-lg @error('NumberFamilyMembers') is-invalid @enderror" value="{{ old('NumberFamilyMembers') }}" id="NumberFamilyMembers" name="NumberFamilyMembers" max="40" aria-describedby="NumberFamilyMembers" required>
                                     @error('NumberFamilyMembers')
                                     <span class="invalid-feedback" role="alert">
@@ -629,7 +531,6 @@
                                         <option value="">Select Your Income Streem</option>
                                         @foreach($incomestreams as $incomestream)
                                         <option value="{{ $incomestream -> id}}">{{ $incomestream -> Name}}</option>
-
                                         @endforeach
                                     </select>
                                     @error('IncomeStreem_ID')
@@ -657,12 +558,10 @@
                             <div class="mb-3 position-relative">
                                 <label for="FamilyStatus_ID" class="form-label">Family Status <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-
                                     <select class="form-select form-select-lg @error('FamilyStatus_ID') is-invalid @enderror" value="{{ old('FamilyStatus_ID') }}" required name="FamilyStatus_ID" id="FamilyStatus_ID">
                                         <option value="">Select Your Family Status</option>
                                         @foreach($familystatus as $familystatu)
                                         <option value="{{ $familystatu -> id}}">{{ $familystatu -> Name}}</option>
-
                                         @endforeach
                                     </select>
                                     @error('FamilyStatus_ID')
@@ -672,21 +571,13 @@
                                     @enderror
                                 </div>
                             </div>
-
                         </div>
-
-                    </div>
-                    <div class="row">
-
 
                     </div>
                 </div>
             </div>
-            <!-- end card -->
         </div>
-        <!-- end col -->
     </div>
-    <!-- end row -->
 
 
 
@@ -694,11 +585,7 @@
         <div class="col-lg-12">
             <div class="card ">
                 <h4 class="card-header bg-dark text-white ">DOCUMENTS</h4>
-
                 <div class="card-body">
-                    <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
-                    </p> -->
-
                     <div class="row">
                         <div class="col-md-4">
                             <label for="Tazkira" class="form-label">Tazkira</label>
@@ -731,28 +618,16 @@
 
                 </div>
             </div>
-            <!-- end card -->
         </div>
-        <!-- end col -->
     </div>
-    <!-- end row -->
-    <div>
-
-        <button class="btn btn-success btn-lg" type="submit">Save </button>
-    </div>
-
-
-
-
-
+    <div> <button class="btn btn-success btn-lg" type="submit">Save </button></div>
 </form>
 
 @endsection
 @section('script')
 <script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
-
 <script src="{{ URL::asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
-
+<script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
 
 
 <script src="{{ URL::asset('/assets/libs/filepond/js/filepond.min.js') }}"></script>
@@ -760,11 +635,9 @@
 <script src="{{ URL::asset('/assets/libs/filepond/js/plugins/filepond-plugin-file-validate-type.js') }}"></script>
 
 
-<script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
 
 <!-- Bootstrap rating js -->
 <script src="{{ URL::asset('/assets/libs/bootstrap-rating/bootstrap-rating.min.js') }} "></script>
-
 <script src="{{ URL::asset('/assets/js/pages/rating-init.js') }}"></script>
 
 
@@ -807,16 +680,8 @@
 
 
 
-
-
     // Get a reference to the file input element
     const inputTazkira = document.querySelector('input[name="Tazkira"]');
-
-    // Get a reference to the file input element
-    const inputFamilyPic = document.querySelector('input[name="FamilyPic"]');
-
-    // Get a reference to the file input element
-    const inputHousePic = document.querySelector('input[name="HousePic"]');
     // Create a FilePond instance
     const Tazkira = FilePond.create(inputTazkira, {
         labelIdle: 'Click to upload Tazkira <span class="bx bx-upload"></span >',
@@ -824,7 +689,7 @@
         allowFileTypeValidation: true,
         server: {
 
-            url: '../Orphans_Tazkira',
+            url: '{{ route('Orphans_Tazkira')}}',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }
@@ -837,7 +702,8 @@
 
 
 
-
+    // Get a reference to the file input element
+    const inputFamilyPic = document.querySelector('input[name="FamilyPic"]');
     // Create a FilePond instance
     const FamilyPic = FilePond.create(inputFamilyPic, {
         labelIdle: 'Click to upload Family Picture <span class="bx bx-upload"></span >',
@@ -845,7 +711,7 @@
         allowFileTypeValidation: true,
         server: {
 
-            url: '../Orphans_FamilyPic',
+            url: '{{ route('Orphans_FamilyPic')}}',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }
@@ -856,6 +722,9 @@
 
     });
 
+
+    // Get a reference to the file input element
+    const inputHousePic = document.querySelector('input[name="HousePic"]');
     // Create a FilePond instance
     const HousePic = FilePond.create(inputHousePic, {
         labelIdle: 'Click to upload House Picture <span class="bx bx-upload"></span >',
@@ -863,7 +732,7 @@
         allowFileTypeValidation: true,
         server: {
 
-            url: '../Orphans_HousePic',
+            url: '{{ route('Orphans_HousePic')}}',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }
@@ -873,13 +742,6 @@
 
 
     });
-
-
-
-    Profile.setOptions({
-
-    });
-
 
 
 
@@ -898,7 +760,6 @@
                     success: function(data) {
                         if (data) {
                             $('.District').empty();
-                            //  $('.District').append('<option value="None" hidden>All</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="District_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
                             });
@@ -929,7 +790,6 @@
                     success: function(data) {
                         if (data) {
                             $('.SchoolDistrict').empty();
-                            //  $('.District').append('<option value="None" hidden>All</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="SchoolDistrict_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
                             });
@@ -952,6 +812,8 @@
         $('#No').prop("checked", true);
 
     });
+
+
     $('#Yes').click(function() {
         $('#InSchoolDiv').show();
         $('.InSchoolDiv').show();

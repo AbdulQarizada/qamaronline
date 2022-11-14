@@ -58,7 +58,7 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
             <div class="card-body">
 
                 <div class="table-responsive">
-                    <table id="datatable-buttons" class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
+                    <table id="datatable" class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -253,25 +253,26 @@ unset($__errorArgs, $__bag); ?>
 
 
 
-    // $('#datatable').DataTable( {
-    //     responsive: true,
 
-    //     lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+    $('#datatable').DataTable( {
+        responsive: true,
 
-    //     dom: 'lBfrtip',
-    //     buttons: [
-    //         {
-    //             autoFilter: true,
-    //             extend: 'excel',
-    //             text: 'Export To Excel',
-    //             exportOptions: {
-    //                 modifier: {
-    //                     page: 'current'
-    //                 }
-    //             }
-    //         }
-    //     ]
-    // } );
+        lengthMenu: [[100, 200, 300, 400, 500, 1000, -1], [100, 200, 300, 400, 500, 1000, "All"]],
+
+        dom: 'lBfrtip',
+        buttons: [
+            {
+                autoFilter: true,
+                extend: 'excel',
+                text: 'Download To Excel',
+                exportOptions: {
+                    modifier: {
+                        page: 'current'
+                    }
+                }
+            }
+        ]
+    } );
 </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/CardCard/Services/FoodPack/AssignedBeneficiaries.blade.php ENDPATH**/ ?>

@@ -1,6 +1,6 @@
 @extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
 
-@section('title') Users List @endsection
+@section('title') System Management @endsection
 
 @section('css')
 <!-- DataTables -->
@@ -14,53 +14,40 @@
 <div class="row mt-4">
     <div class="col-4">
         <a href="{{route('IndexUserManagement')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-12 ">
-        <div class="card border border-3">
-            <div class="card-header">
-                <blockquote class="blockquote border-warning  font-size-14 mb-0">
-                    <p class="my-0   card-title fw-medium font-size-24 text-wrap">USERS</p>
-
-                </blockquote>
-            </div>
-        </div>
-
+        @if($PageInfo == 'All')
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>All Users</span>
+        @endif
+        @if($PageInfo == 'Active')
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Active Users</span>
+        @endif
+        @if($PageInfo == 'InActive')
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>InActive Users</span>
+        @endif
     </div>
 </div>
 <div class="row">
     <div class="col-3">
         <select class="form-select  form-select-lg mb-3 @error('Country') is-invalid @enderror" onchange="window.location.href=this.value;">
             <option value="{{route('AllUser')}}">Please Filter Your Choices</option>
-
             <option value="{{route('AllUser')}}">All</option>
             <option value="{{route('ActivatedUser')}}">Active</option>
             <option value="{{route('DeActivatedUser')}}">InActive</option>
-
-
-
-
-
         </select>
     </div>
     <div class="col-9 ">
-        <div class="button">
-            <a href="{{route('CreateUser')}}" class="btn btn-primary btn-lg waves-effect  waves-light mb-3 m-1 float-end">ADD USER</a>
-        </div>
-
+        <a href="{{route('CreateUser')}}" class="btn  btn-lg waves-effect  waves-light mb-3 m-1 float-end"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a>
+        <a href="{{route('CreateUser')}}" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD USER</a>
     </div>
 </div>
+
 <div class="row">
     <div class="col-12">
 
         <div class="card">
-            <h3 class="card-header bg-warning text-white"></h3>
+            <h3 class="card-header bg-dark text-white"></h3>
             <div class="card-body">
 
-                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
+                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -174,9 +161,9 @@
                                                         <button class="btn btn-success btn-lg" type="submit">Change </button>
                                                     </form>
                                                 </div>
-                                            </div><!-- /.modal-content -->
-                                        </div><!-- /.modal-dialog -->
-                                    </div><!-- /.modal -->
+                                            </div>
+                                        </div>
+                                    </div>
                                     @endif
 
 
@@ -202,12 +189,8 @@
 @section('script')
 <!-- Required datatable js -->
 <script src="{{ URL::asset('/assets/libs/datatables/datatables.min.js') }}"></script>
-<script src="{{ URL::asset('/assets/libs/jszip/jszip.min.js') }}"></script>
-<script src="{{ URL::asset('/assets/libs/pdfmake/pdfmake.min.js') }}"></script>
 
 
-<!-- Datatable init js -->
-<script src="{{ URL::asset('/assets/js/pages/datatables.init.js') }}"></script>
 
 <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
 
@@ -247,5 +230,26 @@
         const result = Math.random().toString(36).substring(2, 7);
         document.getElementById('qcc').value = result;
     };
+
+    $('#datatable').DataTable({
+        responsive: true,
+
+        lengthMenu: [
+            [100, 200, 300, 400, 500, 1000, -1],
+            [100, 200, 300, 400, 500, 1000, "All"]
+        ],
+
+        dom: 'lBfrtip',
+        buttons: [{
+            autoFilter: true,
+            extend: 'excel',
+            text: 'Download To Excel',
+            exportOptions: {
+                modifier: {
+                    page: 'current'
+                }
+            }
+        }]
+    });
 </script>
 @endsection
