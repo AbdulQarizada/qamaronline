@@ -8,10 +8,7 @@
 <link href="{{ URL::asset('/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
 
 @endsection
-
 @section('content')
-
-
 <div class="row mt-4">
     <div class="col-6">
         @if(Cookie::get('Layout') == 'LayoutNoSidebar')
@@ -43,12 +40,9 @@
 </div>
 <div class="row">
     <div class="col-12">
-
         <div class="card">
             <h3 class="card-header bg-dark text-white"></h3>
-
             <div class="card-body">
-
                 <div class="table-responsive">
                     <table id="datatable" class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>
@@ -68,8 +62,6 @@
                                 @endif
                             </tr>
                         </thead>
-
-
                         <tbody>
                             @foreach($datas as $data)
                             <tr>
@@ -88,8 +80,6 @@
                                 </td>
                                 <td> {{$data -> PrimaryNumber}} </td>
                                 <td> {{$data -> SecondaryNumber}} </td>
-
-                                <!-- <td> {{$data -> TazkiraID}} </td> -->
                                 <td>
                                     <div>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data ->  RefernceFirstName }} {{$data ->  RefernceLastName }}</a></h5>
@@ -108,27 +98,17 @@
 
                                     </div>
                                 </td>
-
                                 <td>
                                     <div>
-
-
                                         @if($data -> Status == 'Pending')
                                         <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary">Pending Decicion</a></h5>
-
                                         @endif
-
                                         @if($data -> Status == 'Approved')
                                         <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">{{$data -> Status}} </a></h5>
-
                                         @endif
-
                                         @if($data -> Status == 'Rejected')
                                         <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">{{$data -> Status}} </a></h5>
-
                                         @endif
-
-
                                     </div>
                                 </td>
                                 @if(Auth::user()->IsGeneralManager == 1)
@@ -150,17 +130,20 @@
                                 @endif
                             </tr>
                             @endforeach
-
-
                         </tbody>
                     </table>
                 </div>
             </div>
-
         </div>
-    </div> <!-- end col -->
-</div> <!-- end row -->
-
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+            {!! $datas->links() !!} <span class="m-2 text-white badge badge-soft-dark">{{ $datas->total() }} Total Records</span>
+        </ul>
+    </div>
+</div>
 @endsection
 @section('script')
 <!-- Required datatable js -->

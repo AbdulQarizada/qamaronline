@@ -3,8 +3,6 @@
 @section('title') Orphan and Sponsorships @endsection
 
 @section('css')
-<!-- DataTables -->
-<link href="{{ URL::asset('/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
 
 @endsection
 
@@ -164,14 +162,15 @@
         </div>
     </div>
 </div>
-
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+             {!! $datas->links() !!} <span class="m-2 text-white badge badge-soft-dark">{{ $datas->total() }} Total Records</span>
+        </ul>
+    </div>
+</div>
 @endsection
 @section('script')
-<!-- Required datatable js -->
-<script src="{{ URL::asset('/assets/libs/datatables/datatables.min.js') }}"></script>
-<script src="{{ URL::asset('/assets/libs/jszip/jszip.min.js') }}"></script>
-
-
 <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
 
 <script>
@@ -203,27 +202,6 @@
                 window.location.href = url;
             }
         });
-    });
-
-    $('#datatable').DataTable({
-        responsive: true,
-
-        lengthMenu: [
-            [100, 200, 300, 400, 500, 1000, -1],
-            [100, 200, 300, 400, 500, 1000, "All"]
-        ],
-
-        dom: 'lBfrtip',
-        buttons: [{
-            autoFilter: true,
-            extend: 'excel',
-            text: 'Download To Excel',
-            exportOptions: {
-                modifier: {
-                    page: 'current'
-                }
-            }
-        }]
     });
 </script>
 @endsection

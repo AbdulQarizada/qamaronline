@@ -3,7 +3,6 @@
 @section('title') Orphan and Sponsorships @endsection
 
 @section('css')
-<!-- ION Slider -->
 <link href="{{ URL::asset('/assets/css/mystyle/OrphanGrid.css') }}" rel="stylesheet" type="text/css" />
 
 
@@ -80,15 +79,12 @@
     </div>
     @endforeach
 </div>
-
-
 <div class="row">
     <div class="col-lg-12">
         <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
         {!! $datas->links() !!}
         </ul>
     </div>
-</div>
 </div>
 
 @endsection

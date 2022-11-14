@@ -27,11 +27,11 @@
                     <div class="card-header">
                       <blockquote class="blockquote border-warning  font-size-14 mb-0">
                                 <p class="my-0   card-title fw-medium font-size-24 text-wrap">ORPHANS</p>
-                        
+
                         </blockquote>
                     </div>
                 </div>
-      
+
         </div>
      </div> -->
 <div class="row">
@@ -292,6 +292,26 @@
 </div>
 <!-- end row -->
 
+
+// $('#datatable').DataTable( {
+    //     responsive: true,
+
+    //     lengthMenu: [[100, 200, 300, 400, 500, 1000, -1], [100, 200, 300, 400, 500, 1000, "All"]],
+
+    //     dom: 'lBfrtip',
+    //     buttons: [
+    //         {
+    //             autoFilter: true,
+    //             extend: 'excel',
+    //             text: 'Download To Excel',
+    //             exportOptions: {
+    //                 modifier: {
+    //                     page: 'current'
+    //                 }
+    //             }
+    //         }
+    //     ]
+    // } );
 @endsection
 @section('script')
 <!-- Ion Range Slider-->

@@ -3,8 +3,6 @@
 <?php $__env->startSection('title'); ?> Orphan and Sponsorships <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
-<!-- DataTables -->
-<link href="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.css')); ?>" rel="stylesheet" type="text/css" />
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
@@ -55,11 +53,8 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
         <a href="<?php echo e(route('CreateOrphans')); ?>" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD ORPHAN</a>
     </div>
 </div>
-
-
 <div class="row">
     <div class="col-12">
-
         <div class="card">
             <h3 class="card-header bg-dark text-white"></h3>
             <div class="card-body">
@@ -76,11 +71,8 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                             <th>Sponsor</th>
                             <th>Created By</th>
                             <th>Actions</th>
-
                         </tr>
                     </thead>
-
-
                     <tbody>
                         <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
@@ -144,17 +136,12 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                     <?php endif; ?>
                                 </div>
                             </td>
-
                             <td>
                                 <div>
-
-
                                     <?php if($data -> Status == 'Pending'): ?>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary"><?php echo e($data -> Status); ?></a></h5>
                                     <p class="text-muted mb-0"><?php echo e($data -> created_at -> format("j F Y")); ?></p>
-
                                     <?php endif; ?>
-
                                     <?php if($data -> Status == 'Approved'): ?>
                                     <?php if($PageInfo == 'Waiting'): ?>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark">Waiting </a></h5>
@@ -167,32 +154,22 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                     <p class="text-muted mb-0"><?php echo e($data -> created_at -> format("j F Y")); ?></p>
                                     <?php endif; ?>
                                     <?php endif; ?>
-
                                     <?php if($data -> Status == 'Rejected'): ?>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger"><?php echo e($data -> Status); ?> </a></h5>
                                     <p class="text-muted mb-0"><?php echo e($data -> created_at -> format("j F Y")); ?></p>
-
                                     <?php endif; ?>
-
-
-
                                     <?php if($data -> Status == 'Assigned'): ?>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info"><?php echo e($data -> Status); ?></a></h5>
                                     <p class="text-muted mb-0"><?php echo e($data -> created_at -> format("j F Y")); ?></p>
                                     <?php endif; ?>
-
                                     <?php if($data -> Status == 'Released'): ?>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success"><?php echo e($data -> Status); ?></a></h5>
                                     <p class="text-muted mb-0"><?php echo e($data -> created_at -> format("j F Y")); ?></p>
-
                                     <?php endif; ?>
-
                                     <?php if($data -> Status == 'Printed'): ?>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark"><?php echo e($data -> Status); ?></a></h5>
                                     <p class="text-muted mb-0"><?php echo e($data -> created_at -> format("j F Y")); ?></p>
-
                                     <?php endif; ?>
-
                                 </div>
                             </td>
                             <td>
@@ -204,26 +181,20 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data ->  SFullName); ?></a></h5>
                                     <p class="text-muted mb-0"><?php echo e(Carbon\Carbon::parse($data -> Sponsored_StartDate) -> format("j F Y")); ?></p>
                                     <p class="text-muted mb-0"><?php echo e(Carbon\Carbon::parse($data -> Sponsored_EndDate) -> format("j F Y")); ?></p>
-
-
                                 </div>
                                 <?php endif; ?>
                             </td>
                             <td>
                                 <?php if( $data -> Created_By !=""): ?>
-
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data ->  UFirstName); ?> <?php echo e($data ->  ULastName); ?></a></h5>
                                     <p class="text-muted mb-0"><?php echo e($data ->  UJob); ?></p>
-
                                 </div>
                                 <?php endif; ?>
                                 <?php if( $data -> Created_By ==""): ?>
-
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
                                     <p class="text-muted mb-0">Requested</p>
-
                                 </div>
                                 <?php endif; ?>
                             </td>
@@ -262,22 +233,19 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 </table>
-                <div>
-                    <?php echo $datas->links(); ?>
-
-                </div>
             </div>
         </div>
     </div>
 </div>
-
+<div class="row"></div>
+    <div class="col-lg-12">
+        <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+             <?php echo $datas->links(); ?> <span class="m-2 text-white badge badge-soft-dark"><?php echo e($datas->total()); ?> Total Records</span>
+        </ul>
+    </div>
+</div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
-<script src="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('/assets/libs/jszip/jszip.min.js')); ?>"></script>
-
-
-
 <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
 
 <script>

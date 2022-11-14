@@ -3,8 +3,6 @@
 <?php $__env->startSection('title'); ?> Qamar Care Cards <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
-<!-- DataTables -->
-<link href="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.css')); ?>" rel="stylesheet" type="text/css" />
 
 <?php $__env->stopSection(); ?>
 
@@ -66,13 +64,11 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
 </div>
 <div class="row">
     <div class="col-12">
-
         <div class="card">
             <h3 class="card-header bg-dark text-white"></h3>
-
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="datatable" class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
+                    <table  class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -86,12 +82,9 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
 
                             </tr>
                         </thead>
-
-
                         <tbody>
                             <?php $__currentLoopData = $qamarcarecards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qamarcarecard): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <!-- <td><?php echo e($qamarcarecard->id); ?></td> -->
                                 <td><?php echo e($loop->iteration); ?></td>
                                 <td>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($qamarcarecard -> FirstName); ?> <?php echo e($qamarcarecard -> LastName); ?></a></h5>
@@ -153,11 +146,8 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                         <?php endif; ?>
                                     </div>
                                 </td>
-
                                 <td>
                                     <div>
-
-
                                         <?php if($qamarcarecard -> Status == 'Pending'): ?>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary"><?php echo e($qamarcarecard -> Status); ?></a></h5>
                                         <p class="text-muted mb-0"><?php echo e($qamarcarecard -> created_at -> format("j F Y")); ?></p>
@@ -229,15 +219,11 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                             <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
                                         </a>
                                         <?php endif; ?>
-
-
                                         <?php if( $qamarcarecard -> Status == 'Approved'): ?>
-
                                         <a href="<?php echo e(route('PrintingCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-dark waves-effect waves-light print">
                                             <i class="bx bxs-printer   font-size-16 align-middle"></i>
                                         </a>
                                         <?php endif; ?>
-
                                         <?php if( $qamarcarecard -> Status == 'Rejected'): ?>
                                         <a href="<?php echo e(route('EditCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-info waves-effect waves-light">
                                             <i class="bx bx-edit  font-size-16 align-middle"></i>
@@ -246,54 +232,33 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                             <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
                                         </a>
                                         <?php endif; ?>
-
                                         <?php if($qamarcarecard -> Status == 'Printed'): ?>
                                         <a href="<?php echo e(route('ReleaseCareCard', ['data' => $qamarcarecard -> id])); ?>" class="btn btn-success waves-effect waves-light release">
                                             <i class="bx bx-user-check  font-size-16 align-middle"></i>
                                         </a>
                                         <?php endif; ?>
-
-
-
-
                                     </div>
                                 </td>
                             </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-
                         </tbody>
                     </table>
-
                 </div>
             </div>
-
         </div>
-    </div> <!-- end col -->
-</div> <!-- end row -->
-<div >
-<?php echo $qamarcarecards->links(); ?>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+         <?php echo $qamarcarecards ->links(); ?> <span class="m-2 text-white badge badge-soft-dark"><?php echo e($qamarcarecards->total()); ?> Total Records</span>
+        </ul>
 
+    </div>
 </div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
-<!-- Required datatable js -->
-<script src="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('/assets/libs/jszip/jszip.min.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('/assets/libs/pdfmake/pdfmake.min.js')); ?>"></script>
-
-
-<!-- Datatable init js -->
-<script src="<?php echo e(URL::asset('/assets/js/pages/datatables.init.js')); ?>"></script>
-
 <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
-
-
-<!-- Bootstrap rating js -->
-<script src="<?php echo e(URL::asset('/assets/libs/bootstrap-rating/bootstrap-rating.min.js')); ?> "></script>
-
-<script src="<?php echo e(URL::asset('/assets/js/pages/rating-init.js')); ?>"></script>
-
 <script>
     $('.delete-confirm').on('click', function(event) {
         event.preventDefault();
@@ -327,26 +292,6 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
 
 
 
-
-    $('#datatable').DataTable( {
-        responsive: true,
-
-        lengthMenu: [[100, 200, 300, 400, 500, 1000, -1], [100, 200, 300, 400, 500, 1000, "All"]],
-
-        dom: 'lBfrtip',
-        buttons: [
-            {
-                autoFilter: true,
-                extend: 'excel',
-                text: 'Download To Excel',
-                exportOptions: {
-                    modifier: {
-                        page: 'current'
-                    }
-                }
-            }
-        ]
-    } );
 </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/CardCard/Operations/All.blade.php ENDPATH**/ ?>

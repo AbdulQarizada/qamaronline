@@ -3,8 +3,6 @@
 @section('title') Orphan and Sponsorships @endsection
 
 @section('css')
-<!-- DataTables -->
-<link href="{{ URL::asset('/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -48,11 +46,8 @@
         <a href="{{route('CreateOrphans')}}" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD ORPHAN</a>
     </div>
 </div>
-
-
 <div class="row">
     <div class="col-12">
-
         <div class="card">
             <h3 class="card-header bg-dark text-white"></h3>
             <div class="card-body">
@@ -69,11 +64,8 @@
                             <th>Sponsor</th>
                             <th>Created By</th>
                             <th>Actions</th>
-
                         </tr>
                     </thead>
-
-
                     <tbody>
                         @foreach($datas as $data)
                         <tr>
@@ -137,17 +129,12 @@
                                     @endif
                                 </div>
                             </td>
-
                             <td>
                                 <div>
-
-
                                     @if($data -> Status == 'Pending')
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary">{{$data -> Status}}</a></h5>
                                     <p class="text-muted mb-0">{{$data -> created_at -> format("j F Y")}}</p>
-
                                     @endif
-
                                     @if($data -> Status == 'Approved')
                                     @if($PageInfo == 'Waiting')
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark">Waiting </a></h5>
@@ -160,32 +147,22 @@
                                     <p class="text-muted mb-0">{{$data -> created_at -> format("j F Y")}}</p>
                                     @endif
                                     @endif
-
                                     @if($data -> Status == 'Rejected')
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">{{$data -> Status}} </a></h5>
                                     <p class="text-muted mb-0">{{$data -> created_at -> format("j F Y")}}</p>
-
                                     @endif
-
-
-
                                     @if($data -> Status == 'Assigned')
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info">{{$data -> Status}}</a></h5>
                                     <p class="text-muted mb-0">{{$data -> created_at -> format("j F Y")}}</p>
                                     @endif
-
                                     @if($data -> Status == 'Released')
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">{{$data -> Status}}</a></h5>
                                     <p class="text-muted mb-0">{{$data -> created_at -> format("j F Y")}}</p>
-
                                     @endif
-
                                     @if($data -> Status == 'Printed')
                                     <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark">{{$data -> Status}}</a></h5>
                                     <p class="text-muted mb-0">{{$data -> created_at -> format("j F Y")}}</p>
-
                                     @endif
-
                                 </div>
                             </td>
                             <td>
@@ -197,26 +174,20 @@
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data ->  SFullName }}</a></h5>
                                     <p class="text-muted mb-0">{{ Carbon\Carbon::parse($data -> Sponsored_StartDate) -> format("j F Y")}}</p>
                                     <p class="text-muted mb-0">{{ Carbon\Carbon::parse($data -> Sponsored_EndDate) -> format("j F Y")}}</p>
-
-
                                 </div>
                                 @endif
                             </td>
                             <td>
                                 @if( $data -> Created_By !="")
-
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data ->  UFirstName }} {{$data ->  ULastName }}</a></h5>
                                     <p class="text-muted mb-0">{{$data ->  UJob }}</p>
-
                                 </div>
                                 @endif
                                 @if( $data -> Created_By =="")
-
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
                                     <p class="text-muted mb-0">Requested</p>
-
                                 </div>
                                 @endif
                             </td>
@@ -255,21 +226,19 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div>
-                    {!! $datas->links() !!}
-                </div>
             </div>
         </div>
     </div>
 </div>
-
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+             {!! $datas->links() !!} <span class="m-2 text-white badge badge-soft-dark">{{ $datas->total() }} Total Records</span>
+        </ul>
+    </div>
+</div>
 @endsection
 @section('script')
-<script src="{{ URL::asset('/assets/libs/datatables/datatables.min.js') }}"></script>
-<script src="{{ URL::asset('/assets/libs/jszip/jszip.min.js') }}"></script>
-
-
-
 <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
 
 <script>

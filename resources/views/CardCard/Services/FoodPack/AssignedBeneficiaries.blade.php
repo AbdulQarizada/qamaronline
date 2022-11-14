@@ -41,15 +41,11 @@
         <a href="{{route('CreateCareCard')}}" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD CARE CARD</a>
     </div> -->
 </div>
-
 <div class="row">
     <div class="col-12">
-
         <div class="card">
             <h3 class="card-header bg-dark text-white"></h3>
-
             <div class="card-body">
-
                 <div class="table-responsive">
                     <table id="datatable" class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>
@@ -64,12 +60,8 @@
                                 <th>Supporting Organization</th>
                                 <th>Created By</th>
                                 <th>Finger Print</th>
-                                <!-- <th>Actions</th> -->
-
                             </tr>
                         </thead>
-
-
                         <tbody>
                             @foreach($qamarcarecards as $qamarcarecard)
                             <tr>
