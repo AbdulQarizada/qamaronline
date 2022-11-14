@@ -256,7 +256,7 @@
                     </tbody>
                 </table>
                 <div >
-{!! $qamarcarecards->links() !!}
+{!! $datas->links() !!}
 </div>
             </div>
         </div>
