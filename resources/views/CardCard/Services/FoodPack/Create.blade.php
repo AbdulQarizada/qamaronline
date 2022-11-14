@@ -150,7 +150,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label for="Description" class="form-label">Food Packs Descriptions <i class="mdi mdi-asterisk text-danger"></i></label>
-                            <textarea id="textarea" class="form-control @error('Description') is-invalid @enderror" maxlength="220005" rows="10" value="{{ old('Description') }}" required name="Description" id="Description" required></textarea>
+                            <textarea id="textarea" class="form-control @error('Description') is-invalid @enderror" maxlength="22000005" rows="10" value="{{ old('Description') }}" required name="Description" id="Description" required></textarea>
                             @error('Description')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
