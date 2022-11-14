@@ -203,7 +203,7 @@ class FoodPacksController extends Controller
       'District_ID' => 'required|max:255',
       'TotalBudget' => 'required|max:255',
       'TargetBeneficiaries' => 'required|max:255',
-      'Description' => 'required|max:255',
+      'Description' => 'required',
 
 
 
