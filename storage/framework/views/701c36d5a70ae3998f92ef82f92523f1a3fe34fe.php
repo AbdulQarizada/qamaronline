@@ -391,7 +391,7 @@ endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FoodPack_ID')); ?>" required id="FoodPack_ID" name="FoodPack_ID">
                                                 <!-- <option value="None">Main Catagory</option> -->
                                                 <?php $__currentLoopData = $foodpacks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $foodpack): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <option value="<?php echo e($foodpack -> id); ?>"><?php echo e($foodpack -> Name); ?> - <?php echo e($foodpack -> ExpectedDate); ?></option>
+                                                <option value="<?php echo e($foodpack -> id); ?>"><?php echo e($foodpack -> Name); ?> | <?php echo e(($foodpack -> FPProvinceName)); ?> |  <?php echo e(($foodpack -> FPDistrictName)); ?> | <?php echo e(Carbon\Carbon::parse($foodpack -> ExpectedDate) -> format("j F Y")); ?></option>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                             </select>

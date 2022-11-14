@@ -288,7 +288,10 @@ class FoodPacksController extends Controller
     $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
     $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
     $provinces = Location::whereNull("Parent_ID")->get();
-    $foodpacks = Fookpacks::get();
+    $foodpacks = Fookpacks::join('locations as e', 'fookpacks.Province_ID', '=', 'e.id')
+    -> join('locations as f', 'fookpacks.District_ID', '=', 'f.id')
+    -> select(['fookpacks.*', 'e.Name as FPProvinceName', 'f.Name as FPDistrictName'])
+    -> get();
     $districts = Location::get();
     $qamarcarecards =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
       ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')

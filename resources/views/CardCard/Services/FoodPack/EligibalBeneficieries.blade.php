@@ -328,7 +328,7 @@
                                             <select class="form-select  form-select-lg @error('FoodPack_ID') is-invalid @enderror" value="{{ old('FoodPack_ID') }}" required id="FoodPack_ID" name="FoodPack_ID">
                                                 <!-- <option value="None">Main Catagory</option> -->
                                                 @foreach($foodpacks as $foodpack)
-                                                <option value="{{ $foodpack -> id}}">{{ $foodpack -> Name}} - {{ $foodpack -> ExpectedDate}}</option>
+                                                <option value="{{ $foodpack -> id}}">{{ $foodpack -> Name}} | {{ ($foodpack -> FPProvinceName) }} |  {{ ($foodpack -> FPDistrictName) }} | {{ Carbon\Carbon::parse($foodpack -> ExpectedDate) -> format("j F Y")}}</option>
                                                 @endforeach
 
                                             </select>
