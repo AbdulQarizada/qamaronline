@@ -38,11 +38,7 @@
         <div class="col-lg-12">
             <div class="card ">
                 <h4 class="card-header bg-dark text-white ">BENEFICARY INFORMATION</h4>
-
                 <div class="card-body">
-                    <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
-                    </p> -->
-
                     <div class="row">
                                 <div class="col-md-4">
                                     <div class="mb-3 position-relative">
@@ -66,19 +62,6 @@
                                         @enderror
                                     </div>
                                  </div>
-                                 <!--
-                                <div class="col-md-4">
-                                    <div class="mb-3 position-relative">
-                                        <label for="TazkiraID" class="form-label ">Tazkira ID <i class="mdi mdi-asterisk text-danger"></i></label>
-
-                                        <input type="number" class="form-control form-control-lg @error('TazkiraID') is-invalid @enderror" value="{{ old('TazkiraID') }}" id="TazkiraID" name="TazkiraID" max="999999999" required>
-                                        @error('TazkiraID')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div> -->
                                 <div class="col-md-4">
                                     <div class="mb-3 position-relative">
                                         <label for="PrimaryNumber" class="form-label ">Primary Number <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -128,8 +111,7 @@
                                         <div class="input-group">
                                             <select class="form-select form-select-lg @error('Reference_ID') is-invalid @enderror" required name="Reference_ID" value="{{ old('Reference_ID') }}" id="Reference_ID">
                                                 @foreach($users as $user)
-                                                <option value="{{ $user -> id}}">{{ $user -> FirstName}} {{ $user -> LastName}}</option>
-
+                                                <option value="{{ $user -> id}}" {{ $user -> id == Auth::user() -> id ? 'selected' : '' }}>{{ $user -> FirstName}} {{ $user -> LastName}}</option>
                                                 @endforeach
 
                                             </select>

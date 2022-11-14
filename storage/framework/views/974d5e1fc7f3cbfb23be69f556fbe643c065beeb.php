@@ -38,11 +38,7 @@
         <div class="col-lg-12">
             <div class="card ">
                 <h4 class="card-header bg-dark text-white ">BENEFICARY INFORMATION</h4>
-
                 <div class="card-body">
-                    <!-- <p class="card-title-desc">Please enter all information about the Beneficiaries of the Qamar Care Card.
-                    </p> -->
-
                     <div class="row">
                                 <div class="col-md-4">
                                     <div class="mb-3 position-relative">
@@ -94,33 +90,6 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                     </div>
                                  </div>
-                                 <!--
-                                <div class="col-md-4">
-                                    <div class="mb-3 position-relative">
-                                        <label for="TazkiraID" class="form-label ">Tazkira ID <i class="mdi mdi-asterisk text-danger"></i></label>
-
-                                        <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['TazkiraID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('TazkiraID')); ?>" id="TazkiraID" name="TazkiraID" max="999999999" required>
-                                        <?php $__errorArgs = ['TazkiraID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong><?php echo e($message); ?></strong>
-                                        </span>
-                                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                    </div>
-                                </div> -->
                                 <div class="col-md-4">
                                     <div class="mb-3 position-relative">
                                         <label for="PrimaryNumber" class="form-label ">Primary Number <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -219,8 +188,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" required name="Reference_ID" value="<?php echo e(old('Reference_ID')); ?>" id="Reference_ID">
                                                 <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <option value="<?php echo e($user -> id); ?>"><?php echo e($user -> FirstName); ?> <?php echo e($user -> LastName); ?></option>
-
+                                                <option value="<?php echo e($user -> id); ?>" <?php echo e($user -> id == Auth::user()-> id ? 'selected' : ''); ?>><?php echo e($user -> FirstName); ?> <?php echo e($user -> LastName); ?></option>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                             </select>

@@ -165,8 +165,8 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
             </div>
 
         </div>
-    </div> <!-- end col -->
-</div> <!-- end row -->
+    </div>
+</div>
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
