@@ -19,8 +19,6 @@ class OrphansReliefController extends Controller
     $this->middleware('auth', ['except' => ['AllGrid', 'AllGridWordpress']]);
   }
 
-
-
   // index
   public function Index()
   {
@@ -40,7 +38,7 @@ class OrphansReliefController extends Controller
       ->join('users as d', 'orphans.Created_By', '=', 'd.id')
       ->leftjoin('users as e', 'orphans.Sponsor_ID', '=', 'e.id')
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.FullName as SFullName',])
-      ->get();
+      ->paginate(100);
     return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo]);
   }
 
@@ -55,7 +53,7 @@ class OrphansReliefController extends Controller
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.Name as Gender'])
       ->where("orphans.Status", "=", 'Approved')
       ->where("orphans.IsSponsored", "=", 0)
-      ->get();
+      ->paginate(12);
     return view('OrphansRelief.Orphan.AllGrid', ['datas' => $orphans]);
   }
 
@@ -71,7 +69,7 @@ class OrphansReliefController extends Controller
       ->leftjoin('users as e', 'orphans.Sponsor_ID', '=', 'e.id')
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.FullName as SFullName'])
       ->where("orphans.Status", "=", 'Pending')
-      ->get();
+      ->paginate(100);
     return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo]);
   }
 
@@ -85,7 +83,7 @@ class OrphansReliefController extends Controller
       ->leftjoin('users as e', 'orphans.Sponsor_ID', '=', 'e.id')
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.FullName as SFullName'])
       ->where("orphans.Status", "=", 'Approved')
-      ->get();
+      ->paginate(100);
     return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo]);
   }
 
@@ -101,7 +99,7 @@ class OrphansReliefController extends Controller
       ->leftjoin('users as e', 'orphans.Sponsor_ID', '=', 'e.id')
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.FullName as SFullName'])
       ->where("orphans.Status", "=", 'Rejected')
-      ->get();
+      ->paginate(100);
     return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo]);
   }
 
@@ -117,7 +115,7 @@ class OrphansReliefController extends Controller
       ->leftjoin('users as e', 'orphans.Sponsor_ID', '=', 'e.id')
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.FullName as SFullName'])
       ->where("orphans.IsSponsored", "=", 0)
-      ->get();
+      ->paginate(100);
     return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo]);
   }
 
@@ -133,7 +131,7 @@ class OrphansReliefController extends Controller
       ->leftjoin('users as e', 'orphans.Sponsor_ID', '=', 'e.id')
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.FullName as SFullName',])
       ->where("orphans.IsSponsored", "=", 1)
-      ->get();
+      ->paginate(100);
     return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo]);
   }
 

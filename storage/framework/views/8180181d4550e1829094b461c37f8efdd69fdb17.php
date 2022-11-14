@@ -264,13 +264,17 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
 
                         </tbody>
                     </table>
+
                 </div>
             </div>
 
         </div>
     </div> <!-- end col -->
 </div> <!-- end row -->
+<div >
+<?php echo $qamarcarecards->links(); ?>
 
+</div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
 <!-- Required datatable js -->

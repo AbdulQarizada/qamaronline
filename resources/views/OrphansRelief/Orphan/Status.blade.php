@@ -297,9 +297,9 @@
                 </tr>
                 <tr>
                     <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsorship Start Date</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ Carbon\Carbon::parse($data -> Sponsored_StartDate) -> format("j F Y")  }}</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> Sponsored_StartDate  }}</td>
                     <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsorship End Date</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ Carbon\Carbon::parse($data -> Sponsored_EndDate) -> format("j F Y")}}</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> Sponsored_EndDate }}</td>
                 </tr>
             </table>
         </div>

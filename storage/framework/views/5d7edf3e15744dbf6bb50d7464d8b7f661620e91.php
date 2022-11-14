@@ -135,7 +135,7 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form class="needs-validation" action="<?php echo e(route('ResetPasswordUser', [$data -> id])); ?>" method="POST" enctype="multipart/form-data" novalidate>
+                                                    <form class="needs-validation" action="<?php echo e(route('ResetPasswordSponsor', [$data -> id])); ?>" method="POST" enctype="multipart/form-data" novalidate>
                                                         <?php echo method_field('PUT'); ?>
                                                         <?php echo csrf_field(); ?>
                                                         <div class="row">

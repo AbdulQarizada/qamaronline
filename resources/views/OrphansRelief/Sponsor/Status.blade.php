@@ -46,41 +46,23 @@
                     <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> LastName}}</td>
                 </tr>
                 <tr>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Tazkira ID</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> Tazkira_ID}}</td>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Date of Birth</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> DOB}}</td>
+                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Email</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> email}}</td>
+                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Password</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><a href="#" class="badge badge-soft-success">Saved</a></td>
                 </tr>
-                <tr>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Gender</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> Gender}}</td>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Job</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> Job}}</td>
-                </tr>
-            </table>
-            <table class="table table-nowrap">
-                <h5 style="font-weight: bold;" class="card-header  text-dark">ADDRESS AND CONTACT</h5>
                 <tr>
                     <td style="width: 20%; border: 2px solid #000; padding: 5px;">Primary Number</td>
                     <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> PrimaryNumber}}</td>
                     <td style="width: 20%; border: 2px solid #000; padding: 5px;">Secondary Number</td>
                     <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> SecondaryNumber}}</td>
                 </tr>
-                <tr>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Email</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> email}}</td>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Province</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> Province}}</td>
-                </tr>
-                <tr>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">District</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> District}}</td>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Village</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> Village}}</td>
-                </tr>
             </table>
             <table class="table table-nowrap">
                 <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">ROLE AND PERMISSION</h5>
+                @if($data -> IsOrphanSponsor == 1)
+                <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-success">Orphan Sponsor</a></span>
+                @endif
                 @if($data -> IsActive == 1)
                 <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-success">Active</a></span>
                 @endif
@@ -95,12 +77,12 @@
 <div class="row">
     <div class="col-12">
         @if($data -> IsActive == 1)
-        <a href="{{route('DeActivateUser', ['data' => $data -> id])}}" class="btn btn-danger waves-effect waves-light deactivate m-3" data-toggle="tooltip" data-placement="top" title="DeActivate">
+        <a href="{{route('DeActivateSponsor', ['data' => $data -> id])}}" class="btn btn-danger waves-effect waves-light deactivate m-3" data-toggle="tooltip" data-placement="top" title="DeActivate">
             De-ACTIVATE
         </a>
         @endif
         @if($data -> IsActive == 0)
-        <a href="{{route('ActivateUser', ['data' => $data -> id])}}" class="btn btn-success waves-effect waves-light activate m-3" data-toggle="tooltip" data-placement="top" title="Activate">
+        <a href="{{route('ActivateSponsor', ['data' => $data -> id])}}" class="btn btn-success waves-effect waves-light activate m-3" data-toggle="tooltip" data-placement="top" title="Activate">
             ACTIVATE
         </a>
         <a href="{{route('DeleteSponsor', ['data' => $data -> id])}}" class="btn btn-danger waves-effect waves-light delete-confirm">

@@ -195,7 +195,9 @@
                                 @if( $data -> IsSponsored == 1)
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data ->  SFullName }}</a></h5>
-                                    <p class="text-muted mb-0">{{ Carbon\Carbon::parse($data -> Sponsored_At) -> format("j F Y")}}</p>
+                                    <p class="text-muted mb-0">{{ Carbon\Carbon::parse($data -> Sponsored_StartDate) -> format("j F Y")}}</p>
+                                    <p class="text-muted mb-0">{{ Carbon\Carbon::parse($data -> Sponsored_EndDate) -> format("j F Y")}}</p>
+
 
                                 </div>
                                 @endif
@@ -253,6 +255,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div >
+{!! $qamarcarecards->links() !!}
+</div>
             </div>
         </div>
     </div>

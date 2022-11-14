@@ -81,6 +81,7 @@
     </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </div>
+<?php echo $datas->links(); ?>
 
 <div class="row">
     <div class="col-lg-12">

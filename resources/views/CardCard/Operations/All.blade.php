@@ -257,13 +257,16 @@
 
                         </tbody>
                     </table>
+
                 </div>
             </div>
 
         </div>
     </div> <!-- end col -->
 </div> <!-- end row -->
-
+<div >
+{!! $qamarcarecards->links() !!}
+</div>
 @endsection
 @section('script')
 <!-- Required datatable js -->

@@ -128,7 +128,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form class="needs-validation" action="{{route('ResetPasswordUser', [$data -> id])}}" method="POST" enctype="multipart/form-data" novalidate>
+                                                    <form class="needs-validation" action="{{route('ResetPasswordSponsor', [$data -> id])}}" method="POST" enctype="multipart/form-data" novalidate>
                                                         @method('PUT')
                                                         @csrf
                                                         <div class="row">

@@ -118,6 +118,9 @@ Route::put('/OrphansRelief/Sponsor/Edit/{data}', [App\Http\Controllers\OrphanRel
 Route::get('/OrphansRelief/Sponsor/Delete/{data}', [App\Http\Controllers\OrphanRelief\Sponsors\SponsorsReliefController::class, 'Delete'])->name('DeleteSponsor');
 // change status
 Route::get('/OrphansRelief/Sponsor/Status/{data}', [App\Http\Controllers\OrphanRelief\Sponsors\SponsorsReliefController::class, 'Status'])->name('StatusSponsor');
+Route::get('/OrphansRelief/Sponsor/Activate/{data}', [App\Http\Controllers\OrphanRelief\Sponsors\SponsorsReliefController::class, 'Activate'])->name('ActivateSponsor');
+Route::get('/OrphansRelief/Sponsor/DeActivate/{data}', [App\Http\Controllers\OrphanRelief\Sponsors\SponsorsReliefController::class, 'DeActivate'])->name('DeActivateSponsor');
+Route::put('/OrphansRelief/Sponsor/ResetPassword/{data}', [App\Http\Controllers\OrphanRelief\Sponsors\SponsorsReliefController::class, 'ResetPassword'])->name('ResetPasswordSponsor');
 
 // Payment
 Route::get('/OrphansRelief/Payment', [App\Http\Controllers\OrphanRelief\Payments\PaymentsReliefController::class, 'AllPayments'])->name('AllPayment');
@@ -414,20 +417,13 @@ Route::post('/UserManagement/Create', [App\Http\Controllers\SystemManagement\Use
 // update
 Route::get('/UserManagement/Edit/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Edit'])->name('EditUser');
 Route::put('/UserManagement/Edit/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Update'])->name('UpdateUser');
-
 // delete
 Route::get('/UserManagement/Delete/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Delete'])->name('DeleteUser');
-
-
-
+// status
 Route::get('/UserManagement/Status/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Status'])->name('StatusUser');
-
 Route::get('/UserManagement/Activate/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Activate'])->name('ActivateUser');
-
 Route::get('/UserManagement/DeActivate/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'DeActivate'])->name('DeActivateUser');
-
 Route::get('/UserManagement/Activated', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Activated'])->name('ActivatedUser');
-
 Route::get('/UserManagement/DeActivated', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'DeActivated'])->name('DeActivatedUser');
 // role
 Route::get('/UserManagement/Role/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Role'])->name('RoleUser');
