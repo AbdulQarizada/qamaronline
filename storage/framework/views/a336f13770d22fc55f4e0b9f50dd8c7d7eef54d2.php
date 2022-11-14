@@ -8,10 +8,7 @@
 <link href="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.css')); ?>" rel="stylesheet" type="text/css" />
 
 <?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('content'); ?>
-
-
 <div class="row mt-4">
     <div class="col-6">
         <?php if(Cookie::get('Layout') == 'LayoutNoSidebar'): ?>
@@ -28,6 +25,7 @@
 </div>
 <div class="row">
     <div class="col-2">
+        <label for="Province_ID" class="form-label">Filter Pending List</label>
         <select class="form-select  form-select-lg mb-3 <?php $__errorArgs = ['Country'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -40,22 +38,35 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
             <option value="<?php echo e(route('AllListFoodPack')); ?>">All</option>
             <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <option value="<?php echo e(route('SearchAllList', ['data' => $province -> id])); ?>"><?php echo e($province -> Name); ?></option>
-
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </select>
     </div>
-    <div class="col-10 ">
+    <div class="col-2">
+        <label for="Province_ID" class="form-label">Filter Approved List</label>
+        <select class="form-select  form-select-lg mb-3 <?php $__errorArgs = ['Country'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id="item" name="item">
+            <option value="<?php echo e(route('AllListFoodPack')); ?>">Approved List</option>
+            <option value="<?php echo e(route('AllListFoodPack')); ?>">All</option>
+            <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <option value="<?php echo e(route('SearchAllList', ['data' => $province -> id])); ?>"><?php echo e($province -> Name); ?></option>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </select>
+    </div>
+    <div class="col-8 ">
         <a href="<?php echo e(route('AllCreateFoodPack')); ?>" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD BENEFICIARY</a>
     </div>
 </div>
 <div class="row">
     <div class="col-12">
-
         <div class="card">
             <h3 class="card-header bg-dark text-white"></h3>
-
             <div class="card-body">
-
                 <div class="table-responsive">
                     <table id="datatable" class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>
@@ -71,12 +82,14 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
                                 <th>Created At</th>
                                 <th>Status</th>
                                 <?php if(Auth::user()->IsGeneralManager == 1): ?>
-                                <th>Action</th>
+                                <th>
+                                     <input class="form-check-input" type="checkbox" id="checkAll">
+                                     <label class="form-check-label" for="checkAll">Select</label>
+
+                                    </th>
                                 <?php endif; ?>
                             </tr>
                         </thead>
-
-
                         <tbody>
                             <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
@@ -95,8 +108,6 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
                                 </td>
                                 <td> <?php echo e($data -> PrimaryNumber); ?> </td>
                                 <td> <?php echo e($data -> SecondaryNumber); ?> </td>
-
-                                <!-- <td> <?php echo e($data -> TazkiraID); ?> </td> -->
                                 <td>
                                     <div>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data ->  RefernceFirstName); ?> <?php echo e($data ->  RefernceLastName); ?></a></h5>
@@ -115,59 +126,57 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
 
                                     </div>
                                 </td>
-
                                 <td>
                                     <div>
-
-
                                         <?php if($data -> Status == 'Pending'): ?>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary">Pending Decicion</a></h5>
-
                                         <?php endif; ?>
-
                                         <?php if($data -> Status == 'Approved'): ?>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success"><?php echo e($data -> Status); ?> </a></h5>
-
                                         <?php endif; ?>
-
                                         <?php if($data -> Status == 'Rejected'): ?>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger"><?php echo e($data -> Status); ?> </a></h5>
-
                                         <?php endif; ?>
-
-
                                     </div>
                                 </td>
                                 <?php if(Auth::user()->IsGeneralManager == 1): ?>
                                 <td>
-                                    <?php if( $data -> Status == 'Approved' || $data -> Status == 'Rejected'): ?>
-                                    <a href="<?php echo e(route('AlllistReInitiate', ['data' => $data -> id])); ?>" class="btn btn-info waves-effect waves-light reinitiate m-3">
-                                        <i class="bx bx-time-five  font-size-16 align-middle"></i>Re-Initiate
-                                    </a>
-                                    <?php endif; ?>
-                                    <?php if( $data -> Status == 'Pending'): ?>
-                                    <a href="<?php echo e(route('AlllistApprove', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light approve m-3">
-                                        <i class="bx bx-check-circle font-size-16 align-middle"></i>Approve
-                                    </a>
-                                    <a href="<?php echo e(route('AlllistReject', ['data' => $data -> id])); ?>" class="btn btn-danger waves-effect waves-light reject m-3">
-                                        <i class=" bx bx-x-circle font-size-16 align-middle"></i>Reject
-                                    </a>
-                                    <?php endif; ?>
+                                   <input class="form-check-input" type="checkbox" id="formCheck1" name="Beneficiary_ID[]" value="<?php echo e($data ->  id); ?>">
                                 </td>
                                 <?php endif; ?>
                             </tr>
+
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-
                         </tbody>
                     </table>
                 </div>
+
             </div>
-
         </div>
-    </div> <!-- end col -->
-</div> <!-- end row -->
-
+    </div>
+</div>
+<?php if(Auth::user()->IsGeneralManager == 1): ?>
+<div class="row">
+    <div class="col-lg-12 ">
+        <a href="" class="btn btn-info waves-effect waves-light reinitiate m-3 float-end">
+            <i class="bx bx-time-five  font-size-16 align-middle"></i>Re-Initiate
+        </a>
+        <a href="" class="btn btn-success waves-effect waves-light approve m-3 float-end">
+            <i class="bx bx-check-circle font-size-16 align-middle"></i>Approve
+        </a>
+        <a href="" class="btn btn-danger waves-effect waves-light reject m-3 float-end">
+            <i class=" bx bx-x-circle font-size-16 align-middle"></i>Reject
+        </a>
+    </div>
+</div>
+<?php endif; ?>
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+            <?php echo $datas->links(); ?> <span class="m-2 text-white badge badge-soft-dark"><?php echo e($datas->total()); ?> Total Records</span>
+        </ul>
+    </div>
+</div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
 <!-- Required datatable js -->
@@ -233,27 +242,30 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
         });
     });
 
+    $("#checkAll").click(function() {
+        $('input:checkbox').not(this).prop('checked', this.checked);
+    });
 
-
-    $('#datatable').DataTable( {
+    $('#datatable').DataTable({
         responsive: true,
 
-        lengthMenu: [[100, 200, 300, 400, 500, 1000, -1], [100, 200, 300, 400, 500, 1000, "All"]],
+        lengthMenu: [
+            [100, 200, 300, 400, 500, 1000, -1],
+            [100, 200, 300, 400, 500, 1000, "All"]
+        ],
 
         dom: 'lBfrtip',
-        buttons: [
-            {
-                autoFilter: true,
-                extend: 'excel',
-                text: 'Download To Excel',
-                exportOptions: {
-                    modifier: {
-                        page: 'current'
-                    }
+        buttons: [{
+            autoFilter: true,
+            extend: 'excel',
+            text: 'Download To Excel',
+            exportOptions: {
+                modifier: {
+                    page: 'current'
                 }
             }
-        ]
-    } );
+        }]
+    });
 </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/CardCard/Services/FoodPack/AllList.blade.php ENDPATH**/ ?>
