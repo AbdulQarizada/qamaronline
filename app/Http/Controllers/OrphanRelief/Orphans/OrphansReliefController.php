@@ -345,7 +345,6 @@ class OrphansReliefController extends Controller
         'n.FullName as SFullName',
         'n.PrimaryNumber as SPrimaryNumber',
         'n.email as Semail',
-
       )
       ->get();
     return view('OrphansRelief.Orphan.Status',  ['datas' => $orphans]);
@@ -379,7 +378,6 @@ class OrphansReliefController extends Controller
     ]);
     return redirect()->route('PendingOrphans')->with('toast_warning', 'Record Re-Initiated Successfully!');
   }
-
 
 
   public function AssignToSponsor(Orphan $data)

@@ -24,10 +24,6 @@ use Auth;
 use Stripe\Charge;
 use Stripe\Stripe;
 
-use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
 
 
 class PaymentsReliefController extends Controller
@@ -1162,7 +1158,6 @@ class PaymentsReliefController extends Controller
   {
     $product = Orphan::find($id);
     $oldCart = Session::has('cart') ? Session::get('cart') : null;
-
     $cart = new Cart($oldCart);
     $cart->add($product, $product->id);
     $request->session()->put('cart', $cart);
@@ -1176,13 +1171,11 @@ class PaymentsReliefController extends Controller
     $oldCart = Session::has('cart') ? Session::get('cart') : null;
     $cart = new Cart($oldCart);
     $cart->removeItem($id);
-
     if (count($cart->items) > 0) {
       Session::put('cart', $cart);
     } else {
       Session::forget('cart');
     }
-
     return view('OrphansRelief.Payment.Checkout', ['datas' => $cart->items, 'totalPrice' => $cart->totalPrice]);
   }
 

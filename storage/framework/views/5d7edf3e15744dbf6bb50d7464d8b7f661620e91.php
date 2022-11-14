@@ -3,8 +3,6 @@
 <?php $__env->startSection('title'); ?> Orphan and Sponsorships <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
-<!-- DataTables -->
-<link href="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.css')); ?>" rel="stylesheet" type="text/css" />
 
 <?php $__env->stopSection(); ?>
 
@@ -185,14 +183,15 @@ unset($__errorArgs, $__bag); ?>
         </div>
     </div>
 </div>
-
+<div class="row">
+    <div class="col-lg-12">
+        <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+             <?php echo $datas->links(); ?> <span class="m-2 text-white badge badge-soft-dark"><?php echo e($datas->total()); ?> Total Records</span>
+        </ul>
+    </div>
+</div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
-<!-- Required datatable js -->
-<script src="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('/assets/libs/jszip/jszip.min.js')); ?>"></script>
-
-
 <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
 
 <script>
@@ -224,27 +223,6 @@ unset($__errorArgs, $__bag); ?>
                 window.location.href = url;
             }
         });
-    });
-
-    $('#datatable').DataTable({
-        responsive: true,
-
-        lengthMenu: [
-            [100, 200, 300, 400, 500, 1000, -1],
-            [100, 200, 300, 400, 500, 1000, "All"]
-        ],
-
-        dom: 'lBfrtip',
-        buttons: [{
-            autoFilter: true,
-            extend: 'excel',
-            text: 'Download To Excel',
-            exportOptions: {
-                modifier: {
-                    page: 'current'
-                }
-            }
-        }]
     });
 </script>
 <?php $__env->stopSection(); ?>

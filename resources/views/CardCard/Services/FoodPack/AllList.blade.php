@@ -158,8 +158,8 @@
             </div>
 
         </div>
-    </div> <!-- end col -->
-</div> <!-- end row -->
+    </div>
+</div>
 
 @endsection
 @section('script')

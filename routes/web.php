@@ -123,7 +123,7 @@ Route::get('/OrphansRelief/Sponsor/DeActivate/{data}', [App\Http\Controllers\Orp
 Route::put('/OrphansRelief/Sponsor/ResetPassword/{data}', [App\Http\Controllers\OrphanRelief\Sponsors\SponsorsReliefController::class, 'ResetPassword'])->name('ResetPasswordSponsor');
 
 // Payment
-Route::get('/OrphansRelief/Payment', [App\Http\Controllers\OrphanRelief\Payments\PaymentsReliefController::class, 'AllPayments'])->name('AllPayment');
+Route::get('/OrphansRelief/Payment/All', [App\Http\Controllers\OrphanRelief\Payments\PaymentsReliefController::class, 'AllPayments'])->name('AllPayment');
 Route::post('/OrphansRelief/Payment/MyPayment/', [App\Http\Controllers\OrphanRelief\Payments\PaymentsReliefController::class, 'Payment'])->name('StorePayment');
 Route::get('/OrphansRelief/Payment/MyOrphans', [App\Http\Controllers\OrphanRelief\Payments\PaymentsReliefController::class, 'MyOrphans'])->name('MyOrphansSponsor');
 Route::get('/OrphansRelief/Payment/MyPyaments', [App\Http\Controllers\OrphanRelief\Payments\PaymentsReliefController::class, 'MyPayments'])->name('MyPaymentsSponsor');

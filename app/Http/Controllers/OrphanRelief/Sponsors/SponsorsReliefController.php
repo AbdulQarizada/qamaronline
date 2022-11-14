@@ -32,9 +32,9 @@ class SponsorsReliefController extends Controller
   {
     $PageInfo = 'All';
     $sponsors =   User::where("users.IsOrphanSponsor", "=", 1)
-    ->leftjoin('users as a', 'users.Created_By', '=', 'a.id')
-    ->select('users.*','a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob')
-    -> get();
+    -> leftjoin('users as a', 'users.Created_By', '=', 'a.id')
+    -> select('users.*','a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob')
+    -> paginate(100);
     return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo]);
   }
 
@@ -45,7 +45,7 @@ class SponsorsReliefController extends Controller
     -> leftjoin('users as a', 'users.Created_By', '=', 'a.id')
     -> select('users.*','a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob')
     -> where("users.IsActive", "=", 1)
-    -> get();
+    -> paginate(100);
     return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo]);
   }
 
@@ -56,7 +56,7 @@ class SponsorsReliefController extends Controller
     -> leftjoin('users as a', 'users.Created_By', '=', 'a.id')
     -> select('users.*','a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob')
     -> where("users.IsActive", "!=", 1)
-    -> get();
+    -> paginate(100);
     return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo]);
   }
 
@@ -106,7 +106,6 @@ class SponsorsReliefController extends Controller
 
   public function Update(User $data)
   {
-
     $data->update([
       'FirstName' => request('FirstName'),
       'LastName' => request('LastName'),
@@ -124,7 +123,6 @@ class SponsorsReliefController extends Controller
   // Delete
   public function Delete(User $data)
   {
-
     $data->delete();
     return back()->with('success', 'Record deleted successfully');
   }
@@ -133,7 +131,6 @@ class SponsorsReliefController extends Controller
   // status
   public function Status(User $data)
   {
-
     $sponsors =   User::where("users.id", "=", $data->id)->get();
     return view('OrphansRelief.Sponsor.Status',  ['datas' => $sponsors]);
   }
