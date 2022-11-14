@@ -8,6 +8,7 @@ use App\Models\Orphan;
 use App\Models\Location;
 use App\Models\LookUp;
 use App\Models\User;
+use Auth;
 
 
 class OrphansReliefController extends Controller
@@ -57,6 +58,15 @@ class OrphansReliefController extends Controller
     return view('OrphansRelief.Orphan.AllGrid', ['datas' => $orphans]);
   }
 
+  public function MyOrphans()
+  {
+
+    $myorphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
+      -> select(['orphans.*', 'a.Name as ProvinceName'])
+      -> where("Sponsor_ID", "=", Auth::user()->id)
+      -> paginate(100);
+      return view('OrphansRelief.Orphan.MyOrphan', ['datas' => $myorphans]);
+  }
 
   public function Pending()
   {

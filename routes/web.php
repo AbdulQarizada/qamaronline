@@ -80,6 +80,8 @@ Route::get('/OrphansRelief', [App\Http\Controllers\OrphanRelief\Orphans\OrphansR
 // Orphan list
 Route::get('/OrphansRelief/Orphan/All', [App\Http\Controllers\OrphanRelief\Orphans\OrphansReliefController::class, 'All'])->name('AllOrphans');
 Route::get('/OrphansRelief/Orphan/AllGrid', [App\Http\Controllers\OrphanRelief\Orphans\OrphansReliefController::class, 'AllGrid'])->name('AllGridOrphans');
+Route::get('/OrphansRelief/Orphan/MyOrphans', [App\Http\Controllers\OrphanRelief\Orphans\OrphansReliefController::class, 'MyOrphans'])->name('MyOrphans');
+
 // status list
 Route::get('/OrphansRelief/Orphan/Pending', [App\Http\Controllers\OrphanRelief\Orphans\OrphansReliefController::class, 'Pending'])->name('PendingOrphans');
 Route::get('/OrphansRelief/Orphan/Approved', [App\Http\Controllers\OrphanRelief\Orphans\OrphansReliefController::class, 'Approved'])->name('ApprovedOrphans');
@@ -125,8 +127,7 @@ Route::put('/OrphansRelief/Sponsor/ResetPassword/{data}', [App\Http\Controllers\
 // Payment
 Route::get('/OrphansRelief/Payment/All', [App\Http\Controllers\OrphanRelief\Payments\PaymentsReliefController::class, 'AllPayments'])->name('AllPayment');
 Route::post('/OrphansRelief/Payment/MyPayment/', [App\Http\Controllers\OrphanRelief\Payments\PaymentsReliefController::class, 'Payment'])->name('StorePayment');
-Route::get('/OrphansRelief/Payment/MyOrphans', [App\Http\Controllers\OrphanRelief\Payments\PaymentsReliefController::class, 'MyOrphans'])->name('MyOrphansSponsor');
-Route::get('/OrphansRelief/Payment/MyPyaments', [App\Http\Controllers\OrphanRelief\Payments\PaymentsReliefController::class, 'MyPayments'])->name('MyPaymentsSponsor');
+Route::get('/OrphansRelief/Payment/MyPyaments', [App\Http\Controllers\OrphanRelief\Payments\PaymentsReliefController::class, 'MyPayments'])->name('MyPayments');
 Route::get('/OrphansRelief/Payment/Checkout/', [App\Http\Controllers\OrphanRelief\Payments\PaymentsReliefController::class, 'Checkout'])->name('CheckoutPayment');
 Route::get('/OrphansRelief/Payment/AddToCart/{data}', [App\Http\Controllers\OrphanRelief\Payments\PaymentsReliefController::class, 'AddToCart'])->name('AddToCartPayment');
 Route::get('/OrphansRelief/Payment/RemoveFromCart/{data}', [App\Http\Controllers\OrphanRelief\Payments\PaymentsReliefController::class, 'RemoveFromCart'])->name('RemoveFromCartPayment');

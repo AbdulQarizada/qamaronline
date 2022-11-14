@@ -3,7 +3,6 @@
 <?php $__env->startSection('title'); ?> Orphan and Sponsorships <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
-<!-- ION Slider -->
 <link href="<?php echo e(URL::asset('/assets/css/mystyle/OrphanGrid.css')); ?>" rel="stylesheet" type="text/css" />
 
 
@@ -81,8 +80,6 @@
     </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </div>
-
-
 <div class="row">
     <div class="col-lg-12">
         <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
@@ -90,7 +87,6 @@
 
         </ul>
     </div>
-</div>
 </div>
 
 <?php $__env->stopSection(); ?>

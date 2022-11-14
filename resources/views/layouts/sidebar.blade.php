@@ -10,11 +10,9 @@
 
                 <li class="menu-title" key="t-dashnaord">Dashboard</li>
                 <li><a href="{{route('root')}}" key="t-home"><i class="bx bx-store"></i>Home</a></li>
-
-
                 @if(Auth::user()->IsOrphanSponsor == 1)
-                <li><a href="{{route('MyOrphansSponsor')}}" key="t-orphan"><i class="bx bx-store"></i>My Orphans</a></li>
-                <li><a href="{{route('MyPaymentsSponsor')}}" key="t-payment"><i class="bx bx-store"></i>My Payments</a></li>
+                <li><a href="{{route('MyOrphans')}}" key="t-orphan"><i class="mdi mdi-account-child"></i>My Orphans</a></li>
+                <li><a href="{{route('MyPayments')}}" key="t-payment"><i class="mdi mdi-bank"></i>My Payments</a></li>
                 @endif
 
 

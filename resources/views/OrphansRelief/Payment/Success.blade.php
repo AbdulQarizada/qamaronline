@@ -24,7 +24,6 @@
                                     <img src="{{ URL::asset('/assets/images/logo-dark@2x.png') }}" alt="" height="80"
                                         class="auth-logo-light mx-auto"> -->
                                 </a>
-                                <!-- <h1 class="mt-5">Qamar Foundation</h1> -->
                             </div>
 
 
