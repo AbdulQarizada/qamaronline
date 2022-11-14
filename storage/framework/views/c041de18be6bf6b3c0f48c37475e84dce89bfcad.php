@@ -81,21 +81,13 @@
     </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </div>
-<?php echo $datas->links(); ?>
+
 
 <div class="row">
     <div class="col-lg-12">
         <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
-            <li class="page-item disabled">
-                <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
-            </li>
-            <li class="page-item active">
-                <a href="#" class="page-link">1</a>
-            </li>
-            </li>
-            <li class="page-item">
-                <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
-            </li>
+        <?php echo $datas->links(); ?>
+
         </ul>
     </div>
 </div>

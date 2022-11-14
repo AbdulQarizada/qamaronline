@@ -241,15 +241,15 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                     </a>
                                     <?php endif; ?>
                                     <?php if( $data -> Status == 'Approved'): ?>
-                                     <?php if( $data -> IsSponsored == 1): ?>
+                                    <?php if( $data -> IsSponsored == 1): ?>
                                     <a href="<?php echo e(route('AssignToSponsorOrphan', ['data' => $data -> id])); ?>" class="btn btn-info waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="Reassign To Sponsor">
                                         <i class="mdi mdi-account-convert font-size-16 align-middle"></i>
                                     </a>
-                                      <?php else: ?>
+                                    <?php else: ?>
                                     <a href="<?php echo e(route('AssignToSponsorOrphan', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="Assign To Sponsor">
                                         <i class="bx bx-user-plus   font-size-16 align-middle"></i>
                                     </a>
-                                      <?php endif; ?>
+                                    <?php endif; ?>
                                     <?php endif; ?>
                                     <?php if( $data -> Status == 'Rejected'): ?>
                                     <a href="<?php echo e(route('DeleteOrphan', ['data' => $data -> id])); ?>" class="btn btn-danger waves-effect waves-light delete-confirm" data-toggle="tooltip" data-placement="top" title="Delete Record">
@@ -262,6 +262,10 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 </table>
+                <div>
+                    <?php echo $datas->links(); ?>
+
+                </div>
             </div>
         </div>
     </div>
