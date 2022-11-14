@@ -219,25 +219,23 @@
                                         <i class="bx bx-cart"></i>
                                     </span>
                                 </div>
-                                @forelse(auth()->user()->unreadNotifications as $notification)
+
                                 <div class="flex-grow-1">
+                                   @forelse(auth()->user()->unreadNotifications as $notification)
                                     <h6 class="mt-0 mb-1 text-danger" key="t-your-order">New Notification</h6>
                                     <div class="font-size-12 text-muted">
                                         <p class="mb-1" key="t-grammer"> {{ $notification->data['Name'] }}</p>
                                         <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">{{ $notification->created_at }}</span></p>
 
                                     </div>
-                                </div>
-                                @empty
-                                <div class="flex-grow-1">
+                                    @empty
                                     <h6 class="mt-0 mb-1" key="t-your-order">No New Notification</h6>
                                     <div class="font-size-12 text-muted">
                                         <p class="mb-1" key="t-grammer">No New Notification</p>
                                         <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span key="t-min-ago">Now</span></p>
                                     </div>
+                                    @endforelse
                                 </div>
-                                @endforelse
-
                             </div>
                         </a>
                     </div>
