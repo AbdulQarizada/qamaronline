@@ -72,7 +72,7 @@ class FoodPacksController extends Controller
       ->join('users as d', 'beneficiarylists.Created_By', '=', 'd.id')
       ->join('users as e', 'beneficiarylists.Reference_ID', '=', 'e.id')
       ->select(['beneficiarylists.*', 'a.Name as ProvinceName', 'e.FirstName as RefernceFirstName', 'e.LastName as RefernceLastName', 'd.FirstName as UFirstName', 'd.LastName as ULastName',])
-      ->get();
+      ->paginate(100);
     return view('CardCard.Services.FoodPack.AllList', ['provinces' => $provinces, 'datas' => $datas]);
   }
 
@@ -92,20 +92,14 @@ class FoodPacksController extends Controller
       $validator = $request->validate([
         'FullName' => 'bail|required|max:255',
         'FatherName' => 'required|max:255',
-        // 'TazkiraID' => 'required|max:255',
         'PrimaryNumber' => 'required|unique:beneficiarylists|max:255',
-        // 'SecondaryNumber' => 'required|max:255',
         'Province_ID' => 'required|max:255',
         'Reference_ID' => 'required|max:255',
-
-
-
       ]);
 
       beneficiarylist::create([
         'FullName' => request('FullName'),
         'FatherName' => request('FatherName'),
-        // 'TazkiraID' => request('TazkiraID'),
         'PrimaryNumber' => request('PrimaryNumber'),
         'SecondaryNumber' => request('SecondaryNumber'),
         'Province_ID' => request('Province_ID'),
@@ -113,9 +107,6 @@ class FoodPacksController extends Controller
         'Status' => "Pending",
         'Created_By' => auth()->user()->id,
         'Owner' => 1,
-
-
-
       ]);
       return redirect()->route('AllListFoodPack')->with('toast_success', 'Record Created Successfully!');
     }
@@ -131,12 +122,8 @@ class FoodPacksController extends Controller
         ->select(['beneficiarylists.*', 'a.Name as ProvinceName', 'e.FirstName as RefernceFirstName', 'e.LastName as RefernceLastName', 'd.FirstName as UFirstName', 'd.LastName as ULastName',])
         ->where('beneficiarylists.Province_ID', '=', $data)
         ->where('beneficiarylists.Status', '=', 'Approved')
-        ->get();
+        ->paginate(100);
       return view('CardCard.Services.FoodPack.AllList', ['provinces' => $provinces, 'datas' => $datas]);
-
-
-
-
   }
 
   public function AllApprove(beneficiarylist $data)
