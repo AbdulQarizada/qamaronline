@@ -23,14 +23,12 @@
             <div class="card-body">
                 <div class="d-flex">
                     <div class="flex-shrink-0 me-4">
-                        <div class="avatar-md">
-                            <span class="avatar-title rounded-circle bg-light text-danger font-size-16">
-                                <img src="assets/images/companies/img-1.png" alt="" height="30">
-                            </span>
+                    <div class="mt-4 mt-md-0">
+                            <img class="img-thumbnail rounded-circle avatar-xl" alt="Orphan Profile" src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)); ?>" data-holder-rendered="true">
                         </div>
                     </div>
                     <div class="flex-grow-1 overflow-hidden">
-                        <h5 class="text-truncate font-size-15"><a href="javascript: void(0);" class="text-dark"><?php echo e($data ->  FirstName); ?></a></h5>
+                        <h5 class="text-truncate font-size-15"><a href="javascript: void(0);" class="text-dark font-size-24"><?php echo e($data ->  FirstName); ?></a></h5>
                         <p class="text-muted mb-4"><?php echo e($data ->  WhyShouldYouHelpMe); ?></p>
                     </div>
                 </div>
