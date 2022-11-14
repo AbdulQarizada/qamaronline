@@ -234,15 +234,15 @@
                                     </a>
                                     @endif
                                     @if( $data -> Status == 'Approved')
-                                     @if( $data -> IsSponsored == 1)
+                                    @if( $data -> IsSponsored == 1)
                                     <a href="{{route('AssignToSponsorOrphan', ['data' => $data -> id])}}" class="btn btn-info waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="Reassign To Sponsor">
                                         <i class="mdi mdi-account-convert font-size-16 align-middle"></i>
                                     </a>
-                                      @else
+                                    @else
                                     <a href="{{route('AssignToSponsorOrphan', ['data' => $data -> id])}}" class="btn btn-success waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="Assign To Sponsor">
                                         <i class="bx bx-user-plus   font-size-16 align-middle"></i>
                                     </a>
-                                      @endif
+                                    @endif
                                     @endif
                                     @if( $data -> Status == 'Rejected')
                                     <a href="{{route('DeleteOrphan', ['data' => $data -> id])}}" class="btn btn-danger waves-effect waves-light delete-confirm" data-toggle="tooltip" data-placement="top" title="Delete Record">
@@ -255,9 +255,9 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div >
-{!! $datas->links() !!}
-</div>
+                <div>
+                    {!! $datas->links() !!}
+                </div>
             </div>
         </div>
     </div>
