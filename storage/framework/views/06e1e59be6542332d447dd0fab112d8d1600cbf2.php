@@ -39,7 +39,7 @@
                         <span class="badge bg-success">Sponsored</span>
                     </li>
                     <li class="list-inline-item me-3">
-                        <i class="bx bx-calendar me-1"></i> End Date: <?php echo e($data ->  Sponsored_EndDate); ?>
+                        <i class="bx bx-calendar me-1"></i> End Date: <?php echo e(Carbon\Carbon::parse($data ->  Sponsored_EndDate) -> format("j F Y")); ?>
 
                     </li>
                     <li class="list-inline-item me-3 text-success">
