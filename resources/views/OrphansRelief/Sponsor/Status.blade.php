@@ -85,9 +85,6 @@
         <a href="{{route('ActivateSponsor', ['data' => $data -> id])}}" class="btn btn-success waves-effect waves-light activate m-3" data-toggle="tooltip" data-placement="top" title="Activate">
             ACTIVATE
         </a>
-        <a href="{{route('DeleteSponsor', ['data' => $data -> id])}}" class="btn btn-danger waves-effect waves-light delete-confirm">
-            <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
-        </a>
         @endif
     </div>
 </div>
@@ -95,24 +92,7 @@
 @endsection
 @section('script')
 <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
-
 <script>
-
-
-    $('.delete-confirm').on('click', function(event) {
-        event.preventDefault();
-        const url = $(this).attr('href');
-        swal({
-            title: 'Are you sure?',
-            text: 'This record and it`s details will be permanantly deleted!',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
-            if (value) {
-                window.location.href = url;
-            }
-        });
-    });
 
     $('.activate').on('click', function(event) {
         event.preventDefault();

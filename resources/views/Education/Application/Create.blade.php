@@ -11,7 +11,7 @@
 
 
 @section('content')
-@if (Auth::check()) 
+@if (Auth::check())
 @component('components.breadcrumb')
 @slot('li_1') Qamar / Scholarship @endslot
 @slot('title') @endslot
@@ -53,10 +53,6 @@
                         <i class="bx bxs-contact d-block check-nav-icon mt-4 mb-2"></i>
                         <p class="fw-bold mb-4">ADDRESS AND CONTACTS</p>
                     </a>
-                    <!-- <a class="nav-link" id="v-pills-family-tab" data-bs-toggle="pill" href="#v-pills-family" role="tab" aria-controls="v-pills-family" aria-selected="false">
-                        <i class="bx bx-home-circle  d-block check-nav-icon mt-4 mb-2"></i>
-                        <p class="fw-bold mb-4">FAMILY INFORMATION</p>
-                    </a> -->
                     <a class="nav-link" id="v-pills-education-tab" data-bs-toggle="pill" href="#v-pills-education" role="tab" aria-controls="v-pills-education" aria-selected="false">
                         <i class="bx bxs-graduation  d-block check-nav-icon mt-4 mb-2"></i>
                         <p class="fw-bold mb-4">EDUCATION</p>
@@ -523,10 +519,10 @@
 
                                                 </div>
                                             </div>
-                                
+
                                         </div>
                                         <div class="row">
-                                         <div class="col-md-4">
+                                            <div class="col-md-4">
                                                 <label for="Tazkira" class="form-label">Tazkira <i class="mdi mdi-asterisk text-danger"></i></label>
                                                 <input type="file" class="my-pond @error('Tazkira') is-invalid @enderror" value="{{ old('Tazkira') }}" name="Tazkira" id="Tazkira" />
                                                 @error('Tazkira')
@@ -650,58 +646,58 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            
-                        <div class="col-md-4">
-                            <div class="mb-3 position-relative">
-                                <label for="RelativeName" class="form-label">Relative Name <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <div class="input-group">
 
-                                    <input type="text" class="form-control  form-control-lg @error('RelativeName') is-invalid @enderror" value="{{ old('RelativeName') }}" id="RelativeName" name="RelativeName" aria-describedby="Email" required>
-                                    @error('RelativeName')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="mb-3 position-relative">
-                                <label for="RelativeRelationship_ID" class="form-label">Relationship <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <div class="input-group">
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="RelativeName" class="form-label">Relative Name <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <div class="input-group">
 
-                                    <select class="form-select  form-select-lg @error('RelativeRelationship_ID') is-invalid @enderror" value="{{ old('RelativeRelationship_ID') }}" required name="RelativeRelationship_ID" id="RelativeRelationship_ID">
-                                        <option value="">Select Your Relationship</option>
-                                        @foreach($relationships as $relationship)
-                                        <option value="{{ $relationship -> id}}">{{ $relationship -> Name}}</option>
+                                                        <input type="text" class="form-control  form-control-lg @error('RelativeName') is-invalid @enderror" value="{{ old('RelativeName') }}" id="RelativeName" name="RelativeName" aria-describedby="Email" required>
+                                                        @error('RelativeName')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="RelativeRelationship_ID" class="form-label">Relationship <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <div class="input-group">
 
-                                        @endforeach
+                                                        <select class="form-select  form-select-lg @error('RelativeRelationship_ID') is-invalid @enderror" value="{{ old('RelativeRelationship_ID') }}" required name="RelativeRelationship_ID" id="RelativeRelationship_ID">
+                                                            <option value="">Select Your Relationship</option>
+                                                            @foreach($relationships as $relationship)
+                                                            <option value="{{ $relationship -> id}}">{{ $relationship -> Name}}</option>
 
-                                    </select>
-                                    @error('RelativeRelationship_ID')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="mb-3 position-relative">
-                                <label for="RelativeNumber" class="form-label">Relative Number <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <div class="input-group">
+                                                            @endforeach
 
-                                    <input type="number" class="form-control  form-control-lg @error('RelativeNumber') is-invalid @enderror" value="{{ old('RelativeNumber') }}" id="RelativeNumber" name="RelativeNumber" max="999999999" aria-describedby="RelativeNumber" required>
-                                    @error('RelativeNumber')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
+                                                        </select>
+                                                        @error('RelativeRelationship_ID')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="RelativeNumber" class="form-label">Relative Number <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <div class="input-group">
+
+                                                        <input type="number" class="form-control  form-control-lg @error('RelativeNumber') is-invalid @enderror" value="{{ old('RelativeNumber') }}" id="RelativeNumber" name="RelativeNumber" max="999999999" aria-describedby="RelativeNumber" required>
+                                                        @error('RelativeNumber')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        
+
                                         <!-- <div class="row">
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
@@ -844,7 +840,7 @@
                                     <div class="col-sm-6">
                                         <div class="text-end">
                                             <a onclick="education();" class="btn btn-success">
-                                            Next </a>
+                                                Next </a>
                                         </div>
                                     </div> <!-- end col -->
                                 </div> <!-- end row -->
@@ -929,23 +925,23 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-4 ">
-                                                        <div class="mb-3 position-relative">
-                                                            <label for="SchoolGraduationDate" class="form-label">Graduation Date <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                            <div class="input-group " id="example-date-input">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="SchoolGraduationDate" class="form-label">Graduation Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <div class="input-group " id="example-date-input">
 
-                                                                <input class="form-control form-select-lg @error('SchoolGraduationDate') is-invalid @enderror" value="{{ old('SchoolGraduationDate') }}" type="date" id="example-date-input" name="SchoolGraduationDate" id="SchoolGraduationDate" required>
-                                                                @error('SchoolGraduationDate')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                                @enderror
-
-                                                            </div>
-                                                        </div>
+                                                        <input class="form-control form-select-lg @error('SchoolGraduationDate') is-invalid @enderror" value="{{ old('SchoolGraduationDate') }}" type="date" id="example-date-input" name="SchoolGraduationDate" id="SchoolGraduationDate" required>
+                                                        @error('SchoolGraduationDate')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
 
                                                     </div>
-                                                    <div class="col-md-4">
-                                                     <div class="mb-3 position-relative">
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
                                                     <label for="EnglishProficiency_ID" class="form-label">English Profeciancy<i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
@@ -1004,7 +1000,7 @@
                                             </div> -->
                                         </div>
                                         <div class="row">
-                                         <div class="col-md-4">
+                                            <div class="col-md-4">
                                                 <label for="SchoolDiploma" class="form-label">School Diploma <i class="mdi mdi-asterisk text-danger"></i></label>
                                                 <input type="file" class="my-pond @error('SchoolDiploma') is-invalid @enderror" value="{{ old('SchoolDiploma') }}" name="SchoolDiploma" id="SchoolDiploma" />
                                                 @error('SchoolDiploma')
@@ -1141,14 +1137,14 @@
                                     <div class="col-sm-6">
                                         <a onclick="address();" class="btn text-muted d-none d-sm-inline-block btn-link">
                                             <i class="mdi mdi-arrow-left me-1"></i> Back to Address and Contact </a>
-                                    </div> 
+                                    </div>
                                     <div class="col-sm-6">
                                         <div class="text-end">
                                             <a onclick="work();" class="btn btn-success">
-                                            Next </a>
+                                                Next </a>
                                         </div>
-                                    </div> 
-                                </div> 
+                                    </div>
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="v-pills-work" role="tabpanel" aria-labelledby="v-pills-work-tab">
                                 <div class="card shadow-none border mb-0">
@@ -1158,7 +1154,7 @@
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
                                                     <label for="OraganizationName" class="form-label">Orgianization's Name </label>
-                                                    <input type="text" class="form-control  form-control-lg @error('OraganizationName') is-invalid @enderror" value="{{ old('OraganizationName') }}" id="OraganizationName" name="OraganizationName" >
+                                                    <input type="text" class="form-control  form-control-lg @error('OraganizationName') is-invalid @enderror" value="{{ old('OraganizationName') }}" id="OraganizationName" name="OraganizationName">
                                                     @error('OraganizationName')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -1169,7 +1165,7 @@
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
                                                     <label for="Position" class="form-label">Position </label>
-                                                    <input type="text" class="form-control  form-control-lg @error('Position') is-invalid @enderror" value="{{ old('Position') }}" id="Position" name="Position" >
+                                                    <input type="text" class="form-control  form-control-lg @error('Position') is-invalid @enderror" value="{{ old('Position') }}" id="Position" name="Position">
                                                     @error('Position')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -1178,37 +1174,37 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-4 ">
-                                                        <div class="mb-3 position-relative">
-                                                            <label for="OrganizationStartDate" class="form-label">Start Date </i></label>
-                                                            <div class="input-group " id="example-date-input">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="OrganizationStartDate" class="form-label">Start Date </i></label>
+                                                    <div class="input-group " id="example-date-input">
 
-                                                                <input class="form-control form-select-lg @error('OrganizationStartDate') is-invalid @enderror" value="{{ old('OrganizationStartDate') }}" type="date" id="example-date-input" name="OrganizationStartDate" id="OrganizationStartDate" >
-                                                                @error('OrganizationStartDate')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                                @enderror
-
-                                                            </div>
-                                                        </div>
-
-                                                    </div>            
-                                                     <div class="col-md-4 ">
-                                                        <div class="mb-3 position-relative">
-                                                            <label for="OrganizationEndDate" class="form-label">End Date </label>
-                                                            <div class="input-group " id="example-date-input">
-
-                                                                <input class="form-control form-select-lg @error('OrganizationEndDate') is-invalid @enderror" value="{{ old('OrganizationEndDate') }}" type="date" id="example-date-input" name="OrganizationEndDate" id="OrganizationEndDate" >
-                                                                @error('OrganizationEndDate')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                                @enderror
-
-                                                            </div>
-                                                        </div>
+                                                        <input class="form-control form-select-lg @error('OrganizationStartDate') is-invalid @enderror" value="{{ old('OrganizationStartDate') }}" type="date" id="example-date-input" name="OrganizationStartDate" id="OrganizationStartDate">
+                                                        @error('OrganizationStartDate')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
 
                                                     </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-4 ">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="OrganizationEndDate" class="form-label">End Date </label>
+                                                    <div class="input-group " id="example-date-input">
+
+                                                        <input class="form-control form-select-lg @error('OrganizationEndDate') is-invalid @enderror" value="{{ old('OrganizationEndDate') }}" type="date" id="example-date-input" name="OrganizationEndDate" id="OrganizationEndDate">
+                                                        @error('OrganizationEndDate')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
                                             <!-- <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
                                                     <label for="EldestSonAge" class="form-label">Eldest Son Age <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -1262,7 +1258,7 @@
                                             </div> -->
                                         </div>
                                         <div class="row">
-                                         <div class="col-md-4">
+                                            <div class="col-md-4">
                                                 <label for="WorkExperienceLetter" class="form-label">Work Experience Letter</label>
                                                 <input type="file" class="my-pond @error('WorkExperienceLetter') is-invalid @enderror" value="{{ old('WorkExperienceLetter') }}" name="WorkExperienceLetter" id="WorkExperienceLetter" />
                                                 @error('WorkExperienceLetter')
@@ -1288,14 +1284,14 @@
                                     <div class="col-sm-6">
                                         <a onclick="education();" class="btn text-muted d-none d-sm-inline-block btn-link">
                                             <i class="mdi mdi-arrow-left me-1"></i> Back to Education </a>
-                                    </div> 
+                                    </div>
                                     <div class="col-sm-6">
                                         <div class="text-end">
                                             <a onclick="documents();" class="btn btn-success">
                                                 Next </a>
                                         </div>
-                                    </div> 
-                                </div> 
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- <div class="tab-pane fade" id="v-pills-family" role="tabpanel" aria-labelledby="v-pills-family-tab">
@@ -1487,14 +1483,14 @@
                                     <div class="col-sm-6">
                                         <a onclick="address();" class="btn text-muted d-none d-sm-inline-block btn-link">
                                             <i class="mdi mdi-arrow-left me-1"></i> Back to Address and Contact </a>
-                                    </div> 
+                                    </div>
                                     <div class="col-sm-6">
                                         <div class="text-end">
                                             <a onclick="documents();" class="btn btn-success">
                                                 Proceed to Documents </a>
                                         </div>
-                                    </div> 
-                                </div> 
+                                    </div>
+                                </div>
                             </div> -->
                             <div class="tab-pane fade" id="v-pills-document" role="tabpanel" aria-labelledby="v-pills-document-tab">
                                 <div class="card shadow-none border mb-0">
@@ -1503,7 +1499,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <label for="WhyChosenPersonalStatement" class="form-label">Please indicate why you have chosen these particular departments and your knowledge about these departments. <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                <textarea id="textarea" class="form-control @error('WhyChosenPersonalStatement') is-invalid @enderror" maxlength="2205" rows="10"   value="{{ old('WhyChosenPersonalStatement') }}" required name="WhyChosenPersonalStatement" id="WhyChosenPersonalStatement" required></textarea>
+                                                <textarea id="textarea" class="form-control @error('WhyChosenPersonalStatement') is-invalid @enderror" maxlength="2205" rows="10" value="{{ old('WhyChosenPersonalStatement') }}" required name="WhyChosenPersonalStatement" id="WhyChosenPersonalStatement" required></textarea>
                                                 <!-- <input type="textarea" class="my-pond @error('Tazkira') is-invalid @enderror" value="{{ old('Tazkira') }}" name="Tazkira" id="Tazkira" /> -->
                                                 @error('WhyChosenPersonalStatement')
                                                 <span class="invalid-feedback" role="alert">
@@ -1514,8 +1510,8 @@
                                         </div>
                                         <div class="row mt-4">
                                             <div class="col-md-12">
-                                                <label for="WhyChosenTHisCountryPersonalStatement" class="form-label">Please specify why you decided to come to Malaysia and Al-Bukhary International University for study and indicate the reason why you consider yourself eligible for a tuition exemption.  <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                <textarea id="textarea" class="form-control @error('WhyChosenTHisCountryPersonalStatement') is-invalid @enderror" maxlength="2205" rows="10"   value="{{ old('WhyChosenTHisCountryPersonalStatement') }}" required name="WhyChosenTHisCountryPersonalStatement" id="WhyChosenTHisCountryPersonalStatement" required></textarea>
+                                                <label for="WhyChosenTHisCountryPersonalStatement" class="form-label">Please specify why you decided to come to Malaysia and Al-Bukhary International University for study and indicate the reason why you consider yourself eligible for a tuition exemption. <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                <textarea id="textarea" class="form-control @error('WhyChosenTHisCountryPersonalStatement') is-invalid @enderror" maxlength="2205" rows="10" value="{{ old('WhyChosenTHisCountryPersonalStatement') }}" required name="WhyChosenTHisCountryPersonalStatement" id="WhyChosenTHisCountryPersonalStatement" required></textarea>
                                                 <!-- <input type="textarea" class="my-pond @error('Tazkira') is-invalid @enderror" value="{{ old('Tazkira') }}" name="Tazkira" id="Tazkira" /> -->
                                                 @error('WhyChosenTHisCountryPersonalStatement')
                                                 <span class="invalid-feedback" role="alert">
@@ -1528,7 +1524,7 @@
                                         <div class="row mt-4">
                                             <div class="col-md-12">
                                                 <label for="PlanAfterGraduationPersonalStatement" class="form-label">What are your plans for after graduation? <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                <textarea id="textarea" class="form-control @error('PlanAfterGraduationPersonalStatement') is-invalid @enderror" maxlength="2205" rows="10"   value="{{ old('PlanAfterGraduationPersonalStatement') }}" required name="PlanAfterGraduationPersonalStatement" id="PlanAfterGraduationPersonalStatement" required></textarea>
+                                                <textarea id="textarea" class="form-control @error('PlanAfterGraduationPersonalStatement') is-invalid @enderror" maxlength="2205" rows="10" value="{{ old('PlanAfterGraduationPersonalStatement') }}" required name="PlanAfterGraduationPersonalStatement" id="PlanAfterGraduationPersonalStatement" required></textarea>
                                                 <!-- <input type="textarea" class="my-pond @error('Tazkira') is-invalid @enderror" value="{{ old('Tazkira') }}" name="Tazkira" id="Tazkira" /> -->
                                                 @error('PlanAfterGraduationPersonalStatement')
                                                 <span class="invalid-feedback" role="alert">
@@ -1538,14 +1534,14 @@
                                             </div>
                                         </div>
                                         <div class="row mt-4">
-                                        <div class="col-md-4">
-                                                     <div class="mb-3 position-relative">
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
                                                     <label for="ScholarshipType_ID" class="form-label">Scholarship Type<i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
                                                         <select class="form-select ScholarshipType form-select-lg @error('ScholarshipType_ID') is-invalid @enderror" value="{{ old('ScholarshipType_ID') }}" required name="ScholarshipType_ID" id="ScholarshipType_ID">
                                                             <option value="">Select Your Scholarship Type</option>
-                                                             @foreach($scholarshiptypes as $scholarshiptype)
+                                                            @foreach($scholarshiptypes as $scholarshiptype)
                                                             <option value="{{ $scholarshiptype -> id}}">{{ $scholarshiptype -> Name}}</option>
 
                                                             @endforeach
@@ -1560,12 +1556,12 @@
 
                                             </div>
                                             <div class="col-md-4">
-                                                     <div class="mb-3 position-relative">
+                                                <div class="mb-3 position-relative">
                                                     <label for="Scholarship_ID" class="form-label">Avaliable Scholarships<i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
                                                         <select class="form-select Scholarship form-select-lg @error('Scholarship_ID') is-invalid @enderror" value="{{ old('Scholarship_ID') }}" required name="Scholarship_ID" id="Scholarship_ID">
-                                                          
+
                                                             <!-- @foreach($familystatus as $familystatu)
                                                             <option value="{{ $familystatu -> id}}">{{ $familystatu -> Name}}</option>
 
@@ -1580,16 +1576,16 @@
                                                 </div>
 
                                             </div>
-                                 
+
                                         </div>
                                         <div class="row mt-4">
-                                        <div class="col-md-4">
-                                                     <div class="mb-3 position-relative">
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
                                                     <label for="PrefernceOneScholarshipModule_ID" class="form-label">First Preference <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
                                                         <select class="form-select ScholarshipModule form-select-lg @error('PrefernceOneScholarshipModule_ID') is-invalid @enderror" value="{{ old('PrefernceOneScholarshipModule_ID') }}" required name="PrefernceOneScholarshipModule_ID" id="PrefernceOneScholarshipModule_ID">
-                                                           
+
                                                             <!-- @foreach($familystatus as $familystatu)
                                                             <option value="{{ $familystatu -> id}}">{{ $familystatu -> Name}}</option>
 
@@ -1605,12 +1601,12 @@
 
                                             </div>
                                             <div class="col-md-4">
-                                                     <div class="mb-3 position-relative">
+                                                <div class="mb-3 position-relative">
                                                     <label for="PrefernceTwoScholarshipModule_ID" class="form-label">Second Preference <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
                                                         <select class="form-select ScholarshipModule form-select-lg @error('PrefernceTwoScholarshipModule_ID') is-invalid @enderror" value="{{ old('PrefernceTwoScholarshipModule_ID') }}" required name="PrefernceTwoScholarshipModule_ID" id="PrefernceTwoScholarshipModule_ID">
-                                                           
+
                                                             <!-- @foreach($familystatus as $familystatu)
                                                             <option value="{{ $familystatu -> id}}">{{ $familystatu -> Name}}</option>
 
@@ -1626,12 +1622,12 @@
 
                                             </div>
                                             <div class="col-md-4">
-                                                     <div class="mb-3 position-relative">
+                                                <div class="mb-3 position-relative">
                                                     <label for="PrefernceThreeScholarshipModule_ID" class="form-label">Third Preference <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
                                                         <select class="form-select ScholarshipModule form-select-lg @error('PrefernceThreeScholarshipModule_ID') is-invalid @enderror" value="{{ old('PrefernceThreeScholarshipModule_ID') }}" required name="PrefernceThreeScholarshipModule_ID" id="PrefernceThreeScholarshipModule_ID">
-                                                           
+
                                                             <!-- @foreach($familystatus as $familystatu)
                                                             <option value="{{ $familystatu -> id}}">{{ $familystatu -> Name}}</option>
 
@@ -1646,16 +1642,16 @@
                                                 </div>
 
                                             </div>
-                                      
+
                                         </div>
                                         <div class="row mt-4">
-                                        <div class="col-md-12">
-                                        <div class="form-check mb-3">
-                                <input class="form-check-input" type="checkbox" id="formCheck1" required>
-                                <label class="form-check-label" for="formCheck1">
-                                I hereby confirm all the information provided by me is correct and true to the best of my knowledge. I agree to inform Qamar Foundation if there is any change to the information provided in this application while I am studying at Al-Bukhary International University. I also certify that Qamar Foundation reserves the right to vary or reverse any decision about my admission to Al-Bukhary International University if the information given by myself is incorrect and untrue. I also consent to the collection, processing, and retention by the Qamar Foundation of my data.
-                                </label>
-                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-check mb-3">
+                                                    <input class="form-check-input" type="checkbox" id="formCheck1" required>
+                                                    <label class="form-check-label" for="formCheck1">
+                                                        I hereby confirm all the information provided by me is correct and true to the best of my knowledge. I agree to inform Qamar Foundation if there is any change to the information provided in this application while I am studying at Al-Bukhary International University. I also certify that Qamar Foundation reserves the right to vary or reverse any decision about my admission to Al-Bukhary International University if the information given by myself is incorrect and untrue. I also consent to the collection, processing, and retention by the Qamar Foundation of my data.
+                                                    </label>
+                                                </div>
 
                                             </div>
                                         </div>
@@ -1730,15 +1726,15 @@
     const inputSchoolDiploma = document.querySelector('input[name="SchoolDiploma"]');
 
     // Get a reference to the file input element
-    const inputSchoolTranscript = document.querySelector('input[name="SchoolTranscript"]');  
-    
+    const inputSchoolTranscript = document.querySelector('input[name="SchoolTranscript"]');
+
     // Get a reference to the file input element
     const inputEnglishDiploma = document.querySelector('input[name="EnglishDiploma"]');
 
     // Get a reference to the file input element
     const inputWorkExperienceLetter = document.querySelector('input[name="WorkExperienceLetter"]');
 
-    
+
     // Get a reference to the file input element
     const inputResume = document.querySelector('input[name="Resume"]');
 
@@ -1746,8 +1742,7 @@
 
     // Create a FilePond instance
     const Profile = FilePond.create(inputProfile, {
-        labelIdle:     'Drag & Drop your Profile Picture or <span class="filepond--label-action"> Browse </span>'
-,
+        labelIdle: 'Drag & Drop your Profile Picture or <span class="filepond--label-action"> Browse </span>',
 
 
     });
@@ -1797,10 +1792,9 @@
 
 
 
-        // Create a FilePond instance
-        const SchoolDiploma = FilePond.create(inputSchoolDiploma, {
-        labelIdle:     'Drag & Drop your Scholl Diploma or <span class="filepond--label-action"> Browse </span>'
-,
+    // Create a FilePond instance
+    const SchoolDiploma = FilePond.create(inputSchoolDiploma, {
+        labelIdle: 'Drag & Drop your Scholl Diploma or <span class="filepond--label-action"> Browse </span>',
         acceptedFileTypes: ['application/pdf', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
@@ -1816,8 +1810,8 @@
 
     });
 
-        // Create a FilePond instance
-        const SchoolTranscript = FilePond.create(inputSchoolTranscript, {
+    // Create a FilePond instance
+    const SchoolTranscript = FilePond.create(inputSchoolTranscript, {
         labelIdle: 'Drag & Drop your School Transcript or <span class="filepond--label-action"> Browse </span>',
         acceptedFileTypes: ['application/pdf', 'image/jpeg'],
         allowFileTypeValidation: true,
@@ -1834,8 +1828,8 @@
 
     });
 
-        // Create a FilePond instance
-        const EnglishDiploma = FilePond.create(inputEnglishDiploma, {
+    // Create a FilePond instance
+    const EnglishDiploma = FilePond.create(inputEnglishDiploma, {
         labelIdle: 'Drag & Drop your English Diploma or <span class="filepond--label-action"> Browse </span>',
         acceptedFileTypes: ['application/pdf', 'image/jpeg'],
         allowFileTypeValidation: true,
@@ -1852,9 +1846,9 @@
 
     });
 
-        // Create a FilePond instance
-        const WorkExperienceLetter = FilePond.create(inputWorkExperienceLetter, {
-        labelIdle:'Drag & Drop your Work Experience letter or <span class="filepond--label-action"> Browse </span>',
+    // Create a FilePond instance
+    const WorkExperienceLetter = FilePond.create(inputWorkExperienceLetter, {
+        labelIdle: 'Drag & Drop your Work Experience letter or <span class="filepond--label-action"> Browse </span>',
         acceptedFileTypes: ['application/pdf', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
@@ -1871,8 +1865,8 @@
     });
 
 
-        // Create a FilePond instance
-        const Resume = FilePond.create(inputResume, {
+    // Create a FilePond instance
+    const Resume = FilePond.create(inputResume, {
         labelIdle: 'Drag & Drop your Resume or <span class="filepond--label-action"> Browse </span>',
         acceptedFileTypes: ['application/pdf', 'image/jpeg'],
         allowFileTypeValidation: true,
@@ -1904,7 +1898,7 @@
                     success: function(data) {
                         if (data) {
                             $('.CurrentDistrict').empty();
-                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                            //  $('.District').append('<option value="None" hidden>All</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="CurrentDistrict_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
                             });
@@ -1934,7 +1928,7 @@
                     success: function(data) {
                         if (data) {
                             $('.SchoolDistrict').empty();
-                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                            //  $('.District').append('<option value="None" hidden>All</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="SchoolDistrict_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
                             });
@@ -1963,7 +1957,7 @@
                     success: function(data) {
                         if (data) {
                             $('.Scholarship').empty();
-                             $('.Scholarship').append('<option value="" hidden>Select Your Scholarship</option>'); 
+                            $('.Scholarship').append('<option value="" hidden>Select Your Scholarship</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="Scholarship_ID"]').append('<option value="' + course.id + '">' + course.ScholarshipName + '</option>');
                             });
@@ -1992,7 +1986,7 @@
                     success: function(data) {
                         if (data) {
                             $('.ScholarshipModule').empty();
-                             $('.ScholarshipModule').append('<option value="" hidden>Select Your Scholarship Module</option>'); 
+                            $('.ScholarshipModule').append('<option value="" hidden>Select Your Scholarship Module</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="PrefernceOneScholarshipModule_ID"]').append('<option value="' + course.id + '">' + course.ModuleName + '</option>');
                             });
@@ -2020,9 +2014,11 @@
     function address() {
         document.getElementById("v-pills-address-tab").click();
     }
+
     function education() {
         document.getElementById("v-pills-education-tab").click();
     }
+
     function work() {
         document.getElementById("v-pills-work-tab").click();
     }

@@ -135,7 +135,8 @@
                                     <th>Family Status</th>
                                     <th>Status</th>
                                     <th>Created By</th>
-                                    <th><input class="form-check-input" type="checkbox" id="checkAll">
+                                    <th>
+                                        <input class="form-check-input" type="checkbox" id="checkAll">
                                         <label class="form-check-label" for="checkAll">Select</label>
 
                                     </th>

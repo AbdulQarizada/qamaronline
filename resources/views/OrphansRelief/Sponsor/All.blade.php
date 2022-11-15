@@ -40,7 +40,7 @@
         <div class="card">
             <h3 class="card-header bg-dark text-white"></h3>
             <div class="card-body">
-                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
+                <table class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -110,10 +110,15 @@
                                     <a href="{{route('StatusSponsor', ['data' => $data -> id])}}" class="btn btn-warning waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="View Details">
                                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
                                     </a>
+                                    @if($data -> IsActive == 0)
                                     <a href="{{route('EditSponsor', ['data' => $data -> id])}}" class="btn btn-info waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="Edit Record">
                                         <i class=" bx bx-edit font-size-16 align-middle"></i>
                                     </a>
-                                    <a data-bs-toggle="modal" data-bs-target=".bs-{{$data ->  id }}-modal-center" class="btn btn-danger waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="Reset Password">
+                                    <a href="{{route('DeleteSponsor', ['data' => $data -> id])}}" class="btn btn-danger waves-effect waves-light delete-confirm" data-toggle="tooltip" data-placement="top" title="Delete Record">
+                                       <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
+                                   </a>
+                                   @endif
+                                   <a data-bs-toggle="modal" data-bs-target=".bs-{{$data ->  id }}-modal-center" class="btn btn-danger waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="Reset Password">
                                         <i class="mdi mdi-lock-reset    font-size-16 align-middle"></i>
                                     </a>
                                     <div class="modal fade bs-{{$data ->  id }}-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
@@ -169,7 +174,6 @@
 @endsection
 @section('script')
 <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
-
 <script>
     $('.delete-confirm').on('click', function(event) {
         event.preventDefault();
@@ -177,21 +181,6 @@
         swal({
             title: 'Are you sure?',
             text: 'This record and it`s details will be permanantly deleted!',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
-            if (value) {
-                window.location.href = url;
-            }
-        });
-    });
-
-    $('.release').on('click', function(event) {
-        event.preventDefault();
-        const url = $(this).attr('href');
-        swal({
-            title: 'Are you sure?',
-            text: 'This card is released!',
             icon: 'warning',
             buttons: ["Cancel", "Yes!"],
         }).then(function(value) {

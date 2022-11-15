@@ -72,7 +72,6 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> ProvinceName); ?></a></h5>
                                     <p class="text-muted mb-0"><?php echo e($data -> DistrictName); ?></p>
-
                                 </div>
                             </td>
                             <td>
@@ -85,7 +84,6 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                             <td>
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> email); ?></a></h5>
-
                                 </div>
                             </td>
                             <td>
@@ -119,10 +117,15 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                     <a href="<?php echo e(route('StatusSponsor', ['data' => $data -> id])); ?>" class="btn btn-warning waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="View Details">
                                         <i class="bx bx-show-alt font-size-16 align-middle"></i>
                                     </a>
+                                    <?php if($data -> IsActive == 0): ?>
                                     <a href="<?php echo e(route('EditSponsor', ['data' => $data -> id])); ?>" class="btn btn-info waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="Edit Record">
                                         <i class=" bx bx-edit font-size-16 align-middle"></i>
                                     </a>
-                                    <a data-bs-toggle="modal" data-bs-target=".bs-<?php echo e($data ->  id); ?>-modal-center" class="btn btn-danger waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="Reset Password">
+                                    <a href="<?php echo e(route('DeleteSponsor', ['data' => $data -> id])); ?>" class="btn btn-danger waves-effect waves-light delete-confirm" data-toggle="tooltip" data-placement="top" title="Delete Record">
+                                       <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
+                                   </a>
+                                   <?php endif; ?>
+                                   <a data-bs-toggle="modal" data-bs-target=".bs-<?php echo e($data ->  id); ?>-modal-center" class="btn btn-danger waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="Reset Password">
                                         <i class="mdi mdi-lock-reset    font-size-16 align-middle"></i>
                                     </a>
                                     <div class="modal fade bs-<?php echo e($data ->  id); ?>-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
@@ -165,7 +168,6 @@ unset($__errorArgs, $__bag); ?>
                                                                     </div>
                                                                 </div>
                                                             </div>
-
                                                         </div>
                                                         <button class="btn btn-success btn-lg" type="submit">Change </button>
                                                     </form>
@@ -193,7 +195,6 @@ unset($__errorArgs, $__bag); ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
 <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
-
 <script>
     $('.delete-confirm').on('click', function(event) {
         event.preventDefault();
@@ -201,21 +202,6 @@ unset($__errorArgs, $__bag); ?>
         swal({
             title: 'Are you sure?',
             text: 'This record and it`s details will be permanantly deleted!',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
-            if (value) {
-                window.location.href = url;
-            }
-        });
-    });
-
-    $('.release').on('click', function(event) {
-        event.preventDefault();
-        const url = $(this).attr('href');
-        swal({
-            title: 'Are you sure?',
-            text: 'This card is released!',
             icon: 'warning',
             buttons: ["Cancel", "Yes!"],
         }).then(function(value) {

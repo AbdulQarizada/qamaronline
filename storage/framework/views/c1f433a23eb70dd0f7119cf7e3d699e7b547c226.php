@@ -86,9 +86,6 @@
         <a href="<?php echo e(route('ActivateSponsor', ['data' => $data -> id])); ?>" class="btn btn-success waves-effect waves-light activate m-3" data-toggle="tooltip" data-placement="top" title="Activate">
             ACTIVATE
         </a>
-        <a href="<?php echo e(route('DeleteSponsor', ['data' => $data -> id])); ?>" class="btn btn-danger waves-effect waves-light delete-confirm">
-            <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
-        </a>
         <?php endif; ?>
     </div>
 </div>

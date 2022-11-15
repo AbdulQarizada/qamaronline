@@ -11,7 +11,7 @@
 
 
 <?php $__env->startSection('content'); ?>
-<?php if(Auth::check()): ?> 
+<?php if(Auth::check()): ?>
 <?php $__env->startComponent('components.breadcrumb'); ?>
 <?php $__env->slot('li_1'); ?> Qamar / Scholarship <?php $__env->endSlot(); ?>
 <?php $__env->slot('title'); ?> <?php $__env->endSlot(); ?>
@@ -53,10 +53,6 @@
                         <i class="bx bxs-contact d-block check-nav-icon mt-4 mb-2"></i>
                         <p class="fw-bold mb-4">ADDRESS AND CONTACTS</p>
                     </a>
-                    <!-- <a class="nav-link" id="v-pills-family-tab" data-bs-toggle="pill" href="#v-pills-family" role="tab" aria-controls="v-pills-family" aria-selected="false">
-                        <i class="bx bx-home-circle  d-block check-nav-icon mt-4 mb-2"></i>
-                        <p class="fw-bold mb-4">FAMILY INFORMATION</p>
-                    </a> -->
                     <a class="nav-link" id="v-pills-education-tab" data-bs-toggle="pill" href="#v-pills-education" role="tab" aria-controls="v-pills-education" aria-selected="false">
                         <i class="bx bxs-graduation  d-block check-nav-icon mt-4 mb-2"></i>
                         <p class="fw-bold mb-4">EDUCATION</p>
@@ -873,7 +869,7 @@ unset($__errorArgs, $__bag); ?>
 
                                                 </div>
                                             </div>
-                                
+
                                         </div>
                                         <div class="row">
                                          <div class="col-md-4">
@@ -1098,7 +1094,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                                 </div>
                                             </div>
-                                            
+
                         <div class="col-md-4">
                             <div class="mb-3 position-relative">
                                 <label for="RelativeName" class="form-label">Relative Name <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -1191,7 +1187,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
                                         </div>
-                                        
+
                                         <!-- <div class="row">
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
@@ -1981,14 +1977,14 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="col-sm-6">
                                         <a onclick="address();" class="btn text-muted d-none d-sm-inline-block btn-link">
                                             <i class="mdi mdi-arrow-left me-1"></i> Back to Address and Contact </a>
-                                    </div> 
+                                    </div>
                                     <div class="col-sm-6">
                                         <div class="text-end">
                                             <a onclick="work();" class="btn btn-success">
                                             Next </a>
                                         </div>
-                                    </div> 
-                                </div> 
+                                    </div>
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="v-pills-work" role="tabpanel" aria-labelledby="v-pills-work-tab">
                                 <div class="card shadow-none border mb-0">
@@ -2074,7 +2070,7 @@ unset($__errorArgs, $__bag); ?>
                                                             </div>
                                                         </div>
 
-                                                    </div>            
+                                                    </div>
                                                      <div class="col-md-4 ">
                                                         <div class="mb-3 position-relative">
                                                             <label for="OrganizationEndDate" class="form-label">End Date </label>
@@ -2240,14 +2236,14 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="col-sm-6">
                                         <a onclick="education();" class="btn text-muted d-none d-sm-inline-block btn-link">
                                             <i class="mdi mdi-arrow-left me-1"></i> Back to Education </a>
-                                    </div> 
+                                    </div>
                                     <div class="col-sm-6">
                                         <div class="text-end">
                                             <a onclick="documents();" class="btn btn-success">
                                                 Next </a>
                                         </div>
-                                    </div> 
-                                </div> 
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- <div class="tab-pane fade" id="v-pills-family" role="tabpanel" aria-labelledby="v-pills-family-tab">
@@ -2579,14 +2575,14 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="col-sm-6">
                                         <a onclick="address();" class="btn text-muted d-none d-sm-inline-block btn-link">
                                             <i class="mdi mdi-arrow-left me-1"></i> Back to Address and Contact </a>
-                                    </div> 
+                                    </div>
                                     <div class="col-sm-6">
                                         <div class="text-end">
                                             <a onclick="documents();" class="btn btn-success">
                                                 Proceed to Documents </a>
                                         </div>
-                                    </div> 
-                                </div> 
+                                    </div>
+                                </div>
                             </div> -->
                             <div class="tab-pane fade" id="v-pills-document" role="tabpanel" aria-labelledby="v-pills-document-tab">
                                 <div class="card shadow-none border mb-0">
@@ -2741,7 +2737,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Scholarship_ID')); ?>" required name="Scholarship_ID" id="Scholarship_ID">
-                                                          
+
                                                             <!-- <?php $__currentLoopData = $familystatus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $familystatu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                             <option value="<?php echo e($familystatu -> id); ?>"><?php echo e($familystatu -> Name); ?></option>
 
@@ -2763,7 +2759,7 @@ unset($__errorArgs, $__bag); ?>
                                                 </div>
 
                                             </div>
-                                 
+
                                         </div>
                                         <div class="row mt-4">
                                         <div class="col-md-4">
@@ -2779,7 +2775,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('PrefernceOneScholarshipModule_ID')); ?>" required name="PrefernceOneScholarshipModule_ID" id="PrefernceOneScholarshipModule_ID">
-                                                           
+
                                                             <!-- <?php $__currentLoopData = $familystatus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $familystatu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                             <option value="<?php echo e($familystatu -> id); ?>"><?php echo e($familystatu -> Name); ?></option>
 
@@ -2814,7 +2810,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('PrefernceTwoScholarshipModule_ID')); ?>" required name="PrefernceTwoScholarshipModule_ID" id="PrefernceTwoScholarshipModule_ID">
-                                                           
+
                                                             <!-- <?php $__currentLoopData = $familystatus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $familystatu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                             <option value="<?php echo e($familystatu -> id); ?>"><?php echo e($familystatu -> Name); ?></option>
 
@@ -2849,7 +2845,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('PrefernceThreeScholarshipModule_ID')); ?>" required name="PrefernceThreeScholarshipModule_ID" id="PrefernceThreeScholarshipModule_ID">
-                                                           
+
                                                             <!-- <?php $__currentLoopData = $familystatus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $familystatu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                             <option value="<?php echo e($familystatu -> id); ?>"><?php echo e($familystatu -> Name); ?></option>
 
@@ -2871,7 +2867,7 @@ unset($__errorArgs, $__bag); ?>
                                                 </div>
 
                                             </div>
-                                      
+
                                         </div>
                                         <div class="row mt-4">
                                         <div class="col-md-12">
@@ -2955,15 +2951,15 @@ unset($__errorArgs, $__bag); ?>
     const inputSchoolDiploma = document.querySelector('input[name="SchoolDiploma"]');
 
     // Get a reference to the file input element
-    const inputSchoolTranscript = document.querySelector('input[name="SchoolTranscript"]');  
-    
+    const inputSchoolTranscript = document.querySelector('input[name="SchoolTranscript"]');
+
     // Get a reference to the file input element
     const inputEnglishDiploma = document.querySelector('input[name="EnglishDiploma"]');
 
     // Get a reference to the file input element
     const inputWorkExperienceLetter = document.querySelector('input[name="WorkExperienceLetter"]');
 
-    
+
     // Get a reference to the file input element
     const inputResume = document.querySelector('input[name="Resume"]');
 
@@ -3129,7 +3125,7 @@ unset($__errorArgs, $__bag); ?>
                     success: function(data) {
                         if (data) {
                             $('.CurrentDistrict').empty();
-                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                            //  $('.District').append('<option value="None" hidden>All</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="CurrentDistrict_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
                             });
@@ -3159,7 +3155,7 @@ unset($__errorArgs, $__bag); ?>
                     success: function(data) {
                         if (data) {
                             $('.SchoolDistrict').empty();
-                            //  $('.District').append('<option value="None" hidden>All</option>'); 
+                            //  $('.District').append('<option value="None" hidden>All</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="SchoolDistrict_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
                             });
@@ -3188,7 +3184,7 @@ unset($__errorArgs, $__bag); ?>
                     success: function(data) {
                         if (data) {
                             $('.Scholarship').empty();
-                             $('.Scholarship').append('<option value="" hidden>Select Your Scholarship</option>'); 
+                             $('.Scholarship').append('<option value="" hidden>Select Your Scholarship</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="Scholarship_ID"]').append('<option value="' + course.id + '">' + course.ScholarshipName + '</option>');
                             });
@@ -3217,7 +3213,7 @@ unset($__errorArgs, $__bag); ?>
                     success: function(data) {
                         if (data) {
                             $('.ScholarshipModule').empty();
-                             $('.ScholarshipModule').append('<option value="" hidden>Select Your Scholarship Module</option>'); 
+                             $('.ScholarshipModule').append('<option value="" hidden>Select Your Scholarship Module</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="PrefernceOneScholarshipModule_ID"]').append('<option value="' + course.id + '">' + course.ModuleName + '</option>');
                             });
