@@ -1,7 +1,5 @@
 @extends(Auth::user()->IsEmployee == 1 ? 'layouts.master-layouts' : 'layouts.master')
-
 @section('title') Orphan and Sponsorships @endsection
-
 @section('css')
 <link href="{{ URL::asset('/assets/libs/filepond/css/filepond.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <link href="{{ URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-image-preview.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />

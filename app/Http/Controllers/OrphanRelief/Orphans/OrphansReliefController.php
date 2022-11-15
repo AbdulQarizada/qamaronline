@@ -46,7 +46,6 @@ class OrphansReliefController extends Controller
 
   public function AllGrid()
   {
-
     $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
       ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
       ->join('look_ups as c', 'orphans.FamilyStatus_ID', '=', 'c.id')
@@ -61,7 +60,6 @@ class OrphansReliefController extends Controller
 
   public function MyOrphans()
   {
-
     $myorphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
       -> select(['orphans.*', 'a.Name as ProvinceName'])
       -> where("Sponsor_ID", "=", Auth::user()->id)
@@ -71,7 +69,6 @@ class OrphansReliefController extends Controller
 
   public function Pending()
   {
-
     $PageInfo = 'Pending';
     $provinces = Location::whereNull("Parent_ID")->get();
     $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
@@ -103,7 +100,6 @@ class OrphansReliefController extends Controller
 
   public function Rejected()
   {
-
     $PageInfo = 'Rejected';
     $provinces = Location::whereNull("Parent_ID")->get();
     $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
@@ -156,7 +152,6 @@ class OrphansReliefController extends Controller
   // create
   public function Create()
   {
-
     $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
     $genders =   LookUp::where("Parent_Name", "=", "Gender")->get();
     $tribes =   LookUp::where("Parent_Name", "=", "Tribe")->get();

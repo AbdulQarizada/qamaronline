@@ -1,8 +1,5 @@
 @extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
-
 @section('title') Orphan and Sponsorships @endsection
-
-
 @section('content')
 <div class="row">
     <div class="col-12 ">
@@ -10,7 +7,6 @@
             <div class="card-header">
                 <blockquote class="blockquote border-dark  font-size-14 mb-0">
                     <p class="my-0   card-title fw-medium font-size-24 text-wrap">My Orphans</p>
-
                 </blockquote>
             </div>
         </div>

@@ -1,15 +1,9 @@
 
-
 <?php $__env->startSection('title'); ?> Orphan and Sponsorships <?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('css'); ?>
 <link href="<?php echo e(URL::asset('/assets/css/mystyle/OrphanGrid.css')); ?>" rel="stylesheet" type="text/css" />
-
-
 <?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('content'); ?>
-
 <div class="row mt-4">
     <?php if(Auth::check()): ?>
     <div class="col-4">
@@ -17,7 +11,6 @@
     </div>
     <?php endif; ?>
 </div>
-
 <div class="row mb-3">
     <div class="col-md-4 col-sm-4">
         <div class="mt-2">
@@ -46,7 +39,6 @@
         </form>
     </div>
 </div>
-
 <div class="row">
     <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="col-md-3">
@@ -88,10 +80,7 @@
         </ul>
     </div>
 </div>
-
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
-
-
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Orphan/AllGrid.blade.php ENDPATH**/ ?>

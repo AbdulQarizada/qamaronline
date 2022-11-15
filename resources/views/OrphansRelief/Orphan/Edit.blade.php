@@ -1,14 +1,10 @@
 @extends(Auth::user()->IsEmployee == 1 ? 'layouts.master-layouts' : 'layouts.master')
-
 @section('title') Orphan and Sponsorships @endsection
-
 @section('css')
 <link href="{{ URL::asset('/assets/libs/filepond/css/filepond.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <link href="{{ URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-image-preview.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <link href="{{ URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-file-poster.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
 @endsection
-
-
 @section('content')
 <div class="row mt-4">
     <div class="col-4">
@@ -83,7 +79,6 @@
                                             @enderror
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3 position-relative">
@@ -613,11 +608,6 @@
         </div>
     </div>
     <div><button class="btn btn-success btn-lg" type="submit">Save </button></div>
-
-
-
-
-
 </form>
 
 @endsection
@@ -645,20 +635,13 @@
     FilePond.registerPlugin(FilePondPluginFileValidateType);
     FilePond.registerPlugin(FilePondPluginFilePoster);
 
-
     // Get a reference to the file input element
     const inputProfile = document.querySelector('input[name="Profile"]');
-
-    // Create a FilePond for Profile instance
     const Profile = FilePond.create(inputProfile, {
         labelIdle: 'Profile <span class="bx bx-upload"></span >',
         server: {
-
             url: '{{ route('Orphans_Profile')}}',
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            }
-
+            headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
         },
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
@@ -677,25 +660,16 @@
             options: {
                 type: 'local',
                 file: {
-
                     type: 'image/png'
                 },
                 metadata: {
                     poster: '{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}'
                 }
-
             }
         }],
-
-
     });
-
-
-
     // Get a reference to the file input element
     const inputTazkira = document.querySelector('input[name="Tazkira"]');
-
-    // Create a FilePond instance
     const Tazkira = FilePond.create(inputTazkira, {
         labelIdle: 'Click to upload Tazkira <span class="bx bx-upload"></span >',
         acceptedFileTypes: ['image/png', 'image/jpeg'],
@@ -706,7 +680,6 @@
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }
-
         },
         instantUpload: true,
         files: [{
@@ -714,35 +687,25 @@
             options: {
                 type: 'local',
                 file: {
-
                     type: 'image/png'
                 },
                 metadata: {
                     poster: '{{URL::asset('/uploads/OrphansRelief/Orphans/Tazkiras/'.$data -> Tazkira)}}'
                 }
-
             }
         }],
-
     });
-
-
-
     // Get a reference to the file input element
     const inputFamilyPic = document.querySelector('input[name="FamilyPic"]');
-
-    // Create a FilePond instance
     const FamilyPic = FilePond.create(inputFamilyPic, {
         labelIdle: 'Click to upload Family Picture <span class="bx bx-upload"></span >',
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
-
             url: '{{ route('Orphans_FamilyPic')}}',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }
-
         },
         instantUpload: true,
         files: [{
@@ -750,34 +713,25 @@
             options: {
                 type: 'local',
                 file: {
-
                     type: 'image/png'
                 },
                 metadata: {
                     poster: '{{URL::asset('/uploads/OrphansRelief/Orphans/FamilyPic/'.$data -> FamilyPic)}}'
                 }
-
             }
         }],
-
     });
-
-
     // Get a reference to the file input element
     const inputHousePic = document.querySelector('input[name="HousePic"]');
-
-    // Create a FilePond instance
     const HousePic = FilePond.create(inputHousePic, {
         labelIdle: 'Click to upload House Picture <span class="bx bx-upload"></span >',
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
-
             url: '{{ route('Orphans_HousePic')}}',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }
-
         },
         instantUpload: true,
         files: [{
@@ -785,19 +739,15 @@
             options: {
                 type: 'local',
                 file: {
-
                     type: 'image/png'
                 },
                 metadata: {
                     poster: '{{URL::asset('/uploads/OrphansRelief/Orphans/HousePic/'.$data -> HousePic)}}'
                 }
-
             }
         }],
 
     });
-
-
 
     $(document).ready(function() {
         $('.Province').on('change', function() {
@@ -827,8 +777,6 @@
         });
     });
 
-
-
     $(document).ready(function() {
         $('.SchoolProvince').on('change', function() {
             var dID = $(this).val();
@@ -857,8 +805,6 @@
         });
     });
 
-
-
     $(document).ready(function() {
         if ($('#No').is(':checked')) {
             $('#InSchoolDiv').hide();
@@ -872,9 +818,6 @@
         $('.InSchoolDiv').show();
 
     });
-
-
-
     $('#No').click(function() {
         $('#InSchoolDiv').hide();
         $('.InSchoolDiv').hide();

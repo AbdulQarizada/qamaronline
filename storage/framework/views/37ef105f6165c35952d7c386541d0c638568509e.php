@@ -872,7 +872,7 @@ unset($__errorArgs, $__bag); ?>
 
                                         </div>
                                         <div class="row">
-                                         <div class="col-md-4">
+                                            <div class="col-md-4">
                                                 <label for="Tazkira" class="form-label">Tazkira <i class="mdi mdi-asterisk text-danger"></i></label>
                                                 <input type="file" class="my-pond <?php $__errorArgs = ['Tazkira'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -1095,12 +1095,12 @@ unset($__errorArgs, $__bag); ?>
                                                 </div>
                                             </div>
 
-                        <div class="col-md-4">
-                            <div class="mb-3 position-relative">
-                                <label for="RelativeName" class="form-label">Relative Name <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <div class="input-group">
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="RelativeName" class="form-label">Relative Name <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <div class="input-group">
 
-                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['RelativeName'];
+                                                        <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['RelativeName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1108,27 +1108,27 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('RelativeName')); ?>" id="RelativeName" name="RelativeName" aria-describedby="Email" required>
-                                    <?php $__errorArgs = ['RelativeName'];
+                                                        <?php $__errorArgs = ['RelativeName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong><?php echo e($message); ?></strong>
-                                    </span>
-                                    <?php unset($message);
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong><?php echo e($message); ?></strong>
+                                                        </span>
+                                                        <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="mb-3 position-relative">
-                                <label for="RelativeRelationship_ID" class="form-label">Relationship <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <div class="input-group">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="RelativeRelationship_ID" class="form-label">Relationship <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <div class="input-group">
 
-                                    <select class="form-select  form-select-lg <?php $__errorArgs = ['RelativeRelationship_ID'];
+                                                        <select class="form-select  form-select-lg <?php $__errorArgs = ['RelativeRelationship_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1136,34 +1136,34 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('RelativeRelationship_ID')); ?>" required name="RelativeRelationship_ID" id="RelativeRelationship_ID">
-                                        <option value="">Select Your Relationship</option>
-                                        <?php $__currentLoopData = $relationships; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $relationship): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($relationship -> id); ?>"><?php echo e($relationship -> Name); ?></option>
+                                                            <option value="">Select Your Relationship</option>
+                                                            <?php $__currentLoopData = $relationships; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $relationship): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <option value="<?php echo e($relationship -> id); ?>"><?php echo e($relationship -> Name); ?></option>
 
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-                                    </select>
-                                    <?php $__errorArgs = ['RelativeRelationship_ID'];
+                                                        </select>
+                                                        <?php $__errorArgs = ['RelativeRelationship_ID'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong><?php echo e($message); ?></strong>
-                                    </span>
-                                    <?php unset($message);
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong><?php echo e($message); ?></strong>
+                                                        </span>
+                                                        <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="mb-3 position-relative">
-                                <label for="RelativeNumber" class="form-label">Relative Number <i class="mdi mdi-asterisk text-danger"></i></label>
-                                <div class="input-group">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="RelativeNumber" class="form-label">Relative Number <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <div class="input-group">
 
-                                    <input type="number" class="form-control  form-control-lg <?php $__errorArgs = ['RelativeNumber'];
+                                                        <input type="number" class="form-control  form-control-lg <?php $__errorArgs = ['RelativeNumber'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1171,21 +1171,21 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('RelativeNumber')); ?>" id="RelativeNumber" name="RelativeNumber" max="999999999" aria-describedby="RelativeNumber" required>
-                                    <?php $__errorArgs = ['RelativeNumber'];
+                                                        <?php $__errorArgs = ['RelativeNumber'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong><?php echo e($message); ?></strong>
-                                    </span>
-                                    <?php unset($message);
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong><?php echo e($message); ?></strong>
+                                                        </span>
+                                                        <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                </div>
-                            </div>
-                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <!-- <div class="row">
@@ -1442,7 +1442,7 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="col-sm-6">
                                         <div class="text-end">
                                             <a onclick="education();" class="btn btn-success">
-                                            Next </a>
+                                                Next </a>
                                         </div>
                                     </div> <!-- end col -->
                                 </div> <!-- end row -->
@@ -1597,11 +1597,11 @@ unset($__errorArgs, $__bag); ?>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 ">
-                                                        <div class="mb-3 position-relative">
-                                                            <label for="SchoolGraduationDate" class="form-label">Graduation Date <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                            <div class="input-group " id="example-date-input">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="SchoolGraduationDate" class="form-label">Graduation Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                    <div class="input-group " id="example-date-input">
 
-                                                                <input class="form-control form-select-lg <?php $__errorArgs = ['SchoolGraduationDate'];
+                                                        <input class="form-control form-select-lg <?php $__errorArgs = ['SchoolGraduationDate'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -1609,25 +1609,25 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SchoolGraduationDate')); ?>" type="date" id="example-date-input" name="SchoolGraduationDate" id="SchoolGraduationDate" required>
-                                                                <?php $__errorArgs = ['SchoolGraduationDate'];
+                                                        <?php $__errorArgs = ['SchoolGraduationDate'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong><?php echo e($message); ?></strong>
-                                                                </span>
-                                                                <?php unset($message);
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong><?php echo e($message); ?></strong>
+                                                        </span>
+                                                        <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
 
-                                                            </div>
-                                                        </div>
-
                                                     </div>
-                                                    <div class="col-md-4">
-                                                     <div class="mb-3 position-relative">
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
                                                     <label for="EnglishProficiency_ID" class="form-label">English Profeciancy<i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
@@ -1714,7 +1714,7 @@ unset($__errorArgs, $__bag); ?>
                                             </div> -->
                                         </div>
                                         <div class="row">
-                                         <div class="col-md-4">
+                                            <div class="col-md-4">
                                                 <label for="SchoolDiploma" class="form-label">School Diploma <i class="mdi mdi-asterisk text-danger"></i></label>
                                                 <input type="file" class="my-pond <?php $__errorArgs = ['SchoolDiploma'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -1981,7 +1981,7 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="col-sm-6">
                                         <div class="text-end">
                                             <a onclick="work();" class="btn btn-success">
-                                            Next </a>
+                                                Next </a>
                                         </div>
                                     </div>
                                 </div>
@@ -2001,7 +2001,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('OraganizationName')); ?>" id="OraganizationName" name="OraganizationName" >
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('OraganizationName')); ?>" id="OraganizationName" name="OraganizationName">
                                                     <?php $__errorArgs = ['OraganizationName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -2026,7 +2026,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Position')); ?>" id="Position" name="Position" >
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Position')); ?>" id="Position" name="Position">
                                                     <?php $__errorArgs = ['Position'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -2042,65 +2042,65 @@ unset($__errorArgs, $__bag); ?>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 ">
-                                                        <div class="mb-3 position-relative">
-                                                            <label for="OrganizationStartDate" class="form-label">Start Date </i></label>
-                                                            <div class="input-group " id="example-date-input">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="OrganizationStartDate" class="form-label">Start Date </i></label>
+                                                    <div class="input-group " id="example-date-input">
 
-                                                                <input class="form-control form-select-lg <?php $__errorArgs = ['OrganizationStartDate'];
+                                                        <input class="form-control form-select-lg <?php $__errorArgs = ['OrganizationStartDate'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('OrganizationStartDate')); ?>" type="date" id="example-date-input" name="OrganizationStartDate" id="OrganizationStartDate" >
-                                                                <?php $__errorArgs = ['OrganizationStartDate'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('OrganizationStartDate')); ?>" type="date" id="example-date-input" name="OrganizationStartDate" id="OrganizationStartDate">
+                                                        <?php $__errorArgs = ['OrganizationStartDate'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong><?php echo e($message); ?></strong>
-                                                                </span>
-                                                                <?php unset($message);
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong><?php echo e($message); ?></strong>
+                                                        </span>
+                                                        <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
 
-                                                            </div>
-                                                        </div>
-
                                                     </div>
-                                                     <div class="col-md-4 ">
-                                                        <div class="mb-3 position-relative">
-                                                            <label for="OrganizationEndDate" class="form-label">End Date </label>
-                                                            <div class="input-group " id="example-date-input">
+                                                </div>
 
-                                                                <input class="form-control form-select-lg <?php $__errorArgs = ['OrganizationEndDate'];
+                                            </div>
+                                            <div class="col-md-4 ">
+                                                <div class="mb-3 position-relative">
+                                                    <label for="OrganizationEndDate" class="form-label">End Date </label>
+                                                    <div class="input-group " id="example-date-input">
+
+                                                        <input class="form-control form-select-lg <?php $__errorArgs = ['OrganizationEndDate'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('OrganizationEndDate')); ?>" type="date" id="example-date-input" name="OrganizationEndDate" id="OrganizationEndDate" >
-                                                                <?php $__errorArgs = ['OrganizationEndDate'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('OrganizationEndDate')); ?>" type="date" id="example-date-input" name="OrganizationEndDate" id="OrganizationEndDate">
+                                                        <?php $__errorArgs = ['OrganizationEndDate'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong><?php echo e($message); ?></strong>
-                                                                </span>
-                                                                <?php unset($message);
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong><?php echo e($message); ?></strong>
+                                                        </span>
+                                                        <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
 
-                                                            </div>
-                                                        </div>
-
                                                     </div>
+                                                </div>
+
+                                            </div>
                                             <!-- <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
                                                     <label for="EldestSonAge" class="form-label">Eldest Son Age <i class="mdi mdi-asterisk text-danger"></i></label>
@@ -2182,7 +2182,7 @@ unset($__errorArgs, $__bag); ?>
                                             </div> -->
                                         </div>
                                         <div class="row">
-                                         <div class="col-md-4">
+                                            <div class="col-md-4">
                                                 <label for="WorkExperienceLetter" class="form-label">Work Experience Letter</label>
                                                 <input type="file" class="my-pond <?php $__errorArgs = ['WorkExperienceLetter'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -2598,7 +2598,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" maxlength="2205" rows="10"   value="<?php echo e(old('WhyChosenPersonalStatement')); ?>" required name="WhyChosenPersonalStatement" id="WhyChosenPersonalStatement" required></textarea>
+unset($__errorArgs, $__bag); ?>" maxlength="2205" rows="10" value="<?php echo e(old('WhyChosenPersonalStatement')); ?>" required name="WhyChosenPersonalStatement" id="WhyChosenPersonalStatement" required></textarea>
                                                 <!-- <input type="textarea" class="my-pond <?php $__errorArgs = ['Tazkira'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -2623,7 +2623,7 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                         <div class="row mt-4">
                                             <div class="col-md-12">
-                                                <label for="WhyChosenTHisCountryPersonalStatement" class="form-label">Please specify why you decided to come to Malaysia and Al-Bukhary International University for study and indicate the reason why you consider yourself eligible for a tuition exemption.  <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                <label for="WhyChosenTHisCountryPersonalStatement" class="form-label">Please specify why you decided to come to Malaysia and Al-Bukhary International University for study and indicate the reason why you consider yourself eligible for a tuition exemption. <i class="mdi mdi-asterisk text-danger"></i></label>
                                                 <textarea id="textarea" class="form-control <?php $__errorArgs = ['WhyChosenTHisCountryPersonalStatement'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -2631,7 +2631,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" maxlength="2205" rows="10"   value="<?php echo e(old('WhyChosenTHisCountryPersonalStatement')); ?>" required name="WhyChosenTHisCountryPersonalStatement" id="WhyChosenTHisCountryPersonalStatement" required></textarea>
+unset($__errorArgs, $__bag); ?>" maxlength="2205" rows="10" value="<?php echo e(old('WhyChosenTHisCountryPersonalStatement')); ?>" required name="WhyChosenTHisCountryPersonalStatement" id="WhyChosenTHisCountryPersonalStatement" required></textarea>
                                                 <!-- <input type="textarea" class="my-pond <?php $__errorArgs = ['Tazkira'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -2665,7 +2665,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" maxlength="2205" rows="10"   value="<?php echo e(old('PlanAfterGraduationPersonalStatement')); ?>" required name="PlanAfterGraduationPersonalStatement" id="PlanAfterGraduationPersonalStatement" required></textarea>
+unset($__errorArgs, $__bag); ?>" maxlength="2205" rows="10" value="<?php echo e(old('PlanAfterGraduationPersonalStatement')); ?>" required name="PlanAfterGraduationPersonalStatement" id="PlanAfterGraduationPersonalStatement" required></textarea>
                                                 <!-- <input type="textarea" class="my-pond <?php $__errorArgs = ['Tazkira'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -2689,8 +2689,8 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                         </div>
                                         <div class="row mt-4">
-                                        <div class="col-md-4">
-                                                     <div class="mb-3 position-relative">
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
                                                     <label for="ScholarshipType_ID" class="form-label">Scholarship Type<i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
@@ -2703,7 +2703,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ScholarshipType_ID')); ?>" required name="ScholarshipType_ID" id="ScholarshipType_ID">
                                                             <option value="">Select Your Scholarship Type</option>
-                                                             <?php $__currentLoopData = $scholarshiptypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $scholarshiptype): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <?php $__currentLoopData = $scholarshiptypes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $scholarshiptype): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                             <option value="<?php echo e($scholarshiptype -> id); ?>"><?php echo e($scholarshiptype -> Name); ?></option>
 
                                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -2725,7 +2725,7 @@ unset($__errorArgs, $__bag); ?>
 
                                             </div>
                                             <div class="col-md-4">
-                                                     <div class="mb-3 position-relative">
+                                                <div class="mb-3 position-relative">
                                                     <label for="Scholarship_ID" class="form-label">Avaliable Scholarships<i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
@@ -2762,8 +2762,8 @@ unset($__errorArgs, $__bag); ?>
 
                                         </div>
                                         <div class="row mt-4">
-                                        <div class="col-md-4">
-                                                     <div class="mb-3 position-relative">
+                                            <div class="col-md-4">
+                                                <div class="mb-3 position-relative">
                                                     <label for="PrefernceOneScholarshipModule_ID" class="form-label">First Preference <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
@@ -2798,7 +2798,7 @@ unset($__errorArgs, $__bag); ?>
 
                                             </div>
                                             <div class="col-md-4">
-                                                     <div class="mb-3 position-relative">
+                                                <div class="mb-3 position-relative">
                                                     <label for="PrefernceTwoScholarshipModule_ID" class="form-label">Second Preference <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
@@ -2833,7 +2833,7 @@ unset($__errorArgs, $__bag); ?>
 
                                             </div>
                                             <div class="col-md-4">
-                                                     <div class="mb-3 position-relative">
+                                                <div class="mb-3 position-relative">
                                                     <label for="PrefernceThreeScholarshipModule_ID" class="form-label">Third Preference <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
 
@@ -2870,13 +2870,13 @@ unset($__errorArgs, $__bag); ?>
 
                                         </div>
                                         <div class="row mt-4">
-                                        <div class="col-md-12">
-                                        <div class="form-check mb-3">
-                                <input class="form-check-input" type="checkbox" id="formCheck1" required>
-                                <label class="form-check-label" for="formCheck1">
-                                I hereby confirm all the information provided by me is correct and true to the best of my knowledge. I agree to inform Qamar Foundation if there is any change to the information provided in this application while I am studying at Al-Bukhary International University. I also certify that Qamar Foundation reserves the right to vary or reverse any decision about my admission to Al-Bukhary International University if the information given by myself is incorrect and untrue. I also consent to the collection, processing, and retention by the Qamar Foundation of my data.
-                                </label>
-                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-check mb-3">
+                                                    <input class="form-check-input" type="checkbox" id="formCheck1" required>
+                                                    <label class="form-check-label" for="formCheck1">
+                                                        I hereby confirm all the information provided by me is correct and true to the best of my knowledge. I agree to inform Qamar Foundation if there is any change to the information provided in this application while I am studying at Al-Bukhary International University. I also certify that Qamar Foundation reserves the right to vary or reverse any decision about my admission to Al-Bukhary International University if the information given by myself is incorrect and untrue. I also consent to the collection, processing, and retention by the Qamar Foundation of my data.
+                                                    </label>
+                                                </div>
 
                                             </div>
                                         </div>
@@ -2967,8 +2967,7 @@ unset($__errorArgs, $__bag); ?>
 
     // Create a FilePond instance
     const Profile = FilePond.create(inputProfile, {
-        labelIdle:     'Drag & Drop your Profile Picture or <span class="filepond--label-action"> Browse </span>'
-,
+        labelIdle: 'Drag & Drop your Profile Picture or <span class="filepond--label-action"> Browse </span>',
 
 
     });
@@ -3018,10 +3017,9 @@ unset($__errorArgs, $__bag); ?>
 
 
 
-        // Create a FilePond instance
-        const SchoolDiploma = FilePond.create(inputSchoolDiploma, {
-        labelIdle:     'Drag & Drop your Scholl Diploma or <span class="filepond--label-action"> Browse </span>'
-,
+    // Create a FilePond instance
+    const SchoolDiploma = FilePond.create(inputSchoolDiploma, {
+        labelIdle: 'Drag & Drop your Scholl Diploma or <span class="filepond--label-action"> Browse </span>',
         acceptedFileTypes: ['application/pdf', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
@@ -3037,8 +3035,8 @@ unset($__errorArgs, $__bag); ?>
 
     });
 
-        // Create a FilePond instance
-        const SchoolTranscript = FilePond.create(inputSchoolTranscript, {
+    // Create a FilePond instance
+    const SchoolTranscript = FilePond.create(inputSchoolTranscript, {
         labelIdle: 'Drag & Drop your School Transcript or <span class="filepond--label-action"> Browse </span>',
         acceptedFileTypes: ['application/pdf', 'image/jpeg'],
         allowFileTypeValidation: true,
@@ -3055,8 +3053,8 @@ unset($__errorArgs, $__bag); ?>
 
     });
 
-        // Create a FilePond instance
-        const EnglishDiploma = FilePond.create(inputEnglishDiploma, {
+    // Create a FilePond instance
+    const EnglishDiploma = FilePond.create(inputEnglishDiploma, {
         labelIdle: 'Drag & Drop your English Diploma or <span class="filepond--label-action"> Browse </span>',
         acceptedFileTypes: ['application/pdf', 'image/jpeg'],
         allowFileTypeValidation: true,
@@ -3073,9 +3071,9 @@ unset($__errorArgs, $__bag); ?>
 
     });
 
-        // Create a FilePond instance
-        const WorkExperienceLetter = FilePond.create(inputWorkExperienceLetter, {
-        labelIdle:'Drag & Drop your Work Experience letter or <span class="filepond--label-action"> Browse </span>',
+    // Create a FilePond instance
+    const WorkExperienceLetter = FilePond.create(inputWorkExperienceLetter, {
+        labelIdle: 'Drag & Drop your Work Experience letter or <span class="filepond--label-action"> Browse </span>',
         acceptedFileTypes: ['application/pdf', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
@@ -3092,8 +3090,8 @@ unset($__errorArgs, $__bag); ?>
     });
 
 
-        // Create a FilePond instance
-        const Resume = FilePond.create(inputResume, {
+    // Create a FilePond instance
+    const Resume = FilePond.create(inputResume, {
         labelIdle: 'Drag & Drop your Resume or <span class="filepond--label-action"> Browse </span>',
         acceptedFileTypes: ['application/pdf', 'image/jpeg'],
         allowFileTypeValidation: true,
@@ -3184,7 +3182,7 @@ unset($__errorArgs, $__bag); ?>
                     success: function(data) {
                         if (data) {
                             $('.Scholarship').empty();
-                             $('.Scholarship').append('<option value="" hidden>Select Your Scholarship</option>');
+                            $('.Scholarship').append('<option value="" hidden>Select Your Scholarship</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="Scholarship_ID"]').append('<option value="' + course.id + '">' + course.ScholarshipName + '</option>');
                             });
@@ -3213,7 +3211,7 @@ unset($__errorArgs, $__bag); ?>
                     success: function(data) {
                         if (data) {
                             $('.ScholarshipModule').empty();
-                             $('.ScholarshipModule').append('<option value="" hidden>Select Your Scholarship Module</option>');
+                            $('.ScholarshipModule').append('<option value="" hidden>Select Your Scholarship Module</option>');
                             $.each(data, function(key, course) {
                                 $('select[name="PrefernceOneScholarshipModule_ID"]').append('<option value="' + course.id + '">' + course.ModuleName + '</option>');
                             });
@@ -3241,9 +3239,11 @@ unset($__errorArgs, $__bag); ?>
     function address() {
         document.getElementById("v-pills-address-tab").click();
     }
+
     function education() {
         document.getElementById("v-pills-education-tab").click();
     }
+
     function work() {
         document.getElementById("v-pills-work-tab").click();
     }

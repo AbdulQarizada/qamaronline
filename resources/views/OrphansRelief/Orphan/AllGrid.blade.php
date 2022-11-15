@@ -1,15 +1,9 @@
 @extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
-
 @section('title') Orphan and Sponsorships @endsection
-
 @section('css')
 <link href="{{ URL::asset('/assets/css/mystyle/OrphanGrid.css') }}" rel="stylesheet" type="text/css" />
-
-
 @endsection
-
 @section('content')
-
 <div class="row mt-4">
     @if (Auth::check())
     <div class="col-4">
@@ -17,7 +11,6 @@
     </div>
     @endif
 </div>
-
 <div class="row mb-3">
     <div class="col-md-4 col-sm-4">
         <div class="mt-2">
@@ -46,7 +39,6 @@
         </form>
     </div>
 </div>
-
 <div class="row">
     @foreach($datas as $data)
     <div class="col-md-3">
@@ -86,9 +78,6 @@
         </ul>
     </div>
 </div>
-
 @endsection
 @section('script')
-
-
 @endsection
