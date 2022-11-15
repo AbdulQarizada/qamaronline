@@ -32,6 +32,7 @@ class OrphansReliefController extends Controller
   public function All()
   {
 
+    $sponsors = User::where("IsOrphanSponsor", "=", "1")->get();
     $provinces = Location::whereNull("Parent_ID")->get();
     $PageInfo = 'All';
     $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
@@ -41,7 +42,7 @@ class OrphansReliefController extends Controller
       ->leftjoin('users as e', 'orphans.Sponsor_ID', '=', 'e.id')
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.FullName as SFullName',])
       ->paginate(100);
-    return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo, 'provinces' => $provinces]);
+    return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo, 'provinces' => $provinces, 'sponsors' => $sponsors]);
   }
 
   public function AllGrid()

@@ -1,13 +1,8 @@
 
-
 <?php $__env->startSection('title'); ?> Orphan and Sponsorships <?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('css'); ?>
-
 <?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('content'); ?>
-
 <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 <div class="row">
     <div class="col-12">
@@ -60,7 +55,6 @@
                                                 <a target="_Blanck" href="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/HousePic/'.$data -> HousePic)); ?>" class="badge badge-soft-info">
                                                     <img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/HousePic/'.$data -> HousePic)); ?>" alt="" class=" d-block" height="300px">
                                                 </a>
-
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="product-4" role="tabpanel" aria-labelledby="product-4-tab">
@@ -116,14 +110,12 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <div class="row">
     <div class="col-lg-12">
         <div class="table-responsive">
@@ -153,7 +145,6 @@
                     <td style="width: 20%; border: 2px solid #000; padding: 5px;">Introducer Name</td>
                     <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> IntroducerName); ?></td>
                 </tr>
-
             </table>
             <table class="table table-nowrap">
                 <h5 style="font-weight: bold;" class="card-header  text-dark">ADDRESS AND CONTACT</h5>
@@ -310,7 +301,6 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
 <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
-
 <script>
     $('.reinitiate').on('click', function(event) {
         event.preventDefault();
@@ -358,6 +348,5 @@
         });
     });
 </script>
-
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Orphan/Status.blade.php ENDPATH**/ ?>

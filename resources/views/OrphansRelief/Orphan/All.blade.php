@@ -273,13 +273,127 @@
                                 @endif
                                 @if( $data -> Status == 'Approved')
                                 @if( $data -> IsSponsored == 1)
-                                <a href="{{route('AssignToSponsorOrphan', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-info  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Reassign To Sponsor">
+                                <a data-bs-toggle="modal" data-bs-target=".bs-{{$data ->  id }}-modal-center" class="btn btn-sm btn-outline-info  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Reassign To Sponsor">
                                     <i class="mdi mdi-account-convert font-size-16 align-middle"></i>
                                 </a>
+                                <div class="modal fade bs-{{$data ->  id }}-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered  modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Reassign To Sponsor</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="needs-validation" action="{{route('AssignSponsorOrphan', ['data' => $data -> id])}}" method="POST" enctype="multipart/form-data" novalidate>
+                                                    @method('PUT')
+                                                    @csrf
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3 position-relative">
+                                                                <label for="Sponsor_ID" class="form-label">Sponsor</label>
+                                                                <div class="input-group " id="example-date-input">
+                                                                    <select class="form-control  form-control-lg select2" id="Sponsor_ID" name="Sponsor_ID" value="{{ old('Sponsor_ID') }}" style="height: calc(1.5em + .75rem + 2px) !important;" required>
+                                                                        @foreach($sponsors as $sponsor)
+                                                                        <option value="{{$sponsor -> id}}">{{$sponsor -> FullName}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3 position-relative">
+                                                                <label for="Sponsored_StartDate" class="form-label">Sponsored Start Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                                <div class="input-group " id="example-date-input">
+                                                                    <input class="form-control form-select-lg @error('Sponsored_StartDate') is-invalid @enderror" value="{{ old('Sponsored_StartDate') }}" type="date" id="example-date-input" name="Sponsored_StartDate" id="Sponsored_StartDate" required>
+                                                                    @error('Sponsored_StartDate')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3 position-relative">
+                                                                <label for="Sponsored_EndDate" class="form-label">Sponsored End Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                                <div class="input-group " id="example-date-input">
+                                                                    <input class="form-control form-select-lg @error('Sponsored_EndDate') is-invalid @enderror" value="{{ old('Sponsored_EndDate') }}" type="date" id="example-date-input" name="Sponsored_EndDate" id="Sponsored_EndDate" required>
+                                                                    @error('Sponsored_EndDate')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                     <button type="submit" class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded w-lg">Reassign</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 @else
-                                <a href="{{route('AssignToSponsorOrphan', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-success waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Assign To Sponsor">
-                                    <i class="bx bx-user-plus   font-size-16 align-middle"></i>
+                                <a data-bs-toggle="modal" data-bs-target=".bs-{{$data ->  id }}-modal-center" class="btn btn-sm btn-outline-success waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Assign To Sponsor">
+                                    <i class="bx bx-user-plus font-size-16 align-middle"></i>
                                 </a>
+                                <div class="modal fade bs-{{$data ->  id }}-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered  modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Assign To Sponsor</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="needs-validation" action="{{route('AssignSponsorOrphan', ['data' => $data -> id])}}" method="POST" enctype="multipart/form-data" novalidate>
+                                                    @method('PUT')
+                                                    @csrf
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3 position-relative">
+                                                                <label for="Sponsor_ID" class="form-label">Sponsor</label>
+                                                                <div class="input-group " id="example-date-input">
+                                                                    <select class="form-control  form-control-lg" id="Sponsor_ID" name="Sponsor_ID" value="{{ old('Sponsor_ID') }}" style="height: calc(1.5em + .75rem + 2px) !important;" required>
+                                                                        @foreach($sponsors as $sponsor)
+                                                                        <option value="{{$sponsor -> id}}">{{$sponsor -> FullName}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3 position-relative">
+                                                                <label for="Sponsored_StartDate" class="form-label">Sponsored Start Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                                <div class="input-group " id="example-date-input">
+                                                                    <input class="form-control form-select-lg @error('Sponsored_StartDate') is-invalid @enderror" value="{{ old('Sponsored_StartDate') }}" type="date" id="example-date-input" name="Sponsored_StartDate" id="Sponsored_StartDate" required>
+                                                                    @error('Sponsored_StartDate')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="mb-3 position-relative">
+                                                                <label for="Sponsored_EndDate" class="form-label">Sponsored End Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                                <div class="input-group " id="example-date-input">
+                                                                    <input class="form-control form-select-lg @error('Sponsored_EndDate') is-invalid @enderror" value="{{ old('Sponsored_EndDate') }}" type="date" id="example-date-input" name="Sponsored_EndDate" id="Sponsored_EndDate" required>
+                                                                    @error('Sponsored_EndDate')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded w-lg">Assign</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 @endif
                                 @endif
                                 @if( $data -> Status == 'Rejected')
@@ -308,6 +422,12 @@
 @section('script')
 <!-- Sweetalert -->
 <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
+<script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
+
+
+<!-- form advanced init -->
+<script src="{{ URL::asset('/assets/js/pages/form-advanced.init.js') }}"></script>
+
 <script>
     $('.delete-confirm').on('click', function(event) {
         event.preventDefault();

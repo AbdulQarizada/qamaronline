@@ -286,8 +286,6 @@
     </div>
 </div> -->
 @endif
-
 @endsection
 @section('script')
-
 @endsection
