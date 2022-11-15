@@ -65,7 +65,6 @@
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> ProvinceName}}</a></h5>
                                     <p class="text-muted mb-0">{{$data -> DistrictName}}</p>
-
                                 </div>
                             </td>
                             <td>
@@ -78,7 +77,6 @@
                             <td>
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> email}}</a></h5>
-
                                 </div>
                             </td>
                             <td>
@@ -144,7 +142,6 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-
                                                         </div>
                                                         <button class="btn btn-success btn-lg" type="submit">Change </button>
                                                     </form>

@@ -39,7 +39,7 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
             <option value="<?php echo e(route('AssignedBeneficiariesFoodPack')); ?>">Please Filter Your Choices</option>
             <option value="<?php echo e(route('AssignedBeneficiariesFoodPack')); ?>">All</option>
             <?php $__currentLoopData = $foodpacks; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $foodpack): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <option value="<?php echo e(route('SearchAssignedBeneficiariesFoodPack', ['data' => $foodpack -> id])); ?>"><?php echo e($foodpack -> Name); ?> - <?php echo e($foodpack -> ExpectedDate); ?></option>
+            <option value="<?php echo e(route('SearchAssignedBeneficiariesFoodPack', ['data' => $foodpack -> id])); ?>"><?php echo e($foodpack -> Name); ?> | <?php echo e(($foodpack -> FPProvinceName)); ?> |  <?php echo e(($foodpack -> FPDistrictName)); ?> | <?php echo e(Carbon\Carbon::parse($foodpack -> ExpectedDate) -> format("j F Y")); ?></option>
 
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </select>
@@ -48,15 +48,11 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
         <a href="<?php echo e(route('CreateCareCard')); ?>" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD CARE CARD</a>
     </div> -->
 </div>
-
 <div class="row">
     <div class="col-12">
-
         <div class="card">
             <h3 class="card-header bg-dark text-white"></h3>
-
             <div class="card-body">
-
                 <div class="table-responsive">
                     <table id="datatable" class="table  table-striped table-bordered dt-responsive nowrap w-100 m-4">
                         <thead>
@@ -71,12 +67,8 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
                                 <th>Supporting Organization</th>
                                 <th>Created By</th>
                                 <th>Finger Print</th>
-                                <!-- <th>Actions</th> -->
-
                             </tr>
                         </thead>
-
-
                         <tbody>
                             <?php $__currentLoopData = $qamarcarecards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $qamarcarecard): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>

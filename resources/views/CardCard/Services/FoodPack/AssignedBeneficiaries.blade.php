@@ -32,7 +32,7 @@
             <option value="{{route('AssignedBeneficiariesFoodPack')}}">Please Filter Your Choices</option>
             <option value="{{route('AssignedBeneficiariesFoodPack')}}">All</option>
             @foreach($foodpacks as $foodpack)
-            <option value="{{route('SearchAssignedBeneficiariesFoodPack', ['data' => $foodpack -> id])}}">{{ $foodpack -> Name}} - {{ $foodpack -> ExpectedDate}}</option>
+            <option value="{{route('SearchAssignedBeneficiariesFoodPack', ['data' => $foodpack -> id])}}">{{ $foodpack -> Name}} | {{ ($foodpack -> FPProvinceName) }} |  {{ ($foodpack -> FPDistrictName) }} | {{ Carbon\Carbon::parse($foodpack -> ExpectedDate) -> format("j F Y")}}</option>
 
             @endforeach
         </select>

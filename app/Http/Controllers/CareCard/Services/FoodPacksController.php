@@ -448,7 +448,10 @@ class FoodPacksController extends Controller
     ->join('fookpacks as c', 'beneficiaries_to_food_packs.FoodPack_ID', '=', 'c.id')
     ->select([ 'b.*',  'a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob', 'c.Name as FoodPackName', 'c.OrganizationName as OrganizationName',])
     ->get();
-    $foodpacks = Fookpacks::get();
+    $foodpacks = Fookpacks::join('locations as e', 'fookpacks.Province_ID', '=', 'e.id')
+    -> join('locations as f', 'fookpacks.District_ID', '=', 'f.id')
+    -> select(['fookpacks.*', 'e.Name as FPProvinceName', 'f.Name as FPDistrictName'])
+    -> get();
     return view('CardCard.Services.FoodPack.AssignedBeneficiaries', ['foodpacks' => $foodpacks, 'qamarcarecards' => $qamarcarecards,]);
   }
 
