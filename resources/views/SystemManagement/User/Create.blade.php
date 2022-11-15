@@ -673,7 +673,7 @@
     Profile.setOptions({
         server: {
 
-            url: '../Employees_Profile',
+            url: '{{ route('Users_Profile')}}',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }

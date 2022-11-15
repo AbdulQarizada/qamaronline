@@ -42,12 +42,12 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
             <option value="<?php echo e(route('AllOrphans')); ?>">Please Filter Your Choices</option>
-            <option value="<?php echo e(route('AllOrphans')); ?>">All</option>
-            <option value="<?php echo e(route('PendingOrphans')); ?>">Pending</option>
-            <option value="<?php echo e(route('ApprovedOrphans')); ?>">Approved</option>
-            <option value="<?php echo e(route('RejectedOrphans')); ?>">Rejected</option>
-            <option value="<?php echo e(route('WaitingOrphans')); ?>">Waiting</option>
-            <option value="<?php echo e(route('SponsoredOrphans')); ?>">Sponsored</option>
+            <option value="<?php echo e(route('AllOrphans')); ?>" <?php echo e($PageInfo == 'All' ? 'selected' : ''); ?>>All</option>
+            <option value="<?php echo e(route('PendingOrphans')); ?>" <?php echo e($PageInfo == 'Pending' ? 'selected' : ''); ?>>Pending</option>
+            <option value="<?php echo e(route('ApprovedOrphans')); ?>" <?php echo e($PageInfo == 'Approved' ? 'selected' : ''); ?>>Approved</option>
+            <option value="<?php echo e(route('RejectedOrphans')); ?>" <?php echo e($PageInfo == 'Rejected' ? 'selected' : ''); ?>>Rejected</option>
+            <option value="<?php echo e(route('WaitingOrphans')); ?>" <?php echo e($PageInfo == 'Waiting' ? 'selected' : ''); ?>>Waiting</option>
+            <option value="<?php echo e(route('SponsoredOrphans')); ?>" <?php echo e($PageInfo == 'Sponsored' ? 'selected' : ''); ?>>Sponsored</option>
         </select>
     </div>
     <div class="col-md-9 col-sm-12">
@@ -59,7 +59,7 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
     <div class="col-12">
         <h3 class="card-header bg-dark text-white mb-3"></h3>
         <div class="table-responsive">
-            <table id="datatable" class="table  table-striped dt-responsive nowrap w-100 m-4">
+            <table class="table  table-striped table-hover dt-responsive nowrap w-100 m-4">
                 <thead class="table-light">
                     <tr>
                         <th>ID</th>
@@ -211,10 +211,10 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                     <i class="bx bx-show-alt font-size-16 align-middle"></i>
                                 </a>
                                 <?php if($data -> Status == 'Pending'): ?>
-                                <a href="<?php echo e(route('DeleteOrphan', ['data' => $data -> id])); ?>" class="btn btn-sm btn-danger waves-effect waves-light delete-confirm" data-toggle="tooltip" data-placement="top" title="Delete Record">
+                                <a href="<?php echo e(route('DeleteOrphan', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-toggle="tooltip" data-placement="top" title="Delete Record">
                                     <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
                                 </a>
-                                <a href="<?php echo e(route('EditOrphan', ['data' => $data -> id])); ?>" class="btn btn-sm btn-info waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="Edit Details">
+                                <a href="<?php echo e(route('EditOrphan', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-info waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="Edit Details">
                                     <i class=" bx bx-edit font-size-16 align-middle"></i>
                                 </a>
                                 <?php endif; ?>
@@ -224,13 +224,13 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                     <i class="mdi mdi-account-convert font-size-16 align-middle"></i>
                                 </a>
                                 <?php else: ?>
-                                <a href="<?php echo e(route('AssignToSponsorOrphan', ['data' => $data -> id])); ?>" class="btn btn-sm btn-success waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="Assign To Sponsor">
+                                <a href="<?php echo e(route('AssignToSponsorOrphan', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-success waves-effect waves-light" data-toggle="tooltip" data-placement="top" title="Assign To Sponsor">
                                     <i class="bx bx-user-plus   font-size-16 align-middle"></i>
                                 </a>
                                 <?php endif; ?>
                                 <?php endif; ?>
                                 <?php if( $data -> Status == 'Rejected'): ?>
-                                <a href="<?php echo e(route('DeleteOrphan', ['data' => $data -> id])); ?>" class="btn btn-sm btn-danger waves-effect waves-light delete-confirm" data-toggle="tooltip" data-placement="top" title="Delete Record">
+                                <a href="<?php echo e(route('DeleteOrphan', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-toggle="tooltip" data-placement="top" title="Delete Record">
                                     <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
                                 </a>
                                 <?php endif; ?>
