@@ -32,6 +32,7 @@ class OrphansReliefController extends Controller
   public function All()
   {
 
+    $provinces = Location::whereNull("Parent_ID")->get();
     $PageInfo = 'All';
     $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
       ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
@@ -40,7 +41,7 @@ class OrphansReliefController extends Controller
       ->leftjoin('users as e', 'orphans.Sponsor_ID', '=', 'e.id')
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.FullName as SFullName',])
       ->paginate(100);
-    return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo]);
+    return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo, 'provinces' => $provinces]);
   }
 
   public function AllGrid()
@@ -72,6 +73,7 @@ class OrphansReliefController extends Controller
   {
 
     $PageInfo = 'Pending';
+    $provinces = Location::whereNull("Parent_ID")->get();
     $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
       ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
       ->join('look_ups as c', 'orphans.FamilyStatus_ID', '=', 'c.id')
@@ -80,12 +82,13 @@ class OrphansReliefController extends Controller
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.FullName as SFullName'])
       ->where("orphans.Status", "=", 'Pending')
       ->paginate(100);
-    return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo]);
+    return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo, 'provinces' => $provinces]);
   }
 
   public function Approved()
   {
     $PageInfo = 'Approved';
+    $provinces = Location::whereNull("Parent_ID")->get();
     $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
       ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
       ->join('users as d', 'orphans.Created_By', '=', 'd.id')
@@ -94,7 +97,7 @@ class OrphansReliefController extends Controller
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.FullName as SFullName'])
       ->where("orphans.Status", "=", 'Approved')
       ->paginate(100);
-    return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo]);
+    return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo, 'provinces' => $provinces]);
   }
 
 
@@ -102,6 +105,7 @@ class OrphansReliefController extends Controller
   {
 
     $PageInfo = 'Rejected';
+    $provinces = Location::whereNull("Parent_ID")->get();
     $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
       ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
       ->join('look_ups as c', 'orphans.FamilyStatus_ID', '=', 'c.id')
@@ -110,7 +114,7 @@ class OrphansReliefController extends Controller
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.FullName as SFullName'])
       ->where("orphans.Status", "=", 'Rejected')
       ->paginate(100);
-    return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo]);
+    return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo, 'provinces' => $provinces]);
   }
 
 
@@ -118,6 +122,7 @@ class OrphansReliefController extends Controller
   {
 
     $PageInfo = 'Waiting';
+    $provinces = Location::whereNull("Parent_ID")->get();
     $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
       ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
       ->join('look_ups as c', 'orphans.FamilyStatus_ID', '=', 'c.id')
@@ -126,7 +131,7 @@ class OrphansReliefController extends Controller
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.FullName as SFullName'])
       ->where("orphans.IsSponsored", "=", 0)
       ->paginate(100);
-    return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo]);
+    return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo, 'provinces' => $provinces]);
   }
 
 
@@ -134,6 +139,7 @@ class OrphansReliefController extends Controller
   public function Sponsored()
   {
     $PageInfo = 'Sponsored';
+    $provinces = Location::whereNull("Parent_ID")->get();
     $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
       ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
       ->join('look_ups as c', 'orphans.FamilyStatus_ID', '=', 'c.id')
@@ -142,7 +148,7 @@ class OrphansReliefController extends Controller
       ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.FullName as SFullName',])
       ->where("orphans.IsSponsored", "=", 1)
       ->paginate(100);
-    return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo]);
+    return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo, 'provinces' => $provinces]);
   }
 
 
@@ -420,4 +426,25 @@ class OrphansReliefController extends Controller
     ]);
     return redirect()->route('AllOrphans')->with('success', 'Sponsor Has Been Assinged!');
   }
+
+  public function Search()
+  {
+
+    $provinces = Location::whereNull("Parent_ID")->get();
+    $PageInfo = request('PageInfo');
+    $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
+      -> join('locations as b', 'orphans.District_ID', '=', 'b.id')
+      -> join('look_ups as c', 'orphans.FamilyStatus_ID', '=', 'c.id')
+      -> join('users as d', 'orphans.Created_By', '=', 'd.id')
+      -> leftjoin('users as e', 'orphans.Sponsor_ID', '=', 'e.id')
+      -> select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.FullName as SFullName',])
+      -> where('orphans.FirstName', '=',  request('data'))
+      -> where('orphans.LastName', '=', request('data'))
+      -> where('orphans.Status', '=', request('PageInfo'))
+      -> orwhere('orphans.Province_ID', '=', request('Province_ID'))
+      -> orwhere('orphans.District_ID', '=', request('District_ID'))
+      ->paginate(100);
+    return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo, 'provinces' => $provinces]);
+  }
+
 }

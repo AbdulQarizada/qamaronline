@@ -3,8 +3,6 @@
 @section('title') Orphan and Sponsorships @endsection
 
 @section('css')
-<!-- DataTables -->
-<link href="{{ URL::asset('/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 
 @section('content')
@@ -31,23 +29,65 @@
         @endif
     </div>
 </div>
-<div class="row">
-    <div class="col-md-3 col-sm-12">
-        <select class="form-select  form-select-lg mb-3 @error('Country') is-invalid @enderror" onchange="window.location.href=this.value;">
-            <option value="{{route('AllOrphans')}}">Please Filter Your Choices</option>
-            <option value="{{route('AllOrphans')}}" {{ $PageInfo == 'All' ? 'selected' : '' }}>All</option>
-            <option value="{{route('PendingOrphans')}}" {{ $PageInfo == 'Pending' ? 'selected' : '' }}>Pending</option>
-            <option value="{{route('ApprovedOrphans')}}" {{ $PageInfo == 'Approved' ? 'selected' : '' }}>Approved</option>
-            <option value="{{route('RejectedOrphans')}}" {{ $PageInfo == 'Rejected' ? 'selected' : '' }}>Rejected</option>
-            <option value="{{route('WaitingOrphans')}}" {{ $PageInfo == 'Waiting' ? 'selected' : '' }}>Waiting</option>
-            <option value="{{route('SponsoredOrphans')}}" {{ $PageInfo == 'Sponsored' ? 'selected' : '' }}>Sponsored</option>
-        </select>
+<form action="{{route('SearchOrphans')}}" method="POST">
+    @csrf
+    <div class="row">
+        <div class="col-md-2 col-sm-12 mb-2">
+            <select class="form-select  form-select-lg @error('Country') is-invalid @enderror" onchange="window.location.href=this.value;">
+                <option value="{{route('AllOrphans')}}">Please Filter Your Choices</option>
+                <option value="{{route('AllOrphans')}}" {{ $PageInfo == 'All' ? 'selected' : '' }}>All</option>
+                <option value="{{route('PendingOrphans')}}" {{ $PageInfo == 'Pending' ? 'selected' : '' }}>Pending</option>
+                <option value="{{route('ApprovedOrphans')}}" {{ $PageInfo == 'Approved' ? 'selected' : '' }}>Approved</option>
+                <option value="{{route('RejectedOrphans')}}" {{ $PageInfo == 'Rejected' ? 'selected' : '' }}>Rejected</option>
+                <option value="{{route('WaitingOrphans')}}" {{ $PageInfo == 'Waiting' ? 'selected' : '' }}>Waiting</option>
+                <option value="{{route('SponsoredOrphans')}}" {{ $PageInfo == 'Sponsored' ? 'selected' : '' }}>Sponsored</option>
+            </select>
+        </div>
+
+        <div class="col-md-2 mb-2">
+            <div class="position-relative">
+                <div class="input-group">
+                    <select class="form-select Province form-select-lg @error('Province_ID') is-invalid @enderror" name="Province_ID" value="{{ old('Province_ID') }}" id="Province_ID">
+                        <option value="">Select Your Province</option>
+                        @foreach($provinces as $province)
+                        <option value="{{ $province -> id}}">{{ $province -> Name}}</option>
+                        @endforeach
+                    </select>
+                    @error('Province_ID')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 mb-2">
+            <div class="position-relative">
+                <div class="input-group">
+                    <select class="form-select  District form-select-lg @error('District_ID') is-invalid @enderror" name="District_ID" value="{{ old('District_ID') }}" id="District_ID">
+                        <option value="">Select Your District</option>
+                    </select>
+                    @error('District_ID')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-2">
+            <div class="hstack gap-2">
+                <input  type="text" name="PageInfo" value="{{ $PageInfo }}" class="d-none">
+                <input class="form-control form-control-lg" type="text" name="data">
+                <button type="submit" class="btn btn-lg btn-outline-danger"><i class="mdi mdi-magnify me-1"></i></button>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-12 mb-2">
+            <a href="{{route('AllGridOrphans')}}" class="btn  btn-lg waves-effect  waves-light mb-3 m-1 float-end"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a>
+            <a href="{{route('CreateOrphans')}}" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD ORPHAN</a>
+        </div>
     </div>
-    <div class="col-md-9 col-sm-12">
-        <a href="{{route('AllGridOrphans')}}" class="btn  btn-lg waves-effect  waves-light mb-3 m-1 float-end"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a>
-        <a href="{{route('CreateOrphans')}}" class="btn btn-success btn-lg waves-effect  waves-light mb-3 float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD ORPHAN</a>
-    </div>
-</div>
+</form>
 <div class="row">
     <div class="col-12">
         <h3 class="card-header bg-dark text-white mb-3"></h3>
@@ -239,15 +279,12 @@
 <div class="row">
     <div class="col-lg-12">
         <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
-            {!! $datas->links() !!} <span class="m-2 text-white badge badge-soft-dark">{{ $datas->total() }} Total Records</span>
+            {!! $datas->links() !!} <span class="m-2 text-white badge bg-dark">{{ $datas->total() }} Total Records</span>
         </ul>
     </div>
 </div>
 @endsection
 @section('script')
-<!-- Required datatable js -->
-<script src="{{ URL::asset('/assets/libs/datatables/datatables.min.js') }}"></script>
-<script src="{{ URL::asset('/assets/libs/jszip/jszip.min.js') }}"></script>
 
 <!-- Sweetalert -->
 <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
@@ -263,6 +300,34 @@
         }).then(function(value) {
             if (value) {
                 window.location.href = url;
+            }
+        });
+    });
+
+    $(document).ready(function() {
+        $('.Province').on('change', function() {
+            var dID = $(this).val();
+            if (dID) {
+                $.ajax({
+                    url: '/GetDistricts/' + dID,
+                    type: "GET",
+                    data: {
+                        "_token": "{{ csrf_token() }}"
+                    },
+                    dataType: "json",
+                    success: function(data) {
+                        if (data) {
+                            $('.District').empty();
+                            $.each(data, function(key, course) {
+                                $('select[name="District_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
+                            });
+                        } else {
+                            $('.District').empty();
+                        }
+                    }
+                });
+            } else {
+                $('.District').empty();
             }
         });
     });

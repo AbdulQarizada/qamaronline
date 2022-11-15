@@ -220,13 +220,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
-
                     <div class="tab-pane fade" id="v-pills-address" role="tabpanel" aria-labelledby="v-pills-address-tab">
                         <div class="row mb-4">
                             <div class="col-lg-12">
@@ -387,14 +380,14 @@
                             <div class="col-sm-6">
                                 <a onclick="personal();" class="btn text-muted d-none d-sm-inline-block btn-link">
                                     <i class="mdi mdi-arrow-left me-1"></i> Back to Personal Information </a>
-                            </div> <!-- end col -->
+                            </div>
                             <div class="col-sm-6">
                                 <div class="text-end">
                                     <a onclick="education();" class="btn btn-success w-lg">
                                         Next </a>
                                 </div>
-                            </div> <!-- end col -->
-                        </div> <!-- end row -->
+                            </div>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-education" role="tabpanel" aria-labelledby="v-pills-education-tab">
                         <div class="row mb-4">
@@ -665,7 +658,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="tab-pane fade" id="v-pills-document" role="tabpanel" aria-labelledby="v-pills-document-tab">
                         <div class="row mb-4">
                             <div class="col-lg-12">
@@ -710,15 +702,14 @@
                             <div class="col-sm-6">
                                 <a onclick="familys();" class="btn text-muted d-none d-sm-inline-block btn-link">
                                     <i class="mdi mdi-arrow-left me-1"></i> Back to Family Information </a>
-                            </div> <!-- end col -->
+                            </div>
                             <div class="col-sm-6">
                                 <div class="text-end">
                                     <button class="btn btn-lg w-lg btn-danger" onclick="personal();" type="submit">Submit </button>
                                 </div>
-                            </div> <!-- end col -->
-                        </div> <!-- end row -->
+                            </div>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -747,7 +738,6 @@
 <script>
     FilePond.registerPlugin(FilePondPluginImagePreview);
     FilePond.registerPlugin(FilePondPluginFileValidateType);
-
 
 
 
@@ -845,6 +835,7 @@
 
 
     });
+
 
 
 

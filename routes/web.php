@@ -104,6 +104,8 @@ Route::get('/OrphansRelief/Orphan/Reject/{data}', [App\Http\Controllers\OrphanRe
 Route::get('/OrphansRelief/Orphan/ReInitiate/{data}', [App\Http\Controllers\OrphanRelief\Orphans\OrphansReliefController::class, 'ReInitiate'])->name('ReInitiateOrphans');
 Route::get('/OrphansRelief/Orphan/AssignToSponsor/{data}', [App\Http\Controllers\OrphanRelief\Orphans\OrphansReliefController::class, 'AssignToSponsor'])->name('AssignToSponsorOrphan');
 Route::put('/OrphansRelief/Orphan/AssignSponsor/{data}', [App\Http\Controllers\OrphanRelief\Orphans\OrphansReliefController::class, 'AssignSponsor'])->name('AssignSponsorOrphan');
+// Search Orphans
+Route::post('/OrphansRelief/Orphan/Search', [App\Http\Controllers\OrphanRelief\Orphans\OrphansReliefController::class, 'Search'])->name('SearchOrphans');
 
 // sponsors
 // sponsors list
