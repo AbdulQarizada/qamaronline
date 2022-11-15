@@ -63,7 +63,6 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                 <thead class="table-light">
                     <tr>
                         <th>ID</th>
-                        <th>Profile</th>
                         <th>Full Name</th>
                         <th>Address</th>
                         <th>Phone Numbers</th>
@@ -78,11 +77,12 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                     <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
                         <td>
-                            <?php echo e($data -> id); ?>
+                            <div class="avatar-xs">
+                                <span class="avatar-title bg-dark rounded-circle">
+                                    <?php echo e($data -> id); ?>
 
-                        </td>
-                        <td>
-                            <img class="rounded-circle avatar-sm" src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)); ?>" alt="">
+                                </span>
+                            </div>
                         </td>
                         <td>
                             <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> FirstName); ?> <?php echo e($data -> LastName); ?></a></h5>

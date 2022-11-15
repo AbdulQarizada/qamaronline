@@ -56,7 +56,6 @@
                 <thead class="table-light">
                     <tr>
                         <th>ID</th>
-                        <th>Profile</th>
                         <th>Full Name</th>
                         <th>Address</th>
                         <th>Phone Numbers</th>
@@ -71,10 +70,11 @@
                     @foreach($datas as $data)
                     <tr>
                         <td>
-                            {{$data -> id}}
-                        </td>
-                        <td>
-                            <img class="rounded-circle avatar-sm" src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}" alt="">
+                            <div class="avatar-xs">
+                                <span class="avatar-title bg-dark rounded-circle">
+                                    {{$data -> id}}
+                                </span>
+                            </div>
                         </td>
                         <td>
                             <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> FirstName}} {{$data -> LastName}}</a></h5>
