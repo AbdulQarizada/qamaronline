@@ -72,7 +72,7 @@
                         <td>
                             <div class="avatar-xs">
                                 <span class="avatar-title bg-dark rounded-circle">
-                                    {{$data -> id}}
+                                    {{$loop->iteration}}
                                 </span>
                             </div>
                         </td>

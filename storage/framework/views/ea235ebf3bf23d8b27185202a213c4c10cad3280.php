@@ -79,7 +79,7 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                         <td>
                             <div class="avatar-xs">
                                 <span class="avatar-title bg-dark rounded-circle">
-                                    <?php echo e($data -> id); ?>
+                                    <?php echo e($loop->iteration); ?>
 
                                 </span>
                             </div>
