@@ -47,7 +47,7 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
         <div class="card">
             <h3 class="card-header bg-dark text-white"></h3>
             <div class="card-body">
-                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
+                <table class="table table-striped table-bordered dt-responsive nowrap w-100 m-4">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -188,7 +188,7 @@ unset($__errorArgs, $__bag); ?>
 <div class="row">
     <div class="col-lg-12">
         <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
-             <?php echo $datas->links(); ?> <span class="m-2 text-white badge badge-soft-dark"><?php echo e($datas->total()); ?> Total Records</span>
+             <?php echo $datas->links(); ?> <span class="m-2 text-white badge bg-dark"><?php echo e($datas->total()); ?> Total Records</span>
         </ul>
     </div>
 </div>

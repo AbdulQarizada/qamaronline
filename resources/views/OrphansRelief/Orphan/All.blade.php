@@ -10,7 +10,7 @@
     <div class="col-md-4 col-sm-12">
         <a href="{{route('IndexOrphansRelief')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         @if($PageInfo == 'All')
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>All Orphans</span>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20 text-upercase"></i>All Orphans</span>
         @endif
         @if($PageInfo == 'Pending')
         <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Pending Orphans</span>
@@ -77,7 +77,7 @@
         </div>
         <div class="col-md-3 mb-2">
             <div class="hstack gap-2">
-                <input  type="text" name="PageInfo" value="{{ $PageInfo }}" class="d-none">
+                <input type="text" name="PageInfo" value="{{ $PageInfo }}" class="d-none">
                 <input class="form-control form-control-lg" type="text" name="data">
                 <button type="submit" class="btn btn-lg btn-outline-danger"><i class="mdi mdi-magnify me-1"></i></button>
             </div>
@@ -95,6 +95,9 @@
             <table class="table  table-striped table-hover dt-responsive nowrap w-100 m-4">
                 <thead class="table-light">
                     <tr>
+                        <th>
+                            <input class="form-check-input" type="checkbox" id="checkAll">
+                        </th>
                         <th>ID</th>
                         <th>Full Name</th>
                         <th>Address</th>
@@ -109,6 +112,9 @@
                 <tbody class="table-hover">
                     @foreach($datas as $data)
                     <tr>
+                        <td>
+                            <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="{{$data -> id }}">
+                        </td>
                         <td>
                             <div class="avatar-xs">
                                 <span class="avatar-title bg-dark rounded-circle">
@@ -332,26 +338,10 @@
         });
     });
 
-    var table = $('#datatable').DataTable({
-        responsive: true,
-        pageLength: 100,
-        bPaginate: false,
-        bInfo: false,
-        buttons: [{
-            autoFilter: true,
-            extend: 'excel',
-            text: 'Export To Excel',
-            className: 'd-none',
-            exportOptions: {
-                modifier: {
-                    page: 'current'
-                }
-            }
-        }],
 
-    });
-    $("#ExportExcel").on("click", function() {
-        table.button('.buttons-excel').trigger();
+
+    $("#checkAll").click(function() {
+        $('input:checkbox').not(this).prop('checked', this.checked);
     });
 </script>
 @endsection

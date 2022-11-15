@@ -44,21 +44,21 @@
                                         <div class="tab-pane fade show active" id="product-1" role="tabpanel" aria-labelledby="product-1-tab">
                                             <div>
                                                 <a target="_Blanck" href="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)); ?>" class="badge badge-soft-info">
-                                                    <img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)); ?>" alt="" class="img-fluid mx-auto d-block">
+                                                    <img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)); ?>" alt="Profile" class="d-block" height="300px">
                                                 </a>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="product-2" role="tabpanel" aria-labelledby="product-2-tab">
                                             <div>
                                                 <a target="_Blanck" href="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/FamilyPic/'.$data -> FamilyPic)); ?>" class="badge badge-soft-info">
-                                                    <img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/FamilyPic/'.$data -> FamilyPic)); ?>" alt="" class="img-fluid mx-auto d-block">
+                                                    <img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/FamilyPic/'.$data -> FamilyPic)); ?>" alt="" class=" d-block" height="300px">
                                                 </a>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="product-3" role="tabpanel" aria-labelledby="product-3-tab">
                                             <div>
                                                 <a target="_Blanck" href="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/HousePic/'.$data -> HousePic)); ?>" class="badge badge-soft-info">
-                                                    <img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/HousePic/'.$data -> HousePic)); ?>" alt="" class="img-fluid mx-auto d-block">
+                                                    <img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/HousePic/'.$data -> HousePic)); ?>" alt="" class=" d-block" height="300px">
                                                 </a>
 
                                             </div>
@@ -66,7 +66,7 @@
                                         <div class="tab-pane fade" id="product-4" role="tabpanel" aria-labelledby="product-4-tab">
                                             <div>
                                                 <a target="_Blanck" href="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Tazkiras/'.$data -> Tazkira)); ?>" class="badge badge-soft-info">
-                                                    <img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Tazkiras/'.$data -> Tazkira)); ?>" alt="" class="img-fluid mx-auto d-block">
+                                                    <img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Tazkiras/'.$data -> Tazkira)); ?>" alt="" class=" d-block" height="300px">
                                                 </a>
                                             </div>
                                         </div>

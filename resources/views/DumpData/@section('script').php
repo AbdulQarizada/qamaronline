@@ -29,6 +29,27 @@
 <!-- form advanced init -->
 <script src="{{ URL::asset('/assets/js/pages/form-advanced.init.js') }}"></script>
 <script>
+        var table = $('#datatable').DataTable({
+        responsive: true,
+        pageLength: 100,
+        bPaginate: false,
+        bInfo: false,
+        buttons: [{
+            autoFilter: true,
+            extend: 'excel',
+            text: 'Export To Excel',
+            className: 'd-none',
+            exportOptions: {
+                modifier: {
+                    page: 'current'
+                }
+            }
+        }],
+
+    });
+    $("#ExportExcel").on("click", function() {
+        table.button('.buttons-excel').trigger();
+    });
 options = {
 chart: {
     height: 350,
