@@ -53,10 +53,9 @@
 
     <div class="col-xl-8">
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-12">
                 <blockquote class="p-4 border-light border rounded mb-4">
                     <div class="d-flex align-items-start">
-
                         <div class="flex-grow-1">
                             <p class="mb-0 display-6 p-3" dir="rtl" style="float: right;"> <?php echo e($QuranArabic); ?></p>
                             <p class="mb-0 font-size-18"> <?php echo e($QuranEnglish); ?></p>
@@ -66,24 +65,6 @@
                         </div>
                     </div>
                 </blockquote>
-
-            </div>
-            <div class="col-sm-4">
-                <div class="card mini-stats-wid">
-                    <h5 class="card-header text-dark bg-info text-white">Report Filter</h5>
-
-                    <div class="card-body">
-
-                        <select class="select2 form-control select2-multiple" multiple="multiple" data-placeholder="Choose ...">
-                            <optgroup label="Qamar Care Card">
-                                <option value="AK">Operatons</option>
-                                <option value="HI">Food Packs</option>
-                            </optgroup>
-                        </select>
-                        <button class="btn btn-primary form-control mt-3">Filter</button>
-
-                    </div>
-                </div>
             </div>
         </div>
     </div>

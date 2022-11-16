@@ -6,8 +6,8 @@
 @foreach($datas as $data)
 <div class="row">
     <div class="col-12">
-        <a href="{{route('AllOrphans')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-        <a href="javascript:window.print()" class="btn btn-dark mb-3 waves-effect waves-light"><i class=" bx bxs-printer   font-size-18"></i></a>
+        <a href="{{route('AllOrphans')}}" class="btn btn-outline-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <a href="javascript:window.print()" class="btn btn-outline-dark mb-3 waves-effect waves-light"><i class=" bx bxs-printer   font-size-18"></i></a>
     </div>
 </div>
 <div class="row">
@@ -67,16 +67,16 @@
                                     </div>
                                     <div class="text-center mt-2">
                                         @if( $data -> Status == 'Approved' || $data -> Status == 'Rejected' || $data -> Status == 'Assigned' || $data -> Status == 'Sponsored')
-                                        <a href="{{route('ReInitiateOrphans', ['data' => $data -> id])}}" class="btn btn-info waves-effect waves-light reinitiate m-3">
-                                            <i class="bx bx-time-five  font-size-16 align-middle"></i>Re-Initiate
+                                        <a href="{{route('ReInitiateOrphans', ['data' => $data -> id])}}" class="btn btn-outline-info btn-lg waves-effect  waves-light btn-rounded w-lg reinitiate m-3">
+                                            Re-Initiate
                                         </a>
                                         @endif
                                         @if( $data -> Status == 'Pending')
-                                        <a href="{{route('ApproveOrphans', ['data' => $data -> id])}}" class="btn btn-success waves-effect waves-light approve m-3">
-                                            <i class="bx bx-check-circle font-size-16 align-middle"></i>Approve
+                                        <a href="{{route('ApproveOrphans', ['data' => $data -> id])}}" class="btn btn-outline-success btn-lg waves-effect  waves-light btn-rounded approve m-3">
+                                            </i>Approve
                                         </a>
-                                        <a href="{{route('RejectOrphans', ['data' => $data -> id])}}" class="btn btn-danger waves-effect waves-light reject m-3">
-                                            <i class=" bx bx-x-circle font-size-16 align-middle"></i>Reject
+                                        <a href="{{route('RejectOrphans', ['data' => $data -> id])}}" class="btn btn-outline-danger btn-lg waves-effect  waves-light btn-rounded reject m-3">
+                                            Reject
                                         </a>
                                         @endif
                                     </div>

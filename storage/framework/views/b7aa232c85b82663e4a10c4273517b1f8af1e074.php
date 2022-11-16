@@ -1,26 +1,17 @@
 
-
 <?php $__env->startSection('title'); ?> Orphan and Sponsorships <?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('css'); ?>
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/filepond.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-image-preview.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-file-poster.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <?php $__env->stopSection(); ?>
-
-
 <?php $__env->startSection('content'); ?>
-
-
-
 <div class="row mt-4">
     <div class="col-4">
         <a href="<?php echo e(route('AllOrphans')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Edit Orphan</span>
     </div>
 </div>
-
-
 <form class="needs-validation" action="<?php echo e(route('UpdateOrphan', [$data -> id])); ?>" method="POST" enctype="multipart/form-data" novalidate>
     <?php echo method_field('PUT'); ?>
     <?php echo csrf_field(); ?>
@@ -158,7 +149,6 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3 position-relative">
@@ -1150,11 +1140,6 @@ unset($__errorArgs, $__bag); ?>
         </div>
     </div>
     <div><button class="btn btn-success btn-lg" type="submit">Save </button></div>
-
-
-
-
-
 </form>
 
 <?php $__env->stopSection(); ?>
@@ -1182,20 +1167,13 @@ unset($__errorArgs, $__bag); ?>
     FilePond.registerPlugin(FilePondPluginFileValidateType);
     FilePond.registerPlugin(FilePondPluginFilePoster);
 
-
     // Get a reference to the file input element
     const inputProfile = document.querySelector('input[name="Profile"]');
-
-    // Create a FilePond for Profile instance
     const Profile = FilePond.create(inputProfile, {
         labelIdle: 'Profile <span class="bx bx-upload"></span >',
         server: {
-
             url: '<?php echo e(route('Orphans_Profile')); ?>',
-            headers: {
-                'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
-            }
-
+            headers: { 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>' }
         },
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
@@ -1214,25 +1192,16 @@ unset($__errorArgs, $__bag); ?>
             options: {
                 type: 'local',
                 file: {
-
                     type: 'image/png'
                 },
                 metadata: {
                     poster: '<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)); ?>'
                 }
-
             }
         }],
-
-
     });
-
-
-
     // Get a reference to the file input element
     const inputTazkira = document.querySelector('input[name="Tazkira"]');
-
-    // Create a FilePond instance
     const Tazkira = FilePond.create(inputTazkira, {
         labelIdle: 'Click to upload Tazkira <span class="bx bx-upload"></span >',
         acceptedFileTypes: ['image/png', 'image/jpeg'],
@@ -1243,7 +1212,6 @@ unset($__errorArgs, $__bag); ?>
             headers: {
                 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
             }
-
         },
         instantUpload: true,
         files: [{
@@ -1251,35 +1219,25 @@ unset($__errorArgs, $__bag); ?>
             options: {
                 type: 'local',
                 file: {
-
                     type: 'image/png'
                 },
                 metadata: {
                     poster: '<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Tazkiras/'.$data -> Tazkira)); ?>'
                 }
-
             }
         }],
-
     });
-
-
-
     // Get a reference to the file input element
     const inputFamilyPic = document.querySelector('input[name="FamilyPic"]');
-
-    // Create a FilePond instance
     const FamilyPic = FilePond.create(inputFamilyPic, {
         labelIdle: 'Click to upload Family Picture <span class="bx bx-upload"></span >',
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
-
             url: '<?php echo e(route('Orphans_FamilyPic')); ?>',
             headers: {
                 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
             }
-
         },
         instantUpload: true,
         files: [{
@@ -1287,34 +1245,25 @@ unset($__errorArgs, $__bag); ?>
             options: {
                 type: 'local',
                 file: {
-
                     type: 'image/png'
                 },
                 metadata: {
                     poster: '<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/FamilyPic/'.$data -> FamilyPic)); ?>'
                 }
-
             }
         }],
-
     });
-
-
     // Get a reference to the file input element
     const inputHousePic = document.querySelector('input[name="HousePic"]');
-
-    // Create a FilePond instance
     const HousePic = FilePond.create(inputHousePic, {
         labelIdle: 'Click to upload House Picture <span class="bx bx-upload"></span >',
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
-
             url: '<?php echo e(route('Orphans_HousePic')); ?>',
             headers: {
                 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
             }
-
         },
         instantUpload: true,
         files: [{
@@ -1322,19 +1271,15 @@ unset($__errorArgs, $__bag); ?>
             options: {
                 type: 'local',
                 file: {
-
                     type: 'image/png'
                 },
                 metadata: {
                     poster: '<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/HousePic/'.$data -> HousePic)); ?>'
                 }
-
             }
         }],
 
     });
-
-
 
     $(document).ready(function() {
         $('.Province').on('change', function() {
@@ -1364,8 +1309,6 @@ unset($__errorArgs, $__bag); ?>
         });
     });
 
-
-
     $(document).ready(function() {
         $('.SchoolProvince').on('change', function() {
             var dID = $(this).val();
@@ -1394,8 +1337,6 @@ unset($__errorArgs, $__bag); ?>
         });
     });
 
-
-
     $(document).ready(function() {
         if ($('#No').is(':checked')) {
             $('#InSchoolDiv').hide();
@@ -1409,9 +1350,6 @@ unset($__errorArgs, $__bag); ?>
         $('.InSchoolDiv').show();
 
     });
-
-
-
     $('#No').click(function() {
         $('#InSchoolDiv').hide();
         $('.InSchoolDiv').hide();

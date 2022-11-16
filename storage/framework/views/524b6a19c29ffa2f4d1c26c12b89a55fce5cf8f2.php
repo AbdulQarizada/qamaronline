@@ -4,14 +4,11 @@
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/filepond.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-image-preview.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <?php $__env->stopSection(); ?>
-
-
 <?php $__env->startSection('content'); ?>
-
 <div class="row mt-4">
     <div class="col-md-4 col-sm-12">
-        <a href="<?php echo e(route('AllOrphans')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Add Orphan</span>
+        <a href="<?php echo e(route('AllOrphans')); ?>" class="btn btn-outline-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20 "></i>Add Orphan</span>
     </div>
 </div>
 <form class="needs-validation" action="<?php echo e(route('CreateOrphans')); ?>" method="POST" enctype="multipart/form-data" novalidate>
@@ -366,7 +363,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-sm-6">
                                 <div class="text-end">
-                                    <a onclick="address();" class="btn btn-success w-lg">
+                                    <a onclick="address();" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded w-lg">
                                         Next</a>
                                 </div>
                             </div>
@@ -549,7 +546,6 @@ unset($__errorArgs, $__bag); ?>
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
@@ -675,7 +671,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-sm-6">
                                 <div class="text-end">
-                                    <a onclick="education();" class="btn btn-success w-lg">
+                                    <a onclick="education();" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded w-lg">
                                         Next </a>
                                 </div>
                             </div>
@@ -915,7 +911,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-sm-6">
                                 <div class="text-end">
-                                    <a onclick="familys();" class="btn btn-success w-lg">
+                                    <a onclick="familys();" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded w-lg">
                                         Next </a>
                                 </div>
                             </div>
@@ -1127,7 +1123,6 @@ unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -1140,7 +1135,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-sm-6">
                                 <div class="text-end">
-                                    <a onclick="documents();" class="btn btn-success w-lg">
+                                    <a onclick="documents();" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded w-lg">
                                         Next </a>
                                 </div>
                             </div>
@@ -1223,7 +1218,6 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -1235,7 +1229,7 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                             <div class="col-sm-6">
                                 <div class="text-end">
-                                    <button class="btn btn-lg w-lg btn-danger" onclick="personal();" type="submit">Submit </button>
+                                    <button class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded w-lg" onclick="personal();" type="submit">Submit </button>
                                 </div>
                             </div>
                         </div>
@@ -1245,9 +1239,7 @@ unset($__errorArgs, $__bag); ?>
         </div>
     </div>
 </form>
-
 <?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('script'); ?>
 <script src="<?php echo e(URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js')); ?>"></script>
@@ -1263,27 +1255,20 @@ unset($__errorArgs, $__bag); ?>
 <!-- Bootstrap rating js -->
 <script src="<?php echo e(URL::asset('/assets/libs/bootstrap-rating/bootstrap-rating.min.js')); ?> "></script>
 <script src="<?php echo e(URL::asset('/assets/js/pages/rating-init.js')); ?>"></script>
-
-
 <script>
     FilePond.registerPlugin(FilePondPluginImagePreview);
     FilePond.registerPlugin(FilePondPluginFileValidateType);
 
-
-
     // Get a reference to the file input element
     const inputProfile = document.querySelector('input[name="Profile"]');
-
     // Create a FilePond instance
     const Profile = FilePond.create(inputProfile, {
         labelIdle: 'Profile <span class="bx bx-upload"></span >',
         server: {
-
             url: '<?php echo e(route('Orphans_Profile')); ?>',
             headers: {
                 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
             }
-
         },
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
@@ -1297,8 +1282,6 @@ unset($__errorArgs, $__bag); ?>
         styleProgressIndicatorPosition: 'right bottom',
         styleButtonRemoveItemPosition: 'left bottom',
         styleButtonProcessItemPosition: 'right bottom'
-
-
     });
 
 
@@ -1311,16 +1294,12 @@ unset($__errorArgs, $__bag); ?>
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
-
             url: '<?php echo e(route('Orphans_Tazkira')); ?>',
             headers: {
                 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
             }
-
         },
         instantUpload: true,
-
-
     });
 
 
@@ -1333,16 +1312,12 @@ unset($__errorArgs, $__bag); ?>
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
-
             url: '<?php echo e(route('Orphans_FamilyPic')); ?>',
             headers: {
                 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
             }
-
         },
         instantUpload: true,
-
-
     });
 
 
@@ -1354,20 +1329,13 @@ unset($__errorArgs, $__bag); ?>
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
-
             url: '<?php echo e(route('Orphans_HousePic')); ?>',
             headers: {
                 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
             }
-
         },
         instantUpload: true,
-
-
     });
-
-
-
 
 
     $(document).ready(function() {
@@ -1436,16 +1404,11 @@ unset($__errorArgs, $__bag); ?>
         $('#No').prop("checked", true);
 
     });
-
-
     $('#Yes').click(function() {
         $('#InSchoolDiv').show();
         $('.InSchoolDiv').show();
 
     });
-
-
-
     $('#No').click(function() {
         $('#InSchoolDiv').hide();
         $('.InSchoolDiv').hide();

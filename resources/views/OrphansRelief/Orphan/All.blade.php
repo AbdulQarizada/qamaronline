@@ -4,25 +4,25 @@
 @endsection
 @section('content')
 <div class="row mt-4">
-    <div class="col-md-4 col-sm-12">
-        <a href="{{route('IndexOrphansRelief')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+    <div class="col-md-4 col-sm-12 ">
+        <a href="{{route('IndexOrphansRelief')}}" class="btn btn-outline-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         @if($PageInfo == 'All')
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20 text-upercase"></i>All Orphans</span>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20 "></i>All Orphans</span>
         @endif
         @if($PageInfo == 'Pending')
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Pending Orphans</span>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>Pending Orphans</span>
         @endif
         @if($PageInfo == 'Approved')
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Approved Orphans</span>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>Approved Orphans</span>
         @endif
         @if($PageInfo == 'Rejected')
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Rejected Orphans</span>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>Rejected Orphans</span>
         @endif
         @if($PageInfo == 'Waiting')
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Waiting Orphans</span>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>Waiting Orphans</span>
         @endif
         @if($PageInfo == 'Sponsored')
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Sponsored Orphans</span>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>Sponsored Orphans</span>
         @endif
     </div>
 </div>
@@ -86,7 +86,7 @@
 <div class="row">
     <div class="col-md-4 col-sm-12 mb-2">
         <div class="hstack gap-3">
-            <a class="btn  btn-lg waves-effect  waves-light  m-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-toggle="tooltip" data-bs-placement="top" title="Filter"> <i class="mdi mdi-filter-menu-outline font-size-24 align-middle"></i></a>
+            <a class="btn  btn-lg waves-effect  waves-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-toggle="tooltip" data-bs-placement="top" title="Filter"> <i class="mdi mdi-filter-menu-outline font-size-24 align-middle"></i></a>
             <select class="form-select  form-select-lg @error('Country') is-invalid @enderror" onchange="window.location.href=this.value;">
                 <option value="{{route('AllOrphans')}}">Please Filter Your Choices</option>
                 <option value="{{route('AllOrphans')}}" {{ $PageInfo == 'All' ? 'selected' : '' }}>All</option>
@@ -264,17 +264,20 @@
                                     <i class="bx bx-show-alt font-size-16 align-middle"></i>
                                 </a>
                                 @if($data -> Status == 'Pending')
-                                <a href="{{route('DeleteOrphan', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
-                                    <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
-                                </a>
                                 <a href="{{route('EditOrphan', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-info waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Details">
                                     <i class=" bx bx-edit font-size-16 align-middle"></i>
+                                </a>
+                                <a href="{{route('DeleteOrphan', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
+                                    <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
                                 </a>
                                 @endif
                                 @if( $data -> Status == 'Approved')
                                 @if( $data -> IsSponsored == 1)
                                 <a data-bs-toggle="modal" data-bs-target=".bs-{{$data ->  id }}-modal-center" class="btn btn-sm btn-outline-info  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Reassign To Sponsor">
                                     <i class="mdi mdi-account-convert font-size-16 align-middle"></i>
+                                </a>
+                                <a href="{{route('EditOrphan', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-danger waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove Sponsor">
+                                    <i class="mdi mdi-account-multiple-remove-outline font-size-16 align-middle"></i>
                                 </a>
                                 <div class="modal fade bs-{{$data ->  id }}-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered  modal-lg">
@@ -423,11 +426,8 @@
 <!-- Sweetalert -->
 <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
 <script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
-
-
 <!-- form advanced init -->
 <script src="{{ URL::asset('/assets/js/pages/form-advanced.init.js') }}"></script>
-
 <script>
     $('.delete-confirm').on('click', function(event) {
         event.preventDefault();
@@ -443,6 +443,7 @@
             }
         });
     });
+
     $(document).ready(function() {
         $('.Province').on('change', function() {
             var dID = $(this).val();
@@ -470,6 +471,7 @@
             }
         });
     });
+
     $("#checkAll").click(function() {
         $('input:checkbox').not(this).prop('checked', this.checked);
     });

@@ -4,25 +4,25 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <div class="row mt-4">
-    <div class="col-md-4 col-sm-12">
-        <a href="<?php echo e(route('IndexOrphansRelief')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+    <div class="col-md-4 col-sm-12 ">
+        <a href="<?php echo e(route('IndexOrphansRelief')); ?>" class="btn btn-outline-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         <?php if($PageInfo == 'All'): ?>
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20 text-upercase"></i>All Orphans</span>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20 "></i>All Orphans</span>
         <?php endif; ?>
         <?php if($PageInfo == 'Pending'): ?>
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Pending Orphans</span>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>Pending Orphans</span>
         <?php endif; ?>
         <?php if($PageInfo == 'Approved'): ?>
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Approved Orphans</span>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>Approved Orphans</span>
         <?php endif; ?>
         <?php if($PageInfo == 'Rejected'): ?>
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Rejected Orphans</span>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>Rejected Orphans</span>
         <?php endif; ?>
         <?php if($PageInfo == 'Waiting'): ?>
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Waiting Orphans</span>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>Waiting Orphans</span>
         <?php endif; ?>
         <?php if($PageInfo == 'Sponsored'): ?>
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Sponsored Orphans</span>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>Sponsored Orphans</span>
         <?php endif; ?>
     </div>
 </div>
@@ -114,7 +114,7 @@ unset($__errorArgs, $__bag); ?>
 <div class="row">
     <div class="col-md-4 col-sm-12 mb-2">
         <div class="hstack gap-3">
-            <a class="btn  btn-lg waves-effect  waves-light  m-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-toggle="tooltip" data-bs-placement="top" title="Filter"> <i class="mdi mdi-filter-menu-outline font-size-24 align-middle"></i></a>
+            <a class="btn  btn-lg waves-effect  waves-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-toggle="tooltip" data-bs-placement="top" title="Filter"> <i class="mdi mdi-filter-menu-outline font-size-24 align-middle"></i></a>
             <select class="form-select  form-select-lg <?php $__errorArgs = ['Country'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -300,17 +300,20 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                     <i class="bx bx-show-alt font-size-16 align-middle"></i>
                                 </a>
                                 <?php if($data -> Status == 'Pending'): ?>
-                                <a href="<?php echo e(route('DeleteOrphan', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
-                                    <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
-                                </a>
                                 <a href="<?php echo e(route('EditOrphan', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-info waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Details">
                                     <i class=" bx bx-edit font-size-16 align-middle"></i>
+                                </a>
+                                <a href="<?php echo e(route('DeleteOrphan', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
+                                    <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
                                 </a>
                                 <?php endif; ?>
                                 <?php if( $data -> Status == 'Approved'): ?>
                                 <?php if( $data -> IsSponsored == 1): ?>
                                 <a data-bs-toggle="modal" data-bs-target=".bs-<?php echo e($data ->  id); ?>-modal-center" class="btn btn-sm btn-outline-info  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Reassign To Sponsor">
                                     <i class="mdi mdi-account-convert font-size-16 align-middle"></i>
+                                </a>
+                                <a href="<?php echo e(route('EditOrphan', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove Sponsor">
+                                    <i class="mdi mdi-account-multiple-remove-outline font-size-16 align-middle"></i>
                                 </a>
                                 <div class="modal fade bs-<?php echo e($data ->  id); ?>-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered  modal-lg">
@@ -515,11 +518,8 @@ unset($__errorArgs, $__bag); ?>
 <!-- Sweetalert -->
 <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('/assets/js/pages/form-validation.init.js')); ?>"></script>
-
-
 <!-- form advanced init -->
 <script src="<?php echo e(URL::asset('/assets/js/pages/form-advanced.init.js')); ?>"></script>
-
 <script>
     $('.delete-confirm').on('click', function(event) {
         event.preventDefault();
@@ -535,6 +535,7 @@ unset($__errorArgs, $__bag); ?>
             }
         });
     });
+
     $(document).ready(function() {
         $('.Province').on('change', function() {
             var dID = $(this).val();
@@ -562,6 +563,7 @@ unset($__errorArgs, $__bag); ?>
             }
         });
     });
+
     $("#checkAll").click(function() {
         $('input:checkbox').not(this).prop('checked', this.checked);
     });
