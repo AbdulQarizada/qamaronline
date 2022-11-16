@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
-
-
 class SponsorsReliefController extends Controller
 {
 
@@ -24,7 +22,6 @@ class SponsorsReliefController extends Controller
 
     return view('OrphansRelief.Index');
   }
-
 
   // Sponsor
   // list

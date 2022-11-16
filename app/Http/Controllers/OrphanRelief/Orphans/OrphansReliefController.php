@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\OrphanRelief\Orphans;
 
+use Illuminate\Support\Facades\Input;
+use App\Exports\OrphanExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Orphan;
@@ -426,9 +429,18 @@ class OrphansReliefController extends Controller
     return redirect()->route('AllOrphans')->with('success', 'Sponsor Has Been Assinged!');
   }
 
+  public function RemoveSponsor(Orphan $data)
+  {
+    $data->update([
+      'Sponsor_ID' => 0,
+      'IsSponsored' => 0,
+      'Status_By' => auth()->user()->id,
+    ]);
+    return redirect()->route('AllOrphans')->with('success', 'Sponsor Has Been Removed!');
+  }
   public function Search()
   {
-
+    $sponsors = User::where("IsOrphanSponsor", "=", "1")->get();
     $provinces = Location::whereNull("Parent_ID")->get();
     $PageInfo = request('PageInfo');
     $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
@@ -443,7 +455,15 @@ class OrphansReliefController extends Controller
       -> orwhere('orphans.Province_ID', '=', request('Province_ID'))
       -> orwhere('orphans.District_ID', '=', request('District_ID'))
       ->paginate(100);
-    return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo, 'provinces' => $provinces]);
+    return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo, 'provinces' => $provinces, 'sponsors' => $sponsors]);
   }
+
+
+    public function export()
+    {
+
+      dd(Input::get('ids'));
+        return Excel::download(new OrphanExport, 'Orphans Excel '.now()->format("j F Y").'.xlsx');
+    }
 
 }

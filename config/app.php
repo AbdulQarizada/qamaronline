@@ -163,7 +163,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Milon\Barcode\BarcodeServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
-
         /*
          * Package Service Providers...
          */
@@ -236,7 +235,8 @@ return [
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'Quran' => FaizShukri\Quran\Facades\Quran::class
+        'Quran' => FaizShukri\Quran\Facades\Quran::class,
+        'Input' => Illuminate\Support\Facades\Input::class,
 
     ],
 

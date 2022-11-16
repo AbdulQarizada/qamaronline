@@ -163,7 +163,7 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                     <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
                         <td>
-                            <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="<?php echo e($data -> id); ?>">
+                            <input class="form-check-input ids" type="checkbox" id="formCheck1" name="ids[]" value="<?php echo e($data -> id); ?>">
                         </td>
                         <td>
                             <div class="avatar-xs">
@@ -312,7 +312,7 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                 <a data-bs-toggle="modal" data-bs-target=".bs-<?php echo e($data ->  id); ?>-modal-center" class="btn btn-sm btn-outline-info  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Reassign To Sponsor">
                                     <i class="mdi mdi-account-convert font-size-16 align-middle"></i>
                                 </a>
-                                <a href="<?php echo e(route('EditOrphan', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove Sponsor">
+                                <a href="<?php echo e(route('RemoveSponsorOrphan', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect removeSponsor waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove Sponsor">
                                     <i class="mdi mdi-account-multiple-remove-outline font-size-16 align-middle"></i>
                                 </a>
                                 <div class="modal fade bs-<?php echo e($data ->  id); ?>-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
@@ -331,7 +331,7 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                                             <div class="mb-3 position-relative">
                                                                 <label for="Sponsor_ID" class="form-label">Sponsor</label>
                                                                 <div class="input-group " id="example-date-input">
-                                                                    <select class="form-control  form-control-lg select2" id="Sponsor_ID" name="Sponsor_ID" value="<?php echo e(old('Sponsor_ID')); ?>" style="height: calc(1.5em + .75rem + 2px) !important;" required>
+                                                                    <select class="form-control  form-control-lg" id="Sponsor_ID" name="Sponsor_ID" value="<?php echo e(old('Sponsor_ID')); ?>" style="height: calc(1.5em + .75rem + 2px) !important;" required>
                                                                         <?php $__currentLoopData = $sponsors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sponsor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                         <option value="<?php echo e($sponsor -> id); ?>"><?php echo e($sponsor -> FullName); ?></option>
                                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -503,7 +503,7 @@ unset($__errorArgs, $__bag); ?>
                 </tbody>
             </table>
         </div>
-        <a id="ExportExcel" class="btn btn-outline-primary waves-effect float-end  waves-light mt-3"><i class="mdi mdi-microsoft-excel me-1"></i>Export To Excel</a>
+        <a  class="btn btn-outline-primary waves-effect float-end  waves-light mt-3 ExportOrphans" id="ExportOrphans" name="ExportOrphans"><i class="mdi mdi-microsoft-excel me-1"></i>Export To Excel</a>
     </div>
 </div>
 <div class="row">
@@ -515,9 +515,12 @@ unset($__errorArgs, $__bag); ?>
 </div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
+<script src="<?php echo e(URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js')); ?>"></script>
+
 <!-- Sweetalert -->
 <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('/assets/js/pages/form-validation.init.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('/assets/libs/select2/select2.min.js')); ?>"></script>
 <!-- form advanced init -->
 <script src="<?php echo e(URL::asset('/assets/js/pages/form-advanced.init.js')); ?>"></script>
 <script>
@@ -535,6 +538,22 @@ unset($__errorArgs, $__bag); ?>
             }
         });
     });
+
+    $('.removeSponsor').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?',
+            text: 'Do you want to remove sponsr?!',
+            icon: 'warning',
+            buttons: ["Cancel", "Yes!"],
+        }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
+
 
     $(document).ready(function() {
         $('.Province').on('change', function() {
@@ -560,6 +579,31 @@ unset($__errorArgs, $__bag); ?>
                 });
             } else {
                 $('.District').empty();
+            }
+        });
+    });
+
+    $(document).ready(function() {
+        $('.ExportOrphans').on('click', function() {
+            var dID = $('.ids').val();
+            if (dID)
+            {
+                $.ajax({
+                    url: '<?php echo e(route('ExportOrphans')); ?>',
+                    type: "GET",
+                    data: {
+                        "_token": "<?php echo e(csrf_token()); ?>",
+                        "ids":dID
+                    },
+                    success: function(data) {
+                        if (data) {
+                            $('.District').empty();
+                            $.each(data, function(key, course) {
+                                $('select[name="District_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
+                            });
+                        }
+                    }
+                });
             }
         });
     });

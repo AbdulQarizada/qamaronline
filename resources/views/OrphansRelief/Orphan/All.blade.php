@@ -128,7 +128,7 @@
                     @foreach($datas as $data)
                     <tr>
                         <td>
-                            <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="{{$data -> id }}">
+                            <input class="form-check-input ids" type="checkbox" id="formCheck1" name="ids[]" value="{{$data -> id }}">
                         </td>
                         <td>
                             <div class="avatar-xs">
@@ -276,7 +276,7 @@
                                 <a data-bs-toggle="modal" data-bs-target=".bs-{{$data ->  id }}-modal-center" class="btn btn-sm btn-outline-info  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Reassign To Sponsor">
                                     <i class="mdi mdi-account-convert font-size-16 align-middle"></i>
                                 </a>
-                                <a href="{{route('EditOrphan', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-danger waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove Sponsor">
+                                <a href="{{route('RemoveSponsorOrphan', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-danger waves-effect removeSponsor waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove Sponsor">
                                     <i class="mdi mdi-account-multiple-remove-outline font-size-16 align-middle"></i>
                                 </a>
                                 <div class="modal fade bs-{{$data ->  id }}-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
@@ -295,7 +295,7 @@
                                                             <div class="mb-3 position-relative">
                                                                 <label for="Sponsor_ID" class="form-label">Sponsor</label>
                                                                 <div class="input-group " id="example-date-input">
-                                                                    <select class="form-control  form-control-lg select2" id="Sponsor_ID" name="Sponsor_ID" value="{{ old('Sponsor_ID') }}" style="height: calc(1.5em + .75rem + 2px) !important;" required>
+                                                                    <select class="form-control  form-control-lg" id="Sponsor_ID" name="Sponsor_ID" value="{{ old('Sponsor_ID') }}" style="height: calc(1.5em + .75rem + 2px) !important;" required>
                                                                         @foreach($sponsors as $sponsor)
                                                                         <option value="{{$sponsor -> id}}">{{$sponsor -> FullName}}</option>
                                                                         @endforeach
@@ -411,7 +411,7 @@
                 </tbody>
             </table>
         </div>
-        <a id="ExportExcel" class="btn btn-outline-primary waves-effect float-end  waves-light mt-3"><i class="mdi mdi-microsoft-excel me-1"></i>Export To Excel</a>
+        <a  class="btn btn-outline-primary waves-effect float-end  waves-light mt-3 ExportOrphans" id="ExportOrphans" name="ExportOrphans"><i class="mdi mdi-microsoft-excel me-1"></i>Export To Excel</a>
     </div>
 </div>
 <div class="row">
@@ -423,9 +423,12 @@
 </div>
 @endsection
 @section('script')
+<script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
+
 <!-- Sweetalert -->
 <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
 <script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
+<script src="{{ URL::asset('/assets/libs/select2/select2.min.js') }}"></script>
 <!-- form advanced init -->
 <script src="{{ URL::asset('/assets/js/pages/form-advanced.init.js') }}"></script>
 <script>
@@ -443,6 +446,22 @@
             }
         });
     });
+
+    $('.removeSponsor').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?',
+            text: 'Do you want to remove sponsr?!',
+            icon: 'warning',
+            buttons: ["Cancel", "Yes!"],
+        }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
+
 
     $(document).ready(function() {
         $('.Province').on('change', function() {
@@ -468,6 +487,31 @@
                 });
             } else {
                 $('.District').empty();
+            }
+        });
+    });
+
+    $(document).ready(function() {
+        $('.ExportOrphans').on('click', function() {
+            var dID = $('.ids').val();
+            if (dID)
+            {
+                $.ajax({
+                    url: '{{route('ExportOrphans')}}',
+                    type: "GET",
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        "ids":dID
+                    },
+                    success: function(data) {
+                        if (data) {
+                            $('.District').empty();
+                            $.each(data, function(key, course) {
+                                $('select[name="District_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
+                            });
+                        }
+                    }
+                });
             }
         });
     });
