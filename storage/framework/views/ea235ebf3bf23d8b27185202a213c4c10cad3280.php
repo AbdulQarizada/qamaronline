@@ -389,6 +389,7 @@ unset($__errorArgs, $__bag); ?>
                                     </div>
                                 </div>
                                 <?php else: ?>
+                                <?php if($data -> Status == 'Approved'): ?>
                                 <a data-bs-toggle="modal" data-bs-target=".bs-<?php echo e($data ->  id); ?>-modal-center" class="btn btn-sm btn-outline-success waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Assign To Sponsor">
                                     <i class="bx bx-user-plus font-size-16 align-middle"></i>
                                 </a>
@@ -477,6 +478,7 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                     </div>
                                 </div>
+                                <?php endif; ?>
                                 <?php endif; ?>
                                 <?php if( $data -> Status == 'Rejected'): ?>
                                 <a href="<?php echo e(route('DeleteOrphan', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">

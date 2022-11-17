@@ -325,6 +325,7 @@
                                     </div>
                                 </div>
                                 @else
+                                @if($data -> Status == 'Approved')
                                 <a data-bs-toggle="modal" data-bs-target=".bs-{{$data ->  id }}-modal-center" class="btn btn-sm btn-outline-success waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Assign To Sponsor">
                                     <i class="bx bx-user-plus font-size-16 align-middle"></i>
                                 </a>
@@ -385,6 +386,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                                 @endif
                                 @if( $data -> Status == 'Rejected')
                                 <a href="{{route('DeleteOrphan', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">

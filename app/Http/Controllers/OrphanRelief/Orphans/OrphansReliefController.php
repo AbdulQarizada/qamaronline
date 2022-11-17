@@ -32,7 +32,7 @@ class OrphansReliefController extends Controller
   // list
   public function All()
   {
-    $sponsors = User::where("IsOrphanSponsor", "=", "1")->get();
+    $sponsors = User::where("IsOrphanSponsor", "=", "1")->where("IsActive", "=", "1")->get();
     $provinces = Location::whereNull("Parent_ID")->get();
     $PageInfo = 'All';
     $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
@@ -71,7 +71,7 @@ class OrphansReliefController extends Controller
   public function Pending()
   {
     $PageInfo = 'Pending';
-    $sponsors = User::where("IsOrphanSponsor", "=", "1")->get();
+    $sponsors = User::where("IsOrphanSponsor", "=", "1")->where("IsActive", "=", "1")->get();
     $provinces = Location::whereNull("Parent_ID")->get();
     $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
       ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
@@ -87,7 +87,7 @@ class OrphansReliefController extends Controller
   public function Approved()
   {
     $PageInfo = 'Approved';
-    $sponsors = User::where("IsOrphanSponsor", "=", "1")->get();
+    $sponsors = User::where("IsOrphanSponsor", "=", "1")->where("IsActive", "=", "1")->get();
     $provinces = Location::whereNull("Parent_ID")->get();
     $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
       ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
@@ -103,7 +103,7 @@ class OrphansReliefController extends Controller
   public function Rejected()
   {
     $PageInfo = 'Rejected';
-    $sponsors = User::where("IsOrphanSponsor", "=", "1")->get();
+    $sponsors = User::where("IsOrphanSponsor", "=", "1")->where("IsActive", "=", "1")->get();
     $provinces = Location::whereNull("Parent_ID")->get();
     $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
       ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
@@ -119,7 +119,7 @@ class OrphansReliefController extends Controller
   public function Waiting()
   {
     $PageInfo = 'Waiting';
-    $sponsors = User::where("IsOrphanSponsor", "=", "1")->get();
+    $sponsors = User::where("IsOrphanSponsor", "=", "1")->where("IsActive", "=", "1")->get();
     $provinces = Location::whereNull("Parent_ID")->get();
     $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
       ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
@@ -135,7 +135,7 @@ class OrphansReliefController extends Controller
   public function Sponsored()
   {
     $PageInfo = 'Sponsored';
-    $sponsors = User::where("IsOrphanSponsor", "=", "1")->get();
+    $sponsors = User::where("IsOrphanSponsor", "=", "1")->where("IsActive", "=", "1")->get();
     $provinces = Location::whereNull("Parent_ID")->get();
     $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
       ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
@@ -369,23 +369,6 @@ class OrphansReliefController extends Controller
       'Status' => 'Pending'
     ]);
     return redirect()->route('PendingOrphans')->with('toast_warning', 'Record Re-Initiated Successfully!');
-  }
-
-  public function AssignToSponsor(Orphan $data)
-  {
-    $sponsors = User::where("IsOrphanSponsor", "=", "1")->get();
-    $orphans =   Orphan::where("orphans.id", "=", $data->id)
-      ->join('locations as a', 'orphans.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
-      ->join('look_ups as j', 'orphans.FamilyStatus_ID', '=', 'j.id')
-      ->select(
-        'orphans.*',
-        'a.Name as Province',
-        'b.Name as District',
-        'j.Name as FamilyStatus',
-      )
-      ->get();
-    return view('OrphansRelief.Orphan.AssignToSponsor', ['datas' => $orphans, 'sponsors' => $sponsors,]);
   }
 
   public function AssignSponsor(Orphan $data)
