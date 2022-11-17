@@ -373,7 +373,6 @@ class OrphansReliefController extends Controller
 
   public function AssignToSponsor(Orphan $data)
   {
-
     $sponsors = User::where("IsOrphanSponsor", "=", "1")->get();
     $orphans =   Orphan::where("orphans.id", "=", $data->id)
       ->join('locations as a', 'orphans.Province_ID', '=', 'a.id')
@@ -396,6 +395,7 @@ class OrphansReliefController extends Controller
       'Sponsored_StartDate' => request('Sponsored_StartDate'),
       'Sponsored_EndDate' => request('Sponsored_EndDate'),
       'IsSponsored' => 1,
+      'Status' => 'Sponsored',
       'Status_By' => auth()->user()->id,
     ]);
     return redirect()->route('AllOrphans')->with('success', 'Sponsor Has Been Assinged!');
@@ -406,6 +406,7 @@ class OrphansReliefController extends Controller
     $data->update([
       'Sponsor_ID' => 0,
       'IsSponsored' => 0,
+      'Status' => 'Approved',
       'Status_By' => auth()->user()->id,
     ]);
     return redirect()->route('AllOrphans')->with('success', 'Sponsor Has Been Removed!');

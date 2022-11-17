@@ -206,9 +206,6 @@
                                 @if($PageInfo == 'Waiting')
                                 <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark">Waiting </a></h5>
                                 <p class="text-muted mb-0">{{$data -> created_at -> format("j F Y")}}</p>
-                                @elseif($PageInfo == 'Sponsored')
-                                <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Sponosred </a></h5>
-                                <p class="text-muted mb-0">{{$data -> created_at -> format("j F Y")}}</p>
                                 @else
                                 <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">{{$data -> Status}} </a></h5>
                                 <p class="text-muted mb-0">{{$data -> created_at -> format("j F Y")}}</p>
@@ -218,16 +215,8 @@
                                 <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">{{$data -> Status}} </a></h5>
                                 <p class="text-muted mb-0">{{$data -> created_at -> format("j F Y")}}</p>
                                 @endif
-                                @if($data -> Status == 'Assigned')
+                                @if($data -> Status == 'Sponsored')
                                 <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info">{{$data -> Status}}</a></h5>
-                                <p class="text-muted mb-0">{{$data -> created_at -> format("j F Y")}}</p>
-                                @endif
-                                @if($data -> Status == 'Released')
-                                <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">{{$data -> Status}}</a></h5>
-                                <p class="text-muted mb-0">{{$data -> created_at -> format("j F Y")}}</p>
-                                @endif
-                                @if($data -> Status == 'Printed')
-                                <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark">{{$data -> Status}}</a></h5>
                                 <p class="text-muted mb-0">{{$data -> created_at -> format("j F Y")}}</p>
                                 @endif
                             </div>
@@ -271,7 +260,6 @@
                                     <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
                                 </a>
                                 @endif
-                                @if( $data -> Status == 'Approved')
                                 @if( $data -> IsSponsored == 1)
                                 <a data-bs-toggle="modal" data-bs-target=".bs-{{$data ->  id }}-modal-center" class="btn btn-sm btn-outline-info  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Reassign To Sponsor">
                                     <i class="mdi mdi-account-convert font-size-16 align-middle"></i>
@@ -397,7 +385,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                @endif
                                 @endif
                                 @if( $data -> Status == 'Rejected')
                                 <a href="{{route('DeleteOrphan', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">

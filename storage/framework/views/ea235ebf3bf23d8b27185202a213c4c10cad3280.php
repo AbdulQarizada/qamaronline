@@ -242,9 +242,6 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                 <?php if($PageInfo == 'Waiting'): ?>
                                 <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark">Waiting </a></h5>
                                 <p class="text-muted mb-0"><?php echo e($data -> created_at -> format("j F Y")); ?></p>
-                                <?php elseif($PageInfo == 'Sponsored'): ?>
-                                <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Sponosred </a></h5>
-                                <p class="text-muted mb-0"><?php echo e($data -> created_at -> format("j F Y")); ?></p>
                                 <?php else: ?>
                                 <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success"><?php echo e($data -> Status); ?> </a></h5>
                                 <p class="text-muted mb-0"><?php echo e($data -> created_at -> format("j F Y")); ?></p>
@@ -254,16 +251,8 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                 <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger"><?php echo e($data -> Status); ?> </a></h5>
                                 <p class="text-muted mb-0"><?php echo e($data -> created_at -> format("j F Y")); ?></p>
                                 <?php endif; ?>
-                                <?php if($data -> Status == 'Assigned'): ?>
+                                <?php if($data -> Status == 'Sponsored'): ?>
                                 <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info"><?php echo e($data -> Status); ?></a></h5>
-                                <p class="text-muted mb-0"><?php echo e($data -> created_at -> format("j F Y")); ?></p>
-                                <?php endif; ?>
-                                <?php if($data -> Status == 'Released'): ?>
-                                <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success"><?php echo e($data -> Status); ?></a></h5>
-                                <p class="text-muted mb-0"><?php echo e($data -> created_at -> format("j F Y")); ?></p>
-                                <?php endif; ?>
-                                <?php if($data -> Status == 'Printed'): ?>
-                                <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark"><?php echo e($data -> Status); ?></a></h5>
                                 <p class="text-muted mb-0"><?php echo e($data -> created_at -> format("j F Y")); ?></p>
                                 <?php endif; ?>
                             </div>
@@ -307,7 +296,6 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                     <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
                                 </a>
                                 <?php endif; ?>
-                                <?php if( $data -> Status == 'Approved'): ?>
                                 <?php if( $data -> IsSponsored == 1): ?>
                                 <a data-bs-toggle="modal" data-bs-target=".bs-<?php echo e($data ->  id); ?>-modal-center" class="btn btn-sm btn-outline-info  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Reassign To Sponsor">
                                     <i class="mdi mdi-account-convert font-size-16 align-middle"></i>
@@ -489,7 +477,6 @@ unset($__errorArgs, $__bag); ?>
                                         </div>
                                     </div>
                                 </div>
-                                <?php endif; ?>
                                 <?php endif; ?>
                                 <?php if( $data -> Status == 'Rejected'): ?>
                                 <a href="<?php echo e(route('DeleteOrphan', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
