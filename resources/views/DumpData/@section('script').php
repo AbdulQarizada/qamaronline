@@ -29,6 +29,85 @@
 <!-- form advanced init -->
 <script src="{{ URL::asset('/assets/js/pages/form-advanced.init.js') }}"></script>
 <script>
+
+
+$(document).ready(function()
+  {
+    $('.ExportOrphans').click(function(){
+
+
+
+        ids= new Array();
+        $("input[name='ids[]']:checked").each(function(){ ids.push(this.value); });
+      $.ajax({
+        xhrFields: {
+        responseType: 'blob',
+    },
+        url: '{{ route('ExportOrphans')}}',
+        data: {
+               'ids': ids,
+               "_token": "{{ csrf_token() }}"
+              },
+        type: 'POST',
+        success: function(result, status, xhr) {
+
+
+// The actual download
+var blob = new Blob([result], {
+    type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+});
+var link = document.createElement('a');
+link.href = window.URL.createObjectURL(blob);
+link.download = filename;
+document.body.appendChild(link);
+link.click();
+document.body.removeChild(link);
+}
+    });
+
+
+
+  });
+ });
+
+
+
+
+ function downloadExcel() {
+    ids= new Array();
+        $("input[name='ids[]']:checked").each(function(){ ids.push(this.value); });
+$.ajax({
+    xhrFields: {
+        responseType: 'blob',
+    },
+    type: 'POST',
+    url: '{{ route('ExportOrphans')}}',
+    data: {
+        ids: ids
+    },
+    success: function(result, status, xhr) {
+
+
+        // The actual download
+        var blob = new Blob([result], {
+            type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        });
+        var link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+});
+}
+
+
+
+
+
+
+
         var table = $('#datatable').DataTable({
         responsive: true,
         pageLength: 100,

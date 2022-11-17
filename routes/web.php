@@ -108,7 +108,7 @@ Route::get('/OrphansRelief/Orphan/RemoveSponsor/{data}', [App\Http\Controllers\O
 // Search Orphans
 Route::post('/OrphansRelief/Orphan/Search', [App\Http\Controllers\OrphanRelief\Orphans\OrphansReliefController::class, 'Search'])->name('SearchOrphans');
 // Export to excel Orphans
-Route::get('/OrphansRelief/Orphan/Export', [App\Http\Controllers\OrphanRelief\Orphans\OrphansReliefController::class, 'export'])->name('ExportOrphans');
+Route::post('/OrphansRelief/Orphan/Export', [App\Http\Controllers\OrphanRelief\Orphans\OrphansReliefController::class, 'export'])->name('ExportOrphans');
 
 // sponsors
 // sponsors list

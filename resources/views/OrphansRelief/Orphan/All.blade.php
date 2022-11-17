@@ -105,9 +105,9 @@
 </div>
 <div class="row">
     <div class="col-12">
-        <h3 class="card-header bg-dark text-white mb-3"></h3>
+        <h3 class="card-header bg-dark text-white"></h3>
         <div class="table-responsive">
-            <table class="table  table-striped table-hover dt-responsive nowrap w-100 m-4">
+            <table class="table  table-striped table-hover dt-responsive nowrap w-100">
                 <thead class="table-light">
                     <tr>
                         <th>
@@ -116,7 +116,7 @@
                         <th>ID</th>
                         <th>Full Name</th>
                         <th>Address</th>
-                        <th>Phone Numbers</th>
+                        <th>Contacts</th>
                         <th>Family Status</th>
                         <th>Status</th>
                         <th>Sponsor</th>
@@ -128,7 +128,7 @@
                     @foreach($datas as $data)
                     <tr>
                         <td>
-                            <input class="form-check-input ids" type="checkbox" id="formCheck1" name="ids[]" value="{{$data -> id }}">
+                            <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="{{$data -> id }}">
                         </td>
                         <td>
                             <div class="avatar-xs">
@@ -330,7 +330,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                     <button type="submit" class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded w-lg">Reassign</button>
+                                                    <button type="submit" class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded w-lg">Reassign</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -411,7 +411,11 @@
                 </tbody>
             </table>
         </div>
-        <a  class="btn btn-outline-primary waves-effect float-end  waves-light mt-3 ExportOrphans" id="ExportOrphans" name="ExportOrphans"><i class="mdi mdi-microsoft-excel me-1"></i>Export To Excel</a>
+        <form class="needs-validation" action="{{route('ExportOrphans')}}" method="POST" enctype="multipart/form-data" novalidate>
+            @csrf
+            <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="{{$data -> id }}">
+            <a class="btn btn-outline-primary waves-effect float-end  waves-light mt-3"><i class="mdi mdi-microsoft-excel me-1"></i>Export To Excel</a>
+        </form>
     </div>
 </div>
 <div class="row">
@@ -491,28 +495,16 @@
         });
     });
 
+
     $(document).ready(function() {
-        $('.ExportOrphans').on('click', function() {
-            var dID = $('.ids').val();
-            if (dID)
-            {
-                $.ajax({
-                    url: '{{route('ExportOrphans')}}',
-                    type: "GET",
-                    data: {
-                        "_token": "{{ csrf_token() }}",
-                        "ids":dID
-                    },
-                    success: function(data) {
-                        if (data) {
-                            $('.District').empty();
-                            $.each(data, function(key, course) {
-                                $('select[name="District_ID"]').append('<option value="' + course.id + '">' + course.Name + '</option>');
-                            });
-                        }
-                    }
-                });
-            }
+        $('.ExportOrphans').click(function() {
+            ids = new Array();
+            $("input[name='ids[]']:checked").each(function() {
+                ids.push(this.value);
+            });
+
+
+
         });
     });
 

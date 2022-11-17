@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\OrphanRelief\Orphans;
 
-use Illuminate\Support\Facades\Input;
 use App\Exports\OrphanExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
@@ -459,10 +458,10 @@ class OrphansReliefController extends Controller
   }
 
 
-    public function export()
+    public function export(Request $request)
     {
 
-      dd(Input::get('ids'));
+      dd($request -> ids);
         return Excel::download(new OrphanExport, 'Orphans Excel '.now()->format("j F Y").'.xlsx');
     }
 
