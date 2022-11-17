@@ -5,6 +5,7 @@ namespace App\Http\Controllers\OrphanRelief\Sponsors;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Location;
 use App\Models\User;
 
 class SponsorsReliefController extends Controller
@@ -28,33 +29,36 @@ class SponsorsReliefController extends Controller
   public function All()
   {
     $PageInfo = 'All';
+    $provinces = Location::whereNull("Parent_ID")->get();
     $sponsors =   User::where("users.IsOrphanSponsor", "=", 1)
     -> leftjoin('users as a', 'users.Created_By', '=', 'a.id')
     -> select('users.*','a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob')
     -> paginate(100);
-    return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo]);
+    return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo,'provinces' => $provinces]);
   }
 
   public function Active()
   {
     $PageInfo = 'Active';
+    $provinces = Location::whereNull("Parent_ID")->get();
     $sponsors =   User::where("users.IsOrphanSponsor", "=", 1)
     -> leftjoin('users as a', 'users.Created_By', '=', 'a.id')
     -> select('users.*','a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob')
     -> where("users.IsActive", "=", 1)
     -> paginate(100);
-    return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo]);
+    return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo,'provinces' => $provinces]);
   }
 
   public function InActive()
   {
     $PageInfo = 'InActive';
+    $provinces = Location::whereNull("Parent_ID")->get();
     $sponsors =   User::where("users.IsOrphanSponsor", "=", 1)
     -> leftjoin('users as a', 'users.Created_By', '=', 'a.id')
     -> select('users.*','a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob')
     -> where("users.IsActive", "!=", 1)
     -> paginate(100);
-    return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo]);
+    return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo,'provinces' => $provinces]);
   }
 
 
