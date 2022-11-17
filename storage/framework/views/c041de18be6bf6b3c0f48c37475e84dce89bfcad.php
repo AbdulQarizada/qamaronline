@@ -7,7 +7,7 @@
 <div class="row mt-4">
     <?php if(Auth::check()): ?>
     <div class="col-4">
-        <a href="<?php echo e(route('IndexOrphansRelief')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <a href="<?php echo e(route('IndexOrphansRelief')); ?>" class="btn btn-outline-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
     </div>
     <?php endif; ?>
 </div>
@@ -35,7 +35,6 @@
                 </li>
             </ul>
             <?php endif; ?>
-
         </form>
     </div>
 </div>
@@ -75,8 +74,7 @@
 <div class="row">
     <div class="col-lg-12">
         <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
-        <?php echo $datas->links(); ?>
-
+            <?php echo $datas->links(); ?> <span class="m-2 text-white badge bg-dark"><?php echo e($datas->total()); ?> Total Records</span>
         </ul>
     </div>
 </div>

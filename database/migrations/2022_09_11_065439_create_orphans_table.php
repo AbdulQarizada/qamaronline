@@ -29,15 +29,15 @@ return new class extends Migration
 
 
 
-            $table -> integer('PrimaryNumber')->nullable();
-            $table -> integer('SecondaryNumber')->nullable();
-            $table -> integer('EmergencyNumber')->nullable();
+            $table -> string('PrimaryNumber')->nullable();
+            $table -> string('SecondaryNumber')->nullable();
+            $table -> string('EmergencyNumber')->nullable();
             $table -> integer('Province_ID')->nullable();
             $table -> integer('District_ID')->nullable();
             $table -> string('Village')->nullable();
             $table -> string('InCareName')->nullable();
             $table -> integer('InCareRelationship_ID')->nullable();
-            $table -> integer('InCareNumber')->nullable();
+            $table -> string('InCareNumber')->nullable();
             $table -> string('InCareTazkiraID')->nullable();
 
 
@@ -47,7 +47,7 @@ return new class extends Migration
             $table -> integer('SchoolProvince_ID')->nullable();
             $table -> integer('SchoolDistrict_ID')->nullable();
             $table -> string('SchoolVillage')->nullable();
-            $table -> integer('SchoolNumber')->nullable();
+            $table -> string('SchoolNumber')->nullable();
             $table -> string('SchoolEmail')->nullable();
             $table -> integer('Class')->nullable();
 

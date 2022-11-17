@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\OrphanRelief\Orphans;
 
 use App\Exports\OrphanExport;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Orphan;
@@ -63,10 +62,10 @@ class OrphansReliefController extends Controller
   public function MyOrphans()
   {
     $myorphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
-      -> select(['orphans.*', 'a.Name as ProvinceName'])
-      -> where("Sponsor_ID", "=", Auth::user()->id)
-      -> paginate(100);
-      return view('OrphansRelief.Orphan.MyOrphan', ['datas' => $myorphans]);
+      ->select(['orphans.*', 'a.Name as ProvinceName'])
+      ->where("Sponsor_ID", "=", Auth::user()->id)
+      ->paginate(100);
+    return view('OrphansRelief.Orphan.MyOrphan', ['datas' => $myorphans]);
   }
 
   public function Pending()
@@ -101,7 +100,6 @@ class OrphansReliefController extends Controller
     return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo, 'provinces' => $provinces, 'sponsors' => $sponsors]);
   }
 
-
   public function Rejected()
   {
     $PageInfo = 'Rejected';
@@ -117,7 +115,6 @@ class OrphansReliefController extends Controller
       ->paginate(100);
     return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo, 'provinces' => $provinces, 'sponsors' => $sponsors]);
   }
-
 
   public function Waiting()
   {
@@ -135,8 +132,6 @@ class OrphansReliefController extends Controller
     return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo, 'provinces' => $provinces, 'sponsors' => $sponsors]);
   }
 
-
-
   public function Sponsored()
   {
     $PageInfo = 'Sponsored';
@@ -153,39 +148,32 @@ class OrphansReliefController extends Controller
     return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo, 'provinces' => $provinces, 'sponsors' => $sponsors]);
   }
 
-
-
   // create
   public function Create()
   {
-    $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
     $genders =   LookUp::where("Parent_Name", "=", "Gender")->get();
+    $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
     $tribes =   LookUp::where("Parent_Name", "=", "Tribe")->get();
     $languages =   LookUp::where("Parent_Name", "=", "Language")->get();
-    $currentjobs =   LookUp::where("Parent_Name", "=", "CurrentJob")->get();
-    $futurejobs =   LookUp::where("Parent_Name", "=", "FutureJob")->get();
-    $educationlevels =   LookUp::where("Parent_Name", "=", "EducationLevel")->get();
+    $provinces = Location::whereNull("Parent_ID")->get();
     $relationships =   LookUp::where("Parent_Name", "=", "RelativeRelationship")->get();
     $incomestreams =   LookUp::where("Parent_Name", "=", "IncomeStream")->get();
     $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
-    $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
-    $provinces = Location::whereNull("Parent_ID")->get();
-    return view('OrphansRelief.Orphan.Create', ['countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+    return view('OrphansRelief.Orphan.Create', ['genders' => $genders,'countries' => $countries,'tribes' => $tribes, 'languages' => $languages,'provinces' => $provinces,'relationships' => $relationships,'incomestreams' => $incomestreams,'familystatus' => $familystatus]);
   }
 
   public function Store(Request $request)
   {
-
     $validator = $request->validate([
       'FirstName' => 'bail|required|max:255',
       'IntroducerName' => 'required|max:255',
-      'TazkiraID' => 'required|max:10',
+      'TazkiraID' => 'required|max:20',
       'Profile' => 'required|max:255',
       'DOB' => 'required|max:255',
       'Gender_ID' => 'required|max:255',
       'Language_ID' => 'required|max:255',
-      'PrimaryNumber' => 'required|max:10',
-      'InCareNumber' => 'required|max:10',
+      'PrimaryNumber' => 'required|max:20',
+      'InCareNumber' => 'required|max:20',
       'Province_ID' => 'required|max:255',
       'District_ID' => 'required|max:255',
       'Village' => 'required|max:255',
@@ -200,8 +188,6 @@ class OrphansReliefController extends Controller
       'Tribe_ID' => 'required|max:255',
       'WhyShouldYouHelpMe' => 'required',
     ]);
-
-
     Orphan::create([
       'FirstName' => request('FirstName'),
       'LastName' => request('LastName'),
@@ -253,28 +239,22 @@ class OrphansReliefController extends Controller
   // update
   public function Edit(Orphan $data)
   {
-
-    $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
     $genders =   LookUp::where("Parent_Name", "=", "Gender")->get();
+    $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
     $tribes =   LookUp::where("Parent_Name", "=", "Tribe")->get();
     $languages =   LookUp::where("Parent_Name", "=", "Language")->get();
-    $currentjobs =   LookUp::where("Parent_Name", "=", "CurrentJob")->get();
-    $futurejobs =   LookUp::where("Parent_Name", "=", "FutureJob")->get();
-    $educationlevels =   LookUp::where("Parent_Name", "=", "EducationLevel")->get();
+    $provinces = Location::whereNull("Parent_ID")->get();
+    $districts = Location::get();
     $relationships =   LookUp::where("Parent_Name", "=", "RelativeRelationship")->get();
     $incomestreams =   LookUp::where("Parent_Name", "=", "IncomeStream")->get();
     $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
-    $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
-    $provinces = Location::whereNull("Parent_ID")->get();
-    $districts = Location::get();
-    return view('OrphansRelief.Orphan.Edit', ['data' => $data, 'countries' => $countries, 'districts' => $districts, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
+    return view('OrphansRelief.Orphan.Edit', ['data' => $data,'genders' => $genders,'countries' => $countries,'tribes' => $tribes, 'languages' => $languages,'provinces' => $provinces,'districts' => $districts,'relationships' => $relationships,'incomestreams' => $incomestreams,'familystatus' => $familystatus]);
   }
 
   public function Update(Orphan $data)
   {
 
     $data->update([
-
       'FirstName' => request('FirstName'),
       'LastName' => request('LastName'),
       'IntroducerName' => request('IntroducerName'),
@@ -316,11 +296,9 @@ class OrphansReliefController extends Controller
       'FamilyPic' => request('FamilyPic'),
       'Status' => 'Pending',
       'Owner' => 1,
-
     ]);
     return redirect()->route('AllOrphans')->with('toast_success', 'Record Edited Successfully!');
   }
-
 
   // Delete
   public function Delete(Orphan $data)
@@ -328,7 +306,6 @@ class OrphansReliefController extends Controller
     $data->delete();
     return back()->with('success', 'Record deleted successfully');
   }
-
 
   // status
   public function Status(Orphan $data)
@@ -367,7 +344,6 @@ class OrphansReliefController extends Controller
     return view('OrphansRelief.Orphan.Status',  ['datas' => $orphans]);
   }
 
-
   public function Approve(Orphan $data)
   {
     $data->update([
@@ -386,7 +362,6 @@ class OrphansReliefController extends Controller
     return redirect()->route('RejectedOrphans')->with('toast_error', 'Record Rejected Successfully!');
   }
 
-
   public function ReInitiate(Orphan $data)
   {
     $data->update([
@@ -395,7 +370,6 @@ class OrphansReliefController extends Controller
     ]);
     return redirect()->route('PendingOrphans')->with('toast_warning', 'Record Re-Initiated Successfully!');
   }
-
 
   public function AssignToSponsor(Orphan $data)
   {
@@ -414,7 +388,6 @@ class OrphansReliefController extends Controller
       ->get();
     return view('OrphansRelief.Orphan.AssignToSponsor', ['datas' => $orphans, 'sponsors' => $sponsors,]);
   }
-
 
   public function AssignSponsor(Orphan $data)
   {
@@ -437,30 +410,30 @@ class OrphansReliefController extends Controller
     ]);
     return redirect()->route('AllOrphans')->with('success', 'Sponsor Has Been Removed!');
   }
+
   public function Search()
   {
     $sponsors = User::where("IsOrphanSponsor", "=", "1")->get();
     $provinces = Location::whereNull("Parent_ID")->get();
     $PageInfo = request('PageInfo');
     $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
-      -> join('locations as b', 'orphans.District_ID', '=', 'b.id')
-      -> join('look_ups as c', 'orphans.FamilyStatus_ID', '=', 'c.id')
-      -> join('users as d', 'orphans.Created_By', '=', 'd.id')
-      -> leftjoin('users as e', 'orphans.Sponsor_ID', '=', 'e.id')
-      -> select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.FullName as SFullName',])
-      -> where('orphans.FirstName', '=',  request('data'))
-      -> where('orphans.LastName', '=', request('data'))
-      -> where('orphans.Status', '=', request('PageInfo'))
-      -> orwhere('orphans.Province_ID', '=', request('Province_ID'))
-      -> orwhere('orphans.District_ID', '=', request('District_ID'))
+      ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
+      ->join('look_ups as c', 'orphans.FamilyStatus_ID', '=', 'c.id')
+      ->join('users as d', 'orphans.Created_By', '=', 'd.id')
+      ->leftjoin('users as e', 'orphans.Sponsor_ID', '=', 'e.id')
+      ->select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.FullName as SFullName',])
+      ->where('orphans.FirstName', '=',  request('data'))
+      ->where('orphans.LastName', '=', request('data'))
+      ->where('orphans.Status', '=', request('PageInfo'))
+      ->orwhere('orphans.Province_ID', '=', request('Province_ID'))
+      ->orwhere('orphans.District_ID', '=', request('District_ID'))
       ->paginate(100);
     return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo, 'provinces' => $provinces, 'sponsors' => $sponsors]);
   }
 
-    public function export()
-    {
-      $FormIds =  explode(',',  request('FormIds'));
-      return (new OrphanExport($FormIds)) -> download('Orphan and Sponsorships '.now()->format("j F Y").'.xlsx');
-    }
-
+  public function export()
+  {
+    $FormIds =  explode(',',  request('FormIds'));
+    return (new OrphanExport($FormIds))->download('Orphan and Sponsorships ' . now()->format("j F Y") . '.xlsx');
+  }
 }

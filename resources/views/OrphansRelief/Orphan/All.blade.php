@@ -414,7 +414,7 @@
         <form class="needs-validation" action="{{route('ExportOrphans')}}" method="POST" enctype="multipart/form-data" id="ExportForm" novalidate>
             @csrf
             <input type="text" class="d-none" name="FormIds" required>
-            <a class="btn btn-outline-primary waves-effect float-end  waves-light mt-3 ExportOrphans"><i class="mdi mdi-microsoft-excel me-1"></i>Export To Excel</a>
+            <a class="btn btn-outline-primary waves-effect float-end  waves-light mt-3 ExportOrphans"><i class="mdi mdi-microsoft-excel me-1"></i> Export To Excel</a>
         </form>
     </div>
 </div>
@@ -427,14 +427,10 @@
 </div>
 @endsection
 @section('script')
-<script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
-
 <!-- Sweetalert -->
 <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
+<!-- Fomr Validation -->
 <script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
-<script src="{{ URL::asset('/assets/libs/select2/select2.min.js') }}"></script>
-<!-- form advanced init -->
-<script src="{{ URL::asset('/assets/js/pages/form-advanced.init.js') }}"></script>
 <script>
     $('.delete-confirm').on('click', function(event) {
         event.preventDefault();
@@ -450,7 +446,7 @@
             }
         });
     });
-
+    // Remove Sponsor Confirmation
     $('.removeSponsor').on('click', function(event) {
         event.preventDefault();
         const url = $(this).attr('href');
@@ -465,8 +461,7 @@
             }
         });
     });
-
-
+    // Search All Districts
     $(document).ready(function() {
         $('.Province').on('change', function() {
             var dID = $(this).val();
@@ -494,8 +489,7 @@
             }
         });
     });
-
-
+    // Submit form for excel
     $(document).ready(function() {
         $('.ExportOrphans').click(function() {
             ids = new Array();
@@ -506,9 +500,7 @@
             $("#ExportForm").submit();
         });
     });
-
-
-
+    // check all checkboxs for excel
     $("#checkAll").click(function() {
         $('input:checkbox').not(this).prop('checked', this.checked);
     });

@@ -1,27 +1,16 @@
 
-
 <?php $__env->startSection('title'); ?> Orphan and Sponsorships <?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('css'); ?>
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/filepond.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <link href="<?php echo e(URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-image-preview.css')); ?>" id="bootstrap-style" rel="stylesheet" type="text/css" />
-
-
 <?php $__env->stopSection(); ?>
-
-
 <?php $__env->startSection('content'); ?>
-
-
-
 <div class="row mt-4">
     <div class="col-4">
-        <a href="<?php echo e(route('AllSponsor')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Add Sponsor</span>
+        <a href="<?php echo e(route('AllSponsor')); ?>" class="btn btn-outline-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20 "></i>Add Sponsor</span>
     </div>
 </div>
-
-
 <form class="needs-validation" action="<?php echo e(route('CreateSponsor')); ?>" method="POST" enctype="multipart/form-data" novalidate>
     <?php echo csrf_field(); ?>
     <div class="row">
@@ -111,14 +100,14 @@ unset($__errorArgs, $__bag); ?>
                             <div class="mb-3 position-relative">
                                 <label for="PrimaryNumber" class="form-label">Primary Number <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-                                    <input type="number" class="form-control  form-control-lg <?php $__errorArgs = ['PrimaryNumber'];
+                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['PrimaryNumber'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('PrimaryNumber')); ?>" id="PrimaryNumber" name="PrimaryNumber" max="999999999" aria-describedby="PrimaryNumber" required>
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('PrimaryNumber')); ?>" id="PrimaryNumber" name="PrimaryNumber" aria-describedby="PrimaryNumber" required>
                                     <?php $__errorArgs = ['PrimaryNumber'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -139,14 +128,14 @@ unset($__errorArgs, $__bag); ?>
                                 <label for="SecondaryNumber" class="form-label">Secondary Number</label>
                                 <div class="input-group">
 
-                                    <input type="number" class="form-control  form-control-lg <?php $__errorArgs = ['SecondaryNumber'];
+                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['SecondaryNumber'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SecondaryNumber')); ?>" id="SecondaryNumber" name="SecondaryNumber" max="999999999" aria-describedby="SecondaryNumber">
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SecondaryNumber')); ?>" id="SecondaryNumber" name="SecondaryNumber" aria-describedby="SecondaryNumber">
                                     <?php $__errorArgs = ['SecondaryNumber'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -246,7 +235,6 @@ unset($__errorArgs, $__bag); ?>
         </div>
     </div>
     <div><button class="btn btn-success btn-lg" type="submit">Save </button></div>
-
 </form>
 
 <?php $__env->stopSection(); ?>
@@ -268,19 +256,16 @@ unset($__errorArgs, $__bag); ?>
 <script>
     FilePond.registerPlugin(FilePondPluginImagePreview);
     FilePond.registerPlugin(FilePondPluginFileValidateType);
-
     // Get a reference to the file input element
     const inputProfile = document.querySelector('input[name="Profile"]');
     // Create a FilePond instance
     const Profile = FilePond.create(inputProfile, {
         labelIdle: 'Profile <span class="bx bx-upload"></span >',
         server: {
-
             url: '<?php echo e(route('Users_Profile')); ?>',
             headers: {
                 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
             }
-
         },
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
@@ -294,8 +279,6 @@ unset($__errorArgs, $__bag); ?>
         styleProgressIndicatorPosition: 'right bottom',
         styleButtonRemoveItemPosition: 'left bottom',
         styleButtonProcessItemPosition: 'right bottom'
-
-
     });
 
 </script>

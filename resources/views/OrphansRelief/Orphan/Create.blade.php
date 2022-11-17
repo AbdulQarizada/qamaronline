@@ -86,7 +86,7 @@
                                                     <div class="col-md-6">
                                                         <div class="mb-3 position-relative">
                                                             <label for="TazkiraID" class="form-label ">Tazkira ID <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                            <input type="number" class="form-control form-control-lg @error('TazkiraID') is-invalid @enderror" value="{{ old('TazkiraID') }}" id="TazkiraID" name="TazkiraID" max="999999999" required>
+                                                            <input type="text" class="form-control form-control-lg @error('TazkiraID') is-invalid @enderror" value="{{ old('TazkiraID') }}" id="TazkiraID" name="TazkiraID" required>
                                                             @error('TazkiraID')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
@@ -226,7 +226,7 @@
                                                 <div class="mb-3 position-relative">
                                                     <label for="PrimaryNumber" class="form-label">Primary Number <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
-                                                        <input type="number" class="form-control  form-control-lg @error('PrimaryNumber') is-invalid @enderror" value="{{ old('PrimaryNumber') }}" id="PrimaryNumber" name="PrimaryNumber" max="999999999" aria-describedby="PrimaryNumber" required>
+                                                        <input type="text" class="form-control  form-control-lg @error('PrimaryNumber') is-invalid @enderror" value="{{ old('PrimaryNumber') }}" id="PrimaryNumber" name="PrimaryNumber" aria-describedby="PrimaryNumber" required>
                                                         @error('PrimaryNumber')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -239,7 +239,7 @@
                                                 <div class="mb-3 position-relative">
                                                     <label for="SecondaryNumber" class="form-label">Secondary Number</label>
                                                     <div class="input-group">
-                                                        <input type="number" class="form-control  form-control-lg @error('SecondaryNumber') is-invalid @enderror" value="{{ old('SecondaryNumber') }}" id="SecondaryNumber" name="SecondaryNumber" max="999999999" aria-describedby="SecondaryNumber">
+                                                        <input type="text" class="form-control  form-control-lg @error('SecondaryNumber') is-invalid @enderror" value="{{ old('SecondaryNumber') }}" id="SecondaryNumber" name="SecondaryNumber" aria-describedby="SecondaryNumber">
                                                         @error('SecondaryNumber')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -252,7 +252,7 @@
                                                 <div class="mb-3 position-relative">
                                                     <label for="EmergencyNumber" class="form-label">Emergency Number</label>
                                                     <div class="input-group">
-                                                        <input type="number" class="form-control  form-control-lg @error('EmergencyNumber') is-invalid @enderror" value="{{ old('EmergencyNumber') }}" id="EmergencyNumber" name="EmergencyNumber" max="999999999" aria-describedby="EmergencyNumber">
+                                                        <input type="text" class="form-control  form-control-lg @error('EmergencyNumber') is-invalid @enderror" value="{{ old('EmergencyNumber') }}" id="EmergencyNumber" name="EmergencyNumber" aria-describedby="EmergencyNumber">
                                                         @error('EmergencyNumber')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -345,7 +345,7 @@
                                                 <div class="mb-3 position-relative">
                                                     <label for="InCareNumber" class="form-label">InCare Number <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
-                                                        <input type="number" class="form-control  form-control-lg @error('InCareNumber') is-invalid @enderror" value="{{ old('InCareNumber') }}" id="InCareNumber" name="InCareNumber" max="999999999" aria-describedby="InCareNumber" required>
+                                                        <input type="text" class="form-control  form-control-lg @error('InCareNumber') is-invalid @enderror" value="{{ old('InCareNumber') }}" id="InCareNumber" name="InCareNumber" aria-describedby="InCareNumber" required>
                                                         @error('InCareNumber')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -357,7 +357,7 @@
                                             <div class="col-md-4">
                                                 <div class="mb-3 position-relative">
                                                     <label for="InCareTazkiraID" class="form-label ">InCare Tazkira ID <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                    <input type="number" class="form-control form-control-lg @error('InCareTazkiraID') is-invalid @enderror" value="{{ old('InCareTazkiraID') }}" id="InCareTazkiraID" name="InCareTazkiraID" max="999999999" required>
+                                                    <input type="text" class="form-control form-control-lg @error('InCareTazkiraID') is-invalid @enderror" value="{{ old('InCareTazkiraID') }}" id="InCareTazkiraID" name="InCareTazkiraID" aria-describedby="InCareTazkiraID" required>
                                                     @error('InCareTazkiraID')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -472,7 +472,7 @@
                                                 <div class="mb-3 position-relative">
                                                     <label for="SchoolNumber" class="form-label">School Number</label>
                                                     <div class="input-group">
-                                                        <input type="number" class="form-control  form-control-lg @error('SchoolNumber') is-invalid @enderror" value="{{ old('SchoolNumber') }}" id="SchoolNumber" name="SchoolNumber" max="999999999" aria-describedby="SchoolNumber">
+                                                        <input type="text" class="form-control  form-control-lg @error('SchoolNumber') is-invalid @enderror" value="{{ old('SchoolNumber') }}" id="SchoolNumber" name="SchoolNumber" aria-describedby="SchoolNumber">
                                                         @error('SchoolNumber')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -575,7 +575,7 @@
                                                 <div class="mb-3 position-relative">
                                                     <label for="NumberFamilyMembers" class="form-label">Number of Family Members <i class="mdi mdi-asterisk text-danger"></i></label>
                                                     <div class="input-group">
-                                                        <input type="number" class="form-control form-control-lg @error('NumberFamilyMembers') is-invalid @enderror" value="{{ old('NumberFamilyMembers') }}" id="NumberFamilyMembers" name="NumberFamilyMembers" max="40" aria-describedby="NumberFamilyMembers" required>
+                                                        <input type="number" class="form-control form-control-lg @error('NumberFamilyMembers') is-invalid @enderror" value="{{ old('NumberFamilyMembers') }}" id="NumberFamilyMembers" name="NumberFamilyMembers" max="60" aria-describedby="NumberFamilyMembers" required>
                                                         @error('NumberFamilyMembers')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -709,17 +709,12 @@
 </form>
 @endsection
 @section('script')
-<script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
-<script src="{{ URL::asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+<!-- Form Validation -->
 <script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
-
-
+<!-- Filepond -->
 <script src="{{ URL::asset('/assets/libs/filepond/js/filepond.min.js') }}"></script>
 <script src="{{ URL::asset('/assets/libs/filepond/js/plugins/filepond-plugin-image-preview.min.js') }}"></script>
 <script src="{{ URL::asset('/assets/libs/filepond/js/plugins/filepond-plugin-file-validate-type.js') }}"></script>
-
-
-
 <!-- Bootstrap rating js -->
 <script src="{{ URL::asset('/assets/libs/bootstrap-rating/bootstrap-rating.min.js') }} "></script>
 <script src="{{ URL::asset('/assets/js/pages/rating-init.js') }}"></script>
@@ -733,7 +728,7 @@
     const Profile = FilePond.create(inputProfile, {
         labelIdle: 'Profile <span class="bx bx-upload"></span >',
         server: {
-            url: '{{ route('Orphans_Profile')}}',
+            url: '{{route('Orphans_Profile')}}',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }
@@ -752,8 +747,6 @@
         styleButtonProcessItemPosition: 'right bottom'
     });
 
-
-
     // Get a reference to the file input element
     const inputTazkira = document.querySelector('input[name="Tazkira"]');
     // Create a FilePond instance
@@ -762,15 +755,13 @@
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
         server: {
-            url: '{{ route('Orphans_Tazkira')}}',
+            url: '{{route('Orphans_Tazkira')}}',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }
         },
         instantUpload: true,
     });
-
-
 
     // Get a reference to the file input element
     const inputFamilyPic = document.querySelector('input[name="FamilyPic"]');
@@ -788,7 +779,6 @@
         instantUpload: true,
     });
 
-
     // Get a reference to the file input element
     const inputHousePic = document.querySelector('input[name="HousePic"]');
     // Create a FilePond instance
@@ -805,7 +795,7 @@
         instantUpload: true,
     });
 
-
+    // all districts
     $(document).ready(function() {
         $('.Province').on('change', function() {
             var dID = $(this).val();
@@ -834,8 +824,7 @@
         });
     });
 
-
-
+    // all districts for school
     $(document).ready(function() {
         $('.SchoolProvince').on('change', function() {
             var dID = $(this).val();
@@ -864,24 +853,22 @@
         });
     });
 
-
-
+    // school div hide and show
     $(document).ready(function() {
         $('#InSchoolDiv').hide();
         $('.InSchoolDiv').hide();
         $('#No').prop("checked", true);
-
     });
     $('#Yes').click(function() {
         $('#InSchoolDiv').show();
         $('.InSchoolDiv').show();
-
     });
     $('#No').click(function() {
         $('#InSchoolDiv').hide();
         $('.InSchoolDiv').hide();
     });
 
+    // page next and prev
     function personal() {
         document.getElementById("v-pills-personal-tab").click();
     }

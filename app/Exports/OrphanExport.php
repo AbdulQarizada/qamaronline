@@ -11,7 +11,6 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\AfterSheet;
 
-
 class OrphanExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSize, WithEvents
 {
     use Exportable;
@@ -52,7 +51,6 @@ class OrphanExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSi
             ];
     }
 
-
     public function registerEvents(): array
     {
         return [
@@ -79,7 +77,7 @@ class OrphanExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSi
                         'fillType' => \PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID,
                         'color' => ['argb' => '31869B']
                     ],
-                    'font'=> [
+                    'font' => [
                         'name'      =>  'Calibri',
                         'size'      =>  14,
                         'bold'      =>  true,

@@ -1,27 +1,16 @@
 @extends(Auth::user()->IsEmployee == 1 ? 'layouts.master-layouts' : 'layouts.master')
-
 @section('title') Orphan and Sponsorships @endsection
-
 @section('css')
 <link href="{{ URL::asset('/assets/libs/filepond/css/filepond.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
 <link href="{{ URL::asset('/assets/libs/filepond/css/plugins/filepond-plugin-image-preview.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-
-
 @endsection
-
-
 @section('content')
-
-
-
 <div class="row mt-4">
     <div class="col-4">
-        <a href="{{route('AllSponsor')}}" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Add Sponsor</span>
+        <a href="{{route('AllSponsor')}}" class="btn btn-outline-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20 "></i>Add Sponsor</span>
     </div>
 </div>
-
-
 <form class="needs-validation" action="{{route('CreateSponsor')}}" method="POST" enctype="multipart/form-data" novalidate>
     @csrf
     <div class="row">
@@ -69,7 +58,7 @@
                             <div class="mb-3 position-relative">
                                 <label for="PrimaryNumber" class="form-label">Primary Number <i class="mdi mdi-asterisk text-danger"></i></label>
                                 <div class="input-group">
-                                    <input type="number" class="form-control  form-control-lg @error('PrimaryNumber') is-invalid @enderror" value="{{ old('PrimaryNumber') }}" id="PrimaryNumber" name="PrimaryNumber" max="999999999" aria-describedby="PrimaryNumber" required>
+                                    <input type="text" class="form-control  form-control-lg @error('PrimaryNumber') is-invalid @enderror" value="{{ old('PrimaryNumber') }}" id="PrimaryNumber" name="PrimaryNumber" aria-describedby="PrimaryNumber" required>
                                     @error('PrimaryNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -83,7 +72,7 @@
                                 <label for="SecondaryNumber" class="form-label">Secondary Number</label>
                                 <div class="input-group">
 
-                                    <input type="number" class="form-control  form-control-lg @error('SecondaryNumber') is-invalid @enderror" value="{{ old('SecondaryNumber') }}" id="SecondaryNumber" name="SecondaryNumber" max="999999999" aria-describedby="SecondaryNumber">
+                                    <input type="text" class="form-control  form-control-lg @error('SecondaryNumber') is-invalid @enderror" value="{{ old('SecondaryNumber') }}" id="SecondaryNumber" name="SecondaryNumber" aria-describedby="SecondaryNumber">
                                     @error('SecondaryNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -134,41 +123,29 @@
         </div>
     </div>
     <div><button class="btn btn-success btn-lg" type="submit">Save </button></div>
-
 </form>
 
 @endsection
 @section('script')
 <script src="{{ URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js') }}"></script>
 <script src="{{ URL::asset('/assets/libs/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
-
-
-
 <script src="{{ URL::asset('/assets/libs/filepond/js/filepond.min.js') }}"></script>
 <script src="{{ URL::asset('/assets/libs/filepond/js/plugins/filepond-plugin-image-preview.min.js') }}"></script>
 <script src="{{ URL::asset('/assets/libs/filepond/js/plugins/filepond-plugin-file-validate-type.js') }}"></script>
-
-
 <script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
-
-
-
 <script>
     FilePond.registerPlugin(FilePondPluginImagePreview);
     FilePond.registerPlugin(FilePondPluginFileValidateType);
-
     // Get a reference to the file input element
     const inputProfile = document.querySelector('input[name="Profile"]');
     // Create a FilePond instance
     const Profile = FilePond.create(inputProfile, {
         labelIdle: 'Profile <span class="bx bx-upload"></span >',
         server: {
-
             url: '{{ route('Users_Profile')}}',
             headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }
-
         },
         acceptedFileTypes: ['image/png', 'image/jpeg'],
         allowFileTypeValidation: true,
@@ -182,8 +159,6 @@
         styleProgressIndicatorPosition: 'right bottom',
         styleButtonRemoveItemPosition: 'left bottom',
         styleButtonProcessItemPosition: 'right bottom'
-
-
     });
 
 </script>

@@ -506,7 +506,7 @@ unset($__errorArgs, $__bag); ?>
         <form class="needs-validation" action="<?php echo e(route('ExportOrphans')); ?>" method="POST" enctype="multipart/form-data" id="ExportForm" novalidate>
             <?php echo csrf_field(); ?>
             <input type="text" class="d-none" name="FormIds" required>
-            <a class="btn btn-outline-primary waves-effect float-end  waves-light mt-3 ExportOrphans"><i class="mdi mdi-microsoft-excel me-1"></i>Export To Excel</a>
+            <a class="btn btn-outline-primary waves-effect float-end  waves-light mt-3 ExportOrphans"><i class="mdi mdi-microsoft-excel me-1"></i> Export To Excel</a>
         </form>
     </div>
 </div>
@@ -519,14 +519,10 @@ unset($__errorArgs, $__bag); ?>
 </div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
-<script src="<?php echo e(URL::asset('/assets/libs/parsleyjs/parsleyjs.min.js')); ?>"></script>
-
 <!-- Sweetalert -->
 <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
+<!-- Fomr Validation -->
 <script src="<?php echo e(URL::asset('/assets/js/pages/form-validation.init.js')); ?>"></script>
-<script src="<?php echo e(URL::asset('/assets/libs/select2/select2.min.js')); ?>"></script>
-<!-- form advanced init -->
-<script src="<?php echo e(URL::asset('/assets/js/pages/form-advanced.init.js')); ?>"></script>
 <script>
     $('.delete-confirm').on('click', function(event) {
         event.preventDefault();
@@ -542,7 +538,7 @@ unset($__errorArgs, $__bag); ?>
             }
         });
     });
-
+    // Remove Sponsor Confirmation
     $('.removeSponsor').on('click', function(event) {
         event.preventDefault();
         const url = $(this).attr('href');
@@ -557,8 +553,7 @@ unset($__errorArgs, $__bag); ?>
             }
         });
     });
-
-
+    // Search All Districts
     $(document).ready(function() {
         $('.Province').on('change', function() {
             var dID = $(this).val();
@@ -586,8 +581,7 @@ unset($__errorArgs, $__bag); ?>
             }
         });
     });
-
-
+    // Submit form for excel
     $(document).ready(function() {
         $('.ExportOrphans').click(function() {
             ids = new Array();
@@ -598,9 +592,7 @@ unset($__errorArgs, $__bag); ?>
             $("#ExportForm").submit();
         });
     });
-
-
-
+    // check all checkboxs for excel
     $("#checkAll").click(function() {
         $('input:checkbox').not(this).prop('checked', this.checked);
     });
