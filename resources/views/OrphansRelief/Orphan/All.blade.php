@@ -250,14 +250,14 @@
                         <td>
                             <div class="d-flex flex-wrap gap-2">
                                 <a href="{{route('StatusOrphans', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-warning  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Details">
-                                    <i class="bx bx-show-alt font-size-16 align-middle"></i>
+                                    <i class="mdi mdi-eye-settings-outline font-size-16 align-middle"></i>
                                 </a>
                                 @if($data -> Status == 'Pending')
                                 <a href="{{route('EditOrphan', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-info waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Details">
-                                    <i class=" bx bx-edit font-size-16 align-middle"></i>
+                                    <i class="mdi mdi-square-edit-outline font-size-16 align-middle"></i>
                                 </a>
                                 <a href="{{route('DeleteOrphan', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
-                                    <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
+                                    <i class="mdi mdi-delete-outline font-size-16 align-middle"></i>
                                 </a>
                                 @endif
                                 @if( $data -> IsSponsored == 1)
@@ -327,7 +327,7 @@
                                 @else
                                 @if($data -> Status == 'Approved')
                                 <a data-bs-toggle="modal" data-bs-target=".bs-{{$data ->  id }}-modal-center" class="btn btn-sm btn-outline-success waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Assign To Sponsor">
-                                    <i class="bx bx-user-plus font-size-16 align-middle"></i>
+                                    <i class="mdi mdi-account-child-outline font-size-16 align-middle"></i>
                                 </a>
                                 <div class="modal fade bs-{{$data ->  id }}-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered  modal-lg">
@@ -390,7 +390,7 @@
                                 @endif
                                 @if( $data -> Status == 'Rejected')
                                 <a href="{{route('DeleteOrphan', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
-                                    <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
+                                    <i class="mdi mdi-delete-outline font-size-16 align-middle"></i>
                                 </a>
                                 @endif
                             </div>

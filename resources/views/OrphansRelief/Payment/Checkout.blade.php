@@ -1,9 +1,6 @@
 @extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
-
 @section('title') Checkout @endsection
-
 @section('css')
-
 <link href="{{ URL::asset('/assets/css/mystyle/Payment.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ URL::asset('/assets/css/mystyle/tab.css') }}" rel="stylesheet" type="text/css" />
 <style type="text/css">
@@ -20,7 +17,6 @@
     }
 </style>
 @endsection
-
 @section('content')
 <div id="loader"></div>
 <div class="row mt-4">
@@ -41,7 +37,6 @@
                         <td>
                             <h5 class="text-truncate font-size-18 fw-semibold "><a href="#" class="text-dark">{{$data['item']['FirstName']}} </a></h5>
                             <span class="fw-semibold">$40 USD /</span><span class="fw-semibold text-success text-uppercase">Montly</span>
-
                         <td><span class="text-danger text-uppercase">Waiting Since: </span>{{$data['item']['created_at'] -> format("j F Y")}}</td>
                         <td><span class="badge bg-success">Verified</span></td>
                         <td>
@@ -63,7 +58,6 @@
 
     </div>
 </div>
-
 <form method="POST" class="form-horizontal" action="{{ route('StorePayment') }}" enctype="multipart/form-data" id="Payment">
     @csrf
     <div class="row justify-content-center">
@@ -77,7 +71,6 @@
                 <div class="col-md-12 text-center">
                     <div class="container">
                         <div class="top-text-wrapper text-center">
-                            <!-- <h4>Please Select your option</h4> -->
                         </div>
                         <div class="grid-wrapper grid-col-auto">
                             <label for="Montly" class="radio-card">
@@ -230,9 +223,6 @@
         </div>
     </div>
 </form>
-
-
-
 @else
 <div class="row">
     <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">

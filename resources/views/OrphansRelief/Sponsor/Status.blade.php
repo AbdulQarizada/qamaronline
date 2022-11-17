@@ -1,20 +1,13 @@
 @extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
-
 @section('title') Orphan and Sponsorships @endsection
-
 @section('css')
-
-
 @endsection
-
 @section('content')
-
 @foreach($datas as $data)
 <div class="row">
     <div class="col-12">
-        <a href="{{route('AllSponsor')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-        <a href="javascript:window.print()" class="btn btn-dark  waves-effect waves-light"><i class=" bx bxs-printer   font-size-18"></i></a>
-
+        <a href="{{route('AllSponsor')}}" class="btn btn-outline-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <a href="javascript:window.print()" class="btn btn-outline-dark  waves-effect waves-light"><i class=" bx bxs-printer   font-size-18"></i></a>
     </div>
 </div>
 <div class="row">
@@ -23,7 +16,9 @@
             <table class="table table-nowrap">
                 <tr>
                     <td>
-                        <img src="{{URL::asset('/uploads/Users/Profiles/'.$data -> Profile)}}" style="width: 130px; height: 135px;" class="rounded">
+                        <a target="_Blanck" href="{{URL::asset('/uploads/Users/Profiles/'.$data -> Profile)}}" class="badge badge-soft-info">
+                            <img src="{{URL::asset('/uploads/Users/Profiles/'.$data -> Profile)}}" style="width: 130px; height: 135px;" class="rounded">
+                        </a>
                     </td>
                     <td style="float:right;">
                         <div class="text-center">
@@ -73,16 +68,15 @@
         </div>
     </div>
 </div>
-
 <div class="row">
     <div class="col-12">
         @if($data -> IsActive == 1)
-        <a href="{{route('DeActivateSponsor', ['data' => $data -> id])}}" class="btn btn-danger waves-effect waves-light deactivate m-3" data-toggle="tooltip" data-placement="top" title="DeActivate">
+        <a href="{{route('DeActivateSponsor', ['data' => $data -> id])}}" class="btn btn-outline-danger btn-lg waves-effect  waves-light btn-rounded w-lg  deactivate m-3" data-toggle="tooltip" data-placement="top" title="DeActivate">
             De-ACTIVATE
         </a>
         @endif
         @if($data -> IsActive == 0)
-        <a href="{{route('ActivateSponsor', ['data' => $data -> id])}}" class="btn btn-success waves-effect waves-light activate m-3" data-toggle="tooltip" data-placement="top" title="Activate">
+        <a href="{{route('ActivateSponsor', ['data' => $data -> id])}}" class="btn btn-outline-success btn-lg waves-effect  waves-light btn-rounded w-lg activate m-3" data-toggle="tooltip" data-placement="top" title="Activate">
             ACTIVATE
         </a>
         @endif
@@ -93,7 +87,6 @@
 @section('script')
 <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
 <script>
-
     $('.activate').on('click', function(event) {
         event.preventDefault();
         const url = $(this).attr('href');

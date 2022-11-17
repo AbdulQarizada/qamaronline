@@ -72,10 +72,10 @@
                                         </a>
                                         @endif
                                         @if( $data -> Status == 'Pending')
-                                        <a href="{{route('ApproveOrphans', ['data' => $data -> id])}}" class="btn btn-outline-success btn-lg waves-effect  waves-light btn-rounded approve m-3">
+                                        <a href="{{route('ApproveOrphans', ['data' => $data -> id])}}" class="btn btn-outline-success btn-lg waves-effect  waves-light btn-rounded w-lg approve m-3">
                                             </i>Approve
                                         </a>
-                                        <a href="{{route('RejectOrphans', ['data' => $data -> id])}}" class="btn btn-outline-danger btn-lg waves-effect  waves-light btn-rounded reject m-3">
+                                        <a href="{{route('RejectOrphans', ['data' => $data -> id])}}" class="btn btn-outline-danger btn-lg waves-effect  waves-light btn-rounded w-lg reject m-3">
                                             Reject
                                         </a>
                                         @endif

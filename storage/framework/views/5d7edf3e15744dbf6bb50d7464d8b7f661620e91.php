@@ -209,14 +209,14 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                         <td>
                             <div class="d-flex flex-wrap gap-2">
                                 <a href="<?php echo e(route('StatusSponsor', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-warning waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Details">
-                                    <i class="bx bx-show-alt font-size-16 align-middle"></i>
+                                    <i class="mdi mdi-eye-settings-outline font-size-16 align-middle"></i>
                                 </a>
                                 <?php if($data -> IsActive == 0): ?>
                                 <a href="<?php echo e(route('EditSponsor', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-info waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Details">
-                                    <i class=" bx bx-edit font-size-16 align-middle"></i>
+                                    <i class="mdi mdi-square-edit-outline font-size-16 align-middle"></i>
                                 </a>
                                 <a href="<?php echo e(route('DeleteSponsor', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
-                                    <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
+                                    <i class="mdi mdi-delete-outline font-size-16 align-middle"></i>
                                 </a>
                                 <?php endif; ?>
                                 <a data-bs-toggle="modal" data-bs-target=".bs-<?php echo e($data ->  id); ?>-modal-center" class="btn btn-sm btn-outline-danger waves-effect waves-light"  data-bs-toggle="tooltip" data-bs-placement="top" title="Reset Password">

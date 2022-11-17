@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\OrphanRelief\Payments;
 
 use App\Http\Controllers\Controller;
-
 use App\Mail\OrphanMails;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
@@ -23,8 +22,6 @@ use Illuminate\Support\Facades\Session;
 use Auth;
 use Stripe\Charge;
 use Stripe\Stripe;
-
-
 
 class PaymentsReliefController extends Controller
 {
@@ -47,40 +44,30 @@ class PaymentsReliefController extends Controller
     return view('OrphansRelief.Index');
   }
 
-
-
-  // Sponsor
+  // Payment
   // list
   public function All()
   {
     $PageInfo = 'All';
-    $sponsors =   User::get()->where("IsOrphanSponsor", "=", '1');
-    return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo]);
+    $provinces = Location::whereNull("Parent_ID")->get();
+    $payments =   OrphanPayment::paginate(100);
+    return view('OrphansRelief.Payment.All', ['datas' => $payments,'PageInfo' => $PageInfo,'provinces' => $provinces,]);
   }
 
-
-
-
-  public function Active()
+  public function MyPayments()
   {
 
-    $PageInfo = 'All';
-    $sponsors =   User::get()->where("IsOrphanSponsor", "=", '1');
-    return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo]);
+    $mypayments =  OrphanPayment::where("Email", "=", Auth::user()->email)
+    -> paginate(100);
+    return view('OrphansRelief.Payment.MyPayment', ['datas' => $mypayments]);
   }
 
-
-
-  public function InActive()
+  // status
+  public function Reciept(OrphanPayment $data)
   {
-
-    $PageInfo = 'All';
-    $sponsors =   User::get()->where("IsOrphanSponsor", "=", '1');
-    return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo]);
+      $payments =   OrphanPayment::where("orphan_payments.id", "=", $data->id)->get();
+      return view('OrphansRelief.Payment.Reciept', ['datas' => $payments,]);
   }
-
-
-
 
 
   // orphan cart
@@ -125,7 +112,7 @@ class PaymentsReliefController extends Controller
 
 
 
-  public function Payment(Request $request)
+  public function StorePayment(Request $request)
   {
     if (!Session::has('cart'))
     {
@@ -238,19 +225,7 @@ class PaymentsReliefController extends Controller
   }
 
 
-  public function AllPayments()
-  {
-    $payments =   OrphanPayment::get();
-    return view('OrphansRelief.Payment.All', ['datas' => $payments]);
-  }
 
-  public function MyPayments()
-  {
-
-    $mypayments =   OrphanPayment::where("Email", "=", Auth::user()->email)
-    -> paginate(100);
-    return view('OrphansRelief.Payment.MyPayment', ['datas' => $mypayments]);
-  }
 
 
 

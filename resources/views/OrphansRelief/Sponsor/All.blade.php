@@ -173,14 +173,14 @@
                         <td>
                             <div class="d-flex flex-wrap gap-2">
                                 <a href="{{route('StatusSponsor', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-warning waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Details">
-                                    <i class="bx bx-show-alt font-size-16 align-middle"></i>
+                                    <i class="mdi mdi-eye-settings-outline font-size-16 align-middle"></i>
                                 </a>
                                 @if($data -> IsActive == 0)
                                 <a href="{{route('EditSponsor', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-info waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Details">
-                                    <i class=" bx bx-edit font-size-16 align-middle"></i>
+                                    <i class="mdi mdi-square-edit-outline font-size-16 align-middle"></i>
                                 </a>
                                 <a href="{{route('DeleteSponsor', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
-                                    <i class=" bx bx-trash-alt font-size-16 align-middle"></i>
+                                    <i class="mdi mdi-delete-outline font-size-16 align-middle"></i>
                                 </a>
                                 @endif
                                 <a data-bs-toggle="modal" data-bs-target=".bs-{{$data ->  id }}-modal-center" class="btn btn-sm btn-outline-danger waves-effect waves-light"  data-bs-toggle="tooltip" data-bs-placement="top" title="Reset Password">
