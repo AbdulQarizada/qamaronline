@@ -503,10 +503,10 @@ unset($__errorArgs, $__bag); ?>
                 </tbody>
             </table>
         </div>
-        <form class="needs-validation" action="<?php echo e(route('ExportOrphans')); ?>" method="POST" enctype="multipart/form-data" novalidate>
+        <form class="needs-validation" action="<?php echo e(route('ExportOrphans')); ?>" method="POST" enctype="multipart/form-data" id="ExportForm" novalidate>
             <?php echo csrf_field(); ?>
-            <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="<?php echo e($data -> id); ?>">
-            <a class="btn btn-outline-primary waves-effect float-end  waves-light mt-3"><i class="mdi mdi-microsoft-excel me-1"></i>Export To Excel</a>
+            <input type="text" class="d-none" name="FormIds" required>
+            <a class="btn btn-outline-primary waves-effect float-end  waves-light mt-3 ExportOrphans"><i class="mdi mdi-microsoft-excel me-1"></i>Export To Excel</a>
         </form>
     </div>
 </div>
@@ -594,11 +594,12 @@ unset($__errorArgs, $__bag); ?>
             $("input[name='ids[]']:checked").each(function() {
                 ids.push(this.value);
             });
-
-
-
+            $("input[name=FormIds]").val(ids);
+            $("#ExportForm").submit();
         });
     });
+
+
 
     $("#checkAll").click(function() {
         $('input:checkbox').not(this).prop('checked', this.checked);

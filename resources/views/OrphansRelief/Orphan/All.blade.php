@@ -411,10 +411,10 @@
                 </tbody>
             </table>
         </div>
-        <form class="needs-validation" action="{{route('ExportOrphans')}}" method="POST" enctype="multipart/form-data" novalidate>
+        <form class="needs-validation" action="{{route('ExportOrphans')}}" method="POST" enctype="multipart/form-data" id="ExportForm" novalidate>
             @csrf
-            <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="{{$data -> id }}">
-            <a class="btn btn-outline-primary waves-effect float-end  waves-light mt-3"><i class="mdi mdi-microsoft-excel me-1"></i>Export To Excel</a>
+            <input type="text" class="d-none" name="FormIds" required>
+            <a class="btn btn-outline-primary waves-effect float-end  waves-light mt-3 ExportOrphans"><i class="mdi mdi-microsoft-excel me-1"></i>Export To Excel</a>
         </form>
     </div>
 </div>
@@ -502,11 +502,12 @@
             $("input[name='ids[]']:checked").each(function() {
                 ids.push(this.value);
             });
-
-
-
+            $("input[name=FormIds]").val(ids);
+            $("#ExportForm").submit();
         });
     });
+
+
 
     $("#checkAll").click(function() {
         $('input:checkbox').not(this).prop('checked', this.checked);

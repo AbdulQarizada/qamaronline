@@ -457,12 +457,10 @@ class OrphansReliefController extends Controller
     return view('OrphansRelief.Orphan.All', ['datas' => $orphans, 'PageInfo' => $PageInfo, 'provinces' => $provinces, 'sponsors' => $sponsors]);
   }
 
-
-    public function export(Request $request)
+    public function export()
     {
-
-      dd($request -> ids);
-        return Excel::download(new OrphanExport, 'Orphans Excel '.now()->format("j F Y").'.xlsx');
+      $FormIds =  explode(',',  request('FormIds'));
+      return (new OrphanExport($FormIds)) -> download('Orphan and Sponsorships '.now()->format("j F Y").'.xlsx');
     }
 
 }
