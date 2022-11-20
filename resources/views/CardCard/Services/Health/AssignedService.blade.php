@@ -1,4 +1,5 @@
-@extends('layouts.master-layouts')
+@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts')
+
 
 @section('title') Assign To Services Cards @endsection
 

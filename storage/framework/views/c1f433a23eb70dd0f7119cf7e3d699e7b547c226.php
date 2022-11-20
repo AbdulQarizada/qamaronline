@@ -55,7 +55,7 @@
                 </tr>
             </table>
             <table class="table table-nowrap">
-                <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">ROLE AND PERMISSION</h5>
+                <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">STATUS</h5>
                 <?php if($data -> IsOrphanSponsor == 1): ?>
                 <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-success">Orphan Sponsor</a></span>
                 <?php endif; ?>
@@ -65,6 +65,19 @@
                 <?php if($data -> IsActive != 1): ?>
                 <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-danger">InActive</a></span>
                 <?php endif; ?>
+            </table>
+            <table class="table table-nowrap">
+                <tr>
+                    <td>
+                        <div class="avatar-group">
+                            <div class="avatar-group-item">
+                                <a href="javascript: void(0);" class="d-inline-block">
+                                    <img src="<?php echo e(URL::asset('/assets/images/users/avatar-4.jpg')); ?>" alt="" class="rounded-circle avatar-xs">
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
             </table>
         </div>
     </div>
@@ -120,4 +133,4 @@
 </script>
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Sponsor/Status.blade.php ENDPATH**/ ?>
+<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Sponsor/Status.blade.php ENDPATH**/ ?>

@@ -54,7 +54,7 @@
                 </tr>
             </table>
             <table class="table table-nowrap">
-                <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">ROLE AND PERMISSION</h5>
+                <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">STATUS</h5>
                 @if($data -> IsOrphanSponsor == 1)
                 <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-success">Orphan Sponsor</a></span>
                 @endif
@@ -64,6 +64,21 @@
                 @if($data -> IsActive != 1)
                 <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-danger">InActive</a></span>
                 @endif
+            </table>
+            <table class="table table-nowrap">
+                <tr>
+                    <td>
+                        <div class="avatar-group">
+                            @foreach($data-> orphan as orphans)
+                            <div class="avatar-group-item">
+                                <a href="javascript: void(0);" class="d-inline-block">
+                                    <img src="{{ URL::asset('/assets/images/users/avatar-4.jpg') }}" alt="" class="rounded-circle avatar-xs">
+                                </a>
+                            </div>
+                            @endforeach
+                        </div>
+                    </td>
+                </tr>
             </table>
         </div>
     </div>
