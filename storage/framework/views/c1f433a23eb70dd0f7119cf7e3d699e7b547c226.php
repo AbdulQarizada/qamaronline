@@ -55,6 +55,22 @@
                 </tr>
             </table>
             <table class="table table-nowrap">
+                <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">ORPHAN SPONSORED</h5>
+                <tr>
+                    <td>
+                        <div class="avatar-group">
+                            <?php $__currentLoopData = $data -> orphan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $orphans): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="avatar-group-item">
+                                <a href="<?php echo e(route('StatusOrphans', ['data' => $orphans -> id])); ?>" class="d-inline-block">
+                                    <img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$orphans -> Profile)); ?>" alt="" class="rounded-circle avatar-lg">
+                                </a>
+                            </div>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table class="table table-nowrap">
                 <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">STATUS</h5>
                 <?php if($data -> IsOrphanSponsor == 1): ?>
                 <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-success">Orphan Sponsor</a></span>
@@ -65,19 +81,6 @@
                 <?php if($data -> IsActive != 1): ?>
                 <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-danger">InActive</a></span>
                 <?php endif; ?>
-            </table>
-            <table class="table table-nowrap">
-                <tr>
-                    <td>
-                        <div class="avatar-group">
-                            <div class="avatar-group-item">
-                                <a href="javascript: void(0);" class="d-inline-block">
-                                    <img src="<?php echo e(URL::asset('/assets/images/users/avatar-4.jpg')); ?>" alt="" class="rounded-circle avatar-xs">
-                                </a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
             </table>
         </div>
     </div>
