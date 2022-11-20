@@ -60,7 +60,7 @@
                             @foreach($orphans as $orphan)
                             <div class="avatar-group-item">
                                 <a href="{{route('StatusOrphans', ['data' => $orphan -> id])}}" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $orphan -> FirstName }}">
-                                    <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$orphan -> Profile)}}" alt="" class="rounded-circle avatar-md img-thumbnail">
+                                    <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$orphan -> Profile)}}" alt="" class="rounded-circle avatar-lg img-thumbnail">
                                 </a>
                             </div>
                             @endforeach
