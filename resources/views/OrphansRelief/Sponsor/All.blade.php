@@ -1,4 +1,4 @@
-@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
+@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts')
 @section('title') Orphan and Sponsorships @endsection
 @section('css')
 @endsection
@@ -106,6 +106,7 @@
                         <th>Address</th>
                         <th>Contacts</th>
                         <th>Email</th>
+                        <th>Orphans</th>
                         <th>Status</th>
                         <th>Created By</th>
                         <th>Actions</th>
@@ -142,6 +143,13 @@
                         <td>
                             <div>
                                 <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> email}}</a></h5>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="avatar-xs">
+                                <span class="avatar-title bg-info rounded">
+                                    {{ $data-> orphan -> count()}}
+                                </span>
                             </div>
                         </td>
                         <td>

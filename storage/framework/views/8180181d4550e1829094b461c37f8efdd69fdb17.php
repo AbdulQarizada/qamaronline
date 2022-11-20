@@ -324,28 +324,25 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
 
 
 
-    var table = $('#datatable').DataTable( {
+    $('#datatable').DataTable( {
         responsive: true,
-        bPaginate: false,
-        buttons:
-        [{
+
+        lengthMenu: [[100, 200, 300, 400, 500, 1000, -1], [100, 200, 300, 400, 500, 1000, "All"]],
+
+        dom: 'lBfrtip',
+        buttons: [
+            {
                 autoFilter: true,
                 extend: 'excel',
-                text: 'Export To Excel',
-                className: 'd-none',
-                exportOptions:
-                {
-                    modifier:
-                        {
+                text: 'Download To Excel',
+                exportOptions: {
+                    modifier: {
                         page: 'current'
-                         }
+                    }
                 }
-            }],
-
-    });
-    $("#ExportExcel").on("click", function() {
-    table.button('.buttons-excel').trigger();});
-
+            }
+        ]
+    } );
 </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/CardCard/Operations/All.blade.php ENDPATH**/ ?>

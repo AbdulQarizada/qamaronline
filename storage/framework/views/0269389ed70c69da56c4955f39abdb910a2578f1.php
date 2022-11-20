@@ -1,127 +1,109 @@
 
-
 <?php $__env->startSection('title'); ?> Checkout <?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('css'); ?>
-
 <link href="<?php echo e(URL::asset('/assets/css/mystyle/Payment.css')); ?>" rel="stylesheet" type="text/css" />
 <link href="<?php echo e(URL::asset('/assets/css/mystyle/tab.css')); ?>" rel="stylesheet" type="text/css" />
-<style type="text/css">
-    #loader {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        background: rgba(0, 0, 0, 0.75) url("<?php echo e(URL::asset('/assets/images/loading.gif')); ?>") no-repeat center center;
-        z-index: 10000;
-    }
+<link href="<?php echo e(URL::asset('/assets/css/mystyle/paymentswitch.css')); ?>" rel="stylesheet" type="text/css" />
+<style>
 </style>
 <?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('content'); ?>
-<div id="loader"></div>
 <div class="row mt-4">
     <div class="col-4">
-        <a href="<?php echo e(route('AllGridOrphans')); ?>" class="btn btn-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap"><i class="bx bx-caret-right text-secondary font-size-20"></i>Checkout</span>
+        <a href="<?php echo e(route('AllGridOrphans')); ?>" class="btn btn-outline-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>Checkout</span>
     </div>
 </div>
 <?php if(Session::has('cart')): ?>
 <div class="row">
-    <div class="col-lg-12">
-        <div class="table-responsive rounded">
-            <table class="table project-list-table table-nowrap align-middle table-borderless">
-                <tbody>
-                    <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <tr>
-                        <td><img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data['item']['Profile'])); ?>" alt="" class="avatar-lg rounded-circle"></td>
-                        <td>
-                            <h5 class="text-truncate font-size-18 fw-semibold "><a href="#" class="text-dark"><?php echo e($data['item']['FirstName']); ?> </a></h5>
-                            <span class="fw-semibold">$40 USD /</span><span class="fw-semibold text-success text-uppercase">Montly</span>
-
-                        <td><span class="text-danger text-uppercase">Waiting Since: </span><?php echo e($data['item']['created_at'] -> format("j F Y")); ?></td>
-                        <td><span class="badge bg-success">Verified</span></td>
-                        <td>
-                            <a href="<?php echo e(route('RemoveFromCartPayment', $data['item']['id'])); ?>" class="btn btn-danger waves-effect waves-light delete-confirm">
-                                <i class=" bx bx-x-circle  font-size-16 align-middle"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        <span><a href="<?php echo e(route('AllGridOrphans')); ?>" class="btn btn-success btn-lg waves-effect  waves-light mb-3 m-1 float-end"><i class="bx bx-plus-circle  font-size-16 align-middle"></i></a></span>
-        <span class="waves-effect  waves-light mb-3 m-1 mt-3 float-end font-size-18 text-uppercase">Add one more orphan <i class="bx bx-right-arrow-alt "></i></span>
-
-    </div>
-</div>
-
-<form method="POST" class="form-horizontal" action="<?php echo e(route('StorePayment')); ?>" enctype="multipart/form-data" id="Payment">
-    <?php echo csrf_field(); ?>
-    <div class="row justify-content-center">
-        <div class="col-lg-12">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p class="display-6 fw-semibold text-success text-uppercase"> Payment Options</p>
+    <div class="col-xl-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0 table-nowrap">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Profile</th>
+                                <th>Personal Info</th>
+                                <th>Location</th>
+                                <th>Waiting Since</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tr>
+                                <td><img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data['item']['Profile'])); ?>" alt="" class="avatar-sm rounded-circle"></td>
+                                <td>
+                                    <h5 class="text-truncate font-size-18 fw-semibold "><a href="#" class="text-dark"><?php echo e($data['item']['FirstName']); ?> </a></h5>
+                                <td> </td>
+                                <td><span class="badge bg-danger"><?php echo e($data['item']['created_at'] -> format("j F Y")); ?></span></td>
+                                <td>
+                                    <a href="<?php echo e(route('RemoveFromCartPayment', $data['item']['id'])); ?>" class="btn btn-sm text-danger waves-effect waves-light delete-confirm">
+                                        <i class=" bx bx-x-circle  font-size-16 align-middle"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <div class="container">
-                        <div class="top-text-wrapper text-center">
-                            <!-- <h4>Please Select your option</h4> -->
-                        </div>
-                        <div class="grid-wrapper grid-col-auto">
-                            <label for="Montly" class="radio-card">
-                                <input type="radio" name="radio-card" id="Montly" />
-                                <div class="card-content-wrapper">
-                                    <span class="check-icon"></span>
-                                    <div class="card-content">
-                                        <img src="<?php echo e(URL::asset('/assets/images/checkout/give.jpg')); ?>" alt="" />
-
-                                        <input id="MontlyPaymentOption" type="radio" name="PaymentOption" value="Montly" hidden>
-                                        <input id="MontlyPaymentAmount" type="radio" name="PaymentAmount" value="<?php echo e($totalPriceMontly =  count($datas) * 40); ?>" hidden>
-
-                                        <p class="fw-semibold display-6">$<?php echo e($totalPriceMontly =  count($datas) * 40); ?></p>
-                                        <p class="font-size-24 fw-semibold text-success text-uppercase">Pay Montly</p>
-                                    </div>
-                                </div>
-                            </label>
-                            <!-- /.radio-card -->
-
-                            <label for="Yearly" class="radio-card">
-                                <input type="radio" name="radio-card" id="Yearly" />
-                                <div class="card-content-wrapper">
-                                    <span class="check-icon"></span>
-                                    <div class="card-content">
-                                        <img src="<?php echo e(URL::asset('/assets/images/checkout/give.jpg')); ?>" alt="" />
-                                        <input id="YearlyPaymentOption" type="radio" name="PaymentOption" value="Yearly" hidden>
-                                        <input id="YearlyPaymentAmount" type="radio" name="PaymentAmount" value="<?php echo e($totalPriceYearly = count($datas) * 40 * 12); ?>" hidden>
-
-                                        <p class="fw-semibold display-6">$<?php echo e($totalPriceYearly = count($datas) * 40 * 12); ?></p>
-                                        <p class="font-size-24 fw-semibold text-success text-uppercase">Pay Yearly</p>
-                                    </div>
-                                </div>
-                            </label>
-                            <!-- /.radio-card -->
-                        </div>
-                        <!-- /.grid-wrapper -->
+                <div class="row mt-4">
+                    <div class="col-lg-12">
+                        <span><a href="<?php echo e(route('AllGridOrphans')); ?>" class="btn btn-outline-success btn-sm waves-effect  waves-light m-1 float-end"><i class="bx bx-plus-circle  font-size-16 align-middle"></i></a></span>
+                        <span class="waves-effect  waves-light float-end font-size-14 text-uppercase mt-2">Add one more orphan <i class="bx bx-right-arrow-alt "></i></span>
                     </div>
                 </div>
             </div>
-            <div class="card " id="PaymentPart">
-                <div class="card-header">
+        </div>
+    </div>
+    <div class="col-xl-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-3 text-center">Payment Options</h4>
+                <div class="row ">
+                <div class="col-md-12 ">
+                    <div class="pricingTable">
+                    <div class="inner d-flex tabsBtnHolder">
+                        <ul>
+                            <li><p id="monthly" class="active">Monthly</p></li>
+                            <li><p id="yearly" class="">Yearly</p></li>
+                            <li class="indicator"></li>
+                        </ul>
+                    </div>
+                    </div>
                 </div>
-
-                <div class="card-body">
+            </div>
+                <div class="table-responsive">
+                    <table class="table mb-0">
+                        <tbody>
+                            <tr>
+                                <td>Total :</td>
+                                <td>$ 1,857</td>
+                            </tr>
+                            <tr>
+                                <td>Estimated Tax : </td>
+                                <td>$ 0</td>
+                            </tr>
+                            <tr>
+                                <th>Grand Total :</th>
+                                <th>$ 1744.22</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end row -->
+<form method="POST" class="form-horizontal" action="<?php echo e(route('StorePayment')); ?>" enctype="multipart/form-data" id="Payment">
+    <?php echo csrf_field(); ?>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class=" ">
+                <!-- <div class="card-header"></div> -->
+                <div class="">
                     <div class="row">
                         <div class="col-md-12">
                             <div id="charge-error" class="alert alert-danger <?php echo e(!Session::has('error') ? 'd-none' : ''); ?>">
@@ -141,6 +123,31 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FullName')); ?>" id="FullName" name="FullName" required>
                                         <?php $__errorArgs = ['FullName'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong><?php echo e($message); ?></strong>
+                                        </span>
+                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3 position-relative">
+                                        <label for="Email" class="label">Email </label>
+                                        <input type="email" class="form-control form-control-lg <?php $__errorArgs = ['Email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Email')); ?>" id="Email" name="Email" required>
+                                        <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -179,34 +186,6 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3 position-relative">
-                                        <label for="Email" class="label">Email </label>
-                                        <input type="email" class="form-control form-control-lg <?php $__errorArgs = ['Email'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Email')); ?>" id="Email" name="Email" required>
-
-                                        <?php $__errorArgs = ['email'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong><?php echo e($message); ?></strong>
-                                        </span>
-                                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -220,7 +199,6 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ValidMonth')); ?>" id="ValidMonth" name="ValidMonth" placeholder="MM" maxlength="2" required>
-
                                         <?php $__errorArgs = ['ValidMonth'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -233,7 +211,6 @@ $message = $__bag->first($__errorArgs[0]); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -274,7 +251,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('CVV')); ?>" id="CVV" name="CVV" required>
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('CVV')); ?>" id="CVV" name="CVV" maxlength="3" required>
 
                                         <?php $__errorArgs = ['CVV'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -290,34 +267,22 @@ endif;
 unset($__errorArgs, $__bag); ?>
 
                                     </div>
-
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="mb-3 position-relative">
-                                        <label class="info">* CVV or CVC is the card security code, unique three digits number on the back of your card separate from its number.</label>
-
-                                    </div>
-
                                 </div>
                                 <div class="m-3 text-center">
-                                    <button class="btn1 btn-info btn-lg waves-effect waves-light" type="submit">Pay Now</button>
+                                    <button class="btn1 btn-info btn-lg waves-effect waves-light float-end" type="submit">Pay Now</button>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <p class="text-success font-size-18 fw-semibold text-dark">powered by<i class="fab fa-cc-stripe "></i> </p>
-
-                </div>
             </div>
+            <div>
+                    <p class="text-muted text-dark">Attention: This form is secured by stripe <i class="fab fa-cc-stripe "></i> </p>
+                </div>
         </div>
+        <div class="col-md-4"></div>
     </div>
 </form>
-
-
-
 <?php else: ?>
 <div class="row">
     <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
@@ -325,16 +290,13 @@ unset($__errorArgs, $__bag); ?>
     </div>
 </div>
 <?php endif; ?>
+
 <?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('script'); ?>
-
-
 <script src="<?php echo e(URL::asset('/assets/js/pages/Payment.js')); ?>"></script>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-
 <script>
-    Stripe.setPublishableKey('pk_live_Xj0fQHaIs5afu4twa3A7Eob5');
+    Stripe.setPublishableKey('<?php echo e(env('STRIPE_KEY')); ?>');
     var $form = $('#Payment');
     var spinner = $('#loader');
     $form.submit(function(event) {
@@ -375,33 +337,34 @@ unset($__errorArgs, $__bag); ?>
 
     });
 
-    $('#Montly').click(function() {
-        $('#PaymentPart').show();
-        $("#MontlyPaymentOption").prop("checked", true);
-        $("#MontlyPaymentAmount").prop("checked", true);
-
-        $("#YearlyPaymentOption").prop("checked", false);
-        $("#YearlyPaymentAmount").prop("checked", false);
-
-
-
-
-    });
-
-    $('#Yearly').click(function() {
-        $('#PaymentPart').show();
-        $("#YearlyPaymentOption").prop("checked", true);
-        $("#YearlyPaymentAmount").prop("checked", true);
-
-        $("#MontlyPaymentOption").prop("checked", false);
-        $("#MontlyPaymentAmount").prop("checked", false);
-
-    });
-
     $('#submit').click(function() {
         $("body").attr("disabled", true);
     });
+
+    $(document).ready(function() {
+            $("#monthly").click(function(){
+                    $(this).addClass('active');
+                    $("#yearly").removeClass('active')
+
+                    $(".monthlyPriceList").removeClass('d-none');
+                    $(".monthlyPriceList").addClass('fadeIn');
+                    $(".yearlyPriceList").addClass('d-none');
+
+                    $(".indicator").css("left","2px");
+            })
+
+            $("#yearly").click(function(){
+                    $(this).addClass('active');
+                    $("#monthly").removeClass('active');
+
+                    $(".yearlyPriceList").removeClass('d-none');
+                    $(".yearlyPriceList").addClass('fadeIn');
+                    $(".monthlyPriceList").addClass('d-none');
+
+                    $(".indicator").css("left","163px");
+            })
+    })
 </script>
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Payment/Checkout.blade.php ENDPATH**/ ?>
+<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Payment/Checkout.blade.php ENDPATH**/ ?>

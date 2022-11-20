@@ -141,6 +141,7 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                         <th>Address</th>
                         <th>Contacts</th>
                         <th>Email</th>
+                        <th>Orphans</th>
                         <th>Status</th>
                         <th>Created By</th>
                         <th>Actions</th>
@@ -178,6 +179,14 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                         <td>
                             <div>
                                 <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> email); ?></a></h5>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="avatar-xs">
+                                <span class="avatar-title bg-info rounded">
+                                    <?php echo e($data-> orphan -> count()); ?>
+
+                                </span>
                             </div>
                         </td>
                         <td>
@@ -371,4 +380,4 @@ unset($__errorArgs, $__bag); ?>
     });
 </script>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Sponsor/All.blade.php ENDPATH**/ ?>
+<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Sponsor/All.blade.php ENDPATH**/ ?>

@@ -32,10 +32,6 @@ class User extends Authenticatable
         'password',
         'DOB',
         'Profile',
-
-
-
-
         'IsEmployee',
         'IsActive',
         'IsSuperAdmin',
@@ -50,13 +46,9 @@ class User extends Authenticatable
         'IsQamarCareCard',
         'IsAppealsDistributions',
         'IsDonorsAndDonorBoxes',
-
         'Status',
-      'Created_By',
-      'Owner',
-
-
-
+        'Created_By',
+        'Owner',
     ];
 
     /**
@@ -77,4 +69,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function orphan()
+    {
+        return $this->hasMany(Orphan::class, 'Sponsor_ID');
+    }
 }

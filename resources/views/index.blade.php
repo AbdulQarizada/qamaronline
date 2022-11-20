@@ -1,56 +1,38 @@
-@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
-
-
-
-@section('title') @lang('translation.Dashboards') @endsection
+@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts')
+@section('title') Dashboard @endsection
 @section('css')
-
 <link href="{{ URL::asset('/assets/css/mystyle/tabstyle.css') }}" rel="stylesheet" type="text/css" />
-<link href="{{ URL::asset('/assets/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
-
 <!-- tui charts Css -->
 <link href="{{ URL::asset('/assets/libs/tui-chart/tui-chart.min.css') }}" rel="stylesheet" type="text/css" />
-
 @endsection
 @section('content')
-
-
 <div class="row">
     <div class="col-xl-4">
         <div class="card">
             <div class="card-body">
-
                 <div class="d-flex align-items-start">
                     <div class="flex-grow-1">
                         <div class="avatar-xl rounded-circle mini-stat-icon">
                             <span class="avatar-title rounded-circle bg-dark">
                                 @if(Auth::user()->IsEmployee == 1)
                                 <img class="rounded-circle header-profile-user avatar-xl" src="{{ isset(Auth::user()->Profile) ? asset('/uploads/User/Employees/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png') }}" alt="Profile">
-
                                 @else
                                 <img class="rounded-circle header-profile-user avatar-xl" src="{{ isset(Auth::user()->Profile) ? asset('/uploads/User/Sponsors/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png') }}" alt="Profile">
                                 @endif
                             </span>
                         </div>
                     </div>
-
-
                     <div class="flex-grow-1">
                         <div class="text-muted">
                             <h5>{{ Str::ucfirst(Auth::user()->FullName) }}</h5>
                             <p class="mb-1">{{ Str::ucfirst(Auth::user()->email) }}</p>
                             <p class="mb-0">{{ Str::ucfirst(Auth::user()->Job) }}</p>
                         </div>
-
                     </div>
-
-
                 </div>
             </div>
-
         </div>
     </div>
-
     <div class="col-xl-8">
         <div class="row">
             <div class="col-sm-12">
@@ -71,17 +53,12 @@
 </div>
 <br />
 <br />
-
-
 @if(Auth::user()->IsEmployee == 1)
 @if(Cookie::get('Layout') == 'LayoutNoSidebar')
-
 <div class="row">
     @if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsAidAndRelief == 1 || Auth::user()->IsWash == 1 || Auth::user()->IsEducation == 1 || Auth::user()->IsInitiative == 1|| Auth::user()->IsMedicalSector == 1)
-
     <h1 class="font-size-24 mt-4 mb-4 fw-medium text-dark text-muted">Projects</h1>
     @endif
-
     <div class="col-xl-12">
         <div class="row">
             @if(Auth::user()->IsOrphanRelief == 1)
@@ -148,7 +125,6 @@
                 </a>
             </div>
             @endif
-
             @if(Auth::user()->IsInitiative == 1)
             <div class="col-md-2 mb-2">
                 <a href="{{route('IndexEducation')}}">
@@ -165,7 +141,6 @@
                 </a>
             </div>
             @endif
-
             @if(Auth::user()->IsMedicalSector == 1)
             <div class="col-md-2 mb-2">
                 <a href="{{route('IndexEducation')}}">
@@ -185,16 +160,12 @@
         </div>
     </div>
 </div>
-
-
 <div class="row ">
     @if(Auth::user()->IsFoodAppeal == 1 || Auth::user()->IsQamarCareCard == 1 || Auth::user()->IsAppealsDistributions == 1 || Auth::user()->IsDonorsAndDonorBoxes == 1)
     <h1 class="font-size-24 mt-4 mb-4 fw-medium text-dark text-muted">Benefeciary Services</h1>
     @endif
-
     <div class="col-xl-12">
         <div class="row">
-
             @if(Auth::user()->IsQamarCareCard == 1)
             <div class="col-md-2 mb-2">
                 <a href="{{route('IndexCareCard')}}">
@@ -258,16 +229,10 @@
                     </div>
                 </a>
             </div>
-
             @endif
-
         </div>
     </div>
 </div>
-
-
-
-
 <div class="row">
     @if(Auth::user()->IsSuperAdmin == 1)
     <h1 class="font-size-24 mt-4 mb-4 fw-medium text-dark text-muted">System Management</h1>
@@ -290,26 +255,20 @@
                 </a>
             </div>
             @endif
-
         </div>
     </div>
 </div>
 @endif
-
-
 @if(Cookie::get('Layout') == 'LayoutSidebar')
 <div class="row mb-4">
     <div class="col-md-4">
         <div class="card">
             <h5 class="card-header text-dark bg-secondary bg-soft">Lastest Beneficiaries</h5>
             <div class="card-body">
-
-                <!-- <p class="text-muted fw-medium">Beneficiaries</p> -->
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
                             <td><img class="d-block" src="{{ URL::asset('/assets/images/qcc/front.jpeg') }}" height="185px" alt="First slide"></td>
-
                         </div>
                         @foreach($qamarcarecardsLastFive as $qamarcarecard)
                         <div class="carousel-item ">
@@ -328,24 +287,17 @@
                                                 </a>
                                             </div>
                                         </td>
-
                                     </tr>
                                 </tbody>
-
                             </table>
                         </div>
-
                         @endforeach
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
-
-
-<!-- end row -->
 <div class="row mb-4">
     <div class="col-xl-4 mb-4">
         <div class="card">
@@ -354,7 +306,6 @@
                 <div class="">
                     <div id="GenderChart" class="apex-charts" dir="ltr"></div>
                     <h5 class=" text-dark text-center">Gender</h5>
-
                 </div>
             </div>
         </div>
@@ -366,7 +317,6 @@
                 <div class="">
                     <div id="TribeChart" class="apex-charts" dir="ltr"></div>
                     <h5 class=" text-dark text-center">Tribes</h5>
-
                 </div>
             </div>
         </div>
@@ -389,7 +339,6 @@
                 <div class="">
                     <div id="FamilyStatusChart" class="apex-charts" dir="ltr"></div>
                     <h5 class=" text-dark text-center">Family Status</h5>
-
                 </div>
             </div>
         </div>
@@ -401,7 +350,6 @@
                 <div class="">
                     <div id="AfghanistanChart"></div>
                     <h5 class=" text-dark text-center">Provincial Care Cards</h5>
-
                 </div>
             </div>
         </div>
@@ -415,7 +363,6 @@
                 <div class="">
                     <div id="DataInsertionChart" class="apex-charts" dir="ltr"></div>
                     <h5 class=" text-dark text-center">Cards Insertion Timeline</h5>
-
                 </div>
             </div>
         </div>
@@ -438,15 +385,11 @@
                                 <th>Status</th>
                                 <th>Created By</th>
                                 <th>Actions</th>
-
                             </tr>
                         </thead>
-
-
                         <tbody>
                             @foreach($qamarcarecardsLastFive as $qamarcarecard)
                             <tr>
-                                <!-- <td>{{ $qamarcarecard->id }}</td> -->
                                 <td>{{$loop->iteration}}</td>
                                 <td>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> FirstName}} {{$qamarcarecard -> LastName}}</a></h5>
@@ -457,7 +400,6 @@
                                         <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard -> ProvinceName}}</a></h5>
                                         <p class="text-muted mb-0">{{$qamarcarecard -> DistrictName}}</p>
                                         <p class="text-muted mb-0">{{$qamarcarecard -> Village}}</p>
-
                                     </div>
                                 </td>
                                 <td>
@@ -476,7 +418,6 @@
                                         <i class="bx bxs-star text-secondary font-size-16"></i>
                                         <i class="bx bxs-star text-secondary font-size-18"></i>
                                         <i class="bx bxs-star text-secondary font-size-20"></i>
-
                                         @endif
                                         @if( $qamarcarecard -> LevelPoverty == 2)
                                         <i class="bx bxs-star text-warning font-size-12"></i>
@@ -508,66 +449,45 @@
                                         @endif
                                     </div>
                                 </td>
-
                                 <td>
                                     <div>
-
-
                                         @if($qamarcarecard -> Status == 'Pending')
                                         <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary">{{$qamarcarecard -> Status}}</a></h5>
                                         <p class="text-muted mb-0">{{$qamarcarecard -> created_at -> format("j F Y")}}</p>
-
                                         @endif
-
                                         @if($qamarcarecard -> Status == 'Approved')
                                         <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">{{$qamarcarecard -> Status}} </a></h5>
                                         <p class="text-muted mb-0">{{$qamarcarecard -> created_at -> format("j F Y")}}</p>
-
                                         @endif
-
                                         @if($qamarcarecard -> Status == 'Rejected')
                                         <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">{{$qamarcarecard -> Status}} </a></h5>
                                         <p class="text-muted mb-0">{{$qamarcarecard -> created_at -> format("j F Y")}}</p>
-
                                         @endif
-
-
-
                                         @if($qamarcarecard -> Status == 'ReInitiated')
                                         <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info">{{$qamarcarecard -> Status}}</a></h5>
                                         <p class="text-muted mb-0">{{$qamarcarecard -> created_at -> format("j F Y")}}</p>
-
                                         @endif
-
                                         @if($qamarcarecard -> Status == 'Released')
                                         <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">{{$qamarcarecard -> Status}}</a></h5>
                                         <p class="text-muted mb-0">{{$qamarcarecard -> created_at -> format("j F Y")}}</p>
-
                                         @endif
-
                                         @if($qamarcarecard -> Status == 'Printed')
                                         <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-dark">{{$qamarcarecard -> Status}}</a></h5>
                                         <p class="text-muted mb-0">{{$qamarcarecard -> created_at -> format("j F Y")}}</p>
-
                                         @endif
-
                                     </div>
                                 </td>
                                 <td>
                                     @if( $qamarcarecard -> Created_By !="")
-
                                     <div>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$qamarcarecard ->  UFirstName }} {{$qamarcarecard ->  ULastName }}</a></h5>
                                         <p class="text-muted mb-0">{{$qamarcarecard ->  UJob }}</p>
-
                                     </div>
                                     @endif
                                     @if( $qamarcarecard -> Created_By =="")
-
                                     <div>
                                         <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
                                         <p class="text-muted mb-0">Requested</p>
-
                                     </div>
                                     @endif
                                 </td>
@@ -576,56 +496,35 @@
                                         <a href="{{route('StatusCareCard', ['data' => $qamarcarecard -> id])}}" class="btn btn-warning waves-effect waves-light">
                                             <i class="bx bx-show-alt font-size-16 align-middle"></i>
                                         </a>
-
-
-
-
                                     </div>
                                 </td>
                             </tr>
                             @endforeach
-
-
                         </tbody>
                     </table>
                 </div>
-                <!-- end table-responsive -->
             </div>
         </div>
     </div>
 </div>
-<!-- end row -->
-
 @endif
 @else
-
 @endif
 @endsection
-
 @apexchartsScripts
-
 @section('script')
-
-
-
 <!-- Afghanistan Map -->
 <script src="{{ URL::asset('/assets/libs/afghanistanmap/highmaps.js') }}"></script>
 <script src="{{ URL::asset('/assets/libs/afghanistanmap/exporting.js') }}"></script>
-
-
-<script src="{{ URL::asset('/assets/libs/select2/select2.min.js') }}"></script>
-
 <!-- dashboard init -->
 <script src="{{ URL::asset('/assets/js/pages/dashboard.init.js') }}"></script>
-
 <!-- form advanced init -->
 <script src="{{ URL::asset('/assets/js/pages/form-advanced.init.js') }}"></script>
 <script>
-    // Tribe base Chart
 
+    // Tribe base Chart
     (async () => {
         const Tribe = await fetch('{{ route('Tribe_Chart')}}').then(response => response.json());
-
         var TribeChart = {
             series: [Tribe.Pashtun, Tribe.Tajik, Tribe.Hazara, Tribe.Uzbek, Tribe.Turkman, Tribe.Pashayi, Tribe.Aimaq, Tribe.Baloch, Tribe.Pamiri, Tribe.Sadat, Tribe.Nooristani, Tribe.Arab, Tribe.Gojar, Tribe.Brahawi, Tribe.qazalbash, Tribe.kochi, ],
             labels: ['Pashtun', 'Tajik', 'Hazara', 'Uzbek', 'Turkman', 'Pashayi', 'Aimaq', 'Baloch', 'Pamiri', 'Sadat', 'Nooristani', 'Arab', 'Gojar', 'Brahawi', 'qazalbash', 'kochi'],
@@ -656,20 +555,13 @@
                 }
             }]
         };
-
         var TribeChart = new ApexCharts(document.querySelector("#TribeChart"), TribeChart);
         TribeChart.render();
-
     })();
-
-
-
-
 
     // Montly Insetion base Chart
     (async () => {
         const MontlyInsertionJson = await fetch('{{ route('MontlyInsertion_Chart')}}').then(response => response.json());
-
         var MontlyInsertion = {
             chart: {
                 height: 350,
@@ -741,21 +633,13 @@
                 borderColor: "#f1f1f1"
             }
         };
-
         var MontlyDataInsertion = new ApexCharts(document.querySelector("#DataInsertionChart"), MontlyInsertion);
         MontlyDataInsertion.render();
-
-
     })();
-
-
-
-
 
     // Gender base Chart
     (async () => {
         const Gender_ChartJson = await fetch('{{ route('Gender_Chart')}}').then(response => response.json());
-
         var GenderChart = {
             series: [Gender_ChartJson.Male, Gender_ChartJson.Female],
             chart: {
@@ -782,15 +666,9 @@
                 }
             }]
         };
-
         var GenderChart = new ApexCharts(document.querySelector("#GenderChart"), GenderChart);
         GenderChart.render();
-
-
     })();
-
-
-
 
     // Family Status base Chart
     (async () => {
@@ -831,16 +709,9 @@
                 }
             }]
         };
-
         var FamilyStatusChart = new ApexCharts(document.querySelector("#FamilyStatusChart"), FamilyStatusChart);
         FamilyStatusChart.render();
-
-
     })();
-
-
-
-
 
     // all in one care card operation Chart
     (async () => {
@@ -903,31 +774,14 @@
                 }
             }]
         };
-
         var AllinOneChart = new ApexCharts(document.querySelector("#AllinOne"), AllinOne);
         AllinOneChart.render();
-
     })();
-
-
-
-
-
-
-
-
-
-
-
 
     (async () => {
 
         const ProvincialData = await fetch('{{ route('ProvincialData_Chart')}}').then(response => response.json());
         const topology = await fetch('{{ URL::asset('/assets/libs/afghanistanmap/af-all.topo.json')}}').then(response => response.json());
-
-
-
-
         const data = [
             ['af-kt', ProvincialData.khost],
             ['af-pk', ProvincialData.paktika],
@@ -964,13 +818,11 @@
             ['af-kd', ProvincialData.kandahar],
             ['af-zb', ProvincialData.zabul]
         ];
-
         // Create the chart
         Highcharts.mapChart('AfghanistanChart', {
             chart: {
                 map: topology
             },
-
             title: {
                 text: '',
                 align: "left",
@@ -979,20 +831,15 @@
                     fontWeight: "500"
                 }
             },
-
-
-
             mapNavigation: {
                 enabled: true,
                 buttonOptions: {
                     verticalAlign: 'bottom'
                 }
             },
-
             colorAxis: {
                 min: 0
             },
-
             series: [{
                 data: data,
                 name: 'Total',
@@ -1007,7 +854,6 @@
                 }
             }]
         });
-
     })();
 </script>
 @endsection

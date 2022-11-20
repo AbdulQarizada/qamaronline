@@ -12,7 +12,6 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
-
     </div>
 </div>
 <div class="row">
@@ -82,7 +81,6 @@
         </div>
     </div>
 </div>
-<!-- end row -->
 @endforeach
 @endsection
 @section('script')

@@ -56,4 +56,4 @@
     <!-- JAVASCRIPT -->
     <?php echo $__env->make('Layouts.vendor-scripts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 </body>
-</html><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/layouts/master.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/Layouts/master.blade.php ENDPATH**/ ?>

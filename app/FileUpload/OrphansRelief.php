@@ -2,20 +2,8 @@
 
 namespace App\FileUpload;
 
-use App\Models\User;
 use App\Http\Controllers\Controller;
-
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Storage;
-use App\Models\Location;
-use App\Models\Scholarship;
-use App\Models\ScholarshipModule;
-use Illuminate\Support\Facades\Cookie;
-use App\Models\LookUp;
 
 
 
@@ -31,11 +19,6 @@ class OrphansRelief extends Controller
         $this->middleware('auth');
     }
 
-
-
-
-
-
     public function Orphans_Profile(Request $request)
     {
         if ($request->hasFile('Profile')) {
@@ -48,7 +31,6 @@ class OrphansRelief extends Controller
         return '';
     }
 
-
     public function Orphans_Tazkira(Request $request)
     {
         if ($request->hasFile('Tazkira')) {
@@ -60,7 +42,6 @@ class OrphansRelief extends Controller
         }
         return '';
     }
-
 
     public function Orphans_HousePic(Request $request)
     {
@@ -86,8 +67,6 @@ class OrphansRelief extends Controller
         return '';
     }
 
-
-
     public function Sponsors_Profile(Request $request)
     {
 
@@ -100,9 +79,4 @@ class OrphansRelief extends Controller
         }
         return '';
     }
-
-
-
-
-
 }

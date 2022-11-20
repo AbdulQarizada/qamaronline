@@ -10,7 +10,6 @@ class Orphan extends Model
     use HasFactory;
     protected $fillable =
     [
-
         'FirstName',
         'LastName',
         'IntroducerName',
@@ -22,8 +21,6 @@ class Orphan extends Model
         'Tribe_ID',
         'Language_ID',
         'WhyShouldYouHelpMe',
-
-
         'PrimaryNumber',
         'SecondaryNumber',
         'EmergencyNumber',
@@ -34,14 +31,6 @@ class Orphan extends Model
         'InCareRelationship_ID',
         'InCareNumber',
         'InCareTazkiraID',
-
-
-
-
-
-
-
-
         'CurrentlyInSchool',
         'SchoolName',
         'SchoolProvince_ID',
@@ -50,10 +39,6 @@ class Orphan extends Model
         'SchoolNumber',
         'SchoolEmail',
         'Class',
-
-
-
-
         'FatherName',
         'MonthlyFamilyIncome',
         'MonthlyFamilyExpenses',
@@ -61,16 +46,10 @@ class Orphan extends Model
         'IncomeStreem_ID',
         'LevelPoverty',
         'FamilyStatus_ID',
-
-
         'Tazkira',
         'HousePic',
         'FamilyPic',
-
         'Sponsor_ID',
-
-
-
         'Status',
         'IsSponsored',
         'Sponsored_StartDate',
@@ -78,8 +57,10 @@ class Orphan extends Model
         'Status_By',
         'Created_By',
         'Owner',
-
-
-
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

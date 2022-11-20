@@ -1,26 +1,16 @@
-<!-- ========== Left Sidebar Start ========== -->
 <div class="vertical-menu">
-
     <div data-simplebar class="h-100">
-
-        <!--- Sidemenu -->
         <div id="sidebar-menu">
-            <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
-
                 <li class="menu-title" key="t-dashnaord">Dashboard</li>
                 <li><a href="{{route('root')}}" key="t-home"><i class="bx bx-store"></i>Home</a></li>
                 @if(Auth::user()->IsOrphanSponsor == 1)
                 <li><a href="{{route('MyOrphans')}}" key="t-orphan"><i class="mdi mdi-account-child"></i>My Orphans</a></li>
                 <li><a href="{{route('MyPayments')}}" key="t-payment"><i class="mdi mdi-bank"></i>My Payments</a></li>
                 @endif
-
-
-
                 @if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsAidAndRelief == 1 || Auth::user()->IsWash == 1 || Auth::user()->IsEducation == 1 || Auth::user()->IsInitiative == 1|| Auth::user()->IsMedicalSector == 1)
                 <li class="menu-title" key="t-apps">Projects</li>
                 @endif
-
                 @if(Auth::user()->IsQamarCareCard == 1)
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -38,10 +28,8 @@
                                 <li><a href="{{route('PrintedCareCard')}}" key="t-boxed-width">Printed Cards</a></li>
                                 <li><a href="{{route('ReleasedCareCard')}}" key="t-preloader">Released Cards</a></li>
                                 <li><a href="{{route('RejectedCareCard')}}" key="t-colored-sidebar">Rejected Cards</a></li>
-
                             </ul>
                         </li>
-
                         <li>
                             <a href="javascript: void(0);" class="has-arrow" key="t-horizontal">Services</a>
                             <ul class="sub-menu" aria-expanded="true">
@@ -53,7 +41,6 @@
                                         <li><a href="{{route('EligibleBeneficiariesFoodPack')}}" key="t-boxed-width">Eligible Beneficiaries</a></li>
                                         <li><a href="{{route('AssignedBeneficiariesFoodPack')}}" key="t-preloader">Assigned Beneficiaries</a></li>
                                         <li><a href="{{route('AllListFoodPack')}}" key="t-preloader">Staff Beneficiaries</a></li>
-
                                     </ul>
                                 </li>
                                 <li>
@@ -71,21 +58,12 @@
                             <a href="javascript: void(0);" class="has-arrow" key="t-vertical">Online</a>
                             <ul class="sub-menu" aria-expanded="true">
                                 <li><a href="{{route('VerifyCareCard')}}" key="t-colored-verify">Verify Cards</a></li>
-
                             </ul>
                         </li>
                     </ul>
                 </li>
                 @endif
-
-            </ul>
-
-
-
-
             </ul>
         </div>
-        <!-- Sidebar -->
     </div>
 </div>
-<!-- Left Sidebar End -->

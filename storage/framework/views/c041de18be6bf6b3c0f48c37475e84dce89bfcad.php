@@ -39,6 +39,14 @@
     </div>
 </div>
 <div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-success <?php echo e(!Session::has('success') ? 'd-none' : ''); ?>">
+            <?php echo e(Session::get('success')); ?>
+
+        </div>
+    </div>
+</div>
+<div class="row">
     <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="col-md-3">
         <div class="product-container">

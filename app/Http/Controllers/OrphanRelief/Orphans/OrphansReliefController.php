@@ -10,12 +10,8 @@ use App\Models\Location;
 use App\Models\LookUp;
 use App\Models\User;
 use Auth;
-
-
 class OrphansReliefController extends Controller
 {
-
-
   public function __construct()
   {
     $this->middleware('auth', ['except' => ['AllGrid', 'AllGridWordpress']]);
@@ -24,7 +20,6 @@ class OrphansReliefController extends Controller
   // index
   public function Index()
   {
-
     return view('OrphansRelief.Index');
   }
 
@@ -253,7 +248,6 @@ class OrphansReliefController extends Controller
 
   public function Update(Orphan $data)
   {
-
     $data->update([
       'FirstName' => request('FirstName'),
       'LastName' => request('LastName'),
@@ -310,7 +304,6 @@ class OrphansReliefController extends Controller
   // status
   public function Status(Orphan $data)
   {
-
     $orphans =   Orphan::where("orphans.id", "=", $data->id)
       ->join('locations as a', 'orphans.Province_ID', '=', 'a.id')
       ->join('locations as b', 'orphans.District_ID', '=', 'b.id')

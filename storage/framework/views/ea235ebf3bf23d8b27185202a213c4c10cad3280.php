@@ -27,94 +27,9 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
-        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-            <div class="offcanvas-header">
-                <h3 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Filter </h3>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <form action="<?php echo e(route('SearchOrphans')); ?>" method="POST">
-                    <?php echo csrf_field(); ?>
-                    <div class="row">
-                        <div class="col-md-12 mb-2">
-                            <div class="position-relative">
-                                <div class="input-group">
-                                    <select class="form-select Province form-select-lg <?php $__errorArgs = ['Province_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" name="Province_ID" value="<?php echo e(old('Province_ID')); ?>" id="Province_ID">
-                                        <option value="">Select Your Province</option>
-                                        <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($province -> id); ?>"><?php echo e($province -> Name); ?></option>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    </select>
-                                    <?php $__errorArgs = ['Province_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong><?php echo e($message); ?></strong>
-                                    </span>
-                                    <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 mb-2">
-                            <div class="position-relative">
-                                <div class="input-group">
-                                    <select class="form-select  District form-select-lg <?php $__errorArgs = ['District_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" name="District_ID" value="<?php echo e(old('District_ID')); ?>" id="District_ID">
-                                        <option value="">Select Your District</option>
-                                    </select>
-                                    <?php $__errorArgs = ['District_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong><?php echo e($message); ?></strong>
-                                    </span>
-                                    <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 mb-2">
-                            <div class="hstack gap-2">
-                                <input type="text" name="PageInfo" value="<?php echo e($PageInfo); ?>" class="d-none">
-                                <input class="form-control form-control-lg" type="text" name="data">
-                            </div>
-                        </div>
-                        <div class="col-md-12 mb-2">
-                            <button type="submit" class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded w-lg"><i class="mdi mdi-magnify me-1"></i>Filter</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
     <div class="col-md-4 col-sm-12 mb-2">
         <div class="hstack gap-3">
-            <a class="btn  btn-lg waves-effect  waves-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-toggle="tooltip" data-bs-placement="top" title="Filter"> <i class="mdi mdi-filter-menu-outline font-size-24 align-middle"></i></a>
+            <a class="btn  btn-lg waves-effect  waves-light" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" data-bs-toggle="tooltip" data-bs-placement="top" title="Filter"> <i class="mdi mdi-filter-menu-outline font-size-24 align-middle"></i></a>
             <select class="form-select  form-select-lg <?php $__errorArgs = ['Country'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -140,9 +55,86 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
 </div>
 <div class="row">
     <div class="col-12">
+        <div class="collapse" id="collapseWidthExample">
+            <form action="<?php echo e(route('SearchOrphans')); ?>" method="POST">
+                <?php echo csrf_field(); ?>
+                <div class="row">
+                    <div class="col-md-2 mb-2">
+                        <div class="position-relative">
+                            <div class="input-group">
+                                <select class="form-select Province form-select-lg <?php $__errorArgs = ['Province_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="Province_ID" value="<?php echo e(old('Province_ID')); ?>" id="Province_ID">
+                                    <option value="">Select Your Province</option>
+                                    <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($province -> id); ?>"><?php echo e($province -> Name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </select>
+                                <?php $__errorArgs = ['Province_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong><?php echo e($message); ?></strong>
+                                </span>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 mb-2">
+                        <div class="position-relative">
+                            <div class="input-group">
+                                <select class="form-select  District form-select-lg <?php $__errorArgs = ['District_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="District_ID" value="<?php echo e(old('District_ID')); ?>" id="District_ID">
+                                    <option value="">Select Your District</option>
+                                </select>
+                                <?php $__errorArgs = ['District_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong><?php echo e($message); ?></strong>
+                                </span>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <input type="text" name="PageInfo" value="<?php echo e($PageInfo); ?>" class="d-none">
+                        <input class="form-control form-control-lg" type="text" name="data">
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <button type="submit" class="btn btn-outline-danger btn-lg waves-effect  waves-light"><i class="mdi mdi-magnify me-1"></i>Filter</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
         <h3 class="card-header bg-dark text-white"></h3>
         <div class="table-responsive">
-            <table class="table  table-striped table-hover dt-responsive nowrap w-100">
+            <table class="table table-hover table-striped dt-responsive nowrap w-100">
                 <thead class="table-light">
                     <tr>
                         <th>
@@ -159,7 +151,7 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody class="table-hover">
+                <tbody>
                     <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <tr>
                         <td>
@@ -587,4 +579,4 @@ unset($__errorArgs, $__bag); ?>
     });
 </script>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Orphan/All.blade.php ENDPATH**/ ?>
+<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Orphan/All.blade.php ENDPATH**/ ?>

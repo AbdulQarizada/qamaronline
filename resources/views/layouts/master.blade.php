@@ -1,45 +1,41 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8" />
     <title> @yield('title') | Qamar Foundation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesbrand" name="author" />
+    <meta content="Author: Abdul Wahab Qarizada" name="description" />
+    <meta content="Abdul Wahab Qarizada" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}">
     @yield('css')
-
-<!-- Bootstrap Css -->
-<link href="{{ URL::asset('/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-<!-- Icons Css -->
-<link href="{{ URL::asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-<!-- App Css-->
-<link href="{{ URL::asset('/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
-
+    <!-- Bootstrap Css -->
+    <link href="{{ URL::asset('/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="{{ URL::asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="{{ URL::asset('/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 </head>
-
 @section('body')
-    <body data-sidebar="dark">
-@show
-      <!-- Loader -->
-      <div id="preloader">
-            <div id="status">
-                <div class="spinner-chase">
-                    <div class="chase-dot"></div>
-                    <div class="chase-dot"></div>
-                    <div class="chase-dot"></div>
-                    <div class="chase-dot"></div>
-                    <div class="chase-dot"></div>
-                    <div class="chase-dot"></div>
-                </div>
+<body data-sidebar="dark">
+    @show
+    <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner-chase">
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
             </div>
         </div>
+    </div>
     <!-- Begin page -->
     <div id="layout-wrapper">
-        @include('layouts.topbar')
-        @include('layouts.sidebar')
+        @include('Layouts.topbar')
+        @include('Layouts.sidebar')
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
@@ -51,18 +47,13 @@
                 <!-- container-fluid -->
             </div>
             <!-- End Page-content -->
-            @include('layouts.footer')
+            @include('Layouts.footer')
         </div>
         <!-- end main content-->
     </div>
     <!-- END layout-wrapper -->
-
-
     <!-- /Right-bar -->
-
-
     <!-- JAVASCRIPT -->
-    @include('layouts.vendor-scripts')
+    @include('Layouts.vendor-scripts')
 </body>
-
 </html>

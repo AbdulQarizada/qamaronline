@@ -3,23 +3,18 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-
-
                 <a href="{{route('root')}}" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="{{ URL::asset('/assets/images/logo.png') }}" alt="" height="22">
-
                     </span>
                     <span class="logo-lg">
                         <img src="{{ URL::asset('/assets/images/side_logo.png') }}" alt="" height="45">
                     </span>
                 </a>
             </div>
-
             <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn">
                 <i class="fa fa-fw fa-bars"></i>
             </button>
-
             <!-- App Search-->
             <form class="app-search d-none d-lg-block">
                 <div class="position-relative">
@@ -29,10 +24,10 @@
             </form>
             @if (Auth::check())
             <div class="dropdown dropdown-mega d-none d-lg-block ms-2">
-                <!-- <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+              <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
                 <span key="t-megamenu">Mega Menus</span>
                 <i class="mdi mdi-chevron-down"></i>
-            </button> -->
+            </button>
                 <div class="dropdown-menu dropdown-megamenu">
                     <div class="row">
                         <div class="col-sm-8">

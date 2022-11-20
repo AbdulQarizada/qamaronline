@@ -26,22 +26,9 @@ use Stripe\Stripe;
 class PaymentsReliefController extends Controller
 {
 
-
-
-
-
   public function __construct()
   {
-    $this->middleware('auth', ['except' => ['AllGrid', 'AllGridWordpress', 'OrphanDetail', 'AddToCart', 'RemoveFromCart', 'Payment']]);
-  }
-
-
-
-  // index
-  public function Index()
-  {
-
-    return view('OrphansRelief.Index');
+    $this->middleware('auth', ['except' => ['Checkout', 'AddToCart', 'RemoveFromCart', 'StorePayment']]);
   }
 
   // Payment
@@ -175,11 +162,7 @@ class PaymentsReliefController extends Controller
       $details = ['Email' => request('Email'), 'Password' => $RandomPassword, 'FullName' => request('FullName')];
       Mail::to(request('Email'))->send(new OrphanMails($details));
       Session::forget('cart');
-      return view('OrphansRelief.Sponsor.Success', ['datas' => $cart->items, 'totalPrice' => $cart->totalPrice]);
-
-
-
-
+      return redirect()->route('AllGridOrphans')->with('success', 'You have successfully sponosred an orphan, we have sent you an email that contains username and password and link to login, please login to the dashboard and track your orphan. Welcome to Qamar Family');
     }
     else
     {
@@ -220,14 +203,7 @@ class PaymentsReliefController extends Controller
         $orphanid->update(['IsSponsored' => 1]);
       }
       Session::forget('cart');
-      return view('OrphansRelief.Sponsor.Success', ['datas' => $cart->items, 'totalPrice' => $cart->totalPrice]);
+      return redirect()->route('AllGridOrphans')->with('success', 'You have successfully sponosred an orphan, we have sent you an email that contains username and password and link to login, please login to the dashboard and track your orphan. Welcome to Qamar Family');
     }
   }
-
-
-
-
-
-
-
 }

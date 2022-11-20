@@ -5,23 +5,16 @@ namespace App\Http\Controllers\OrphanRelief\Sponsors;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Orphan;
 use App\Models\Location;
 use App\Models\User;
 
 class SponsorsReliefController extends Controller
 {
 
-
   public function __construct()
   {
     $this->middleware('auth');
-  }
-
-  // index
-  public function Index()
-  {
-
-    return view('OrphansRelief.Index');
   }
 
   // Sponsor
@@ -33,6 +26,7 @@ class SponsorsReliefController extends Controller
     $sponsors =   User::where("users.IsOrphanSponsor", "=", 1)
     -> leftjoin('users as a', 'users.Created_By', '=', 'a.id')
     -> select('users.*','a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob')
+    -> withCount('orphan')
     -> paginate(100);
     return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo,'provinces' => $provinces]);
   }

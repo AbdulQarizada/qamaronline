@@ -1,11 +1,9 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8" />
     <title> @yield('title') | Qamar Foundation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}">
     <!-- Bootstrap Css -->
@@ -14,13 +12,9 @@
     <link href="{{ URL::asset('/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ URL::asset('/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
-
     @yield('css')
-
 </head>
-
 @section('body')
-
 <body data-topbar="dark" data-layout="horizontal">
     <!-- Loader -->
     <div id="preloader">
@@ -35,16 +29,11 @@
             </div>
         </div>
     </div>
-
-
     @show
     @include('sweetalert::alert')
-
     <!-- Begin page -->
     <div id="layout-wrapper">
-
-
-        @include('layouts.horizontal')
+        @include('Layouts.horizontal')
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
@@ -59,18 +48,15 @@
             <br />
             <br />
             <br />
-            @include('layouts.footer')
-
+            @include('Layouts.footer')
         </div>
         <!-- ============================================================== -->
         <!-- End Right content here -->
         <!-- ============================================================== -->
     </div>
     <!-- END wrapper -->
-
-       <!-- Right bar overlay-->
-       <!-- <div class="rightbar-overlay"></div> -->
-    @include('layouts.vendor-scripts')
+    <!-- Right bar overlay-->
+    <!-- <div class="rightbar-overlay"></div> -->
+    @include('Layouts.vendor-scripts')
 </body>
-
 </html>

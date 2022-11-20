@@ -114,69 +114,24 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                         </div>
                                     </div>
-
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="remember" <?php echo e(old('remember') ? 'checked' : ''); ?>>
                                         <label class="form-check-label" for="remember">
                                             Remember me
                                         </label>
                                     </div>
-
                                     <div class="mt-3 d-grid">
                                         <button class="btn btn-primary waves-effect waves-light" type="submit">Log In</button>
                                     </div>
-
-                                    <!-- <div class="mt-4 text-center">
-                                            <h5 class="font-size-14 mb-3">Sign in with</h5>
-
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item">
-                                                    <a href="javascript::void()"
-                                                        class="social-list-item bg-primary text-white border-primary">
-                                                        <i class="mdi mdi-facebook"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a href="javascript::void()"
-                                                        class="social-list-item bg-info text-white border-info">
-                                                        <i class="mdi mdi-twitter"></i>
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a href="javascript::void()"
-                                                        class="social-list-item bg-danger text-white border-danger">
-                                                        <i class="mdi mdi-google"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div> -->
-
-                                    <div class="mt-4 text-center">
-                                        <!-- <p>Do not have an account ? <a href="<?php echo e(url('register')); ?>" class="fw-medium text-primary"> Create one</a> </p> -->
-
-                                    </div>
-                                </form>
                             </div>
-
                         </div>
                     </div>
                     <div class="mt-5 text-center">
-
-                        <div>
-                            <!-- <p>Don't have an account ? <a href="auth-register" class="fw-medium text-primary">
-                                        Signup now </a> </p> -->
-                            <p>© <script>
-                                    document.write(new Date().getFullYear())
-                                </script> Qamaronline. Developed with <i class="mdi mdi-heart text-danger"></i> by Qamar MIS Team
-                            </p>
-                        </div>
+                        <p>© <script> document.write(new Date().getFullYear()) </script> QAMARONLINE. Developed with <i class="mdi mdi-heart text-danger"></i> by Qamar MIS Team</p>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-    <!-- end account-pages -->
-
     <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.master-without-nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/auth/login.blade.php ENDPATH**/ ?>

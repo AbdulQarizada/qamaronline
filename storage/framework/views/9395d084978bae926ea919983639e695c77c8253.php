@@ -1,9 +1,9 @@
 <!-- JAVASCRIPT -->
-<script src="{{ URL::asset('assets/libs/jquery/jquery.min.js')}}"></script>
-<script src="{{ URL::asset('assets/libs/bootstrap/bootstrap.min.js')}}"></script>
-<script src="{{ URL::asset('assets/libs/metismenu/metismenu.min.js')}}"></script>
-<script src="{{ URL::asset('assets/libs/simplebar/simplebar.min.js')}}"></script>
-<script src="{{ URL::asset('assets/libs/node-waves/node-waves.min.js')}}"></script>
+<script src="<?php echo e(URL::asset('assets/libs/jquery/jquery.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/libs/bootstrap/bootstrap.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/libs/metismenu/metismenu.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/libs/simplebar/simplebar.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('assets/libs/node-waves/node-waves.min.js')); ?>"></script>
 <script>
     $('#change-password').on('submit',function(event){
         event.preventDefault();
@@ -15,13 +15,13 @@
         $('#passwordError').text('');
         $('#password_confirmError').text('');
         $.ajax({
-            url: "{{ url('update-password') }}" + "/" + Id,
+            url: "<?php echo e(url('update-password')); ?>" + "/" + Id,
             type:"POST",
             data:{
                 "current_password": current_password,
                 "password": password,
                 "password_confirmation": password_confirm,
-                "_token": "{{ csrf_token() }}",
+                "_token": "<?php echo e(csrf_token()); ?>",
             },
             success:function(response){
                 $('#current_passwordError').text('');
@@ -31,7 +31,7 @@
                     $('#current_passwordError').text(response.Message);
                 }else if(response.isSuccess == true){
                     setTimeout(function () {
-                        window.location.href = "{{ route('root') }}";
+                        window.location.href = "<?php echo e(route('root')); ?>";
                     }, 1000);
                 }
             },
@@ -43,7 +43,7 @@
         });
     });
 </script>
-@yield('script')
+<?php echo $__env->yieldContent('script'); ?>
 <!-- App js -->
-<script src="{{ URL::asset('assets/js/app.min.js')}}"></script>
-@yield('script-bottom')
+<script src="<?php echo e(URL::asset('assets/js/app.min.js')); ?>"></script>
+<?php echo $__env->yieldContent('script-bottom'); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/Layouts/vendor-scripts.blade.php ENDPATH**/ ?>

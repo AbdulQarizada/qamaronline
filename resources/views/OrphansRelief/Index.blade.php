@@ -1,4 +1,4 @@
-@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
+@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts')
 @section('title') Orphan and Sponsorships @endsection
 @section('css')
 <link href="{{ URL::asset('/assets/css/mystyle/tabstyle.css') }}" rel="stylesheet" type="text/css" />
@@ -13,9 +13,7 @@
 <div class="row mt-4">
     @if(Auth::user()->IsOrphanRelief == 1)
     <div class="mt-4 mb-4">
-        <blockquote class="blockquote border-light  font-size-14 mb-0">
-            <p class="my-0 fw-medium text-dark text-muted card-title font-size-24 text-wrap text-uppercase">Orphan and Sponsorships</p>
-        </blockquote>
+        <p class="my-0 fw-medium text-dark text-muted card-title font-size-24 text-wrap text-uppercase">Orphan and Sponsorships</p>
     </div>
     @endif
     <div class="col-xl-12">

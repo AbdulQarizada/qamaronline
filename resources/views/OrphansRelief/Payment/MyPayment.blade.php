@@ -1,13 +1,9 @@
-@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
-
+@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts')
 @section('title') Orphan and Sponsorships @endsection
-
 @section('css')
 <!-- DataTables -->
 <link href="{{ URL::asset('/assets/libs/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
-
 @endsection
-
 @section('content')
 <div class="row">
     <div class="col-12 ">
@@ -19,7 +15,6 @@
                 </blockquote>
             </div>
         </div>
-
     </div>
 </div>
 <div class="row">
@@ -52,7 +47,6 @@
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> ChargeID}}</a></h5>
                                     <p class="text-muted mb-0">{{$data -> DistrictName}}</p>
-
                                 </div>
                             </td>
                             <td>
@@ -64,7 +58,6 @@
                             <td>
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> Email}}</a></h5>
-
                                 </div>
                             </td>
 
@@ -85,9 +78,8 @@
                 </table>
             </div>
         </div>
-    </div> <!-- end col -->
-</div> <!-- end row -->
-
+    </div>
+</div>
 @endsection
 @section('script')
 <!-- Required datatable js -->
