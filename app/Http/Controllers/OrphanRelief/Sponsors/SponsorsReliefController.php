@@ -127,7 +127,7 @@ class SponsorsReliefController extends Controller
   public function Status(User $data)
   {
     $sponsors =   User::where("users.id", "=", $data->id)->first();
-    $orphans = $sponsors->orphan()->paginate(17);
+    $orphans = $sponsors->orphan()->paginate(10);
     return view('OrphansRelief.Sponsor.Status',  ['data' => $sponsors, 'orphans' => $orphans]);
   }
 
