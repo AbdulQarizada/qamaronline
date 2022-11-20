@@ -40,8 +40,8 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <div class="alert alert-success <?php echo e(!Session::has('success') ? 'd-none' : ''); ?>">
-            <?php echo e(Session::get('success')); ?>
+        <div class="alert alert-success <?php echo e(!Session::has('done') ? 'd-none' : ''); ?>">
+            <?php echo e(Session::get('done')); ?>
 
         </div>
     </div>

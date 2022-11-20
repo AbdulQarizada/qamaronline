@@ -40,8 +40,8 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <div class="alert alert-success {{ !Session::has('success') ? 'd-none' : ''  }}">
-            {{ Session::get('success') }}
+        <div class="alert alert-success {{ !Session::has('done') ? 'd-none' : ''  }}">
+            {{ Session::get('done') }}
         </div>
     </div>
 </div>

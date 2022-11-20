@@ -147,6 +147,7 @@ class PaymentsReliefController extends Controller
         'FullName' => request('FullName'),
         'email' => request('Email'),
         'password' => Hash::make($RandomPassword),
+        'Profile' => 'avatar-1.png',
         'IsActive' => 1,
         'IsEmployee' => 0,
         'IsOrphanSponsor' => 1,
@@ -162,7 +163,7 @@ class PaymentsReliefController extends Controller
       $details = ['Email' => request('Email'), 'Password' => $RandomPassword, 'FullName' => request('FullName')];
       Mail::to(request('Email'))->send(new OrphanMails($details));
       Session::forget('cart');
-      return redirect()->route('AllGridOrphans')->with('success', 'You have successfully sponosred an orphan, we have sent you an email that contains username and password and link to login, please login to the dashboard and track your orphan. Welcome to Qamar Family');
+      return redirect()->route('AllGridOrphans')->with('done', 'You have successfully sponosred an orphan, we have sent you an email that contains username and password and link to login, please login to the dashboard and track your orphan. Welcome to Qamar Family');
     }
     else
     {
@@ -183,7 +184,6 @@ class PaymentsReliefController extends Controller
         return redirect()->route('CheckoutPayment')->with('error', $e->getMessage());
       }
 
-
       $RandomPassword = Str::random(12);
       OrphanPayment::create([
         'PaymentOption' => request('PaymentOption'),
@@ -194,7 +194,6 @@ class PaymentsReliefController extends Controller
         'Password' => $RandomPassword,
         'ChargeID' => $charge->id,
       ]);
-
       $userid = User::where('email', '=', request('Email'))->first();
       foreach ($oldCart->items as $item)
       {
@@ -203,7 +202,7 @@ class PaymentsReliefController extends Controller
         $orphanid->update(['IsSponsored' => 1]);
       }
       Session::forget('cart');
-      return redirect()->route('AllGridOrphans')->with('success', 'You have successfully sponosred an orphan, we have sent you an email that contains username and password and link to login, please login to the dashboard and track your orphan. Welcome to Qamar Family');
+      return redirect()->route('AllGridOrphans')->with('done', 'You have successfully sponosred an orphan, we have sent you an email that contains username and password and link to login, please login to the dashboard and track your orphan. Welcome to Qamar Family');
     }
   }
 }

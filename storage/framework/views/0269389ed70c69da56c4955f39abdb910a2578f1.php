@@ -25,7 +25,7 @@
                             <tr>
                                 <th>Profile</th>
                                 <th>Personal Info</th>
-                                <th>Location</th>
+                                <th>Amount</th>
                                 <th>Waiting Since</th>
                                 <th></th>
                             </tr>
@@ -36,7 +36,7 @@
                                 <td><img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data['item']['Profile'])); ?>" alt="" class="avatar-sm rounded-circle"></td>
                                 <td>
                                     <h5 class="text-truncate font-size-18 fw-semibold "><a href="#" class="text-dark"><?php echo e($data['item']['FirstName']); ?> </a></h5>
-                                <td> </td>
+                                <td> $40 / Montly</td>
                                 <td><span class="badge bg-danger"><?php echo e($data['item']['created_at'] -> format("j F Y")); ?></span></td>
                                 <td>
                                     <a href="<?php echo e(route('RemoveFromCartPayment', $data['item']['id'])); ?>" class="btn btn-sm text-danger waves-effect waves-light delete-confirm">
@@ -62,24 +62,28 @@
             <div class="card-body">
                 <h4 class="card-title mb-3 text-center">Payment Options</h4>
                 <div class="row ">
-                <div class="col-md-12 ">
-                    <div class="pricingTable">
-                    <div class="inner d-flex tabsBtnHolder">
-                        <ul>
-                            <li><p id="monthly" class="active">Monthly</p></li>
-                            <li><p id="yearly" class="">Yearly</p></li>
-                            <li class="indicator"></li>
-                        </ul>
-                    </div>
+                    <div class="col-md-12 ">
+                        <div class="pricingTable">
+                            <div class="inner d-flex tabsBtnHolder">
+                                <ul>
+                                    <li>
+                                        <p id="monthly" class="active">Monthly</p>
+                                    </li>
+                                    <li>
+                                        <p id="yearly" class="">Yearly</p>
+                                    </li>
+                                    <li class="indicator"></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
                 <div class="table-responsive">
                     <table class="table mb-0">
-                        <tbody>
+                        <tbody id="Montly">
                             <tr>
                                 <td>Total :</td>
-                                <td>$ 1,857</td>
+                                <td>$<?php echo e($totalPriceYearly = count($datas) * 40); ?></td>
                             </tr>
                             <tr>
                                 <td>Estimated Tax : </td>
@@ -87,7 +91,21 @@
                             </tr>
                             <tr>
                                 <th>Grand Total :</th>
-                                <th>$ 1744.22</th>
+                                <th>$<?php echo e($totalPriceYearly = count($datas) * 40); ?></th>
+                            </tr>
+                        </tbody>
+                        <tbody id="Yearly" class="d-none">
+                            <tr>
+                                <td>Total :</td>
+                                <td>$<?php echo e($totalPriceYearly = count($datas) * 40 * 12); ?></td>
+                            </tr>
+                            <tr>
+                                <td>Estimated Tax : </td>
+                                <td>$ 0</td>
+                            </tr>
+                            <tr>
+                                <th>Grand Total :</th>
+                                <th>$<?php echo e($totalPriceYearly = count($datas) * 40 * 12); ?></th>
                             </tr>
                         </tbody>
                     </table>
@@ -99,22 +117,36 @@
 <!-- end row -->
 <form method="POST" class="form-horizontal" action="<?php echo e(route('StorePayment')); ?>" enctype="multipart/form-data" id="Payment">
     <?php echo csrf_field(); ?>
+    <input type="text" class="form-control d-none form-control-lg <?php $__errorArgs = ['PaymentOption'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('PaymentOption')); ?>" id="PaymentOption" name="PaymentOption" required>
+    <input type="number" class="form-control d-none form-control-lg <?php $__errorArgs = ['PaymentAmount'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('PaymentAmount')); ?>" id="PaymentAmount" name="PaymentAmount" required>
+
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            <div class=" ">
-                <!-- <div class="card-header"></div> -->
-                <div class="">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div id="charge-error" class="alert alert-danger <?php echo e(!Session::has('error') ? 'd-none' : ''); ?>">
-                                <?php echo e(Session::get('error')); ?>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="charge-error" class="alert alert-danger <?php echo e(!Session::has('error') ? 'd-none' : ''); ?>">
+                        <?php echo e(Session::get('error')); ?>
 
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3 position-relative">
-                                        <label for="FullName" class="label mb-3">Full Name </label>
-                                        <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['FullName'];
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3 position-relative">
+                                <label for="FullName" class="label mb-3">Full Name </label>
+                                <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['FullName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -122,24 +154,24 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('FullName')); ?>" id="FullName" name="FullName" required>
-                                        <?php $__errorArgs = ['FullName'];
+                                <?php $__errorArgs = ['FullName'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong><?php echo e($message); ?></strong>
-                                        </span>
-                                        <?php unset($message);
+                                <span class="invalid-feedback" role="alert">
+                                    <strong><?php echo e($message); ?></strong>
+                                </span>
+                                <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3 position-relative">
-                                        <label for="Email" class="label">Email </label>
-                                        <input type="email" class="form-control form-control-lg <?php $__errorArgs = ['Email'];
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3 position-relative">
+                                <label for="Email" class="label">Email </label>
+                                <input type="email" class="form-control form-control-lg <?php $__errorArgs = ['Email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -147,25 +179,25 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Email')); ?>" id="Email" name="Email" required>
-                                        <?php $__errorArgs = ['email'];
+                                <?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong><?php echo e($message); ?></strong>
-                                        </span>
-                                        <?php unset($message);
+                                <span class="invalid-feedback" role="alert">
+                                    <strong><?php echo e($message); ?></strong>
+                                </span>
+                                <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3 position-relative">
-                                        <label for="CardNumber" class="label ">Card Number </label>
-                                        <div id="input--cc" class="creditcard-icon">
-                                            <input type="text" class="form-control CardNumber form-control-lg <?php $__errorArgs = ['CardNumber'];
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3 position-relative">
+                                <label for="CardNumber" class="label ">Card Number </label>
+                                <div id="input--cc" class="creditcard-icon">
+                                    <input type="text" class="form-control CardNumber form-control-lg <?php $__errorArgs = ['CardNumber'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -173,25 +205,25 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('CardNumber')); ?>" id="CardNumber" name="CardNumber" required>
-                                        </div>
-                                        <?php $__errorArgs = ['CardNumber'];
+                                </div>
+                                <?php $__errorArgs = ['CardNumber'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong><?php echo e($message); ?></strong>
-                                        </span>
-                                        <?php unset($message);
+                                <span class="invalid-feedback" role="alert">
+                                    <strong><?php echo e($message); ?></strong>
+                                </span>
+                                <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="mb-3 position-relative">
-                                        <label for="ValidMonth" class="label">Valid Month </i></label>
-                                        <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['ValidMonth'];
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="mb-3 position-relative">
+                                <label for="ValidMonth" class="label">Valid Month </i></label>
+                                <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['ValidMonth'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -199,24 +231,24 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ValidMonth')); ?>" id="ValidMonth" name="ValidMonth" placeholder="MM" maxlength="2" required>
-                                        <?php $__errorArgs = ['ValidMonth'];
+                                <?php $__errorArgs = ['ValidMonth'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong><?php echo e($message); ?></strong>
-                                        </span>
-                                        <?php unset($message);
+                                <span class="invalid-feedback" role="alert">
+                                    <strong><?php echo e($message); ?></strong>
+                                </span>
+                                <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="mb-3 position-relative">
-                                        <label for="ValidYear" class="label">Valid Year </i></label>
-                                        <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['ValidYear'];
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="mb-3 position-relative">
+                                <label for="ValidYear" class="label">Valid Year </i></label>
+                                <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['ValidYear'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -225,26 +257,25 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ValidYear')); ?>" id="ValidYear" name="ValidYear" placeholder="YY" minlength="2" maxlength="2" required>
 
-                                        <?php $__errorArgs = ['ValidYear'];
+                                <?php $__errorArgs = ['ValidYear'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong><?php echo e($message); ?></strong>
-                                        </span>
-                                        <?php unset($message);
+                                <span class="invalid-feedback" role="alert">
+                                    <strong><?php echo e($message); ?></strong>
+                                </span>
+                                <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
 
-                                    </div>
-
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="mb-3 position-relative">
-                                        <label for="CVV" class="label">CVV / CVC * </i></label>
-                                        <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['CVV'];
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="mb-3 position-relative">
+                                <label for="CVV" class="label">CVV / CVC * </i></label>
+                                <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['CVV'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -253,32 +284,29 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('CVV')); ?>" id="CVV" name="CVV" maxlength="3" required>
 
-                                        <?php $__errorArgs = ['CVV'];
+                                <?php $__errorArgs = ['CVV'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong><?php echo e($message); ?></strong>
-                                        </span>
-                                        <?php unset($message);
+                                <span class="invalid-feedback" role="alert">
+                                    <strong><?php echo e($message); ?></strong>
+                                </span>
+                                <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-
-                                    </div>
-                                </div>
-                                <div class="m-3 text-center">
-                                    <button class="btn1 btn-info btn-lg waves-effect waves-light float-end" type="submit">Pay Now</button>
-                                </div>
                             </div>
+                        </div>
+                        <div class="m-3 text-center">
+                            <button class="btn1 btn-info btn-lg waves-effect waves-light float-end" type="submit">Pay Now</button>
                         </div>
                     </div>
                 </div>
             </div>
             <div>
-                    <p class="text-muted text-dark">Attention: This form is secured by stripe <i class="fab fa-cc-stripe "></i> </p>
-                </div>
+                <p class="text-muted text-dark">secured by stripe <i class="fab fa-cc-stripe "></i> </p>
+            </div>
         </div>
         <div class="col-md-4"></div>
     </div>
@@ -327,42 +355,37 @@ unset($__errorArgs, $__bag); ?>
         }
     }
 
-
-    $(document).ready(function() {
-        $('#PaymentPart').hide();
-        $("#MontlyPaymentOption").prop("checked", false);
-        $("#MontlyPaymentAmount").prop("checked", false);
-        $("#YearlyPaymentOption").prop("checked", false);
-        $("#YearlyPaymentAmount").prop("checked", false);
-
-    });
-
     $('#submit').click(function() {
         $("body").attr("disabled", true);
     });
 
     $(document).ready(function() {
-            $("#monthly").click(function(){
-                    $(this).addClass('active');
-                    $("#yearly").removeClass('active')
+        $("input[name=PaymentOption]").val('Montly');
+        $("input[name=PaymentAmount]").val('<?php echo e($totalPriceYearly = count($datas) * 40); ?>');
+        $("#monthly").click(function() {
+            $("#Yearly").addClass('d-none')
+            $("#Montly").removeClass('d-none');
+            $("#Montly").addClass('fadeIn');
+            $(".indicator").css("left", "2px");
+            $("#monthly").addClass('active');
+            $("#yearly").removeClass('active');
+            $("input[name=PaymentOption]").val('Montly');
+            $("input[name=PaymentAmount]").val('<?php echo e($totalPriceYearly = count($datas) * 40); ?>');
 
-                    $(".monthlyPriceList").removeClass('d-none');
-                    $(".monthlyPriceList").addClass('fadeIn');
-                    $(".yearlyPriceList").addClass('d-none');
+        })
 
-                    $(".indicator").css("left","2px");
-            })
+        $("#yearly").click(function() {
+            $("#Montly").addClass('d-none');
+            $("#Yearly").removeClass('d-none');
+            $("#Yearly").addClass('fadeIn');
+            $("#yearly").addClass('active');
+            $("#monthly").removeClass('active');
+            $(".indicator").css("left", "164px");
+            $("input[name=PaymentOption]").val('Yearly');
+            $("input[name=PaymentAmount]").val('<?php echo e($totalPriceYearly = count($datas) * 40 * 12); ?>');
 
-            $("#yearly").click(function(){
-                    $(this).addClass('active');
-                    $("#monthly").removeClass('active');
 
-                    $(".yearlyPriceList").removeClass('d-none');
-                    $(".yearlyPriceList").addClass('fadeIn');
-                    $(".monthlyPriceList").addClass('d-none');
-
-                    $(".indicator").css("left","163px");
-            })
+        })
     })
 </script>
 

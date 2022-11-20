@@ -25,7 +25,7 @@
                             <tr>
                                 <th>Profile</th>
                                 <th>Personal Info</th>
-                                <th>Location</th>
+                                <th>Amount</th>
                                 <th>Waiting Since</th>
                                 <th></th>
                             </tr>
@@ -36,7 +36,7 @@
                                 <td><img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data['item']['Profile'])}}" alt="" class="avatar-sm rounded-circle"></td>
                                 <td>
                                     <h5 class="text-truncate font-size-18 fw-semibold "><a href="#" class="text-dark">{{$data['item']['FirstName']}} </a></h5>
-                                <td> </td>
+                                <td> $40 / Montly</td>
                                 <td><span class="badge bg-danger">{{$data['item']['created_at'] -> format("j F Y")}}</span></td>
                                 <td>
                                     <a href="{{route('RemoveFromCartPayment', $data['item']['id'])}}" class="btn btn-sm text-danger waves-effect waves-light delete-confirm">
@@ -62,24 +62,28 @@
             <div class="card-body">
                 <h4 class="card-title mb-3 text-center">Payment Options</h4>
                 <div class="row ">
-                <div class="col-md-12 ">
-                    <div class="pricingTable">
-                    <div class="inner d-flex tabsBtnHolder">
-                        <ul>
-                            <li><p id="monthly" class="active">Monthly</p></li>
-                            <li><p id="yearly" class="">Yearly</p></li>
-                            <li class="indicator"></li>
-                        </ul>
-                    </div>
+                    <div class="col-md-12 ">
+                        <div class="pricingTable">
+                            <div class="inner d-flex tabsBtnHolder">
+                                <ul>
+                                    <li>
+                                        <p id="monthly" class="active">Monthly</p>
+                                    </li>
+                                    <li>
+                                        <p id="yearly" class="">Yearly</p>
+                                    </li>
+                                    <li class="indicator"></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
                 <div class="table-responsive">
                     <table class="table mb-0">
-                        <tbody>
+                        <tbody id="Montly">
                             <tr>
                                 <td>Total :</td>
-                                <td>$ 1,857</td>
+                                <td>${{ $totalPriceYearly = count($datas) * 40}}</td>
                             </tr>
                             <tr>
                                 <td>Estimated Tax : </td>
@@ -87,7 +91,21 @@
                             </tr>
                             <tr>
                                 <th>Grand Total :</th>
-                                <th>$ 1744.22</th>
+                                <th>${{ $totalPriceYearly = count($datas) * 40}}</th>
+                            </tr>
+                        </tbody>
+                        <tbody id="Yearly" class="d-none">
+                            <tr>
+                                <td>Total :</td>
+                                <td>${{ $totalPriceYearly = count($datas) * 40 * 12}}</td>
+                            </tr>
+                            <tr>
+                                <td>Estimated Tax : </td>
+                                <td>$ 0</td>
+                            </tr>
+                            <tr>
+                                <th>Grand Total :</th>
+                                <th>${{ $totalPriceYearly = count($datas) * 40 * 12}}</th>
                             </tr>
                         </tbody>
                     </table>
@@ -99,101 +117,97 @@
 <!-- end row -->
 <form method="POST" class="form-horizontal" action="{{ route('StorePayment') }}" enctype="multipart/form-data" id="Payment">
     @csrf
+    <input type="text" class="form-control d-none form-control-lg @error('PaymentOption') is-invalid @enderror" value="{{ old('PaymentOption') }}" id="PaymentOption" name="PaymentOption" required>
+    <input type="number" class="form-control d-none form-control-lg @error('PaymentAmount') is-invalid @enderror" value="{{ old('PaymentAmount') }}" id="PaymentAmount" name="PaymentAmount" required>
+
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            <div class=" ">
-                <!-- <div class="card-header"></div> -->
-                <div class="">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="charge-error" class="alert alert-danger {{ !Session::has('error') ? 'd-none' : ''  }}">
+                        {{ Session::get('error') }}
+                    </div>
                     <div class="row">
-                        <div class="col-md-12">
-                            <div id="charge-error" class="alert alert-danger {{ !Session::has('error') ? 'd-none' : ''  }}">
-                                {{ Session::get('error') }}
+                        <div class="col-md-6">
+                            <div class="mb-3 position-relative">
+                                <label for="FullName" class="label mb-3">Full Name </label>
+                                <input type="text" class="form-control form-control-lg @error('FullName') is-invalid @enderror" value="{{ old('FullName') }}" id="FullName" name="FullName" required>
+                                @error('FullName')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="mb-3 position-relative">
-                                        <label for="FullName" class="label mb-3">Full Name </label>
-                                        <input type="text" class="form-control form-control-lg @error('FullName') is-invalid @enderror" value="{{ old('FullName') }}" id="FullName" name="FullName" required>
-                                        @error('FullName')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3 position-relative">
-                                        <label for="Email" class="label">Email </label>
-                                        <input type="email" class="form-control form-control-lg @error('Email') is-invalid @enderror" value="{{ old('Email') }}" id="Email" name="Email" required>
-                                        @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3 position-relative">
-                                        <label for="CardNumber" class="label ">Card Number </label>
-                                        <div id="input--cc" class="creditcard-icon">
-                                            <input type="text" class="form-control CardNumber form-control-lg @error('CardNumber') is-invalid @enderror" value="{{ old('CardNumber') }}" id="CardNumber" name="CardNumber" required>
-                                        </div>
-                                        @error('CardNumber')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="mb-3 position-relative">
-                                        <label for="ValidMonth" class="label">Valid Month </i></label>
-                                        <input type="text" class="form-control form-control-lg @error('ValidMonth') is-invalid @enderror" value="{{ old('ValidMonth') }}" id="ValidMonth" name="ValidMonth" placeholder="MM" maxlength="2" required>
-                                        @error('ValidMonth')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="mb-3 position-relative">
-                                        <label for="ValidYear" class="label">Valid Year </i></label>
-                                        <input type="text" class="form-control form-control-lg @error('ValidYear') is-invalid @enderror" value="{{ old('ValidYear') }}" id="ValidYear" name="ValidYear" placeholder="YY" minlength="2" maxlength="2" required>
-
-                                        @error('ValidYear')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-
-                                    </div>
-
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="mb-3 position-relative">
-                                        <label for="CVV" class="label">CVV / CVC * </i></label>
-                                        <input type="text" class="form-control form-control-lg @error('CVV') is-invalid @enderror" value="{{ old('CVV') }}" id="CVV" name="CVV" maxlength="3" required>
-
-                                        @error('CVV')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-
-                                    </div>
-                                </div>
-                                <div class="m-3 text-center">
-                                    <button class="btn1 btn-info btn-lg waves-effect waves-light float-end" type="submit">Pay Now</button>
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3 position-relative">
+                                <label for="Email" class="label">Email </label>
+                                <input type="email" class="form-control form-control-lg @error('Email') is-invalid @enderror" value="{{ old('Email') }}" id="Email" name="Email" required>
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3 position-relative">
+                                <label for="CardNumber" class="label ">Card Number </label>
+                                <div id="input--cc" class="creditcard-icon">
+                                    <input type="text" class="form-control CardNumber form-control-lg @error('CardNumber') is-invalid @enderror" value="{{ old('CardNumber') }}" id="CardNumber" name="CardNumber" required>
+                                </div>
+                                @error('CardNumber')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="mb-3 position-relative">
+                                <label for="ValidMonth" class="label">Valid Month </i></label>
+                                <input type="text" class="form-control form-control-lg @error('ValidMonth') is-invalid @enderror" value="{{ old('ValidMonth') }}" id="ValidMonth" name="ValidMonth" placeholder="MM" maxlength="2" required>
+                                @error('ValidMonth')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="mb-3 position-relative">
+                                <label for="ValidYear" class="label">Valid Year </i></label>
+                                <input type="text" class="form-control form-control-lg @error('ValidYear') is-invalid @enderror" value="{{ old('ValidYear') }}" id="ValidYear" name="ValidYear" placeholder="YY" minlength="2" maxlength="2" required>
+
+                                @error('ValidYear')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="mb-3 position-relative">
+                                <label for="CVV" class="label">CVV / CVC * </i></label>
+                                <input type="text" class="form-control form-control-lg @error('CVV') is-invalid @enderror" value="{{ old('CVV') }}" id="CVV" name="CVV" maxlength="3" required>
+
+                                @error('CVV')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="m-3 text-center">
+                            <button class="btn1 btn-info btn-lg waves-effect waves-light float-end" type="submit">Pay Now</button>
                         </div>
                     </div>
                 </div>
             </div>
             <div>
-                    <p class="text-muted text-dark">Attention: This form is secured by stripe <i class="fab fa-cc-stripe "></i> </p>
-                </div>
+                <p class="text-muted text-dark">secured by stripe <i class="fab fa-cc-stripe "></i> </p>
+            </div>
         </div>
         <div class="col-md-4"></div>
     </div>
@@ -242,42 +256,37 @@
         }
     }
 
-
-    $(document).ready(function() {
-        $('#PaymentPart').hide();
-        $("#MontlyPaymentOption").prop("checked", false);
-        $("#MontlyPaymentAmount").prop("checked", false);
-        $("#YearlyPaymentOption").prop("checked", false);
-        $("#YearlyPaymentAmount").prop("checked", false);
-
-    });
-
     $('#submit').click(function() {
         $("body").attr("disabled", true);
     });
 
     $(document).ready(function() {
-            $("#monthly").click(function(){
-                    $(this).addClass('active');
-                    $("#yearly").removeClass('active')
+        $("input[name=PaymentOption]").val('Montly');
+        $("input[name=PaymentAmount]").val('{{ $totalPriceYearly = count($datas) * 40}}');
+        $("#monthly").click(function() {
+            $("#Yearly").addClass('d-none')
+            $("#Montly").removeClass('d-none');
+            $("#Montly").addClass('fadeIn');
+            $(".indicator").css("left", "2px");
+            $("#monthly").addClass('active');
+            $("#yearly").removeClass('active');
+            $("input[name=PaymentOption]").val('Montly');
+            $("input[name=PaymentAmount]").val('{{ $totalPriceYearly = count($datas) * 40}}');
 
-                    $(".monthlyPriceList").removeClass('d-none');
-                    $(".monthlyPriceList").addClass('fadeIn');
-                    $(".yearlyPriceList").addClass('d-none');
+        })
 
-                    $(".indicator").css("left","2px");
-            })
+        $("#yearly").click(function() {
+            $("#Montly").addClass('d-none');
+            $("#Yearly").removeClass('d-none');
+            $("#Yearly").addClass('fadeIn');
+            $("#yearly").addClass('active');
+            $("#monthly").removeClass('active');
+            $(".indicator").css("left", "164px");
+            $("input[name=PaymentOption]").val('Yearly');
+            $("input[name=PaymentAmount]").val('{{ $totalPriceYearly = count($datas) * 40 * 12}}');
 
-            $("#yearly").click(function(){
-                    $(this).addClass('active');
-                    $("#monthly").removeClass('active');
 
-                    $(".yearlyPriceList").removeClass('d-none');
-                    $(".yearlyPriceList").addClass('fadeIn');
-                    $(".monthlyPriceList").addClass('d-none');
-
-                    $(".indicator").css("left","163px");
-            })
+        })
     })
 </script>
 

@@ -37,7 +37,7 @@
     top: 50%;
     left: 2px; /*163px*/
     background: #fff;
-    height: calc(100% - 2px);
+    height: calc(99% - 2px);
     transform: translateY(-50%);
     border-radius: 1.5333333333rem;
     width: 161px;
