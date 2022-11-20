@@ -3,7 +3,6 @@
 @section('css')
 @endsection
 @section('content')
-@foreach($datas as $data)
 <div class="row">
     <div class="col-12">
         <a href="{{route('AllSponsor')}}" class="btn btn-outline-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
@@ -58,14 +57,21 @@
                 <tr>
                     <td>
                         <div class="avatar-group">
-                            @foreach($data -> orphan as $orphans)
+                            @foreach($orphans as $orphan)
                             <div class="avatar-group-item">
-                                <a href="{{route('StatusOrphans', ['data' => $orphans -> id])}}" class="d-inline-block">
-                                    <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$orphans -> Profile)}}" alt="" class="rounded-circle avatar-lg">
+                                <a href="{{route('StatusOrphans', ['data' => $orphan -> id])}}" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $orphan -> FirstName }}">
+                                    <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$orphan -> Profile)}}" alt="" class="rounded-circle avatar-md img-thumbnail">
                                 </a>
                             </div>
                             @endforeach
                         </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+                            {!! $orphans -> links() !!} <span class="m-2 text-white badge bg-dark">{{ $orphans -> total() }} Total Records</span>
+                        </ul>
                     </td>
                 </tr>
             </table>
@@ -98,7 +104,6 @@
         @endif
     </div>
 </div>
-@endforeach
 @endsection
 @section('script')
 <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>

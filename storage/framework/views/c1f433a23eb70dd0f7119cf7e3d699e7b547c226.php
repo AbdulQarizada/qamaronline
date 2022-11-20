@@ -3,7 +3,6 @@
 <?php $__env->startSection('css'); ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
-<?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 <div class="row">
     <div class="col-12">
         <a href="<?php echo e(route('AllSponsor')); ?>" class="btn btn-outline-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
@@ -59,14 +58,21 @@
                 <tr>
                     <td>
                         <div class="avatar-group">
-                            <?php $__currentLoopData = $data -> orphan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $orphans): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__currentLoopData = $orphans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $orphan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="avatar-group-item">
-                                <a href="<?php echo e(route('StatusOrphans', ['data' => $orphans -> id])); ?>" class="d-inline-block">
-                                    <img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$orphans -> Profile)); ?>" alt="" class="rounded-circle avatar-lg">
+                                <a href="<?php echo e(route('StatusOrphans', ['data' => $orphan -> id])); ?>" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo e($orphan -> FirstName); ?>">
+                                    <img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$orphan -> Profile)); ?>" alt="" class="rounded-circle avatar-md img-thumbnail">
                                 </a>
                             </div>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+                            <?php echo $orphans -> links(); ?> <span class="m-2 text-white badge bg-dark"><?php echo e($orphans -> total()); ?> Total Records</span>
+                        </ul>
                     </td>
                 </tr>
             </table>
@@ -99,7 +105,6 @@
         <?php endif; ?>
     </div>
 </div>
-<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
 <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
