@@ -117,22 +117,22 @@
 <!-- end row -->
 <form method="POST" class="form-horizontal" action="<?php echo e(route('StorePayment')); ?>" enctype="multipart/form-data" id="Payment">
     <?php echo csrf_field(); ?>
-    <input type="text" class="form-control d-none form-control-lg <?php $__errorArgs = ['PaymentOption'];
+    <input type="text" class="form-control d-none form-control-lg <?php $__errorArgs = ['SubscriptionType'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('PaymentOption')); ?>" id="PaymentOption" name="PaymentOption" required>
-    <input type="number" class="form-control d-none form-control-lg <?php $__errorArgs = ['PaymentAmount'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SubscriptionType')); ?>" id="SubscriptionType" name="SubscriptionType" required>
+    <input type="number" class="form-control d-none form-control-lg <?php $__errorArgs = ['Amount'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('PaymentAmount')); ?>" id="PaymentAmount" name="PaymentAmount" required>
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Amount')); ?>" id="Amount" name="Amount" required>
 
     <div class="row justify-content-center">
         <div class="col-lg-8">
@@ -299,7 +299,11 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
                         <div class="m-3 text-center">
-                            <button class="btn1 btn-info btn-lg waves-effect waves-light float-end" type="submit">Pay Now</button>
+                            <button class="btn1 btn-info btn-lg waves-effect waves-light float-end" type="button" id="Loading" disabled>
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Loading...
+                            </button>
+                            <button class="btn1 btn-info btn-lg waves-effect waves-light float-end" type="submit" id="PayNow">Pay Now</button>
                         </div>
                     </div>
                 </div>
@@ -326,11 +330,14 @@ unset($__errorArgs, $__bag); ?>
 <script>
     Stripe.setPublishableKey('<?php echo e(env('STRIPE_KEY')); ?>');
     var $form = $('#Payment');
-    var spinner = $('#loader');
+    var loading = $('#Loading');
+    var paynow = $('#PayNow');
+    loading.hide();
     $form.submit(function(event) {
         $('#charge-error').addClass('d-none');
         event.preventDefault();
-        spinner.show();
+        loading.show();
+        paynow.hide();
         $form.find('button').prop('disabled', true);
         Stripe.card.createToken({
             number: $('#CardNumber').val(),
@@ -347,7 +354,9 @@ unset($__errorArgs, $__bag); ?>
             $('#charge-error').removeClass('d-none');
             $('#charge-error').text(response.error.message);
             $form.find('button').prop('disabled', false);
-            spinner.hide();
+            loading.hide();
+            paynow.show();
+
         } else {
             var token = response.id;
             $form.append($('<input type="hidden" name="stripeToken" />').val(token));
@@ -355,13 +364,9 @@ unset($__errorArgs, $__bag); ?>
         }
     }
 
-    $('#submit').click(function() {
-        $("body").attr("disabled", true);
-    });
-
     $(document).ready(function() {
-        $("input[name=PaymentOption]").val('Montly');
-        $("input[name=PaymentAmount]").val('<?php echo e($totalPriceYearly = count($datas) * 40); ?>');
+        $("input[name=SubscriptionType]").val('Montly');
+        $("input[name=Amount]").val('<?php echo e($totalPriceYearly = count($datas) * 40); ?>');
         $("#monthly").click(function() {
             $("#Yearly").addClass('d-none')
             $("#Montly").removeClass('d-none');
@@ -369,11 +374,10 @@ unset($__errorArgs, $__bag); ?>
             $(".indicator").css("left", "2px");
             $("#monthly").addClass('active');
             $("#yearly").removeClass('active');
-            $("input[name=PaymentOption]").val('Montly');
-            $("input[name=PaymentAmount]").val('<?php echo e($totalPriceYearly = count($datas) * 40); ?>');
+            $("input[name=SubscriptionType]").val('Montly');
+            $("input[name=Amount]").val('<?php echo e($totalPriceYearly = count($datas) * 40); ?>');
 
         })
-
         $("#yearly").click(function() {
             $("#Montly").addClass('d-none');
             $("#Yearly").removeClass('d-none');
@@ -381,8 +385,8 @@ unset($__errorArgs, $__bag); ?>
             $("#yearly").addClass('active');
             $("#monthly").removeClass('active');
             $(".indicator").css("left", "164px");
-            $("input[name=PaymentOption]").val('Yearly');
-            $("input[name=PaymentAmount]").val('<?php echo e($totalPriceYearly = count($datas) * 40 * 12); ?>');
+            $("input[name=SubscriptionType]").val('Yearly');
+            $("input[name=Amount]").val('<?php echo e($totalPriceYearly = count($datas) * 40 * 12); ?>');
 
 
         })

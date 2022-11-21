@@ -18,6 +18,7 @@ use App\Models\LookUp;
 use Carbon\Carbon;
 use FaizShukri\Quran\Quran;
 
+
 class HomeController extends Controller
 {
     /**
@@ -53,19 +54,16 @@ class HomeController extends Controller
     public function root()
     {
 
-
         if (Auth::check() && !Auth::User()->IsActive == 1) {
             Auth::logout();
             return redirect()->route('login')->with('Your session has expired because your status changed.');
         }
-
         if (Cookie::get('Layout') == null) {
             if (Auth::User()->IsOrphanSponsor == 1) {
                 $cookies = Cookie::forever('Layout', "LayoutSidebar");
             } else {
                 $cookies = Cookie::forever('Layout', "LayoutNoSidebar");
             }
-
             return redirect()->route('root')->cookie($cookies);
         }
 
@@ -74,13 +72,8 @@ class HomeController extends Controller
 
         // Notification
         $notifications = auth()->user()->unreadNotifications;
-
-
         // Look up
         $catagorys =   LookUp::where("Parent_Name", "=", "None")->get();
-
-
-
         // Quran part
         $quran = new Quran();
         $randomSurah = rand(2, 100);
@@ -88,24 +81,14 @@ class HomeController extends Controller
         $quran = $quran->translation('ar,en')->get($randomSurah . ':' . $randomAya);
         $QuranArabic =  $quran['ar'];
         $QuranEnglish =  $quran['en'];
-
-
-
         $qamarcarecardsLastFive =   QamarCareCard::join('locations as a', 'qamar_care_cards.Province_ID', '=', 'a.id')
             ->join('locations as b', 'qamar_care_cards.District_ID', '=', 'b.id')
             ->join('look_ups as c', 'qamar_care_cards.FamilyStatus_ID', '=', 'c.id')
             ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
             ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
             ->orderBy('id', 'desc')->take(5)->get();
-
-
-
-
         return view('index', compact('QuranArabic','QuranEnglish','notifications','qamarcarecardsLastFive'));
     }
-
-
-
 
 
 

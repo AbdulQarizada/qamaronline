@@ -61,7 +61,7 @@
                             <?php $__currentLoopData = $orphans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $orphan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="avatar-group-item">
                                 <a href="<?php echo e(route('StatusOrphans', ['data' => $orphan -> id])); ?>" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo e($orphan -> FirstName); ?>">
-                                    <img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$orphan -> Profile)); ?>" alt="" class="rounded-circle avatar-md img-thumbnail">
+                                    <img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$orphan -> Profile)); ?>" alt="" class="rounded-circle avatar-lg img-thumbnail">
                                 </a>
                             </div>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

@@ -116,7 +116,7 @@ class PaymentsReliefController extends Controller
     if (!$userid)
     {
 
-      $AmountInCents = $request->input('PaymentAmount') * 100;
+      $AmountInCents = $request->input('Amount') * 100;
       Stripe::setApiKey(env('STRIPE_SECRET'));
       try
       {
@@ -135,7 +135,7 @@ class PaymentsReliefController extends Controller
       $RandomPassword = Str::random(8);
       OrphanPayment::create([
         'PaymentOption' => request('PaymentOption'),
-        'PaymentAmount' => request('PaymentAmount'),
+        'Amount' => request('Amount'),
         'FullName' => request('FullName'),
         'Email' => request('Email'),
         'CardNumber' => request('CardNumber'),
@@ -163,12 +163,15 @@ class PaymentsReliefController extends Controller
       $details = ['Email' => request('Email'), 'Password' => $RandomPassword, 'FullName' => request('FullName')];
       Mail::to(request('Email'))->send(new OrphanMails($details));
       Session::forget('cart');
-      return redirect()->route('AllGridOrphans')->with('done', 'You have successfully sponosred an orphan, we have sent you an email that contains username and password and link to login, please login to the dashboard and track your orphan. Welcome to Qamar Family');
+      return redirect()->route('AllGridOrphans')->with('done', 'Congratulations on successfully sponsoring an orphan!
+      We have sent you an email, which contains username, password and a link to login to our system.
+      You can login to the dashboard and keep tracking your sponsorship.
+      We welcome you to Qamar Family!');
     }
     else
     {
 
-      $AmountInCents = $request->input('PaymentAmount') * 100;
+      $AmountInCents = $request->input('Amount') * 100;
       Stripe::setApiKey(env('STRIPE_SECRET'));
       try
       {
@@ -202,7 +205,10 @@ class PaymentsReliefController extends Controller
         $orphanid->update(['IsSponsored' => 1]);
       }
       Session::forget('cart');
-      return redirect()->route('AllGridOrphans')->with('done', 'You have successfully sponosred an orphan, we have sent you an email that contains username and password and link to login, please login to the dashboard and track your orphan. Welcome to Qamar Family');
+      return redirect()->route('AllGridOrphans')->with('done', 'Congratulations on successfully sponsoring an orphan!
+      We have sent you an email, which contains username, password and a link to login to our system.
+      You can login to the dashboard and keep tracking your sponsorship.
+      We welcome you to Qamar Family!');
     }
   }
 }
