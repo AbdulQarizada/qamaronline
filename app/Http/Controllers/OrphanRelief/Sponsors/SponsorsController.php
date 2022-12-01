@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\OrphanRelief\Sponsors;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -23,11 +24,11 @@ class SponsorsController extends Controller
     $PageInfo = 'All';
     $provinces = Location::whereNull("Parent_ID")->get();
     $sponsors =   User::where("users.IsOrphanSponsor", "=", 1)
-    -> leftjoin('users as a', 'users.Created_By', '=', 'a.id')
-    -> select('users.*','a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob')
-    -> withCount('orphan')
-    -> paginate(100);
-    return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo,'provinces' => $provinces]);
+      ->leftjoin('users as a', 'users.Created_By', '=', 'a.id')
+      ->select('users.*', 'a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob')
+      ->withCount('orphan')
+      ->paginate(100);
+    return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo, 'provinces' => $provinces]);
   }
 
   public function Active()
@@ -35,11 +36,11 @@ class SponsorsController extends Controller
     $PageInfo = 'Active';
     $provinces = Location::whereNull("Parent_ID")->get();
     $sponsors =   User::where("users.IsOrphanSponsor", "=", 1)
-    -> leftjoin('users as a', 'users.Created_By', '=', 'a.id')
-    -> select('users.*','a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob')
-    -> where("users.IsActive", "=", 1)
-    -> paginate(100);
-    return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo,'provinces' => $provinces]);
+      ->leftjoin('users as a', 'users.Created_By', '=', 'a.id')
+      ->select('users.*', 'a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob')
+      ->where("users.IsActive", "=", 1)
+      ->paginate(100);
+    return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo, 'provinces' => $provinces]);
   }
 
   public function InActive()
@@ -47,11 +48,11 @@ class SponsorsController extends Controller
     $PageInfo = 'InActive';
     $provinces = Location::whereNull("Parent_ID")->get();
     $sponsors =   User::where("users.IsOrphanSponsor", "=", 1)
-    -> leftjoin('users as a', 'users.Created_By', '=', 'a.id')
-    -> select('users.*','a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob')
-    -> where("users.IsActive", "!=", 1)
-    -> paginate(100);
-    return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo,'provinces' => $provinces]);
+      ->leftjoin('users as a', 'users.Created_By', '=', 'a.id')
+      ->select('users.*', 'a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob')
+      ->where("users.IsActive", "!=", 1)
+      ->paginate(100);
+    return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo, 'provinces' => $provinces]);
   }
 
 
@@ -126,7 +127,7 @@ class SponsorsController extends Controller
   public function Status(User $data)
   {
     $sponsors =   User::where("users.id", "=", $data->id)->first();
-    $orphans = $sponsors->orphan()->paginate(10);
+    $orphans = $sponsors -> orphan() -> paginate(12);
     return view('OrphansRelief.Sponsor.Status',  ['data' => $sponsors, 'orphans' => $orphans]);
   }
 
@@ -157,5 +158,4 @@ class SponsorsController extends Controller
     ]);
     return redirect()->route('AllSponsor')->with('toast_success', 'Password reset Successfully!');
   }
-
 }

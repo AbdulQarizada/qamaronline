@@ -1,6 +1,7 @@
 @extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts')
 @section('title') Orphan and Sponsorships @endsection
 @section('css')
+<link href="{{ URL::asset('/assets/css/mystyle/tabstyle.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
 <div class="row">
@@ -52,46 +53,67 @@
                     <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> SecondaryNumber}}</td>
                 </tr>
             </table>
-            <table class="table table-nowrap">
-                <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">ORPHAN SPONSORED</h5>
-                <tr>
-                    <td>
-                        <div class="avatar-group">
-                            @foreach($orphans as $orphan)
-                            <div class="avatar-group-item">
-                                <a href="{{route('StatusOrphans', ['data' => $orphan -> id])}}" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="{{ $orphan -> FirstName }}">
-                                    <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$orphan -> Profile)}}" alt="" class="rounded-circle avatar-lg img-thumbnail">
-                                </a>
-                            </div>
-                            @endforeach
+        </div>
+    </div>
+</div>
+<div class="row">
+    <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Sponsored Orphans</h5>
+    @foreach($orphans as $orphan)
+    <div class="col-xl-2 col-sm-6 mb-4">
+        <a href="{{route('StatusOrphans', ['data' => $orphan -> id])}}">
+            <div class="card-one text-center">
+                <div class="card-body">
+                    <div class="avatar-sm mx-auto mb-4">
+                        <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-16">
+                            @if ($orphan -> Gender_ID == 60)
+                            <!-- if male -->
+                            <img class="rounded-circle avatar-sm" src="{{ URL::asset('/uploads/OrphansRelief/Orphans/Profiles/avatar-male.jpg') }}" alt="">
+                            @endif
+                            @if ($orphan -> Gender_ID == 61)
+                            <!-- if female -->
+                            <img class="rounded-circle avatar-sm" src="{{ URL::asset('/uploads/OrphansRelief/Orphans/Profiles/avatar-female.jpg') }}" alt="">
+                            @endif
+                        </span>
+                    </div>
+                    <h5 class="font-size-15 mb-1"><a href="{{route('StatusOrphans', ['data' => $orphan -> id])}}" class="text-dark">{{$orphan -> FirstName}} {{$orphan -> LastName}}</a></h5>
+                    <p class="text-muted">{{$orphan -> IntroducerName}} </p>
+                </div>
+                <div class="card-footer bg-transparent border-top">
+                    <div class="contact-links d-flex">
+                        <div class="flex-fill">
+                            <p href="">Gender: {{ $orphan -> Gender_ID == 60 ? 'Male' : 'Female' }} </p>
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td >
-                        <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
-                            {!! $orphans -> links() !!} <span class="m-2 text-white badge bg-dark">{{ $orphans -> total() }} Total Records</span>
-                        </ul>
-                    </td>
-                </tr>
-            </table>
-            <table class="table table-nowrap">
-                <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">STATUS</h5>
-                @if($data -> IsOrphanSponsor == 1)
-                <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-success">Orphan Sponsor</a></span>
-                @endif
-                @if($data -> IsActive == 1)
-                <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-success">Active</a></span>
-                @endif
-                @if($data -> IsActive != 1)
-                <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-danger">InActive</a></span>
-                @endif
-            </table>
+                        <div class="flex-fill">
+                            <p href="">Age: {{\Carbon\Carbon::parse($orphan -> DOB)->diff(\Carbon\Carbon::now())->format('%y');}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    @endforeach
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+                {!! $orphans -> links() !!} <span class="m-2 text-white badge bg-dark">{{ $orphans -> total() }} Total Records</span>
+            </ul>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-12">
+        <table class="table table-nowrap">
+            <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">STATUS</h5>
+            @if($data -> IsOrphanSponsor == 1)
+            <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-success">Orphan Sponsor</a></span>
+            @endif
+            @if($data -> IsActive == 1)
+            <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-success">Active</a></span>
+            @endif
+            @if($data -> IsActive != 1)
+            <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-danger">InActive</a></span>
+            @endif
+        </table>
         @if($data -> IsActive == 1)
         <a href="{{route('DeActivateSponsor', ['data' => $data -> id])}}" class="btn btn-outline-danger btn-lg waves-effect  waves-light btn-rounded w-lg  deactivate m-3" data-toggle="tooltip" data-placement="top" title="DeActivate">
             De-ACTIVATE
@@ -112,11 +134,11 @@
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
-            title: 'Are you sure?',
-            text: 'This record and it`s details will be activated!',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
+            title: 'Are you sure?'
+            , text: 'This record and it`s details will be activated!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
             if (value) {
                 window.location.href = url;
             }
@@ -127,16 +149,17 @@
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
-            title: 'Are you sure?',
-            text: 'This record and it`s details will be deactivated!',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
+            title: 'Are you sure?'
+            , text: 'This record and it`s details will be deactivated!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
             if (value) {
                 window.location.href = url;
             }
         });
     });
+
 </script>
 
 @endsection
