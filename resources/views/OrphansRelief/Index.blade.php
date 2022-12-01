@@ -7,7 +7,9 @@
 @if(Cookie::get('Layout') == 'LayoutNoSidebar')
 <div class="row">
     <div class="col-12">
-        <a href="{{route('root')}}" class="btn btn-outline-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <a href="{{route('root')}}" class="btn btn-outline-info btn-lg waves-effect mb-3 btn-label waves-light">
+            <i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back
+        </a>
     </div>
 </div>
 <div class="row mt-4">
@@ -52,12 +54,44 @@
             @endif
             @if(Auth::user()->IsOrphanRelief == 1)
             <div class="col-md-2 mb-2">
+                <a href="{{route('AllSubscription')}}">
+                    <div class="card-one  mini-stats-wid border border-secondary">
+                        <div class="card-body text-center">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="mdi mdi-account-box-multiple-outline text-warning display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Subscriptions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endif
+            @if(Auth::user()->IsOrphanRelief == 1)
+            <div class="col-md-2 mb-2">
+                <a href="{{route('AllCard')}}">
+                    <div class="card-one  mini-stats-wid border border-secondary">
+                        <div class="card-body text-center">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="mdi mdi-card-account-details-outline text-dark display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Cards</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endif
+            @if(Auth::user()->IsOrphanRelief == 1)
+            <div class="col-md-2 mb-2">
                 <a href="{{route('AllPayment')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <i class="mdi mdi-account-cash-outline text-success display-5 "></i>
+                                    <i class="mdi mdi-cash-multiple text-success display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Payments</p>
                                 </div>
                             </div>

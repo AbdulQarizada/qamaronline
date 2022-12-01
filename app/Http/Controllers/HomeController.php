@@ -28,7 +28,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-
         $this->middleware('auth');
     }
 
@@ -44,12 +43,6 @@ class HomeController extends Controller
         }
         return abort(404);
     }
-
-
-
-
-
-
 
     public function root()
     {
@@ -76,8 +69,8 @@ class HomeController extends Controller
         $catagorys =   LookUp::where("Parent_Name", "=", "None")->get();
         // Quran part
         $quran = new Quran();
-        $randomSurah = rand(2, 100);
-        $randomAya =  rand(2, 5);
+        $randomSurah = rand(80, 114);
+        $randomAya =  rand(1, 3);
         $quran = $quran->translation('ar,en')->get($randomSurah . ':' . $randomAya);
         $QuranArabic =  $quran['ar'];
         $QuranEnglish =  $quran['en'];
@@ -87,14 +80,13 @@ class HomeController extends Controller
             ->join('users as d', 'qamar_care_cards.Created_By', '=', 'd.id')
             ->select(['qamar_care_cards.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
             ->orderBy('id', 'desc')->take(5)->get();
-        return view('index', compact('QuranArabic','QuranEnglish','notifications','qamarcarecardsLastFive'));
+        return view('index', compact('QuranArabic', 'QuranEnglish', 'notifications', 'qamarcarecardsLastFive'));
     }
 
 
 
 
     // Tribe Chart
-
     public function Tribe_Chart()
     {
         $Pashtun =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 33)->get()->count();
@@ -113,9 +105,6 @@ class HomeController extends Controller
         $Brahawi =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 46)->get()->count();
         $qazalbash =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 47)->get()->count();
         $kochi =   QamarCareCard::where("qamar_care_cards.Tribe_ID", "=", 48)->get()->count();
-
-
-
         return response()->json([
             'Pashtun' => $Pashtun,
             'Tajik' => $Tajik,
@@ -136,19 +125,12 @@ class HomeController extends Controller
         ]);
     }
 
-
-
-
-
     // Data Insertion Chart
-
     public function Montly_Insertion()
     {
 
-
         // montly data
         //pending
-
         $PendingJan = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now()->year)->whereMonth('qamar_care_cards.created_at', '=', 1)->where("qamar_care_cards.Status", "=", 'Pending')->count();
         $PendingFeb = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now()->year)->whereMonth('qamar_care_cards.created_at', '=', 2)->where("qamar_care_cards.Status", "=", 'Pending')->count();
         $PendingMarch = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now()->year)->whereMonth('qamar_care_cards.created_at', '=', 3)->where("qamar_care_cards.Status", "=", 'Pending')->count();
@@ -161,8 +143,6 @@ class HomeController extends Controller
         $PendingOct = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now()->year)->whereMonth('qamar_care_cards.created_at', '=', 10)->where("qamar_care_cards.Status", "=", 'Pending')->count();
         $PendingNov = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now()->year)->whereMonth('qamar_care_cards.created_at', '=', 11)->where("qamar_care_cards.Status", "=", 'Pending')->count();
         $PendingDec = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now()->year)->whereMonth('qamar_care_cards.created_at', '=', 12)->where("qamar_care_cards.Status", "=", 'Pending')->count();
-
-
         //Approved
         $ApprovedJan = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now()->year)->whereMonth('qamar_care_cards.created_at', '=', 1)->where("qamar_care_cards.Status", "=", 'Approved')->count();
         $ApprovedFeb = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now()->year)->whereMonth('qamar_care_cards.created_at', '=', 2)->where("qamar_care_cards.Status", "=", 'Approved')->count();
@@ -176,7 +156,6 @@ class HomeController extends Controller
         $ApprovedOct = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now()->year)->whereMonth('qamar_care_cards.created_at', '=', 10)->where("qamar_care_cards.Status", "=", 'Approved')->count();
         $ApprovedNov = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now()->year)->whereMonth('qamar_care_cards.created_at', '=', 11)->where("qamar_care_cards.Status", "=", 'Approved')->count();
         $ApprovedDec = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now()->year)->whereMonth('qamar_care_cards.created_at', '=', 12)->where("qamar_care_cards.Status", "=", 'Approved')->count();
-
         //Printed
         $PrintedJan = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now()->year)->whereMonth('qamar_care_cards.created_at', '=', 1)->where("qamar_care_cards.Status", "=", 'Printed')->count();
         $PrintedFeb = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now()->year)->whereMonth('qamar_care_cards.created_at', '=', 2)->where("qamar_care_cards.Status", "=", 'Printed')->count();
@@ -190,9 +169,6 @@ class HomeController extends Controller
         $PrintedOct = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now()->year)->whereMonth('qamar_care_cards.created_at', '=', 10)->where("qamar_care_cards.Status", "=", 'Printed')->count();
         $PrintedNov = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now()->year)->whereMonth('qamar_care_cards.created_at', '=', 11)->where("qamar_care_cards.Status", "=", 'Printed')->count();
         $PrintedDec = QamarCareCard::whereYear('qamar_care_cards.created_at', '=', Carbon::now()->year)->whereMonth('qamar_care_cards.created_at', '=', 12)->where("qamar_care_cards.Status", "=", 'Printed')->count();
-
-
-
         return response()->json([
             'PendingJan' => $PendingJan,
             'PendingFeb' => $PendingFeb,
@@ -206,8 +182,6 @@ class HomeController extends Controller
             'PendingOct' => $PendingOct,
             'PendingNov' => $PendingNov,
             'PendingDec' => $PendingDec,
-
-
             'ApprovedJan' => $ApprovedJan,
             'ApprovedFeb' => $ApprovedFeb,
             'ApprovedMarch' => $ApprovedMarch,
@@ -220,8 +194,6 @@ class HomeController extends Controller
             'ApprovedOct' => $ApprovedOct,
             'ApprovedNov' => $ApprovedNov,
             'ApprovedDec' => $ApprovedDec,
-
-
             'PrintedJan' => $PrintedJan,
             'PrintedFeb' => $PrintedFeb,
             'PrintedMarch' => $PrintedMarch,
@@ -234,9 +206,6 @@ class HomeController extends Controller
             'PrintedOct' => $PrintedOct,
             'PrintedNov' => $PrintedNov,
             'PrintedDec' => $PrintedDec,
-
-
-
         ]);
     }
 

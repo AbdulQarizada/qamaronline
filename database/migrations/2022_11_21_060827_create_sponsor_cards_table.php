@@ -15,13 +15,16 @@ return new class extends Migration
     {
         Schema::create('sponsor_cards', function (Blueprint $table) {
             $table->id();
-            $table -> string('FullName')->nullable();
-            $table -> string('Email')->nullable();
+            $table -> integer('Sponsor_ID')->nullable();
             $table -> string('CardNumber')->nullable();
             $table -> integer('CardLastFourDigit')->nullable();
-            $table -> string('ExpMonth')->nullable();
-            $table -> string('ExpYear')->nullable();
+            $table -> string('ValidMonth')->nullable();
+            $table -> string('ValidYear')->nullable();
             $table -> string('CVV')->nullable();
+            $table -> integer('IsActive')->nullable();
+            $table -> integer('IsActive_By')->nullable();
+            $table -> integer('Created_By')->nullable();
+            $table -> integer('Owner')->nullable();
             $table->timestamps();
         });
     }

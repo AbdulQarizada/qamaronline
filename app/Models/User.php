@@ -70,8 +70,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
     public function orphan()
     {
-        return $this->hasMany(Orphan::class, 'Sponsor_ID');
+        return $this->belongsToMany(Orphan::class, 'sponsor_subscriptions', 'Sponsor_ID', 'Orphan_ID')->withPivot('IsActive');
+    }
+
+    public function payment()
+    {
+        return $this->hasMany(SponsorPayment::class, 'Sponsor_ID');
+    }
+
+    public function card()
+    {
+        return $this->hasMany(SponsorCard::class, 'Sponsor_ID');
     }
 }

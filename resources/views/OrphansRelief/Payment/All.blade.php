@@ -9,11 +9,11 @@
         @if($PageInfo == 'All')
         <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>All Payments</span>
         @endif
-        @if($PageInfo == 'Active')
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>Due Payments</span>
+        @if($PageInfo == 'Paid')
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>Paid Payments</span>
         @endif
-        @if($PageInfo == 'InActive')
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>Successfull Payments</span>
+        @if($PageInfo == 'Due')
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>Due Payments</span>
         @endif
     </div>
 </div>
@@ -79,16 +79,12 @@
         <div class="hstack gap-3">
             <a class="btn  btn-lg waves-effect  waves-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-toggle="tooltip" data-bs-placement="top" title="Filter"> <i class="mdi mdi-filter-menu-outline font-size-24 align-middle"></i></a>
             <select class="form-select  form-select-lg @error('Country') is-invalid @enderror" onchange="window.location.href=this.value;">
-                <option value="{{route('AllSponsor')}}">Please Filter Your Choices</option>
-                <option value="{{route('AllSponsor')}}" {{ $PageInfo == 'All' ? 'selected' : '' }}>All</option>
-                <option value="{{route('ActiveSponsor')}}" {{ $PageInfo == 'Active' ? 'selected' : '' }}>Due</option>
-                <option value="{{route('InActiveSponsor')}}" {{ $PageInfo == 'InActive' ? 'selected' : '' }}>Successfull</option>
+                <option value="{{route('AllPayment')}}">Please Filter Your Choices</option>
+                <option value="{{route('AllPayment')}}" {{ $PageInfo == 'All' ? 'selected' : '' }}>All</option>
+                <option value="{{route('PaidPayment')}}" {{ $PageInfo == 'Paid' ? 'selected' : '' }}>Paid</option>
+                <option value="{{route('DuePayment')}}" {{ $PageInfo == 'Due' ? 'selected' : '' }}>Due</option>
             </select>
         </div>
-    </div>
-    <div class="col-md-8 col-sm-12 mb-2">
-        <!-- <a class="btn  btn-lg waves-effect  waves-light  m-1 float-end" data-bs-toggle="tooltip" data-bs-placement="top" title="All Orphans Grid View"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a> -->
-        <!-- <a href="{{route('CreateSponsor')}}" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD SPONSOR</a> -->
     </div>
 </div>
 <div class="row">
@@ -104,7 +100,7 @@
                         <th>ID</th>
                         <th>Full Name</th>
                         <th>Charge ID</th>
-                        <th>Payment </h>
+                        <th>Amount </h>
                         <th>Email</th>
                         <th>Status</th>
                         <th>Created By</th>
@@ -134,8 +130,8 @@
                         </td>
                         <td>
                             <div>
-                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-success">{{$data -> PaymentAmount}}</a></h5>
-                                <p class="text-muted mb-0 badge badge-soft-warning">{{$data -> PaymentOption}}</p>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-success">{{$data -> Amount}}</a></h5>
+                                <p class="text-muted mb-0 badge badge-soft-warning">{{$data -> SubscriptionType}}</p>
                             </div>
                         </td>
                         <td>
@@ -145,11 +141,11 @@
                         </td>
                         <td>
                             <div>
-                                @if($data -> IsActive == 1)
+                                @if($data -> IsPaid == 1)
                                 <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Successfull Payment </a></h5>
                                 <p class="text-muted mb-0">{{$data -> updated_at -> format("d-m-Y")}}</p>
                                 @endif
-                                @if($data -> IsActive != 1)
+                                @if($data -> IsPaid != 1)
                                 <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">Due Payment </a></h5>
                                 <p class="text-muted mb-0">{{$data -> updated_at -> format("d-m-Y")}}</p>
                                 @endif
@@ -171,12 +167,20 @@
                         </td>
                         <td>
                             <div class="d-flex flex-wrap gap-2">
+                                @if($data -> IsPaid == 1)
                                 <a href="{{route('RecieptPayment', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-warning waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Reciept">
                                     <i class="mdi mdi-receipt font-size-16 align-middle"></i>
                                 </a>
-                                @if($data -> IsActive == 0)
-                                <a href="{{route('EditSponsor', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-info waves-effect waves-light email" data-bs-toggle="tooltip" data-bs-placement="top" title="Email Sponsor">
+                                 <a href="{{route('MakeItDuePayment', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-danger waves-effect waves-light due" data-bs-toggle="tooltip" data-bs-placement="top" title="Make it Due">
+                                    <i class="mdi mdi-cash-remove font-size-16 align-middle"></i>
+                                </a>
+                                @endif
+                                @if($data -> IsPaid != 1)
+                                  <a href="{{route('EditSponsor', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-info waves-effect waves-light email" data-bs-toggle="tooltip" data-bs-placement="top" title="Email Sponsor">
                                     <i class="mdi mdi-email-outline font-size-16 align-middle"></i>
+                                  </a>
+                                   <a href="{{route('MakeItPaidPayment', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-success waves-effect waves-light paid" data-bs-toggle="tooltip" data-bs-placement="top" title="Make it Paid">
+                                    <i class="mdi mdi-cash-check font-size-16 align-middle"></i>
                                 </a>
                                 @endif
                             </div>
@@ -221,6 +225,37 @@
             }
         });
     });
+
+        $('.paid').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?',
+            text: 'Do you want to make it paid?',
+            icon: 'warning',
+            buttons: ["Cancel", "Yes!"],
+        }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+        });
+
+    $('.due').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?',
+            text: 'Do you want to due this payment?',
+            icon: 'warning',
+            buttons: ["Cancel", "Yes!"],
+        }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
+
     // Search All Districts
     $(document).ready(function() {
         $('.Province').on('change', function() {

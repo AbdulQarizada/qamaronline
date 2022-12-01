@@ -10,12 +10,20 @@ class SponsorCard extends Model
     use HasFactory;
     protected $fillable =
     [
-     'FullName',
-     'Email',
+     'Sponsor_ID',
      'CardNumber',
      'CardLastFourDigit',
-     'ExpMonth',
-     'ExpYear',
+     'ValidMonth',
+     'ValidYear',
      'CVV',
+     'IsActive',
+     'IsActive_By',
+     'Created_By',
+     'Owner',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'Sponsor_ID');
+    }
 }

@@ -166,7 +166,7 @@
                         <div class="col-md-2">
                             <div class="mb-3 position-relative">
                                 <label for="ValidMonth" class="label">Valid Month </i></label>
-                                <input type="text" class="form-control form-control-lg @error('ValidMonth') is-invalid @enderror" value="{{ old('ValidMonth') }}" id="ValidMonth" name="ValidMonth" placeholder="MM" maxlength="2" required>
+                                <input type="text" class="form-control form-control-lg @error('ValidMonth') is-invalid @enderror" value="{{ old('ValidMonth') }}" id="ValidMonth" name="ValidMonth" placeholder="MM" minlength="2" maxlength="2" required>
                                 @error('ValidMonth')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -190,7 +190,7 @@
                         <div class="col-md-2">
                             <div class="mb-3 position-relative">
                                 <label for="CVV" class="label">CVV / CVC * </i></label>
-                                <input type="text" class="form-control form-control-lg @error('CVV') is-invalid @enderror" value="{{ old('CVV') }}" id="CVV" name="CVV" maxlength="3" required>
+                                <input type="text" class="form-control form-control-lg @error('CVV') is-invalid @enderror" value="{{ old('CVV') }}" id="CVV" name="CVV" placeholder="674" maxlength="3" required>
 
                                 @error('CVV')
                                 <span class="invalid-feedback" role="alert">

@@ -12,6 +12,8 @@ use App\Models\ServiceProviders;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Location;
 use App\Models\LookUp;
+use App\Models\ErrorLog;
+
 
 use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -328,6 +330,13 @@ class UserController extends Controller
   }
 
 
+
+  public function AllErrors()
+  {
+    $PageInfo = 'All';
+    $datas =   ErrorLog::orderBy('id', 'DESC') -> get();
+    return view('SystemManagement.Error.All', compact('datas', 'PageInfo'));
+  }
 
   public function Activated()
   {

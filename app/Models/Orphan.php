@@ -51,16 +51,14 @@ class Orphan extends Model
         'FamilyPic',
         'Sponsor_ID',
         'Status',
-        'IsSponsored',
-        'Sponsored_StartDate',
-        'Sponsored_EndDate',
         'Status_By',
         'Created_By',
         'Owner',
     ];
 
-    public function user()
+
+        public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class, 'sponsor_subscriptions', 'Orphan_ID', 'Sponsor_ID')->withPivot('IsActive', 'StartDate', 'EndDate');
     }
 }

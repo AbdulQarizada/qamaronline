@@ -9,11 +9,11 @@
         <?php if($PageInfo == 'All'): ?>
         <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>All Payments</span>
         <?php endif; ?>
-        <?php if($PageInfo == 'Active'): ?>
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>Due Payments</span>
+        <?php if($PageInfo == 'Paid'): ?>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>Paid Payments</span>
         <?php endif; ?>
-        <?php if($PageInfo == 'InActive'): ?>
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>Successfull Payments</span>
+        <?php if($PageInfo == 'Due'): ?>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>Due Payments</span>
         <?php endif; ?>
     </div>
 </div>
@@ -114,16 +114,12 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
-                <option value="<?php echo e(route('AllSponsor')); ?>">Please Filter Your Choices</option>
-                <option value="<?php echo e(route('AllSponsor')); ?>" <?php echo e($PageInfo == 'All' ? 'selected' : ''); ?>>All</option>
-                <option value="<?php echo e(route('ActiveSponsor')); ?>" <?php echo e($PageInfo == 'Active' ? 'selected' : ''); ?>>Due</option>
-                <option value="<?php echo e(route('InActiveSponsor')); ?>" <?php echo e($PageInfo == 'InActive' ? 'selected' : ''); ?>>Successfull</option>
+                <option value="<?php echo e(route('AllPayment')); ?>">Please Filter Your Choices</option>
+                <option value="<?php echo e(route('AllPayment')); ?>" <?php echo e($PageInfo == 'All' ? 'selected' : ''); ?>>All</option>
+                <option value="<?php echo e(route('PaidPayment')); ?>" <?php echo e($PageInfo == 'Paid' ? 'selected' : ''); ?>>Paid</option>
+                <option value="<?php echo e(route('DuePayment')); ?>" <?php echo e($PageInfo == 'Due' ? 'selected' : ''); ?>>Due</option>
             </select>
         </div>
-    </div>
-    <div class="col-md-8 col-sm-12 mb-2">
-        <!-- <a class="btn  btn-lg waves-effect  waves-light  m-1 float-end" data-bs-toggle="tooltip" data-bs-placement="top" title="All Orphans Grid View"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a> -->
-        <!-- <a href="<?php echo e(route('CreateSponsor')); ?>" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD SPONSOR</a> -->
     </div>
 </div>
 <div class="row">
@@ -139,7 +135,7 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                         <th>ID</th>
                         <th>Full Name</th>
                         <th>Charge ID</th>
-                        <th>Payment </h>
+                        <th>Amount </h>
                         <th>Email</th>
                         <th>Status</th>
                         <th>Created By</th>
@@ -170,8 +166,8 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                         </td>
                         <td>
                             <div>
-                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-success"><?php echo e($data -> PaymentAmount); ?></a></h5>
-                                <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($data -> PaymentOption); ?></p>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-success"><?php echo e($data -> Amount); ?></a></h5>
+                                <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($data -> SubscriptionType); ?></p>
                             </div>
                         </td>
                         <td>
@@ -181,11 +177,11 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                         </td>
                         <td>
                             <div>
-                                <?php if($data -> IsActive == 1): ?>
+                                <?php if($data -> IsPaid == 1): ?>
                                 <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Successfull Payment </a></h5>
                                 <p class="text-muted mb-0"><?php echo e($data -> updated_at -> format("d-m-Y")); ?></p>
                                 <?php endif; ?>
-                                <?php if($data -> IsActive != 1): ?>
+                                <?php if($data -> IsPaid != 1): ?>
                                 <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">Due Payment </a></h5>
                                 <p class="text-muted mb-0"><?php echo e($data -> updated_at -> format("d-m-Y")); ?></p>
                                 <?php endif; ?>
@@ -207,12 +203,20 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                         </td>
                         <td>
                             <div class="d-flex flex-wrap gap-2">
+                                <?php if($data -> IsPaid == 1): ?>
                                 <a href="<?php echo e(route('RecieptPayment', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-warning waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Reciept">
                                     <i class="mdi mdi-receipt font-size-16 align-middle"></i>
                                 </a>
-                                <?php if($data -> IsActive == 0): ?>
-                                <a href="<?php echo e(route('EditSponsor', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-info waves-effect waves-light email" data-bs-toggle="tooltip" data-bs-placement="top" title="Email Sponsor">
+                                 <a href="<?php echo e(route('MakeItDuePayment', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light due" data-bs-toggle="tooltip" data-bs-placement="top" title="Make it Due">
+                                    <i class="mdi mdi-cash-remove font-size-16 align-middle"></i>
+                                </a>
+                                <?php endif; ?>
+                                <?php if($data -> IsPaid != 1): ?>
+                                  <a href="<?php echo e(route('EditSponsor', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-info waves-effect waves-light email" data-bs-toggle="tooltip" data-bs-placement="top" title="Email Sponsor">
                                     <i class="mdi mdi-email-outline font-size-16 align-middle"></i>
+                                  </a>
+                                   <a href="<?php echo e(route('MakeItPaidPayment', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-success waves-effect waves-light paid" data-bs-toggle="tooltip" data-bs-placement="top" title="Make it Paid">
+                                    <i class="mdi mdi-cash-check font-size-16 align-middle"></i>
                                 </a>
                                 <?php endif; ?>
                             </div>
@@ -257,6 +261,37 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
             }
         });
     });
+
+        $('.paid').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?',
+            text: 'Do you want to make it paid?',
+            icon: 'warning',
+            buttons: ["Cancel", "Yes!"],
+        }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+        });
+
+    $('.due').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?',
+            text: 'Do you want to due this payment?',
+            icon: 'warning',
+            buttons: ["Cancel", "Yes!"],
+        }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
+
     // Search All Districts
     $(document).ready(function() {
         $('.Province').on('change', function() {
@@ -302,4 +337,5 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
     });
 </script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Payment/All.blade.php ENDPATH**/ ?>

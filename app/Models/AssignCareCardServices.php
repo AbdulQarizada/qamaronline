@@ -8,10 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class AssignCareCardServices extends Model
 {
     use HasFactory;
-    
     protected $fillable =
-     [    
-    
+     [
+
       'Assignee_ID',
       'RequestedService_ID',
       'ServiceProvince_ID',
@@ -23,9 +22,5 @@ class AssignCareCardServices extends Model
       'Status_By',
       'Created_By',
       'Owner'
-
-
-
-
      ];
 }

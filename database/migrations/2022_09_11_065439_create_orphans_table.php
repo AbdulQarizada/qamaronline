@@ -26,9 +26,6 @@ return new class extends Migration
             $table -> integer('Tribe_ID')->nullable();
             $table -> integer('Language_ID')->nullable();
             $table -> longText('WhyShouldYouHelpMe')->nullable();
-
-
-
             $table -> string('PrimaryNumber')->nullable();
             $table -> string('SecondaryNumber')->nullable();
             $table -> string('EmergencyNumber')->nullable();
@@ -39,9 +36,6 @@ return new class extends Migration
             $table -> integer('InCareRelationship_ID')->nullable();
             $table -> string('InCareNumber')->nullable();
             $table -> string('InCareTazkiraID')->nullable();
-
-
-
             $table -> string('CurrentlyInSchool')->nullable();
             $table -> string('SchoolName')->nullable();
             $table -> integer('SchoolProvince_ID')->nullable();
@@ -50,9 +44,6 @@ return new class extends Migration
             $table -> string('SchoolNumber')->nullable();
             $table -> string('SchoolEmail')->nullable();
             $table -> integer('Class')->nullable();
-
-
-
             $table -> string('FatherName')->nullable();
             $table -> integer('MonthlyFamilyIncome')->nullable();
             $table -> integer('MonthlyFamilyExpenses')->nullable();
@@ -60,27 +51,13 @@ return new class extends Migration
             $table -> integer('IncomeStreem_ID')->nullable();
             $table -> integer('LevelPoverty')->nullable();
             $table -> integer('FamilyStatus_ID')->nullable();
-
-
-
-            $table -> integer('IsSponsored')->nullable();
-            $table -> integer('Sponsor_ID')->nullable();
-            $table -> date('Sponsored_StartDate')->nullable();
-            $table -> date('Sponsored_EndDate')->nullable();
-
-
-
-
             $table -> string('Tazkira')->nullable();
             $table -> string('FamilyPic')->nullable();
             $table -> string('HousePic')->nullable();
-
-
             $table -> string('Status')->nullable();
             $table -> integer('Status_By')->nullable();
             $table -> integer('Created_By')->nullable();
             $table -> integer('Owner')->nullable();
-
             $table->timestamps();
         });
     }

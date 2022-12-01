@@ -3,7 +3,6 @@
 <?php $__env->startSection('css'); ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
-<?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 <div class="row">
     <div class="col-12">
         <a href="<?php echo e(route('AllOrphans')); ?>" class="btn btn-outline-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
@@ -266,38 +265,54 @@
                     </td>
                 </tr>
             </table>
+
             <table class="table table-nowrap">
-                <h5 style="font-weight: bold;" class="card-header  text-dark">SPONSORS</h5>
+                <h5 style="font-weight: bold;" class="card-header  text-dark">SPONSORSSHIP</h5>
+                <?php $__currentLoopData = $data -> user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $users): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php if($users -> pivot -> IsActive == 1): ?>
+                <table class="table table-nowrap">
+                    <h6 style="font-weight: bold;" class="card-header  text-white bg-success">Active Sponsor</h6>
                 <tr>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Is Sponsored?</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">
-                    <?php if($data -> IsSponsored == 1): ?>
-                    <h3 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Yes</a></h3>
-                    <?php endif; ?>
-                    <?php if($data -> IsSponsored != 1): ?>
-                    <h3 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">Not Yet Sponsored</a></h3>
-                    <?php endif; ?>
-                </td>
                     <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsor Name</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> SFullName); ?></td>
-                </tr>
-                <tr>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsor Number </td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> SPrimaryNumber); ?></td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($users -> FullName); ?></td>
                     <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsor Email</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> Semail); ?></td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($users -> email); ?></td>
                 </tr>
                 <tr>
                     <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsorship Start Date</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> Sponsored_StartDate); ?></td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e(\Carbon\Carbon::parse($users -> pivot ->  StartDate)->format("j F Y")); ?></td>
                     <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsorship End Date</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> Sponsored_EndDate); ?></td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e(\Carbon\Carbon::parse($users -> pivot -> EndDate)->format("j F Y")); ?></td>
                 </tr>
+               </table>
+                <?php elseif($users -> pivot -> IsActive == 0): ?>
+                <table class="table table-nowrap">
+                <h6 style="font-weight: bold;" class="card-header  text-dark">Previous Sponsor (<?php echo e($loop->iteration); ?>)</h6>
+                <tr>
+                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsor Name</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($users -> FullName); ?></h1></td>
+                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsor Email</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($users -> email); ?></td>
+                </tr>
+                <tr>
+                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsorship Start Date</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e(\Carbon\Carbon::parse($users -> pivot ->  StartDate)->format("j F Y")); ?></td>
+                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsorship End Date</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e(\Carbon\Carbon::parse($users -> pivot -> EndDate)->format("j F Y")); ?></td>
+                </tr>
+                </table>
+                <?php elseif($users -> pivot -> IsActive != 0): ?>
+                <tr>
+                    <td class="text-center display-6 mt-4 text-danger font-size-bold p-4" style="width: 20%;  padding: 5px;">No Sponsorship</td>
+                </tr>
+                <?php endif; ?>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+
             </table>
         </div>
     </div>
 </div>
-<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
 <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
@@ -306,11 +321,11 @@
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
-            title: 'Are you sure?',
-            text: 'This record and it`s details will be re initiated!',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
+            title: 'Are you sure?'
+            , text: 'This record and it`s details will be re initiated!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
             if (value) {
                 window.location.href = url;
             }
@@ -322,11 +337,11 @@
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
-            title: 'Are you sure?',
-            text: 'This record and it`s details will be approved!',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
+            title: 'Are you sure?'
+            , text: 'This record and it`s details will be approved!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
             if (value) {
                 window.location.href = url;
             }
@@ -337,16 +352,18 @@
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
-            title: 'Are you sure?',
-            text: 'This record and it`s details will be rejected!',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
+            title: 'Are you sure?'
+            , text: 'This record and it`s details will be rejected!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
             if (value) {
                 window.location.href = url;
             }
         });
     });
+
 </script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Orphan/Status.blade.php ENDPATH**/ ?>

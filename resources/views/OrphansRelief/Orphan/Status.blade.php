@@ -3,7 +3,6 @@
 @section('css')
 @endsection
 @section('content')
-@foreach($datas as $data)
 <div class="row">
     <div class="col-12">
         <a href="{{route('AllOrphans')}}" class="btn btn-outline-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
@@ -265,38 +264,54 @@
                     </td>
                 </tr>
             </table>
+
             <table class="table table-nowrap">
-                <h5 style="font-weight: bold;" class="card-header  text-dark">SPONSORS</h5>
+                <h5 style="font-weight: bold;" class="card-header  text-dark">SPONSORSSHIP</h5>
+                @foreach($data -> user as $users)
+                @if($users -> pivot -> IsActive == 1)
+                <table class="table table-nowrap">
+                    <h6 style="font-weight: bold;" class="card-header  text-white bg-success">Active Sponsor</h6>
                 <tr>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Is Sponsored?</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">
-                    @if($data -> IsSponsored == 1)
-                    <h3 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Yes</a></h3>
-                    @endif
-                    @if($data -> IsSponsored != 1)
-                    <h3 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">Not Yet Sponsored</a></h3>
-                    @endif
-                </td>
                     <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsor Name</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> SFullName}}</td>
-                </tr>
-                <tr>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsor Number </td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> SPrimaryNumber }}</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $users -> FullName}}</td>
                     <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsor Email</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> Semail}}</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $users -> email}}</td>
                 </tr>
                 <tr>
                     <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsorship Start Date</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> Sponsored_StartDate  }}</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{\Carbon\Carbon::parse($users -> pivot ->  StartDate)->format("j F Y");}}</td>
                     <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsorship End Date</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> Sponsored_EndDate }}</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{\Carbon\Carbon::parse($users -> pivot -> EndDate)->format("j F Y");}}</td>
                 </tr>
+               </table>
+                @elseif($users -> pivot -> IsActive == 0)
+                <table class="table table-nowrap">
+                <h6 style="font-weight: bold;" class="card-header  text-dark">Previous Sponsor ({{$loop->iteration}})</h6>
+                <tr>
+                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsor Name</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $users -> FullName}}</h1></td>
+                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsor Email</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $users -> email}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsorship Start Date</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{\Carbon\Carbon::parse($users -> pivot ->  StartDate)->format("j F Y");}}</td>
+                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsorship End Date</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{\Carbon\Carbon::parse($users -> pivot -> EndDate)->format("j F Y");}}</td>
+                </tr>
+                </table>
+                @elseif($users -> pivot -> IsActive != 0)
+                <tr>
+                    <td class="text-center display-6 mt-4 text-danger font-size-bold p-4" style="width: 20%;  padding: 5px;">No Sponsorship</td>
+                </tr>
+                @endif
+                @endforeach
+
+
             </table>
         </div>
     </div>
 </div>
-@endforeach
 @endsection
 @section('script')
 <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
@@ -305,11 +320,11 @@
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
-            title: 'Are you sure?',
-            text: 'This record and it`s details will be re initiated!',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
+            title: 'Are you sure?'
+            , text: 'This record and it`s details will be re initiated!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
             if (value) {
                 window.location.href = url;
             }
@@ -321,11 +336,11 @@
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
-            title: 'Are you sure?',
-            text: 'This record and it`s details will be approved!',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
+            title: 'Are you sure?'
+            , text: 'This record and it`s details will be approved!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
             if (value) {
                 window.location.href = url;
             }
@@ -336,15 +351,16 @@
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
-            title: 'Are you sure?',
-            text: 'This record and it`s details will be rejected!',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
+            title: 'Are you sure?'
+            , text: 'This record and it`s details will be rejected!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
             if (value) {
                 window.location.href = url;
             }
         });
     });
+
 </script>
 @endsection

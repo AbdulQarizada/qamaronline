@@ -31,8 +31,6 @@ class OrphanExport implements FromQuery, WithMapping, WithHeadings, ShouldAutoSi
                 $orphan->SecondaryNumber,
                 $orphan->Sponsored_StartDate,
                 $orphan->Sponsored_EndDate,
-
-
             ];
     }
 
