@@ -54,38 +54,6 @@
             @endif
             @if(Auth::user()->IsOrphanRelief == 1)
             <div class="col-md-2 mb-2">
-                <a href="{{route('AllSubscription')}}">
-                    <div class="card-one  mini-stats-wid border border-secondary">
-                        <div class="card-body text-center">
-                            <div class="d-flex">
-                                <div class="flex-grow-1">
-                                    <i class="mdi mdi-account-box-multiple-outline text-warning display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">Subscriptions</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            @endif
-            @if(Auth::user()->IsOrphanRelief == 1)
-            <div class="col-md-2 mb-2">
-                <a href="{{route('AllCard')}}">
-                    <div class="card-one  mini-stats-wid border border-secondary">
-                        <div class="card-body text-center">
-                            <div class="d-flex">
-                                <div class="flex-grow-1">
-                                    <i class="mdi mdi-card-account-details-outline text-dark display-5 "></i>
-                                    <p class="my-0 text-dark mt-2 font-size-18">Cards</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            @endif
-            @if(Auth::user()->IsOrphanRelief == 1)
-            <div class="col-md-2 mb-2">
                 <a href="{{route('AllPayment')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
