@@ -64,7 +64,7 @@ class OrphansController extends Controller
         -> join('look_ups as e', 'orphans.Gender_ID', '=', 'e.id')
         -> select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.Name as Gender'])
         -> where("orphans.Status", "=", 'Approved')
-        -> paginate(12);
+        -> paginate(8);
         return view('OrphansRelief.Orphan.AllGridWordpress', ['datas' => $orphans]);
     }
 
