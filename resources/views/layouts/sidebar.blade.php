@@ -18,18 +18,8 @@
                         <span key="t-layouts">Qamar Care Card</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow" key="t-vertical">Operations</a>
-                            <ul class="sub-menu" aria-expanded="true">
-                                <li><a href="{{route('CreateCareCard')}}" key="t-compact-create">Add Card</a></li>
-                                <li><a href="{{route('AllCareCard')}}" key="t-light-sidebar">All Cards</a></li>
-                                <li><a href="{{route('PendingCareCard')}}" key="t-compact-sidebar">Pending Cards</a></li>
-                                <li><a href="{{route('ApprovedCareCard')}}" key="t-icon-sidebar">Approved Cards</a></li>
-                                <li><a href="{{route('PrintedCareCard')}}" key="t-boxed-width">Printed Cards</a></li>
-                                <li><a href="{{route('ReleasedCareCard')}}" key="t-preloader">Released Cards</a></li>
-                                <li><a href="{{route('RejectedCareCard')}}" key="t-colored-sidebar">Rejected Cards</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="{{route('CreateCareCard')}}" key="t-compact-create"><i class="bx bx-credit-card"></i>Care Cards</a></li>
+
                         <li>
                             <a href="javascript: void(0);" class="has-arrow" key="t-horizontal">Services</a>
                             <ul class="sub-menu" aria-expanded="true">
@@ -60,6 +50,22 @@
                                 <li><a href="{{route('VerifyCareCard')}}" key="t-colored-verify">Verify Cards</a></li>
                             </ul>
                         </li>
+                    </ul>
+                </li>
+                @endif
+
+                @if(Auth::user()->IsOrphanRelief == 1)
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-account-child"></i>
+                        <span key="t-layouts">Orphan & Sponsorships</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="{{route('AllOrphans')}}"  key="t-horizontal"><i class="mdi mdi-account-details-outline"></i> Orphans</a></li>
+                        <li><a href="{{route('AllSponsor')}}" key="t-horizontal"><i class="mdi mdi mdi-account-child"></i> Sponsors</a></li>
+                        <li><a href="{{route('AllSubscription')}}"  key="t-horizontal"><i class="mdi mdi-account-box-multiple-outline"></i> Subsciptions</a></li>
+                        <li><a href="{{route('AllCard')}}"  key="t-horizontal"><i class="mdi mdi-card-account-details-outline"></i> Cards</a></li>
+                        <li><a href="{{route('AllPayment')}}"  key="t-horizontal"><i class="mdi mdi-cash-multiple"></i> Payments</a></li>
                     </ul>
                 </li>
                 @endif

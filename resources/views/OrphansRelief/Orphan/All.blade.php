@@ -2,6 +2,7 @@
 @section('title') Orphan and Sponsorships @endsection
 @section('css')
 @endsection
+@livewireStyles
 @section('content')
 <div class="row mt-4">
     <div class="col-md-4 col-sm-12 ">
@@ -27,74 +28,26 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-4 col-sm-12 mb-2">
-        <div class="hstack gap-3">
-            <a class="btn  btn-lg waves-effect  waves-light" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample" data-bs-toggle="tooltip" data-bs-placement="top" title="Filter"> <i class="mdi mdi-filter-menu-outline font-size-24 align-middle"></i></a>
-            <select class="form-select  form-select-lg @error('Country') is-invalid @enderror" onchange="window.location.href = this.value;">
-                <option value="{{route('AllOrphans')}}">Please Filter Your Choices</option>
-                <option value="{{route('AllOrphans')}}" {{ $PageInfo == 'All' ? 'selected' : '' }}>All</option>
-                <option value="{{route('PendingOrphans')}}" {{ $PageInfo == 'Pending' ? 'selected' : '' }}>Pending</option>
-                <option value="{{route('ApprovedOrphans')}}" {{ $PageInfo == 'Approved' ? 'selected' : '' }}>Approved</option>
-                <option value="{{route('RejectedOrphans')}}" {{ $PageInfo == 'Rejected' ? 'selected' : '' }}>Rejected</option>
-                <option value="{{route('WaitingOrphans')}}" {{ $PageInfo == 'Waiting' ? 'selected' : '' }}>Waiting</option>
-                <option value="{{route('SponsoredOrphans')}}" {{ $PageInfo == 'Sponsored' ? 'selected' : '' }}>Sponsored</option>
-            </select>
-        </div>
+    <div class="col-md-3 col-sm-12 mb-2">
+        <select class="form-select  form-select-lg @error('Country') is-invalid @enderror" onchange="window.location.href = this.value;">
+            <option value="{{route('AllOrphans')}}">Please Filter Your Choices</option>
+            <option value="{{route('AllOrphans')}}" {{ $PageInfo == 'All' ? 'selected' : '' }}>All</option>
+            <option value="{{route('PendingOrphans')}}" {{ $PageInfo == 'Pending' ? 'selected' : '' }}>Pending</option>
+            <option value="{{route('ApprovedOrphans')}}" {{ $PageInfo == 'Approved' ? 'selected' : '' }}>Approved</option>
+            <option value="{{route('RejectedOrphans')}}" {{ $PageInfo == 'Rejected' ? 'selected' : '' }}>Rejected</option>
+            <option value="{{route('WaitingOrphans')}}" {{ $PageInfo == 'Waiting' ? 'selected' : '' }}>Waiting</option>
+            <option value="{{route('SponsoredOrphans')}}" {{ $PageInfo == 'Sponsored' ? 'selected' : '' }}>Sponsored</option>
+        </select>
     </div>
-    <div class="col-md-8 col-sm-12 mb-2">
-        <a href="{{route('AllGridWordpressOrphans')}}" class="btn  btn-lg waves-effect  waves-light  m-1 float-end" data-bs-toggle="tooltip" data-bs-placement="top" title="All Orphans Grid View"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a>
+    <div class="col-md-4 mb-2">
+        <livewire:search />
+    </div>
+    <div class="col-md-5 col-sm-12 mb-2">
+        <a href="{{route('AllGridOrphans')}}" class="btn  btn-lg waves-effect  waves-light  m-1 float-end" data-bs-toggle="tooltip" data-bs-placement="top" title="All Orphans Grid View"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a>
         <a href="{{route('CreateOrphans')}}" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD ORPHAN</a>
     </div>
 </div>
-<div class="row">
-    <div class="col-12">
-        <div class="collapse" id="collapseWidthExample">
-            <form action="{{route('SearchOrphans')}}" method="POST">
-                @csrf
-                <div class="row">
-                    <div class="col-md-2 mb-2">
-                        <div class="position-relative">
-                            <div class="input-group">
-                                <select class="form-select Province form-select-lg @error('Province_ID') is-invalid @enderror" name="Province_ID" value="{{ old('Province_ID') }}" id="Province_ID">
-                                    <option value="">Select Your Province</option>
-                                    @foreach($provinces as $province)
-                                    <option value="{{ $province -> id}}">{{ $province -> Name}}</option>
-                                    @endforeach
-                                </select>
-                                @error('Province_ID')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 mb-2">
-                        <div class="position-relative">
-                            <div class="input-group">
-                                <select class="form-select  District form-select-lg @error('District_ID') is-invalid @enderror" name="District_ID" value="{{ old('District_ID') }}" id="District_ID">
-                                    <option value="">Select Your District</option>
-                                </select>
-                                @error('District_ID')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-2">
-                        <input type="text" name="PageInfo" value="{{ $PageInfo }}" class="d-none">
-                        <input class="form-control form-control-lg" type="text" name="data">
-                    </div>
-                    <div class="col-md-3 mb-2">
-                        <button type="submit" class="btn btn-outline-danger btn-lg waves-effect  waves-light"><i class="mdi mdi-magnify me-1"></i>Filter</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+
 <div class="row">
     <div class="col-12">
         <h3 class="card-header bg-dark text-white"></h3>
@@ -307,7 +260,7 @@
                                                                                             </div>
                                                                                             <div class="col-md-4 d-none">
                                                                                                 <div class="mb-3 position-relative">
-                                                                                                    <input type="text" class="form-control  form-control-lg @error('Orphan_ID') is-invalid @enderror" value="{{$data -> id}}" id="Orphan_ID" name="Orphan_ID"  required />
+                                                                                                    <input type="text" class="form-control  form-control-lg @error('Orphan_ID') is-invalid @enderror" value="{{$data -> id}}" id="Orphan_ID" name="Orphan_ID" required />
                                                                                                     @error('Orphan_ID')
                                                                                                     <span class="invalid-feedback" role="alert">
                                                                                                         <strong>{{ $message }}</strong>
@@ -459,7 +412,7 @@
                                                                                             </div>
                                                                                             <div class="col-md-4 d-none">
                                                                                                 <div class="mb-3 position-relative">
-                                                                                                    <input type="text" class="form-control  form-control-lg @error('Orphan_ID') is-invalid @enderror" value="{{$data -> id}}" id="Orphan_ID" name="Orphan_ID"  required />
+                                                                                                    <input type="text" class="form-control  form-control-lg @error('Orphan_ID') is-invalid @enderror" value="{{$data -> id}}" id="Orphan_ID" name="Orphan_ID" required />
                                                                                                     @error('Orphan_ID')
                                                                                                     <span class="invalid-feedback" role="alert">
                                                                                                         <strong>{{ $message }}</strong>
@@ -590,6 +543,7 @@
     </div>
 </div>
 @endsection
+@livewireScripts
 @section('script')
 <!-- Sweetalert -->
 <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>

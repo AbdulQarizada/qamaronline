@@ -72,6 +72,7 @@ return array(
     'MailerSend\\LaravelDriver\\' => array($vendorDir . '/mailersend/laravel-driver/src'),
     'MailerSend\\' => array($vendorDir . '/mailersend/mailersend/src'),
     'Maatwebsite\\Excel\\' => array($vendorDir . '/maatwebsite/excel/src'),
+    'Livewire\\' => array($vendorDir . '/livewire/livewire/src'),
     'League\\MimeTypeDetection\\' => array($vendorDir . '/league/mime-type-detection/src'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
     'League\\Config\\' => array($vendorDir . '/league/config/src'),

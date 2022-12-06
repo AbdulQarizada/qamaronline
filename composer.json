@@ -15,6 +15,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
         "laravelcollective/html": "^6.3",
+        "livewire/livewire": "^2.10",
         "maatwebsite/excel": "^3.1",
         "mailersend/laravel-driver": "^2.0",
         "milon/barcode": "^9.0",

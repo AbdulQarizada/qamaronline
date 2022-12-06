@@ -24,10 +24,10 @@
             </form>
             @if (Auth::check())
             <div class="dropdown dropdown-mega d-none d-lg-block ms-2">
-              {{-- <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+              <!-- <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
                 <span key="t-megamenu">Mega Menus</span>
                 <i class="mdi mdi-chevron-down"></i>
-            </button> --}}
+            </button> -->
                 <div class="dropdown-menu dropdown-megamenu">
                     <div class="row">
                         <div class="col-sm-8">
@@ -373,6 +373,7 @@
         </div>
     </div>
 </header>
+@if (Auth::check())
 <!--  Change-Password example -->
 <div class="modal fade change-password" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -411,3 +412,4 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+@endif

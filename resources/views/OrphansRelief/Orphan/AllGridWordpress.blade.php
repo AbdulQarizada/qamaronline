@@ -50,7 +50,7 @@
 <div class="row bg-white">
     <div class="col-lg-12">
         <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
-            {!! $datas->links() !!} <span class="m-2 text-white badge bg-dark">{{ $datas->total() }} Total Records</span>
+            {!! $datas->links() !!} <span class="m-2 text-white badge bg-dark"></span>
         </ul>
     </div>
 </div>

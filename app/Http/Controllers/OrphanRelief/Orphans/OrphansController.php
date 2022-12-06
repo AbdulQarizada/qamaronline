@@ -13,6 +13,7 @@ use Auth;
 use App\Models\SponsorCard;
 class OrphansController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['AllGrid', 'AllGridWordpress']]);

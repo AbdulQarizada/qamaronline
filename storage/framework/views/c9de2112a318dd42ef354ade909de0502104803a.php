@@ -18,18 +18,8 @@
                         <span key="t-layouts">Qamar Care Card</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow" key="t-vertical">Operations</a>
-                            <ul class="sub-menu" aria-expanded="true">
-                                <li><a href="<?php echo e(route('CreateCareCard')); ?>" key="t-compact-create">Add Card</a></li>
-                                <li><a href="<?php echo e(route('AllCareCard')); ?>" key="t-light-sidebar">All Cards</a></li>
-                                <li><a href="<?php echo e(route('PendingCareCard')); ?>" key="t-compact-sidebar">Pending Cards</a></li>
-                                <li><a href="<?php echo e(route('ApprovedCareCard')); ?>" key="t-icon-sidebar">Approved Cards</a></li>
-                                <li><a href="<?php echo e(route('PrintedCareCard')); ?>" key="t-boxed-width">Printed Cards</a></li>
-                                <li><a href="<?php echo e(route('ReleasedCareCard')); ?>" key="t-preloader">Released Cards</a></li>
-                                <li><a href="<?php echo e(route('RejectedCareCard')); ?>" key="t-colored-sidebar">Rejected Cards</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="<?php echo e(route('CreateCareCard')); ?>" key="t-compact-create"><i class="bx bx-credit-card"></i>Care Cards</a></li>
+
                         <li>
                             <a href="javascript: void(0);" class="has-arrow" key="t-horizontal">Services</a>
                             <ul class="sub-menu" aria-expanded="true">
@@ -60,6 +50,22 @@
                                 <li><a href="<?php echo e(route('VerifyCareCard')); ?>" key="t-colored-verify">Verify Cards</a></li>
                             </ul>
                         </li>
+                    </ul>
+                </li>
+                <?php endif; ?>
+
+                <?php if(Auth::user()->IsOrphanRelief == 1): ?>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-account-child"></i>
+                        <span key="t-layouts">Orphan & Sponsorships</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="<?php echo e(route('AllOrphans')); ?>"  key="t-horizontal"><i class="mdi mdi-account-details-outline"></i> Orphans</a></li>
+                        <li><a href="<?php echo e(route('AllSponsor')); ?>" key="t-horizontal"><i class="mdi mdi mdi-account-child"></i> Sponsors</a></li>
+                        <li><a href="<?php echo e(route('AllSubscription')); ?>"  key="t-horizontal"><i class="mdi mdi-account-box-multiple-outline"></i> Subsciptions</a></li>
+                        <li><a href="<?php echo e(route('AllCard')); ?>"  key="t-horizontal"><i class="mdi mdi-card-account-details-outline"></i> Cards</a></li>
+                        <li><a href="<?php echo e(route('AllPayment')); ?>"  key="t-horizontal"><i class="mdi mdi-cash-multiple"></i> Payments</a></li>
                     </ul>
                 </li>
                 <?php endif; ?>

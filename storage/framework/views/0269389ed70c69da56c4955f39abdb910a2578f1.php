@@ -33,13 +33,15 @@
                         <tbody>
                             <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <td><img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data['item']['Profile'])); ?>" alt="" class="avatar-sm rounded-circle"></td>
+                                <td><img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data['item']['Profile'])); ?>" alt="" class="avatar-lg rounded-circle"></td>
                                 <td>
                                     <h5 class="text-truncate font-size-18 fw-semibold "><a href="#" class="text-dark"><?php echo e($data['item']['FirstName']); ?> </a></h5>
+                                    <p class="text-wrap text-muted text-break"><?php echo e($data['item']['WhyShouldYouHelpMe']); ?></p>
+                                </td>
                                 <td> $40 / Montly</td>
                                 <td><span class="badge bg-danger"><?php echo e($data['item']['created_at'] -> format("j F Y")); ?></span></td>
                                 <td>
-                                    <a href="<?php echo e(route('RemoveFromCartPayment', $data['item']['id'])); ?>" class="btn btn-sm text-danger waves-effect waves-light delete-confirm">
+                                    <a href="<?php echo e(route('RemoveFromCartPayment', $data['item']['id'])); ?>" class="btn btn-sm text-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove From List">
                                         <i class=" bx bx-x-circle  font-size-16 align-middle"></i>
                                     </a>
                                 </td>
@@ -85,10 +87,7 @@
                                 <td>Total :</td>
                                 <td>$<?php echo e($totalPriceYearly = count($datas) * 40); ?></td>
                             </tr>
-                            <tr>
-                                <td>Estimated Tax : </td>
-                                <td>$ 0</td>
-                            </tr>
+                            
                             <tr>
                                 <th>Grand Total :</th>
                                 <th>$<?php echo e($totalPriceYearly = count($datas) * 40); ?></th>
@@ -99,10 +98,7 @@
                                 <td>Total :</td>
                                 <td>$<?php echo e($totalPriceYearly = count($datas) * 40 * 12); ?></td>
                             </tr>
-                            <tr>
-                                <td>Estimated Tax : </td>
-                                <td>$ 0</td>
-                            </tr>
+                            
                             <tr>
                                 <th>Grand Total :</th>
                                 <th>$<?php echo e($totalPriceYearly = count($datas) * 40 * 12); ?></th>
