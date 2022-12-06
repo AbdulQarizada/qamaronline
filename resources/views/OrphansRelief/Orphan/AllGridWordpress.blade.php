@@ -21,7 +21,7 @@
     <div class="col-md-3">
         <div class="product-container">
             <div class="product-image">
-                <a href="{{route('AddToCartPayment', ['data' => $data -> id])}}" class="product-link btn bg-warning text-white rounded">
+                <a target="_blank" href="{{route('AddToCartPayment', ['data' => $data -> id])}}" class="product-link btn bg-warning text-white rounded">
                     <h3 class="text-white bold">Sponsor Me</h3>
                 </a>
                 <img class="img-responsive" src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data -> Profile)}}" alt="">
