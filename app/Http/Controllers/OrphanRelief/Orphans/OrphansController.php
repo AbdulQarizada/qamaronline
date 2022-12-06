@@ -54,6 +54,23 @@ class OrphansController extends Controller
         return view('OrphansRelief.Orphan.AllGrid', ['datas' => $orphans]);
     }
 
+    public function AllGridWordpress()
+    {
+      $orphans =   Orphan::WhereDoesntHave('user', function($query) {   $query->where('sponsor_subscriptions.IsActive', 1);  })
+        -> join('locations as a', 'orphans.Province_ID', '=', 'a.id')
+        -> join('locations as b', 'orphans.District_ID', '=', 'b.id')
+        -> join('look_ups as c', 'orphans.FamilyStatus_ID', '=', 'c.id')
+        -> join('users as d', 'orphans.Created_By', '=', 'd.id')
+        -> join('look_ups as e', 'orphans.Gender_ID', '=', 'e.id')
+        -> select(['orphans.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'c.Name as FamilyStatus', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob', 'e.Name as Gender'])
+        -> where("orphans.Status", "=", 'Approved')
+        -> paginate(12);
+        return view('OrphansRelief.Orphan.AllGridWordpress', ['datas' => $orphans]);
+    }
+
+
+
+
     public function MyOrphans()
     {
         $myorphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')

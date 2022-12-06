@@ -67,8 +67,6 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
 
                     <tbody>
                         <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
-                        <?php if($data -> created_at  -> format("d") == now() -> format("d")): ?>
                         <tr class="bg-danger">
                             <td class="bg-danger"><?php echo e($data -> id); ?></td>
                             <td>
@@ -85,24 +83,6 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                 </div>
                             </td>
                         </tr>
-                        <?php else: ?>
-                        <tr>
-                            <td><?php echo e($data -> id); ?></td>
-                            <td>
-                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> From); ?></a></h5>
-                            </td>
-                            <td>
-                                <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> Message); ?></a></h5>
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> created_at -> format("j F Y")); ?></a></h5>
-                                </div>
-                            </td>
-                        </tr>
-                        <?php endif; ?>
 
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
@@ -133,11 +113,11 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
-            title: 'Are you sure?',
-            text: 'This record and it`s details will be permanantly deleted!',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
+            title: 'Are you sure?'
+            , text: 'This record and it`s details will be permanantly deleted!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
             if (value) {
                 window.location.href = url;
             }
@@ -148,11 +128,11 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
-            title: 'Are you sure?',
-            text: 'This card is released!',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
+            title: 'Are you sure?'
+            , text: 'This card is released!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
             if (value) {
                 window.location.href = url;
             }
@@ -169,22 +149,24 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
         responsive: true,
 
         lengthMenu: [
-            [100, 200, 300, 400, 500, 1000, -1],
-            [100, 200, 300, 400, 500, 1000, "All"]
+            [100, 200, 300, 400, 500, 1000, -1]
+            , [100, 200, 300, 400, 500, 1000, "All"]
         ],
 
-        dom: 'lBfrtip',
-        buttons: [{
-            autoFilter: true,
-            extend: 'excel',
-            text: 'Download To Excel',
-            exportOptions: {
+        dom: 'lBfrtip'
+        , buttons: [{
+            autoFilter: true
+            , extend: 'excel'
+            , text: 'Download To Excel'
+            , exportOptions: {
                 modifier: {
                     page: 'current'
                 }
             }
         }]
     });
+
 </script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/SystemManagement/Error/All.blade.php ENDPATH**/ ?>

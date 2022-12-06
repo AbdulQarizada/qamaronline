@@ -61,7 +61,7 @@
     @foreach($orphans as $orphan)
     <div class="col-xl-2 col-sm-6 mb-4">
         <a href="{{route('StatusOrphans', ['data' => $orphan -> id])}}">
-            <div class="card-one text-center">
+            <div class="card-one text-center border border-secondary">
                 <div class="card-body">
                     <div class="avatar-sm mx-auto mb-4">
                         <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-16">

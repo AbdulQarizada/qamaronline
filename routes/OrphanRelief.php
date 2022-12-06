@@ -18,6 +18,8 @@ Route::get('/OrphansRelief', [App\Http\Controllers\OrphanRelief\Orphans\OrphansC
 // Orphan list
 Route::get('/OrphansRelief/Orphan/All', [App\Http\Controllers\OrphanRelief\Orphans\OrphansController::class, 'All'])->name('AllOrphans');
 Route::get('/OrphansRelief/Orphan/AllGrid', [App\Http\Controllers\OrphanRelief\Orphans\OrphansController::class, 'AllGrid'])->name('AllGridOrphans');
+Route::get('/OrphansRelief/Orphan/AllGridWordpress', [App\Http\Controllers\OrphanRelief\Orphans\OrphansController::class, 'AllGridWordpress'])->name('AllGridWordpressOrphans');
+
 Route::get('/OrphansRelief/Orphan/MyOrphans', [App\Http\Controllers\OrphanRelief\Orphans\OrphansController::class, 'MyOrphans'])->name('MyOrphans');
 // status list
 Route::get('/OrphansRelief/Orphan/Pending', [App\Http\Controllers\OrphanRelief\Orphans\OrphansController::class, 'Pending'])->name('PendingOrphans');

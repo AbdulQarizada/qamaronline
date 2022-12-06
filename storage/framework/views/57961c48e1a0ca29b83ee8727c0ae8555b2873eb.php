@@ -24,10 +24,7 @@
             </form>
             <?php if(Auth::check()): ?>
             <div class="dropdown dropdown-mega d-none d-lg-block ms-2">
-              <button type="button" class="btn header-item waves-effect" data-bs-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-                <span key="t-megamenu">Mega Menus</span>
-                <i class="mdi mdi-chevron-down"></i>
-            </button>
+              
                 <div class="dropdown-menu dropdown-megamenu">
                     <div class="row">
                         <div class="col-sm-8">

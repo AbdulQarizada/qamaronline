@@ -42,7 +42,7 @@
         </div>
     </div>
     <div class="col-md-8 col-sm-12 mb-2">
-        <a href="{{route('AllGridOrphans')}}" class="btn  btn-lg waves-effect  waves-light  m-1 float-end" data-bs-toggle="tooltip" data-bs-placement="top" title="All Orphans Grid View"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a>
+        <a href="{{route('AllGridWordpressOrphans')}}" class="btn  btn-lg waves-effect  waves-light  m-1 float-end" data-bs-toggle="tooltip" data-bs-placement="top" title="All Orphans Grid View"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a>
         <a href="{{route('CreateOrphans')}}" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD ORPHAN</a>
     </div>
 </div>
