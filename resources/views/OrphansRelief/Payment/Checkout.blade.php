@@ -33,7 +33,11 @@
                         <tbody>
                             @foreach($datas as $data)
                             <tr>
-                                <td><img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data['item']['Profile'])}}" alt="" class="avatar-lg rounded-circle"></td>
+                                <td>
+                                    <div class="avatar-lg">
+                                            <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data['item']['Profile'])}}" alt="" class="avatar-xl rounded-circle">
+                                    </div>
+                                </td>
                                 <td>
                                     <h5 class="text-truncate font-size-18 fw-semibold "><a href="#" class="text-dark">{{$data['item']['FirstName']}} </a></h5>
                                     <p class="text-wrap text-muted text-break">{{$data['item']['WhyShouldYouHelpMe']}}</p>

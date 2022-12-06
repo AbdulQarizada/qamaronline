@@ -33,7 +33,11 @@
                         <tbody>
                             <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <td><img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data['item']['Profile'])); ?>" alt="" class="avatar-lg rounded-circle"></td>
+                                <td>
+                                    <div class="avatar-lg">
+                                            <img src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data['item']['Profile'])); ?>" alt="" class="avatar-xl rounded-circle">
+                                    </div>
+                                </td>
                                 <td>
                                     <h5 class="text-truncate font-size-18 fw-semibold "><a href="#" class="text-dark"><?php echo e($data['item']['FirstName']); ?> </a></h5>
                                     <p class="text-wrap text-muted text-break"><?php echo e($data['item']['WhyShouldYouHelpMe']); ?></p>
