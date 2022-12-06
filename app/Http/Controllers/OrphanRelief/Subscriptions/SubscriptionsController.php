@@ -112,7 +112,7 @@ class SubscriptionsController extends Controller
          'Owner' => 1,
        ]);
 
-        return redirect()->route('AllSubscription')->with('toast_success', 'Record Created Successfully!');
+        return redirect()->route('AllSubscription') -> with('toast_success', 'Record Created Successfully!');
     }
 
     // update

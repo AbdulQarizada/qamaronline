@@ -63,7 +63,7 @@
         <a href="{{route('StatusOrphans', ['data' => $orphan -> id])}}">
             <div class="card-one text-center border border-secondary">
                 <div class="float-end">
-                    <a  href="{{ route('DeActivateSubscription', ['data' => $orphan -> pivot -> id]) }}" class="btn btn-sm text-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove From Subscription">
+                    <a  href="{{ route('DeActivateSubscription', ['data' => $orphan -> pivot -> id]) }}" class="btn btn-sm text-danger waves-effect waves-light DeactivateSubscription" data-bs-toggle="tooltip" data-bs-placement="top" title="End Subscription">
                         <i class=" bx bx-x-circle   font-size-24 align-middle"></i>
                     </a>
                 </div>
@@ -167,7 +167,7 @@
                                 <a href="{{route('EditCard', ['data' => $card -> id])}}" class="btn btn-sm btn-outline-info waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Details">
                                     <i class="mdi mdi-square-edit-outline font-size-16 align-middle"></i>
                                 </a>
-                                <a href="{{route('DeleteCard', ['data' => $card -> id])}}" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
+                                <a href="{{route('DeleteCard', ['data' => $card -> id])}}" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirmCard" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
                                     <i class="mdi mdi-delete-outline font-size-16 align-middle"></i>
                                 </a>
                                 @endif
@@ -196,12 +196,12 @@
             @endif
         </table>
         @if($data -> IsActive == 1)
-        <a href="{{route('DeActivateSponsor', ['data' => $data -> id])}}" class="btn btn-outline-danger btn-lg waves-effect  waves-light btn-rounded w-lg  deactivate m-3" data-toggle="tooltip" data-placement="top" title="DeActivate">
+        <a href="{{route('DeActivateSponsor', ['data' => $data -> id])}}" class="btn btn-outline-danger btn-lg waves-effect  waves-light btn-rounded w-lg  deactivateSponsor m-3" data-toggle="tooltip" data-placement="top" title="DeActivate">
             De-ACTIVATE
         </a>
         @endif
         @if($data -> IsActive == 0)
-        <a href="{{route('ActivateSponsor', ['data' => $data -> id])}}" class="btn btn-outline-success btn-lg waves-effect  waves-light btn-rounded w-lg activate m-3" data-toggle="tooltip" data-placement="top" title="Activate">
+        <a href="{{route('ActivateSponsor', ['data' => $data -> id])}}" class="btn btn-outline-success btn-lg waves-effect  waves-light btn-rounded w-lg activateSponsor m-3" data-toggle="tooltip" data-placement="top" title="Activate">
             ACTIVATE
         </a>
         @endif
@@ -211,12 +211,12 @@
 @section('script')
 <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
 <script>
-    $('.activate').on('click', function(event) {
+    $('.activateSponsor').on('click', function(event) {
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
             title: 'Are you sure?'
-            , text: 'This record and it`s details will be activated!'
+            , text: 'Do you want to Activite this sponsor?'
             , icon: 'warning'
             , buttons: ["Cancel", "Yes!"]
         , }).then(function(value) {
@@ -226,12 +226,12 @@
         });
     });
 
-    $('.deactivate').on('click', function(event) {
+    $('.deactivateSponsor').on('click', function(event) {
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
             title: 'Are you sure?'
-            , text: 'This record and it`s details will be deactivated!'
+            , text: 'Do you want to De-Activite this sponsor?'
             , icon: 'warning'
             , buttons: ["Cancel", "Yes!"]
         , }).then(function(value) {
@@ -240,12 +240,27 @@
             }
         });
     });
-    $('.delete-confirm').on('click', function(event) {
+    $('.delete-confirmCard').on('click', function(event) {
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
             title: 'Are you sure?'
             , text: 'This record and it`s details will be permanantly deleted!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
+        // DeACtivate Subscription Confirmation
+        $('.DeactivateSubscription').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?'
+            , text: 'Do you want to end this subscription?!'
             , icon: 'warning'
             , buttons: ["Cancel", "Yes!"]
         , }).then(function(value) {
@@ -260,7 +275,7 @@
         const url = $(this).attr('href');
         swal({
             title: 'Are you sure?'
-            , text: 'Do you want to DeActivate Subscription?!'
+            , text: 'Do you want to DeActivate this Card?!'
             , icon: 'warning'
             , buttons: ["Cancel", "Yes!"]
         , }).then(function(value) {
@@ -275,7 +290,7 @@
         const url = $(this).attr('href');
         swal({
             title: 'Are you sure?'
-            , text: 'Do you want to Activate Subscription?!'
+            , text: 'Do you want to Activate this Card?!'
             , icon: 'warning'
             , buttons: ["Cancel", "Yes!"]
         , }).then(function(value) {

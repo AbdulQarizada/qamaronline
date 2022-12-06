@@ -24,7 +24,7 @@ class SponsorsController extends Controller
     $PageInfo = 'All';
     $provinces = Location::whereNull("Parent_ID")->get();
     $sponsors =   User::where("users.IsOrphanSponsor", "=", 1)
-      -> with('orphan', function ($query) {  return $query->where('IsActive', '=', 1); })
+      -> with('orphan', function ($query) {  return $query -> where('IsActive', '=', 1); })
       -> leftjoin('users as a', 'users.Created_By', '=', 'a.id')
       -> select('users.*', 'a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob')
       -> paginate(100);
