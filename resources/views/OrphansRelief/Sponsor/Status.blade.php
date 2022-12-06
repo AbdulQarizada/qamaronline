@@ -56,8 +56,13 @@
         </div>
     </div>
 </div>
+<div class="row mt-4">
+    <div class="col-md-10"> <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Sponsored Orphans</h5></div>
+        <div class="col-md-2 col-sm-2 mb-2">
+        <a href="{{route('CreateCard')}}" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded text-uppercase"><i class="mdi mdi-plus me-1"></i>ADD Orphan</a>
+    </div>
+</div>
 <div class="row">
-    <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Sponsored Orphans</h5>
     @foreach($orphans as $orphan)
     <div class="col-xl-2 col-sm-6 mb-4">
         <a href="{{route('StatusOrphans', ['data' => $orphan -> id])}}">
@@ -105,13 +110,13 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Payment Cards</h5>
-    <div class="row">
-            <div class="col-md-12 col-sm-12 mb-2">
-            <a href="{{route('CreateCard')}}" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded text-uppercase"><i class="mdi mdi-plus me-1"></i>ADD Card</a>
-        </div>
+<div class="row mt-4">
+    <div class="col-md-10"> <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Payment Cards</h5></div>
+        <div class="col-md-2 col-sm-2 mb-2">
+        <a href="{{route('CreateCard')}}" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded text-uppercase"><i class="mdi mdi-plus me-1"></i>ADD Card</a>
     </div>
+</div>
+<div class="row">
     <div class="col-md-4">
         @foreach($cards as $card)
         <div class="card-one mb-4">
