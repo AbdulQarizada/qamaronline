@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\OrphanRelief\Sponsors;
 
 use App\Http\Controllers\Controller;
+use App\Models\SponsorCard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Orphan;
 use App\Models\Location;
 use App\Models\User;
 
@@ -127,7 +127,11 @@ class SponsorsController extends Controller
   {
     $sponsors =   User::where("users.id", "=", $data->id)->first();
     $orphans = $sponsors -> orphan() -> paginate(12);
-    return view('OrphansRelief.Sponsor.Status',  ['data' => $sponsors, 'orphans' => $orphans]);
+    $cards =  $sponsors -> card()
+    -> join('users as d', 'sponsor_cards.Created_By', '=', 'd.id')
+    -> select(['sponsor_cards.*', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+    -> get();
+    return view('OrphansRelief.Sponsor.Status',  ['data' => $sponsors, 'orphans' => $orphans, 'cards' => $cards]);
   }
 
   public function Activate(User $data)

@@ -373,6 +373,7 @@
         </div>
     </div>
 </header>
+<?php if(Auth::check()): ?>
 <!--  Change-Password example -->
 <div class="modal fade change-password" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -424,4 +425,5 @@ unset($__errorArgs, $__bag); ?>" name="password" autocomplete="new_password" pla
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-</div><!-- /.modal --><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/Layouts/topbar.blade.php ENDPATH**/ ?>
+</div><!-- /.modal -->
+<?php endif; ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/Layouts/topbar.blade.php ENDPATH**/ ?>

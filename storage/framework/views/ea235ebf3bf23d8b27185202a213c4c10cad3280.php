@@ -51,15 +51,15 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href = this.value;">
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('search', [])->html();
-} elseif ($_instance->childHasBeenRendered('hlLuzlz')) {
-    $componentId = $_instance->getRenderedChildComponentId('hlLuzlz');
-    $componentTag = $_instance->getRenderedChildComponentTagName('hlLuzlz');
+} elseif ($_instance->childHasBeenRendered('lfFxfYY')) {
+    $componentId = $_instance->getRenderedChildComponentId('lfFxfYY');
+    $componentTag = $_instance->getRenderedChildComponentTagName('lfFxfYY');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('hlLuzlz');
+    $_instance->preserveRenderedChild('lfFxfYY');
 } else {
     $response = \Livewire\Livewire::mount('search', []);
     $html = $response->html();
-    $_instance->logRenderedChild('hlLuzlz', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('lfFxfYY', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

@@ -100,7 +100,7 @@
                         <th>ID</th>
                         <th>Full Name</th>
                         <th>Charge ID</th>
-                        <th>Amount </h>
+                        <th>Amount </th>
                         <th>Email</th>
                         <th>Status</th>
                         <th>Created By</th>
