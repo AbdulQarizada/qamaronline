@@ -1,14 +1,13 @@
 @extends('Layouts.master-without-nav')
 @section('title') Orphan and Sponsorships @endsection
 @section('css')
-
 @endsection
 @section('body')
+<body class="bg-white">
+@endsection
 
-<body>
-    @endsection
 @section('content')
-<div class="row">
+<div class="row bg-white">
     <div class="col-md-12">
         <div class="alert alert-success {{ !Session::has('done') ? 'd-none' : ''  }}">
             {{ Session::get('done') }}
@@ -16,7 +15,7 @@
     </div>
 </div>
 @if($datas-> count() > 0)
-<div class="row">
+<div class="row bg-white">
     @foreach($datas as $data)
     <div class="col-md-3">
         <div class="product-container">
@@ -48,7 +47,7 @@
     </div>
     @endforeach
 </div>
-<div class="row">
+<div class="row bg-white">
     <div class="col-lg-12">
         <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
             {!! $datas->links() !!} <span class="m-2 text-white badge bg-dark">{{ $datas->total() }} Total Records</span>
@@ -56,7 +55,7 @@
     </div>
 </div>
 @else
-<div class="row">
+<div class="row bg-white">
     <div class="col-lg-12">
         <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
            <span class="m-2  text-danger display-4">No Orphan to sponsor at this time</span>

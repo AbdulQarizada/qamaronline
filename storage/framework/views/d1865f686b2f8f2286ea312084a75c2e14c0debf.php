@@ -1,14 +1,13 @@
 
 <?php $__env->startSection('title'); ?> Orphan and Sponsorships <?php $__env->stopSection(); ?>
 <?php $__env->startSection('css'); ?>
-
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('body'); ?>
+<body class="bg-white">
+<?php $__env->stopSection(); ?>
 
-<body>
-    <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
-<div class="row">
+<div class="row bg-white">
     <div class="col-md-12">
         <div class="alert alert-success <?php echo e(!Session::has('done') ? 'd-none' : ''); ?>">
             <?php echo e(Session::get('done')); ?>
@@ -17,7 +16,7 @@
     </div>
 </div>
 <?php if($datas-> count() > 0): ?>
-<div class="row">
+<div class="row bg-white">
     <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="col-md-3">
         <div class="product-container">
@@ -50,7 +49,7 @@
     </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </div>
-<div class="row">
+<div class="row bg-white">
     <div class="col-lg-12">
         <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
             <?php echo $datas->links(); ?> <span class="m-2 text-white badge bg-dark"><?php echo e($datas->total()); ?> Total Records</span>
@@ -58,7 +57,7 @@
     </div>
 </div>
 <?php else: ?>
-<div class="row">
+<div class="row bg-white">
     <div class="col-lg-12">
         <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
            <span class="m-2  text-danger display-4">No Orphan to sponsor at this time</span>
