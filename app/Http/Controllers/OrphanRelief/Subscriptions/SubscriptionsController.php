@@ -65,7 +65,7 @@ class SubscriptionsController extends Controller
           'IsActive_By' => auth()->user()->id,
 
         ]);
-        return redirect()->route('ActiveSubscription')->with('toast_success', 'Subscription Activated Successfully!');
+        return back() -> with('toast_success', 'Subscription Activated Successfully!');
     }
 
     public function DeActivate(SponsorSubscription $data)
@@ -74,7 +74,7 @@ class SubscriptionsController extends Controller
           'IsActive' => 0,
           'IsActive_By' => auth()->user()->id,
         ]);
-        return redirect()->route('InActiveSubscription')->with('toast_error', 'Subscription De-Activated Successfully!');
+        return back() -> with('toast_error', 'Subscription De-Activated Successfully!');
     }
 
     // create

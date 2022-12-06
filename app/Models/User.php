@@ -73,7 +73,7 @@ class User extends Authenticatable
 
     public function orphan()
     {
-        return $this->belongsToMany(Orphan::class, 'sponsor_subscriptions', 'Sponsor_ID', 'Orphan_ID') -> withPivot('IsActive', 'EndDate', 'StartDate');
+        return $this->belongsToMany(Orphan::class, 'sponsor_subscriptions', 'Sponsor_ID', 'Orphan_ID') -> withPivot('IsActive', 'EndDate', 'StartDate', 'id');
     }
 
     public function payment()

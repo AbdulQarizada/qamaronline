@@ -60,7 +60,7 @@ class CardsController extends Controller
             'IsActive' => 1,
             'IsActive_By' => auth()->user()->id,
         ]);
-        return redirect()->route('ActiveCard')->with('toast_success', 'Card Activated Successfully!');
+        return back() -> with('toast_success', 'Card Activated Successfully!');
     }
 
     public function DeActivate(SponsorCard $data)
@@ -69,7 +69,7 @@ class CardsController extends Controller
             'IsActive' => 0,
             'IsActive_By' => auth()->user()->id,
         ]);
-        return redirect()->route('InActiveCard')->with('toast_error', 'Card De-Activated Successfully!');
+        return back() -> with('toast_error', 'Card De-Activated Successfully!');
     }
 
     // create
@@ -138,7 +138,7 @@ class CardsController extends Controller
     public function Delete(SponsorCard $data)
     {
         $data->delete();
-        return back()->with('success', 'Record deleted successfully');
+        return back() -> with('success', 'Record deleted successfully');
     }
 
 

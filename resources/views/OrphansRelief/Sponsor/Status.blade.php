@@ -63,7 +63,7 @@
         <a href="{{route('StatusOrphans', ['data' => $orphan -> id])}}">
             <div class="card-one text-center border border-secondary">
                 <div class="float-end">
-                    <a  class="btn btn-sm text-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove From Subscription">
+                    <a  href="{{ route('DeActivateSubscription', ['data' => $orphan -> pivot -> id]) }}" class="btn btn-sm text-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Remove From Subscription">
                         <i class=" bx bx-x-circle   font-size-24 align-middle"></i>
                     </a>
                 </div>
@@ -240,7 +240,50 @@
             }
         });
     });
-
+    $('.delete-confirm').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?'
+            , text: 'This record and it`s details will be permanantly deleted!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
+    // DeACtivate Card Confirmation
+    $('.DeActivateCard').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?'
+            , text: 'Do you want to DeActivate Subscription?!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
+    // Activate Card Confirmation
+    $('.ActivateCard').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?'
+            , text: 'Do you want to Activate Subscription?!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
 </script>
 
 @endsection

@@ -24,9 +24,10 @@ class SponsorsController extends Controller
     $PageInfo = 'All';
     $provinces = Location::whereNull("Parent_ID")->get();
     $sponsors =   User::where("users.IsOrphanSponsor", "=", 1)
-      ->leftjoin('users as a', 'users.Created_By', '=', 'a.id')
-      ->select('users.*', 'a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob')
-      ->paginate(100);
+      -> with('orphan', function ($query) {  return $query->where('IsActive', '=', 1); })
+      -> leftjoin('users as a', 'users.Created_By', '=', 'a.id')
+      -> select('users.*', 'a.FirstName as UFirstName', 'a.LastName as ULastName', 'a.Job as UJob')
+      -> paginate(100);
     return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo, 'provinces' => $provinces]);
   }
 
@@ -126,7 +127,7 @@ class SponsorsController extends Controller
   public function Status(User $data)
   {
     $sponsors =   User::where("users.id", "=", $data->id)->first();
-    $orphans = $sponsors -> orphan() -> paginate(12);
+    $orphans = $sponsors -> orphan() -> where('IsActive', '=', 1) -> paginate(12);
     $cards =  $sponsors -> card()
     -> join('users as d', 'sponsor_cards.Created_By', '=', 'd.id')
     -> select(['sponsor_cards.*', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
