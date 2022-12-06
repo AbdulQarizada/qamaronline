@@ -35,7 +35,7 @@
                             <tr>
                                 <td>
                                     <div class="avatar-lg">
-                                            <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data['item']['Profile'])}}" alt="" class="avatar-xl rounded-circle">
+                                            <img src="{{URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$data['item']['Profile'])}}" alt="" class="avatar-lg rounded-circle">
                                     </div>
                                 </td>
                                 <td>
