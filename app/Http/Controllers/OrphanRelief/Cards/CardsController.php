@@ -103,7 +103,7 @@ class CardsController extends Controller
             'Owner' => 1,
         ]);
 
-        return redirect()->route('AllCard')->with('toast_success', 'Record Created Successfully!');
+        return back() -> with('toast_success', 'Record Created Successfully!');
     }
 
     // update
@@ -131,7 +131,7 @@ class CardsController extends Controller
             'CVV' => Hash::make(request('CVV')),
 
         ]);
-        return redirect()->route('AllCard')->with('toast_success', 'Record Edited Successfully!');
+        return back() -> with('toast_success', 'Record Edited Successfully!');
     }
 
     // Delete

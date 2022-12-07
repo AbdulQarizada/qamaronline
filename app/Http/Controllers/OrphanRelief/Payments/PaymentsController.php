@@ -210,6 +210,7 @@ class PaymentsController extends Controller
                   'Card_ID' => $Card_ID->id,
                   'ChargeID' => $charge->id,
                   'Sponsor_ID' => $NewUser -> id,
+                  'IsPaid' => 1
                 ]);
             }
             catch (\Exception $e) {
@@ -325,6 +326,7 @@ class PaymentsController extends Controller
                   'Card_ID' => $Card_ID->id,
                   'ChargeID' => $charge->id,
                   'Sponsor_ID' => $userid -> id,
+                  'IsPaid' => 1
                 ]);
             }
             catch (\Exception $e) {

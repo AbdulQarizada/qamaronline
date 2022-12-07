@@ -129,7 +129,7 @@ class OrphansController extends Controller
     public function Waiting()
     {
         $PageInfo = 'Waiting';
-        $sponsors = User::where("IsOrphanSponsor", "=", "1")->where("IsActive", "=", "1")->get();
+        $sponsors = User::where("IsOrphanSponsor", "=", "1")->where("IsActive", "=", 1)->get();
         $provinces = Location::whereNull("Parent_ID")->get();
         $cards = SponsorCard::get();
         $orphans =   Orphan::WhereDoesntHave('user', function($query) {   $query->where('sponsor_subscriptions.IsActive', 1);  })

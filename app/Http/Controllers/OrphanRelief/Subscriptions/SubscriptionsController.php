@@ -92,7 +92,7 @@ class SubscriptionsController extends Controller
           'Sponsor_ID' => 'bail|required|max:255',
           'Orphan_ID' => 'required|max:255',
           'Type' => 'required|max:255',
-          'Amount' => 'required|max:255',
+          'Amount' => 'required|numeric',
           'Card_ID' => 'required|max:255',
           'StartDate' => 'required|max:255',
           'EndDate' => 'required|max:255',
@@ -112,7 +112,7 @@ class SubscriptionsController extends Controller
          'Owner' => 1,
        ]);
 
-        return redirect()->route('AllSubscription') -> with('toast_success', 'Record Created Successfully!');
+        return back() -> with('toast_success', 'Record Created Successfully!');
     }
 
     // update
