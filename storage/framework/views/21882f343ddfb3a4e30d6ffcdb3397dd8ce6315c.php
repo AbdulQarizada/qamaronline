@@ -89,7 +89,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="needs-validation" action="<?php echo e(route('CreateCard')); ?>" method="POST" enctype="multipart/form-data" novalidate>
+                <form class="needs-validation" action="<?php echo e(route('CreateCard')); ?>" id="Card" method="POST" enctype="multipart/form-data" novalidate>
                     <?php echo csrf_field(); ?>
                     <div class="checkout-tabs">
                         <div class="row">
@@ -110,6 +110,10 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row">
+                                                            <div id="charge-error" class="alert alert-danger <?php echo e(!Session::has('error') ? 'd-none' : ''); ?>">
+                                                                <?php echo e(Session::get('error')); ?>
+
+                                                            </div>
                                                             <div class="col-md-4 d-none">
                                                                 <div class="mb-3 position-relative">
                                                                     <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['Sponsor_ID'];
@@ -219,7 +223,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('CVV')); ?>" id="CVV" name="CVV" maxlength="3"  placeholder="785" required />
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('CVV')); ?>" id="CVV" name="CVV" maxlength="3" placeholder="785" required />
                                                                     <?php $__errorArgs = ['CVV'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -240,7 +244,11 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                         </div>
                                         <div>
-                                            <button class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded w-lg" type="submit">Submit </button>
+                                            <button class="btn1 btn-outline-info btn-lg waves-effect waves-light float-end" type="button" id="Loading" disabled>
+                                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                                Loading...
+                                            </button>
+                                            <button class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded w-lg" type="submit" id="SubmitNow">Submit </button>
                                         </div>
                                     </div>
                                 </div>
@@ -251,14 +259,49 @@ unset($__errorArgs, $__bag); ?>
             </div>
         </div>
     </div>
-</div>
+</d
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
 <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('/assets/js/pages/form-validation.init.js')); ?>"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script>
+    Stripe.setPublishableKey('<?php echo e(env('STRIPE_KEY')); ?>');
+    $(document).ready(function() {
+        var $form = $('#Card');
+        var loading = $('#Loading');
+        var SubmitNow = $('#SubmitNow');
+        loading.hide();
+        $form.submit(function(event) {
+            $('#charge-error').addClass('d-none');
+            event.preventDefault();
+            loading.show();
+            SubmitNow.hide();
+            Stripe.card.createToken({
+                number: $('#CardNumber').val()
+                , cvc: $('#CVV').val()
+                , exp_month: $('#ValidMonth').val()
+                , exp_year: $('#ValidYear').val()
+            }, stripeResponseHandler);
+            return false;
+        });
 
+        function stripeResponseHandler(status, response) {
+            if (response.error) {
+                $('#charge-error').removeClass('d-none');
+                $('#charge-error').text(response.error.message);
+                loading.hide();
+                SubmitNow.show();
 
+            } else {
+                var token = response.id;
+                $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+                loading.hide();
+                $form.get(0).submit();
+            }
+        }
+
+    });
     $('.delete-confirmCard').on('click', function(event) {
         event.preventDefault();
         const url = $(this).attr('href');

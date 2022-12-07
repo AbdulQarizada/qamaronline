@@ -89,7 +89,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="needs-validation" action="{{route('CreateCard')}}" method="POST" enctype="multipart/form-data" novalidate>
+                <form class="needs-validation" action="{{ route('CreateCard') }}" id="Card" method="POST" enctype="multipart/form-data" novalidate>
                     @csrf
                     <div class="checkout-tabs">
                         <div class="row">
@@ -110,6 +110,9 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row">
+                                                            <div id="charge-error" class="alert alert-danger {{ !Session::has('error') ? 'd-none' : ''  }}">
+                                                                {{ Session::get('error') }}
+                                                            </div>
                                                             <div class="col-md-4 d-none">
                                                                 <div class="mb-3 position-relative">
                                                                     <input type="text" class="form-control  form-control-lg @error('Sponsor_ID') is-invalid @enderror" value="{{ Auth::user() -> id}} " id="Sponsor_ID" name="Sponsor_ID" required />
@@ -156,7 +159,7 @@
                                                             <div class="col-md-4">
                                                                 <div class="mb-3 position-relative">
                                                                     <label for="CVV" class="form-label ">CVV (3 Digit - Back of Card)</label>
-                                                                    <input type="text" class="form-control form-control-lg @error('CVV') is-invalid @enderror" value="{{ old('CVV') }}" id="CVV" name="CVV" maxlength="3"  placeholder="785" required />
+                                                                    <input type="text" class="form-control form-control-lg @error('CVV') is-invalid @enderror" value="{{ old('CVV') }}" id="CVV" name="CVV" maxlength="3" placeholder="785" required />
                                                                     @error('CVV')
                                                                     <span class="invalid-feedback" role="alert">
                                                                         <strong>{{ $message }}</strong>
@@ -170,7 +173,11 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <button class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded w-lg" type="submit">Submit </button>
+                                            <button class="btn1 btn-outline-info btn-lg waves-effect waves-light float-end" type="button" id="Loading" disabled>
+                                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                                Loading...
+                                            </button>
+                                            <button class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded w-lg" type="submit" id="SubmitNow">Submit </button>
                                         </div>
                                     </div>
                                 </div>
@@ -181,14 +188,49 @@
             </div>
         </div>
     </div>
-</div>
+</d
 @endsection
 @section('script')
 <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
 <script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script>
+    Stripe.setPublishableKey('{{ env('STRIPE_KEY') }}');
+    $(document).ready(function() {
+        var $form = $('#Card');
+        var loading = $('#Loading');
+        var SubmitNow = $('#SubmitNow');
+        loading.hide();
+        $form.submit(function(event) {
+            $('#charge-error').addClass('d-none');
+            event.preventDefault();
+            loading.show();
+            SubmitNow.hide();
+            Stripe.card.createToken({
+                number: $('#CardNumber').val()
+                , cvc: $('#CVV').val()
+                , exp_month: $('#ValidMonth').val()
+                , exp_year: $('#ValidYear').val()
+            }, stripeResponseHandler);
+            return false;
+        });
 
+        function stripeResponseHandler(status, response) {
+            if (response.error) {
+                $('#charge-error').removeClass('d-none');
+                $('#charge-error').text(response.error.message);
+                loading.hide();
+                SubmitNow.show();
 
+            } else {
+                var token = response.id;
+                $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+                loading.hide();
+                $form.get(0).submit();
+            }
+        }
+
+    });
     $('.delete-confirmCard').on('click', function(event) {
         event.preventDefault();
         const url = $(this).attr('href');
