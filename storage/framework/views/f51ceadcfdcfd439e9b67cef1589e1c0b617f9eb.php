@@ -18,95 +18,8 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
-        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-            <div class="offcanvas-header">
-                <h3 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Filter </h3>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <form action="<?php echo e(route('SearchOrphans')); ?>" method="POST">
-                    <?php echo csrf_field(); ?>
-                    <div class="row">
-                        <div class="col-md-12 mb-2">
-                            <div class="position-relative">
-                                <div class="input-group">
-                                    <select class="form-select Province form-select-lg <?php $__errorArgs = ['Province_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" name="Province_ID" value="<?php echo e(old('Province_ID')); ?>" id="Province_ID">
-                                        <option value="">Select Your Province</option>
-                                        <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($province -> id); ?>"><?php echo e($province -> Name); ?></option>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    </select>
-                                    <?php $__errorArgs = ['Province_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong><?php echo e($message); ?></strong>
-                                    </span>
-                                    <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 mb-2">
-                            <div class="position-relative">
-                                <div class="input-group">
-                                    <select class="form-select  District form-select-lg <?php $__errorArgs = ['District_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" name="District_ID" value="<?php echo e(old('District_ID')); ?>" id="District_ID">
-                                        <option value="">Select Your District</option>
-                                    </select>
-                                    <?php $__errorArgs = ['District_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong><?php echo e($message); ?></strong>
-                                    </span>
-                                    <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 mb-2">
-                            <div class="hstack gap-2">
-                                <input type="text" name="PageInfo" value="<?php echo e($PageInfo); ?>" class="d-none">
-                                <input class="form-control form-control-lg" type="text" name="data">
-                            </div>
-                        </div>
-                        <div class="col-md-12 mb-2">
-                            <button type="submit" class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded w-lg"><i class="mdi mdi-magnify me-1"></i>Filter</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4 col-sm-12 mb-2">
-        <div class="hstack gap-3">
-            <a class="btn  btn-lg waves-effect  waves-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-toggle="tooltip" data-bs-placement="top" title="Filter"> <i class="mdi mdi-filter-menu-outline font-size-24 align-middle"></i></a>
-            <select class="form-select  form-select-lg <?php $__errorArgs = ['Country'];
+    <div class="col-md-3 col-sm-12 mb-2">
+        <select class="form-select  form-select-lg <?php $__errorArgs = ['Country'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -114,12 +27,28 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
-                <option value="<?php echo e(route('AllPayment')); ?>">Please Filter Your Choices</option>
-                <option value="<?php echo e(route('AllPayment')); ?>" <?php echo e($PageInfo == 'All' ? 'selected' : ''); ?>>All</option>
-                <option value="<?php echo e(route('PaidPayment')); ?>" <?php echo e($PageInfo == 'Paid' ? 'selected' : ''); ?>>Paid</option>
-                <option value="<?php echo e(route('DuePayment')); ?>" <?php echo e($PageInfo == 'Due' ? 'selected' : ''); ?>>Due</option>
-            </select>
-        </div>
+            <option value="<?php echo e(route('AllPayment')); ?>">Please Filter Your Choices</option>
+            <option value="<?php echo e(route('AllPayment')); ?>" <?php echo e($PageInfo == 'All' ? 'selected' : ''); ?>>All</option>
+            <option value="<?php echo e(route('PaidPayment')); ?>" <?php echo e($PageInfo == 'Paid' ? 'selected' : ''); ?>>Paid</option>
+            <option value="<?php echo e(route('DuePayment')); ?>" <?php echo e($PageInfo == 'Due' ? 'selected' : ''); ?>>Due</option>
+        </select>
+    </div>
+    <div class="col-md-4 mb-2">
+        <?php
+if (! isset($_instance)) {
+    $html = \Livewire\Livewire::mount('search', [])->html();
+} elseif ($_instance->childHasBeenRendered('OHH4Mgx')) {
+    $componentId = $_instance->getRenderedChildComponentId('OHH4Mgx');
+    $componentTag = $_instance->getRenderedChildComponentTagName('OHH4Mgx');
+    $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
+    $_instance->preserveRenderedChild('OHH4Mgx');
+} else {
+    $response = \Livewire\Livewire::mount('search', []);
+    $html = $response->html();
+    $_instance->logRenderedChild('OHH4Mgx', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+}
+echo $html;
+?>
     </div>
 </div>
 <div class="row">
@@ -207,15 +136,15 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
                                 <a href="<?php echo e(route('RecieptPayment', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-warning waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Reciept">
                                     <i class="mdi mdi-receipt font-size-16 align-middle"></i>
                                 </a>
-                                 <a href="<?php echo e(route('MakeItDuePayment', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light due" data-bs-toggle="tooltip" data-bs-placement="top" title="Make it Due">
+                                <a href="<?php echo e(route('MakeItDuePayment', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light due" data-bs-toggle="tooltip" data-bs-placement="top" title="Make it Due">
                                     <i class="mdi mdi-cash-remove font-size-16 align-middle"></i>
                                 </a>
                                 <?php endif; ?>
                                 <?php if($data -> IsPaid != 1): ?>
-                                  <a href="<?php echo e(route('EditSponsor', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-info waves-effect waves-light email" data-bs-toggle="tooltip" data-bs-placement="top" title="Email Sponsor">
+                                <a href="<?php echo e(route('EditSponsor', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-info waves-effect waves-light email" data-bs-toggle="tooltip" data-bs-placement="top" title="Email Sponsor">
                                     <i class="mdi mdi-email-outline font-size-16 align-middle"></i>
-                                  </a>
-                                   <a href="<?php echo e(route('MakeItPaidPayment', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-success waves-effect waves-light paid" data-bs-toggle="tooltip" data-bs-placement="top" title="Make it Paid">
+                                </a>
+                                <a href="<?php echo e(route('MakeItPaidPayment', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-success waves-effect waves-light paid" data-bs-toggle="tooltip" data-bs-placement="top" title="Make it Paid">
                                     <i class="mdi mdi-cash-check font-size-16 align-middle"></i>
                                 </a>
                                 <?php endif; ?>
@@ -251,41 +180,41 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
-            title: 'Are you sure?',
-            text: 'Do you want to email this sponsor?',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
+            title: 'Are you sure?'
+            , text: 'Do you want to email this sponsor?'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
             if (value) {
                 window.location.href = url;
             }
         });
     });
 
-        $('.paid').on('click', function(event) {
+    $('.paid').on('click', function(event) {
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
-            title: 'Are you sure?',
-            text: 'Do you want to make it paid?',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
+            title: 'Are you sure?'
+            , text: 'Do you want to make it paid?'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
             if (value) {
                 window.location.href = url;
             }
         });
-        });
+    });
 
     $('.due').on('click', function(event) {
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
-            title: 'Are you sure?',
-            text: 'Do you want to due this payment?',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
+            title: 'Are you sure?'
+            , text: 'Do you want to due this payment?'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
             if (value) {
                 window.location.href = url;
             }
@@ -298,13 +227,13 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
             var dID = $(this).val();
             if (dID) {
                 $.ajax({
-                    url: '/GetDistricts/' + dID,
-                    type: "GET",
-                    data: {
+                    url: '/GetDistricts/' + dID
+                    , type: "GET"
+                    , data: {
                         "_token": "<?php echo e(csrf_token()); ?>"
-                    },
-                    dataType: "json",
-                    success: function(data) {
+                    }
+                    , dataType: "json"
+                    , success: function(data) {
                         if (data) {
                             $('.District').empty();
                             $.each(data, function(key, course) {
@@ -335,6 +264,7 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
     $("#checkAll").click(function() {
         $('input:checkbox').not(this).prop('checked', this.checked);
     });
+
 </script>
 <?php $__env->stopSection(); ?>
 

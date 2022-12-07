@@ -1,13 +1,9 @@
 
-
 <?php $__env->startSection('title'); ?> Orphan and Sponsorships <?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('css'); ?>
 <!-- DataTables -->
 <link href="<?php echo e(URL::asset('/assets/libs/datatables/datatables.min.css')); ?>" rel="stylesheet" type="text/css" />
-
 <?php $__env->stopSection(); ?>
-
 <?php $__env->startSection('content'); ?>
 <div class="row">
     <div class="col-12 ">
@@ -19,7 +15,6 @@
                 </blockquote>
             </div>
         </div>
-
     </div>
 </div>
 <div class="row">
@@ -52,7 +47,6 @@
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> ChargeID); ?></a></h5>
                                     <p class="text-muted mb-0"><?php echo e($data -> DistrictName); ?></p>
-
                                 </div>
                             </td>
                             <td>
@@ -64,7 +58,6 @@
                             <td>
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> Email); ?></a></h5>
-
                                 </div>
                             </td>
 
@@ -85,9 +78,8 @@
                 </table>
             </div>
         </div>
-    </div> <!-- end col -->
-</div> <!-- end row -->
-
+    </div>
+</div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
 <!-- Required datatable js -->
@@ -126,4 +118,4 @@
     });
 </script>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Payment/MyPayment.blade.php ENDPATH**/ ?>
+<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Payment/MyPayment.blade.php ENDPATH**/ ?>

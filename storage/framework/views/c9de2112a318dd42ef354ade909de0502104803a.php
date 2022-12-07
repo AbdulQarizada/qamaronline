@@ -4,10 +4,6 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title" key="t-dashnaord">Dashboard</li>
                 <li><a href="<?php echo e(route('root')); ?>" key="t-home"><i class="bx bx-store"></i>Home</a></li>
-                <?php if(Auth::user()->IsOrphanSponsor == 1): ?>
-                <li><a href="<?php echo e(route('MyOrphans')); ?>" key="t-orphan"><i class="mdi mdi-account-child"></i>My Orphans</a></li>
-                <li><a href="<?php echo e(route('MyPayments')); ?>" key="t-payment"><i class="mdi mdi-bank"></i>My Payments</a></li>
-                <?php endif; ?>
                 <?php if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsAidAndRelief == 1 || Auth::user()->IsWash == 1 || Auth::user()->IsEducation == 1 || Auth::user()->IsInitiative == 1|| Auth::user()->IsMedicalSector == 1): ?>
                 <li class="menu-title" key="t-apps">Projects</li>
                 <?php endif; ?>
@@ -54,22 +50,30 @@
                 </li>
                 <?php endif; ?>
 
-                <?php if(Auth::user()->IsOrphanRelief == 1): ?>
+                <?php if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsOrphanSponsor == 1): ?>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-account-child"></i>
                         <span key="t-layouts">Orphan & Sponsorships</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="<?php echo e(route('AllOrphans')); ?>"  key="t-horizontal"><i class="mdi mdi-account-details-outline"></i> Orphans</a></li>
+                        <?php if(Auth::user()->IsOrphanRelief == 1): ?>
+                        <li><a href="<?php echo e(route('AllOrphans')); ?>" key="t-horizontal"><i class="mdi mdi-account-details-outline"></i> Orphans</a></li>
                         <li><a href="<?php echo e(route('AllSponsor')); ?>" key="t-horizontal"><i class="mdi mdi mdi-account-child"></i> Sponsors</a></li>
-                        <li><a href="<?php echo e(route('AllSubscription')); ?>"  key="t-horizontal"><i class="mdi mdi-account-box-multiple-outline"></i> Subsciptions</a></li>
-                        <li><a href="<?php echo e(route('AllCard')); ?>"  key="t-horizontal"><i class="mdi mdi-card-account-details-outline"></i> Cards</a></li>
-                        <li><a href="<?php echo e(route('AllPayment')); ?>"  key="t-horizontal"><i class="mdi mdi-cash-multiple"></i> Payments</a></li>
+                        <li><a href="<?php echo e(route('AllPayment')); ?>" key="t-horizontal"><i class="mdi mdi-cash-multiple"></i> Payments</a></li>
+                        <?php endif; ?>
+                        <?php if(Auth::user()->IsOrphanSponsor == 1): ?>
+                        <li><a href="<?php echo e(route('MyOrphans')); ?>" key="t-horizontal"><i class="mdi mdi-account-circle-outline"></i> My Orphans</a></li>
+                        <li><a href="<?php echo e(route('MyPayments')); ?>" key="t-horizontal"><i class="mdi mdi-currency-usd"></i> My Payments</a></li>
+                        <li><a href="<?php echo e(route('MyPayments')); ?>" key="t-horizontal"><i class="bx bxl-mastercard "></i> My Card</a></li>
+
+                        <?php endif; ?>
                     </ul>
+
                 </li>
                 <?php endif; ?>
             </ul>
         </div>
     </div>
-</div><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/Layouts/sidebar.blade.php ENDPATH**/ ?>
+</div>
+<?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/Layouts/sidebar.blade.php ENDPATH**/ ?>

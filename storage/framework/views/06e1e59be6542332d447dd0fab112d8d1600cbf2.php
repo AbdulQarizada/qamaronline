@@ -1,8 +1,5 @@
 
-
 <?php $__env->startSection('title'); ?> Orphan and Sponsorships <?php $__env->stopSection(); ?>
-
-
 <?php $__env->startSection('content'); ?>
 <div class="row">
     <div class="col-12 ">
@@ -10,7 +7,6 @@
             <div class="card-header">
                 <blockquote class="blockquote border-dark  font-size-14 mb-0">
                     <p class="my-0   card-title fw-medium font-size-24 text-wrap">My Orphans</p>
-
                 </blockquote>
             </div>
         </div>
@@ -60,4 +56,4 @@
 </div>
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Orphan/MyOrphan.blade.php ENDPATH**/ ?>
+<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Orphan/MyOrphan.blade.php ENDPATH**/ ?>

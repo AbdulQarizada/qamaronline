@@ -74,10 +74,20 @@ class OrphansController extends Controller
 
     public function MyOrphans()
     {
-        $myorphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
-          ->select(['orphans.*', 'a.Name as ProvinceName'])
-          ->where("Sponsor_ID", "=", Auth::user()->id)
-          ->paginate(100);
+          $myorphans =   Orphan::whereHas('user', function($query) {   $query-> where('sponsor_subscriptions.IsActive', 1)  -> where("Sponsor_ID", "=", Auth::user()->id);  })
+          -> join('locations as a', 'orphans.Province_ID', '=', 'a.id')
+          -> join('locations as b', 'orphans.District_ID', '=', 'b.id')
+          -> join('look_ups as c', 'orphans.FamilyStatus_ID', '=', 'c.id')
+          -> join('users as d', 'orphans.Created_By', '=', 'd.id')
+          -> select(['orphans.*',
+           'a.Name as ProvinceName',
+           'b.Name as DistrictName',
+           'c.Name as FamilyStatus',
+           'd.FirstName as UFirstName',
+           'd.LastName as ULastName',
+           'd.Job as UJob',
+           ])
+          -> paginate(100);
         return view('OrphansRelief.Orphan.MyOrphan', ['datas' => $myorphans]);
     }
 

@@ -18,75 +18,18 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
-        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-            <div class="offcanvas-header">
-                <h3 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Filter </h3>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <form action="{{route('SearchOrphans')}}" method="POST">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-12 mb-2">
-                            <div class="position-relative">
-                                <div class="input-group">
-                                    <select class="form-select Province form-select-lg @error('Province_ID') is-invalid @enderror" name="Province_ID" value="{{ old('Province_ID') }}" id="Province_ID">
-                                        <option value="">Select Your Province</option>
-                                        @foreach($provinces as $province)
-                                        <option value="{{ $province -> id}}">{{ $province -> Name}}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('Province_ID')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 mb-2">
-                            <div class="position-relative">
-                                <div class="input-group">
-                                    <select class="form-select  District form-select-lg @error('District_ID') is-invalid @enderror" name="District_ID" value="{{ old('District_ID') }}" id="District_ID">
-                                        <option value="">Select Your District</option>
-                                    </select>
-                                    @error('District_ID')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 mb-2">
-                            <div class="hstack gap-2">
-                                <input type="text" name="PageInfo" value="{{ $PageInfo }}" class="d-none">
-                                <input class="form-control form-control-lg" type="text" name="data">
-                            </div>
-                        </div>
-                        <div class="col-md-12 mb-2">
-                            <button type="submit" class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded w-lg"><i class="mdi mdi-magnify me-1"></i>Filter</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+    <div class="col-md-3 col-sm-12 mb-2">
+        <select class="form-select  form-select-lg @error('Country') is-invalid @enderror" onchange="window.location.href=this.value;">
+            <option value="{{route('AllSponsor')}}">Please Filter Your Choices</option>
+            <option value="{{route('AllSponsor')}}" {{ $PageInfo == 'All' ? 'selected' : '' }}>All</option>
+            <option value="{{route('ActiveSponsor')}}" {{ $PageInfo == 'Active' ? 'selected' : '' }}>Active</option>
+            <option value="{{route('InActiveSponsor')}}" {{ $PageInfo == 'InActive' ? 'selected' : '' }}>InActive</option>
+        </select>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-4 col-sm-12 mb-2">
-        <div class="hstack gap-3">
-            <a class="btn  btn-lg waves-effect  waves-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-toggle="tooltip" data-bs-placement="top" title="Filter"> <i class="mdi mdi-filter-menu-outline font-size-24 align-middle"></i></a>
-            <select class="form-select  form-select-lg @error('Country') is-invalid @enderror" onchange="window.location.href=this.value;">
-                <option value="{{route('AllSponsor')}}">Please Filter Your Choices</option>
-                <option value="{{route('AllSponsor')}}" {{ $PageInfo == 'All' ? 'selected' : '' }}>All</option>
-                <option value="{{route('ActiveSponsor')}}" {{ $PageInfo == 'Active' ? 'selected' : '' }}>Active</option>
-                <option value="{{route('InActiveSponsor')}}" {{ $PageInfo == 'InActive' ? 'selected' : '' }}>InActive</option>
-            </select>
-        </div>
+    <div class="col-md-4 mb-2">
+        <livewire:search />
     </div>
-    <div class="col-md-8 col-sm-12 mb-2">
+    <div class="col-md-5 col-sm-12 mb-2">
         <a class="btn  btn-lg waves-effect  waves-light  m-1 float-end" data-bs-toggle="tooltip" data-bs-placement="top" title="All Orphans Grid View"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a>
         <a href="{{route('CreateSponsor')}}" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD SPONSOR</a>
     </div>
@@ -191,7 +134,7 @@
                                     <i class="mdi mdi-delete-outline font-size-16 align-middle"></i>
                                 </a>
                                 @endif
-                                <a data-bs-toggle="modal" data-bs-target=".bs-{{$data ->  id }}-modal-center" class="btn btn-sm btn-outline-danger waves-effect waves-light"  data-bs-toggle="tooltip" data-bs-placement="top" title="Reset Password">
+                                <a data-bs-toggle="modal" data-bs-target=".bs-{{$data ->  id }}-modal-center" class="btn btn-sm btn-outline-danger waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Reset Password">
                                     <i class="mdi mdi-lock-reset    font-size-16 align-middle"></i>
                                 </a>
                                 <div class="modal fade bs-{{$data ->  id }}-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
@@ -259,11 +202,11 @@
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
-            title: 'Are you sure?',
-            text: 'This record and it`s details will be permanantly deleted!',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
+            title: 'Are you sure?'
+            , text: 'This record and it`s details will be permanantly deleted!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
             if (value) {
                 window.location.href = url;
             }
@@ -274,11 +217,11 @@
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
-            title: 'Are you sure?',
-            text: 'Do you want to remove sponsr?!',
-            icon: 'warning',
-            buttons: ["Cancel", "Yes!"],
-        }).then(function(value) {
+            title: 'Are you sure?'
+            , text: 'Do you want to remove sponsr?!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
             if (value) {
                 window.location.href = url;
             }
@@ -290,13 +233,13 @@
             var dID = $(this).val();
             if (dID) {
                 $.ajax({
-                    url: '/GetDistricts/' + dID,
-                    type: "GET",
-                    data: {
+                    url: '/GetDistricts/' + dID
+                    , type: "GET"
+                    , data: {
                         "_token": "{{ csrf_token() }}"
-                    },
-                    dataType: "json",
-                    success: function(data) {
+                    }
+                    , dataType: "json"
+                    , success: function(data) {
                         if (data) {
                             $('.District').empty();
                             $.each(data, function(key, course) {
@@ -327,5 +270,6 @@
     $("#checkAll").click(function() {
         $('input:checkbox').not(this).prop('checked', this.checked);
     });
+
 </script>
 @endsection

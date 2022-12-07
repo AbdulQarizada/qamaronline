@@ -117,8 +117,8 @@
     </div>
 </div>
 <div class="row">
+    @foreach($cards as $card)
     <div class="col-md-4">
-        @foreach($cards as $card)
         <div class="card-one mb-4">
             <div class="">
                 <div class="card bg-dark text-white visa-card mb-0">
@@ -180,8 +180,8 @@
                 </div>
             </div>
         </div>
-        @endforeach
     </div>
+    @endforeach
 </div>
 <div class="row">
     <div class="col-12">
@@ -362,7 +362,7 @@
     <div class="modal-dialog modal-dialog-centered  modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Subscription</h5>
+                <h5 class="modal-title">Add Payment Card</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

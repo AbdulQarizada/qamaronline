@@ -4,10 +4,6 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title" key="t-dashnaord">Dashboard</li>
                 <li><a href="{{route('root')}}" key="t-home"><i class="bx bx-store"></i>Home</a></li>
-                @if(Auth::user()->IsOrphanSponsor == 1)
-                <li><a href="{{route('MyOrphans')}}" key="t-orphan"><i class="mdi mdi-account-child"></i>My Orphans</a></li>
-                <li><a href="{{route('MyPayments')}}" key="t-payment"><i class="mdi mdi-bank"></i>My Payments</a></li>
-                @endif
                 @if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsAidAndRelief == 1 || Auth::user()->IsWash == 1 || Auth::user()->IsEducation == 1 || Auth::user()->IsInitiative == 1|| Auth::user()->IsMedicalSector == 1)
                 <li class="menu-title" key="t-apps">Projects</li>
                 @endif
@@ -54,19 +50,26 @@
                 </li>
                 @endif
 
-                @if(Auth::user()->IsOrphanRelief == 1)
+                @if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsOrphanSponsor == 1)
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="mdi mdi-account-child"></i>
                         <span key="t-layouts">Orphan & Sponsorships</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="{{route('AllOrphans')}}"  key="t-horizontal"><i class="mdi mdi-account-details-outline"></i> Orphans</a></li>
+                        @if(Auth::user()->IsOrphanRelief == 1)
+                        <li><a href="{{route('AllOrphans')}}" key="t-horizontal"><i class="mdi mdi-account-details-outline"></i> Orphans</a></li>
                         <li><a href="{{route('AllSponsor')}}" key="t-horizontal"><i class="mdi mdi mdi-account-child"></i> Sponsors</a></li>
-                        <li><a href="{{route('AllSubscription')}}"  key="t-horizontal"><i class="mdi mdi-account-box-multiple-outline"></i> Subsciptions</a></li>
-                        <li><a href="{{route('AllCard')}}"  key="t-horizontal"><i class="mdi mdi-card-account-details-outline"></i> Cards</a></li>
-                        <li><a href="{{route('AllPayment')}}"  key="t-horizontal"><i class="mdi mdi-cash-multiple"></i> Payments</a></li>
+                        <li><a href="{{route('AllPayment')}}" key="t-horizontal"><i class="mdi mdi-cash-multiple"></i> Payments</a></li>
+                        @endif
+                        @if(Auth::user()->IsOrphanSponsor == 1)
+                        <li><a href="{{route('MyOrphans')}}" key="t-horizontal"><i class="mdi mdi-account-circle-outline"></i> My Orphans</a></li>
+                        <li><a href="{{route('MyPayments')}}" key="t-horizontal"><i class="mdi mdi-currency-usd"></i> My Payments</a></li>
+                        <li><a href="{{route('MyPayments')}}" key="t-horizontal"><i class="bx bxl-mastercard "></i> My Card</a></li>
+
+                        @endif
                     </ul>
+
                 </li>
                 @endif
             </ul>

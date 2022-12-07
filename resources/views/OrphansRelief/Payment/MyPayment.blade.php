@@ -28,7 +28,7 @@
                             <th>ID</th>
                             <th>Full Name</th>
                             <th>Charge ID</th>
-                            <th>Payment </h>
+                            <th>Payment </th>
                             <th>Email</th>
                             <th>Status</th>
                             <th>Created By</th>
