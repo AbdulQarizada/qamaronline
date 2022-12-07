@@ -188,16 +188,12 @@
     @endforeach
 </div>
 <div class="row mt-4">
-    <div class="col-md-10">
+    <div class="col-md-12">
         <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Payments</h5>
-    </div>
-    <div class="col-md-2 col-sm-2 mb-2">
-        <a data-bs-toggle="modal" data-bs-target=".bs-addcard-modal-center" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded text-uppercase"><i class="mdi mdi-plus me-1"></i>ADD Card</a>
     </div>
 </div>
 <div class="row">
     <div class="col-12">
-        <h3 class="card-header bg-dark text-white"></h3>
         <div class="table-responsive">
             <table class="table  table-striped table-hover dt-responsive nowrap w-100">
                 <thead class="table-light">
