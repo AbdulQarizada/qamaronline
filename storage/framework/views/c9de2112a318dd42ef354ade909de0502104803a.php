@@ -15,26 +15,13 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li><a href="<?php echo e(route('CreateCareCard')); ?>" key="t-compact-create"><i class="bx bx-credit-card"></i>Care Cards</a></li>
-
                         <li>
                             <a href="javascript: void(0);" class="has-arrow" key="t-horizontal">Services</a>
                             <ul class="sub-menu" aria-expanded="true">
                                 <li>
-                                    <a href="javascript: void(0);" class="has-arrow" key="t-horizontal">Food Packs</a>
-                                    <ul class="sub-menu" aria-expanded="true">
-                                        <li><a href="<?php echo e(route('CreateFoodPack')); ?>" key="t-horizontal">Add Food Packs</a></li>
-                                        <li><a href="<?php echo e(route('AllFoodPack')); ?>" key="t-topbar-light">All Food Packs</a></li>
-                                        <li><a href="<?php echo e(route('EligibleBeneficiariesFoodPack')); ?>" key="t-boxed-width">Eligible Beneficiaries</a></li>
-                                        <li><a href="<?php echo e(route('AssignedBeneficiariesFoodPack')); ?>" key="t-preloader">Assigned Beneficiaries</a></li>
-                                        <li><a href="<?php echo e(route('AllListFoodPack')); ?>" key="t-preloader">Staff Beneficiaries</a></li>
-                                    </ul>
-                                </li>
-                                <li>
                                     <a href="javascript: void(0);" class="has-arrow" key="t-horizontal">Service Providers</a>
                                     <ul class="sub-menu" aria-expanded="true">
-                                        <li><a href="<?php echo e(route('CreateIndividualServiceProviders')); ?>" key="t-horizontal">Add Individual Ser.Pro.</a></li>
                                         <li><a href="<?php echo e(route('IndividualServiceProviders')); ?>" key="t-topbar-light">All Individual Ser.Pro.</a></li>
-                                        <li><a href="<?php echo e(route('CreateOrganizationServiceProviders')); ?>" key="t-boxed-width">Add Organization Ser.Pro.</a></li>
                                         <li><a href="<?php echo e(route('OrganizationServiceProviders')); ?>" key="t-preloader">All Organization Ser.Pro.</a></li>
                                     </ul>
                                 </li>

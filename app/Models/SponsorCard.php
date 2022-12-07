@@ -11,11 +11,8 @@ class SponsorCard extends Model
     protected $fillable =
     [
      'Sponsor_ID',
-     'CardNumber',
+     'StripeCustomer_ID',
      'CardLastFourDigit',
-     'ValidMonth',
-     'ValidYear',
-     'CVV',
      'IsActive',
      'IsActive_By',
      'Created_By',

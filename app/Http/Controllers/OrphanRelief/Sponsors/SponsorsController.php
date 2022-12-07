@@ -129,11 +129,9 @@ class SponsorsController extends Controller
     $sponsors =   User::where("users.id", "=", $data->id) -> first();
     $orphans = $sponsors -> orphan() -> where('IsActive', '=', 1) -> paginate(12);
     $WaitingOrphans =   Orphan::WhereDoesntHave('user', function($query) {   $query->where('sponsor_subscriptions.IsActive', 1);  }) -> get();
-    $cards =  $sponsors -> card()
-    -> join('users as d', 'sponsor_cards.Created_By', '=', 'd.id')
-    -> select(['sponsor_cards.*', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-    -> get();
-    return view('OrphansRelief.Sponsor.Status',  ['data' => $sponsors, 'orphans' => $orphans,'WaitingOrphans' => $WaitingOrphans, 'cards' => $cards]);
+    $cards =  $sponsors -> card() -> get();
+    $payments =  $sponsors -> payment() -> get();
+    return view('OrphansRelief.Sponsor.Status',  ['data' => $sponsors, 'orphans' => $orphans,'WaitingOrphans' => $WaitingOrphans, 'cards' => $cards, 'payments' => $payments]);
   }
 
   public function Activate(User $data)

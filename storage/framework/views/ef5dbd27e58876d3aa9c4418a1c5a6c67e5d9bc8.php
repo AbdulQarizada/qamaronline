@@ -11,7 +11,7 @@
     </div>
 </div>
 <div class="row mt-4">
-    <?php if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsOrphanSponsor == 1 ): ?>
+    <?php if(Auth::user()->IsOrphanRelief == 1): ?>
     <div class="mt-4 mb-4">
         <p class="my-0 fw-medium text-dark text-muted card-title font-size-24 text-wrap text-uppercase">Orphan and Sponsorships</p>
     </div>

@@ -16,11 +16,8 @@ return new class extends Migration
         Schema::create('sponsor_cards', function (Blueprint $table) {
             $table->id();
             $table -> integer('Sponsor_ID')->nullable();
-            $table -> string('CardNumber')->nullable();
+            $table -> string('StripeCustomer_ID')->nullable();
             $table -> integer('CardLastFourDigit')->nullable();
-            $table -> string('ValidMonth')->nullable();
-            $table -> string('ValidYear')->nullable();
-            $table -> string('CVV')->nullable();
             $table -> integer('IsActive')->nullable();
             $table -> integer('IsActive_By')->nullable();
             $table -> integer('Created_By')->nullable();

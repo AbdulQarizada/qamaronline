@@ -34,7 +34,7 @@
         </div>
         <div class="table-responsive">
             <table class="table table-nowrap">
-                <h5 style="font-weight: bold;" class="card-header  text-dark">PEROSNAL INFORMATION</h5>
+                <h5 style="font-weight: bold;" class="card-header  text-dark">Personal Information</h5>
                 <tr>
                     <td style="width: 20%; border: 2px solid #000; padding: 5px;">First Name</td>
                     <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($data -> FirstName); ?> </td>
@@ -58,8 +58,10 @@
     </div>
 </div>
 <div class="row mt-4">
-    <div class="col-md-10"> <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Sponsored Orphans</h5></div>
-        <div class="col-md-2 col-sm-2 mb-2">
+    <div class="col-md-10">
+        <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Sponsored Orphans</h5>
+    </div>
+    <div class="col-md-2 col-sm-2 mb-2">
         <a data-bs-toggle="modal" data-bs-target=".bs-addorphan-modal-center" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded text-uppercase"><i class="mdi mdi-plus me-1"></i>ADD Orphan</a>
     </div>
 </div>
@@ -69,7 +71,7 @@
         <a href="<?php echo e(route('StatusOrphans', ['data' => $orphan -> id])); ?>">
             <div class="card-one text-center border border-secondary">
                 <div class="float-end">
-                    <a  href="<?php echo e(route('DeActivateSubscription', ['data' => $orphan -> pivot -> id])); ?>" class="btn btn-sm text-danger waves-effect waves-light DeactivateSubscription" data-bs-toggle="tooltip" data-bs-placement="top" title="End Subscription">
+                    <a href="<?php echo e(route('DeActivateSubscription', ['data' => $orphan -> pivot -> id])); ?>" class="btn btn-sm text-danger waves-effect waves-light DeactivateSubscription" data-bs-toggle="tooltip" data-bs-placement="top" title="End Subscription">
                         <i class=" bx bx-x-circle   font-size-24 align-middle"></i>
                     </a>
                 </div>
@@ -112,8 +114,10 @@
     </div>
 </div>
 <div class="row mt-4">
-    <div class="col-md-10"> <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Payment Cards</h5></div>
-        <div class="col-md-2 col-sm-2 mb-2">
+    <div class="col-md-10">
+        <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Payment Cards</h5>
+    </div>
+    <div class="col-md-2 col-sm-2 mb-2">
         <a data-bs-toggle="modal" data-bs-target=".bs-addcard-modal-center" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded text-uppercase"><i class="mdi mdi-plus me-1"></i>ADD Card</a>
     </div>
 </div>
@@ -131,7 +135,7 @@
                             </div>
                             <div>
                                 <?php if($card -> IsActive != 1): ?>
-                                  <a href="#" class="btn waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Card is InActive"><i class=" bx bx-x-circle  h1 text-danger"></i></a>
+                                <a href="#" class="btn waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Card is InActive"><i class=" bx bx-x-circle  h1 text-danger"></i></a>
                                 <?php endif; ?>
                                 <?php if($card -> IsActive == 1): ?>
                                 <div>
@@ -154,7 +158,7 @@
                                     <i class="mdi mdi-asterisk text-white"></i>
                                     <i class="mdi mdi-asterisk text-white"></i>
                                     <i class="mdi mdi-asterisk text-white"></i>
-                                    <i ><?php echo e($card -> CardLastFourDigit); ?></i>
+                                    <i><?php echo e($card -> CardLastFourDigit); ?></i>
                                 </div>
                             </div>
                         </div>
@@ -167,7 +171,7 @@
                                 </a>
                                 <?php endif; ?>
                                 <?php if($card -> IsActive != 1): ?>
-                                <a href="<?php echo e(route('ActivateCard', ['data' => $card -> id])); ?>"  class="btn btn-sm btn-outline-success waves-effect ActivateCard waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Activate Card">
+                                <a href="<?php echo e(route('ActivateCard', ['data' => $card -> id])); ?>" class="btn btn-sm btn-outline-success waves-effect ActivateCard waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Activate Card">
                                     <i class="mdi mdi-credit-card-check-outline font-size-16 align-middle"></i>
                                 </a>
                                 <a href="<?php echo e(route('DeleteCard', ['data' => $card -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirmCard" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
@@ -184,10 +188,124 @@
     </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </div>
+<div class="row mt-4">
+    <div class="col-md-10">
+        <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Payments</h5>
+    </div>
+    <div class="col-md-2 col-sm-2 mb-2">
+        <a data-bs-toggle="modal" data-bs-target=".bs-addcard-modal-center" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded text-uppercase"><i class="mdi mdi-plus me-1"></i>ADD Card</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <h3 class="card-header bg-dark text-white"></h3>
+        <div class="table-responsive">
+            <table class="table  table-striped table-hover dt-responsive nowrap w-100">
+                <thead class="table-light">
+                    <tr>
+                        <th>
+                            <input class="form-check-input" type="checkbox" id="checkAll">
+                        </th>
+                        <th>ID</th>
+                        <th>Full Name</th>
+                        <th>Charge ID</th>
+                        <th>Amount </th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Created By</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $__currentLoopData = $payments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $payment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <tr>
+                        <td>
+                            <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="<?php echo e($payment -> id); ?>">
+                        </td>
+                        <td>
+                            <div class="avatar-xs">
+                                <span class="avatar-title bg-dark rounded-circle">
+                                    <?php echo e($loop->iteration); ?>
+
+                                </span>
+                            </div>
+                        </td>
+                        <td>
+                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($payment -> FullName); ?></a></h5>
+                        </td>
+                        <td>
+                            <div>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($payment -> ChargeID); ?></a></h5>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-success"><?php echo e($payment -> Amount); ?></a></h5>
+                                <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($payment -> SubscriptionType); ?></p>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($payment -> Email); ?></a></h5>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <?php if($payment -> IsPaid == 1): ?>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Successfull Payment </a></h5>
+                                <p class="text-muted mb-0"><?php echo e($payment -> updated_at -> format("d-m-Y")); ?></p>
+                                <?php endif; ?>
+                                <?php if($payment -> IsPaid != 1): ?>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">Due Payment </a></h5>
+                                <p class="text-muted mb-0"><?php echo e($payment -> updated_at -> format("d-m-Y")); ?></p>
+                                <?php endif; ?>
+                            </div>
+                        </td>
+                        <td>
+                            <?php if( $payment -> Created_By !=""): ?>
+                            <div>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data ->  UFirstName); ?> <?php echo e($data ->  ULastName); ?></a></h5>
+                                <p class="text-muted mb-0"><?php echo e($data ->  UJob); ?></p>
+                            </div>
+                            <?php endif; ?>
+                            <?php if( $payment -> Created_By ==""): ?>
+                            <div>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Online</a></h5>
+                                <p class="text-muted mb-0">Registration</p>
+                            </div>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <div class="d-flex flex-wrap gap-2">
+                                <?php if($payment -> IsPaid == 1): ?>
+                                <a href="<?php echo e(route('RecieptPayment', ['data' => $payment -> id])); ?>" class="btn btn-sm btn-outline-warning waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Reciept">
+                                    <i class="mdi mdi-receipt font-size-16 align-middle"></i>
+                                </a>
+                                <a href="<?php echo e(route('MakeItDuePayment', ['data' => $payment -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light due" data-bs-toggle="tooltip" data-bs-placement="top" title="Make it Due">
+                                    <i class="mdi mdi-cash-remove font-size-16 align-middle"></i>
+                                </a>
+                                <?php endif; ?>
+                                <?php if($payment -> IsPaid != 1): ?>
+                                <a href="<?php echo e(route('EditSponsor', ['data' => $payment -> id])); ?>" class="btn btn-sm btn-outline-info waves-effect waves-light email" data-bs-toggle="tooltip" data-bs-placement="top" title="Email Sponsor">
+                                    <i class="mdi mdi-email-outline font-size-16 align-middle"></i>
+                                </a>
+                                <a href="<?php echo e(route('MakeItPaidPayment', ['data' => $payment -> id])); ?>" class="btn btn-sm btn-outline-success waves-effect waves-light paid" data-bs-toggle="tooltip" data-bs-placement="top" title="Make it Paid">
+                                    <i class="mdi mdi-cash-check font-size-16 align-middle"></i>
+                                </a>
+                                <?php endif; ?>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-12">
         <table class="table table-nowrap">
-            <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">STATUS</h5>
+            <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Sponsor Status</h5>
             <?php if($data -> IsOrphanSponsor == 1): ?>
             <span class="font-size-18 m-3"><a href="#" class="badge badge-soft-success">Orphan Sponsor</a></span>
             <?php endif; ?>
@@ -451,7 +569,7 @@ unset($__errorArgs, $__bag); ?>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="needs-validation" action="<?php echo e(route('CreateCard')); ?>" method="POST" enctype="multipart/form-data" novalidate>
+                <form class="needs-validation" action="<?php echo e(route('CreateCard')); ?>" id="Card" method="POST" enctype="multipart/form-data" novalidate>
                     <?php echo csrf_field(); ?>
                     <div class="checkout-tabs">
                         <div class="row">
@@ -472,6 +590,10 @@ unset($__errorArgs, $__bag); ?>
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row">
+                                                            <div id="charge-error" class="alert alert-danger <?php echo e(!Session::has('error') ? 'd-none' : ''); ?>">
+                                                                <?php echo e(Session::get('error')); ?>
+
+                                                            </div>
                                                             <div class="col-md-4 d-none">
                                                                 <div class="mb-3 position-relative">
                                                                     <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['Sponsor_ID'];
@@ -581,7 +703,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('CVV')); ?>" id="CVV" name="CVV" maxlength="3"  placeholder="785" required />
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('CVV')); ?>" id="CVV" name="CVV" maxlength="3" placeholder="785" required />
                                                                     <?php $__errorArgs = ['CVV'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -602,7 +724,11 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                         </div>
                                         <div>
-                                            <button class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded w-lg" type="submit">Submit </button>
+                                            <button class="btn1 btn-outline-info btn-lg waves-effect waves-light float-end" type="button" id="Loading" disabled>
+                                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                                Loading...
+                                            </button>
+                                            <button class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded w-lg" type="submit" id="SubmitNow">Submit </button>
                                         </div>
                                     </div>
                                 </div>
@@ -618,7 +744,46 @@ unset($__errorArgs, $__bag); ?>
 <?php $__env->startSection('script'); ?>
 <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
 <script src="<?php echo e(URL::asset('/assets/js/pages/form-validation.init.js')); ?>"></script>
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script>
+    Stripe.setPublishableKey('<?php echo e(env('STRIPE_KEY')); ?>');
+    $(document).ready(function() {
+        var $form = $('#Card');
+        var loading = $('#Loading');
+        var SubmitNow = $('#SubmitNow');
+        loading.hide();
+        $form.submit(function(event) {
+            $('#charge-error').addClass('d-none');
+            event.preventDefault();
+            loading.show();
+            SubmitNow.hide();
+            Stripe.card.createToken({
+                number: $('#CardNumber').val()
+                , cvc: $('#CVV').val()
+                , exp_month: $('#ValidMonth').val()
+                , exp_year: $('#ValidYear').val()
+            }, stripeResponseHandler);
+            return false;
+        });
+
+        function stripeResponseHandler(status, response) {
+            if (response.error) {
+                $('#charge-error').removeClass('d-none');
+                $('#charge-error').text(response.error.message);
+                loading.hide();
+                SubmitNow.show();
+
+            } else {
+                var token = response.id;
+                $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+                loading.hide();
+                $form.get(0).submit();
+            }
+        }
+
+    });
+
+
     $('.activateSponsor').on('click', function(event) {
         event.preventDefault();
         const url = $(this).attr('href');
@@ -662,8 +827,8 @@ unset($__errorArgs, $__bag); ?>
             }
         });
     });
-        // DeACtivate Subscription Confirmation
-        $('.DeactivateSubscription').on('click', function(event) {
+    // DeACtivate Subscription Confirmation
+    $('.DeactivateSubscription').on('click', function(event) {
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
@@ -707,8 +872,8 @@ unset($__errorArgs, $__bag); ?>
             }
         });
     });
-</script>
 
+</script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Sponsor/Status.blade.php ENDPATH**/ ?>

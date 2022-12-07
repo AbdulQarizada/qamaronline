@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\OrphanRelief\Cards;
 use App\Http\Controllers\Controller;
+use App\Models\ErrorLog;
 use Illuminate\Http\Request;
 use App\Models\SponsorCard;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Location;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-
+use Stripe\Charge;
+use Stripe\Customer;
+use Stripe\Stripe;
 class CardsController extends Controller
 {
 
@@ -88,7 +91,7 @@ class CardsController extends Controller
 
     public function Store(Request $request)
     {
-
+        Stripe::setApiKey(env('STRIPE_SECRET'));
         $validator = $request -> validate([
             'Sponsor_ID' => 'bail|required|max:255',
             'CardNumber' => 'required|numeric',
@@ -97,20 +100,41 @@ class CardsController extends Controller
             'CVV' => 'required|numeric',
 
         ]);
+        $UserCard = SponsorCard::where('Sponsor_ID', '=', request('Sponsor_ID')) -> where('IsActive', '=', 1) -> where('CardLastFourDigit', '=', substr(request('CardNumber'), -4)) -> first();
+        if(!$UserCard)
+        {
+        // Create customer in Strip=====================================================================================
+        $sponsor = User::where("id", "=", request('Sponsor_ID'))->first();
+        try {
+            $customer = Customer::create([
+              'source' => $request->input('stripeToken'),
+              'email' =>  $sponsor -> email,
+              'name' => $sponsor -> FullName,
+            ]);
+          } catch (\Exception $e) {
+            ErrorLog::create(['Message' =>  $e->getMessage(), 'From' => 'PaymentContorller:StorePayment: CustomerTry']);
+            return back() -> with('toast_success', $e->getMessage());
+          }
 
-        SponsorCard::create([
-            'Sponsor_ID' => request('Sponsor_ID'),
-            'CardNumber' => Hash::make(request('CardNumber')),
-            'CardLastFourDigit' => substr(request('CardNumber'), -4),
-            'ValidMonth' => Hash::make(request('ValidMonth')),
-            'ValidYear' => Hash::make(request('ValidYear')),
-            'CVV' => Hash::make(request('CVV')),
-            'IsActive' => 1,
-            'Created_By' => auth()->user()->id,
-            'Owner' => 1,
-        ]);
-
-        return back() -> with('toast_success', 'Record Created Successfully!');
+          // Create Sponsor Card============================================================================================
+          try {
+            $Card_ID = SponsorCard::create([
+              'Sponsor_ID' => request('Sponsor_ID'),
+              'StripeCustomer_ID' => $customer->id,
+              'CardLastFourDigit' => substr(request('CardNumber'), -4),
+              'IsActive' => 1,
+              'Created_By' => auth()->user()->id,
+              'Owner' => 1,
+            ]);
+          } catch (\Exception $e) {
+            ErrorLog::create(['Message' =>  $e->getMessage(), 'From' => 'PaymentContorller:StorePayment: SponsorCardTry']);
+            return back() -> with('toast_success', $e->getMessage());
+          }
+          return back() -> with('toast_success', 'Record Created Successfully!');
+        }
+        else{
+            return back() -> with('toast_warning', 'Card is already Available!');
+        }
     }
 
     // update
