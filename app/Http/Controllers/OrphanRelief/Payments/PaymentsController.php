@@ -76,16 +76,14 @@ class PaymentsController extends Controller
 
     public function MyPayments()
     {
-
-        $mypayments =  SponsorPayment::where("Email", "=", Auth::user()->email)
-          ->paginate(100);
+        $mypayments =  SponsorPayment::where("Sponsor_ID", "=", Auth::user() -> id) -> paginate(100);
         return view('OrphansRelief.Payment.MyPayment', ['datas' => $mypayments]);
     }
 
     // status
     public function Reciept(SponsorPayment $data)
     {
-        $payments =   SponsorPayment::where("orphan_payments.id", "=", $data->id)->get();
+        $payments =   SponsorPayment::where("id", "=", $data -> id)->get();
         return view('OrphansRelief.Payment.Reciept', ['datas' => $payments,]);
     }
 

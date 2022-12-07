@@ -12,7 +12,6 @@
 </div>
 <div class="row">
     <div class="col-lg-12">
-
     </div>
 </div>
 <div class="row">
@@ -85,7 +84,6 @@
         </div>
     </div>
 </div>
-<!-- end row -->
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
