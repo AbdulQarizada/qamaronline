@@ -405,14 +405,13 @@ unset($__errorArgs, $__bag); ?>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="mb-3 position-relative">
-                                                                    <label for="Type" class="form-label">Type</label>
+                                                                    <label for="SubscriptionType" class="form-label">Subscription Type</label>
                                                                     <div class="input-group " id="example-date-input">
-                                                                        <select class="form-control  form-control-lg" id="Type" name="Type" value="<?php echo e(old('Type')); ?>" style="height: calc(1.5em + .75rem + 2px) !important;" required>
+                                                                        <select class="form-control  form-control-lg" id="SubscriptionType" name="SubscriptionType" value="<?php echo e(old('SubscriptionType')); ?>" style="height: calc(1.5em + .75rem + 2px) !important;" required>
                                                                             <option value="Monthly">Monthly</option>
                                                                             <option value="Yearly">Yearly</option>
-                                                                            <option value="Custom">Custom</option>
                                                                         </select>
-                                                                        <?php $__errorArgs = ['Type'];
+                                                                        <?php $__errorArgs = ['SubscriptionType'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -425,31 +424,6 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="mb-3 position-relative">
-                                                                    <label for="Amount" class="form-label ">Amount </label>
-                                                                    <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['Amount'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Amount')); ?>" id="Amount" name="Amount" required />
-                                                                    <?php $__errorArgs = ['Amount'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong><?php echo e($message); ?></strong>
-                                                                    </span>
-                                                                    <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
@@ -497,33 +471,6 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('StartDate')); ?>" type="date" id="example-date-input" name="StartDate" id="StartDate" required>
                                                                         <?php $__errorArgs = ['StartDate'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong><?php echo e($message); ?></strong>
-                                                                        </span>
-                                                                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="mb-3 position-relative">
-                                                                    <label for="DOB" class="form-label">Subscription End Date <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                                    <div class="input-group " id="example-date-input">
-                                                                        <input class="form-control form-select-lg <?php $__errorArgs = ['EndDate'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('EndDate')); ?>" type="date" id="example-date-input" name="EndDate" id="EndDate" required>
-                                                                        <?php $__errorArgs = ['EndDate'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }

@@ -382,30 +382,18 @@
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="mb-3 position-relative">
-                                                                    <label for="Type" class="form-label">Type</label>
+                                                                    <label for="SubscriptionType" class="form-label">Subscription Type</label>
                                                                     <div class="input-group " id="example-date-input">
-                                                                        <select class="form-control  form-control-lg" id="Type" name="Type" value="{{ old('Type') }}" style="height: calc(1.5em + .75rem + 2px) !important;" required>
+                                                                        <select class="form-control  form-control-lg" id="SubscriptionType" name="SubscriptionType" value="{{ old('SubscriptionType') }}" style="height: calc(1.5em + .75rem + 2px) !important;" required>
                                                                             <option value="Monthly">Monthly</option>
                                                                             <option value="Yearly">Yearly</option>
-                                                                            <option value="Custom">Custom</option>
                                                                         </select>
-                                                                        @error('Type')
+                                                                        @error('SubscriptionType')
                                                                         <span class="invalid-feedback" role="alert">
                                                                             <strong>{{ $message }}</strong>
                                                                         </span>
                                                                         @enderror
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="mb-3 position-relative">
-                                                                    <label for="Amount" class="form-label ">Amount </label>
-                                                                    <input type="text" class="form-control form-control-lg @error('Amount') is-invalid @enderror" value="{{ old('Amount') }}" id="Amount" name="Amount" required />
-                                                                    @error('Amount')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                    @enderror
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
@@ -432,19 +420,6 @@
                                                                     <div class="input-group " id="example-date-input">
                                                                         <input class="form-control form-select-lg @error('StartDate') is-invalid @enderror" value="{{ old('StartDate') }}" type="date" id="example-date-input" name="StartDate" id="StartDate" required>
                                                                         @error('StartDate')
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong>{{ $message }}</strong>
-                                                                        </span>
-                                                                        @enderror
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="mb-3 position-relative">
-                                                                    <label for="DOB" class="form-label">Subscription End Date <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                                    <div class="input-group " id="example-date-input">
-                                                                        <input class="form-control form-select-lg @error('EndDate') is-invalid @enderror" value="{{ old('EndDate') }}" type="date" id="example-date-input" name="EndDate" id="EndDate" required>
-                                                                        @error('EndDate')
                                                                         <span class="invalid-feedback" role="alert">
                                                                             <strong>{{ $message }}</strong>
                                                                         </span>

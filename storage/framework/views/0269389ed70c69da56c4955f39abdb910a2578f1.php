@@ -86,26 +86,32 @@
                 </div>
                 <div class="table-responsive">
                     <table class="table mb-0">
-                        <tbody id="Montly">
+                        <tbody id="Monthly">
                             <tr>
                                 <td>Total :</td>
-                                <td>$<?php echo e($totalPriceYearly = count($datas) * 40); ?></td>
+                                <td>$ <?php echo e($totalPriceMonthly = count($datas) * 40); ?></td>
                             </tr>
-                            
+                             <tr>
+                                <td>Transaction Fee : </td>
+                                <td>$ <?php echo e($TransactionFeeMonthly = ($totalPriceMonthly * 3) / 100); ?> (3%)</td>
+                            </tr>
                             <tr>
                                 <th>Grand Total :</th>
-                                <th>$<?php echo e($totalPriceYearly = count($datas) * 40); ?></th>
+                                <th>$ <?php echo e($GrandtotalPriceMonthly = $totalPriceMonthly + $TransactionFeeMonthly); ?></th>
                             </tr>
                         </tbody>
                         <tbody id="Yearly" class="d-none">
                             <tr>
                                 <td>Total :</td>
-                                <td>$<?php echo e($totalPriceYearly = count($datas) * 40 * 12); ?></td>
+                                <td>$ <?php echo e($totalPriceYearly = count($datas) * 40 * 12); ?></td>
                             </tr>
-                            
+                            <tr>
+                                <td>Transaction Fee : </td>
+                                <td>$ <?php echo e($TransactionFeeYearly = ($totalPriceYearly * 3) / 100); ?> (3%)</td>
+                            </tr>
                             <tr>
                                 <th>Grand Total :</th>
-                                <th>$<?php echo e($totalPriceYearly = count($datas) * 40 * 12); ?></th>
+                                <th>$ <?php echo e($GrandtotalPriceYearly = $totalPriceYearly + $TransactionFeeYearly); ?></th>
                             </tr>
                         </tbody>
                     </table>
@@ -125,7 +131,7 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('SubscriptionType')); ?>" id="SubscriptionType" name="SubscriptionType" required>
-    <input type="number" class="form-control d-none form-control-lg <?php $__errorArgs = ['Amount'];
+    <input type="text" class="form-control d-none form-control-lg <?php $__errorArgs = ['Amount'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -318,7 +324,7 @@ unset($__errorArgs, $__bag); ?>
 <?php else: ?>
 <div class="row">
     <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-        <h2>No Items in Cart!</h2>
+        <h2>Please select an Orphan. Thanks</h2>
     </div>
 </div>
 <?php endif; ?>
@@ -338,7 +344,6 @@ unset($__errorArgs, $__bag); ?>
         event.preventDefault();
         loading.show();
         paynow.hide();
-        $form.find('button').prop('disabled', true);
         Stripe.card.createToken({
             number: $('#CardNumber').val(),
             cvc: $('#CVV').val(),
@@ -353,10 +358,8 @@ unset($__errorArgs, $__bag); ?>
         if (response.error) {
             $('#charge-error').removeClass('d-none');
             $('#charge-error').text(response.error.message);
-            $form.find('button').prop('disabled', false);
             loading.hide();
             paynow.show();
-
         } else {
             var token = response.id;
             $form.append($('<input type="hidden" name="stripeToken" />').val(token));
@@ -365,30 +368,27 @@ unset($__errorArgs, $__bag); ?>
     }
 
     $(document).ready(function() {
-        $("input[name=SubscriptionType]").val('Montly');
-        $("input[name=Amount]").val('<?php echo e($totalPriceYearly = count($datas) * 40); ?>');
+        $("input[name=SubscriptionType]").val('Monthly');
+        $("input[name=Amount]").val('<?php echo e($GrandtotalPriceMonthly); ?>');
         $("#monthly").click(function() {
             $("#Yearly").addClass('d-none')
-            $("#Montly").removeClass('d-none');
-            $("#Montly").addClass('fadeIn');
+            $("#Monthly").removeClass('d-none');
+            $("#Monthly").addClass('fadeIn');
             $(".indicator").css("left", "2px");
             $("#monthly").addClass('active');
             $("#yearly").removeClass('active');
-            $("input[name=SubscriptionType]").val('Montly');
-            $("input[name=Amount]").val('<?php echo e($totalPriceYearly = count($datas) * 40); ?>');
-
+            $("input[name=SubscriptionType]").val('Monthly');
+            $("input[name=Amount]").val('<?php echo e($GrandtotalPriceMonthly); ?>');
         })
         $("#yearly").click(function() {
-            $("#Montly").addClass('d-none');
+            $("#Monthly").addClass('d-none');
             $("#Yearly").removeClass('d-none');
             $("#Yearly").addClass('fadeIn');
             $("#yearly").addClass('active');
             $("#monthly").removeClass('active');
             $(".indicator").css("left", "164px");
             $("input[name=SubscriptionType]").val('Yearly');
-            $("input[name=Amount]").val('<?php echo e($totalPriceYearly = count($datas) * 40 * 12); ?>');
-
-
+            $("input[name=Amount]").val('<?php echo e($GrandtotalPriceYearly); ?>');
         })
     })
 </script>

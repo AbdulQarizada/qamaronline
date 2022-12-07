@@ -214,14 +214,13 @@ class PaymentsController extends Controller
       try {
         foreach ($oldCart->items as $item) {
           $orphan = Orphan::where('id', '=', $item['item']['id'])->first();
-          if (request('SubscriptionType') == 'Montly') {
+          if (request('SubscriptionType') == 'Monthly') {
             SponsorSubscription::create([
               'Orphan_ID' => $orphan->id,
               'Sponsor_ID' => $NewUser->id,
-              'Amount' => 40,
+              'Amount' => request('Amount'),
               'Type' => request('SubscriptionType'),
               'Card_ID' => $Card_ID->id,
-              'Email' => request('Email'),
               'StartDate' => now(),
               'EndDate' => now()->addMonth(),
               'IsActive' => 1,
@@ -231,10 +230,9 @@ class PaymentsController extends Controller
             SponsorSubscription::create([
               'Orphan_ID' => $orphan->id,
               'Sponsor_ID' => $NewUser->id,
-              'Amount' => 480,
+              'Amount' => request('Amount'),
               'Type' => request('SubscriptionType'),
               'Card_ID' => $Card_ID->id,
-              'Email' => request('Email'),
               'StartDate' => now(),
               'EndDate' => now()->addYear(),
               'IsActive' => 1,
@@ -296,10 +294,10 @@ class PaymentsController extends Controller
         try {
           foreach ($oldCart->items as $item) {
             $orphan = Orphan::where('id', '=', $item['item']['id'])->first();
-            if (request('SubscriptionType') == 'Montly') {
+            if (request('SubscriptionType') == 'Monthly') {
               SponsorSubscription::create([
                 'Orphan_ID' => $orphan->id,
-                'Amount' => 40,
+                'Amount' => request('Amount'),
                 'Type' => request('SubscriptionType'),
                 'Card_ID' => $UserCard -> id,
                 'Email' => request('Email'),
@@ -313,7 +311,7 @@ class PaymentsController extends Controller
             if (request('SubscriptionType') == 'Yearly') {
               SponsorSubscription::create([
                 'Orphan_ID' => $orphan->id,
-                'Amount' => 480,
+                'Amount' => request('Amount'),
                 'Type' => request('SubscriptionType'),
                 'Card_ID' => $UserCard -> id,
                 'Email' => request('Email'),
@@ -403,7 +401,7 @@ class PaymentsController extends Controller
             if (request('SubscriptionType') == 'Montly') {
               SponsorSubscription::create([
                 'Orphan_ID' => $orphan->id,
-                'Amount' => 40,
+                'Amount' => request('Amount'),
                 'Type' => request('SubscriptionType'),
                 'Card_ID' => $Card_ID->id,
                 'Email' => request('Email'),
@@ -417,7 +415,7 @@ class PaymentsController extends Controller
             if (request('SubscriptionType') == 'Yearly') {
               SponsorSubscription::create([
                 'Orphan_ID' => $orphan->id,
-                'Amount' => 480,
+                'Amount' => request('Amount'),
                 'Type' => request('SubscriptionType'),
                 'Card_ID' => $Card_ID->id,
                 'Email' => request('Email'),

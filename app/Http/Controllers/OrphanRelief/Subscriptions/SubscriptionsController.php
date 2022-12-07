@@ -98,28 +98,38 @@ class SubscriptionsController extends Controller
         $validator = $request->validate([
           'Sponsor_ID' => 'bail|required|max:255',
           'Orphan_ID' => 'required|max:255',
-          'Type' => 'required|max:255',
-          'Amount' => 'required|numeric',
+          'SubscriptionType' => 'required|max:255',
           'Card_ID' => 'required|max:255',
           'StartDate' => 'required|max:255',
-          'EndDate' => 'required|max:255',
         ]);
 
+      if (request('SubscriptionType') == 'Monthly') {
         SponsorSubscription::create([
-         'Sponsor_ID' => request('Sponsor_ID'),
-         'Orphan_ID' => request('Orphan_ID'),
-         'Type' => request('Type'),
-         'Amount' => request('Amount'),
-         'Card_ID' => request('Card_ID'),
-         'Email' => request('Email'),
-         'StartDate' => request('StartDate'),
-         'EndDate' => request('EndDate'),
-         'IsActive' => 1,
-         'Created_By' => auth()->user()->id,
-         'Owner' => 1,
-       ]);
-
+          'Orphan_ID' => request('Orphan_ID'),
+          'Sponsor_ID' => request('Sponsor_ID'),
+          'Amount' => 41.2,
+          'Type' => request('SubscriptionType'),
+          'Card_ID' => request('Card_ID'),
+          'StartDate' => now(),
+          'EndDate' => now()->addMonth(),
+          'IsActive' => 1,
+        ]);
         return back() -> with('toast_success', 'Record Created Successfully!');
+      }
+      if (request('SubscriptionType') == 'Yearly') {
+        SponsorSubscription::create([
+          'Orphan_ID' => request('Orphan_ID'),
+          'Sponsor_ID' => request('Sponsor_ID'),
+          'Amount' => 494.4,
+          'Type' => request('SubscriptionType'),
+          'Card_ID' => request('Card_ID'),
+          'StartDate' => now(),
+          'EndDate' => now()->addYear(),
+          'IsActive' => 1,
+        ]);
+        return back() -> with('toast_success', 'Record Created Successfully!');
+      }
+
     }
 
     // update

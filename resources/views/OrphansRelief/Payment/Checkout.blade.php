@@ -86,32 +86,32 @@
                 </div>
                 <div class="table-responsive">
                     <table class="table mb-0">
-                        <tbody id="Montly">
+                        <tbody id="Monthly">
                             <tr>
                                 <td>Total :</td>
-                                <td>${{ $totalPriceYearly = count($datas) * 40}}</td>
+                                <td>$ {{ $totalPriceMonthly = count($datas) * 40}}</td>
                             </tr>
-                            {{-- <tr>
-                                <td>Estimated Tax : </td>
-                                <td>$ 0</td>
-                            </tr> --}}
+                             <tr>
+                                <td>Transaction Fee : </td>
+                                <td>$ {{ $TransactionFeeMonthly = ($totalPriceMonthly * 3) / 100}} (3%)</td>
+                            </tr>
                             <tr>
                                 <th>Grand Total :</th>
-                                <th>${{ $totalPriceYearly = count($datas) * 40}}</th>
+                                <th>$ {{ $GrandtotalPriceMonthly = $totalPriceMonthly + $TransactionFeeMonthly }}</th>
                             </tr>
                         </tbody>
                         <tbody id="Yearly" class="d-none">
                             <tr>
                                 <td>Total :</td>
-                                <td>${{ $totalPriceYearly = count($datas) * 40 * 12}}</td>
+                                <td>$ {{ $totalPriceYearly = count($datas) * 40 * 12}}</td>
                             </tr>
-                            {{-- <tr>
-                                <td>Estimated Tax : </td>
-                                <td>$ 0</td>
-                            </tr> --}}
+                            <tr>
+                                <td>Transaction Fee : </td>
+                                <td>$ {{ $TransactionFeeYearly = ($totalPriceYearly * 3) / 100}} (3%)</td>
+                            </tr>
                             <tr>
                                 <th>Grand Total :</th>
-                                <th>${{ $totalPriceYearly = count($datas) * 40 * 12}}</th>
+                                <th>$ {{ $GrandtotalPriceYearly = $totalPriceYearly + $TransactionFeeYearly }}</th>
                             </tr>
                         </tbody>
                     </table>
@@ -124,7 +124,7 @@
 <form method="POST" class="form-horizontal" action="{{ route('StorePayment') }}" enctype="multipart/form-data" id="Payment">
     @csrf
     <input type="text" class="form-control d-none form-control-lg @error('SubscriptionType') is-invalid @enderror" value="{{ old('SubscriptionType') }}" id="SubscriptionType" name="SubscriptionType" required>
-    <input type="number" class="form-control d-none form-control-lg @error('Amount') is-invalid @enderror" value="{{ old('Amount') }}" id="Amount" name="Amount" required>
+    <input type="text" class="form-control d-none form-control-lg @error('Amount') is-invalid @enderror" value="{{ old('Amount') }}" id="Amount" name="Amount" required>
 
     <div class="row justify-content-center">
         <div class="col-lg-8">
@@ -225,7 +225,7 @@
 @else
 <div class="row">
     <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-        <h2>No Items in Cart!</h2>
+        <h2>Please select an Orphan. Thanks</h2>
     </div>
 </div>
 @endif
@@ -245,7 +245,6 @@
         event.preventDefault();
         loading.show();
         paynow.hide();
-        $form.find('button').prop('disabled', true);
         Stripe.card.createToken({
             number: $('#CardNumber').val(),
             cvc: $('#CVV').val(),
@@ -260,10 +259,8 @@
         if (response.error) {
             $('#charge-error').removeClass('d-none');
             $('#charge-error').text(response.error.message);
-            $form.find('button').prop('disabled', false);
             loading.hide();
             paynow.show();
-
         } else {
             var token = response.id;
             $form.append($('<input type="hidden" name="stripeToken" />').val(token));
@@ -272,30 +269,27 @@
     }
 
     $(document).ready(function() {
-        $("input[name=SubscriptionType]").val('Montly');
-        $("input[name=Amount]").val('{{ $totalPriceYearly = count($datas) * 40}}');
+        $("input[name=SubscriptionType]").val('Monthly');
+        $("input[name=Amount]").val('{{  $GrandtotalPriceMonthly }}');
         $("#monthly").click(function() {
             $("#Yearly").addClass('d-none')
-            $("#Montly").removeClass('d-none');
-            $("#Montly").addClass('fadeIn');
+            $("#Monthly").removeClass('d-none');
+            $("#Monthly").addClass('fadeIn');
             $(".indicator").css("left", "2px");
             $("#monthly").addClass('active');
             $("#yearly").removeClass('active');
-            $("input[name=SubscriptionType]").val('Montly');
-            $("input[name=Amount]").val('{{ $totalPriceYearly = count($datas) * 40}}');
-
+            $("input[name=SubscriptionType]").val('Monthly');
+            $("input[name=Amount]").val('{{ $GrandtotalPriceMonthly}}');
         })
         $("#yearly").click(function() {
-            $("#Montly").addClass('d-none');
+            $("#Monthly").addClass('d-none');
             $("#Yearly").removeClass('d-none');
             $("#Yearly").addClass('fadeIn');
             $("#yearly").addClass('active');
             $("#monthly").removeClass('active');
             $(".indicator").css("left", "164px");
             $("input[name=SubscriptionType]").val('Yearly');
-            $("input[name=Amount]").val('{{ $totalPriceYearly = count($datas) * 40 * 12}}');
-
-
+            $("input[name=Amount]").val('{{ $GrandtotalPriceYearly }}');
         })
     })
 </script>
