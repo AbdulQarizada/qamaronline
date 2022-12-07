@@ -84,6 +84,7 @@ Route::get('/OrphansRelief/Payment/RemoveFromCart/{data}', [App\Http\Controllers
 
 // Card
 Route::get('/OrphansRelief/Card/All', [App\Http\Controllers\OrphanRelief\Cards\CardsController::class, 'All'])->name('AllCard');
+Route::get('/OrphansRelief/Card/MyCard', [App\Http\Controllers\OrphanRelief\Cards\CardsController::class, 'MyCard'])->name('MyCard');
 Route::get('/OrphansRelief/Card/Active', [App\Http\Controllers\OrphanRelief\Cards\CardsController::class, 'Active'])->name('ActiveCard');
 Route::get('/OrphansRelief/Card/InActive', [App\Http\Controllers\OrphanRelief\Cards\CardsController::class, 'InActive'])->name('InActiveCard');
 Route::get('/OrphansRelief/Card/GetCardAjax', [App\Http\Controllers\OrphanRelief\Cards\CardsController::class, 'GetCardAjax'])->name('GetCardAjax');

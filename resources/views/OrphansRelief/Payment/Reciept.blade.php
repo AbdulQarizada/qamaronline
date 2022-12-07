@@ -6,7 +6,9 @@
 @foreach($datas as $data)
 <div class="row">
     <div class="col-12">
+        @if (Auth::user() -> IsOrphanSponsor != 1)
         <a href="{{route('AllPayment')}}" class="btn btn-outline-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        @endif
         <a href="javascript:window.print()" class="btn btn-outline-dark  waves-effect waves-light"><i class=" bx bxs-printer   font-size-18"></i></a>
     </div>
 </div>
@@ -72,7 +74,7 @@
                                     </div>
                                 </td>
                                 <td>Orphan Sponsor</td>
-                                <td class="text-end"> {{$data->PaymentAmount}}$</td>
+                                <td class="text-end"> {{$data-> Amount}} $</td>
                             </tr>
                         </tbody>
                     </table>

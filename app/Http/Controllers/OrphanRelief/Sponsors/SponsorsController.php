@@ -126,7 +126,7 @@ class SponsorsController extends Controller
   // status
   public function Status(User $data)
   {
-    $sponsors =   User::where("users.id", "=", $data->id)->first();
+    $sponsors =   User::where("users.id", "=", $data->id) -> first();
     $orphans = $sponsors -> orphan() -> where('IsActive', '=', 1) -> paginate(12);
     $WaitingOrphans =   Orphan::WhereDoesntHave('user', function($query) {   $query->where('sponsor_subscriptions.IsActive', 1);  }) -> get();
     $cards =  $sponsors -> card()

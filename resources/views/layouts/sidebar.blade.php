@@ -65,7 +65,7 @@
                         @if(Auth::user()->IsOrphanSponsor == 1)
                         <li><a href="{{route('MyOrphans')}}" key="t-horizontal"><i class="mdi mdi-account-circle-outline"></i> My Orphans</a></li>
                         <li><a href="{{route('MyPayments')}}" key="t-horizontal"><i class="mdi mdi-currency-usd"></i> My Payments</a></li>
-                        <li><a href="{{route('MyPayments')}}" key="t-horizontal"><i class="bx bxl-mastercard "></i> My Card</a></li>
+                        <li><a href="{{route('MyCard')}}" key="t-horizontal"><i class="bx bxl-mastercard "></i> My Card</a></li>
 
                         @endif
                     </ul>

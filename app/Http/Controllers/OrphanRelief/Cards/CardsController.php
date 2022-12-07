@@ -7,6 +7,7 @@ use App\Models\SponsorCard;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Location;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class CardsController extends Controller
 {
@@ -27,6 +28,12 @@ class CardsController extends Controller
         -> select(['sponsor_cards.*', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
         ->paginate(100);
         return view('OrphansRelief.Card.All', ['datas' => $cards, 'PageInfo' => $PageInfo, 'provinces' => $provinces,]);
+    }
+
+    public function MyCard()
+    {
+        $mycards =  SponsorCard::where("Sponsor_ID", "=", Auth::user() -> id) -> paginate(100);
+        return view('OrphansRelief.Card.MyCard', ['cards' => $mycards]);
     }
 
     public function Active()

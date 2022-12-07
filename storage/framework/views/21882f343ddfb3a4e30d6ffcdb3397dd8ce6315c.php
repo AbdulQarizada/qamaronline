@@ -1,8 +1,8 @@
-@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts')
-@section('title') Orphan and Sponsorships @endsection
-@section('css')
-@endsection
-@section('content')
+
+<?php $__env->startSection('title'); ?> Orphan and Sponsorships <?php $__env->stopSection(); ?>
+<?php $__env->startSection('css'); ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 <div class="row mt-4">
     <div class="col-4">
         <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20"></i>All Cards</span>
@@ -15,7 +15,7 @@
     </div>
 </div>
 <div class="row">
-    @foreach($cards as $card)
+    <?php $__currentLoopData = $cards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $card): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="col-md-4">
         <div class="card-one mb-4">
             <div class="">
@@ -27,14 +27,14 @@
                                 <i class="bx bxl-mastercard display-3"></i>
                             </div>
                             <div>
-                                @if($card -> IsActive != 1)
+                                <?php if($card -> IsActive != 1): ?>
                                   <a href="#" class="btn waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Card is InActive"><i class=" bx bx-x-circle  h1 text-danger"></i></a>
-                                @endif
-                                @if($card -> IsActive == 1)
+                                <?php endif; ?>
+                                <?php if($card -> IsActive == 1): ?>
                                 <div>
                                     <a href="#" class="btn waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Card is Active"><i class="mdi mdi-shield-check-outline h1 text-success"></i></a>
                                 </div>
-                                @endif
+                                <?php endif; ?>
                             </div>
                         </div>
 
@@ -51,35 +51,35 @@
                                     <i class="mdi mdi-asterisk text-white"></i>
                                     <i class="mdi mdi-asterisk text-white"></i>
                                     <i class="mdi mdi-asterisk text-white"></i>
-                                    <i >{{$card -> CardLastFourDigit}}</i>
+                                    <i ><?php echo e($card -> CardLastFourDigit); ?></i>
                                 </div>
                             </div>
                         </div>
 
                         <div class="mt-5">
                             <div class="d-flex flex-wrap gap-2 float-end">
-                                @if( $card -> IsActive == 1)
-                                <a href="{{route('DeActivateCard', ['data' => $card -> id])}}" class="btn btn-sm btn-outline-danger waves-effect DeActivateCard waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="De-Activate Card">
+                                <?php if( $card -> IsActive == 1): ?>
+                                <a href="<?php echo e(route('DeActivateCard', ['data' => $card -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect DeActivateCard waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="De-Activate Card">
                                     <i class="mdi mdi-credit-card-remove-outline font-size-16 align-middle"></i>
                                 </a>
-                                @endif
-                                @if($card -> IsActive != 1)
-                                <a href="{{route('ActivateCard', ['data' => $card -> id])}}"  class="btn btn-sm btn-outline-success waves-effect ActivateCard waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Activate Card">
+                                <?php endif; ?>
+                                <?php if($card -> IsActive != 1): ?>
+                                <a href="<?php echo e(route('ActivateCard', ['data' => $card -> id])); ?>"  class="btn btn-sm btn-outline-success waves-effect ActivateCard waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Activate Card">
                                     <i class="mdi mdi-credit-card-check-outline font-size-16 align-middle"></i>
                                 </a>
-                                <a href="{{route('DeleteCard', ['data' => $card -> id])}}" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirmCard" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
+                                <a href="<?php echo e(route('DeleteCard', ['data' => $card -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirmCard" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
                                     <i class="mdi mdi-delete-outline font-size-16 align-middle"></i>
                                 </a>
-                                @endif
+                                <?php endif; ?>
                             </div>
-                            <h5 class="font-size-14 mb-1"><a href="#" class="text-white">{{$card ->  user -> FullName}} </a></h5>
+                            <h5 class="font-size-14 mb-1"><a href="#" class="text-white"><?php echo e($card ->  user -> FullName); ?> </a></h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    @endforeach
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </div>
 <div class="modal fade bs-addcard-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered  modal-xl">
@@ -89,8 +89,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="needs-validation" action="{{route('CreateCard')}}" method="POST" enctype="multipart/form-data" novalidate>
-                    @csrf
+                <form class="needs-validation" action="<?php echo e(route('CreateCard')); ?>" method="POST" enctype="multipart/form-data" novalidate>
+                    <?php echo csrf_field(); ?>
                     <div class="checkout-tabs">
                         <div class="row">
                             <div class="col-xl-2 col-sm-3">
@@ -112,56 +112,126 @@
                                                         <div class="row">
                                                             <div class="col-md-4 d-none">
                                                                 <div class="mb-3 position-relative">
-                                                                    <input type="text" class="form-control  form-control-lg @error('Sponsor_ID') is-invalid @enderror" value="{{ Auth::user() -> id}} " id="Sponsor_ID" name="Sponsor_ID" required />
-                                                                    @error('Sponsor_ID')
+                                                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['Sponsor_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(Auth::user() -> id); ?> " id="Sponsor_ID" name="Sponsor_ID" required />
+                                                                    <?php $__errorArgs = ['Sponsor_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                                                     <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
+                                                                        <strong><?php echo e($message); ?></strong>
                                                                     </span>
-                                                                    @enderror
+                                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="mb-3 position-relative">
                                                                     <label for="CardNumber" class="form-label ">Card Number (No Dash) </label>
-                                                                    <input type="text" class="form-control form-control-lg @error('CardNumber') is-invalid @enderror" value="{{ old('CardNumber') }}" id="CardNumber" name="CardNumber" required />
-                                                                    @error('CardNumber')
+                                                                    <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['CardNumber'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('CardNumber')); ?>" id="CardNumber" name="CardNumber" required />
+                                                                    <?php $__errorArgs = ['CardNumber'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                                                     <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
+                                                                        <strong><?php echo e($message); ?></strong>
                                                                     </span>
-                                                                    @enderror
+                                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="mb-3 position-relative">
                                                                     <label for="ValidMonth" class="form-label ">Valid Month (2 Digit) </label>
-                                                                    <input type="text" class="form-control form-control-lg @error('ValidMonth') is-invalid @enderror" value="{{ old('ValidMonth') }}" id="ValidMonth" name="ValidMonth" maxlength="2" minlength="2" placeholder="MM" required />
-                                                                    @error('ValidMonth')
+                                                                    <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['ValidMonth'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ValidMonth')); ?>" id="ValidMonth" name="ValidMonth" maxlength="2" minlength="2" placeholder="MM" required />
+                                                                    <?php $__errorArgs = ['ValidMonth'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                                                     <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
+                                                                        <strong><?php echo e($message); ?></strong>
                                                                     </span>
-                                                                    @enderror
+                                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="mb-3 position-relative">
                                                                     <label for="ValidYear" class="form-label ">ValidYear (2 Digit) </label>
-                                                                    <input type="text" class="form-control form-control-lg @error('ValidYear') is-invalid @enderror" value="{{ old('ValidYear') }}" id="ValidYear" name="ValidYear" maxlength="2" minlength="2" placeholder="YY" required />
-                                                                    @error('ValidYear')
+                                                                    <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['ValidYear'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ValidYear')); ?>" id="ValidYear" name="ValidYear" maxlength="2" minlength="2" placeholder="YY" required />
+                                                                    <?php $__errorArgs = ['ValidYear'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                                                     <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
+                                                                        <strong><?php echo e($message); ?></strong>
                                                                     </span>
-                                                                    @enderror
+                                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="mb-3 position-relative">
                                                                     <label for="CVV" class="form-label ">CVV (3 Digit - Back of Card)</label>
-                                                                    <input type="text" class="form-control form-control-lg @error('CVV') is-invalid @enderror" value="{{ old('CVV') }}" id="CVV" name="CVV" maxlength="3"  placeholder="785" required />
-                                                                    @error('CVV')
+                                                                    <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['CVV'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('CVV')); ?>" id="CVV" name="CVV" maxlength="3"  placeholder="785" required />
+                                                                    <?php $__errorArgs = ['CVV'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                                                                     <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
+                                                                        <strong><?php echo e($message); ?></strong>
                                                                     </span>
-                                                                    @enderror
+                                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -182,10 +252,10 @@
         </div>
     </div>
 </div>
-@endsection
-@section('script')
-<script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
-<script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
+<script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('/assets/js/pages/form-validation.init.js')); ?>"></script>
 <script>
 
 
@@ -236,4 +306,5 @@
     });
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/OrphansRelief/Card/MyCard.blade.php ENDPATH**/ ?>

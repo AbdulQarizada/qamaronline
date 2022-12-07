@@ -6,7 +6,9 @@
 <?php $__currentLoopData = $datas; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 <div class="row">
     <div class="col-12">
+        <?php if(Auth::user() -> IsOrphanSponsor != 1): ?>
         <a href="<?php echo e(route('AllPayment')); ?>" class="btn btn-outline-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <?php endif; ?>
         <a href="javascript:window.print()" class="btn btn-outline-dark  waves-effect waves-light"><i class=" bx bxs-printer   font-size-18"></i></a>
     </div>
 </div>
@@ -75,7 +77,7 @@
                                     </div>
                                 </td>
                                 <td>Orphan Sponsor</td>
-                                <td class="text-end"> <?php echo e($data->PaymentAmount); ?>$</td>
+                                <td class="text-end"> <?php echo e($data-> Amount); ?> $</td>
                             </tr>
                         </tbody>
                     </table>
