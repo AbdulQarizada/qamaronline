@@ -3,7 +3,6 @@
 <link href="<?php echo e(URL::asset('/assets/css/mystyle/tabstyle.css')); ?>" rel="stylesheet" type="text/css" />
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
-<?php if(Cookie::get('Layout') == 'LayoutNoSidebar'): ?>
 <div class="row">
     <div class="col-12">
         <a href="<?php echo e(route('root')); ?>" class="btn btn-outline-info btn-lg waves-effect mb-3 btn-label waves-light">
@@ -12,7 +11,7 @@
     </div>
 </div>
 <div class="row mt-4">
-    <?php if(Auth::user()->IsOrphanRelief == 1): ?>
+    <?php if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsOrphanSponsor == 1 ): ?>
     <div class="mt-4 mb-4">
         <p class="my-0 fw-medium text-dark text-muted card-title font-size-24 text-wrap text-uppercase">Orphan and Sponsorships</p>
     </div>
@@ -70,7 +69,65 @@
         </div>
     </div>
 </div>
-<?php endif; ?>
+<div class="row mt-4">
+    <?php if(Auth::user()->IsOrphanSponsor == 1 ): ?>
+    <div class="mt-4 mb-4">
+        <p class="my-0 fw-medium text-dark text-muted card-title font-size-24 text-wrap text-uppercase">Online</p>
+    </div>
+    <?php endif; ?>
+    <div class="col-xl-12">
+        <div class="row">
+            <?php if(Auth::user()->IsOrphanSponsor == 1): ?>
+            <div class="col-md-2 mb-2">
+                <a href="<?php echo e(route('MyOrphans')); ?>">
+                    <div class="card-one  mini-stats-wid border border-secondary">
+                        <div class="card-body text-center">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="mdi mdi-account-circle-outline text-primary display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">My Orphans</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <?php endif; ?>
+            <?php if(Auth::user()->IsOrphanSponsor == 1): ?>
+            <div class="col-md-2 mb-2">
+                <a href="<?php echo e(route('MyPayments')); ?>">
+                    <div class="card-one  mini-stats-wid border border-secondary">
+                        <div class="card-body text-center">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="mdi mdi-currency-usd text-success display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">My Payments</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <?php endif; ?>
+            <?php if(Auth::user()->IsOrphanSponsor == 1): ?>
+            <div class="col-md-2 mb-2">
+                <a href="<?php echo e(route('MyCard')); ?>">
+                    <div class="card-one  mini-stats-wid border border-secondary">
+                        <div class="card-body text-center">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="bx bxl-mastercard text-info display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">My Cards</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
 <?php $__env->stopSection(); ?>

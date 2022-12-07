@@ -56,12 +56,12 @@
 <?php if(Auth::user()->IsEmployee == 1): ?>
 <?php if(Cookie::get('Layout') == 'LayoutNoSidebar'): ?>
 <div class="row">
-    <?php if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsAidAndRelief == 1 || Auth::user()->IsWash == 1 || Auth::user()->IsEducation == 1 || Auth::user()->IsInitiative == 1|| Auth::user()->IsMedicalSector == 1): ?>
+    <?php if(Auth::user()->IsOrphanRelief == 1 ||Auth::user()->IsAidAndRelief == 1 || Auth::user()->IsWash == 1 || Auth::user()->IsEducation == 1 || Auth::user()->IsInitiative == 1|| Auth::user()->IsMedicalSector == 1): ?>
     <h1 class="font-size-24 mt-4 mb-4 fw-medium text-dark text-muted">Projects</h1>
     <?php endif; ?>
     <div class="col-xl-12">
         <div class="row">
-            <?php if(Auth::user()->IsOrphanRelief == 1): ?>
+            <?php if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsOrphanSponsor == 1 ): ?>
             <div class="col-md-2 mb-2">
                 <a href="<?php echo e(route('IndexOrphansRelief')); ?>">
                     <div class="card-one  mini-stats-wid border border-secondary">
