@@ -3,7 +3,7 @@
         <div id="sidebar-menu">
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title" key="t-dashnaord">Dashboard</li>
-                <li><a href="{{route('root')}}" key="t-home"><i class="mdi mdi-monitor-dashboard"></i>Dashboard</a></li>
+                <li><a href="{{route('root')}}" key="t-home"><i class="mdi mdi-monitor-dashboard"></i> <span key="t-layouts">Dashboard</span></a></li>
                 @if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsAidAndRelief == 1 || Auth::user()->IsWash == 1 || Auth::user()->IsEducation == 1 || Auth::user()->IsInitiative == 1|| Auth::user()->IsMedicalSector == 1)
                 <li class="menu-title" key="t-apps">Projects</li>
                 @endif

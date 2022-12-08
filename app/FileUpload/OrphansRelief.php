@@ -74,7 +74,7 @@ class OrphansRelief extends Controller
             $profile = $request->file('Profile');
             $profilename = $profile->getClientOriginalName();
             $profileuniquename = uniqid() . '_' . $profilename;
-            $profile->storeAs('Profiles', $profileuniquename, 'Sponsors');
+            $profile->storeAs('Profiles', $profileuniquename, 'Users');
             return $profileuniquename;
         }
         return '';

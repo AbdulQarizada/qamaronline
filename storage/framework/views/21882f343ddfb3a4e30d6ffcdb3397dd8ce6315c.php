@@ -300,6 +300,7 @@ unset($__errorArgs, $__bag); ?>
         }
 
     });
+
     $('.delete-confirmCard').on('click', function(event) {
         event.preventDefault();
         const url = $(this).attr('href');

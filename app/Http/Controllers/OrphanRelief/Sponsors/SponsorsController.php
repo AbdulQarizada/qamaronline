@@ -55,7 +55,6 @@ class SponsorsController extends Controller
     return view('OrphansRelief.Sponsor.All', ['datas' => $sponsors, 'PageInfo' => $PageInfo, 'provinces' => $provinces]);
   }
 
-
   // create
   public function Create()
   {
@@ -114,14 +113,12 @@ class SponsorsController extends Controller
     return redirect()->route('AllSponsor')->with('toast_success', 'Record Edited Successfully!');
   }
 
-
   // Delete
   public function Delete(User $data)
   {
     $data->delete();
     return back()->with('success', 'Record deleted successfully');
   }
-
 
   // status
   public function Status(User $data)
@@ -154,7 +151,6 @@ class SponsorsController extends Controller
   {
     $validator = $request->validate([
       'password' => 'bail|required|max:255',
-
     ]);
     $data->update([
       'password' => Hash::make(request('password')),

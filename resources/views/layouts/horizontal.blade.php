@@ -227,11 +227,7 @@
             </div>
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    @if(Auth::user()->IsEmployee == 1)
-                    <img class="rounded-circle header-profile-user" src="{{ isset(Auth::user()->Profile) ? asset('/uploads/User/Employees/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png') }}" alt="Profile">
-                    @else
-                    <img class="rounded-circle header-profile-user" src="{{ isset(Auth::user()->Profile) ? asset('/uploads/User/Sponsors/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png') }}" alt="Profile">
-                    @endif
+                    <img class="rounded-circle header-profile-user" src="{{ asset('/uploads/User/Profiles/'.Auth::user() -> Profile) }}" alt="Profile">
                     <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{ucfirst(Auth::user()->FullName)}}</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>

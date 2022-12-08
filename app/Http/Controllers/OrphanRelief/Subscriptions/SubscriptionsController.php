@@ -106,8 +106,10 @@ class SubscriptionsController extends Controller
       'EndDate' => 'required|max:255',
 
     ]);
+
     // Check if the orphan has active sponsorship
     $orphans =   SponsorSubscription::where("Orphan_ID", "=", request('Orphan_ID'))->where("IsActive", "=", 1)->first();
+
     if (!$orphans) {
       SponsorSubscription::create([
         'Orphan_ID' => request('Orphan_ID'),
@@ -123,7 +125,7 @@ class SubscriptionsController extends Controller
   }
 
 
-  // Store by user
+  // add subscription by user
   public function StoreByUser(Request $request)
   {
     $validator = $request->validate([
@@ -192,7 +194,6 @@ class SubscriptionsController extends Controller
       We are happy to have you at  Qamar Family!');
     }
 
-
     if (request('SubscriptionType') == 'Yearly') {
       // Charge Customer=========================================================================================================
       try {
@@ -248,22 +249,6 @@ class SubscriptionsController extends Controller
       We are happy to have you at  Qamar Family!');
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   // update
   public function Edit(SponsorSubscription $data)

@@ -4,11 +4,11 @@
             <!-- LOGO -->
             <div class="navbar-brand-box">
                 <a href="<?php echo e(route('root')); ?>" class="logo logo-light">
-                    <span class="logo-sm">
-                        <img src="<?php echo e(URL::asset('/assets/images/logo.png')); ?>" alt="" height="22">
+                    <span class="logo-sm ">
+                        <img src="<?php echo e(URL::asset('/assets/images/logo.png')); ?>" class= "mt-4"  alt="" height="45">
                     </span>
-                    <span class="logo-lg">
-                        <img src="<?php echo e(URL::asset('/assets/images/side_logo.png')); ?>" alt="" height="45">
+                    <span class="logo-lg mt-4">
+                        <img src="<?php echo e(URL::asset('/assets/images/side_logo.png')); ?>" class= "mt-4" alt="" height="45">
                     </span>
                 </a>
             </div>

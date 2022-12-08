@@ -58,7 +58,7 @@
 <div class="row bg-white">
     <div class="col-lg-12">
         <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
-           <span class="m-2  text-danger display-4">No Orphan to sponsor at this time</span>
+           <span class="m-2 mt-4 text-danger display-4">No Orphan to sponsor at this time</span>
         </ul>
     </div>
 </div>

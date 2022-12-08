@@ -300,7 +300,6 @@ class PaymentsController extends Controller
                 'Amount' => request('Amount'),
                 'Type' => request('SubscriptionType'),
                 'Card_ID' => $UserCard -> id,
-                'Email' => request('Email'),
                 'StartDate' => now(),
                 'EndDate' => now()->addMonth(),
                 'Sponsor_ID' => $user->id,
@@ -313,7 +312,6 @@ class PaymentsController extends Controller
                 'Amount' => request('Amount'),
                 'Type' => request('SubscriptionType'),
                 'Card_ID' => $UserCard -> id,
-                'Email' => request('Email'),
                 'StartDate' => now(),
                 'EndDate' => now()->addYear(),
                 'Sponsor_ID' => $user->id,
@@ -437,7 +435,7 @@ class PaymentsController extends Controller
         Session::forget('cart');
         return redirect()->route('AllGridOrphans')->with('done', 'Congratulations on successfully sponsoring an orphan!
       Please use your previous email and password to login to our dashboard at https://online.qamarcharity.org.
-      You can login to the dashboard and keep tracking your sponsorship.
+      You can login to the dashboard and keep tracking your orphans.
       We welcome you to Qamar Family!');
       }
     }

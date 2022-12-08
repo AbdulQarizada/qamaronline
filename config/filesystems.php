@@ -36,7 +36,7 @@ return [
         ],
         'Users' => [
             'driver' => 'local',
-            'root'   => public_path() . '/uploads/Users',
+            'root'   => public_path() . '/uploads/User',
         ],
 
         'Beneficiaries' => [
@@ -58,10 +58,6 @@ return [
         'Orphans' => [
             'driver' => 'local',
             'root'   => public_path() . '/uploads/OrphansRelief/Orphans',
-        ],
-        'Sponsors' => [
-            'driver' => 'local',
-            'root'   => public_path() . '/uploads/OrphansRelief/Sponsors',
         ],
 
         'public' => [

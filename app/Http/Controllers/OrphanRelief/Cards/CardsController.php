@@ -63,7 +63,6 @@ class CardsController extends Controller
         return view('OrphansRelief.Card.All', ['datas' => $cards, 'PageInfo' => $PageInfo, 'provinces' => $provinces]);
     }
 
-
     public function Activate(SponsorCard $data)
     {
         $data->update([
