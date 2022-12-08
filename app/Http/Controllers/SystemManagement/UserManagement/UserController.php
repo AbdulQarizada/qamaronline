@@ -46,8 +46,8 @@ class UserController extends Controller
   {
 
     $PageInfo = 'All';
-    $datas =   User::join('locations as a', 'users.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'users.District_ID', '=', 'b.id')
+    $datas =   User::leftjoin('locations as a', 'users.Province_ID', '=', 'a.id')
+      ->leftjoin('locations as b', 'users.District_ID', '=', 'b.id')
       ->join('users as d', 'users.Created_By', '=', 'd.id')
       ->select(['users.*',  'a.Name as ProvinceName', 'b.Name as DistrictName', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
       ->where("users.IsEmployee", "=", 1)
@@ -58,8 +58,8 @@ class UserController extends Controller
   public function Activated()
   {
     $PageInfo = 'Active';
-    $datas =   User::join('locations as a', 'users.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'users.District_ID', '=', 'b.id')
+    $datas =   User::leftjoin('locations as a', 'users.Province_ID', '=', 'a.id')
+      ->leftjoin('locations as b', 'users.District_ID', '=', 'b.id')
       ->join('users as d', 'users.Created_By', '=', 'd.id')
       ->select(['users.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
       ->where("users.IsEmployee", "=", 1)
@@ -72,8 +72,8 @@ class UserController extends Controller
   public function DeActivated()
   {
     $PageInfo = 'InActive';
-    $datas =   User::join('locations as a', 'users.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'users.District_ID', '=', 'b.id')
+    $datas =   User::leftjoin('locations as a', 'users.Province_ID', '=', 'a.id')
+      ->leftjoin('locations as b', 'users.District_ID', '=', 'b.id')
       ->join('users as d', 'users.Created_By', '=', 'd.id')
       ->select(['users.*', 'a.Name as ProvinceName', 'b.Name as DistrictName',  'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
       ->where("users.IsEmployee", "=", 1)
@@ -81,11 +81,6 @@ class UserController extends Controller
       ->paginate(100);
     return view('SystemManagement.User.All', compact('datas', 'PageInfo'));
   }
-
-
-
-
-
 
 
   // create
@@ -114,55 +109,23 @@ class UserController extends Controller
       'FirstName' => 'bail|required|max:255',
       'LastName' => 'required|max:255',
       'FullName' => 'required|max:255',
-      'Tazkira_ID' => 'required|unique:users|max:255',
-      'Profile' => 'required|max:255',
       'Job' => 'required|max:255',
-      'DOB' => 'required|max:255',
-      'Gender_ID' => 'required|max:255',
-      'PrimaryNumber' => 'required|max:10',
-      'Province_ID' => 'required|max:255',
-      'District_ID' => 'required|max:255',
-      'Village' => 'required|max:255',
       'email' => 'required|unique:users|email|max:255',
       'password' => 'required|max:255',
-
     ]);
-
-
-    //    if ($validator->fails()) {
-    //     $error = $validator->errors()->first();
-    //  }
-
-
 
     User::create([
       'FirstName' => request('FirstName'),
       'LastName' => request('LastName'),
       'FullName' => request('FullName'),
       'Job' => request('Job'),
-      'Tazkira_ID' => request('Tazkira_ID'),
-      'Profile' => request('Profile'),
-      'DOB' => request('DOB'),
-      'Gender_ID' => request('Gender_ID'),
-      'PrimaryNumber' => request('PrimaryNumber'),
-      'SecondaryNumber' => request('SecondaryNumber'),
-      'Province_ID' => request('Province_ID'),
-      'District_ID' => request('District_ID'),
-      'Village' => request('Village'),
       'email' => request('email'),
       'password' => Hash::make(request('password')),
       'IsEmployee' => 1,
-
-
-
-
-      'Status' => 'Pending',
+      'Profile' => 'avatar.jpg',
+      'IsActive' => 0,
       'Created_By' => auth()->user()->id,
-
-
-
     ]);
-
     return redirect()->route('AllUser')->with('toast_success', 'Record Created Successfully!');
   }
 
