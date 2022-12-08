@@ -18,8 +18,8 @@
             <table class="table table-nowrap">
                 <tr>
                     <td>
-                        <a target="_Blanck" href="{{URL::asset('/uploads/Users/Profiles/'.$data -> Profile)}}" class="badge badge-soft-info">
-                            <img src="{{URL::asset('/uploads/Users/Profiles/'.$data -> Profile)}}" style="width: 130px; height: 135px;" class="rounded">
+                        <a target="_Blanck" href="{{URL::asset('/uploads/User/Profiles/'.$data -> Profile)}}" class="badge badge-soft-info">
+                            <img src="{{URL::asset('/uploads/User/Profiles/'.$data -> Profile)}}" style="width: 130px; height: 135px;" class="rounded">
                         </a>
                     </td>
                     <td style="float:right;">
