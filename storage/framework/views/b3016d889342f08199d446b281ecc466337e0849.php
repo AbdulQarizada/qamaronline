@@ -14,11 +14,7 @@
                     <div class="flex-grow-1">
                         <div class="avatar-xl rounded-circle mini-stat-icon">
                             <span class="avatar-title rounded-circle bg-dark">
-                                <?php if(Auth::user()->IsEmployee == 1): ?>
-                                <img class="rounded-circle header-profile-user avatar-xl" src="<?php echo e(isset(Auth::user()->Profile) ? asset('/uploads/User/Employees/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png')); ?>" alt="Profile">
-                                <?php else: ?>
-                                <img class="rounded-circle header-profile-user avatar-xl" src="<?php echo e(isset(Auth::user()->Profile) ? asset('/uploads/User/Sponsors/Profiles/'.Auth::user() -> Profile) : asset('/uploads/User/avatar-1.png')); ?>" alt="Profile">
-                                <?php endif; ?>
+                                <img class="rounded-circle header-profile-user avatar-xl" src="<?php echo e(asset('/uploads/User/Profiles/'.Auth::user() -> Profile)); ?>" alt="Profile">
                             </span>
                         </div>
                     </div>

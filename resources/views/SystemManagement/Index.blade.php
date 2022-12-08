@@ -1,17 +1,12 @@
-@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts')
-
+@extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts')
 @section('title') System Management @endsection
-
 @section('css')
 <link href="{{ URL::asset('/assets/css/mystyle/tabstyle.css') }}" rel="stylesheet" type="text/css" />
 @endsection
-
 @section('content')
-
-
 <div class="row">
     <div class="col-12">
-        <a href="{{route('root')}}" class="btn btn-info btn-lg waves-effect btn-label waves-light m-3"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <a href="{{route('root')}}" class="btn btn-outline-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
     </div>
 </div>
 <div class="row">
@@ -43,7 +38,7 @@
                         <div class="card-body text-center">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
-                                    <i class="mdi mdi-android-debug-bridge display-5 "></i>
+                                    <i class="mdi mdi-android-debug-bridge text-danger display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Errors</p>
                                 </div>
                             </div>
@@ -123,11 +118,8 @@
             </div>
             @endif
         </div>
-
     </div>
 </div>
-
 @endsection
 @section('script')
-
 @endsection

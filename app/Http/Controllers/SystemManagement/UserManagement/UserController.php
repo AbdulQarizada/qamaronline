@@ -27,25 +27,60 @@ class UserController extends Controller
 
 
 
-
-
   public function __construct()
   {
-    $this->middleware('auth', ['except' => ['Verify', 'Search']]);
+    $this->middleware('auth');
   }
-
-
 
   // index
   public function Index()
   {
-
      // Look up
     $catagorys =   LookUp::where("Parent_Name", "=", "None")->get();
-
     return view('SystemManagement.Index', compact('catagorys'));
   }
 
+
+  // list
+  public function All()
+  {
+
+    $PageInfo = 'All';
+    $datas =   User::join('locations as a', 'users.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'users.District_ID', '=', 'b.id')
+      ->join('users as d', 'users.Created_By', '=', 'd.id')
+      ->select(['users.*',  'a.Name as ProvinceName', 'b.Name as DistrictName', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+      ->where("users.IsEmployee", "=", 1)
+      ->paginate(100);
+    return view('SystemManagement.User.All', compact('datas', 'PageInfo'));
+  }
+
+  public function Activated()
+  {
+    $PageInfo = 'Active';
+    $datas =   User::join('locations as a', 'users.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'users.District_ID', '=', 'b.id')
+      ->join('users as d', 'users.Created_By', '=', 'd.id')
+      ->select(['users.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+      ->where("users.IsEmployee", "=", 1)
+      ->where("users.IsActive", "=", 1)
+      ->paginate(100);
+    return view('SystemManagement.User.All', compact('datas', 'PageInfo'));
+  }
+
+
+  public function DeActivated()
+  {
+    $PageInfo = 'InActive';
+    $datas =   User::join('locations as a', 'users.Province_ID', '=', 'a.id')
+      ->join('locations as b', 'users.District_ID', '=', 'b.id')
+      ->join('users as d', 'users.Created_By', '=', 'd.id')
+      ->select(['users.*', 'a.Name as ProvinceName', 'b.Name as DistrictName',  'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
+      ->where("users.IsEmployee", "=", 1)
+      ->where("users.IsActive", "!=", 1)
+      ->paginate(100);
+    return view('SystemManagement.User.All', compact('datas', 'PageInfo'));
+  }
 
 
 
@@ -69,12 +104,6 @@ class UserController extends Controller
     $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
     $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
     $provinces = Location::whereNull("Parent_ID")->get();
-
-
-
-
-
-
     return view('SystemManagement.User.Create', ['countries' => $countries, 'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
   }
 
@@ -314,20 +343,6 @@ class UserController extends Controller
 
 
 
-  // list
-  public function All()
-  {
-
-    $PageInfo = 'All';
-    $datas =   User::join('locations as a', 'users.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'users.District_ID', '=', 'b.id')
-      ->join('users as d', 'users.Created_By', '=', 'd.id')
-
-      ->select(['users.*',  'a.Name as ProvinceName', 'b.Name as DistrictName', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("users.IsEmployee", "=", 1)
-      ->get();
-    return view('SystemManagement.User.All', compact('datas', 'PageInfo'));
-  }
 
 
 
@@ -338,35 +353,6 @@ class UserController extends Controller
     return view('SystemManagement.Error.All', compact('datas', 'PageInfo'));
   }
 
-  public function Activated()
-  {
-
-    $PageInfo = 'Active';
-    $datas =   User::join('locations as a', 'users.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'users.District_ID', '=', 'b.id')
-      ->join('users as d', 'users.Created_By', '=', 'd.id')
-      ->select(['users.*', 'a.Name as ProvinceName', 'b.Name as DistrictName', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("users.IsEmployee", "=", 1)
-      ->where("users.IsActive", "=", 1)
-      ->get();
-    return view('SystemManagement.User.All', compact('datas', 'PageInfo'));
-  }
-
-
-  public function DeActivated()
-  {
-
-    $PageInfo = 'InActive';
-    $datas =   User::join('locations as a', 'users.Province_ID', '=', 'a.id')
-      ->join('locations as b', 'users.District_ID', '=', 'b.id')
-      ->join('users as d', 'users.Created_By', '=', 'd.id')
-      ->select(['users.*', 'a.Name as ProvinceName', 'b.Name as DistrictName',  'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob'])
-      ->where("users.IsEmployee", "=", 1)
-      ->where("users.IsActive", "!=", 1)
-
-      ->get();
-    return view('SystemManagement.User.All', compact('datas', 'PageInfo'));
-  }
 
 
 
