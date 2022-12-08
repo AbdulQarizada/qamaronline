@@ -273,7 +273,7 @@ class UserController extends Controller
   public function AllErrors()
   {
     $PageInfo = 'All';
-    $datas =   ErrorLog::orderBy('id', 'DESC') -> get();
+    $datas =   ErrorLog::orderBy('id', 'DESC') -> paginate(100);
     return view('SystemManagement.Error.All', compact('datas', 'PageInfo'));
   }
 

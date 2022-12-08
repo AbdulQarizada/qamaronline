@@ -185,8 +185,8 @@ class SubscriptionsController extends Controller
       }
       // Send Confirmation Email to Sponsor===============================================================================
       try {
-        $details = ['Email' => request('Email'), 'Amount' => 41.2, 'FullName' => request('FullName')];
-        Mail::to(request('Email'))->send(new SponsorConfirmation($details));
+        $details = ['Email' => Auth::user() -> email, 'Amount' => 41.2, 'FullName' => Auth::user() -> FullName];
+        Mail::to(Auth::user() -> email)->send(new SponsorConfirmation($details));
       } catch (\Exception $e) {
         ErrorLog::create(['Message' =>  $e->getMessage(), 'From' => 'SubscriptionContorller:StoreByUser: SponsorPaymentTry']);
       }
@@ -240,8 +240,8 @@ class SubscriptionsController extends Controller
       }
       // Send Confirmation Email to Sponsor===============================================================================
       try {
-        $details = ['Email' => request('Email'), 'Amount' => 494.4, 'FullName' => request('FullName')];
-        Mail::to(request('Email'))->send(new SponsorConfirmation($details));
+        $details = ['Email' => Auth::user() -> email, 'Amount' => 494.4, 'FullName' => Auth::user() -> FullName];
+        Mail::to(Auth::user() -> email)->send(new SponsorConfirmation($details));
       } catch (\Exception $e) {
         ErrorLog::create(['Message' =>  $e->getMessage(), 'From' => 'SubscriptionContorller:StoreByUser: SponsorPaymentTry']);
       }
