@@ -304,7 +304,6 @@ class PaymentsController extends Controller
                 'StartDate' => now(),
                 'EndDate' => now()->addMonth(),
                 'Sponsor_ID' => $user->id,
-                'Email' => request('Email'),
                 'IsActive' => 1,
               ]);
             }
@@ -318,7 +317,6 @@ class PaymentsController extends Controller
                 'StartDate' => now(),
                 'EndDate' => now()->addYear(),
                 'Sponsor_ID' => $user->id,
-                'Email' => request('Email'),
                 'IsActive' => 1,
               ]);
             }
@@ -404,11 +402,9 @@ class PaymentsController extends Controller
                 'Amount' => request('Amount'),
                 'Type' => request('SubscriptionType'),
                 'Card_ID' => $Card_ID->id,
-                'Email' => request('Email'),
                 'StartDate' => now(),
                 'EndDate' => now()->addMonth(),
                 'Sponsor_ID' => $user->id,
-                'Email' => request('Email'),
                 'IsActive' => 1,
               ]);
             }
@@ -418,17 +414,15 @@ class PaymentsController extends Controller
                 'Amount' => request('Amount'),
                 'Type' => request('SubscriptionType'),
                 'Card_ID' => $Card_ID->id,
-                'Email' => request('Email'),
                 'StartDate' => now(),
                 'EndDate' => now()->addYear(),
                 'Sponsor_ID' => $user->id,
-                'Email' => request('Email'),
                 'IsActive' => 1,
               ]);
             }
           }
         } catch (\Exception $e) {
-          ErrorLog::create(['Message' =>  $e->getMessage(), 'From' => 'PaymentContorller:StorePayment: SponsorPaymentTry']);
+          ErrorLog::create(['Message' =>  $e->getMessage(), 'From' => 'PaymentContorller:StorePayment: SponsorAssingOrphanTry']);
         }
 
 

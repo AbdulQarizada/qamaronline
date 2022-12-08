@@ -9,94 +9,25 @@
     </div>
 </div>
 <div class="row mt-4">
-    <div class="col-md-10"> <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Payment Cards</h5></div>
-        <div class="col-md-2 col-sm-2 mb-2">
-        <a data-bs-toggle="modal" data-bs-target=".bs-addcard-modal-center" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded text-uppercase"><i class="mdi mdi-plus me-1"></i>ADD Card</a>
+    <div class="col-md-10">
+        <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Payment Cards</h5>
+    </div>
+    <div class="col-md-2 col-sm-2 mb-2">
+        <a data-bs-toggle="collapse" data-bs-target="#addCard" aria-expanded="false" aria-controls="addCard" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded text-uppercase"><i class="mdi mdi-plus me-1"></i>ADD CARD</a>
     </div>
 </div>
-<div class="row">
-    @foreach($cards as $card)
-    <div class="col-md-4">
-        <div class="card-one mb-4">
-            <div class="">
-                <div class="card bg-dark text-white visa-card mb-0">
-                    <div class="card-body">
-                        <div>
-                            <i class="bx bxl-mastercard visa-pattern"></i>
-                            <div class="float-end">
-                                <i class="bx bxl-mastercard display-3"></i>
-                            </div>
-                            <div>
-                                @if($card -> IsActive != 1)
-                                  <a href="#" class="btn waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Card is InActive"><i class=" bx bx-x-circle  h1 text-danger"></i></a>
-                                @endif
-                                @if($card -> IsActive == 1)
-                                <div>
-                                    <a href="#" class="btn waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Card is Active"><i class="mdi mdi-shield-check-outline h1 text-success"></i></a>
-                                </div>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="row mt-5">
-                            <h5 class="font-size-14 mb-1"><a href="#" class="text-white">Card Number </a></h5>
-                            <div class="col-12">
-                                <div>
-                                    <i class="mdi mdi-asterisk text-white"></i>
-                                    <i class="mdi mdi-asterisk text-white"></i>
-                                    <i class="mdi mdi-asterisk text-white"></i>
-                                    <i class="mdi mdi-asterisk text-white"></i>
-                                    <i class="mdi mdi-asterisk text-white"></i>
-                                    <i class="mdi mdi-asterisk text-white"></i>
-                                    <i class="mdi mdi-asterisk text-white"></i>
-                                    <i class="mdi mdi-asterisk text-white"></i>
-                                    <i class="mdi mdi-asterisk text-white"></i>
-                                    <i >{{$card -> CardLastFourDigit}}</i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-5">
-                            <div class="d-flex flex-wrap gap-2 float-end">
-                                @if( $card -> IsActive == 1)
-                                <a href="{{route('DeActivateCard', ['data' => $card -> id])}}" class="btn btn-sm btn-outline-danger waves-effect DeActivateCard waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="De-Activate Card">
-                                    <i class="mdi mdi-credit-card-remove-outline font-size-16 align-middle"></i>
-                                </a>
-                                @endif
-                                @if($card -> IsActive != 1)
-                                <a href="{{route('ActivateCard', ['data' => $card -> id])}}"  class="btn btn-sm btn-outline-success waves-effect ActivateCard waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Activate Card">
-                                    <i class="mdi mdi-credit-card-check-outline font-size-16 align-middle"></i>
-                                </a>
-                                <a href="{{route('DeleteCard', ['data' => $card -> id])}}" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirmCard" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
-                                    <i class="mdi mdi-delete-outline font-size-16 align-middle"></i>
-                                </a>
-                                @endif
-                            </div>
-                            <h5 class="font-size-14 mb-1"><a href="#" class="text-white">{{$card ->  user -> FullName}} </a></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    @endforeach
-</div>
-<div class="modal fade bs-addcard-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered  modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Add Payment Card</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="collapse hide" id="addCard">
+            <div class="card shadow-none card-body text-muted mb-0" style="border: 2px dashed #50a5f1;" >
                 <form class="needs-validation" action="{{ route('CreateCard') }}" id="Card" method="POST" enctype="multipart/form-data" novalidate>
                     @csrf
                     <div class="checkout-tabs">
                         <div class="row">
                             <div class="col-xl-2 col-sm-3">
                                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                    <a class="nav-link active" id="v-pills-personal-tab" data-bs-toggle="pill" href="#v-pills-personal" role="tab" aria-controls="v-pills-personal" aria-selected="true">
-                                        <i class="mdi mdi-account-box-multiple-outline  d-block check-nav-icon mt-4 mb-2"></i>
+                                    <a class="nav-link active bg-info" id="v-pills-personal-tab" data-bs-toggle="pill" href="#v-pills-personal" role="tab" aria-controls="v-pills-personal" aria-selected="true">
+                                        <i class="bx bxl-mastercard   d-block check-nav-icon mt-4 mb-2"></i>
                                         <p class="fw-bold mb-4 text-uppercase">Payment card</p>
                                     </a>
                                 </div>
@@ -106,7 +37,7 @@
                                     <div class="tab-pane fade show active" id="v-pills-personal" role="tabpanel" aria-labelledby="v-pills-personal-tab">
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                <h3 class="card-header bg-primary text-white mb-3"></h3>
+                                                <h3 class="card-header bg-info text-white mb-3"></h3>
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row">
@@ -115,7 +46,7 @@
                                                             </div>
                                                             <div class="col-md-4 d-none">
                                                                 <div class="mb-3 position-relative">
-                                                                    <input type="text" class="form-control  form-control-lg @error('Sponsor_ID') is-invalid @enderror" value="{{ Auth::user() -> id}} " id="Sponsor_ID" name="Sponsor_ID" required />
+                                                                    <input type="text" class="form-control  form-control-lg @error('Sponsor_ID') is-invalid @enderror" value="{{ Auth::user() ->id}} " id="Sponsor_ID" name="Sponsor_ID" required />
                                                                     @error('Sponsor_ID')
                                                                     <span class="invalid-feedback" role="alert">
                                                                         <strong>{{ $message }}</strong>
@@ -188,7 +119,74 @@
             </div>
         </div>
     </div>
-</d
+</div>
+<div class="row">
+    @foreach($cards as $card)
+    <div class="col-md-4">
+        <div class="card-one mb-4">
+            <div class="">
+                <div class="card bg-dark text-white visa-card mb-0">
+                    <div class="card-body">
+                        <div>
+                            <i class="bx bxl-mastercard visa-pattern"></i>
+                            <div class="float-end">
+                                <i class="bx bxl-mastercard display-3"></i>
+                            </div>
+                            <div>
+                                @if($card -> IsActive != 1)
+                                  <a href="#" class="btn waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Card is InActive"><i class=" bx bx-x-circle  h1 text-danger"></i></a>
+                                @endif
+                                @if($card -> IsActive == 1)
+                                <div>
+                                    <a href="#" class="btn waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Card is Active"><i class="mdi mdi-shield-check-outline h1 text-success"></i></a>
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="row mt-5">
+                            <h5 class="font-size-14 mb-1"><a href="#" class="text-white">Card Number </a></h5>
+                            <div class="col-12">
+                                <div>
+                                    <i class="mdi mdi-asterisk text-white"></i>
+                                    <i class="mdi mdi-asterisk text-white"></i>
+                                    <i class="mdi mdi-asterisk text-white"></i>
+                                    <i class="mdi mdi-asterisk text-white"></i>
+                                    <i class="mdi mdi-asterisk text-white"></i>
+                                    <i class="mdi mdi-asterisk text-white"></i>
+                                    <i class="mdi mdi-asterisk text-white"></i>
+                                    <i class="mdi mdi-asterisk text-white"></i>
+                                    <i class="mdi mdi-asterisk text-white"></i>
+                                    <i >{{$card -> CardLastFourDigit}}</i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-5">
+                            <div class="d-flex flex-wrap gap-2 float-end">
+                                @if( $card -> IsActive == 1)
+                                <a href="{{route('DeActivateCard', ['data' => $card -> id])}}" class="btn btn-sm btn-outline-danger waves-effect DeActivateCard waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="De-Activate Card">
+                                    <i class="mdi mdi-credit-card-remove-outline font-size-16 align-middle"></i>
+                                </a>
+                                @endif
+                                @if($card -> IsActive != 1)
+                                <a href="{{route('ActivateCard', ['data' => $card -> id])}}"  class="btn btn-sm btn-outline-success waves-effect ActivateCard waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Activate Card">
+                                    <i class="mdi mdi-credit-card-check-outline font-size-16 align-middle"></i>
+                                </a>
+                                <a href="{{route('DeleteCard', ['data' => $card -> id])}}" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirmCard" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
+                                    <i class="mdi mdi-delete-outline font-size-16 align-middle"></i>
+                                </a>
+                                @endif
+                            </div>
+                            <h5 class="font-size-14 mb-1"><a href="#" class="text-white">{{$card ->  user -> FullName}} </a></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endforeach
+</div>
 @endsection
 @section('script')
 <script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
@@ -231,6 +229,7 @@
         }
 
     });
+
     $('.delete-confirmCard').on('click', function(event) {
         event.preventDefault();
         const url = $(this).attr('href');

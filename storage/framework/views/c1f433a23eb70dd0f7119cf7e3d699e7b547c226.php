@@ -2,6 +2,8 @@
 <?php $__env->startSection('title'); ?> Orphan and Sponsorships <?php $__env->stopSection(); ?>
 <?php $__env->startSection('css'); ?>
 <link href="<?php echo e(URL::asset('/assets/css/mystyle/tabstyle.css')); ?>" rel="stylesheet" type="text/css" />
+<link href="<?php echo e(URL::asset('/assets/libs/select2/select2.min.css')); ?>" rel="stylesheet" type="text/css" />
+<link href="<?php echo e(URL::asset('/assets/css/mystyle/select2.css')); ?>" rel="stylesheet" type="text/css" />
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <div class="row">
@@ -62,7 +64,153 @@
         <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Sponsored Orphans</h5>
     </div>
     <div class="col-md-2 col-sm-2 mb-2">
-        <a data-bs-toggle="modal" data-bs-target=".bs-addorphan-modal-center" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded text-uppercase"><i class="mdi mdi-plus me-1"></i>ADD Orphan</a>
+        <a data-bs-toggle="collapse" data-bs-target="#addOrphan" aria-expanded="false" aria-controls="addOrphan" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded text-uppercase"><i class="mdi mdi-plus me-1"></i>ADD ORPHAN</a>
+    </div>
+</div>
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="collapse hide" id="addOrphan">
+            <div class="card shadow-none card-body text-muted mb-0" style="border: 2px dashed #50a5f1;" >
+                <form class="needs-validation" action="<?php echo e(route('CreateSubscription')); ?>" method="POST" enctype="multipart/form-data" novalidate>
+                    <?php echo csrf_field(); ?>
+                    <div class="checkout-tabs">
+                        <div class="row">
+                            <div class="col-xl-2 col-sm-3 ">
+                                <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                    <a class="nav-link active bg-info" id="v-pills-personal-tab" data-bs-toggle="pill" href="#v-pills-personal" role="tab" aria-controls="v-pills-personal" aria-selected="true">
+                                        <i class="mdi mdi-account-box-multiple-outline  d-block check-nav-icon mt-4 mb-2"></i>
+                                        <p class="fw-bold mb-4 text-uppercase">Subscription</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-sm-9">
+                                <div class="tab-content" id="v-pills-tabContent">
+                                    <div class="tab-pane fade show active" id="v-pills-personal" role="tabpanel" aria-labelledby="v-pills-personal-tab">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <h3 class="card-header bg-info text-white mb-3"></h3>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <div class="mb-3 position-relative">
+                                                                    <label for="Orphan_ID" class="form-label">Orphan</label>
+                                                                    <div class="input-group " id="example-date-input">
+                                                                        <select class="select2 form-control  form-control-lg" id="Orphan_ID" name="Orphan_ID" value="<?php echo e(old('Orphan_ID')); ?>" style="height: calc(1.5em + .75rem + 2px) !important;" required>
+                                                                            <option value="">Select Your Orphan</option>
+                                                                            <?php $__currentLoopData = $WaitingOrphans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $WaitingOrphan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                            <option value="<?php echo e($WaitingOrphan -> id); ?>"><?php echo e($WaitingOrphan -> FirstName); ?> <?php echo e($WaitingOrphan -> LastName); ?></option>
+                                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                        </select>
+                                                                        <?php $__errorArgs = ['Orphan_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong><?php echo e($message); ?></strong>
+                                                                        </span>
+                                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 d-none">
+                                                                <div class="mb-3 position-relative">
+                                                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['Sponsor_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> id); ?> " id="Sponsor_ID" name="Sponsor_ID" required />
+                                                                    <?php $__errorArgs = ['Sponsor_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong><?php echo e($message); ?></strong>
+                                                                    </span>
+                                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="mb-3 position-relative">
+                                                                    <label for="StartDate" class="form-label">Subscription Start Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                                    <div class="input-group " id="example-date-input">
+                                                                        <input class="form-control form-select-lg <?php $__errorArgs = ['StartDate'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> StartDate); ?>" type="date" id="example-date-input" name="StartDate" id="StartDate" required>
+                                                                        <?php $__errorArgs = ['StartDate'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong><?php echo e($message); ?></strong>
+                                                                        </span>
+                                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="mb-3 position-relative">
+                                                                    <label for="EndDate" class="form-label">Subscription End Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                                    <div class="input-group " id="example-date-input">
+                                                                        <input class="form-control form-select-lg <?php $__errorArgs = ['EndDate'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> EndDate); ?>" type="date" id="example-date-input" name="EndDate" id="EndDate" required>
+                                                                        <?php $__errorArgs = ['EndDate'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong><?php echo e($message); ?></strong>
+                                                                        </span>
+                                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded w-lg" type="submit">Submit </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 <div class="row">
@@ -118,7 +266,182 @@
         <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Payment Cards</h5>
     </div>
     <div class="col-md-2 col-sm-2 mb-2">
-        <a data-bs-toggle="modal" data-bs-target=".bs-addcard-modal-center" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded text-uppercase"><i class="mdi mdi-plus me-1"></i>ADD Card</a>
+        <a data-bs-toggle="collapse" data-bs-target="#addCard" aria-expanded="false" aria-controls="addCard" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded text-uppercase"><i class="mdi mdi-plus me-1"></i>ADD CARD</a>
+    </div>
+</div>
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="collapse hide" id="addCard">
+            <div class="card shadow-none card-body text-muted mb-0" style="border: 2px dashed #50a5f1;" >
+                <form class="needs-validation" action="<?php echo e(route('CreateCard')); ?>" id="Card" method="POST" enctype="multipart/form-data" novalidate>
+                    <?php echo csrf_field(); ?>
+                    <div class="checkout-tabs">
+                        <div class="row">
+                            <div class="col-xl-2 col-sm-3">
+                                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                    <a class="nav-link active bg-info" id="v-pills-personal-tab" data-bs-toggle="pill" href="#v-pills-personal" role="tab" aria-controls="v-pills-personal" aria-selected="true">
+                                        <i class="bx bxl-mastercard   d-block check-nav-icon mt-4 mb-2"></i>
+                                        <p class="fw-bold mb-4 text-uppercase">Payment card</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-sm-9">
+                                <div class="tab-content" id="v-pills-tabContent">
+                                    <div class="tab-pane fade show active" id="v-pills-personal" role="tabpanel" aria-labelledby="v-pills-personal-tab">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <h3 class="card-header bg-info text-white mb-3"></h3>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div id="charge-error" class="alert alert-danger <?php echo e(!Session::has('error') ? 'd-none' : ''); ?>">
+                                                                <?php echo e(Session::get('error')); ?>
+
+                                                            </div>
+                                                            <div class="col-md-4 d-none">
+                                                                <div class="mb-3 position-relative">
+                                                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['Sponsor_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> id); ?> " id="Sponsor_ID" name="Sponsor_ID" required />
+                                                                    <?php $__errorArgs = ['Sponsor_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong><?php echo e($message); ?></strong>
+                                                                    </span>
+                                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="mb-3 position-relative">
+                                                                    <label for="CardNumber" class="form-label ">Card Number (No Dash) </label>
+                                                                    <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['CardNumber'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('CardNumber')); ?>" id="CardNumber" name="CardNumber" required />
+                                                                    <?php $__errorArgs = ['CardNumber'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong><?php echo e($message); ?></strong>
+                                                                    </span>
+                                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="mb-3 position-relative">
+                                                                    <label for="ValidMonth" class="form-label ">Valid Month (2 Digit) </label>
+                                                                    <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['ValidMonth'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ValidMonth')); ?>" id="ValidMonth" name="ValidMonth" maxlength="2" minlength="2" placeholder="MM" required />
+                                                                    <?php $__errorArgs = ['ValidMonth'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong><?php echo e($message); ?></strong>
+                                                                    </span>
+                                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="mb-3 position-relative">
+                                                                    <label for="ValidYear" class="form-label ">ValidYear (2 Digit) </label>
+                                                                    <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['ValidYear'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ValidYear')); ?>" id="ValidYear" name="ValidYear" maxlength="2" minlength="2" placeholder="YY" required />
+                                                                    <?php $__errorArgs = ['ValidYear'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong><?php echo e($message); ?></strong>
+                                                                    </span>
+                                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="mb-3 position-relative">
+                                                                    <label for="CVV" class="form-label ">CVV (3 Digit - Back of Card)</label>
+                                                                    <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['CVV'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('CVV')); ?>" id="CVV" name="CVV" maxlength="3" placeholder="785" required />
+                                                                    <?php $__errorArgs = ['CVV'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong><?php echo e($message); ?></strong>
+                                                                    </span>
+                                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button class="btn1 btn-outline-info btn-lg waves-effect waves-light float-end" type="button" id="Loading" disabled>
+                                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                                Loading...
+                                            </button>
+                                            <button class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded w-lg" type="submit" id="SubmitNow">Submit </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 <div class="row">
@@ -324,368 +647,13 @@
         <?php endif; ?>
     </div>
 </div>
-
-<div class="modal fade bs-addorphan-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered  modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Add Subscription</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form class="needs-validation" action="<?php echo e(route('CreateSubscription')); ?>" method="POST" enctype="multipart/form-data" novalidate>
-                    <?php echo csrf_field(); ?>
-                    <div class="checkout-tabs">
-                        <div class="row">
-                            <div class="col-xl-2 col-sm-3">
-                                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                    <a class="nav-link active" id="v-pills-personal-tab" data-bs-toggle="pill" href="#v-pills-personal" role="tab" aria-controls="v-pills-personal" aria-selected="true">
-                                        <i class="mdi mdi-account-box-multiple-outline  d-block check-nav-icon mt-4 mb-2"></i>
-                                        <p class="fw-bold mb-4 text-uppercase">Subscription</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-xl-10 col-sm-9">
-                                <div class="tab-content" id="v-pills-tabContent">
-                                    <div class="tab-pane fade show active" id="v-pills-personal" role="tabpanel" aria-labelledby="v-pills-personal-tab">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <h3 class="card-header bg-primary text-white mb-3"></h3>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row">
-                                                            <div class="col-md-4 d-none">
-                                                                <div class="mb-3 position-relative">
-                                                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['Sponsor_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> id); ?> " id="Sponsor_ID" name="Sponsor_ID" required />
-                                                                    <?php $__errorArgs = ['Sponsor_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong><?php echo e($message); ?></strong>
-                                                                    </span>
-                                                                    <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="mb-3 position-relative">
-                                                                    <label for="Orphan_ID" class="form-label">Orphan</label>
-                                                                    <div class="input-group " id="example-date-input">
-                                                                        <select class="form-control  form-control-lg" id="Orphan_ID" name="Orphan_ID" value="<?php echo e(old('Orphan_ID')); ?>" style="height: calc(1.5em + .75rem + 2px) !important;" required>
-                                                                            <option value="">Select Your Orphan</option>
-                                                                            <?php $__currentLoopData = $WaitingOrphans; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $WaitingOrphan): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                            <option value="<?php echo e($WaitingOrphan -> id); ?>"><?php echo e($WaitingOrphan -> FirstName); ?> <?php echo e($WaitingOrphan -> LastName); ?></option>
-                                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                        </select>
-                                                                        <?php $__errorArgs = ['Orphan_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong><?php echo e($message); ?></strong>
-                                                                        </span>
-                                                                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="mb-3 position-relative">
-                                                                    <label for="SubscriptionType" class="form-label">Subscription Type</label>
-                                                                    <div class="input-group " id="example-date-input">
-                                                                        <select class="form-control  form-control-lg" id="SubscriptionType" name="SubscriptionType" value="<?php echo e(old('SubscriptionType')); ?>" style="height: calc(1.5em + .75rem + 2px) !important;" required>
-                                                                            <option value="Monthly">Monthly</option>
-                                                                            <option value="Yearly">Yearly</option>
-                                                                        </select>
-                                                                        <?php $__errorArgs = ['SubscriptionType'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong><?php echo e($message); ?></strong>
-                                                                        </span>
-                                                                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="mb-3 position-relative">
-                                                                    <label for="Card_ID" class="form-label">Sponsor's Card</label>
-                                                                    <div class="input-group">
-                                                                        <select class="form-select  Card form-select-lg <?php $__errorArgs = ['Card_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" name="Card_ID" value="<?php echo e(old('Card_ID')); ?>" style="height: calc(1.5em + .75rem + 2px) !important;" id="Card_ID" required>
-                                                                            <option value="">Select Sponsor's Card</option>
-                                                                            <?php $__currentLoopData = $cards; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $card): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                            <option value="<?php echo e($card -> id); ?>">************<?php echo e($card -> CardLastFourDigit); ?></option>
-                                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                        </select>
-                                                                        <?php $__errorArgs = ['Card_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong><?php echo e($message); ?></strong>
-                                                                        </span>
-                                                                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="mb-3 position-relative">
-                                                                    <label for="StartDate" class="form-label">Subscription Start Date <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                                    <div class="input-group " id="example-date-input">
-                                                                        <input class="form-control form-select-lg <?php $__errorArgs = ['StartDate'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('StartDate')); ?>" type="date" id="example-date-input" name="StartDate" id="StartDate" required>
-                                                                        <?php $__errorArgs = ['StartDate'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                        <span class="invalid-feedback" role="alert">
-                                                                            <strong><?php echo e($message); ?></strong>
-                                                                        </span>
-                                                                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <button class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded w-lg" type="submit">Submit </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade bs-addcard-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered  modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Add Payment Card</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form class="needs-validation" action="<?php echo e(route('CreateCard')); ?>" id="Card" method="POST" enctype="multipart/form-data" novalidate>
-                    <?php echo csrf_field(); ?>
-                    <div class="checkout-tabs">
-                        <div class="row">
-                            <div class="col-xl-2 col-sm-3">
-                                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                    <a class="nav-link active" id="v-pills-personal-tab" data-bs-toggle="pill" href="#v-pills-personal" role="tab" aria-controls="v-pills-personal" aria-selected="true">
-                                        <i class="mdi mdi-account-box-multiple-outline  d-block check-nav-icon mt-4 mb-2"></i>
-                                        <p class="fw-bold mb-4 text-uppercase">Payment card</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-xl-10 col-sm-9">
-                                <div class="tab-content" id="v-pills-tabContent">
-                                    <div class="tab-pane fade show active" id="v-pills-personal" role="tabpanel" aria-labelledby="v-pills-personal-tab">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <h3 class="card-header bg-primary text-white mb-3"></h3>
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="row">
-                                                            <div id="charge-error" class="alert alert-danger <?php echo e(!Session::has('error') ? 'd-none' : ''); ?>">
-                                                                <?php echo e(Session::get('error')); ?>
-
-                                                            </div>
-                                                            <div class="col-md-4 d-none">
-                                                                <div class="mb-3 position-relative">
-                                                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['Sponsor_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> id); ?> " id="Sponsor_ID" name="Sponsor_ID" required />
-                                                                    <?php $__errorArgs = ['Sponsor_ID'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong><?php echo e($message); ?></strong>
-                                                                    </span>
-                                                                    <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="mb-3 position-relative">
-                                                                    <label for="CardNumber" class="form-label ">Card Number (No Dash) </label>
-                                                                    <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['CardNumber'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('CardNumber')); ?>" id="CardNumber" name="CardNumber" required />
-                                                                    <?php $__errorArgs = ['CardNumber'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong><?php echo e($message); ?></strong>
-                                                                    </span>
-                                                                    <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="mb-3 position-relative">
-                                                                    <label for="ValidMonth" class="form-label ">Valid Month (2 Digit) </label>
-                                                                    <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['ValidMonth'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ValidMonth')); ?>" id="ValidMonth" name="ValidMonth" maxlength="2" minlength="2" placeholder="MM" required />
-                                                                    <?php $__errorArgs = ['ValidMonth'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong><?php echo e($message); ?></strong>
-                                                                    </span>
-                                                                    <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="mb-3 position-relative">
-                                                                    <label for="ValidYear" class="form-label ">ValidYear (2 Digit) </label>
-                                                                    <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['ValidYear'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('ValidYear')); ?>" id="ValidYear" name="ValidYear" maxlength="2" minlength="2" placeholder="YY" required />
-                                                                    <?php $__errorArgs = ['ValidYear'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong><?php echo e($message); ?></strong>
-                                                                    </span>
-                                                                    <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <div class="mb-3 position-relative">
-                                                                    <label for="CVV" class="form-label ">CVV (3 Digit - Back of Card)</label>
-                                                                    <input type="text" class="form-control form-control-lg <?php $__errorArgs = ['CVV'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('CVV')); ?>" id="CVV" name="CVV" maxlength="3" placeholder="785" required />
-                                                                    <?php $__errorArgs = ['CVV'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong><?php echo e($message); ?></strong>
-                                                                    </span>
-                                                                    <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <button class="btn1 btn-outline-info btn-lg waves-effect waves-light float-end" type="button" id="Loading" disabled>
-                                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                                Loading...
-                                            </button>
-                                            <button class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded w-lg" type="submit" id="SubmitNow">Submit </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
 <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('/assets/libs/select2/select2.min.js')); ?>"></script>
+<!-- form advanced init -->
+<script src="<?php echo e(URL::asset('/assets/js/pages/form-advanced.init.js')); ?>"></script>
+<!-- Form Validation -->
 <script src="<?php echo e(URL::asset('/assets/js/pages/form-validation.init.js')); ?>"></script>
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script>

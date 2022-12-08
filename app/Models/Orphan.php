@@ -59,6 +59,6 @@ class Orphan extends Model
 
         public function user()
     {
-        return $this->belongsToMany(User::class, 'sponsor_subscriptions', 'Orphan_ID', 'Sponsor_ID')->withPivot('IsActive', 'StartDate', 'EndDate');
+        return $this->belongsToMany(User::class, 'sponsor_subscriptions', 'Orphan_ID', 'Sponsor_ID')->withPivot('id','IsActive', 'StartDate', 'EndDate');
     }
 }

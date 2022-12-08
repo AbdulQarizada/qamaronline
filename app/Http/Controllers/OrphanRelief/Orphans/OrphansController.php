@@ -85,7 +85,7 @@ class OrphansController extends Controller
     public function Pending()
     {
         $PageInfo = 'Pending';
-        $sponsors = User::where("IsOrphanSponsor", "=", "1")->where("IsActive", "=", "1")->get();
+        $sponsors = User::where("IsOrphanSponsor", "=", "1")->where("IsActive", "=", 1)->get();
         $provinces = Location::whereNull("Parent_ID")->get();
         $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
           ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
@@ -100,7 +100,7 @@ class OrphansController extends Controller
     public function Approved()
     {
         $PageInfo = 'Approved';
-        $sponsors = User::where("IsOrphanSponsor", "=", "1")->where("IsActive", "=", "1")->get();
+        $sponsors = User::where("IsOrphanSponsor", "=", "1")->where("IsActive", "=", 1)->get();
         $provinces = Location::whereNull("Parent_ID")->get();
         $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
           ->join('locations as b', 'orphans.District_ID', '=', 'b.id')
@@ -115,7 +115,7 @@ class OrphansController extends Controller
     public function Rejected()
     {
         $PageInfo = 'Rejected';
-        $sponsors = User::where("IsOrphanSponsor", "=", "1")->where("IsActive", "=", "1")->get();
+        $sponsors = User::where("IsOrphanSponsor", "=", "1")->where("IsActive", "=", 1)->get();
         $provinces = Location::whereNull("Parent_ID")->get();
         $orphans =   Orphan::join('locations as a', 'orphans.Province_ID', '=', 'a.id')
           -> join('locations as b', 'orphans.District_ID', '=', 'b.id')
@@ -146,7 +146,7 @@ class OrphansController extends Controller
     public function Sponsored()
     {
         $PageInfo = 'Sponsored';
-        $sponsors = User::where("IsOrphanSponsor", "=", "1")->where("IsActive", "=", "1")->get();
+        $sponsors = User::where("IsOrphanSponsor", "=", "1")->where("IsActive", "=", 1)->get();
         $provinces = Location::whereNull("Parent_ID")->get();
         $cards = SponsorCard::get();
         $orphans =   Orphan::whereHas('user', function($query) {   $query->where('sponsor_subscriptions.IsActive', 1);  })
@@ -326,6 +326,8 @@ class OrphansController extends Controller
     // status
     public function Status(Orphan $data)
     {
+
+          $sponsors = User::where("IsOrphanSponsor", "=", "1")->where("IsActive", "=", 1)->get();
           $orphans =   Orphan::where("orphans.id", "=", $data->id)
           -> whereHas('user', function($query) {   $query->where('sponsor_subscriptions.IsActive', 1);  })
           -> orWhereDoesntHave('user', function($query) {   $query->where('sponsor_subscriptions.IsActive', 1);  })
@@ -354,7 +356,7 @@ class OrphansController extends Controller
             'm.Name as SchoolDistrict',
           )
           -> first();
-        return view('OrphansRelief.Orphan.Status',  ['data' => $orphans]);
+        return view('OrphansRelief.Orphan.Status',  ['data' => $orphans, 'sponsors' => $sponsors]);
     }
 
     public function Approve(Orphan $data)

@@ -1,6 +1,10 @@
 
 <?php $__env->startSection('title'); ?> Orphan and Sponsorships <?php $__env->stopSection(); ?>
 <?php $__env->startSection('css'); ?>
+<link href="<?php echo e(URL::asset('/assets/css/mystyle/tabstyle.css')); ?>" rel="stylesheet" type="text/css" />
+<link href="<?php echo e(URL::asset('/assets/libs/select2/select2.min.css')); ?>" rel="stylesheet" type="text/css" />
+<link href="<?php echo e(URL::asset('/assets/css/mystyle/select2.css')); ?>" rel="stylesheet" type="text/css" />
+
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <div class="row">
@@ -231,7 +235,6 @@
                             <i class="bx bxs-star text-secondary font-size-16"></i>
                             <i class="bx bxs-star text-secondary font-size-18"></i>
                             <i class="bx bxs-star text-secondary font-size-20"></i>
-
                             <?php endif; ?>
                             <?php if( $data -> LevelPoverty == 2): ?>
                             <i class="bx bxs-star text-warning font-size-12"></i>
@@ -265,57 +268,246 @@
                     </td>
                 </tr>
             </table>
+        </div>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-md-10">
+        <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Sponsorship</h5>
+    </div>
+    <div class="col-md-2 col-sm-2 mb-2">
+        <a data-bs-toggle="collapse" data-bs-target="#addSponsor" aria-expanded="false" aria-controls="addSponsor" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded text-uppercase"><i class="mdi mdi-plus me-1"></i>ADD SPONSOR</a>
+    </div>
+</div>
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="collapse hide" id="addSponsor">
+            <div class="card shadow-none card-body text-muted mb-0" style="border: 2px dashed #50a5f1;" >
+                <form class="needs-validation" action="<?php echo e(route('CreateSubscription')); ?>" method="POST" enctype="multipart/form-data" novalidate>
+                    <?php echo csrf_field(); ?>
+                    <div class="checkout-tabs">
+                        <div class="row">
+                            <div class="col-xl-2 col-sm-3 ">
+                                <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                    <a class="nav-link active bg-info" id="v-pills-personal-tab" data-bs-toggle="pill" href="#v-pills-personal" role="tab" aria-controls="v-pills-personal" aria-selected="true">
+                                        <i class="mdi mdi-account-box-multiple-outline  d-block check-nav-icon mt-4 mb-2"></i>
+                                        <p class="fw-bold mb-4 text-uppercase">Subscription</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-sm-9">
+                                <div class="tab-content" id="v-pills-tabContent">
+                                    <div class="tab-pane fade show active" id="v-pills-personal" role="tabpanel" aria-labelledby="v-pills-personal-tab">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <h3 class="card-header bg-info text-white mb-3"></h3>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <div class="mb-3 position-relative">
+                                                                    <label for="Sponsor_ID" class="form-label">Sponsor</label>
+                                                                    <div class="input-group">
+                                                                        <select class="select2 form-control Sponsor" id="Sponsor_ID" name="Sponsor_ID" value="<?php echo e($data -> Sponsor_ID); ?>"  required>
+                                                                            <option value="">Select Your Sponsor</option>
+                                                                            <?php $__currentLoopData = $sponsors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sponsor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                            <option value="<?php echo e($sponsor -> id); ?>" <?php echo e($sponsor -> id == $data -> Sponsor_ID ? 'selected' : ''); ?>><?php echo e($sponsor -> FullName); ?></option>
+                                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                        </select>
+                                                                        <?php $__errorArgs = ['Sponsor_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong><?php echo e($message); ?></strong>
+                                                                        </span>
+                                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 d-none">
+                                                                <div class="mb-3 position-relative">
+                                                                    <input type="text" class="form-control  form-control-lg <?php $__errorArgs = ['Orphan_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> id); ?>" id="Orphan_ID" name="Orphan_ID" required />
+                                                                    <?php $__errorArgs = ['Orphan_ID'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong><?php echo e($message); ?></strong>
+                                                                    </span>
+                                                                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="mb-3 position-relative">
+                                                                    <label for="StartDate" class="form-label">Subscription Start Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                                    <div class="input-group " id="example-date-input">
+                                                                        <input class="form-control form-select-lg <?php $__errorArgs = ['StartDate'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> StartDate); ?>" type="date" id="example-date-input" name="StartDate" id="StartDate" required>
+                                                                        <?php $__errorArgs = ['StartDate'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong><?php echo e($message); ?></strong>
+                                                                        </span>
+                                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="mb-3 position-relative">
+                                                                    <label for="EndDate" class="form-label">Subscription End Date <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                                    <div class="input-group " id="example-date-input">
+                                                                        <input class="form-control form-select-lg <?php $__errorArgs = ['EndDate'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e($data -> EndDate); ?>" type="date" id="example-date-input" name="EndDate" id="EndDate" required>
+                                                                        <?php $__errorArgs = ['EndDate'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                                        <span class="invalid-feedback" role="alert">
+                                                                            <strong><?php echo e($message); ?></strong>
+                                                                        </span>
+                                                                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded w-lg" type="submit">Submit </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row mt4">
+            <?php $__currentLoopData = $data -> user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $users): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php if($users -> pivot -> IsActive == 1): ?>
+            <div class="col-xl-2 col-sm-6 mb-4">
+                <a href="#">
+                    <div class="card-one text-center border border-secondary">
+                        <div class="float-end">
+                            <a href="<?php echo e(route('DeActivateSubscription', ['data' => $users -> pivot ->id])); ?>"  class="btn btn-sm text-danger waves-effect waves-light DeActivateSubscription" data-bs-toggle="tooltip" data-bs-placement="top" title="End Subscription">
+                                <i class="mdi mdi-stop-circle-outline font-size-24 align-middle"></i>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="avatar-sm mx-auto mb-4">
+                                <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-16">
+                                    <img class="rounded-circle avatar-sm" src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/avatar-male.jpg')); ?>" alt="">
+                                </span>
+                            </div>
+                            <h5 class="font-size-15"><a href="#" class="text-dark"><?php echo e($users -> FullName); ?></a></h5>
+                            <p class="text-wrap text-muted text-break"><?php echo e($users -> email); ?> </p>
+                            <h3 class="text-success">Active</h3>
+                        </div>
+                        <div class="card-footer bg-transparent border-top">
+                            <div class="contact-links d-flex">
+                                <div class="flex-fill">
+                                    <a class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Subscription Start Date"><i class="mdi mdi-calendar-multiselect"></i> <?php echo e(\Carbon\Carbon::parse($users -> pivot ->  StartDate)->format("j F Y")); ?> </a>
+                                </div>
+                                <div class="flex-fill">
+                                    <a class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Subscription End Date"><i class="mdi mdi-calendar-multiselect"></i> <?php echo e(\Carbon\Carbon::parse($users -> pivot -> EndDate)->format("j F Y")); ?></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <?php elseif($users -> pivot -> IsActive == 0): ?>
+            <div class="col-xl-2 col-sm-6 mb-4">
+                <a href="#">
+                    <div class="card-one text-center border border-secondary">
+                        <div class="float-end">
+                            <a href="<?php echo e(route('DeleteSubscription', ['data' => $users -> pivot ->id])); ?>"  class="btn btn-sm text-danger waves-effect waves-light delete-confirmSubscription" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Subscription">
+                                <i class="mdi mdi-delete-outline font-size-24 align-middle"></i>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="avatar-sm mx-auto mb-4">
+                                <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-16">
+                                    <img class="rounded-circle avatar-sm" src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/avatar-male.jpg')); ?>" alt="">
+                                </span>
+                            </div>
+                            <h5 class="font-size-15"><a href="#" class="text-dark"><?php echo e($users -> FullName); ?></a></h5>
+                            <p class="text-wrap text-muted text-break"><?php echo e($users -> email); ?> </p>
+                            <h6 class="text-muted">Previous (<?php echo e($loop->iteration); ?>)</h6>
 
-            <table class="table table-nowrap">
-                <h5 style="font-weight: bold;" class="card-header  text-dark">SPONSORSSHIP</h5>
-                <?php $__currentLoopData = $data -> user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $users): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <?php if($users -> pivot -> IsActive == 1): ?>
-                <table class="table table-nowrap">
-                    <h6 style="font-weight: bold;" class="card-header  text-white bg-success">Active Sponsor</h6>
-                <tr>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsor Name</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($users -> FullName); ?></td>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsor Email</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($users -> email); ?></td>
-                </tr>
-                <tr>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsorship Start Date</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e(\Carbon\Carbon::parse($users -> pivot ->  StartDate)->format("j F Y")); ?></td>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsorship End Date</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e(\Carbon\Carbon::parse($users -> pivot -> EndDate)->format("j F Y")); ?></td>
-                </tr>
-               </table>
-                <?php elseif($users -> pivot -> IsActive == 0): ?>
-                <table class="table table-nowrap">
-                <h6 style="font-weight: bold;" class="card-header  text-dark">Previous Sponsor (<?php echo e($loop->iteration); ?>)</h6>
-                <tr>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsor Name</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($users -> FullName); ?></h1></td>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsor Email</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e($users -> email); ?></td>
-                </tr>
-                <tr>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsorship Start Date</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e(\Carbon\Carbon::parse($users -> pivot ->  StartDate)->format("j F Y")); ?></td>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Sponsorship End Date</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;"><?php echo e(\Carbon\Carbon::parse($users -> pivot -> EndDate)->format("j F Y")); ?></td>
-                </tr>
-                </table>
-                <?php elseif($users -> pivot -> IsActive != 0): ?>
-                <tr>
-                    <td class="text-center display-6 mt-4 text-danger font-size-bold p-4" style="width: 20%;  padding: 5px;">No Sponsorship</td>
-                </tr>
-                <?php endif; ?>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-
-            </table>
+                        </div>
+                        <div class="card-footer bg-transparent border-top">
+                            <div class="contact-links d-flex">
+                                <div class="flex-fill">
+                                    <a class="text-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Subscription Started Date"><i class="mdi mdi-calendar-multiselect"></i> <?php echo e(\Carbon\Carbon::parse($users -> pivot ->  StartDate)->format("j F Y")); ?> </a>
+                                </div>
+                                <div class="flex-fill">
+                                    <a class="text-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Subscription Ended Date"><i class="mdi mdi-calendar-multiselect"></i> <?php echo e(\Carbon\Carbon::parse($users -> pivot -> EndDate)->format("j F Y")); ?></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <?php endif; ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>
 </div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
 <script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
+<script src="<?php echo e(URL::asset('/assets/libs/select2/select2.min.js')); ?>"></script>
+
+<!-- form advanced init -->
+<script src="<?php echo e(URL::asset('/assets/js/pages/form-advanced.init.js')); ?>"></script>
+<!-- Form Validation -->
+<script src="<?php echo e(URL::asset('/assets/js/pages/form-validation.init.js')); ?>"></script>
 <script>
     $('.reinitiate').on('click', function(event) {
         event.preventDefault();
@@ -362,6 +554,37 @@
             }
         });
     });
+
+    $('.delete-confirmSubscription').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?'
+            , text: 'This record and it`s details will be permanantly deleted!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
+    // DeACtivate Card Confirmation
+    $('.DeActivateSubscription').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?'
+            , text: 'Do you want to DeActivate Subscription?!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
+
 
 </script>
 <?php $__env->stopSection(); ?>

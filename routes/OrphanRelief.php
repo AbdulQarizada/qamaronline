@@ -113,6 +113,8 @@ Route::get('/OrphansRelief/Subscription/DeActivate/{data}', [App\Http\Controller
 // Create
 Route::get('/OrphansRelief/Subscription/Create', [App\Http\Controllers\OrphanRelief\Subscriptions\SubscriptionsController::class, 'Create'])->name('CreateSubscription');
 Route::post('/OrphansRelief/Subscription/Create', [App\Http\Controllers\OrphanRelief\Subscriptions\SubscriptionsController::class, 'Store'])->name('CreateSubscription');
+Route::post('/OrphansRelief/Subscription/StoreByUser', [App\Http\Controllers\OrphanRelief\Subscriptions\SubscriptionsController::class, 'StoreByUser'])->name('CreateSubscriptionByUser');
+
 // Update
 Route::get('/OrphansRelief/Subscription/Edit/{data}', [App\Http\Controllers\OrphanRelief\Subscriptions\SubscriptionsController::class, 'Edit'])->name('EditSubscription');
 Route::put('/OrphansRelief/Subscription/Edit/{data}', [App\Http\Controllers\OrphanRelief\Subscriptions\SubscriptionsController::class, 'Update'])->name('UpdateSubscription');
