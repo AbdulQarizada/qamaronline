@@ -48,6 +48,7 @@
                         <li><a href="{{route('AllOrphans')}}" key="t-horizontal"><i class="mdi mdi-account-details-outline"></i> Orphans</a></li>
                         <li><a href="{{route('AllSponsor')}}" key="t-horizontal"><i class="mdi mdi mdi-account-child"></i> Sponsors</a></li>
                         <li><a href="{{route('AllPayment')}}" key="t-horizontal"><i class="mdi mdi-cash-multiple"></i> Payments</a></li>
+                        <li><a><hr /></a></li>
                         @endif
                         @if(Auth::user()->IsOrphanSponsor == 1)
                         <li><a href="{{route('MyOrphans')}}" key="t-horizontal"><i class="mdi mdi-account-circle-outline"></i> My Orphans</a></li>

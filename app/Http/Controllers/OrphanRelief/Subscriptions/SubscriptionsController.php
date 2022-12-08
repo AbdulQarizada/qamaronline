@@ -193,43 +193,59 @@ class SubscriptionsController extends Controller
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     if (request('SubscriptionType') == 'Yearly') {
+      // Charge Customer=========================================================================================================
+      try {
+        $AmountInCents = 494.4 * 100;
+        $charge = Charge::create(array(
+          "amount" => $AmountInCents,
+          "currency" => "usd",
+          "description" => "Orphan Sponsorship",
+          'customer' => $UserCard->StripeCustomer_ID,
+        ));
+      } catch (\Exception $e) {
+        ErrorLog::create(['Message' =>  $e->getMessage(), 'From' => 'SubscriptionContorller:StoreByUser: ChargeTry']);
+        return back()->with('error', $e->getMessage());
+      }
+      // Create Sponsor Payment=========================================================================================================
+      try {
+        SponsorPayment::create([
+          'SubscriptionType' => request('SubscriptionType'),
+          'Amount' => 494.4,
+          'FullName' => Auth::user() -> FullName,
+          'Email' => Auth::user() -> email,
+          'Card_ID' => $UserCard->id,
+          'ChargeID' => $charge->id,
+          'Sponsor_ID' => request('Sponsor_ID'),
+          'IsPaid' => 1
+        ]);
+      } catch (\Exception $e) {
+        ErrorLog::create(['Message' =>  $e->getMessage(), 'From' => 'SubscriptionContorller:StoreByUser: SponsorPaymentTry',]);
+      }
       // Assign Oprhan to that Sponsor====================================================================================
       try {
         SponsorSubscription::create([
           'Orphan_ID' => request('Orphan_ID'),
-          'Amount' => request('Amount'),
+          'Amount' => 494.4,
           'Type' => request('SubscriptionType'),
           'Card_ID' => request('Card_ID'),
-          'Email' => request('Email'),
           'StartDate' => now(),
           'EndDate' => now()->addYear(),
           'Sponsor_ID' => request('Sponsor_ID'),
           'IsActive' => 1,
         ]);
       } catch (\Exception $e) {
-        ErrorLog::create(['Message' =>  $e->getMessage(), 'From' => 'SubscriptionContorller:StoreByUser: SponsorAssingOrphanYearlyTry']);
+        ErrorLog::create(['Message' =>  $e->getMessage(), 'From' => 'SubscriptionContorller:StoreByUser: SponsorAssingOrphanMonthlyTry']);
       }
+      // Send Confirmation Email to Sponsor===============================================================================
+      try {
+        $details = ['Email' => request('Email'), 'Amount' => 494.4, 'FullName' => request('FullName')];
+        Mail::to(request('Email'))->send(new SponsorConfirmation($details));
+      } catch (\Exception $e) {
+        ErrorLog::create(['Message' =>  $e->getMessage(), 'From' => 'SubscriptionContorller:StoreByUser: SponsorPaymentTry']);
+      }
+      return back() ->with('done', 'Congratulations on successfully sponsoring an orphan!
+      We are happy to have you at  Qamar Family!');
     }
   }
 

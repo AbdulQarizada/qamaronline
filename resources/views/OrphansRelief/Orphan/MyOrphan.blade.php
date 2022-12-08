@@ -138,7 +138,7 @@
             <div class="card-one text-center border border-secondary">
                 <div class="float-end">
                     <a href="{{ route('DeActivateSubscription', ['data' => $orphan -> pivot -> id]) }}" class="btn btn-sm text-danger waves-effect waves-light DeactivateSubscription" data-bs-toggle="tooltip" data-bs-placement="top" title="End Subscription">
-                        <i class=" bx bx-x-circle   font-size-24 align-middle"></i>
+                        <i class="mdi mdi-stop-circle-outline  font-size-24 align-middle"></i>
                     </a>
                 </div>
                 <div class="card-body">
