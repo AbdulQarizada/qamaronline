@@ -177,7 +177,7 @@ class PaymentsController extends Controller
           'FullName' => request('FullName'),
           'email' => request('Email'),
           'password' => Hash::make($RandomPassword),
-          'Profile' => 'avatar-1.png',
+          'Profile' => 'avater.jpg',
           'IsActive' => 1,
           'IsOrphanSponsor' => 1,
         ]);

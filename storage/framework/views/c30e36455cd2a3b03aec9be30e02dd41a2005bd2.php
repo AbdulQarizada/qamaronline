@@ -1079,7 +1079,7 @@ unset($__errorArgs, $__bag); ?>
     Profile.setOptions({
         server: {
 
-            url: '../Employees_Profile',
+            url: '<?php echo e(route('Users_Profile')); ?>',
             headers: {
                 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
             }
