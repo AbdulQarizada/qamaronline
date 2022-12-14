@@ -1,6 +1,7 @@
 
 
 
+
 <?php $__env->startSection('title'); ?> Beneficiary List <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('css'); ?>
@@ -256,4 +257,4 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
     } );
 </script>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'layouts.master' : 'layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/CardCard/Services/FoodPack/AllList.blade.php ENDPATH**/ ?>
+<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/CardCard/Services/FoodPack/AllList.blade.php ENDPATH**/ ?>

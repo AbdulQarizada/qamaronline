@@ -141,16 +141,8 @@ class UserController extends Controller
       'FirstName' => 'bail|required|max:255',
       'LastName' => 'required|max:255',
       'FullName' => 'required|max:255',
-      'Tazkira_ID' => 'required|max:255',
-      'Profile' => 'required|max:255',
       'Job' => 'required|max:255',
-      'DOB' => 'required|max:255',
-      'Gender_ID' => 'required|max:255',
-      'PrimaryNumber' => 'required|max:10',
-      'Province_ID' => 'required|max:255',
-      'District_ID' => 'required|max:255',
-      'Village' => 'required|max:255',
-
+      'email' => 'required',
     ]);
 
 
@@ -159,18 +151,9 @@ class UserController extends Controller
       'LastName' => request('LastName'),
       'FullName' => request('FullName'),
       'Job' => request('Job'),
-      'Tazkira_ID' => request('Tazkira_ID'),
-      'Profile' => request('Profile'),
-      'DOB' => request('DOB'),
-      'Gender_ID' => request('Gender_ID'),
-      'PrimaryNumber' => request('PrimaryNumber'),
-      'SecondaryNumber' => request('SecondaryNumber'),
-      'Province_ID' => request('Province_ID'),
-      'District_ID' => request('District_ID'),
-      'Village' => request('Village'),
-
+      'email' => request('email'),
     ]);
-    return redirect()->route('AllUser')->with('toast_success', 'Record Updated Successfully!');
+    return back()->with('toast_success', 'Record Updated Successfully!');
   }
 
  // status
@@ -240,8 +223,10 @@ class UserController extends Controller
       'IsQamarCareCard' => request('IsQamarCareCard'),
       'IsAppealsDistributions' => request('IsAppealsDistributions'),
       'IsDonorsAndDonorBoxes' => request('IsDonorsAndDonorBoxes'),
+      'IsManager' => request('IsManager'),
+      'IsGeneralManager' => request('IsGeneralManager'),
     ]);
-    return redirect()->route('AllUser')->with('toast_success', 'Role Added Successfully!');
+    return back()->with('toast_success', 'Role Added Successfully!');
   }
 
 
@@ -255,7 +240,7 @@ class UserController extends Controller
     $data->update([
       'password' => Hash::make(request('password')),
     ]);
-    return redirect()->route('AllUser')->with('toast_success', 'Password reset Successfully!');
+    return back()->with('toast_success', 'Password reset Successfully!');
   }
 
 

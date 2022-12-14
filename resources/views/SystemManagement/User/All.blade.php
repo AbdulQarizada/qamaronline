@@ -45,7 +45,7 @@
                             <div class="col-xl-2 col-sm-3 ">
                                 <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                     <a class="nav-link active bg-info" id="v-pills-personal-tab" data-bs-toggle="pill" href="#v-pills-personal" role="tab" aria-controls="v-pills-personal" aria-selected="true">
-                                        <i class="mdi mdi-account-box-multiple-outline  d-block check-nav-icon mt-4 mb-2"></i>
+                                        <i class="mdi mdi-account-settings-outline  d-block check-nav-icon mt-4 mb-2"></i>
                                         <p class="fw-bold mb-4 text-uppercase">Add User</p>
                                     </a>
                                 </div>
@@ -230,50 +230,17 @@
                                     <i class="mdi mdi-eye-settings-outline font-size-16 align-middle"></i>
                                 </a>
                                 @if($data -> IsActive != 1)
-                                <a href="{{route('EditUser', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-info  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Update User">
+                                <a href="{{route('StatusUser', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-info  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Update User">
                                     <i class="mdi mdi-square-edit-outline  font-size-16 align-middle"></i>
                                 </a>
                                 @endif
                                 @if(Auth::user() -> IsSuperAdmin == 1 && $data -> IsActive == 1)
-                                <a href="{{route('RoleUser', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-success waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Assign Roles and Permissions">
+                                <a href="{{route('StatusUser', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-success waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Assign Roles and Permissions">
                                     <i class="mdi mdi-account-plus-outline font-size-16 align-middle"></i>
                                 </a>
-                                <a data-bs-toggle="modal" data-bs-target=".bs-{{$data ->  id }}-modal-center" class="btn btn-sm btn-outline-danger waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Reset Password">
+                                <a href="{{route('StatusUser', ['data' => $data -> id])}}"  class="btn btn-sm btn-outline-danger waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Reset Password">
                                     <i class="mdi mdi-lock-reset font-size-16 align-middle"></i>
                                 </a>
-                                <div class="modal fade bs-{{$data ->  id }}-modal-center" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Reset Password</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form class="needs-validation" action="{{route('ResetPasswordUser', [$data -> id])}}" method="POST" enctype="multipart/form-data" novalidate>
-                                                    @method('PUT')
-                                                    @csrf
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="mb-3 position-relative">
-                                                                <label for="password" class="form-label ">New Password <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                                <div class="hstack gap-3">
-                                                                    <input class="form-control form-control-lg me-auto @error('password') is-invalid @enderror" value="{{ old('password') }}" type="text" name="password" id="qcc" required>
-                                                                    <!-- <button type="button" class="btn btn-lg btn-outline-danger" onclick="Random();"><i class=" bx bxs-magic-wand  font-size-16 align-middle"></i> </button> -->
-                                                                    @error('password')
-                                                                    <span class="invalid-feedback" role="alert">
-                                                                        <strong>{{ $message }}</strong>
-                                                                    </span>
-                                                                    @enderror
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <button class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end btn-rounded" type="submit">Reset </button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 @endif
                             </div>
                         </td>

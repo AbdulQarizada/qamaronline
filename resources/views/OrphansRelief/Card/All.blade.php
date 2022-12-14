@@ -37,55 +37,6 @@
 </div>
 <div class="row">
     <div class="col-12">
-        <div class="collapse" id="collapseWidthExample">
-            <form action="{{route('SearchOrphans')}}" method="POST">
-                @csrf
-                <div class="row">
-                    <div class="col-md-2 mb-2">
-                        <div class="position-relative">
-                            <div class="input-group">
-                                <select class="form-select Province form-select-lg @error('Province_ID') is-invalid @enderror" name="Province_ID" value="{{ old('Province_ID') }}" id="Province_ID">
-                                    <option value="">Select Your Province</option>
-                                    @foreach($provinces as $province)
-                                    <option value="{{ $province -> id}}">{{ $province -> Name}}</option>
-                                    @endforeach
-                                </select>
-                                @error('Province_ID')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 mb-2">
-                        <div class="position-relative">
-                            <div class="input-group">
-                                <select class="form-select  District form-select-lg @error('District_ID') is-invalid @enderror" name="District_ID" value="{{ old('District_ID') }}" id="District_ID">
-                                    <option value="">Select Your District</option>
-                                </select>
-                                @error('District_ID')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-2">
-                        <input type="text" name="PageInfo" value="{{ $PageInfo }}" class="d-none">
-                        <input class="form-control form-control-lg" type="text" name="data">
-                    </div>
-                    <div class="col-md-3 mb-2">
-                        <button type="submit" class="btn btn-outline-danger btn-lg waves-effect  waves-light"><i class="mdi mdi-magnify me-1"></i>Filter</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-12">
         <h3 class="card-header bg-dark text-white"></h3>
         <div class="table-responsive">
             <table class="table table-hover table-striped dt-responsive nowrap w-100">
@@ -145,7 +96,7 @@
                                 <i >{{$data -> CardLastFourDigit}}</i>
                             </div>
                         </td>
-                        <td>                          
+                        <td>
                             @if($data -> IsActive != 1)
                             <h3 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">InActive</a></h3>
                             @endif
