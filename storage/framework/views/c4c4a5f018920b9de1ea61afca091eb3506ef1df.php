@@ -5,7 +5,7 @@
 <?php $__env->startSection('content'); ?>
 <div class="row mt-4">
     <div class="col-md-4 col-sm-12 ">
-        <a href="<?php echo e(route('IndexUserManagement')); ?>" class="btn btn-outline-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <a href="<?php echo e(route('IndexSystemManagement')); ?>" class="btn btn-outline-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         <?php if($PageInfo == 'All'): ?>
         <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20 "></i>All Users</span>
         <?php endif; ?>
@@ -37,15 +37,15 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href = this.value;">
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('search', [])->html();
-} elseif ($_instance->childHasBeenRendered('CIRbooN')) {
-    $componentId = $_instance->getRenderedChildComponentId('CIRbooN');
-    $componentTag = $_instance->getRenderedChildComponentTagName('CIRbooN');
+} elseif ($_instance->childHasBeenRendered('qEmAib4')) {
+    $componentId = $_instance->getRenderedChildComponentId('qEmAib4');
+    $componentTag = $_instance->getRenderedChildComponentTagName('qEmAib4');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('CIRbooN');
+    $_instance->preserveRenderedChild('qEmAib4');
 } else {
     $response = \Livewire\Livewire::mount('search', []);
     $html = $response->html();
-    $_instance->logRenderedChild('CIRbooN', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('qEmAib4', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>

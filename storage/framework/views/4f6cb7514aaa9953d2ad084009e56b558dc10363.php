@@ -20,7 +20,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" onchange="window.location.href = this.value;">
             <?php $__currentLoopData = $mainLookUps; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $mainLookUp): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <option value="<?php echo e(route('SearchByMainLookUp', ['data' => $mainLookUp -> Name])); ?>" <?php echo e($mainLookUp -> id ? 'selected' : ''); ?>><?php echo e($mainLookUp -> Name); ?></option>
+            <option value="<?php echo e(route('SearchByMainLookUp', ['data' => $mainLookUp -> Name])); ?>"><?php echo e($mainLookUp -> Name); ?></option>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </select>
     </div>
@@ -28,21 +28,21 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href = this.value;">
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('search', [])->html();
-} elseif ($_instance->childHasBeenRendered('E4iCSZP')) {
-    $componentId = $_instance->getRenderedChildComponentId('E4iCSZP');
-    $componentTag = $_instance->getRenderedChildComponentTagName('E4iCSZP');
+} elseif ($_instance->childHasBeenRendered('4sXd3zf')) {
+    $componentId = $_instance->getRenderedChildComponentId('4sXd3zf');
+    $componentTag = $_instance->getRenderedChildComponentTagName('4sXd3zf');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('E4iCSZP');
+    $_instance->preserveRenderedChild('4sXd3zf');
 } else {
     $response = \Livewire\Livewire::mount('search', []);
     $html = $response->html();
-    $_instance->logRenderedChild('E4iCSZP', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('4sXd3zf', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
     </div>
     <div class="col-md-5 col-sm-12 mb-2">
-        <a href="#" class="btn  btn-lg waves-effect  waves-light  m-1 float-end" data-bs-toggle="tooltip" data-bs-placement="top" title="All Users Grid View"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a>
+        <a href="#" class="btn  btn-lg waves-effect  waves-light  m-1 float-end" data-bs-toggle="tooltip" data-bs-placement="top" title="All Lookups Grid View"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a>
         <a data-bs-toggle="collapse" data-bs-target="#addLookUp" aria-expanded="false" aria-controls="addLookUp" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD LOOK UP</a>
     </div>
 </div>

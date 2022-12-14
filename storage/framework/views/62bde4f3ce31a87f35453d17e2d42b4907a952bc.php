@@ -737,7 +737,7 @@ unset($__errorArgs, $__bag); ?>">
     <?php endif; ?>
     <?php if($data -> IsSuperAdmin == 1): ?>
     <div class="col-md-2 mb-2">
-        <a href="<?php echo e(route('IndexUserManagement')); ?>">
+        <a href="<?php echo e(route('IndexSystemManagement')); ?>">
             <div class="card-one  mini-stats-wid border border-secondary">
                 <div class="card-body text-center">
                     <div class="d-flex">
