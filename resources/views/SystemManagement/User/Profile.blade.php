@@ -28,12 +28,15 @@
     </div>
 </div>
 <div class="row mt-4">
-    <div class="col-md-10">
+    <div class="col-md-9">
         <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">PEROSNAL INFORMATION</h5>
     </div>
-    <div class="col-md-2 col-sm-2 mb-2">
-        <a data-bs-toggle="collapse" data-bs-target="#addUser" aria-expanded="false" aria-controls="addUser" class="btn btn-outline-info btn-lg waves-effect  waves-light float-end text-uppercase"><i class="mdi mdi-square-edit-outline me-1"></i>Edit</a>
-    </div>
+    <div class="col-md-3 col-sm-2 float-end">
+        <div class="d-flex flex-wrap gap-2">
+           <a data-bs-toggle="collapse" data-bs-target="#resetPassord" aria-expanded="false" aria-controls="resetPassord" class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end text-uppercase"><i class="mdi mdi-lock-reset me-1"></i>Change Passord</a>
+           <a data-bs-toggle="collapse" data-bs-target="#addUser" aria-expanded="false" aria-controls="addUser" class="btn btn-outline-info btn-lg waves-effect  waves-light float-end text-uppercase"><i class="mdi mdi-square-edit-outline me-1"></i>Edit</a>
+       </div>
+   </div>
 </div>
 <div class="row ">
     <div class="col-md-12">
@@ -155,38 +158,6 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-lg-12">
-        <div class="table-responsive">
-            <table class="table table-nowrap">
-                <tr>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">First Name</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> FirstName}} </td>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Last Name</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> LastName}}</td>
-                </tr>
-                <tr>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Full Name</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> FullName}}</td>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Job</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> Job}}</td>
-                </tr>
-                <tr>
-                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Email</td>
-                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> email }}</td>
-                </tr>
-            </table>
-        </div>
-    </div>
-</div>
-<div class="row mt-4">
-    <div class="col-md-10">
-        <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Password</h5>
-    </div>
-    <div class="col-md-2 col-sm-2 mb-2">
-        <a data-bs-toggle="collapse" data-bs-target="#resetPassord" aria-expanded="false" aria-controls="resetPassord" class="btn btn-outline-danger btn-lg waves-effect  waves-light float-end text-uppercase"><i class="mdi mdi-lock-reset me-1"></i>Change Passord</a>
-    </div>
-</div>
 <div class="row ">
     <div class="col-md-12">
         <div class="collapse hide" id="resetPassord">
@@ -261,6 +232,30 @@
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            <table class="table table-nowrap">
+                <tr>
+                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">First Name</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> FirstName}} </td>
+                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Last Name</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> LastName}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Full Name</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> FullName}}</td>
+                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Job</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> Job}}</td>
+                </tr>
+                <tr>
+                    <td style="width: 20%; border: 2px solid #000; padding: 5px;">Email</td>
+                    <td style="width: 40%; border: 2px solid #000; padding: 5px;">{{ $data -> email }}</td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
