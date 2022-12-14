@@ -343,12 +343,8 @@
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <!-- item-->
-                    <a class="dropdown-item" href="<?php echo e(route('EditUser', ['data' => Auth::user()->id])); ?>"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile"><?php echo app('translator')->get('translation.Profile'); ?></span></a>
-                    <!-- <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle me-1"></i> <span key="t-my-wallet"><?php echo app('translator')->get('translation.My_Wallet'); ?></span></a>
-                <a class="dropdown-item d-block" href="#" data-bs-toggle="modal" data-bs-target=".change-password"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings"><?php echo app('translator')->get('translation.Settings'); ?></span></a>
-                -->
-                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target=".change-password"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Change Password</span></a>
+                    <a class="dropdown-item" href="<?php echo e(route('ProfileUser', ['data' => Auth::user()->id])); ?>"><i class="bx bx-user font-size-16 align-middle me-1"></i> <span key="t-profile"><?php echo app('translator')->get('translation.Profile'); ?></span></a>
+                    <a class="dropdown-item" href="<?php echo e(route('ProfileUser', ['data' => Auth::user()->id])); ?>"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i> <span key="t-lock-screen">Change Password</span></a>
                     <?php if(\Cookie::get('Layout') == 'LayoutNoSidebar'): ?>
                     <a class="dropdown-item" href="<?php echo e(route('LayoutSidebar')); ?>"><i class="bx bx-layout font-size-16 align-middle me-1"></i> <span key="t-profile">Change Layout</span></a>
                     <?php endif; ?>
@@ -392,7 +388,6 @@ endif;
 unset($__errorArgs, $__bag); ?>" name="current_password" autocomplete="current_password" placeholder="Enter Current Password" value="<?php echo e(old('current_password')); ?>">
                         <div class="text-danger" id="current_passwordError" data-ajax-feedback="current_password"></div>
                     </div>
-
                     <div class="mb-3">
                         <label for="newpassword">New Password</label>
                         <input id="password" type="password" class="form-control <?php $__errorArgs = ['password'];

@@ -55,7 +55,7 @@
                                 <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                     <a class="nav-link active bg-info" id="v-pills-personal-tab" data-bs-toggle="pill" href="#v-pills-personal" role="tab" aria-controls="v-pills-personal" aria-selected="true">
                                         <i class="mdi mdi-account-settings-outline  d-block check-nav-icon mt-4 mb-2"></i>
-                                        <p class="fw-bold mb-4 text-uppercase">Edit Personal Information</p>
+                                        <p class="fw-bold mb-4 text-uppercase">Personal Information</p>
                                     </a>
                                 </div>
                             </div>

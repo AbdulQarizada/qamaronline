@@ -5,8 +5,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Location;
 use App\Models\LookUp;
-use App\Models\ErrorLog;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class UserController extends Controller
@@ -173,6 +174,7 @@ class UserController extends Controller
    return view('SystemManagement.User.Status',  ['data' => $users]);
  }
 
+
  public function Activate(User $data)
  {
    $data->update([
@@ -243,7 +245,25 @@ class UserController extends Controller
     return back()->with('toast_success', 'Password reset Successfully!');
   }
 
+  public function UpdatePassword(Request $request, User $data)
+  {
+      $request->validate([
+          'current_password' => ['required', 'string'],
+          'password' => ['required', 'string', 'min:6', 'confirmed'],
+      ]);
 
+      if (!(Hash::check($request->get('current_password'), Auth::user()->password)))
+      {
+        return back()->with('toast_warning', 'Prev Password Does Not Match!');
+      }
+       else
+      {
+        $data->update([
+          'password' => Hash::make(request('password')),
+        ]);
+       return back()->with('toast_success', 'Password Updated Successfully!');
+      }
+  }
 
   // Delete
   public function Delete(User $data)
@@ -251,6 +271,46 @@ class UserController extends Controller
     $data->delete();
     return redirect()->route('AllUser')->with('success', 'Record deleted successfully');
   }
+
+ // Profile
+ public function Profile(User $data)
+ {
+   $users =   User::where("users.id", "=", $data->id)
+     ->leftjoin('locations as a', 'users.Province_ID', '=', 'a.id')
+     ->leftjoin('locations as b', 'users.District_ID', '=', 'b.id')
+     ->leftjoin('look_ups as d', 'users.Gender_ID', '=', 'd.id')
+     ->select(
+       'users.*',
+       'a.Name as Province',
+       'b.Name as District',
+       'd.Name as Gender',
+     )
+     ->first();
+   return view('SystemManagement.User.Profile',  ['data' => $users]);
+ }
+
+ public function UpdateProfile(Request $request, User $data)
+ {
+   $validator = $request->validate([
+     'FirstName' => 'bail|required|max:255',
+     'LastName' => 'required|max:255',
+     'FullName' => 'required|max:255',
+     'Job' => 'required|max:255',
+     'Profile' => 'required',
+   ]);
+
+
+   $data->update([
+     'FirstName' => request('FirstName'),
+     'LastName' => request('LastName'),
+     'FullName' => request('FullName'),
+     'Job' => request('Job'),
+     'Profile' => request('Profile'),
+
+   ]);
+   return back()->with('toast_success', 'Record Updated Successfully!');
+ }
+
 
 
 }

@@ -29,6 +29,9 @@ Route::post('/UserManagement/Create', [App\Http\Controllers\SystemManagement\Use
 // update
 Route::get('/UserManagement/Edit/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Edit'])->name('EditUser');
 Route::put('/UserManagement/Edit/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Update'])->name('UpdateUser');
+// Update Profile
+Route::get('/UserManagement/Profile/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Profile'])->name('ProfileUser');
+Route::put('/UserManagement/Profile/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'UpdateProfile'])->name('UpdateProfileUser');
 // delete
 Route::get('/UserManagement/Delete/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Delete'])->name('DeleteUser');
 // status
@@ -40,13 +43,11 @@ Route::get('/UserManagement/DeActivated', [App\Http\Controllers\SystemManagement
 // role
 Route::get('/UserManagement/Role/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Role'])->name('RoleUser');
 Route::put('/UserManagement/AssignRole/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'AssignRole'])->name('AssignRoleUser');
-
-//Update User Details
-Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
-Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('updatePassword');
+//Update password
+Route::put('/UserManagement/UpdatePassword/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'UpdatePassword'])->name('UpdatePasswordUser');
 Route::put('/UserManagement/ResetPassword/{data}', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'ResetPassword'])->name('ResetPasswordUser');
 // uploads
-Route::post('/Users_Profile', [App\Http\Controllers\HomeController::class, 'Users_Profile'])->name('Users_Profile');
+Route::post('/Users_Profile', [App\FileUpload\SystemManagement::class, 'Users_Profile'])->name('Users_Profile');
 
 // Error
 Route::get('/ErrorManagement/All', [App\Http\Controllers\SystemManagement\ErrorManagement\ErrorController::class, 'All'])->name('AllErrors');
