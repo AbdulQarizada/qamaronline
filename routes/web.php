@@ -43,7 +43,6 @@ Route::get('/root', [App\Http\Controllers\HomeController::class, 'root'])->name(
 Route::get('/GetDistricts/{data}', [App\Http\Controllers\HomeController::class, 'GetDistricts'])->name('GetDistricts');
 
 //create lookups
-Route::post('/CreateLookups', [App\Http\Controllers\HomeController::class, 'CreateLookups'])->name('CreateLookups');
 
 // set cookies for layout
 Route::get('/Layout/LayoutSidebar', [App\Http\Controllers\HomeController::class, 'LayoutSidebar'])->name('LayoutSidebar');
@@ -51,5 +50,4 @@ Route::get('/Layout/LayoutNoSidebar', [App\Http\Controllers\HomeController::clas
 
 Route::get('/Projects', [App\Http\Controllers\HomeController::class, 'Projects'])->name('Projects');
 Route::get('/BeneficiariesServices', [App\Http\Controllers\HomeController::class, 'BeneficiariesServices'])->name('BeneficiariesServices');
-Route::get('/UserManagement', [App\Http\Controllers\HomeController::class, 'UserManagement'])->name('UserManagement');
 

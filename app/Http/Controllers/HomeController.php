@@ -563,30 +563,6 @@ class HomeController extends Controller
 
 
 
-    public function CreateLookups(Request $request)
-    {
-
-        $validator = $request->validate([
-            'Parent_Name' => 'bail|required|max:255',
-            'Name' => 'required|max:255',
-
-
-        ]);
-
-
-
-        LookUp::create([
-            'Parent_Name' => request('Parent_Name'),
-            'Name' => request('Name'),
-
-
-
-
-        ]);
-
-        return redirect()->route('root')->with('toast_success', 'Record Created Successfully!');
-    }
-
 
     /*set cookies for layout */
     public function LayoutSidebar()

@@ -133,10 +133,6 @@ class FoodPacksController extends Controller
         ->where('beneficiarylists.Status', '=', 'Approved')
         ->get();
       return view('CardCard.Services.FoodPack.AllList', ['provinces' => $provinces, 'datas' => $datas]);
-
-
-
-
   }
 
   public function AllApprove(beneficiarylist $data)

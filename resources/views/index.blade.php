@@ -236,7 +236,7 @@
         <div class="row">
             @if(Auth::user()->IsSuperAdmin == 1)
             <div class="col-md-2 mb-2">
-                <a href="{{route('IndexUserManagement')}}">
+                <a href="{{route('IndexSystemManagement')}}">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
                             <div class="d-flex">

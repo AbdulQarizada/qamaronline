@@ -20,7 +20,7 @@ Auth::routes();
 
 
 //User Management
-Route::get('/UserManagement', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Index'])->middleware('IsSuperAdmin')->name('IndexUserManagement');
+Route::get('/SystemManagement', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'Index'])->middleware('IsSuperAdmin')->name('IndexSystemManagement');
 
 Route::get('/UserManagement/All', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'All'])->middleware('IsSuperAdmin')->name('AllUser');
 // Create
@@ -49,4 +49,11 @@ Route::put('/UserManagement/ResetPassword/{data}', [App\Http\Controllers\SystemM
 Route::post('/Users_Profile', [App\Http\Controllers\HomeController::class, 'Users_Profile'])->name('Users_Profile');
 
 // Error
-Route::get('/System/Error/All', [App\Http\Controllers\SystemManagement\UserManagement\UserController::class, 'AllErrors'])->name('AllErrors');
+Route::get('/ErrorManagement/All', [App\Http\Controllers\SystemManagement\ErrorManagement\ErrorController::class, 'All'])->name('AllErrors');
+
+
+// LookUp
+Route::get('/LookUpManagement/All', [App\Http\Controllers\SystemManagement\LookUpManagement\LookUpController::class, 'All'])->name('AllLookUps');
+Route::post('/LookUpManagement/CreateLookups', [App\Http\Controllers\SystemManagement\LookUpManagement\LookUpController::class, 'Create'])->name('CreateLookUp');
+Route::get('/LookUpManagement/SearchByMain/{data}', [App\Http\Controllers\SystemManagement\LookUpManagement\LookUpController::class, 'SearchByMain'])->name('SearchByMainLookUp');
+Route::get('/LookUpManagement/Delete/{data}', [App\Http\Controllers\SystemManagement\LookUpManagement\LookUpController::class, 'Delete'])->name('DeleteLookUp');

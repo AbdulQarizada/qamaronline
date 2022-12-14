@@ -34,7 +34,6 @@
             <option value="{{route('AllListFoodPack')}}">All</option>
             @foreach($provinces as $province)
             <option value="{{route('SearchAllList', ['data' => $province -> id])}}">{{ $province -> Name}}</option>
-
             @endforeach
         </select>
     </div>

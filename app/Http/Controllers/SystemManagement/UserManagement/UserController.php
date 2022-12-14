@@ -179,7 +179,7 @@ class UserController extends Controller
      'IsActive' => 1,
      'Updated_By' => auth()->user()->id
    ]);
-   return redirect()->route('ActivatedUser')->with('toast_success', 'user Activated Successfully!');
+   return back()->with('toast_success', 'user Activated Successfully!');
  }
 
  public function DeActivate(User $data)
@@ -188,7 +188,7 @@ class UserController extends Controller
      'IsActive' => 0,
      'Updated_By' => auth()->user()->id
    ]);
-   return redirect()->route('DeActivatedUser')->with('toast_error', 'User De-Activated Successfully!');
+   return back()->with('toast_error', 'User De-Activated Successfully!');
  }
 
 
@@ -251,17 +251,6 @@ class UserController extends Controller
     $data->delete();
     return redirect()->route('AllUser')->with('success', 'Record deleted successfully');
   }
-
-
-
-
-  public function AllErrors()
-  {
-    $PageInfo = 'All';
-    $datas =   ErrorLog::orderBy('id', 'DESC') -> paginate(100);
-    return view('SystemManagement.Error.All', compact('datas', 'PageInfo'));
-  }
-
 
 
 }

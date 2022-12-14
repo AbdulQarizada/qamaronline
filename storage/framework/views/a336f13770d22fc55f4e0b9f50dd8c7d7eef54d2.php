@@ -41,7 +41,6 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;" id=
             <option value="<?php echo e(route('AllListFoodPack')); ?>">All</option>
             <?php $__currentLoopData = $provinces; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $province): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <option value="<?php echo e(route('SearchAllList', ['data' => $province -> id])); ?>"><?php echo e($province -> Name); ?></option>
-
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </select>
     </div>
