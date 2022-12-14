@@ -36,7 +36,6 @@
                     </ul>
                 </li>
                 <?php endif; ?>
-
                 <?php if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsOrphanSponsor == 1): ?>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -54,10 +53,26 @@
                         <li><a href="<?php echo e(route('MyOrphans')); ?>" key="t-horizontal"><i class="mdi mdi-account-circle-outline"></i> My Orphans</a></li>
                         <li><a href="<?php echo e(route('MyPayments')); ?>" key="t-horizontal"><i class="mdi mdi-currency-usd"></i> My Payments</a></li>
                         <li><a href="<?php echo e(route('MyCard')); ?>" key="t-horizontal"><i class="bx bxl-mastercard "></i> My Card</a></li>
-
                         <?php endif; ?>
                     </ul>
-
+                </li>
+                <?php endif; ?>
+                <?php if(Auth::user()->IsSuperAdmin == 1): ?>
+                <li class="menu-title" key="t-apps">System Management</li>
+                <?php endif; ?>
+                <?php if(Auth::user()->IsSuperAdmin == 1): ?>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-application-cog"></i>
+                        <span key="t-layouts">System Management</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <?php if(Auth::user()->IsOrphanRelief == 1): ?>
+                        <li><a href="<?php echo e(route('AllUser')); ?>" key="t-horizontal"><i class="mdi mdi-account-group-outline"></i> Users</a></li>
+                        <li><a href="<?php echo e(route('AllLookUps')); ?>" key="t-horizontal"><i class="mdi mdi-format-line-weight"></i> Look Ups</a></li>
+                        <li><a href="<?php echo e(route('AllErrors')); ?>" key="t-horizontal"><i class="mdi mdi-android-debug-bridge"></i> Errors</a></li>
+                        <?php endif; ?>
+                    </ul>
                 </li>
                 <?php endif; ?>
             </ul>
