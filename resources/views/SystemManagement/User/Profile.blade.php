@@ -310,68 +310,6 @@
             }
         }]
     , });
-
-    $('.reinitiate').on('click', function(event) {
-        event.preventDefault();
-        const url = $(this).attr('href');
-        swal({
-            title: 'Are you sure?'
-            , text: 'This record and it`s details will be re initiated!'
-            , icon: 'warning'
-            , buttons: ["Cancel", "Yes!"]
-        , }).then(function(value) {
-            if (value) {
-                window.location.href = url;
-            }
-        });
-    });
-
-    $('.delete-confirm').on('click', function(event) {
-        event.preventDefault();
-        const url = $(this).attr('href');
-        swal({
-            title: 'Are you sure?'
-            , text: 'This record and it`s details will be permanantly deleted!'
-            , icon: 'warning'
-            , buttons: ["Cancel", "Yes!"]
-        , }).then(function(value) {
-            if (value) {
-                window.location.href = url;
-            }
-        });
-    });
-
-    $('.approve').on('click', function(event) {
-        event.preventDefault();
-        const url = $(this).attr('href');
-        swal({
-            title: 'Are you sure?'
-            , text: 'This record and it`s details will be approved!'
-            , icon: 'warning'
-            , buttons: ["Cancel", "Yes!"]
-        , }).then(function(value) {
-            if (value) {
-                window.location.href = url;
-            }
-        });
-    });
-
-    $('.reject').on('click', function(event) {
-        event.preventDefault();
-        const url = $(this).attr('href');
-        swal({
-            title: 'Are you sure?'
-            , text: 'This record and it`s details will be rejected!'
-            , icon: 'warning'
-            , buttons: ["Cancel", "Yes!"]
-        , }).then(function(value) {
-            if (value) {
-                window.location.href = url;
-            }
-        });
-    });
-
-
 </script>
 
 @endsection

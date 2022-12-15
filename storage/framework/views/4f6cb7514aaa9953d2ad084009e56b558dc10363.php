@@ -28,15 +28,15 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href = this.value;">
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('search', [])->html();
-} elseif ($_instance->childHasBeenRendered('4sXd3zf')) {
-    $componentId = $_instance->getRenderedChildComponentId('4sXd3zf');
-    $componentTag = $_instance->getRenderedChildComponentTagName('4sXd3zf');
+} elseif ($_instance->childHasBeenRendered('hRX0TXz')) {
+    $componentId = $_instance->getRenderedChildComponentId('hRX0TXz');
+    $componentTag = $_instance->getRenderedChildComponentTagName('hRX0TXz');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('4sXd3zf');
+    $_instance->preserveRenderedChild('hRX0TXz');
 } else {
     $response = \Livewire\Livewire::mount('search', []);
     $html = $response->html();
-    $_instance->logRenderedChild('4sXd3zf', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('hRX0TXz', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -58,7 +58,7 @@ echo $html;
                                 <div class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                     <a class="nav-link active bg-info" id="v-pills-personal-tab" data-bs-toggle="pill" href="#v-pills-personal" role="tab" aria-controls="v-pills-personal" aria-selected="true">
                                         <i class="mdi mdi-format-line-weight  d-block check-nav-icon mt-4 mb-2"></i>
-                                        <p class="fw-bold mb-4 text-uppercase">Add Look Up</p>
+                                        <p class="fw-bold mb-4 text-uppercase">Look Up</p>
                                     </a>
                                 </div>
                             </div>

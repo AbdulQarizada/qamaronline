@@ -72,10 +72,6 @@
 </div>
 @endsection
 @section('script')
-<!-- Sweetalert -->
-<script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
-<!-- Fomr Validation -->
-<script src="{{ URL::asset('/assets/js/pages/form-validation.init.js') }}"></script>
 <script>
     // Submit form for excel
     $(document).ready(function() {
@@ -92,9 +88,5 @@
     $("#checkAll").click(function() {
         $('input:checkbox').not(this).prop('checked', this.checked);
     });
-    function Random() {
-        const result = Math.random().toString(36).substring(2,7);
-        document.getElementById('QCC').value = result;
-    };
 </script>
 @endsection

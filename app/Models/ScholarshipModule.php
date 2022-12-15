@@ -9,14 +9,13 @@ class ScholarshipModule extends Model
 {
     use HasFactory;
     protected $fillable =
-    [    
-   
-       'Parent_ID',
+    [
+       'Scholarship_ID',
        'ModuleName',
-   
-
-
-
-
     ];
+
+    public function scholarship()
+    {
+        return $this->belongsTo(Scholarship::class);
+    }
 }

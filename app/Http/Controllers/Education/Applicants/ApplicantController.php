@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Education;
+namespace App\Http\Controllers\Education\Applicants;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +15,7 @@ use App\Models\LookUp;
 
 use Illuminate\Http\Request;
 
-class EducationController extends Controller
+class ApplicantController extends Controller
 {
     public function __construct()
   {

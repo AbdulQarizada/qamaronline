@@ -9,22 +9,22 @@ class Scholarship extends Model
 {
     use HasFactory;
     protected $fillable =
-    [    
-   
+    [
+
      'ScholarshipName',
      'ScholarshipType_ID',
      'Country_ID',
      'StartDate',
      'EndDate',
      'Seats',
-    
      'Status',
      'Status_By',
      'Created_By',
      'Owner'
-
-
-
-
     ];
+
+    public function modules()
+    {
+        return $this->hasMany(ScholarshipModule::class, 'Scholarship_ID');
+    }
 }

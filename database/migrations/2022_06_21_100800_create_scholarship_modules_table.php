@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('scholarship_modules', function (Blueprint $table) {
             $table->id();
-            $table->integer('Parent_ID')->nullable();
+            $table->integer('Scholarship_ID')->nullable();
             $table->string('ModuleName')->nullable();
             $table->timestamps();
         });
