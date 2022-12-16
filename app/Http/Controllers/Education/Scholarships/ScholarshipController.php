@@ -175,7 +175,9 @@ class ScholarshipController extends Controller
   public function GetScholarshipAjax(Request $request)
   {
       $id = $request->data;
-      $scholarships =   Scholarship::select('id', 'ScholarshipName')->where("ScholarshipType_ID", "=", $id)->get();
+      $scholarships =   Scholarship::select('id', 'ScholarshipName')->where("ScholarshipType_ID", "=", $id)
+      ->where('EndDate', ">", Carbon::now())
+      ->get();
       return response()->json($scholarships);
   }
 
