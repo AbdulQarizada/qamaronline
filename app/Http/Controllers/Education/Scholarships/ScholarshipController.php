@@ -1,25 +1,20 @@
 <?php
 
 namespace App\Http\Controllers\Education\Scholarships;
+
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
-
+use App\Models\ScholarshipApplicant;
 use App\Models\Scholarship;
-use App\Models\Application;
-
 use App\Models\ScholarshipModule;
-use App\Models\Location;
-
 use App\Models\LookUp;
-
-
 use Illuminate\Http\Request;
 
 class ScholarshipController extends Controller
 {
-    public function __construct()
+  public function __construct()
   {
-    $this->middleware('auth', ['except' => ['CreateApplication', 'StoreApplication', 'SuccessApplication']]);
+    $this->middleware('auth');
   }
 
   // index
@@ -34,26 +29,26 @@ class ScholarshipController extends Controller
     $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
     $scholarshiptypes =   LookUp::where("Parent_Name", "=", "ScholarshipType")->get();
     $scholarships =   Scholarship::join('look_ups as a', 'scholarships.ScholarshipType_ID', '=', 'a.id')
-    ->join('look_ups as b', 'scholarships.Country_ID', '=', 'b.id')
-    ->join('users as d', 'scholarships.Created_By', '=', 'd.id')
-    ->select(['scholarships.*', 'a.Name as ScholarshipType', 'b.Name as Country', 'd.FirstName as UFirstName', 'd.LastName as ULastName','d.Job as UJob',])
-    ->paginate(100);
-  return view('Education.Scholarship.All', ['datas' => $scholarships, 'PageInfo' => $PageInfo, 'countries' => $countries, 'scholarshiptypes' => $scholarshiptypes]);
+      ->join('look_ups as b', 'scholarships.Country_ID', '=', 'b.id')
+      ->join('users as d', 'scholarships.Created_By', '=', 'd.id')
+      ->select(['scholarships.*', 'a.Name as ScholarshipType', 'b.Name as Country', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob',])
+      ->paginate(100);
+    return view('Education.Scholarship.All', ['datas' => $scholarships, 'PageInfo' => $PageInfo, 'countries' => $countries, 'scholarshiptypes' => $scholarshiptypes]);
   }
 
   public function Active()
   {
-  $mytime = Carbon::now();
-  $PageInfo = 'Active';
-  $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
-  $scholarshiptypes =   LookUp::where("Parent_Name", "=", "ScholarshipType")->get();
-  $scholarships =   Scholarship::join('look_ups as a', 'scholarships.ScholarshipType_ID', '=', 'a.id')
-  ->join('look_ups as b', 'scholarships.Country_ID', '=', 'b.id')
-  ->join('users as d', 'scholarships.Created_By', '=', 'd.id')
-  ->select(['scholarships.*', 'a.Name as ScholarshipType', 'b.Name as Country', 'd.FirstName as UFirstName', 'd.LastName as ULastName','d.Job as UJob',])
-  ->where("EndDate", ">", $mytime)
-  ->paginate(100);
-   return view('Education.Scholarship.All', ['datas' => $scholarships, 'PageInfo' => $PageInfo, 'countries' => $countries, 'scholarshiptypes' => $scholarshiptypes]);
+    $mytime = Carbon::now();
+    $PageInfo = 'Active';
+    $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+    $scholarshiptypes =   LookUp::where("Parent_Name", "=", "ScholarshipType")->get();
+    $scholarships =   Scholarship::join('look_ups as a', 'scholarships.ScholarshipType_ID', '=', 'a.id')
+      ->join('look_ups as b', 'scholarships.Country_ID', '=', 'b.id')
+      ->join('users as d', 'scholarships.Created_By', '=', 'd.id')
+      ->select(['scholarships.*', 'a.Name as ScholarshipType', 'b.Name as Country', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob',])
+      ->where("EndDate", ">", $mytime)
+      ->paginate(100);
+    return view('Education.Scholarship.All', ['datas' => $scholarships, 'PageInfo' => $PageInfo, 'countries' => $countries, 'scholarshiptypes' => $scholarshiptypes]);
   }
 
 
@@ -64,35 +59,36 @@ class ScholarshipController extends Controller
     $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
     $scholarshiptypes =   LookUp::where("Parent_Name", "=", "ScholarshipType")->get();
     $scholarships =   Scholarship::join('look_ups as a', 'scholarships.ScholarshipType_ID', '=', 'a.id')
-    ->join('look_ups as b', 'scholarships.Country_ID', '=', 'b.id')
-    ->join('users as d', 'scholarships.Created_By', '=', 'd.id')
-    ->select(['scholarships.*', 'a.Name as ScholarshipType', 'b.Name as Country', 'd.FirstName as UFirstName', 'd.LastName as ULastName','d.Job as UJob',])
-    ->where("EndDate", "<", $mytime)
-    ->paginate(100);
-     return view('Education.Scholarship.All', ['datas' => $scholarships, 'PageInfo' => $PageInfo, 'countries' => $countries, 'scholarshiptypes' => $scholarshiptypes]);
+      ->join('look_ups as b', 'scholarships.Country_ID', '=', 'b.id')
+      ->join('users as d', 'scholarships.Created_By', '=', 'd.id')
+      ->select(['scholarships.*', 'a.Name as ScholarshipType', 'b.Name as Country', 'd.FirstName as UFirstName', 'd.LastName as ULastName', 'd.Job as UJob',])
+      ->where("EndDate", "<", $mytime)
+      ->paginate(100);
+    return view('Education.Scholarship.All', ['datas' => $scholarships, 'PageInfo' => $PageInfo, 'countries' => $countries, 'scholarshiptypes' => $scholarshiptypes]);
   }
 
- // status
- public function Status(Scholarship $data)
- {
-  $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
-  $scholarshiptypes =   LookUp::where("Parent_Name", "=", "ScholarshipType")->get();
-   $Scholarship =   Scholarship::where("scholarships.id", "=", $data->id)
-   ->join('look_ups as a', 'scholarships.Country_ID', '=', 'a.id')
-   ->join('look_ups as b', 'scholarships.ScholarshipType_ID', '=', 'b.id')
-   ->join('users as d', 'scholarships.Created_By', '=', 'd.id')
-     ->select(
-       'scholarships.*',
-       'a.Name as Country',
-       'b.Name as ScholarshipType',
-       'd.FirstName as UFirstName',
-       'd.LastName as ULastName',
-       'd.Job as UJob',
+  // status
+  public function Status(Scholarship $data)
+  {
+    $appliedApplicants = ScholarshipApplicant::paginate(100);
+    $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
+    $scholarshiptypes =   LookUp::where("Parent_Name", "=", "ScholarshipType")->get();
+    $Scholarship =   Scholarship::where("scholarships.id", "=", $data->id)
+      ->join('look_ups as a', 'scholarships.Country_ID', '=', 'a.id')
+      ->join('look_ups as b', 'scholarships.ScholarshipType_ID', '=', 'b.id')
+      ->join('users as d', 'scholarships.Created_By', '=', 'd.id')
+      ->select(
+        'scholarships.*',
+        'a.Name as Country',
+        'b.Name as ScholarshipType',
+        'd.FirstName as UFirstName',
+        'd.LastName as ULastName',
+        'd.Job as UJob',
 
-     )
-     ->first();
-   return view('Education.Scholarship.Status',  ['data' => $Scholarship, 'scholarshiptypes' => $scholarshiptypes, 'countries' => $countries]);
- }
+      )
+      ->first();
+    return view('Education.Scholarship.Status',  ['data' => $Scholarship, 'scholarshiptypes' => $scholarshiptypes, 'countries' => $countries, 'appliedApplicants' => $appliedApplicants]);
+  }
 
   public function Store(Request $request)
   {
@@ -151,22 +147,17 @@ class ScholarshipController extends Controller
     return back()->with('success', 'Record deleted successfully');
   }
 
-
-
-
-
-
   public function CreateModule(Request $request)
   {
-     $validator = $request->validate([
-    'Scholarship_ID' => 'bail|required|max:255',
-    'ModuleName' => 'required|max:255',
-     ]);
-     ScholarshipModule::create([
-        'Scholarship_ID' => request('Scholarship_ID'),
-        'ModuleName' => request('ModuleName'),
-        ]);
-       return back()-> with('toast_success', 'Record Created Successfully!');
+    $validator = $request->validate([
+      'Scholarship_ID' => 'bail|required|max:255',
+      'ModuleName' => 'required|max:255',
+    ]);
+    ScholarshipModule::create([
+      'Scholarship_ID' => request('Scholarship_ID'),
+      'ModuleName' => request('ModuleName'),
+    ]);
+    return back()->with('toast_success', 'Record Created Successfully!');
   }
 
 
@@ -175,5 +166,20 @@ class ScholarshipController extends Controller
     $data->delete();
     return back()->with('success', 'Record deleted successfully');
   }
+
+  public function GetScholarshipAjax(Request $request)
+  {
+      $id = $request->data;
+      $scholarships =   Scholarship::select('id', 'ScholarshipName')->where("ScholarshipType_ID", "=", $id)->get();
+      return response()->json($scholarships);
+  }
+
+  public function GetScholarshipModuleAjax(Request $request)
+  {
+      $id = $request->data;
+      $scholarshipmodules =   ScholarshipModule::select('id', 'ModuleName')->where("Scholarship_ID", "=", $id)->get();
+      return response()->json($scholarshipmodules);
+  }
+
 
 }

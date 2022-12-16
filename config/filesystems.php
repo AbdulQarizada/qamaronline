@@ -39,6 +39,16 @@ return [
             'root'   => public_path() . '/uploads/User',
         ],
 
+        'Orphans' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/OrphansRelief/Orphans',
+        ],
+
+        'Scholarship' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/Scholarship/Applicants',
+        ],
+
         'Beneficiaries' => [
             'driver' => 'local',
             'root'   => public_path() . '/uploads/QamarCareCard/Beneficiaries',
@@ -50,15 +60,9 @@ return [
         ],
 
 
-        'Scholarship' => [
-            'driver' => 'local',
-            'root'   => public_path() . '/uploads/Scholarship/Applicant',
-        ],
 
-        'Orphans' => [
-            'driver' => 'local',
-            'root'   => public_path() . '/uploads/OrphansRelief/Orphans',
-        ],
+
+
 
         'public' => [
             'driver' => 'local',

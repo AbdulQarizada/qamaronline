@@ -10,6 +10,11 @@
         <a href="javascript:window.print()" class="btn btn-outline-dark mb-3 waves-effect waves-light"><i class=" bx bxs-printer   font-size-18"></i></a>
     </div>
 </div>
+<div class="row mt-4">
+    <div class="col-md-12">
+        <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Scholarship Information</h5>
+    </div>
+</div>
 <div class="row">
     <div class="col-lg-12">
         <div>
@@ -30,7 +35,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> ScholarshipName); ?></a></h5>
+                                    <h5 class=" mb-1"><a href="#" class="text-dark"><?php echo e($data -> ScholarshipName); ?></a></h5>
                                     <p class="text-muted mb-0"><?php echo e($data -> ScholarshipType); ?></p>
                                 </td>
                                 <td>
@@ -88,7 +93,7 @@
         </div>
     </div>
 </div>
-<div class="row ">
+<div class="row mt-4">
     <div class="col-md-12">
         <div class="collapse hide" id="EditScholarship">
             <div class="card shadow-none card-body text-muted mb-0 mb-4" style="border: 2px dashed #50a5f1;">
@@ -296,17 +301,17 @@ unset($__errorArgs, $__bag); ?>
         </div>
     </div>
 </div>
-<div class="row mt-4">
-    <div class="col-md-10">
-        <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Scholarship Modules</h5>
-    </div>
-    <div class="col-md-2 col-sm-2 mb-2">
-        <?php if(Carbon\Carbon::now() >= $data -> EndDate): ?>
-        <a data-bs-toggle="collapse" data-bs-target="#CreateModule" aria-expanded="false" aria-controls="CreateModule" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded text-uppercase"><i class="mdi mdi-plus me-1"></i>ADD Module</a>
-        <?php endif; ?>
+<div class="row mt-4 mb-4">
+    <div class="col-md-12 text-center">
+        <div class="hstack gap-3">
+            <h2 class="mt-4 mb-4">Scholarship Modules</h2>
+            <?php if(Carbon\Carbon::now() >= $data -> EndDate): ?>
+            <a data-bs-toggle="collapse" data-bs-target="#CreateModule" aria-expanded="false" aria-controls="CreateModule" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Module" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end"><i class="mdi mdi-plus font-size-16  align-middle me-1"></i>ADD MODULE</a>
+            <?php endif; ?>
+        </div>
     </div>
 </div>
-<div class="row ">
+<div class="row mt-4">
     <div class="col-md-12">
         <div class="collapse hide" id="CreateModule">
             <div class="card shadow-none card-body text-muted mb-0 mb-4" style="border: 2px dashed #50a5f1;">
@@ -401,7 +406,7 @@ unset($__errorArgs, $__bag); ?>
 </div>
 <div class="row">
     <?php $__currentLoopData = $data -> modules; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $module): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-    <div class="col-md-2">
+    <div class="col-md-1 mb-1">
         <div class="d-flex flex-wrap gap-2">
             <div class="avatar-xs">
                 <span class="avatar-title bg-dark rounded-circle">
@@ -409,13 +414,218 @@ unset($__errorArgs, $__bag); ?>
 
                 </span>
             </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-1">
+        <div class="d-flex flex-wrap gap-2">
             <h6 class="mb-1"><a href="#" class="text-dark"><?php echo e($module -> ModuleName); ?></a></h6>
+        </div>
+    </div>
+    <div class="col-md-2 mb-1">
+        <div class="d-flex flex-wrap gap-2">
             <?php if(Carbon\Carbon::now() >= $data -> EndDate): ?>
-            <a href="<?php echo e(route('DeleteModuleScholarship', ['data' => $module -> id])); ?>" class="btn btn-sm btn-outline-danger  waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Module"><i class="mdi mdi-delete-outline font-size-16 align-middle"></i></a>
-           <?php endif; ?>
+            <a href="<?php echo e(route('DeleteModuleScholarship', ['data' => $module -> id])); ?>" class="btn btn-sm btn-outline-danger  waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete <?php echo e($module -> ModuleName); ?>"><i class="mdi mdi-delete-outline font-size-16 align-middle"></i></a>
+            <?php endif; ?>
         </div>
     </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+</div>
+
+<br />
+<br />
+<br />
+<div class="row mt-4">
+    <div class="col-md-10">
+        <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Applicants Information</h5>
+    </div>
+    <div class="col-md-2 col-sm-2 mb-2">
+        <a href="<?php echo e(route('CreateApplication')); ?>" target="_blank"  aria-expanded="false" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD APPLICANT</a>
+    </div>
+</div>
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="">
+            <div class="">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#home1" role="tab">
+                            <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                            <span class="d-none d-sm-block">Applied Applicants</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#profile1" role="tab">
+                            <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                            <span class="d-none d-sm-block">Selected For Interview</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#messages1" role="tab">
+                            <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                            <span class="d-none d-sm-block">Finalized Applicants</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#settings1" role="tab">
+                            <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                            <span class="d-none d-sm-block">Accepted Offer</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#settings1" role="tab">
+                            <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                            <span class="d-none d-sm-block">Rejected</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content p-3">
+                    <div class="tab-pane active" id="home1" role="tabpanel">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped dt-responsive nowrap w-100">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>
+                                                    <input class="form-check-input" type="checkbox" id="checkAll">
+                                                </th>
+                                                <th>ID</th>
+                                                <th>Full Name</th>
+                                                <th>Address</th>
+                                                <th>Avalible Seats</th>
+                                                <th>Application Duration</th>
+                                                <th>Status</th>
+                                                <th>Created By</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $__currentLoopData = $data -> applicants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php if($data -> Status == "Pending"): ?>
+                                            <tr>
+                                                <td>
+                                                    <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="<?php echo e($data -> id); ?>">
+                                                </td>
+                                                <td>
+                                                    <div class="avatar-xs">
+                                                        <span class="avatar-title bg-dark rounded-circle">
+                                                            <?php echo e($loop->iteration); ?>
+
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> ScholarshipName); ?></a></h5>
+                                                    <p class="text-muted mb-0"><?php echo e($data -> ScholarshipType); ?></p>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> Country); ?></a></h5>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="avatar-sm">
+                                                        <span class="avatar-title bg-danger rounded-circle">
+                                                            <?php echo e($data -> Seats); ?>
+
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1 text-success"><?php echo e(Carbon\Carbon::parse($data -> StartDate) -> format("j F Y")); ?></h5>
+                                                        <h5 class="font-size-14 mb-1 text-danger"><?php echo e(Carbon\Carbon::parse($data -> EndDate) -> format("j F Y")); ?></h5>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <?php if(Carbon\Carbon::now() <= $data -> EndDate): ?>
+                                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger ">Expired</a></h5>
+                                                            <?php else: ?>
+                                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Active</a></h5>
+                                                            <?php endif; ?>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <?php if( $data -> Created_By !=""): ?>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data ->  UFirstName); ?> <?php echo e($data ->  ULastName); ?></a></h5>
+                                                        <p class="text-muted mb-0"><?php echo e($data ->  UJob); ?></p>
+                                                    </div>
+                                                    <?php endif; ?>
+                                                    <?php if( $data -> Created_By ==""): ?>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
+                                                        <p class="text-muted mb-0">Requested</p>
+                                                    </div>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap gap-2">
+                                                        <a href="<?php echo e(route('StatusApplicant', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-warning  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Applicant Details"><i class="mdi mdi-format-list-bulleted-square font-size-16 align-middle"></i> </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <form class="needs-validation" action="<?php echo e(route('ExportOrphans')); ?>" method="POST" enctype="multipart/form-data" id="ExportForm" novalidate>
+                                    <?php echo csrf_field(); ?>
+                                    <input type="text" class="d-none" name="FormIds" required>
+                                    <a class="btn btn-outline-primary waves-effect float-end  waves-light mt-3 ExportOrphans"><i class="mdi mdi-microsoft-excel me-1"></i> Export To Excel</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+                                    <?php echo $appliedApplicants->links(); ?> <span class="m-2 text-white badge bg-dark"><?php echo e($appliedApplicants->total()); ?> Total Records</span>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="profile1" role="tabpanel">
+                        <p class="mb-0">
+                            Food truck fixie locavore, accusamus mcsweeney's marfa nulla
+                            single-origin coffee squid. Exercitation +1 labore velit, blog
+                            sartorial PBR leggings next level wes anderson artisan four loko
+                            farm-to-table craft beer twee. Qui photo booth letterpress,
+                            commodo enim craft beer mlkshk aliquip jean shorts ullamco ad
+                            vinyl cillum PBR. Homo nostrud organic, assumenda labore
+                            aesthetic magna delectus.
+                        </p>
+                    </div>
+                    <div class="tab-pane" id="messages1" role="tabpanel">
+                        <p class="mb-0">
+                            Etsy mixtape wayfarers, ethical wes anderson tofu before they
+                            sold out mcsweeney's organic lomo retro fanny pack lo-fi
+                            farm-to-table readymade. Messenger bag gentrify pitchfork
+                            tattooed craft beer, iphone skateboard locavore carles etsy
+                            salvia banksy hoodie helvetica. DIY synth PBR banksy irony.
+                            Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh
+                            mi whatever gluten-free carles.
+                        </p>
+                    </div>
+                    <div class="tab-pane" id="settings1" role="tabpanel">
+                        <p class="mb-0">
+                            Trust fund seitan letterpress, keytar raw denim keffiyeh etsy
+                            art party before they sold out master cleanse gluten-free squid
+                            scenester freegan cosby sweater. Fanny pack portland seitan DIY,
+                            art party locavore wolf cliche high life echo park Austin. Cred
+                            vinyl keffiyeh DIY salvia PBR, banh mi before they sold out
+                            farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral,
+                            mustache readymade keffiyeh craft.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>

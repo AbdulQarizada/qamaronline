@@ -3,23 +3,16 @@
 namespace App\Http\Controllers\Education\Applicants;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
-
-use App\Models\Scholarship;
-use App\Models\Application;
-
-use App\Models\ScholarshipModule;
 use App\Models\Location;
-
 use App\Models\LookUp;
-
-
+use App\Models\ScholarshipApplicant;
 use Illuminate\Http\Request;
 
 class ApplicantController extends Controller
 {
     public function __construct()
   {
-    $this->middleware('auth', ['except' => ['CreateApplication', 'StoreApplication', 'SuccessApplication']]);
+    $this->middleware('auth', ['except' => ['Create', 'Store', 'Success']]);
   }
 
   // index
@@ -29,223 +22,9 @@ class ApplicantController extends Controller
     return view('Education.Index');
   }
 
-  public function AllScholarship()
+  public function All()
   {
-    $scholarships =   Scholarship::join('look_ups as a', 'scholarships.ScholarshipType_ID', '=', 'a.id')
-    ->join('look_ups as b', 'scholarships.Country_ID', '=', 'b.id')
-    ->join('users as d', 'scholarships.Created_By', '=', 'd.id')
-
-    ->select(['scholarships.*', 'a.Name as ScholarshipType', 'b.Name as Country', 'd.FirstName as UFirstName', 'd.LastName as ULastName','d.Job as UJob',])
-
-    -> get();
-  return view('Education.Scholarship.All', compact('scholarships'));
-  }
-
-
-
-
-
-
-  // create
-  public function CreateScholarship()
-  {
-
-    $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
-    $scholarshiptypes =   LookUp::where("Parent_Name", "=", "ScholarshipType")->get();
-    // $tribes =   LookUp::where("Parent_Name", "=", "Tribe")->get();
-    // $languages =   LookUp::where("Parent_Name", "=", "Language")->get();
-    // $currentjobs =   LookUp::where("Parent_Name", "=", "CurrentJob")->get();
-    // $futurejobs =   LookUp::where("Parent_Name", "=", "FutureJob")->get();
-    // $educationlevels =   LookUp::where("Parent_Name", "=", "EducationLevel")->get();
-    // $relationships =   LookUp::where("Parent_Name", "=", "RelativeRelationship")->get();
-    // $incomestreams =   LookUp::where("Parent_Name", "=", "IncomeStream")->get();
-    // $familystatus =   LookUp::where("Parent_Name", "=", "FamilyStatus")->get();
-    // $whatqamarcandos =   LookUp::where("Parent_Name", "=", "WhatQamarCanDo")->get();
-    // $provinces = Location::whereNull("Parent_ID")->get();
-
-
-
-
-
-
-    return view('Education.Scholarship.Create', ['countries' => $countries, 'scholarshiptypes' => $scholarshiptypes,]);
-  }
-
-  public function StoreScholarship(Request $request)
-  {
-
-    $validator = $request->validate([
-      'ScholarshipName' => 'bail|required|max:255',
-      'ScholarshipType_ID' => 'required|max:255',
-      'Country_ID' => 'required|max:10',
-      'StartDate' => 'required|max:255',
-      'EndDate' => 'required|max:255',
-      'Seats' => 'required|max:255',
-
-    //   'Profile' => 'required|max:255',
-    //   'DOB' => 'required|max:255',
-    //   'Gender_ID' => 'required|max:255',
-    //   'Language_ID' => 'required|max:255',
-    //   'CurrentJob_ID' => 'required|max:255',
-    //   'FutureJob_ID' => 'required|max:255',
-    //   'EducationLevel_ID' => 'required|max:255',
-    //   'PrimaryNumber' => 'required|max:10',
-      // 'SecondaryNumber' => 'required|max:10',
-    //   'RelativeNumber' => 'required|max:10',
-    //   'Province_ID' => 'required|max:255',
-    //   'District_ID' => 'required|max:255',
-    //   'Village' => 'required|max:255',
-      // 'Email' => 'required|email|max:255',
-    //   'FatherName' => 'required|max:255',
-    //   'FatherNameLocal' => 'required|max:255',
-
-      // 'SpuoseName' => 'required|max:255',
-    //   'EldestSonAge' => 'required|max:255',
-    //   'MonthlyFamilyIncome' => 'required|max:10',
-    //   'MonthlyFamilyExpenses' => 'required|max:10',
-    //   'NumberFamilyMembers' => 'required|max:10',
-    //   'IncomeStreem_ID' => 'required|max:255',
-    //   'LevelPoverty' => 'required|max:255',
-      // 'Tazkira' => 'required|max:255',
-
-    //   'RelativeNumber' => 'required|max:10',
-    //   'RelativeRelationship_ID' => 'required|max:255',
-    //   'RelativeName' => 'required|max:255',
-    //   'FamilyStatus_ID' => 'required|max:255',
-    //   'Country_ID' => 'required|max:255',
-    //   'Tribe_ID' => 'required|max:255',
-
-    ]);
-
-
-    //    if ($validator->fails()) {
-    //     $error = $validator->errors()->first();
-    //  }
-
-
-
-    Scholarship::create([
-      'ScholarshipName' => request('ScholarshipName'),
-      'ScholarshipType_ID' => request('ScholarshipType_ID'),
-      'Country_ID' => request('Country_ID'),
-      'StartDate' => request('StartDate'),
-      'EndDate' => request('EndDate'),
-      'Seats' => request('Seats'),
-    //   'DOB' => request('DOB'),
-    //   'QCC' => request('QCC'),
-    //   'Gender_ID' => request('Gender_ID'),
-    //   'Language_ID' => request('Language_ID'),
-    //   'CurrentJob_ID' => request('CurrentJob_ID'),
-    //   'FutureJob_ID' => request('FutureJob_ID'),
-    //   'EducationLevel_ID' => request('EducationLevel_ID'),
-    //   'QamarSupport_ID' => request('QamarSupport_ID'),
-    //   'PrimaryNumber' => request('PrimaryNumber'),
-    //   'SecondaryNumber' => request('SecondaryNumber'),
-    //   'RelativeNumber' => request('RelativeNumber'),
-    //   'Province_ID' => request('Province_ID'),
-    //   'District_ID' => request('District_ID'),
-    //   'Village' => request('Village'),
-    //   'Email' => request('Email'),
-    //   'FatherName' => request('FatherName'),
-    //   'FatherNameLocal' => request('FatherNameLocal'),
-
-    //   'MaritalStatus' => request('MaritalStatus'),
-    //   'SpuoseName' => request('SpuoseName'),
-    //   'EldestSonAge' => request('EldestSonAge'),
-    //   'MonthlyFamilyIncome' => request('MonthlyFamilyIncome'),
-    //   'MonthlyFamilyExpenses' => request('MonthlyFamilyExpenses'),
-    //   'NumberFamilyMembers' => request('NumberFamilyMembers'),
-    //   'IncomeStreem_ID' => request('IncomeStreem_ID'),
-    //   'LevelPoverty' => request('LevelPoverty'),
-    //   'Tazkira' => request('Tazkira'),
-      'Status' => 'Pending',
-      'Created_By' => auth()->user()->id,
-
-    //   'RelativeNumber' => request('RelativeNumber'),
-    //   'RelativeRelationship_ID' => request('RelativeRelationship_ID'),
-    //   'RelativeName' => request('RelativeName'),
-    //   'FamilyStatus_ID' => request('FamilyStatus_ID'),
-    //   'Country_ID' => request('Country_ID'),
-    //   'Tribe_ID' => request('Tribe_ID'),
-      'Owner' => 1,
-
-
-
-    ]);
-
-    return redirect()->route('AllScholarshipEducation')->with('toast_success', 'Record Created Successfully!');
-  }
-
-  // Delete
-  public function DeleteScholarship(Scholarship $data)
-  {
-
-    $data->delete();
-    return back()->with('success', 'Record deleted successfully');
-  }
-
-
-  public function ActiveScholarship()
-  {
-    $mytime = Carbon::now()->format('Y-m-d');
-    $scholarships =   Scholarship::join('look_ups as a', 'scholarships.ScholarshipType_ID', '=', 'a.id')
-    ->join('look_ups as b', 'scholarships.Country_ID', '=', 'b.id')
-    ->select(['scholarships.*', 'a.Name as ScholarshipType', 'b.Name as Country',])
-    -> where("EndDate", ">", $mytime)
-    -> get();
-  return view('Education.Scholarship.All', compact('scholarships'));
-  }
-
-
-  public function ClosedScholarship()
-  {
-    $mytime = Carbon::now()->format('Y-m-d');
-
-    $scholarships =   Scholarship::join('look_ups as a', 'scholarships.ScholarshipType_ID', '=', 'a.id')
-    ->join('look_ups as b', 'scholarships.Country_ID', '=', 'b.id')
-    ->select(['scholarships.*', 'a.Name as ScholarshipType', 'b.Name as Country',])
-    -> where("EndDate", "<", $mytime)
-    -> get();
-  return view('Education.Scholarship.All', compact('scholarships'));
-  }
-
-
-
-  public function CreateScholarshipModule(Request $request)
-  {
-
-     $validator = $request->validate([
-    'Parent_ID' => 'bail|required|max:255',
-    'ModuleName' => 'required|max:255',
-
-
-     ]);
-
-
-
-     ScholarshipModule::create([
-        'Parent_ID' => request('Parent_ID'),
-        'ModuleName' => request('ModuleName'),
-
-
-
-
-        ]);
-
-       return redirect()->route('AllScholarshipEducation')->with('toast_success', 'Record Created Successfully!');
-
-
-
-
-
-
-  }
-
-
-
-  public function AllApplicant()
-  {
-    $applicants =   Application::join('look_ups as a', 'applications.ScholarshipType_ID', '=', 'a.id')
+    $applicants =   ScholarshipApplicant::join('look_ups as a', 'applications.ScholarshipType_ID', '=', 'a.id')
     -> join('locations as b', 'applications.CurrentProvince_ID', '=', 'b.id')
     -> join('locations as c', 'applications.CurrentDistrict_ID', '=', 'c.id')
 
@@ -255,9 +34,9 @@ class ApplicantController extends Controller
   return view('Education.Application.All', compact('applicants'));
   }
 
-  public function ApprovedApplicants()
+  public function Approved()
   {
-    $applicants =   Application::join('look_ups as a', 'applications.ScholarshipType_ID', '=', 'a.id')
+    $applicants =   ScholarshipApplicant::join('look_ups as a', 'applications.ScholarshipType_ID', '=', 'a.id')
     -> join('locations as b', 'applications.CurrentProvince_ID', '=', 'b.id')
     -> join('locations as c', 'applications.CurrentDistrict_ID', '=', 'c.id')
     -> where("Status", "=", 'Approved')
@@ -267,9 +46,9 @@ class ApplicantController extends Controller
   return view('Education.Application.All', compact('applicants'));
   }
 
-  public function RejectedApplicants()
+  public function Rejected()
   {
-    $applicants =   Application::join('look_ups as a', 'applications.ScholarshipType_ID', '=', 'a.id')
+    $applicants =   ScholarshipApplicant::join('look_ups as a', 'applications.ScholarshipType_ID', '=', 'a.id')
     -> join('locations as b', 'applications.CurrentProvince_ID', '=', 'b.id')
     -> join('locations as c', 'applications.CurrentDistrict_ID', '=', 'c.id')
     -> where("Status", "=", 'Rejected')
@@ -279,9 +58,9 @@ class ApplicantController extends Controller
   return view('Education.Application.All', compact('applicants'));
   }
 
-  public function PendingApplicants()
+  public function Pending()
   {
-    $applicants =   Application::join('look_ups as a', 'applications.ScholarshipType_ID', '=', 'a.id')
+    $applicants =   ScholarshipApplicant::join('look_ups as a', 'applications.ScholarshipType_ID', '=', 'a.id')
     -> join('locations as b', 'applications.CurrentProvince_ID', '=', 'b.id')
     -> join('locations as c', 'applications.CurrentDistrict_ID', '=', 'c.id')
     -> where("Status", "=", 'Pending')
@@ -294,29 +73,26 @@ class ApplicantController extends Controller
 
 
    // status
-   public function Status(Application $data)
+   public function Status(ScholarshipApplicant $data)
    {
 
-     $applicants =   Application::where("applications.id", "=", $data->id)
-
-
-
-       ->join('locations as a', 'applications.CurrentProvince_ID', '=', 'a.id')
-       ->join('locations as b', 'applications.CurrentDistrict_ID', '=', 'b.id')
-       ->join('look_ups as c', 'applications.Country_ID', '=', 'c.id')
-       ->join('look_ups as d', 'applications.Gender_ID', '=', 'd.id')
-       ->join('look_ups as e', 'applications.Language_ID', '=', 'e.id')
-      //  ->join('look_ups as f', 'applications.CurrentJob_ID', '=', 'f.id')
-      //  ->join('look_ups as g', 'applications.FutureJob_ID', '=', 'g.id')
-      //  ->join('look_ups as h', 'applications.EducationLevel_ID', '=', 'h.id')
-      //  ->join('look_ups as i', 'applications.RelativeRelationship_ID', '=', 'i.id')
-       ->join('look_ups as j', 'applications.FamilyStatus_ID', '=', 'j.id')
-       ->join('look_ups as k', 'applications.Tribe_ID', '=', 'k.id')
-       ->join('look_ups as l', 'applications.IncomeStreem_ID', '=', 'l.id')
+     $applicants =   ScholarshipApplicant::where("scholarship_applicants.id", "=", $data->id)
+       ->join('locations as a', 'scholarship_applicants.CurrentProvince_ID', '=', 'a.id')
+       ->join('locations as b', 'scholarship_applicants.CurrentDistrict_ID', '=', 'b.id')
+       ->join('look_ups as c', 'scholarship_applicants.Country_ID', '=', 'c.id')
+       ->join('look_ups as d', 'scholarship_applicants.Gender_ID', '=', 'd.id')
+       ->join('look_ups as e', 'scholarship_applicants.Language_ID', '=', 'e.id')
+      //  ->join('look_ups as f', 'scholarship_applicants.CurrentJob_ID', '=', 'f.id')
+      //  ->join('look_ups as g', 'scholarship_applicants.FutureJob_ID', '=', 'g.id')
+      //  ->join('look_ups as h', 'scholarship_applicants.EducationLevel_ID', '=', 'h.id')
+      //  ->join('look_ups as i', 'scholarship_applicants.RelativeRelationship_ID', '=', 'i.id')
+       ->join('look_ups as j', 'scholarship_applicants.FamilyStatus_ID', '=', 'j.id')
+       ->join('look_ups as k', 'scholarship_applicants.Tribe_ID', '=', 'k.id')
+       ->join('look_ups as l', 'scholarship_applicants.IncomeStreem_ID', '=', 'l.id')
 
 
        ->select(
-         'applications.*',
+         'scholarship_applicants.*',
          'a.Name as Province',
          'b.Name as District',
          'c.Name as Country',
@@ -331,13 +107,11 @@ class ApplicantController extends Controller
          'l.Name as IncomeStreem'
        )
 
-       ->get();
-     //  $qamarcarecards  = $data;
-
-     return view('Education.Application.Status',  ['datas' => $applicants]);
+       ->first();
+     return view('Education.Application.Status',  ['data' => $applicants]);
    }
 
-   public function Approve(Application $data)
+   public function Approve(ScholarshipApplicant $data)
    {
 
      $data->update([
@@ -350,7 +124,7 @@ class ApplicantController extends Controller
      return redirect()->route('ApprovedApplicantsEducation')->with('toast_success', 'Record Approved Successfully!');
    }
 
-   public function Reject(Application $data)
+   public function Reject(ScholarshipApplicant $data)
    {
 
      $data->update([
@@ -363,7 +137,7 @@ class ApplicantController extends Controller
    }
 
 
-   public function ReInitiate(Application $data)
+   public function ReInitiate(ScholarshipApplicant $data)
    {
 
      $data->update([
@@ -378,7 +152,7 @@ class ApplicantController extends Controller
 
 
   // create
-  public function CreateApplication()
+  public function Create()
   {
 
     $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
@@ -395,23 +169,16 @@ class ApplicantController extends Controller
     $englishproficiencys =   LookUp::where("Parent_Name", "=", "EnglishProficiency")->get();
     $scholarshiptypes =   LookUp::where("Parent_Name", "=", "ScholarshipType")->get();
     $provinces = Location::whereNull("Parent_ID")->get();
-
-
-
-
     return view('Education.Application.Create', ['scholarshiptypes' => $scholarshiptypes,'englishproficiencys' => $englishproficiencys,'countries' => $countries,'whatqamarcandos' => $whatqamarcandos, 'genders' => $genders, 'tribes' => $tribes, 'languages' => $languages, 'currentjobs' => $currentjobs, 'futurejobs' => $futurejobs, 'educationlevels' => $educationlevels, 'provinces' => $provinces, 'relationships' => $relationships, 'incomestreams' => $incomestreams, 'familystatus' => $familystatus]);
-
-
   }
 
-  public function StoreApplication(Request $request)
+  public function Store(Request $request)
   {
     $dt = new Carbon();
     $after = $dt->subYears(22)->format('Y-m-d');
     $validator = $request->validate([
       'FirstName' => 'bail|required|max:255',
-      // 'LastName' => 'required|max:255',
-      'TazkiraID' => 'required|max:255|unique:applications',
+      'TazkiraID' => 'required|max:255|unique:scholarship_applicants',
       'DOB'=> 'required|date|after:' . $after,
       'Gender_ID'=> 'required|max:10',
       'Country_ID'=> 'required|max:10',
@@ -434,14 +201,10 @@ class ApplicantController extends Controller
 
 
       'PrimaryNumber'=> 'required|max:10',
-      // 'SecondaryNumber'=> 'required|max:10',
-      'Email'=> 'required|max:255|unique:applications',
+      'Email'=> 'required|max:255|unique:scholarship_applicants',
       'CurrentProvince_ID'=> 'required|max:10',
       'CurrentDistrict_ID'=> 'required|max:10',
       'CurrentVillage'=> 'required|max:255',
-      // 'Facebook'=> 'required|max:255',
-      // 'Telegram'=> 'required|max:255',
-      // 'Twitter'=> 'required|max:255',
       'RelativeRelationship_ID'=> 'required|max:10',
       'RelativeName'=> 'required|max:255',
       'RelativeNumber'=> 'required|max:10',
@@ -460,20 +223,6 @@ class ApplicantController extends Controller
       'EnglishDiploma'=> 'required|max:255',
 
 
-
-
-
-
-
-      // 'OraganizationName'=> 'required|max:255',
-      // 'Position'=> 'required|max:255',
-      // 'OrganizationStartDate'=> 'required|max:255',
-      // 'OrganizationEndDate'=> 'required|max:255',
-
-
-      // 'WorkExperienceLetter'=> 'required|max:10',
-      // 'Resume'=> 'required|max:10',
-
       'WhyChosenPersonalStatement'=> 'required',
       'WhyChosenTHisCountryPersonalStatement'=> 'required',
       'PlanAfterGraduationPersonalStatement'=> 'required',
@@ -487,7 +236,7 @@ class ApplicantController extends Controller
 
 
 
-    Application::create([
+    ScholarshipApplicant::create([
 
       'FirstName' => request('FirstName'),
       'LastName'  => request('LastName'),
@@ -579,27 +328,14 @@ class ApplicantController extends Controller
 
 
     ]);
-
-    return redirect()->route('SuccessApplicationEducation')->with('toast_success', 'Record Created Successfully!');
+    return redirect()->route('SuccessApplication')->with('toast_success', 'Record Created Successfully!');
   }
 
-
-    // success applicant
-    public function SuccessApplication()
+    // success
+    public function Success()
     {
-
       return view('Education.Application.Success');
     }
 
-
-
-
-  // Delete
-  public function DeleteApplication(Application $data)
-  {
-
-    $data->delete();
-    return back()->with('success', 'Record deleted successfully');
-  }
 
 }

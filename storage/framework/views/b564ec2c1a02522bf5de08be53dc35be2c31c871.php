@@ -37,15 +37,15 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href = this.value;">
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('search', [])->html();
-} elseif ($_instance->childHasBeenRendered('mrxOjvz')) {
-    $componentId = $_instance->getRenderedChildComponentId('mrxOjvz');
-    $componentTag = $_instance->getRenderedChildComponentTagName('mrxOjvz');
+} elseif ($_instance->childHasBeenRendered('TGul92T')) {
+    $componentId = $_instance->getRenderedChildComponentId('TGul92T');
+    $componentTag = $_instance->getRenderedChildComponentTagName('TGul92T');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('mrxOjvz');
+    $_instance->preserveRenderedChild('TGul92T');
 } else {
     $response = \Livewire\Livewire::mount('search', []);
     $html = $response->html();
-    $_instance->logRenderedChild('mrxOjvz', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('TGul92T', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -347,6 +347,9 @@ unset($__errorArgs, $__bag); ?>
                                 <?php if(Carbon\Carbon::now() >= $data -> EndDate): ?>
                                 <a href="<?php echo e(route('StatusScholarship', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-warning  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Modules"><i class="mdi mdi-format-list-bulleted-square font-size-16 align-middle"></i> </a>
                                 <?php endif; ?>
+                                <a href="<?php echo e(route('StatusScholarship', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-success waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Applicants">
+                                    <i class="mdi mdi-account-multiple-outline font-size-16 align-middle"></i>
+                                </a>
                                 <a href="<?php echo e(route('StatusScholarship', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-info waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Details">
                                     <i class="mdi mdi-square-edit-outline font-size-16 align-middle"></i>
                                 </a>

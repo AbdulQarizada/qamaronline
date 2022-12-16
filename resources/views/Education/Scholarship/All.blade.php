@@ -240,6 +240,9 @@
                                 @if(Carbon\Carbon::now() >= $data -> EndDate)
                                 <a href="{{route('StatusScholarship', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-warning  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Modules"><i class="mdi mdi-format-list-bulleted-square font-size-16 align-middle"></i> </a>
                                 @endif
+                                <a href="{{route('StatusScholarship', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-success waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Applicants">
+                                    <i class="mdi mdi-account-multiple-outline font-size-16 align-middle"></i>
+                                </a>
                                 <a href="{{route('StatusScholarship', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-info waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Details">
                                     <i class="mdi mdi-square-edit-outline font-size-16 align-middle"></i>
                                 </a>
