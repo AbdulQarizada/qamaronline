@@ -37,15 +37,15 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href = this.value;">
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('search', [])->html();
-} elseif ($_instance->childHasBeenRendered('TGul92T')) {
-    $componentId = $_instance->getRenderedChildComponentId('TGul92T');
-    $componentTag = $_instance->getRenderedChildComponentTagName('TGul92T');
+} elseif ($_instance->childHasBeenRendered('yRCfwG0')) {
+    $componentId = $_instance->getRenderedChildComponentId('yRCfwG0');
+    $componentTag = $_instance->getRenderedChildComponentTagName('yRCfwG0');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('TGul92T');
+    $_instance->preserveRenderedChild('yRCfwG0');
 } else {
     $response = \Livewire\Livewire::mount('search', []);
     $html = $response->html();
-    $_instance->logRenderedChild('TGul92T', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('yRCfwG0', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -321,10 +321,10 @@ unset($__errorArgs, $__bag); ?>
                         </td>
                         <td>
                             <div>
-                                <?php if(Carbon\Carbon::now() <= $data -> EndDate): ?>
-                                <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger ">Expired</a></h5>
-                                <?php else: ?>
+                                <?php if(Carbon\Carbon::now() < $data -> EndDate): ?>
                                 <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Active</a></h5>
+                                <?php else: ?>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger ">Expired</a></h5>
                                 <?php endif; ?>
                             </div>
                         </td>
@@ -344,7 +344,7 @@ unset($__errorArgs, $__bag); ?>
                         </td>
                         <td>
                             <div class="d-flex flex-wrap gap-2">
-                                <?php if(Carbon\Carbon::now() >= $data -> EndDate): ?>
+                                <?php if(Carbon\Carbon::now() <= $data -> EndDate): ?>
                                 <a href="<?php echo e(route('StatusScholarship', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-warning  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Modules"><i class="mdi mdi-format-list-bulleted-square font-size-16 align-middle"></i> </a>
                                 <?php endif; ?>
                                 <a href="<?php echo e(route('StatusScholarship', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-success waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Applicants">

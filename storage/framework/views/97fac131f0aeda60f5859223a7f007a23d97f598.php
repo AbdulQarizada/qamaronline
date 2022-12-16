@@ -60,10 +60,10 @@
                                 <td>
                                     <div>
                                         <?php if(Carbon\Carbon::now() <= $data -> EndDate): ?>
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger ">Expired</a></h5>
-                                            <?php else: ?>
-                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Active</a></h5>
-                                            <?php endif; ?>
+                                          <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Active</a></h5>
+                                        <?php else: ?>
+                                          <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger ">Expired</a></h5>
+                                        <?php endif; ?>
                                     </div>
                                 </td>
                                 <td>
@@ -305,9 +305,9 @@ unset($__errorArgs, $__bag); ?>
     <div class="col-md-12 text-center">
         <div class="hstack gap-3">
             <h2 class="mt-4 mb-4">Scholarship Modules</h2>
-            <?php if(Carbon\Carbon::now() >= $data -> EndDate): ?>
-            <a data-bs-toggle="collapse" data-bs-target="#CreateModule" aria-expanded="false" aria-controls="CreateModule" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Module" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end"><i class="mdi mdi-plus font-size-16  align-middle me-1"></i>ADD MODULE</a>
-            <?php endif; ?>
+            <?php if(Carbon\Carbon::now() <= $data -> EndDate): ?>
+                <a data-bs-toggle="collapse" data-bs-target="#CreateModule" aria-expanded="false" aria-controls="CreateModule" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Module" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end"><i class="mdi mdi-plus font-size-16  align-middle me-1"></i>ADD MODULE</a>
+                <?php endif; ?>
         </div>
     </div>
 </div>
@@ -423,9 +423,9 @@ unset($__errorArgs, $__bag); ?>
     </div>
     <div class="col-md-2 mb-1">
         <div class="d-flex flex-wrap gap-2">
-            <?php if(Carbon\Carbon::now() >= $data -> EndDate): ?>
-            <a href="<?php echo e(route('DeleteModuleScholarship', ['data' => $module -> id])); ?>" class="btn btn-sm btn-outline-danger  waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete <?php echo e($module -> ModuleName); ?>"><i class="mdi mdi-delete-outline font-size-16 align-middle"></i></a>
-            <?php endif; ?>
+            <?php if(Carbon\Carbon::now() <= $data -> EndDate): ?>
+                <a href="<?php echo e(route('DeleteModuleScholarship', ['data' => $module -> id])); ?>" class="btn btn-sm text-danger  waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete <?php echo e($module -> ModuleName); ?>"><i class="mdi mdi-delete-outline font-size-16 align-middle"></i></a>
+                <?php endif; ?>
         </div>
     </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -439,7 +439,7 @@ unset($__errorArgs, $__bag); ?>
         <h5 style="font-weight: bold;" class="card-header  text-dark mb-3">Applicants Information</h5>
     </div>
     <div class="col-md-2 col-sm-2 mb-2">
-        <a href="<?php echo e(route('CreateApplication')); ?>" target="_blank"  aria-expanded="false" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD APPLICANT</a>
+        <a href="<?php echo e(route('CreateApplication')); ?>" target="_blank" aria-expanded="false" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD APPLICANT</a>
     </div>
 </div>
 <div class="row mt-4">
@@ -589,39 +589,9 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane" id="profile1" role="tabpanel">
-                        <p class="mb-0">
-                            Food truck fixie locavore, accusamus mcsweeney's marfa nulla
-                            single-origin coffee squid. Exercitation +1 labore velit, blog
-                            sartorial PBR leggings next level wes anderson artisan four loko
-                            farm-to-table craft beer twee. Qui photo booth letterpress,
-                            commodo enim craft beer mlkshk aliquip jean shorts ullamco ad
-                            vinyl cillum PBR. Homo nostrud organic, assumenda labore
-                            aesthetic magna delectus.
-                        </p>
-                    </div>
-                    <div class="tab-pane" id="messages1" role="tabpanel">
-                        <p class="mb-0">
-                            Etsy mixtape wayfarers, ethical wes anderson tofu before they
-                            sold out mcsweeney's organic lomo retro fanny pack lo-fi
-                            farm-to-table readymade. Messenger bag gentrify pitchfork
-                            tattooed craft beer, iphone skateboard locavore carles etsy
-                            salvia banksy hoodie helvetica. DIY synth PBR banksy irony.
-                            Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh
-                            mi whatever gluten-free carles.
-                        </p>
-                    </div>
-                    <div class="tab-pane" id="settings1" role="tabpanel">
-                        <p class="mb-0">
-                            Trust fund seitan letterpress, keytar raw denim keffiyeh etsy
-                            art party before they sold out master cleanse gluten-free squid
-                            scenester freegan cosby sweater. Fanny pack portland seitan DIY,
-                            art party locavore wolf cliche high life echo park Austin. Cred
-                            vinyl keffiyeh DIY salvia PBR, banh mi before they sold out
-                            farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral,
-                            mustache readymade keffiyeh craft.
-                        </p>
-                    </div>
+                    <div class="tab-pane" id="profile1" role="tabpanel"></div>
+                    <div class="tab-pane" id="messages1" role="tabpanel"></div>
+                    <div class="tab-pane" id="settings1" role="tabpanel"></div>
                 </div>
             </div>
         </div>

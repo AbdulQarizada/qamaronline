@@ -214,10 +214,10 @@
                         </td>
                         <td>
                             <div>
-                                @if(Carbon\Carbon::now() <= $data -> EndDate)
-                                <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger ">Expired</a></h5>
-                                @else
+                                @if(Carbon\Carbon::now() < $data -> EndDate)
                                 <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Active</a></h5>
+                                @else
+                                <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger ">Expired</a></h5>
                                 @endif
                             </div>
                         </td>
@@ -237,7 +237,7 @@
                         </td>
                         <td>
                             <div class="d-flex flex-wrap gap-2">
-                                @if(Carbon\Carbon::now() >= $data -> EndDate)
+                                @if(Carbon\Carbon::now() < $data -> EndDate)
                                 <a href="{{route('StatusScholarship', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-warning  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Modules"><i class="mdi mdi-format-list-bulleted-square font-size-16 align-middle"></i> </a>
                                 @endif
                                 <a href="{{route('StatusScholarship', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-success waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Applicants">
