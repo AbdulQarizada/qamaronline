@@ -37,15 +37,15 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href = this.value;">
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('search', [])->html();
-} elseif ($_instance->childHasBeenRendered('yRCfwG0')) {
-    $componentId = $_instance->getRenderedChildComponentId('yRCfwG0');
-    $componentTag = $_instance->getRenderedChildComponentTagName('yRCfwG0');
+} elseif ($_instance->childHasBeenRendered('ZzzTyAO')) {
+    $componentId = $_instance->getRenderedChildComponentId('ZzzTyAO');
+    $componentTag = $_instance->getRenderedChildComponentTagName('ZzzTyAO');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('yRCfwG0');
+    $_instance->preserveRenderedChild('ZzzTyAO');
 } else {
     $response = \Livewire\Livewire::mount('search', []);
     $html = $response->html();
-    $_instance->logRenderedChild('yRCfwG0', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('ZzzTyAO', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -344,7 +344,7 @@ unset($__errorArgs, $__bag); ?>
                         </td>
                         <td>
                             <div class="d-flex flex-wrap gap-2">
-                                <?php if(Carbon\Carbon::now() <= $data -> EndDate): ?>
+                                <?php if(Carbon\Carbon::now() < $data -> EndDate): ?>
                                 <a href="<?php echo e(route('StatusScholarship', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-warning  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Modules"><i class="mdi mdi-format-list-bulleted-square font-size-16 align-middle"></i> </a>
                                 <?php endif; ?>
                                 <a href="<?php echo e(route('StatusScholarship', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-success waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Applicants">

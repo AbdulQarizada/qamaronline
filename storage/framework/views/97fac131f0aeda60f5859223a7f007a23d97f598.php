@@ -59,11 +59,11 @@
                                 </td>
                                 <td>
                                     <div>
-                                        <?php if(Carbon\Carbon::now() <= $data -> EndDate): ?>
-                                          <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Active</a></h5>
-                                        <?php else: ?>
-                                          <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger ">Expired</a></h5>
-                                        <?php endif; ?>
+                                        <?php if(Carbon\Carbon::now() < $data -> EndDate): ?>
+                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Active</a></h5>
+                                            <?php else: ?>
+                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger ">Expired</a></h5>
+                                            <?php endif; ?>
                                     </div>
                                 </td>
                                 <td>
@@ -305,7 +305,7 @@ unset($__errorArgs, $__bag); ?>
     <div class="col-md-12 text-center">
         <div class="hstack gap-3">
             <h2 class="mt-4 mb-4">Scholarship Modules</h2>
-            <?php if(Carbon\Carbon::now() <= $data -> EndDate): ?>
+            <?php if(Carbon\Carbon::now() < $data -> EndDate): ?>
                 <a data-bs-toggle="collapse" data-bs-target="#CreateModule" aria-expanded="false" aria-controls="CreateModule" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Module" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end"><i class="mdi mdi-plus font-size-16  align-middle me-1"></i>ADD MODULE</a>
                 <?php endif; ?>
         </div>
@@ -423,7 +423,7 @@ unset($__errorArgs, $__bag); ?>
     </div>
     <div class="col-md-2 mb-1">
         <div class="d-flex flex-wrap gap-2">
-            <?php if(Carbon\Carbon::now() <= $data -> EndDate): ?>
+            <?php if(Carbon\Carbon::now() < $data -> EndDate): ?>
                 <a href="<?php echo e(route('DeleteModuleScholarship', ['data' => $module -> id])); ?>" class="btn btn-sm text-danger  waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete <?php echo e($module -> ModuleName); ?>"><i class="mdi mdi-delete-outline font-size-16 align-middle"></i></a>
                 <?php endif; ?>
         </div>
@@ -449,40 +449,40 @@ unset($__errorArgs, $__bag); ?>
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" href="#home1" role="tab">
-                            <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                            <span class="d-none d-sm-block">Applied Applicants</span>
+                        <a class="nav-link active" data-bs-toggle="tab" href="#AppliedApplicants" role="tab">
+                            <span class="d-block d-sm-none"><i class="mdi mdi-account-clock-outline text-warning font-size-24"></i></span>
+                            <span class="d-none d-sm-block text-warning font-size-18">Applied Applicants</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#profile1" role="tab">
-                            <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
-                            <span class="d-none d-sm-block">Selected For Interview</span>
+                        <a class="nav-link" data-bs-toggle="tab" href="#SelectedForInterview" role="tab">
+                            <span class="d-block d-sm-none"><i class="mdi mdi-account-circle-outline text-primary font-size-24"></i></span>
+                            <span class="d-none d-sm-block text-primary font-size-18">Selected For Interview</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#messages1" role="tab">
-                            <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
-                            <span class="d-none d-sm-block">Finalized Applicants</span>
+                        <a class="nav-link" data-bs-toggle="tab" href="#FinalizedApplicants" role="tab">
+                            <span class="d-block d-sm-none"><i class="mdi mdi-account-check-outline text-success font-size-24"></i></span>
+                            <span class="d-none d-sm-block text-success font-size-18">Finalized Applicants</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#settings1" role="tab">
-                            <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
-                            <span class="d-none d-sm-block">Accepted Offer</span>
+                        <a class="nav-link" data-bs-toggle="tab" href="#AcceptedOffer" role="tab">
+                            <span class="d-block d-sm-none"><i class="mdi mdi-account-details-outline text-info font-size-24"></i></span>
+                            <span class="d-none d-sm-block text-info font-size-18">Accepted Offer</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#settings1" role="tab">
-                            <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
-                            <span class="d-none d-sm-block">Rejected</span>
+                        <a class="nav-link" data-bs-toggle="tab" href="#Rejected" role="tab">
+                            <span class="d-block d-sm-none"><i class="mdi mdi-account-multiple-remove-outline text-danger font-size-24"></i></span>
+                            <span class="d-none d-sm-block text-danger font-size-18">Rejected</span>
                         </a>
                     </li>
                 </ul>
 
                 <!-- Tab panes -->
                 <div class="tab-content p-3">
-                    <div class="tab-pane active" id="home1" role="tabpanel">
+                    <div class="tab-pane active" id="AppliedApplicants" role="tabpanel">
                         <div class="row">
                             <div class="col-12">
                                 <div class="table-responsive">
@@ -495,77 +495,66 @@ unset($__errorArgs, $__bag); ?>
                                                 <th>ID</th>
                                                 <th>Full Name</th>
                                                 <th>Address</th>
-                                                <th>Avalible Seats</th>
-                                                <th>Application Duration</th>
+                                                <th>Phone Numbers</th>
+                                                <th>Education</th>
+                                                <th>Date of Birth</th>
                                                 <th>Status</th>
-                                                <th>Created By</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $__currentLoopData = $data -> applicants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <?php if($data -> Status == "Pending"): ?>
+                                            <?php $__currentLoopData = $Applicants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Applicant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php if($Applicant -> Status == "AppliedApplicant"): ?>
                                             <tr>
                                                 <td>
-                                                    <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="<?php echo e($data -> id); ?>">
+                                                    <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="<?php echo e($Applicant -> id); ?>">
                                                 </td>
                                                 <td>
                                                     <div class="avatar-xs">
                                                         <span class="avatar-title bg-dark rounded-circle">
-                                                            <?php echo e($loop->iteration); ?>
+                                                            <?php echo e($Applicant -> id); ?>
 
                                                         </span>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> ScholarshipName); ?></a></h5>
-                                                    <p class="text-muted mb-0"><?php echo e($data -> ScholarshipType); ?></p>
+                                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> FirstName); ?> <?php echo e($Applicant -> LastName); ?></a></h5>
+                                                    <p class="text-muted mb-0">TazkiraID:<?php echo e($Applicant -> TazkiraID); ?></p>
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> Country); ?></a></h5>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="avatar-sm">
-                                                        <span class="avatar-title bg-danger rounded-circle">
-                                                            <?php echo e($data -> Seats); ?>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($Applicant -> CurrentProvince); ?></a></h5>
+                                                        <p class="text-muted mb-0"><?php echo e($Applicant -> CurrentDistrict); ?></p>
 
-                                                        </span>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <h5 class="font-size-14 mb-1 text-success"><?php echo e(Carbon\Carbon::parse($data -> StartDate) -> format("j F Y")); ?></h5>
-                                                        <h5 class="font-size-14 mb-1 text-danger"><?php echo e(Carbon\Carbon::parse($data -> EndDate) -> format("j F Y")); ?></h5>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($Applicant -> PrimaryNumber); ?></a></h5>
+                                                        <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($Applicant -> SecondaryNumber); ?></p>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <?php if(Carbon\Carbon::now() <= $data -> EndDate): ?>
-                                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger ">Expired</a></h5>
-                                                            <?php else: ?>
-                                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Active</a></h5>
-                                                            <?php endif; ?>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($Applicant -> SchoolName); ?></a></h5>
+                                                        <p class="text-muted mb-0"><?php echo e(\Carbon\Carbon::parse($Applicant -> SchoolGraduationDate) -> format("j F Y")); ?></p>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger"><?php echo e(\Carbon\Carbon::parse($Applicant -> DOB) -> format("j F Y")); ?></a></h5>
+                                                        <p class="text-muted mb-0"><?php echo e(\Carbon\Carbon::parse($Applicant -> DOB)->diff(\Carbon\Carbon::now())->format('%y Years Old')); ?></p>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <?php if( $data -> Created_By !=""): ?>
                                                     <div>
-                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data ->  UFirstName); ?> <?php echo e($data ->  ULastName); ?></a></h5>
-                                                        <p class="text-muted mb-0"><?php echo e($data ->  UJob); ?></p>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary">Pending For Decision</a></h5>
                                                     </div>
-                                                    <?php endif; ?>
-                                                    <?php if( $data -> Created_By ==""): ?>
-                                                    <div>
-                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
-                                                        <p class="text-muted mb-0">Requested</p>
-                                                    </div>
-                                                    <?php endif; ?>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex flex-wrap gap-2">
-                                                        <a href="<?php echo e(route('StatusApplicant', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-warning  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Applicant Details"><i class="mdi mdi-format-list-bulleted-square font-size-16 align-middle"></i> </a>
+                                                        <a href="<?php echo e(route('StatusApplicant', ['data' => $Applicant -> id])); ?>" class="btn btn-sm btn-outline-warning  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Applicant Details"><i class="mdi mdi-format-list-bulleted-square font-size-16 align-middle"></i> </a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -584,14 +573,395 @@ unset($__errorArgs, $__bag); ?>
                         <div class="row">
                             <div class="col-lg-12">
                                 <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
-                                    <?php echo $appliedApplicants->links(); ?> <span class="m-2 text-white badge bg-dark"><?php echo e($appliedApplicants->total()); ?> Total Records</span>
+                                    <?php echo $Applicants->links(); ?> <span class="m-2 text-white badge bg-dark"><?php echo e($Applicants->total()); ?> Total Records</span>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane" id="profile1" role="tabpanel"></div>
-                    <div class="tab-pane" id="messages1" role="tabpanel"></div>
-                    <div class="tab-pane" id="settings1" role="tabpanel"></div>
+                    <div class="tab-pane" id="SelectedForInterview" role="tabpanel">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped dt-responsive nowrap w-100">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>
+                                                    <input class="form-check-input" type="checkbox" id="checkAll">
+                                                </th>
+                                                <th>ID</th>
+                                                <th>Full Name</th>
+                                                <th>Address</th>
+                                                <th>Phone Numbers</th>
+                                                <th>Education</th>
+                                                <th>Date of Birth</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $__currentLoopData = $Applicants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Applicant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php if($Applicant -> Status == "SelectedForInterview"): ?>
+                                            <tr>
+                                                <td>
+                                                    <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="<?php echo e($Applicant -> id); ?>">
+                                                </td>
+                                                <td>
+                                                    <div class="avatar-xs">
+                                                        <span class="avatar-title bg-dark rounded-circle">
+                                                            <?php echo e($Applicant -> id); ?>
+
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> FirstName); ?> <?php echo e($Applicant -> LastName); ?></a></h5>
+                                                    <p class="text-muted mb-0">TazkiraID:<?php echo e($Applicant -> TazkiraID); ?></p>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($Applicant -> CurrentProvince); ?></a></h5>
+                                                        <p class="text-muted mb-0"><?php echo e($Applicant -> CurrentDistrict); ?></p>
+
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($Applicant -> PrimaryNumber); ?></a></h5>
+                                                        <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($Applicant -> SecondaryNumber); ?></p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($Applicant -> SchoolName); ?></a></h5>
+                                                        <p class="text-muted mb-0"><?php echo e(\Carbon\Carbon::parse($Applicant -> SchoolGraduationDate) -> format("j F Y")); ?></p>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger"><?php echo e(\Carbon\Carbon::parse($Applicant -> DOB) -> format("j F Y")); ?></a></h5>
+                                                        <p class="text-muted mb-0"><?php echo e(\Carbon\Carbon::parse($Applicant -> DOB)->diff(\Carbon\Carbon::now())->format('%y Years Old')); ?></p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-primary">Selected For Interview</a></h5>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap gap-2">
+                                                        <a href="<?php echo e(route('StatusApplicant', ['data' => $Applicant -> id])); ?>" class="btn btn-sm btn-outline-warning  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Applicant Details"><i class="mdi mdi-format-list-bulleted-square font-size-16 align-middle"></i> </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <form class="needs-validation" action="<?php echo e(route('ExportOrphans')); ?>" method="POST" enctype="multipart/form-data" id="ExportForm" novalidate>
+                                    <?php echo csrf_field(); ?>
+                                    <input type="text" class="d-none" name="FormIds" required>
+                                    <a class="btn btn-outline-primary waves-effect float-end  waves-light mt-3 ExportOrphans"><i class="mdi mdi-microsoft-excel me-1"></i> Export To Excel</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+                                    <?php echo $Applicants->links(); ?> <span class="m-2 text-white badge bg-dark"><?php echo e($Applicants->total()); ?> Total Records</span>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="FinalizedApplicants" role="tabpanel">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped dt-responsive nowrap w-100">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>
+                                                    <input class="form-check-input" type="checkbox" id="checkAll">
+                                                </th>
+                                                <th>ID</th>
+                                                <th>Full Name</th>
+                                                <th>Address</th>
+                                                <th>Phone Numbers</th>
+                                                <th>Education</th>
+                                                <th>Date of Birth</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $__currentLoopData = $Applicants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Applicant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php if($Applicant -> Status == "FinalizedApplicant"): ?>
+                                            <tr>
+                                                <td>
+                                                    <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="<?php echo e($Applicant -> id); ?>">
+                                                </td>
+                                                <td>
+                                                    <div class="avatar-xs">
+                                                        <span class="avatar-title bg-dark rounded-circle">
+                                                            <?php echo e($Applicant -> id); ?>
+
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> FirstName); ?> <?php echo e($Applicant -> LastName); ?></a></h5>
+                                                    <p class="text-muted mb-0">TazkiraID:<?php echo e($Applicant -> TazkiraID); ?></p>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($Applicant -> CurrentProvince); ?></a></h5>
+                                                        <p class="text-muted mb-0"><?php echo e($Applicant -> CurrentDistrict); ?></p>
+
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($Applicant -> PrimaryNumber); ?></a></h5>
+                                                        <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($Applicant -> SecondaryNumber); ?></p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($Applicant -> SchoolName); ?></a></h5>
+                                                        <p class="text-muted mb-0"><?php echo e(\Carbon\Carbon::parse($Applicant -> SchoolGraduationDate) -> format("j F Y")); ?></p>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger"><?php echo e(\Carbon\Carbon::parse($Applicant -> DOB) -> format("j F Y")); ?></a></h5>
+                                                        <p class="text-muted mb-0"><?php echo e(\Carbon\Carbon::parse($Applicant -> DOB)->diff(\Carbon\Carbon::now())->format('%y Years Old')); ?></p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Finalized Applicant</a></h5>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap gap-2">
+                                                        <a href="<?php echo e(route('StatusApplicant', ['data' => $Applicant -> id])); ?>" class="btn btn-sm btn-outline-warning  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Applicant Details"><i class="mdi mdi-format-list-bulleted-square font-size-16 align-middle"></i> </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <form class="needs-validation" action="<?php echo e(route('ExportOrphans')); ?>" method="POST" enctype="multipart/form-data" id="ExportForm" novalidate>
+                                    <?php echo csrf_field(); ?>
+                                    <input type="text" class="d-none" name="FormIds" required>
+                                    <a class="btn btn-outline-primary waves-effect float-end  waves-light mt-3 ExportOrphans"><i class="mdi mdi-microsoft-excel me-1"></i> Export To Excel</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+                                    <?php echo $Applicants->links(); ?> <span class="m-2 text-white badge bg-dark"><?php echo e($Applicants->total()); ?> Total Records</span>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="AcceptedOffer" role="tabpanel">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped dt-responsive nowrap w-100">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>
+                                                    <input class="form-check-input" type="checkbox" id="checkAll">
+                                                </th>
+                                                <th>ID</th>
+                                                <th>Full Name</th>
+                                                <th>Address</th>
+                                                <th>Phone Numbers</th>
+                                                <th>Education</th>
+                                                <th>Date of Birth</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $__currentLoopData = $Applicants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Applicant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php if($Applicant -> Status == "AcceptedOffer"): ?>
+                                            <tr>
+                                                <td>
+                                                    <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="<?php echo e($Applicant -> id); ?>">
+                                                </td>
+                                                <td>
+                                                    <div class="avatar-xs">
+                                                        <span class="avatar-title bg-dark rounded-circle">
+                                                            <?php echo e($Applicant -> id); ?>
+
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> FirstName); ?> <?php echo e($Applicant -> LastName); ?></a></h5>
+                                                    <p class="text-muted mb-0">TazkiraID:<?php echo e($Applicant -> TazkiraID); ?></p>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($Applicant -> CurrentProvince); ?></a></h5>
+                                                        <p class="text-muted mb-0"><?php echo e($Applicant -> CurrentDistrict); ?></p>
+
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($Applicant -> PrimaryNumber); ?></a></h5>
+                                                        <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($Applicant -> SecondaryNumber); ?></p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($Applicant -> SchoolName); ?></a></h5>
+                                                        <p class="text-muted mb-0"><?php echo e(\Carbon\Carbon::parse($Applicant -> SchoolGraduationDate) -> format("j F Y")); ?></p>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger"><?php echo e(\Carbon\Carbon::parse($Applicant -> DOB) -> format("j F Y")); ?></a></h5>
+                                                        <p class="text-muted mb-0"><?php echo e(\Carbon\Carbon::parse($Applicant -> DOB)->diff(\Carbon\Carbon::now())->format('%y Years Old')); ?></p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info">Offer Accepted</a></h5>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap gap-2">
+                                                        <a href="<?php echo e(route('StatusApplicant', ['data' => $Applicant -> id])); ?>" class="btn btn-sm btn-outline-warning  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Applicant Details"><i class="mdi mdi-format-list-bulleted-square font-size-16 align-middle"></i> </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <form class="needs-validation" action="<?php echo e(route('ExportOrphans')); ?>" method="POST" enctype="multipart/form-data" id="ExportForm" novalidate>
+                                    <?php echo csrf_field(); ?>
+                                    <input type="text" class="d-none" name="FormIds" required>
+                                    <a class="btn btn-outline-primary waves-effect float-end  waves-light mt-3 ExportOrphans"><i class="mdi mdi-microsoft-excel me-1"></i> Export To Excel</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+                                    <?php echo $Applicants->links(); ?> <span class="m-2 text-white badge bg-dark"><?php echo e($Applicants->total()); ?> Total Records</span>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="Rejected" role="tabpanel">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped dt-responsive nowrap w-100">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>
+                                                    <input class="form-check-input" type="checkbox" id="checkAll">
+                                                </th>
+                                                <th>ID</th>
+                                                <th>Full Name</th>
+                                                <th>Address</th>
+                                                <th>Phone Numbers</th>
+                                                <th>Education</th>
+                                                <th>Date of Birth</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $__currentLoopData = $Applicants; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Applicant): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <?php if($Applicant -> Status == "Rejected"): ?>
+                                            <tr>
+                                                <td>
+                                                    <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="<?php echo e($Applicant -> id); ?>">
+                                                </td>
+                                                <td>
+                                                    <div class="avatar-xs">
+                                                        <span class="avatar-title bg-dark rounded-circle">
+                                                            <?php echo e($Applicant -> id); ?>
+
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> FirstName); ?> <?php echo e($Applicant -> LastName); ?></a></h5>
+                                                    <p class="text-muted mb-0">TazkiraID:<?php echo e($Applicant -> TazkiraID); ?></p>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($Applicant -> CurrentProvince); ?></a></h5>
+                                                        <p class="text-muted mb-0"><?php echo e($Applicant -> CurrentDistrict); ?></p>
+
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary"><?php echo e($Applicant -> PrimaryNumber); ?></a></h5>
+                                                        <p class="text-muted mb-0 badge badge-soft-warning"><?php echo e($Applicant -> SecondaryNumber); ?></p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($Applicant -> SchoolName); ?></a></h5>
+                                                        <p class="text-muted mb-0"><?php echo e(\Carbon\Carbon::parse($Applicant -> SchoolGraduationDate) -> format("j F Y")); ?></p>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger"><?php echo e(\Carbon\Carbon::parse($Applicant -> DOB) -> format("j F Y")); ?></a></h5>
+                                                        <p class="text-muted mb-0"><?php echo e(\Carbon\Carbon::parse($Applicant -> DOB)->diff(\Carbon\Carbon::now())->format('%y Years Old')); ?></p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">Rejected</a></h5>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap gap-2">
+                                                        <a href="<?php echo e(route('StatusApplicant', ['data' => $Applicant -> id])); ?>" class="btn btn-sm btn-outline-warning  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Applicant Details"><i class="mdi mdi-format-list-bulleted-square font-size-16 align-middle"></i> </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <form class="needs-validation" action="<?php echo e(route('ExportOrphans')); ?>" method="POST" enctype="multipart/form-data" id="ExportForm" novalidate>
+                                    <?php echo csrf_field(); ?>
+                                    <input type="text" class="d-none" name="FormIds" required>
+                                    <a class="btn btn-outline-primary waves-effect float-end  waves-light mt-3 ExportOrphans"><i class="mdi mdi-microsoft-excel me-1"></i> Export To Excel</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+                                    <?php echo $Applicants->links(); ?> <span class="m-2 text-white badge bg-dark"><?php echo e($Applicants->total()); ?> Total Records</span>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

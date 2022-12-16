@@ -70,7 +70,13 @@ class ScholarshipController extends Controller
   // status
   public function Status(Scholarship $data)
   {
-    $appliedApplicants = ScholarshipApplicant::paginate(100);
+
+    $Applicants = ScholarshipApplicant::join('locations as b', 'scholarship_applicants.CurrentProvince_ID', '=', 'b.id')
+    -> join('locations as c', 'scholarship_applicants.CurrentDistrict_ID', '=', 'c.id')
+    -> select(['scholarship_applicants.*','b.Name as CurrentProvince','c.Name as CurrentDistrict',])
+    -> paginate(100);
+
+
     $countries =   LookUp::where("Parent_Name", "=", "Country")->get();
     $scholarshiptypes =   LookUp::where("Parent_Name", "=", "ScholarshipType")->get();
     $Scholarship =   Scholarship::where("scholarships.id", "=", $data->id)
@@ -84,10 +90,9 @@ class ScholarshipController extends Controller
         'd.FirstName as UFirstName',
         'd.LastName as ULastName',
         'd.Job as UJob',
-
       )
       ->first();
-    return view('Education.Scholarship.Status',  ['data' => $Scholarship, 'scholarshiptypes' => $scholarshiptypes, 'countries' => $countries, 'appliedApplicants' => $appliedApplicants]);
+    return view('Education.Scholarship.Status',  ['data' => $Scholarship, 'scholarshiptypes' => $scholarshiptypes, 'countries' => $countries, 'Applicants' => $Applicants]);
   }
 
   public function Store(Request $request)

@@ -7,6 +7,51 @@
                 <?php if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsAidAndRelief == 1 || Auth::user()->IsWash == 1 || Auth::user()->IsEducation == 1 || Auth::user()->IsInitiative == 1|| Auth::user()->IsMedicalSector == 1): ?>
                 <li class="menu-title" key="t-apps">Projects</li>
                 <?php endif; ?>
+
+
+                <?php if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsOrphanSponsor == 1): ?>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-account-child"></i>
+                        <span key="t-layouts">Orphan & Sponsorships</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <?php if(Auth::user()->IsOrphanRelief == 1): ?>
+                        <li><a href="<?php echo e(route('AllOrphans')); ?>" key="t-horizontal"><i class="mdi mdi-account-details-outline"></i> Orphans</a></li>
+                        <li><a href="<?php echo e(route('AllSponsor')); ?>" key="t-horizontal"><i class="mdi mdi mdi-account-child"></i> Sponsors</a></li>
+                        <li><a href="<?php echo e(route('AllPayment')); ?>" key="t-horizontal"><i class="mdi mdi-cash-multiple"></i> Payments</a></li>
+                        <li><a><hr /></a></li>
+                        <?php endif; ?>
+                        <?php if(Auth::user()->IsOrphanSponsor == 1): ?>
+                        <li><a href="<?php echo e(route('MyOrphans')); ?>" key="t-horizontal"><i class="mdi mdi-account-circle-outline"></i> My Orphans</a></li>
+                        <li><a href="<?php echo e(route('MyPayments')); ?>" key="t-horizontal"><i class="mdi mdi-currency-usd"></i> My Payments</a></li>
+                        <li><a href="<?php echo e(route('MyCard')); ?>" key="t-horizontal"><i class="bx bxl-mastercard "></i> My Card</a></li>
+                        <?php endif; ?>
+                    </ul>
+                </li>
+                <?php endif; ?>
+
+
+
+                <?php if(Auth::user()->IsEducation == 1): ?>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bxs-graduation"></i>
+                        <span key="t-layouts">Education</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <?php if(Auth::user()->IsEducation == 1): ?>
+                        <li><a href="<?php echo e(route('AllScholarship')); ?>" key="t-horizontal"><i class="mdi mdi-bullseye-arrow"></i> Scholarships</a></li>
+                        <?php endif; ?>
+                    </ul>
+                </li>
+                <?php endif; ?>
+
+
+
+                <?php if(Auth::user()->IsQamarCareCard == 1): ?>
+                <li class="menu-title" key="t-apps">Benefeciary Services</li>
+                <?php endif; ?>
                 <?php if(Auth::user()->IsQamarCareCard == 1): ?>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -36,27 +81,9 @@
                     </ul>
                 </li>
                 <?php endif; ?>
-                <?php if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsOrphanSponsor == 1): ?>
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-account-child"></i>
-                        <span key="t-layouts">Orphan & Sponsorships</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="true">
-                        <?php if(Auth::user()->IsOrphanRelief == 1): ?>
-                        <li><a href="<?php echo e(route('AllOrphans')); ?>" key="t-horizontal"><i class="mdi mdi-account-details-outline"></i> Orphans</a></li>
-                        <li><a href="<?php echo e(route('AllSponsor')); ?>" key="t-horizontal"><i class="mdi mdi mdi-account-child"></i> Sponsors</a></li>
-                        <li><a href="<?php echo e(route('AllPayment')); ?>" key="t-horizontal"><i class="mdi mdi-cash-multiple"></i> Payments</a></li>
-                        <li><a><hr /></a></li>
-                        <?php endif; ?>
-                        <?php if(Auth::user()->IsOrphanSponsor == 1): ?>
-                        <li><a href="<?php echo e(route('MyOrphans')); ?>" key="t-horizontal"><i class="mdi mdi-account-circle-outline"></i> My Orphans</a></li>
-                        <li><a href="<?php echo e(route('MyPayments')); ?>" key="t-horizontal"><i class="mdi mdi-currency-usd"></i> My Payments</a></li>
-                        <li><a href="<?php echo e(route('MyCard')); ?>" key="t-horizontal"><i class="bx bxl-mastercard "></i> My Card</a></li>
-                        <?php endif; ?>
-                    </ul>
-                </li>
-                <?php endif; ?>
+
+
+
                 <?php if(Auth::user()->IsSuperAdmin == 1): ?>
                 <li class="menu-title" key="t-apps">System Management</li>
                 <?php endif; ?>

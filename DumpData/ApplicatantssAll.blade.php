@@ -97,7 +97,6 @@
                                 <div>
                                     <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$applicant -> PrimaryNumber}}</a></h5>
                                     <p class="text-muted mb-0 badge badge-soft-warning">{{$applicant -> SecondaryNumber}}</p>
-                                    <!-- <p class="text-muted mb-0 badge badge-soft-danger">{{$applicant -> RelativeNumber}}</p> -->
                                 </div>
                             </td>
                             <td>

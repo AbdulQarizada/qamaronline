@@ -59,10 +59,10 @@
                                 <td>
                                     <div>
                                         @if(Carbon\Carbon::now() < $data -> EndDate)
-                                          <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Active</a></h5>
-                                        @else
-                                          <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger ">Expired</a></h5>
-                                        @endif
+                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Active</a></h5>
+                                            @else
+                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger ">Expired</a></h5>
+                                            @endif
                                     </div>
                                 </td>
                                 <td>
@@ -335,40 +335,40 @@
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" href="#home1" role="tab">
-                            <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                            <span class="d-none d-sm-block">Applied Applicants</span>
+                        <a class="nav-link active" data-bs-toggle="tab" href="#AppliedApplicants" role="tab">
+                            <span class="d-block d-sm-none"><i class="mdi mdi-account-clock-outline text-warning font-size-24"></i></span>
+                            <span class="d-none d-sm-block text-warning font-size-18">Applied Applicants</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#profile1" role="tab">
-                            <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
-                            <span class="d-none d-sm-block">Selected For Interview</span>
+                        <a class="nav-link" data-bs-toggle="tab" href="#SelectedForInterview" role="tab">
+                            <span class="d-block d-sm-none"><i class="mdi mdi-account-circle-outline text-primary font-size-24"></i></span>
+                            <span class="d-none d-sm-block text-primary font-size-18">Selected For Interview</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#messages1" role="tab">
-                            <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
-                            <span class="d-none d-sm-block">Finalized Applicants</span>
+                        <a class="nav-link" data-bs-toggle="tab" href="#FinalizedApplicants" role="tab">
+                            <span class="d-block d-sm-none"><i class="mdi mdi-account-check-outline text-success font-size-24"></i></span>
+                            <span class="d-none d-sm-block text-success font-size-18">Finalized Applicants</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#settings1" role="tab">
-                            <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
-                            <span class="d-none d-sm-block">Accepted Offer</span>
+                        <a class="nav-link" data-bs-toggle="tab" href="#AcceptedOffer" role="tab">
+                            <span class="d-block d-sm-none"><i class="mdi mdi-account-details-outline text-info font-size-24"></i></span>
+                            <span class="d-none d-sm-block text-info font-size-18">Accepted Offer</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#settings1" role="tab">
-                            <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
-                            <span class="d-none d-sm-block">Rejected</span>
+                        <a class="nav-link" data-bs-toggle="tab" href="#Rejected" role="tab">
+                            <span class="d-block d-sm-none"><i class="mdi mdi-account-multiple-remove-outline text-danger font-size-24"></i></span>
+                            <span class="d-none d-sm-block text-danger font-size-18">Rejected</span>
                         </a>
                     </li>
                 </ul>
 
                 <!-- Tab panes -->
                 <div class="tab-content p-3">
-                    <div class="tab-pane active" id="home1" role="tabpanel">
+                    <div class="tab-pane active" id="AppliedApplicants" role="tabpanel">
                         <div class="row">
                             <div class="col-12">
                                 <div class="table-responsive">
@@ -381,75 +381,65 @@
                                                 <th>ID</th>
                                                 <th>Full Name</th>
                                                 <th>Address</th>
-                                                <th>Avalible Seats</th>
-                                                <th>Application Duration</th>
+                                                <th>Phone Numbers</th>
+                                                <th>Education</th>
+                                                <th>Date of Birth</th>
                                                 <th>Status</th>
-                                                <th>Created By</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($data -> applicants as $data)
-                                            @if($data -> Status == "Pending")
+                                            @foreach($Applicants as $Applicant)
+                                            @if($Applicant -> Status == "AppliedApplicant")
                                             <tr>
                                                 <td>
-                                                    <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="{{$data -> id }}">
+                                                    <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="{{$Applicant -> id }}">
                                                 </td>
                                                 <td>
                                                     <div class="avatar-xs">
                                                         <span class="avatar-title bg-dark rounded-circle">
-                                                            {{$loop->iteration}}
+                                                            {{$Applicant -> id}}
                                                         </span>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> ScholarshipName}}</a></h5>
-                                                    <p class="text-muted mb-0">{{$data -> ScholarshipType}}</p>
+                                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> FirstName}} {{$Applicant -> LastName}}</a></h5>
+                                                    <p class="text-muted mb-0">TazkiraID:{{$Applicant -> TazkiraID}}</p>
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> Country}}</a></h5>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="avatar-sm">
-                                                        <span class="avatar-title bg-danger rounded-circle">
-                                                            {{$data -> Seats}}
-                                                        </span>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$Applicant -> CurrentProvince}}</a></h5>
+                                                        <p class="text-muted mb-0">{{$Applicant -> CurrentDistrict}}</p>
+
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <h5 class="font-size-14 mb-1 text-success">{{Carbon\Carbon::parse($data -> StartDate) -> format("j F Y") }}</h5>
-                                                        <h5 class="font-size-14 mb-1 text-danger">{{ Carbon\Carbon::parse($data -> EndDate) -> format("j F Y") }}</h5>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$Applicant -> PrimaryNumber}}</a></h5>
+                                                        <p class="text-muted mb-0 badge badge-soft-warning">{{$Applicant -> SecondaryNumber}}</p>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        @if(Carbon\Carbon::now() <= $data -> EndDate)
-                                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger ">Expired</a></h5>
-                                                            @else
-                                                            <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Active</a></h5>
-                                                            @endif
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$Applicant -> SchoolName}}</a></h5>
+                                                        <p class="text-muted mb-0">{{\Carbon\Carbon::parse($Applicant -> SchoolGraduationDate) -> format("j F Y")}}</p>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">{{\Carbon\Carbon::parse($Applicant -> DOB) -> format("j F Y")}}</a></h5>
+                                                        <p class="text-muted mb-0">{{\Carbon\Carbon::parse($Applicant -> DOB)->diff(\Carbon\Carbon::now())->format('%y Years Old');}}</p>
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    @if( $data -> Created_By !="")
                                                     <div>
-                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data ->  UFirstName }} {{$data ->  ULastName }}</a></h5>
-                                                        <p class="text-muted mb-0">{{$data ->  UJob }}</p>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-secondary">Pending For Decision</a></h5>
                                                     </div>
-                                                    @endif
-                                                    @if( $data -> Created_By =="")
-                                                    <div>
-                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Anonymous</a></h5>
-                                                        <p class="text-muted mb-0">Requested</p>
-                                                    </div>
-                                                    @endif
                                                 </td>
                                                 <td>
                                                     <div class="d-flex flex-wrap gap-2">
-                                                        <a href="{{route('StatusApplicant', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-warning  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Applicant Details"><i class="mdi mdi-format-list-bulleted-square font-size-16 align-middle"></i> </a>
+                                                        <a href="{{route('StatusApplicant', ['data' => $Applicant -> id])}}" class="btn btn-sm btn-outline-warning  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Applicant Details"><i class="mdi mdi-format-list-bulleted-square font-size-16 align-middle"></i> </a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -468,14 +458,391 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
-                                    {!! $appliedApplicants->links() !!} <span class="m-2 text-white badge bg-dark">{{ $appliedApplicants->total() }} Total Records</span>
+                                    {!! $Applicants->links() !!} <span class="m-2 text-white badge bg-dark">{{ $Applicants->total() }} Total Records</span>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane" id="profile1" role="tabpanel"></div>
-                    <div class="tab-pane" id="messages1" role="tabpanel"></div>
-                    <div class="tab-pane" id="settings1" role="tabpanel"></div>
+                    <div class="tab-pane" id="SelectedForInterview" role="tabpanel">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped dt-responsive nowrap w-100">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>
+                                                    <input class="form-check-input" type="checkbox" id="checkAll">
+                                                </th>
+                                                <th>ID</th>
+                                                <th>Full Name</th>
+                                                <th>Address</th>
+                                                <th>Phone Numbers</th>
+                                                <th>Education</th>
+                                                <th>Date of Birth</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($Applicants as $Applicant)
+                                            @if($Applicant -> Status == "SelectedForInterview")
+                                            <tr>
+                                                <td>
+                                                    <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="{{$Applicant -> id }}">
+                                                </td>
+                                                <td>
+                                                    <div class="avatar-xs">
+                                                        <span class="avatar-title bg-dark rounded-circle">
+                                                            {{$Applicant -> id}}
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> FirstName}} {{$Applicant -> LastName}}</a></h5>
+                                                    <p class="text-muted mb-0">TazkiraID:{{$Applicant -> TazkiraID}}</p>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$Applicant -> CurrentProvince}}</a></h5>
+                                                        <p class="text-muted mb-0">{{$Applicant -> CurrentDistrict}}</p>
+
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$Applicant -> PrimaryNumber}}</a></h5>
+                                                        <p class="text-muted mb-0 badge badge-soft-warning">{{$Applicant -> SecondaryNumber}}</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$Applicant -> SchoolName}}</a></h5>
+                                                        <p class="text-muted mb-0">{{\Carbon\Carbon::parse($Applicant -> SchoolGraduationDate) -> format("j F Y")}}</p>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">{{\Carbon\Carbon::parse($Applicant -> DOB) -> format("j F Y")}}</a></h5>
+                                                        <p class="text-muted mb-0">{{\Carbon\Carbon::parse($Applicant -> DOB)->diff(\Carbon\Carbon::now())->format('%y Years Old');}}</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-primary">Selected For Interview</a></h5>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap gap-2">
+                                                        <a href="{{route('StatusApplicant', ['data' => $Applicant -> id])}}" class="btn btn-sm btn-outline-warning  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Applicant Details"><i class="mdi mdi-format-list-bulleted-square font-size-16 align-middle"></i> </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @endif
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <form class="needs-validation" action="{{route('ExportOrphans')}}" method="POST" enctype="multipart/form-data" id="ExportForm" novalidate>
+                                    @csrf
+                                    <input type="text" class="d-none" name="FormIds" required>
+                                    <a class="btn btn-outline-primary waves-effect float-end  waves-light mt-3 ExportOrphans"><i class="mdi mdi-microsoft-excel me-1"></i> Export To Excel</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+                                    {!! $Applicants->links() !!} <span class="m-2 text-white badge bg-dark">{{ $Applicants->total() }} Total Records</span>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="FinalizedApplicants" role="tabpanel">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped dt-responsive nowrap w-100">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>
+                                                    <input class="form-check-input" type="checkbox" id="checkAll">
+                                                </th>
+                                                <th>ID</th>
+                                                <th>Full Name</th>
+                                                <th>Address</th>
+                                                <th>Phone Numbers</th>
+                                                <th>Education</th>
+                                                <th>Date of Birth</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($Applicants as $Applicant)
+                                            @if($Applicant -> Status == "FinalizedApplicant")
+                                            <tr>
+                                                <td>
+                                                    <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="{{$Applicant -> id }}">
+                                                </td>
+                                                <td>
+                                                    <div class="avatar-xs">
+                                                        <span class="avatar-title bg-dark rounded-circle">
+                                                            {{$Applicant -> id}}
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> FirstName}} {{$Applicant -> LastName}}</a></h5>
+                                                    <p class="text-muted mb-0">TazkiraID:{{$Applicant -> TazkiraID}}</p>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$Applicant -> CurrentProvince}}</a></h5>
+                                                        <p class="text-muted mb-0">{{$Applicant -> CurrentDistrict}}</p>
+
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$Applicant -> PrimaryNumber}}</a></h5>
+                                                        <p class="text-muted mb-0 badge badge-soft-warning">{{$Applicant -> SecondaryNumber}}</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$Applicant -> SchoolName}}</a></h5>
+                                                        <p class="text-muted mb-0">{{\Carbon\Carbon::parse($Applicant -> SchoolGraduationDate) -> format("j F Y")}}</p>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">{{\Carbon\Carbon::parse($Applicant -> DOB) -> format("j F Y")}}</a></h5>
+                                                        <p class="text-muted mb-0">{{\Carbon\Carbon::parse($Applicant -> DOB)->diff(\Carbon\Carbon::now())->format('%y Years Old');}}</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-success">Finalized Applicant</a></h5>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap gap-2">
+                                                        <a href="{{route('StatusApplicant', ['data' => $Applicant -> id])}}" class="btn btn-sm btn-outline-warning  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Applicant Details"><i class="mdi mdi-format-list-bulleted-square font-size-16 align-middle"></i> </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @endif
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <form class="needs-validation" action="{{route('ExportOrphans')}}" method="POST" enctype="multipart/form-data" id="ExportForm" novalidate>
+                                    @csrf
+                                    <input type="text" class="d-none" name="FormIds" required>
+                                    <a class="btn btn-outline-primary waves-effect float-end  waves-light mt-3 ExportOrphans"><i class="mdi mdi-microsoft-excel me-1"></i> Export To Excel</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+                                    {!! $Applicants->links() !!} <span class="m-2 text-white badge bg-dark">{{ $Applicants->total() }} Total Records</span>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="AcceptedOffer" role="tabpanel">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped dt-responsive nowrap w-100">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>
+                                                    <input class="form-check-input" type="checkbox" id="checkAll">
+                                                </th>
+                                                <th>ID</th>
+                                                <th>Full Name</th>
+                                                <th>Address</th>
+                                                <th>Phone Numbers</th>
+                                                <th>Education</th>
+                                                <th>Date of Birth</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($Applicants as $Applicant)
+                                            @if($Applicant -> Status == "AcceptedOffer")
+                                            <tr>
+                                                <td>
+                                                    <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="{{$Applicant -> id }}">
+                                                </td>
+                                                <td>
+                                                    <div class="avatar-xs">
+                                                        <span class="avatar-title bg-dark rounded-circle">
+                                                            {{$Applicant -> id}}
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> FirstName}} {{$Applicant -> LastName}}</a></h5>
+                                                    <p class="text-muted mb-0">TazkiraID:{{$Applicant -> TazkiraID}}</p>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$Applicant -> CurrentProvince}}</a></h5>
+                                                        <p class="text-muted mb-0">{{$Applicant -> CurrentDistrict}}</p>
+
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$Applicant -> PrimaryNumber}}</a></h5>
+                                                        <p class="text-muted mb-0 badge badge-soft-warning">{{$Applicant -> SecondaryNumber}}</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$Applicant -> SchoolName}}</a></h5>
+                                                        <p class="text-muted mb-0">{{\Carbon\Carbon::parse($Applicant -> SchoolGraduationDate) -> format("j F Y")}}</p>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">{{\Carbon\Carbon::parse($Applicant -> DOB) -> format("j F Y")}}</a></h5>
+                                                        <p class="text-muted mb-0">{{\Carbon\Carbon::parse($Applicant -> DOB)->diff(\Carbon\Carbon::now())->format('%y Years Old');}}</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-info">Offer Accepted</a></h5>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap gap-2">
+                                                        <a href="{{route('StatusApplicant', ['data' => $Applicant -> id])}}" class="btn btn-sm btn-outline-warning  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Applicant Details"><i class="mdi mdi-format-list-bulleted-square font-size-16 align-middle"></i> </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @endif
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <form class="needs-validation" action="{{route('ExportOrphans')}}" method="POST" enctype="multipart/form-data" id="ExportForm" novalidate>
+                                    @csrf
+                                    <input type="text" class="d-none" name="FormIds" required>
+                                    <a class="btn btn-outline-primary waves-effect float-end  waves-light mt-3 ExportOrphans"><i class="mdi mdi-microsoft-excel me-1"></i> Export To Excel</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+                                    {!! $Applicants->links() !!} <span class="m-2 text-white badge bg-dark">{{ $Applicants->total() }} Total Records</span>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="Rejected" role="tabpanel">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped dt-responsive nowrap w-100">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>
+                                                    <input class="form-check-input" type="checkbox" id="checkAll">
+                                                </th>
+                                                <th>ID</th>
+                                                <th>Full Name</th>
+                                                <th>Address</th>
+                                                <th>Phone Numbers</th>
+                                                <th>Education</th>
+                                                <th>Date of Birth</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($Applicants as $Applicant)
+                                            @if($Applicant -> Status == "Rejected")
+                                            <tr>
+                                                <td>
+                                                    <input class="form-check-input" type="checkbox" id="formCheck1" name="ids[]" value="{{$Applicant -> id }}">
+                                                </td>
+                                                <td>
+                                                    <div class="avatar-xs">
+                                                        <span class="avatar-title bg-dark rounded-circle">
+                                                            {{$Applicant -> id}}
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> FirstName}} {{$Applicant -> LastName}}</a></h5>
+                                                    <p class="text-muted mb-0">TazkiraID:{{$Applicant -> TazkiraID}}</p>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$Applicant -> CurrentProvince}}</a></h5>
+                                                        <p class="text-muted mb-0">{{$Applicant -> CurrentDistrict}}</p>
+
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-primary">{{$Applicant -> PrimaryNumber}}</a></h5>
+                                                        <p class="text-muted mb-0 badge badge-soft-warning">{{$Applicant -> SecondaryNumber}}</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$Applicant -> SchoolName}}</a></h5>
+                                                        <p class="text-muted mb-0">{{\Carbon\Carbon::parse($Applicant -> SchoolGraduationDate) -> format("j F Y")}}</p>
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">{{\Carbon\Carbon::parse($Applicant -> DOB) -> format("j F Y")}}</a></h5>
+                                                        <p class="text-muted mb-0">{{\Carbon\Carbon::parse($Applicant -> DOB)->diff(\Carbon\Carbon::now())->format('%y Years Old');}}</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <h5 class="font-size-14 mb-1"><a href="#" class="badge badge-soft-danger">Rejected</a></h5>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap gap-2">
+                                                        <a href="{{route('StatusApplicant', ['data' => $Applicant -> id])}}" class="btn btn-sm btn-outline-warning  waves-effect waves-light" data-bs-toggle="tooltip" data-bs-placement="top" title="View Applicant Details"><i class="mdi mdi-format-list-bulleted-square font-size-16 align-middle"></i> </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            @endif
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <form class="needs-validation" action="{{route('ExportOrphans')}}" method="POST" enctype="multipart/form-data" id="ExportForm" novalidate>
+                                    @csrf
+                                    <input type="text" class="d-none" name="FormIds" required>
+                                    <a class="btn btn-outline-primary waves-effect float-end  waves-light mt-3 ExportOrphans"><i class="mdi mdi-microsoft-excel me-1"></i> Export To Excel</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul class="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
+                                    {!! $Applicants->links() !!} <span class="m-2 text-white badge bg-dark">{{ $Applicants->total() }} Total Records</span>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

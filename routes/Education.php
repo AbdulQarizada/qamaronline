@@ -17,7 +17,6 @@ Route::get('/Education', [App\Http\Controllers\Education\Scholarships\Scholarshi
 //All
 Route::get('/Education/Scholarship', [App\Http\Controllers\Education\Scholarships\ScholarshipController::class, 'All'])->name('AllScholarship');
 Route::get('/Education/Scholarship/GetScholarshipAjax', [App\Http\Controllers\Education\Scholarships\ScholarshipController::class, 'GetScholarshipAjax'])->name('GetScholarshipAjax');
-
 // create
 Route::get('/Education/Scholarship/Create', [App\Http\Controllers\Education\Scholarships\ScholarshipController::class, 'Create'])->name('CreateScholarship');
 Route::post('/Education/Scholarship/Create', [App\Http\Controllers\Education\Scholarships\ScholarshipController::class, 'Store'])->name('CreateScholarship');
@@ -33,24 +32,19 @@ Route::get('/Education/Scholarship/Expired', [App\Http\Controllers\Education\Sch
 Route::post('/Education/Scholarship/Module/CreateModule', [App\Http\Controllers\Education\Scholarships\ScholarshipController::class, 'CreateModule'])->name('CreateModuleScholarship');
 Route::get('/Education/Scholarship/Module/Delete/{data}', [App\Http\Controllers\Education\Scholarships\ScholarshipController::class, 'DeleteModule'])->name('DeleteModuleScholarship');
 Route::get('/Education/Scholarship/GetScholarshipModuleAjax', [App\Http\Controllers\Education\Scholarships\ScholarshipController::class, 'GetScholarshipModuleAjax'])->name('GetScholarshipModuleAjax');
-
-
-
 // Applicants
 // create
-Route::get('/Education/Application/Create', [App\Http\Controllers\Education\Applicants\ApplicantController::class, 'Create'])->name('CreateApplication');
-Route::post('/Education/Application/Create', [App\Http\Controllers\Education\Applicants\ApplicantController::class, 'Store'])->name('CreateApplication');
+Route::get('/Education/Applicant/Create', [App\Http\Controllers\Education\Applicants\ApplicantController::class, 'Create'])->name('CreateApplication');
+Route::post('/Education/Applicant/Create', [App\Http\Controllers\Education\Applicants\ApplicantController::class, 'Store'])->name('CreateApplication');
 // status list and change status
 Route::get('/Education/Applicant/Status/{data}', [App\Http\Controllers\Education\Applicants\ApplicantController::class, 'Status'])->name('StatusApplicant');
-Route::get('/Education/Applicant/Approved', [App\Http\Controllers\Education\Applicants\ApplicantController::class, 'ApprovedApplicants'])->name('ApprovedApplicants');
-Route::get('/Education/Applicant/Rejected', [App\Http\Controllers\Education\Applicants\ApplicantController::class, 'RejectedApplicants'])->name('RejectedApplicants');
-Route::get('/Education/Applicant/Pending', [App\Http\Controllers\Education\Applicants\ApplicantController::class, 'PendingApplicants'])->name('PendingApplicants');
-Route::get('/Education/Applicant/Approve/{data}', [App\Http\Controllers\Education\Applicants\ApplicantController::class, 'Approve'])->name('ApproveApplicant');
-Route::get('/Education/Applicant/Reject/{data}', [App\Http\Controllers\Education\Applicants\ApplicantController::class, 'Reject'])->name('RejectApplicant');
 Route::get('/Education/Applicant/ReInitiate/{data}', [App\Http\Controllers\Education\Applicants\ApplicantController::class, 'ReInitiate'])->name('ReInitiateApplicant');
+Route::get('/Education/Applicant/SelecteForInterview/{data}', [App\Http\Controllers\Education\Applicants\ApplicantController::class, 'SelecteForInterview'])->name('SelecteForInterviewApplicant');
+Route::get('/Education/Applicant/Finalize/{data}', [App\Http\Controllers\Education\Applicants\ApplicantController::class, 'Finalize'])->name('FinalizeApplicant');
+Route::get('/Education/Applicant/AcceptedOffer/{data}', [App\Http\Controllers\Education\Applicants\ApplicantController::class, 'AcceptedOffer'])->name('AcceptedOfferApplicant');
+Route::get('/Education/Applicant/Reject/{data}', [App\Http\Controllers\Education\Applicants\ApplicantController::class, 'Reject'])->name('RejectApplicant');
 // success
-Route::get('/Education/Application/Success', [App\Http\Controllers\Education\Applicants\ApplicantController::class, 'Success'])->name('SuccessApplication');
-
+Route::get('/Education/Applicant/Success', [App\Http\Controllers\Education\Applicants\ApplicantController::class, 'Success'])->name('SuccessApplication');
 // uploads
 Route::post('/Education/Applicant/Applicant_Profile', [App\FileUpload\Education::class, 'Applicant_Profile'])->name('Applicant_Profile');
 Route::post('/Education/Applicant/Applicant_Tazkira', [App\FileUpload\Education::class, 'Applicant_Tazkira'])->name('Applicant_Tazkira');
