@@ -18,7 +18,7 @@ class VolunteerController extends Controller
   public function All()
   {
     $PageInfo = 'All';
-    $Countries =   Volunteer::get();
+    $Countries =   Volunteer::select('Country')->distinct()->get();
     $Volunteers =   Volunteer::join('look_ups as a', 'volunteers.Gender_ID', '=', 'a.id')
       ->join('look_ups as b', 'volunteers.InterestedDepartment_ID', '=', 'b.id')
       ->select(['volunteers.*', 'a.Name as Gender', 'b.Name as InterestedDepartment'])
@@ -87,7 +87,7 @@ class VolunteerController extends Controller
   public function Search($data)
   {
     $PageInfo = $data;
-    $Countries =   Volunteer::get();
+    $Countries =   Volunteer::select('Country')->distinct()->get();
     $Volunteers =   Volunteer::join('look_ups as a', 'volunteers.Gender_ID', '=', 'a.id')
       ->join('look_ups as b', 'volunteers.InterestedDepartment_ID', '=', 'b.id')
       ->select(['volunteers.*', 'a.Name as Gender', 'b.Name as InterestedDepartment'])
