@@ -1,14 +1,14 @@
+
 <div class="vertical-menu">
     <div data-simplebar class="h-100">
         <div id="sidebar-menu">
+            @if (Auth::check())
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title" key="t-dashnaord">Dashboard</li>
                 <li><a href="{{route('root')}}" key="t-home"><i class="mdi mdi-monitor-dashboard"></i> <span key="t-layouts">Dashboard</span></a></li>
                 @if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsAidAndRelief == 1 || Auth::user()->IsWash == 1 || Auth::user()->IsEducation == 1 || Auth::user()->IsInitiative == 1|| Auth::user()->IsMedicalSector == 1)
                 <li class="menu-title" key="t-apps">Projects</li>
                 @endif
-
-
                 @if(Auth::user()->IsOrphanRelief == 1 || Auth::user()->IsOrphanSponsor == 1)
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -30,9 +30,6 @@
                     </ul>
                 </li>
                 @endif
-
-
-
                 @if(Auth::user()->IsEducation == 1)
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -46,9 +43,6 @@
                     </ul>
                 </li>
                 @endif
-
-
-
                 @if(Auth::user()->IsQamarCareCard == 1)
                 <li class="menu-title" key="t-apps">Benefeciary Services</li>
                 @endif
@@ -107,7 +101,6 @@
                     </ul>
                 </li>
                 @endif
-
                 @if(Auth::user()->IsSuperAdmin == 1)
                 <li class="menu-title" key="t-apps">System Management</li>
                 @endif
@@ -127,6 +120,7 @@
                 </li>
                 @endif
             </ul>
+            @endif
         </div>
     </div>
 </div>
