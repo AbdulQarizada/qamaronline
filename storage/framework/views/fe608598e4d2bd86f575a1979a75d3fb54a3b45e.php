@@ -22,24 +22,25 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" onchange="window.location.href = this.value;">
             <option value="<?php echo e(route('AllVolunteer')); ?>">Please Filter Your Choices</option>
-            <option value="<?php echo e(route('AllVolunteer')); ?>" <?php echo e($PageInfo == 'All' ? 'selected' : ''); ?>>All</option>
-            <option value="<?php echo e(route('ActiveScholarship')); ?>" <?php echo e($PageInfo == 'Active' ? 'selected' : ''); ?>>Active</option>
-            <option value="<?php echo e(route('ExpiredScholarship')); ?>" <?php echo e($PageInfo == 'Expired' ? 'selected' : ''); ?>>Expired</option>
+            <option value="<?php echo e(route('AllVolunteer')); ?>" <?php echo e($PageInfo == 'All' ? 'selected' : ''); ?>>Global</option>
+            <?php $__currentLoopData = $Countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <option value="<?php echo e(route('SearchVolunteer', ['data' => $Country -> Country])); ?>" <?php echo e($PageInfo == $Country -> Country ? 'selected' : ''); ?>><?php echo e($Country -> Country); ?></option>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </select>
     </div>
     <div class="col-md-4 mb-2">
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('search', [])->html();
-} elseif ($_instance->childHasBeenRendered('ZXrz9bq')) {
-    $componentId = $_instance->getRenderedChildComponentId('ZXrz9bq');
-    $componentTag = $_instance->getRenderedChildComponentTagName('ZXrz9bq');
+} elseif ($_instance->childHasBeenRendered('2TP4i19')) {
+    $componentId = $_instance->getRenderedChildComponentId('2TP4i19');
+    $componentTag = $_instance->getRenderedChildComponentTagName('2TP4i19');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('ZXrz9bq');
+    $_instance->preserveRenderedChild('2TP4i19');
 } else {
     $response = \Livewire\Livewire::mount('search', []);
     $html = $response->html();
-    $_instance->logRenderedChild('ZXrz9bq', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('2TP4i19', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -90,7 +91,7 @@ echo $html;
                         <td>
                             <div>
                                 <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> Country); ?></a></h5>
-                               <p class="text-muted mb-0"><?php echo e($data -> City); ?></p>
+                                <p class="text-muted mb-0"><?php echo e($data -> City); ?></p>
                             </div>
                         </td>
                         <td>
@@ -101,8 +102,8 @@ echo $html;
                         </td>
                         <td>
                             <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-success"><?php echo e($data -> InterestedDepartment); ?></a></h5>
-                            <a href="<?php echo e(URL::asset('/uploads/Volunteer/Resumes/'.$data -> Resume)); ?>" target="_blank" class="text-dark"  data-bs-toggle="tooltip" data-bs-placement="top" title="Resume">
-                            <i class="mdi mdi-file-document-outline text-info font-size-18"></i>Resume</a>
+                            <a href="<?php echo e(URL::asset('/uploads/Volunteer/Resumes/'.$data -> Resume)); ?>" target="_blank" class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Resume">
+                                <i class="mdi mdi-file-document-outline text-info font-size-18"></i>Resume</a>
                         </td>
                         <td>
                             <div>
@@ -112,7 +113,24 @@ echo $html;
                             </div>
                         </td>
                         <td>
-                            <p class="text-muted mb-0"><?php echo e($currentUserInfo ->cityName); ?></p>
+                            <a href="#" class="font-size-18 pt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop-<?php echo e($data -> id); ?>">Click to Read</a>
+                            <div class="col-lg-8">
+                                <div class="modal fade" id="staticBackdrop-<?php echo e($data -> id); ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Reason</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p><?php echo e($data -> Reason); ?></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Understand</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                         <td>
                             <a href="<?php echo e(route('DeleteVolunteer', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
@@ -140,6 +158,25 @@ echo $html;
 </div>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
+<!-- Sweetalert -->
+<script src="<?php echo e(URL::asset('/assets/js/pages/sweetalert.min.js')); ?>"></script>
+<script>
+    $('.delete-confirm').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?'
+            , text: 'This record and it`s details will be permanantly deleted!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
+
+</script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/Volunteer/All.blade.php ENDPATH**/ ?>

@@ -21,6 +21,8 @@ Route::post('/Volunteer/Create', [App\Http\Controllers\Volunteer\VolunteerContro
 Route::get('/Volunteer/Delete/{data}', [App\Http\Controllers\Volunteer\VolunteerController::class, 'Delete'])->name('DeleteVolunteer');
 // success
 Route::get('/Volunteer/Success', [App\Http\Controllers\Volunteer\VolunteerController::class, 'Success'])->name('SuccessVolunteer');
+// Search
+Route::get('/Volunteer/Search/{data}', [App\Http\Controllers\Volunteer\VolunteerController::class, 'Search'])->name('SearchVolunteer');
 // uploads
 Route::post('/Volunteer/Volunteer_Resume', [App\FileUpload\Volunteer::class, 'Volunteer_Resume'])->name('Volunteer_Resume');
 

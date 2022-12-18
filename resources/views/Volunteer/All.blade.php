@@ -15,9 +15,10 @@
     <div class="col-md-3 col-sm-12 mb-2">
         <select class="form-select  form-select-lg @error('Country') is-invalid @enderror" onchange="window.location.href = this.value;">
             <option value="{{route('AllVolunteer')}}">Please Filter Your Choices</option>
-            <option value="{{route('AllVolunteer')}}" {{ $PageInfo == 'All' ? 'selected' : '' }}>All</option>
-            <option value="{{route('ActiveScholarship')}}" {{ $PageInfo == 'Active' ? 'selected' : '' }}>Active</option>
-            <option value="{{route('ExpiredScholarship')}}" {{ $PageInfo == 'Expired' ? 'selected' : '' }}>Expired</option>
+            <option value="{{route('AllVolunteer')}}" {{ $PageInfo == 'All' ? 'selected' : '' }}>Global</option>
+            @foreach ($Countries as $Country)
+            <option value="{{route('SearchVolunteer', ['data' => $Country -> Country])}}" {{ $PageInfo == $Country -> Country ? 'selected' : '' }}>{{ $Country -> Country}}</option>
+            @endforeach
         </select>
     </div>
     <div class="col-md-4 mb-2">
@@ -68,7 +69,7 @@
                         <td>
                             <div>
                                 <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> Country}}</a></h5>
-                               <p class="text-muted mb-0">{{$data -> City}}</p>
+                                <p class="text-muted mb-0">{{$data -> City}}</p>
                             </div>
                         </td>
                         <td>
@@ -79,8 +80,8 @@
                         </td>
                         <td>
                             <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-success">{{$data -> InterestedDepartment}}</a></h5>
-                            <a href="{{URL::asset('/uploads/Volunteer/Resumes/'.$data -> Resume)}}" target="_blank" class="text-dark"  data-bs-toggle="tooltip" data-bs-placement="top" title="Resume">
-                            <i class="mdi mdi-file-document-outline text-info font-size-18"></i>Resume</a>
+                            <a href="{{URL::asset('/uploads/Volunteer/Resumes/'.$data -> Resume)}}" target="_blank" class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Resume">
+                                <i class="mdi mdi-file-document-outline text-info font-size-18"></i>Resume</a>
                         </td>
                         <td>
                             <div>
@@ -90,7 +91,24 @@
                             </div>
                         </td>
                         <td>
-                            <p class="text-muted mb-0">{{$data -> Reason}}</p>
+                            <a href="#" class="font-size-18 pt-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{ $data -> id }}">Click to Read</a>
+                            <div class="col-lg-8">
+                                <div class="modal fade" id="staticBackdrop-{{ $data -> id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Reason</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>{{ $data -> Reason }}</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Understand</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                         <td>
                             <a href="{{route('DeleteVolunteer', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
@@ -118,4 +136,23 @@
 </div>
 @endsection
 @section('script')
+<!-- Sweetalert -->
+<script src="{{ URL::asset('/assets/js/pages/sweetalert.min.js') }}"></script>
+<script>
+    $('.delete-confirm').on('click', function(event) {
+        event.preventDefault();
+        const url = $(this).attr('href');
+        swal({
+            title: 'Are you sure?'
+            , text: 'This record and it`s details will be permanantly deleted!'
+            , icon: 'warning'
+            , buttons: ["Cancel", "Yes!"]
+        , }).then(function(value) {
+            if (value) {
+                window.location.href = url;
+            }
+        });
+    });
+
+</script>
 @endsection

@@ -20,13 +20,11 @@ class VolunteerController extends Controller
     $PageInfo = 'All';
     $Countries =   Volunteer::get();
     $Volunteers =   Volunteer::join('look_ups as a', 'volunteers.Gender_ID', '=', 'a.id')
-    -> join('look_ups as b', 'volunteers.InterestedDepartment_ID', '=', 'b.id')
+      ->join('look_ups as b', 'volunteers.InterestedDepartment_ID', '=', 'b.id')
       ->select(['volunteers.*', 'a.Name as Gender', 'b.Name as InterestedDepartment'])
       ->paginate(100);
-      $ip = '125.213.211.95';
-      $currentUserInfo = Location::get($ip);
 
-    return view('Volunteer.All', ['datas' => $Volunteers, 'PageInfo' => $PageInfo, 'Countries' => $Countries, 'currentUserInfo' => $currentUserInfo]);
+    return view('Volunteer.All', ['datas' => $Volunteers, 'PageInfo' => $PageInfo, 'Countries' => $Countries]);
   }
   // create
   public function Create()
@@ -79,5 +77,22 @@ class VolunteerController extends Controller
     return view('Volunteer.Success');
   }
 
+  // Delete
+  public function Delete(Volunteer $data)
+  {
+    $data->delete();
+    return back()->with('success', 'Record deleted successfully');
+  }
 
+  public function Search($data)
+  {
+    $PageInfo = $data;
+    $Countries =   Volunteer::get();
+    $Volunteers =   Volunteer::join('look_ups as a', 'volunteers.Gender_ID', '=', 'a.id')
+      ->join('look_ups as b', 'volunteers.InterestedDepartment_ID', '=', 'b.id')
+      ->select(['volunteers.*', 'a.Name as Gender', 'b.Name as InterestedDepartment'])
+      ->where('Country', '=', $data)
+      ->paginate(100);
+    return view('Volunteer.All', ['datas' => $Volunteers, 'PageInfo' => $PageInfo, 'Countries' => $Countries]);
+  }
 }
