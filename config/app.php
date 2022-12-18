@@ -176,7 +176,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        FaizShukri\Quran\QuranServiceProvider::class
+        FaizShukri\Quran\QuranServiceProvider::class,
+        Stevebauman\Location\LocationServiceProvider::class
 
     ],
 

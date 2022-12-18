@@ -74,7 +74,7 @@
             @endif
             @if(Auth::user()->IsAidAndRelief == 1)
             <div class="col-md-2 mb-2">
-                <a href="{{route('IndexOrphansRelief')}}">
+                <a href="#">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
                             <div class="d-flex">
@@ -90,7 +90,7 @@
             @endif
             @if(Auth::user()->IsWash == 1)
             <div class="col-md-2 mb-2">
-                <a href="{{route('IndexOrphansRelief')}}">
+                <a href="#">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
                             <div class="d-flex">
@@ -122,7 +122,7 @@
             @endif
             @if(Auth::user()->IsInitiative == 1)
             <div class="col-md-2 mb-2">
-                <a href="{{route('IndexEducation')}}">
+                <a href="#">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
                             <div class="d-flex">
@@ -138,7 +138,7 @@
             @endif
             @if(Auth::user()->IsMedicalSector == 1)
             <div class="col-md-2 mb-2">
-                <a href="{{route('IndexEducation')}}">
+                <a href="#">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
                             <div class="d-flex">
@@ -179,7 +179,7 @@
             @endif
             @if(Auth::user()->IsFoodAppeal == 1)
             <div class="col-md-2 mb-2">
-                <a href="{{route('IndexEducation')}}">
+                <a href="#">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
                             <div class="d-flex">
@@ -195,7 +195,7 @@
             @endif
             @if(Auth::user()->IsAppealsDistributions == 1)
             <div class="col-md-2 mb-2">
-                <a href="{{route('IndexCareCard')}}">
+                <a href="#">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
                             <div class="d-flex">
@@ -211,13 +211,45 @@
             @endif
             @if(Auth::user()->IsDonorsAndDonorBoxes == 1)
             <div class="col-md-2 mb-2">
-                <a href="{{route('IndexCareCard')}}">
+                <a href="#">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
                             <div class="d-flex">
                                 <div class="flex-grow-1">
                                     <i class="bx bxs-box display-5 "></i>
                                     <p class="my-0 text-dark mt-2 font-size-18">Donors</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endif
+            @if(Auth::user()->IsVolunteer == 1)
+            <div class="col-md-2 mb-2">
+                <a href="{{route('AllVolunteer')}}">
+                    <div class="card-one  mini-stats-wid border border-secondary">
+                        <div class="card-body text-center">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="mdi mdi-account-star-outline display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Volunteer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            @endif
+            @if(Auth::user()->IsRepresentative == 1)
+            <div class="col-md-2 mb-2">
+                <a href="#">
+                    <div class="card-one  mini-stats-wid border border-secondary">
+                        <div class="card-body text-center">
+                            <div class="d-flex">
+                                <div class="flex-grow-1">
+                                    <i class="mdi mdi-account-supervisor-circle-outline display-5 "></i>
+                                    <p class="my-0 text-dark mt-2 font-size-18">Representative</p>
                                 </div>
                             </div>
                         </div>

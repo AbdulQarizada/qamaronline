@@ -49,6 +49,12 @@ return [
             'root'   => public_path() . '/uploads/Scholarship/Applicants',
         ],
 
+        'Volunteer' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/Volunteer',
+        ],
+
+
         'Beneficiaries' => [
             'driver' => 'local',
             'root'   => public_path() . '/uploads/QamarCareCard/Beneficiaries',
