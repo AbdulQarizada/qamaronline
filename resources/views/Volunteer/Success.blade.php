@@ -1,5 +1,5 @@
 @extends('layouts.master-without-nav')
-@section('title') Education and Scholarship @endsection
+@section('title') Volunteers @endsection
 @section('body')
 <body>
 @endsection

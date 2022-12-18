@@ -25,7 +25,7 @@ return new class extends Migration
             $table->longText('Address')->nullable();
             $table->string('Country')->nullable();
             $table->string('City')->nullable();
-            $table->string('InterestedDepartment_ID')->nullable();
+            $table->integer('InterestedDepartment_ID')->nullable();
             $table->string('Reason')->nullable();
             $table->string('Resume')->nullable();
             $table->string('Owner')->nullable();

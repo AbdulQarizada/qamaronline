@@ -81,7 +81,19 @@
                     </ul>
                 </li>
                 <?php endif; ?>
-
+                <?php if(Auth::user()->IsVolunteer == 1): ?>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-account-star-outline"></i>
+                        <span key="t-layouts">Volunteer</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <?php if(Auth::user()->IsVolunteer == 1): ?>
+                        <li><a href="<?php echo e(route('AllVolunteer')); ?>" key="t-horizontal"><i class="mdi mdi-account-star-outline"></i>Volunteers</a></li>
+                        <?php endif; ?>
+                    </ul>
+                </li>
+                <?php endif; ?>
 
 
                 <?php if(Auth::user()->IsSuperAdmin == 1): ?>
