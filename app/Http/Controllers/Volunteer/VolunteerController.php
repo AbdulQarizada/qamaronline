@@ -49,7 +49,7 @@ class VolunteerController extends Controller
       'InterestedDepartment_ID' => 'required',
       'Reason' => 'required',
       // documents
-      'Resume' => 'required|max:255',
+      'Resume' => 'required',
     ]);
 
     $ip = $request->ip();
