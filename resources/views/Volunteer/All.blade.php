@@ -90,7 +90,7 @@
                             </div>
                         </td>
                         <td>
-                            <p class="text-muted mb-0">{{$data -> Reason}}</p>
+                            <p class="text-muted mb-0">{{$currentUserInfo ->cityName }}</p>
                         </td>
                         <td>
                             <a href="{{route('DeleteVolunteer', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">

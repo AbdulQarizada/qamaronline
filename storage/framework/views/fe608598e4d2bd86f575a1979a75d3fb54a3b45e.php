@@ -31,15 +31,15 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href = this.value;">
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('search', [])->html();
-} elseif ($_instance->childHasBeenRendered('41kL0t4')) {
-    $componentId = $_instance->getRenderedChildComponentId('41kL0t4');
-    $componentTag = $_instance->getRenderedChildComponentTagName('41kL0t4');
+} elseif ($_instance->childHasBeenRendered('ZXrz9bq')) {
+    $componentId = $_instance->getRenderedChildComponentId('ZXrz9bq');
+    $componentTag = $_instance->getRenderedChildComponentTagName('ZXrz9bq');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('41kL0t4');
+    $_instance->preserveRenderedChild('ZXrz9bq');
 } else {
     $response = \Livewire\Livewire::mount('search', []);
     $html = $response->html();
-    $_instance->logRenderedChild('41kL0t4', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('ZXrz9bq', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -112,7 +112,7 @@ echo $html;
                             </div>
                         </td>
                         <td>
-                            <p class="text-muted mb-0"><?php echo e($data -> Reason); ?></p>
+                            <p class="text-muted mb-0"><?php echo e($currentUserInfo ->cityName); ?></p>
                         </td>
                         <td>
                             <a href="<?php echo e(route('DeleteVolunteer', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">

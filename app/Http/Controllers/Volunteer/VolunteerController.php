@@ -23,7 +23,10 @@ class VolunteerController extends Controller
     -> join('look_ups as b', 'volunteers.InterestedDepartment_ID', '=', 'b.id')
       ->select(['volunteers.*', 'a.Name as Gender', 'b.Name as InterestedDepartment'])
       ->paginate(100);
-    return view('Volunteer.All', ['datas' => $Volunteers, 'PageInfo' => $PageInfo, 'Countries' => $Countries]);
+      $ip = '125.213.211.95';
+      $currentUserInfo = Location::get($ip);
+
+    return view('Volunteer.All', ['datas' => $Volunteers, 'PageInfo' => $PageInfo, 'Countries' => $Countries, 'currentUserInfo' => $currentUserInfo]);
   }
   // create
   public function Create()
@@ -49,7 +52,8 @@ class VolunteerController extends Controller
       'Resume' => 'required|max:255',
     ]);
 
-      $currentUserInfo = Location::get();
+    $ip = $request->ip();
+    $currentUserInfo = Location::get($ip);
     Volunteer::create([
       'FirstName' => request('FirstName'),
       'LastName'  => request('LastName'),

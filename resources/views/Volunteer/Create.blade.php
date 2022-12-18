@@ -138,19 +138,6 @@
                                                             <label for="InterestedDepartment_ID" class="form-label">Which department you are interested in? <i class="mdi mdi-asterisk text-danger"></i></label>
                                                             <select class="form-select  form-select-lg @error('InterestedDepartment_ID') is-invalid @enderror" value="{{ old('InterestedDepartment_ID') }}" id="InterestedDepartment_ID" name="InterestedDepartment_ID" required>
                                                                 <option value="">Select Your Choice</option>
-                                                                {{-- <option value="Fundraising">Fundraising</option>
-                                                                <option value="Marketing">Marketing</option>
-                                                                <option value="Social Media">Social Media</option>
-                                                                <option value="Orphan Reflief">Orphan Reflief</option>
-                                                                <option value="Emergency Aid">Emergency Aid</option>
-                                                                <option value="Appeals">Appeals</option>
-                                                                <option value="Video Editor">Video Editor</option>
-                                                                <option value="Geographic Design">Geographic Design</option>
-                                                                <option value="Qamar Care">Qamar Care</option>
-                                                                <option value="School and Orphanage">School and Orphanage</option>
-                                                                <option value="Translation">Translation</option>
-                                                                <option value="Campaign">Campaign</option>
-                                                                <option value="Web Development">Web Development</option> --}}
                                                                 @foreach($InterestedDepartments as $InterestedDepartment)
                                                                 <option value="{{ $InterestedDepartment -> id}}">{{ $InterestedDepartment -> Name}}</option>
                                                                 @endforeach
