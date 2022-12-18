@@ -7,7 +7,7 @@
     <div class="col-md-4 col-sm-12 ">
         <a href="<?php echo e(route('root')); ?>" class="btn btn-outline-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         <?php if($PageInfo == 'All'): ?>
-        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20 "></i>Global Volunteers</span>
+        <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20 "></i>Global Representatives</span>
         <?php endif; ?>
     </div>
 </div>
@@ -32,15 +32,15 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href = this.value;">
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('search', [])->html();
-} elseif ($_instance->childHasBeenRendered('GWpSi7i')) {
-    $componentId = $_instance->getRenderedChildComponentId('GWpSi7i');
-    $componentTag = $_instance->getRenderedChildComponentTagName('GWpSi7i');
+} elseif ($_instance->childHasBeenRendered('t5iFDt0')) {
+    $componentId = $_instance->getRenderedChildComponentId('t5iFDt0');
+    $componentTag = $_instance->getRenderedChildComponentTagName('t5iFDt0');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('GWpSi7i');
+    $_instance->preserveRenderedChild('t5iFDt0');
 } else {
     $response = \Livewire\Livewire::mount('search', []);
     $html = $response->html();
-    $_instance->logRenderedChild('GWpSi7i', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('t5iFDt0', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
@@ -64,9 +64,9 @@ echo $html;
                         <th>Full Name</th>
                         <th>Address</th>
                         <th>Contacts</th>
-                        <th>Volunteer In</th>
                         <th>Date Of Birth</th>
-                        <th>Reason</th>
+                        <th>What You Offer</th>
+                        <th>Documents</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -101,11 +101,6 @@ echo $html;
                             </div>
                         </td>
                         <td>
-                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-success"><?php echo e($data -> InterestedDepartment); ?></a></h5>
-                            <a href="<?php echo e(URL::asset('/uploads/Volunteer/Resumes/'.$data -> Resume)); ?>" target="_blank" class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Resume">
-                                <i class="mdi mdi-file-document-outline text-info font-size-18"></i>Resume</a>
-                        </td>
-                        <td>
                             <div>
                                 <h5 class="font-size-14 mb-1 text-dark"><?php echo e(Carbon\Carbon::parse($data -> DOB) -> format("j F Y")); ?> </h5>
                                 <h5 class="font-size-14 mb-1 text-warning"> <?php echo e(\Carbon\Carbon::parse($data -> DOB)->diff(\Carbon\Carbon::now())->format('%y')); ?> Years Old </h5>
@@ -119,10 +114,10 @@ echo $html;
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="staticBackdropLabel">Reason</h5>
+                                                <h5 class="modal-title" id="staticBackdropLabel">What can I offer? </h5>
                                             </div>
                                             <div class="modal-body">
-                                                <p><?php echo e($data -> Reason); ?></p>
+                                                <p><?php echo e($data -> WhatYouOffer); ?></p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Understand</button>
@@ -131,6 +126,13 @@ echo $html;
                                     </div>
                                 </div>
                             </div>
+                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark badge badge-soft-success"><?php echo e($data -> WeeklyHours); ?> Hours Per Week</a></h5>
+                            <h5 class="font-size-14 mb-1">Media Presence <a href="#" class="text-dark badge badge-soft-primary"> <?php echo e($data -> MediaPresence); ?></a></h5>
+                        </td>
+                        <td>
+                            <a href="<?php echo e(URL::asset('/uploads/Representative/Profiles/'.$data -> Profile)); ?>" target="_blank" class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to Profile"><i class="mdi mdi-face text-info font-size-18"></i> Profile</a> <br />
+                            <a href="<?php echo e(URL::asset('/uploads/Representative/Passports/'.$data -> Passport)); ?>" target="_blank" class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to Passport"><i class="mdi mdi-passport text-info font-size-18"></i> Passport</a><br />
+                            <a href="<?php echo e(URL::asset('/uploads/Representative/Resumes/'.$data -> Resume)); ?>" target="_blank" class="text-dark" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to Resume"><i class="mdi mdi-file-document-outline text-info font-size-18"></i> Resume</a>
                         </td>
                         <td>
                             <a href="<?php echo e(route('DeleteRepresentative', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">

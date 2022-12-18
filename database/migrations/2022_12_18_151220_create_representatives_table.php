@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('City')->nullable();
             $table->integer('WeeklyHours')->nullable();
             $table->string('MediaPresence')->nullable();
-            $table->string('WhatYouOffer')->nullable();
+            $table->longText('WhatYouOffer')->nullable();
             $table->string('Profile')->nullable();
             $table->string('Passport')->nullable();
             $table->string('Resume')->nullable();

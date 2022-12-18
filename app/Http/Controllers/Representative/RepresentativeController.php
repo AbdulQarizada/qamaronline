@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Representative;
 use App\Http\Controllers\Controller;
 use App\Models\LookUp;
 use App\Models\Representative;
-use App\Models\Volunteer;
 use Illuminate\Http\Request;
 use Stevebauman\Location\Facades\Location;
 
@@ -40,30 +39,38 @@ class RepresentativeController extends Controller
       'Gender_ID' => 'required|max:10',
       // Contact
       'PrimaryNumber' => 'required|max:10',
-      'Email' => 'required|max:255|unique:volunteers',
+      'Email' => 'required|max:255|unique:representatives',
       // Questions
-      'InterestedDepartment_ID' => 'required',
-      'Reason' => 'required',
+      'WeeklyHours' => 'required',
+      'WhatYouOffer' => 'required',
+      'MediaPresence' => 'required',
       // documents
       'Resume' => 'required',
+      'Profile' => 'required',
+      'Passport' => 'required',
+
     ]);
 
-    // $ip = $request->ip();
-    // $currentUserInfo = Location::get($ip);
+    $ip = $request->ip();
+    $currentUserInfo = Location::get($ip);
     Representative::create([
       'FirstName' => request('FirstName'),
       'LastName'  => request('LastName'),
       'DOB' => request('DOB'),
       'Gender_ID' => request('Gender_ID'),
-      // 'Country' => $currentUserInfo->countryName,
-      // 'City' => $currentUserInfo->cityName,
+      'Country' => $currentUserInfo->countryName,
+      'City' => $currentUserInfo->cityName,
       'PrimaryNumber' => request('PrimaryNumber'),
       'SecondaryNumber' => request('SecondaryNumber'),
       'Address' => request('Address'),
       'Email' => request('Email'),
-      'InterestedDepartment_ID' => request('InterestedDepartment_ID'),
-      'Reason' => request('Reason'),
+      'WeeklyHours' => request('WeeklyHours'),
+      'WhatYouOffer' => request('WhatYouOffer'),
+      'MediaPresence' => request('MediaPresence'),
+
       'Resume' => request('Resume'),
+      'Profile' => request('Profile'),
+      'Passport' => request('Passport'),
       'Owner' => 1,
     ]);
     return redirect()->route('SuccessRepresentative');

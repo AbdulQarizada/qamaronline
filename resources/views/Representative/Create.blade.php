@@ -15,7 +15,7 @@
     <span class="my-0 mb-3 text-center card-title fw-medium font-size-24 text-wrap text-uppercase"></i>REPRESENTATIVE Form</span>
     @endif
 </div>
-<form class="needs-validation" action="{{route('CreateVolunteer')}}" method="POST" enctype="multipart/form-data" novalidate>
+<form class="needs-validation" action="{{route('CreateRepresentative')}}" method="POST" enctype="multipart/form-data" novalidate>
     @csrf
     <div class="checkout-tabs">
         <div class="row">
@@ -36,7 +36,7 @@
                                     <h4 class="card-header bg-primary text-white mb-3"></h4>
                                     <div class="">
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-10">
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <div class="mb-3 position-relative">
@@ -135,13 +135,24 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="mb-3 position-relative">
-                                                            <label for="InterestedDepartment_ID" class="form-label">Which department you are interested in? <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                            <select class="form-select  form-select-lg @error('InterestedDepartment_ID') is-invalid @enderror" value="{{ old('InterestedDepartment_ID') }}" id="InterestedDepartment_ID" name="InterestedDepartment_ID" required>
+                                                            <label for="WeeklyHours" class="form-label ">Hours In a Week You Can Give to Qamar? <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                            <input type="number" class="form-control form-control-lg @error('WeeklyHours') is-invalid @enderror" value="{{ old('WeeklyHours') }}" id="WeeklyHours" name="WeeklyHours" min="1" max="45" required>
+                                                            @error('WeeklyHours')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="mb-3 position-relative">
+                                                            <label for="MediaPresence" class="form-label">Are You Okey To Be Part of Qamar's video Production? <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                            <select class="form-select  form-select-lg @error('MediaPresence') is-invalid @enderror" value="{{ old('MediaPresence') }}" id="MediaPresence" name="MediaPresence" required>
                                                                 <option value="">Select Your Choice</option>
                                                                 <option value="Yes">Yes</option>
                                                                 <option value="No">No</option>
                                                             </select>
-                                                            @error('InterestedDepartment_ID')
+                                                            @error('MediaPresence')
                                                             <span class="invalid-feedback" role="alert">
                                                                 <strong>{{ $message }}</strong>
                                                             </span>
@@ -150,12 +161,20 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-md-2 justify-content-center">
+                                                <input type="file" class="my-pond @error('Profile') is-invalid @enderror" value="{{ old('Profile') }}" id="Profile" name="Profile" />
+                                                @error('Profile')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
                                         </div>
                                         <div class="row mb-4">
                                             <div class="col-md-12">
-                                                <label for="Reason" class="form-label">Please indicate why you want to be volunteer? <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                <textarea id="textarea" class="form-control @error('Reason') is-invalid @enderror" maxlength="2205" rows="10" value="{{ old('Reason') }}" required name="Reason" id="Reason" required></textarea>
-                                                @error('Reason')
+                                                <label for="WhatYouOffer" class="form-label">Please indicate What Can You Offer to Qamar? <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                <textarea id="textarea" class="form-control @error('WhatYouOffer') is-invalid @enderror" maxlength="2205" rows="10" value="{{ old('WhatYouOffer') }}" required name="WhatYouOffer" id="WhatYouOffer" placeholder="e.g Find Monthly Funders, Rais Funds, Design Posters etc." required></textarea>
+                                                @error('WhatYouOffer')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -163,6 +182,15 @@
                                             </div>
                                         </div>
                                         <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="Passport" class="form-label">Passport <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                <input type="file" class="my-pond @error('Passport') is-invalid @enderror" value="{{ old('Passport') }}" name="Passport" id="Passport" />
+                                                @error('Passport')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
                                             <div class="col-md-4">
                                                 <label for="Resume" class="form-label">Resume <i class="mdi mdi-asterisk text-danger"></i></label>
                                                 <input type="file" class="my-pond @error('Resume') is-invalid @enderror" value="{{ old('Resume') }}" name="Resume" id="Resume" />
@@ -209,6 +237,33 @@
     FilePond.registerPlugin(FilePondPluginFileValidateType);
 
     // Get a reference to the file input element
+    const inputProfile = document.querySelector('input[name="Profile"]');
+    const Profile = FilePond.create(inputProfile, {
+        labelIdle: 'Profile <span class="bx bx-upload"></span >'
+        , server: {
+
+            url: '{{ route('Representative_Profile')}}'
+            , headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+
+        }
+        , acceptedFileTypes: ['image/png', 'image/jpeg']
+        , allowFileTypeValidation: true
+        , instantUpload: true
+        , imagePreviewHeight: 100
+        , imageCropAspectRatio: '1:1'
+        , imageResizeTargetWidth: 10
+        , imageResizeTargetHeight: 10
+        , stylePanelLayout: 'compact circle'
+        , styleLoadIndicatorPosition: 'center bottom'
+        , styleProgressIndicatorPosition: 'right bottom'
+        , styleButtonRemoveItemPosition: 'left bottom'
+        , styleButtonProcessItemPosition: 'right bottom'
+
+    });
+
+    // Get a reference to the file input element
     const inputResume = document.querySelector('input[name="Resume"]');
     const Resume = FilePond.create(inputResume, {
         labelIdle: 'Drag & Drop your Resume or <span class="filepond--label-action"> Browse </span>'
@@ -216,7 +271,7 @@
         , allowFileTypeValidation: true
         , server: {
 
-            url: '{{route('Volunteer_Resume')}}'
+            url: '{{route('Representative_Resume')}}'
             , headers: {
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             }
@@ -224,5 +279,20 @@
         , instantUpload: true
     , });
 
+    // Get a reference to the file input element
+    const inputPassport = document.querySelector('input[name="Passport"]');
+    const Passport = FilePond.create(inputPassport, {
+        labelIdle: 'Drag & Drop your Passport or <span class="filepond--label-action"> Browse </span>'
+        , acceptedFileTypes: ['application/pdf', 'image/jpeg']
+        , allowFileTypeValidation: true
+        , server: {
+
+            url: '{{route('Representative_Passport')}}'
+            , headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+        }
+        , instantUpload: true
+    , });
 </script>
 @endsection

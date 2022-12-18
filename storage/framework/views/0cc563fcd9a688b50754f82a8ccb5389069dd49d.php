@@ -15,7 +15,7 @@
     <span class="my-0 mb-3 text-center card-title fw-medium font-size-24 text-wrap text-uppercase"></i>REPRESENTATIVE Form</span>
     <?php endif; ?>
 </div>
-<form class="needs-validation" action="<?php echo e(route('CreateVolunteer')); ?>" method="POST" enctype="multipart/form-data" novalidate>
+<form class="needs-validation" action="<?php echo e(route('CreateRepresentative')); ?>" method="POST" enctype="multipart/form-data" novalidate>
     <?php echo csrf_field(); ?>
     <div class="checkout-tabs">
         <div class="row">
@@ -36,7 +36,7 @@
                                     <h4 class="card-header bg-primary text-white mb-3"></h4>
                                     <div class="">
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-10">
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <div class="mb-3 position-relative">
@@ -247,20 +247,45 @@ unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="mb-3 position-relative">
-                                                            <label for="InterestedDepartment_ID" class="form-label">Which department you are interested in? <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                            <select class="form-select  form-select-lg <?php $__errorArgs = ['InterestedDepartment_ID'];
+                                                            <label for="WeeklyHours" class="form-label ">Hours In a Week You Can Give to Qamar? <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                            <input type="number" class="form-control form-control-lg <?php $__errorArgs = ['WeeklyHours'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('InterestedDepartment_ID')); ?>" id="InterestedDepartment_ID" name="InterestedDepartment_ID" required>
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('WeeklyHours')); ?>" id="WeeklyHours" name="WeeklyHours" min="1" max="45" required>
+                                                            <?php $__errorArgs = ['WeeklyHours'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong><?php echo e($message); ?></strong>
+                                                            </span>
+                                                            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="mb-3 position-relative">
+                                                            <label for="MediaPresence" class="form-label">Are You Okey To Be Part of Qamar's video Production? <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                            <select class="form-select  form-select-lg <?php $__errorArgs = ['MediaPresence'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('MediaPresence')); ?>" id="MediaPresence" name="MediaPresence" required>
                                                                 <option value="">Select Your Choice</option>
                                                                 <option value="Yes">Yes</option>
                                                                 <option value="No">No</option>
                                                             </select>
-                                                            <?php $__errorArgs = ['InterestedDepartment_ID'];
+                                                            <?php $__errorArgs = ['MediaPresence'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -276,19 +301,41 @@ unset($__errorArgs, $__bag); ?>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row mb-4">
-                                            <div class="col-md-12">
-                                                <label for="Reason" class="form-label">Please indicate why you want to be volunteer? <i class="mdi mdi-asterisk text-danger"></i></label>
-                                                <textarea id="textarea" class="form-control <?php $__errorArgs = ['Reason'];
+                                            <div class="col-md-2 justify-content-center">
+                                                <input type="file" class="my-pond <?php $__errorArgs = ['Profile'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" maxlength="2205" rows="10" value="<?php echo e(old('Reason')); ?>" required name="Reason" id="Reason" required></textarea>
-                                                <?php $__errorArgs = ['Reason'];
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Profile')); ?>" id="Profile" name="Profile" />
+                                                <?php $__errorArgs = ['Profile'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-4">
+                                            <div class="col-md-12">
+                                                <label for="WhatYouOffer" class="form-label">Please indicate What Can You Offer to Qamar? <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                <textarea id="textarea" class="form-control <?php $__errorArgs = ['WhatYouOffer'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" maxlength="2205" rows="10" value="<?php echo e(old('WhatYouOffer')); ?>" required name="WhatYouOffer" id="WhatYouOffer" placeholder="e.g Find Monthly Funders, Rais Funds, Design Posters etc." required></textarea>
+                                                <?php $__errorArgs = ['WhatYouOffer'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -303,6 +350,29 @@ unset($__errorArgs, $__bag); ?>
                                             </div>
                                         </div>
                                         <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="Passport" class="form-label">Passport <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                <input type="file" class="my-pond <?php $__errorArgs = ['Passport'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('Passport')); ?>" name="Passport" id="Passport" />
+                                                <?php $__errorArgs = ['Passport'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                                            </div>
                                             <div class="col-md-4">
                                                 <label for="Resume" class="form-label">Resume <i class="mdi mdi-asterisk text-danger"></i></label>
                                                 <input type="file" class="my-pond <?php $__errorArgs = ['Resume'];
@@ -363,6 +433,33 @@ unset($__errorArgs, $__bag); ?>
     FilePond.registerPlugin(FilePondPluginFileValidateType);
 
     // Get a reference to the file input element
+    const inputProfile = document.querySelector('input[name="Profile"]');
+    const Profile = FilePond.create(inputProfile, {
+        labelIdle: 'Profile <span class="bx bx-upload"></span >'
+        , server: {
+
+            url: '<?php echo e(route('Representative_Profile')); ?>'
+            , headers: {
+                'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
+            }
+
+        }
+        , acceptedFileTypes: ['image/png', 'image/jpeg']
+        , allowFileTypeValidation: true
+        , instantUpload: true
+        , imagePreviewHeight: 100
+        , imageCropAspectRatio: '1:1'
+        , imageResizeTargetWidth: 10
+        , imageResizeTargetHeight: 10
+        , stylePanelLayout: 'compact circle'
+        , styleLoadIndicatorPosition: 'center bottom'
+        , styleProgressIndicatorPosition: 'right bottom'
+        , styleButtonRemoveItemPosition: 'left bottom'
+        , styleButtonProcessItemPosition: 'right bottom'
+
+    });
+
+    // Get a reference to the file input element
     const inputResume = document.querySelector('input[name="Resume"]');
     const Resume = FilePond.create(inputResume, {
         labelIdle: 'Drag & Drop your Resume or <span class="filepond--label-action"> Browse </span>'
@@ -370,7 +467,7 @@ unset($__errorArgs, $__bag); ?>
         , allowFileTypeValidation: true
         , server: {
 
-            url: '<?php echo e(route('Volunteer_Resume')); ?>'
+            url: '<?php echo e(route('Representative_Resume')); ?>'
             , headers: {
                 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
             }
@@ -378,6 +475,21 @@ unset($__errorArgs, $__bag); ?>
         , instantUpload: true
     , });
 
+    // Get a reference to the file input element
+    const inputPassport = document.querySelector('input[name="Passport"]');
+    const Passport = FilePond.create(inputPassport, {
+        labelIdle: 'Drag & Drop your Passport or <span class="filepond--label-action"> Browse </span>'
+        , acceptedFileTypes: ['application/pdf', 'image/jpeg']
+        , allowFileTypeValidation: true
+        , server: {
+
+            url: '<?php echo e(route('Representative_Passport')); ?>'
+            , headers: {
+                'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
+            }
+        }
+        , instantUpload: true
+    , });
 </script>
 <?php $__env->stopSection(); ?>
 

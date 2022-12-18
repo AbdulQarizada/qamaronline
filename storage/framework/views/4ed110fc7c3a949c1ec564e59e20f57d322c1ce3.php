@@ -1,9 +1,9 @@
-@extends('layouts.master-without-nav')
-@section('title') Representatives @endsection
-@section('body')
+
+<?php $__env->startSection('title'); ?> Representatives <?php $__env->stopSection(); ?>
+<?php $__env->startSection('body'); ?>
 <body>
-@endsection
-@section('content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
   <section class="my-5 pt-sm-5">
         <div class="container">
             <div class="row">
@@ -15,7 +15,7 @@
                             <div class="col-md-4">
                                 <div class="card mt-4 maintenance-box">
                                     <div class="card-body">
-                                        <img src="{{ URL::asset('/assets/images/logo-dark@2x.png') }}" alt="" height="50" class="auth-logo-light mx-auto">
+                                        <img src="<?php echo e(URL::asset('/assets/images/logo-dark@2x.png')); ?>" alt="" height="50" class="auth-logo-light mx-auto">
                                         <h5 class="font-size-15 text-uppercase mt-2">Haven't Heard about Qamar?</h5>
                                         <p class="text-muted mb-0">Please click on the link below to know more about Qamar Charity Foundation.</p>
                                         <a href="https://qamarcharity.org/">Qamar Charity Foundation <i class="bx bx-right-arrow-alt "></i></a>
@@ -25,7 +25,7 @@
                             <div class="col-md-4">
                                 <div class="card mt-4 maintenance-box">
                                     <div class="card-body">
-                                        <img src="{{ URL::asset('/assets/images/ulearna-newa.png') }}" alt="" height="50" class="auth-logo-light mx-auto">
+                                        <img src="<?php echo e(URL::asset('/assets/images/ulearna-newa.png')); ?>" alt="" height="50" class="auth-logo-light mx-auto">
                                         <h5 class="font-size-15 text-uppercase mt-2">
                                             Want to learn online?</h5>
                                         <p class="text-muted mb-0">uLearna is the platform to learn online from you home.</p>
@@ -49,4 +49,6 @@
             </div>
         </div>
     </section>
- @endsection
+ <?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.master-without-nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/Representative/Success.blade.php ENDPATH**/ ?>

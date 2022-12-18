@@ -25,5 +25,8 @@ Route::get('/Representative/Success', [App\Http\Controllers\Representative\Repre
 Route::get('/Representative/Search/{data}', [App\Http\Controllers\Representative\RepresentativeController::class, 'Search'])->name('SearchRepresentative');
 // uploads
 Route::post('/Representative/Representative_Resume', [App\FileUpload\Representative::class, 'Representative_Resume'])->name('Representative_Resume');
+Route::post('/Representative/Representative_Profile', [App\FileUpload\Representative::class, 'Representative_Profile'])->name('Representative_Profile');
+Route::post('/Representative/Representative_Passport', [App\FileUpload\Representative::class, 'Representative_Passport'])->name('Representative_Passport');
+
 
 
