@@ -81,6 +81,19 @@
                     </ul>
                 </li>
                 @endif
+                @if(Auth::user()->IsRepresentative == 1)
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-account-supervisor-circle-outline"></i>
+                        <span key="t-layouts">Representative</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        @if(Auth::user()->IsVolunteer == 1)
+                        <li><a href="{{route('AllRepresentative')}}" key="t-horizontal"><i class="mdi mdi-account-supervisor-circle-outline"></i>Representatives</a></li>
+                        @endif
+                    </ul>
+                </li>
+                @endif
                 @if(Auth::user()->IsVolunteer == 1)
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -94,7 +107,6 @@
                     </ul>
                 </li>
                 @endif
-
 
                 @if(Auth::user()->IsSuperAdmin == 1)
                 <li class="menu-title" key="t-apps">System Management</li>
