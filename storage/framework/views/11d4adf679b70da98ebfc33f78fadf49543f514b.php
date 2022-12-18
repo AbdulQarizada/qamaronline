@@ -8,7 +8,7 @@
 <div class="row mt-4">
     <?php if(Auth::check()): ?>
     <div class="col-md-4 col-sm-12">
-        <a href="<?php echo e(route('AllScholarship')); ?>" class="btn btn-outline-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
+        <a href="<?php echo e(route('AllVolunteer')); ?>" class="btn btn-outline-info btn-lg waves-effect mb-3 btn-label waves-light"><i class="bx bx-left-arrow  font-size-16 label-icon"></i>Back</a>
         <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20 "></i>Add Volunteer</span>
     </div>
     <?php else: ?>
@@ -257,7 +257,6 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" value="<?php echo e(old('InterestedDepartment_ID')); ?>" id="InterestedDepartment_ID" name="InterestedDepartment_ID" required>
                                                                 <option value="">Select Your Choice</option>
-                                                                
                                                                 <?php $__currentLoopData = $InterestedDepartments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $InterestedDepartment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                                 <option value="<?php echo e($InterestedDepartment -> id); ?>"><?php echo e($InterestedDepartment -> Name); ?></option>
                                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
