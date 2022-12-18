@@ -1,5 +1,5 @@
 @extends(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts')
-@section('title') Volunteers @endsection
+@section('title') Representatives @endsection
 @section('css')
 @endsection
 @section('content')
@@ -14,10 +14,10 @@
 <div class="row">
     <div class="col-md-3 col-sm-12 mb-2">
         <select class="form-select  form-select-lg @error('Country') is-invalid @enderror" onchange="window.location.href = this.value;">
-            <option value="{{route('AllVolunteer')}}">Please Filter Your Choices</option>
-            <option value="{{route('AllVolunteer')}}" {{ $PageInfo == 'All' ? 'selected' : '' }}>Global</option>
+            <option value="{{route('AllRepresentative')}}">Please Filter Your Choices</option>
+            <option value="{{route('AllRepresentative')}}" {{ $PageInfo == 'All' ? 'selected' : '' }}>Global</option>
             @foreach ($Countries as $Country)
-            <option value="{{route('SearchVolunteer', ['data' => $Country -> Country])}}" {{ $PageInfo == $Country -> Country ? 'selected' : '' }}>{{ $Country -> Country}}</option>
+            <option value="{{route('SearchRepresentative', ['data' => $Country -> Country])}}" {{ $PageInfo == $Country -> Country ? 'selected' : '' }}>{{ $Country -> Country}}</option>
             @endforeach
         </select>
     </div>
@@ -25,8 +25,8 @@
         <livewire:search />
     </div>
     <div class="col-md-5 col-sm-12 mb-2">
-        <a href="#" class="btn  btn-lg waves-effect  waves-light  m-1 float-end" data-bs-toggle="tooltip" data-bs-placement="top" title="All Volunteer Grid View"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a>
-        <a href="{{route('CreateVolunteer')}}" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD VOLUNTEER</a>
+        <a href="#" class="btn  btn-lg waves-effect  waves-light  m-1 float-end" data-bs-toggle="tooltip" data-bs-placement="top" title="All Representative Grid View"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a>
+        <a href="{{route('CreateRepresentative')}}" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD REPRESENTATIVE</a>
     </div>
 </div>
 <div class="row">
@@ -111,7 +111,7 @@
                             </div>
                         </td>
                         <td>
-                            <a href="{{route('DeleteVolunteer', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
+                            <a href="{{route('DeleteRepresentative', ['data' => $data -> id])}}" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
                                 <i class="mdi mdi-delete-outline font-size-16 align-middle"></i>
                             </a>
                         </td>

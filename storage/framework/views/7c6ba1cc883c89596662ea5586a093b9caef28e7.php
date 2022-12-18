@@ -1,5 +1,5 @@
 
-<?php $__env->startSection('title'); ?> Volunteers <?php $__env->stopSection(); ?>
+<?php $__env->startSection('title'); ?> Representatives <?php $__env->stopSection(); ?>
 <?php $__env->startSection('css'); ?>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
@@ -21,10 +21,10 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" onchange="window.location.href = this.value;">
-            <option value="<?php echo e(route('AllVolunteer')); ?>">Please Filter Your Choices</option>
-            <option value="<?php echo e(route('AllVolunteer')); ?>" <?php echo e($PageInfo == 'All' ? 'selected' : ''); ?>>Global</option>
+            <option value="<?php echo e(route('AllRepresentative')); ?>">Please Filter Your Choices</option>
+            <option value="<?php echo e(route('AllRepresentative')); ?>" <?php echo e($PageInfo == 'All' ? 'selected' : ''); ?>>Global</option>
             <?php $__currentLoopData = $Countries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $Country): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <option value="<?php echo e(route('SearchVolunteer', ['data' => $Country -> Country])); ?>" <?php echo e($PageInfo == $Country -> Country ? 'selected' : ''); ?>><?php echo e($Country -> Country); ?></option>
+            <option value="<?php echo e(route('SearchRepresentative', ['data' => $Country -> Country])); ?>" <?php echo e($PageInfo == $Country -> Country ? 'selected' : ''); ?>><?php echo e($Country -> Country); ?></option>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </select>
     </div>
@@ -32,22 +32,22 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href = this.value;">
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('search', [])->html();
-} elseif ($_instance->childHasBeenRendered('eR0AFMV')) {
-    $componentId = $_instance->getRenderedChildComponentId('eR0AFMV');
-    $componentTag = $_instance->getRenderedChildComponentTagName('eR0AFMV');
+} elseif ($_instance->childHasBeenRendered('GWpSi7i')) {
+    $componentId = $_instance->getRenderedChildComponentId('GWpSi7i');
+    $componentTag = $_instance->getRenderedChildComponentTagName('GWpSi7i');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('eR0AFMV');
+    $_instance->preserveRenderedChild('GWpSi7i');
 } else {
     $response = \Livewire\Livewire::mount('search', []);
     $html = $response->html();
-    $_instance->logRenderedChild('eR0AFMV', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('GWpSi7i', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
     </div>
     <div class="col-md-5 col-sm-12 mb-2">
-        <a href="#" class="btn  btn-lg waves-effect  waves-light  m-1 float-end" data-bs-toggle="tooltip" data-bs-placement="top" title="All Volunteer Grid View"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a>
-        <a href="<?php echo e(route('CreateVolunteer')); ?>" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD VOLUNTEER</a>
+        <a href="#" class="btn  btn-lg waves-effect  waves-light  m-1 float-end" data-bs-toggle="tooltip" data-bs-placement="top" title="All Representative Grid View"> <i class="bx bx-grid-alt font-size-24 align-middle"></i></a>
+        <a href="<?php echo e(route('CreateRepresentative')); ?>" class="btn btn-outline-success btn-lg waves-effect  waves-light float-end btn-rounded"><i class="mdi mdi-plus me-1"></i>ADD REPRESENTATIVE</a>
     </div>
 </div>
 <div class="row">
@@ -133,7 +133,7 @@ echo $html;
                             </div>
                         </td>
                         <td>
-                            <a href="<?php echo e(route('DeleteVolunteer', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
+                            <a href="<?php echo e(route('DeleteRepresentative', ['data' => $data -> id])); ?>" class="btn btn-sm btn-outline-danger waves-effect waves-light delete-confirm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Record">
                                 <i class="mdi mdi-delete-outline font-size-16 align-middle"></i>
                             </a>
                         </td>
@@ -179,4 +179,4 @@ echo $html;
 </script>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/Volunteer/All.blade.php ENDPATH**/ ?>
+<?php echo $__env->make(Cookie::get('Layout') == 'LayoutSidebar' ? 'Layouts.master' : 'Layouts.master-layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\TheDeveloper\Desktop\Projects\Qamar\qamaronline\resources\views/Representative/All.blade.php ENDPATH**/ ?>

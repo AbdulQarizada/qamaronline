@@ -243,7 +243,7 @@
             <?php endif; ?>
             <?php if(Auth::user()->IsRepresentative == 1): ?>
             <div class="col-md-2 mb-2">
-                <a href="#">
+                <a href="<?php echo e(route('AllRepresentative')); ?>">
                     <div class="card-one  mini-stats-wid border border-secondary">
                         <div class="card-body text-center">
                             <div class="d-flex">

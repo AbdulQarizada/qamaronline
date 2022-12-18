@@ -49,12 +49,6 @@ return [
             'root'   => public_path() . '/uploads/Scholarship/Applicants',
         ],
 
-        'Volunteer' => [
-            'driver' => 'local',
-            'root'   => public_path() . '/uploads/Volunteer',
-        ],
-
-
         'Beneficiaries' => [
             'driver' => 'local',
             'root'   => public_path() . '/uploads/QamarCareCard/Beneficiaries',
@@ -64,6 +58,18 @@ return [
             'driver' => 'local',
             'root'   => public_path() . '/uploads/QamarCareCard/ServiceProvider/Individual',
         ],
+
+
+        'Volunteer' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/Volunteer',
+        ],
+
+        'Representative' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/Representative',
+        ],
+
 
 
 

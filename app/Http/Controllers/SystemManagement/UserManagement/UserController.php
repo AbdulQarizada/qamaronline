@@ -225,6 +225,8 @@ class UserController extends Controller
       'IsQamarCareCard' => request('IsQamarCareCard'),
       'IsAppealsDistributions' => request('IsAppealsDistributions'),
       'IsDonorsAndDonorBoxes' => request('IsDonorsAndDonorBoxes'),
+      'IsVolunteer' => request('IsVolunteer'),
+      'IsRepresentative' => request('IsRepresentative'),
       'IsManager' => request('IsManager'),
       'IsGeneralManager' => request('IsGeneralManager'),
     ]);

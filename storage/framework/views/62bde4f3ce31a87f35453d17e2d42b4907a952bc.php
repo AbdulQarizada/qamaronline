@@ -493,6 +493,72 @@ unset($__errorArgs, $__bag); ?>">
                                                             <div class="col-md-2 mb-2">
                                                                 <div class="card-one  mini-stats-wid border border-secondary">
                                                                     <div class="card-body text-center">
+                                                                        <div class="form-check form-checkbox-outline form-check-danger float-end <?php $__errorArgs = ['IsVolunteer'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>">
+                                                                            <input class="form-check-input" type="checkbox" value="1" id="IsVolunteer" name="IsVolunteer" <?php echo e($data->IsVolunteer=="1"? 'checked':''); ?>>
+                                                                        </div>
+                                                                        <div class="d-flex">
+                                                                            <div class="flex-grow-1">
+                                                                                <i class="mdi mdi-account-star-outline display-5 "></i>
+                                                                                <p class="my-0 text-dark mt-2 font-size-18">Volunteers</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2 mb-2">
+                                                                <div class="card-one  mini-stats-wid border border-secondary">
+                                                                    <div class="card-body text-center">
+                                                                        <div class="form-check form-checkbox-outline form-check-danger float-end <?php $__errorArgs = ['IsRepresentative'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>">
+                                                                            <input class="form-check-input" type="checkbox" value="1" id="IsRepresentative" name="IsRepresentative" <?php echo e($data->IsRepresentative=="1"? 'checked':''); ?>>
+                                                                        </div>
+                                                                        <div class="d-flex">
+                                                                            <div class="flex-grow-1">
+                                                                                <i class="mdi mdi-account-supervisor-circle-outline display-5 "></i>
+                                                                                <p class="my-0 text-dark mt-2 font-size-18">Representatives</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2 mb-2">
+                                                                <div class="card-one  mini-stats-wid border border-secondary">
+                                                                    <div class="card-body text-center">
+                                                                        <div class="form-check form-checkbox-outline form-check-danger float-end <?php $__errorArgs = ['IsDonorsAndDonorBoxes'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>">
+                                                                            <input class="form-check-input" type="checkbox" value="1" id="IsDonorsAndDonorBoxes" name="IsDonorsAndDonorBoxes" <?php echo e($data->IsDonorsAndDonorBoxes=="1"? 'checked':''); ?>>
+                                                                        </div>
+                                                                        <div class="d-flex">
+                                                                            <div class="flex-grow-1">
+                                                                                <i class="bx bxs-box display-5 "></i>
+                                                                                <p class="my-0 text-dark mt-2 font-size-18">Donors</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2 mb-2">
+                                                                <div class="card-one  mini-stats-wid border border-secondary">
+                                                                    <div class="card-body text-center">
                                                                         <div class="form-check form-checkbox-outline form-check-danger float-end <?php $__errorArgs = ['IsSuperAdmin'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -728,6 +794,38 @@ unset($__errorArgs, $__bag); ?>">
                         <div class="flex-grow-1">
                             <i class="bx bxs-box display-5 "></i>
                             <p class="my-0 text-dark mt-2 font-size-18">Donors</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <?php endif; ?>
+    <?php if($data -> IsVolunteer == 1): ?>
+    <div class="col-md-2 mb-2">
+        <a href="<?php echo e(route('AllVolunteer')); ?>">
+            <div class="card-one  mini-stats-wid border border-secondary">
+                <div class="card-body text-center">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <i class="mdi mdi-account-star-outline display-5 "></i>
+                            <p class="my-0 text-dark mt-2 font-size-18">Volunteers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <?php endif; ?>
+    <?php if($data ->  IsRepresentative  == 1): ?>
+    <div class="col-md-2 mb-2">
+        <a href="<?php echo e(route('AllRepresentative')); ?>">
+            <div class="card-one  mini-stats-wid border border-secondary">
+                <div class="card-body text-center">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <i class="mdi mdi-account-supervisor-circle-outline display-5 "></i>
+                            <p class="my-0 text-dark mt-2 font-size-18">Representatives</p>
                         </div>
                     </div>
                 </div>

@@ -352,6 +352,51 @@
                                                             <div class="col-md-2 mb-2">
                                                                 <div class="card-one  mini-stats-wid border border-secondary">
                                                                     <div class="card-body text-center">
+                                                                        <div class="form-check form-checkbox-outline form-check-danger float-end @error('IsVolunteer') is-invalid @enderror">
+                                                                            <input class="form-check-input" type="checkbox" value="1" id="IsVolunteer" name="IsVolunteer" {{ $data->IsVolunteer=="1"? 'checked':'' }}>
+                                                                        </div>
+                                                                        <div class="d-flex">
+                                                                            <div class="flex-grow-1">
+                                                                                <i class="mdi mdi-account-star-outline display-5 "></i>
+                                                                                <p class="my-0 text-dark mt-2 font-size-18">Volunteers</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2 mb-2">
+                                                                <div class="card-one  mini-stats-wid border border-secondary">
+                                                                    <div class="card-body text-center">
+                                                                        <div class="form-check form-checkbox-outline form-check-danger float-end @error('IsRepresentative') is-invalid @enderror">
+                                                                            <input class="form-check-input" type="checkbox" value="1" id="IsRepresentative" name="IsRepresentative" {{ $data->IsRepresentative=="1"? 'checked':'' }}>
+                                                                        </div>
+                                                                        <div class="d-flex">
+                                                                            <div class="flex-grow-1">
+                                                                                <i class="mdi mdi-account-supervisor-circle-outline display-5 "></i>
+                                                                                <p class="my-0 text-dark mt-2 font-size-18">Representatives</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2 mb-2">
+                                                                <div class="card-one  mini-stats-wid border border-secondary">
+                                                                    <div class="card-body text-center">
+                                                                        <div class="form-check form-checkbox-outline form-check-danger float-end @error('IsDonorsAndDonorBoxes') is-invalid @enderror">
+                                                                            <input class="form-check-input" type="checkbox" value="1" id="IsDonorsAndDonorBoxes" name="IsDonorsAndDonorBoxes" {{ $data->IsDonorsAndDonorBoxes=="1"? 'checked':'' }}>
+                                                                        </div>
+                                                                        <div class="d-flex">
+                                                                            <div class="flex-grow-1">
+                                                                                <i class="bx bxs-box display-5 "></i>
+                                                                                <p class="my-0 text-dark mt-2 font-size-18">Donors</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2 mb-2">
+                                                                <div class="card-one  mini-stats-wid border border-secondary">
+                                                                    <div class="card-body text-center">
                                                                         <div class="form-check form-checkbox-outline form-check-danger float-end @error('IsSuperAdmin') is-invalid @enderror">
                                                                             <input class="form-check-input" type="checkbox" value="1" id="IsSuperAdmin" name="IsSuperAdmin" {{ $data->IsSuperAdmin=="1"? 'checked':'' }}>
                                                                         </div>
@@ -566,6 +611,38 @@
                         <div class="flex-grow-1">
                             <i class="bx bxs-box display-5 "></i>
                             <p class="my-0 text-dark mt-2 font-size-18">Donors</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    @endif
+    @if($data -> IsVolunteer == 1)
+    <div class="col-md-2 mb-2">
+        <a href="{{route('AllVolunteer')}}">
+            <div class="card-one  mini-stats-wid border border-secondary">
+                <div class="card-body text-center">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <i class="mdi mdi-account-star-outline display-5 "></i>
+                            <p class="my-0 text-dark mt-2 font-size-18">Volunteers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    @endif
+    @if($data ->  IsRepresentative  == 1)
+    <div class="col-md-2 mb-2">
+        <a href="{{route('AllRepresentative')}}">
+            <div class="card-one  mini-stats-wid border border-secondary">
+                <div class="card-body text-center">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <i class="mdi mdi-account-supervisor-circle-outline display-5 "></i>
+                            <p class="my-0 text-dark mt-2 font-size-18">Representatives</p>
                         </div>
                     </div>
                 </div>

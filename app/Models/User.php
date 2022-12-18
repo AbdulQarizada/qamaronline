@@ -46,6 +46,8 @@ class User extends Authenticatable
         'IsQamarCareCard',
         'IsAppealsDistributions',
         'IsDonorsAndDonorBoxes',
+        'IsVolunteer',
+        'IsRepresentative',
         'IsGeneralManager',
         'IsManager',
         'Status',
