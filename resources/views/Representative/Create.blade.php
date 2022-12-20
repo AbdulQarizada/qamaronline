@@ -12,7 +12,7 @@
         <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20 "></i>Add REPRESENTATIVE</span>
     </div>
     @else
-    <span class="my-0 mb-3 text-center card-title fw-medium font-size-24 text-wrap text-uppercase"></i>REPRESENTATIVE Form</span>
+    <span class="my-0 mb-3 display-5 text-wrap text-uppercase "></i>REPRESENTATIVE Form</span>
     @endif
 </div>
 <form class="needs-validation" action="{{route('CreateRepresentative')}}" method="POST" enctype="multipart/form-data" novalidate>
