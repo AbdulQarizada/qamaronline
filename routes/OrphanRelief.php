@@ -81,6 +81,8 @@ Route::post('/OrphansRelief/Payment/StorePayment', [App\Http\Controllers\OrphanR
 Route::get('/OrphansRelief/Payment/Checkout', [App\Http\Controllers\OrphanRelief\Payments\PaymentsController::class, 'Checkout'])->name('CheckoutPayment');
 Route::get('/OrphansRelief/Payment/AddToCart/{data}', [App\Http\Controllers\OrphanRelief\Payments\PaymentsController::class, 'AddToCart'])->name('AddToCartPayment');
 Route::get('/OrphansRelief/Payment/RemoveFromCart/{data}', [App\Http\Controllers\OrphanRelief\Payments\PaymentsController::class, 'RemoveFromCart'])->name('RemoveFromCartPayment');
+// Refresh Payment
+Route::get('/OrphansRelief/Payment/Recuring', [App\Http\Controllers\OrphanRelief\Payments\PaymentsController::class, 'Recuring'])->name('RecuringPayment');
 
 // Card
 Route::get('/OrphansRelief/Card/All', [App\Http\Controllers\OrphanRelief\Cards\CardsController::class, 'All'])->name('AllCard');

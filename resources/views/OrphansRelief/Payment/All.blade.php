@@ -29,6 +29,9 @@
     <div class="col-md-4 mb-2">
         <livewire:search />
     </div>
+    <div class="col-md-5 col-sm-12 mb-2">
+        <a href="{{route('RecuringPayment')}}" class="btn btn-outline-info btn-lg waves-effect  waves-light float-end btn-rounded"><i class="mdi mdi-recycle me-1"></i>Refresh Payments</a>
+    </div>
 </div>
 <div class="row">
     <div class="col-12">
@@ -46,7 +49,7 @@
                         <th>Amount </th>
                         <th>Email</th>
                         <th>Status</th>
-                        <th>Created By</th>
+                        <th>Remarks</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -64,7 +67,7 @@
                             </div>
                         </td>
                         <td>
-                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> FullName}}</a></h5>
+                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> user -> FullName}}</a></h5>
                         </td>
                         <td>
                             <div>
@@ -79,7 +82,7 @@
                         </td>
                         <td>
                             <div>
-                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> Email}}</a></h5>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data -> user -> email}}</a></h5>
                             </div>
                         </td>
                         <td>
@@ -95,18 +98,9 @@
                             </div>
                         </td>
                         <td>
-                            @if( $data -> Created_By !="")
                             <div>
-                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data ->  UFirstName }} {{$data ->  ULastName }}</a></h5>
-                                <p class="text-muted mb-0">{{$data ->  UJob }}</p>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">{{$data ->  Remarks }}</a></h5>
                             </div>
-                            @endif
-                            @if( $data -> Created_By =="")
-                            <div>
-                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Online</a></h5>
-                                <p class="text-muted mb-0">Registration</p>
-                            </div>
-                            @endif
                         </td>
                         <td>
                             <div class="d-flex flex-wrap gap-2">

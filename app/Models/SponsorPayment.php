@@ -18,6 +18,7 @@ class SponsorPayment extends Model
      'Card_ID',
      'ChargeID',
      'IsPaid',
+     'Remarks',
      'Status_By',
      'Created_By',
      'Owner',
@@ -25,6 +26,6 @@ class SponsorPayment extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'Sponsor_ID');
     }
 }

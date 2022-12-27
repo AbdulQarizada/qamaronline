@@ -23,6 +23,7 @@ return new class extends Migration
             $table -> string('Card_ID')->nullable();
             $table -> string('ChargeID')->nullable();
             $table -> integer('IsPaid')->nullable();
+            $table -> longText('Remarks')->nullable();
             $table -> integer('Status_By')->nullable();
             $table -> integer('Created_By')->nullable();
             $table -> integer('Owner')->nullable();

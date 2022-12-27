@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Session;
 use Stripe\Charge;
 use Stripe\Customer;
 use Stripe\Stripe;
+use Carbon\Carbon;
+
 
 class PaymentsController extends Controller
 {
@@ -37,7 +39,7 @@ class PaymentsController extends Controller
   {
     $PageInfo = 'All';
     $provinces = Location::whereNull("Parent_ID")->get();
-    $payments =   SponsorPayment::paginate(100);
+    $payments =   SponsorPayment::with('user') -> orderBy('id', 'DESC') -> paginate(100);
     return view('OrphansRelief.Payment.All', ['datas' => $payments, 'PageInfo' => $PageInfo, 'provinces' => $provinces,]);
   }
 
@@ -45,7 +47,7 @@ class PaymentsController extends Controller
   {
     $PageInfo = 'Paid';
     $provinces = Location::whereNull("Parent_ID")->get();
-    $payments =   SponsorPayment::where('sponsor_payments.IsPaid', '=', 1)->paginate(100);
+    $payments =   SponsorPayment::with('user') ->where('sponsor_payments.IsPaid', '=', 1)-> orderBy('id', 'DESC') ->paginate(100);
     return view('OrphansRelief.Payment.All', ['datas' => $payments, 'PageInfo' => $PageInfo, 'provinces' => $provinces,]);
   }
 
@@ -53,7 +55,7 @@ class PaymentsController extends Controller
   {
     $PageInfo = 'Due';
     $provinces = Location::whereNull("Parent_ID")->get();
-    $payments =   SponsorPayment::where('sponsor_payments.IsPaid', '!=', 1)->paginate(100);
+    $payments =   SponsorPayment::with('user') ->where('sponsor_payments.IsPaid', '!=', 1)-> orderBy('id', 'DESC') ->paginate(100);
     return view('OrphansRelief.Payment.All', ['datas' => $payments, 'PageInfo' => $PageInfo, 'provinces' => $provinces,]);
   }
 
@@ -254,11 +256,11 @@ class PaymentsController extends Controller
       We have sent you an email, which contains username, password and a link to login to our system.
       You can login to the dashboard and keep tracking your sponsorship.
       We welcome you to Qamar Family!');
-    } else {//################################################################# - ELSE if user is there
+    } else { //################################################################# - ELSE if user is there
 
       // Stripe Pyament
       Stripe::setApiKey(env('STRIPE_SECRET'));
-      $UserCard = $user -> card() -> where('IsActive', '=', 1) -> where('CardLastFourDigit', '=', substr(request('CardNumber'), -4)) -> first();
+      $UserCard = $user->card()->where('IsActive', '=', 1)->where('CardLastFourDigit', '=', substr(request('CardNumber'), -4))->first();
       if ($UserCard) { //################ - if the user has already a card - ###
         // Charge Customer=========================================================================================================
         try {
@@ -267,7 +269,7 @@ class PaymentsController extends Controller
             "amount" => $AmountInCents,
             "currency" => "usd",
             "description" => "Orphan Sponsorship",
-            'customer' => $UserCard -> StripeCustomer_ID,
+            'customer' => $UserCard->StripeCustomer_ID,
           ));
         } catch (\Exception $e) {
           ErrorLog::create(['Message' =>  $e->getMessage(), 'From' => 'PaymentContorller:StorePayment: ChargeTry']);
@@ -281,7 +283,7 @@ class PaymentsController extends Controller
             'Amount' => request('Amount'),
             'FullName' => request('FullName'),
             'Email' => request('Email'),
-            'Card_ID' => $UserCard -> id,
+            'Card_ID' => $UserCard->id,
             'ChargeID' => $charge->id,
             'Sponsor_ID' => $user->id,
             'IsPaid' => 1
@@ -299,7 +301,7 @@ class PaymentsController extends Controller
                 'Orphan_ID' => $orphan->id,
                 'Amount' => request('Amount'),
                 'Type' => request('SubscriptionType'),
-                'Card_ID' => $UserCard -> id,
+                'Card_ID' => $UserCard->id,
                 'StartDate' => now(),
                 'EndDate' => now()->addMonth(),
                 'Sponsor_ID' => $user->id,
@@ -311,7 +313,7 @@ class PaymentsController extends Controller
                 'Orphan_ID' => $orphan->id,
                 'Amount' => request('Amount'),
                 'Type' => request('SubscriptionType'),
-                'Card_ID' => $UserCard -> id,
+                'Card_ID' => $UserCard->id,
                 'StartDate' => now(),
                 'EndDate' => now()->addYear(),
                 'Sponsor_ID' => $user->id,
@@ -394,7 +396,7 @@ class PaymentsController extends Controller
         try {
           foreach ($oldCart->items as $item) {
             $orphan = Orphan::where('id', '=', $item['item']['id'])->first();
-            if (request('SubscriptionType') == 'Montly') {
+            if (request('SubscriptionType') == 'Monthly') {
               SponsorSubscription::create([
                 'Orphan_ID' => $orphan->id,
                 'Amount' => request('Amount'),
@@ -439,5 +441,112 @@ class PaymentsController extends Controller
       We welcome you to Qamar Family!');
       }
     }
+  }
+
+
+  public function Recuring()
+  {
+    $PageInfo = 'All';
+    $provinces = Location::whereNull("Parent_ID")->get();
+    Stripe::setApiKey(env('STRIPE_SECRET'));
+    $EndedSubscriptions = SponsorSubscription::with('user') -> where("EndDate", "<", Carbon::now())
+      ->where("IsActive", "=", 1)
+      ->get();
+
+    foreach ($EndedSubscriptions as $EndedSubscription) {
+      // if the user has Card Id saved
+      if ($EndedSubscription->Card_ID != null) {
+        $ActiveCard = SponsorCard::where("Sponsor_ID", "=", $EndedSubscription->Sponsor_ID)-> where("IsActive", "=", 1)->first();
+        // if there is an active card avalibale
+        if ($ActiveCard != null) {
+          // Charge Customer==============================================================================================
+          try {
+            $AmountInCents = $EndedSubscription->Amount * 100;
+            $charge = Charge::create(array(
+              "amount" => $AmountInCents,
+              "currency" => "usd",
+              "description" => "Orphan Sponsorship",
+              'customer' => $ActiveCard->StripeCustomer_ID,
+            ));
+          } catch (\Exception $e) {
+            ErrorLog::create(['Message' =>  $e->getMessage(), 'From' => 'PaymentContorller:StorePayment: ChargeTry']);
+            SponsorPayment::create([
+              'SubscriptionType' => $EndedSubscription->Type,
+              'Amount' => $EndedSubscription->Amount,
+              'Card_ID' => $EndedSubscription->Card_ID,
+              'Sponsor_ID' => $EndedSubscription->Sponsor_ID,
+              'IsPaid' => 0,
+              'Remarks' => $e->getMessage()
+            ]);
+            return redirect()->route('AllPayment');
+          }
+          // Create Sponsor Payment=========================================================================================
+          try {
+            SponsorPayment::create([
+              'SubscriptionType' => $EndedSubscription->Type,
+              'Amount' => $EndedSubscription->Amount,
+              'Card_ID' => $EndedSubscription->Card_ID,
+              'ChargeID' => $charge->id,
+              'Sponsor_ID' => $EndedSubscription->Sponsor_ID,
+              'IsPaid' => 1,
+              'Remarks' => "Payment is successfull"
+            ]);
+          } catch (\Exception $e) {
+            ErrorLog::create(['Message' =>  $e->getMessage(), 'From' => 'PaymentContorller:StorePayment: SponsorPaymentTry',]);
+          }
+          // Assign Oprhan to that Sponsor====================================================================================
+          try {
+            if ($EndedSubscription->Type == 'Monthly') {
+              $EndedSubscription->update([
+                'EndDate' => Carbon::parse($EndedSubscription->EndDate)->addMonth(),
+              ]);
+            }
+            if ($EndedSubscription->Type == 'Yearly') {
+              $EndedSubscription->update([
+                'EndDate' => Carbon::parse($EndedSubscription->EndDate)->addYear(),
+              ]);
+            }
+          } catch (\Exception $e) {
+            ErrorLog::create(['Message' =>  $e->getMessage(), 'From' => 'PaymentContorller:StorePayment: SponsorAssingOrphanTry']);
+          }
+        // Send Confirmation Email to Sponsor===============================================================================
+        try {
+          $details = ['Email' => $EndedSubscription -> user -> email, 'Amount' => $EndedSubscription->Amount, 'FullName' => $EndedSubscription -> user -> FullName];
+          Mail::to($EndedSubscription -> user -> email)->send(new SponsorConfirmation($details));
+        } catch (\Exception $e) {
+          ErrorLog::create(['Message' =>  $e->getMessage(), 'From' => 'PaymentContorller:StorePayment: SponsorPaymentTry']);
+        }
+
+        } else {
+          try {
+            SponsorPayment::create([
+              'SubscriptionType' => $EndedSubscription->Type,
+              'Amount' => $EndedSubscription->Amount,
+              'Card_ID' => $EndedSubscription->Card_ID,
+              'Sponsor_ID' => $EndedSubscription->Sponsor_ID,
+              'IsPaid' => 0,
+              'Remarks' => "No Active Card Found"
+            ]);
+          } catch (\Exception $e) {
+            ErrorLog::create(['Message' =>  $e->getMessage(), 'From' => 'PaymentContorller:StorePayment: SponsorPaymentTryIFNOACTIVECARD',]);
+          }
+        }
+      } else {
+        try {
+          SponsorPayment::create([
+            'SubscriptionType' => $EndedSubscription->Type,
+            'Amount' => $EndedSubscription->Amount,
+            'Card_ID' => $EndedSubscription->Card_ID,
+            'Sponsor_ID' => $EndedSubscription->Sponsor_ID,
+            'IsPaid' => 0,
+            'Remarks' => "No Card Found"
+          ]);
+        } catch (\Exception $e) {
+          ErrorLog::create(['Message' =>  $e->getMessage(), 'From' => 'PaymentContorller:StorePayment: SponsorPaymentTryIFNoCard',]);
+        }
+      }
+    }
+    $payments =   $payments =   SponsorPayment::with('user') -> orderBy('id', 'DESC') ->paginate(100);
+    return view('OrphansRelief.Payment.All', ['datas' => $payments, 'PageInfo' => $PageInfo, 'provinces' => $provinces,]);
   }
 }

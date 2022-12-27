@@ -37,18 +37,21 @@ unset($__errorArgs, $__bag); ?>" onchange="window.location.href=this.value;">
         <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('search', [])->html();
-} elseif ($_instance->childHasBeenRendered('OHH4Mgx')) {
-    $componentId = $_instance->getRenderedChildComponentId('OHH4Mgx');
-    $componentTag = $_instance->getRenderedChildComponentTagName('OHH4Mgx');
+} elseif ($_instance->childHasBeenRendered('uB2ZbbR')) {
+    $componentId = $_instance->getRenderedChildComponentId('uB2ZbbR');
+    $componentTag = $_instance->getRenderedChildComponentTagName('uB2ZbbR');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('OHH4Mgx');
+    $_instance->preserveRenderedChild('uB2ZbbR');
 } else {
     $response = \Livewire\Livewire::mount('search', []);
     $html = $response->html();
-    $_instance->logRenderedChild('OHH4Mgx', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('uB2ZbbR', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
+    </div>
+    <div class="col-md-5 col-sm-12 mb-2">
+        <a href="<?php echo e(route('RecuringPayment')); ?>" class="btn btn-outline-info btn-lg waves-effect  waves-light float-end btn-rounded"><i class="mdi mdi-recycle me-1"></i>Refresh Payments</a>
     </div>
 </div>
 <div class="row">
@@ -67,7 +70,7 @@ echo $html;
                         <th>Amount </th>
                         <th>Email</th>
                         <th>Status</th>
-                        <th>Created By</th>
+                        <th>Remarks</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -86,7 +89,7 @@ echo $html;
                             </div>
                         </td>
                         <td>
-                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> FullName); ?></a></h5>
+                            <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> user -> FullName); ?></a></h5>
                         </td>
                         <td>
                             <div>
@@ -101,7 +104,7 @@ echo $html;
                         </td>
                         <td>
                             <div>
-                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> Email); ?></a></h5>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data -> user -> email); ?></a></h5>
                             </div>
                         </td>
                         <td>
@@ -117,18 +120,9 @@ echo $html;
                             </div>
                         </td>
                         <td>
-                            <?php if( $data -> Created_By !=""): ?>
                             <div>
-                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data ->  UFirstName); ?> <?php echo e($data ->  ULastName); ?></a></h5>
-                                <p class="text-muted mb-0"><?php echo e($data ->  UJob); ?></p>
+                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark"><?php echo e($data ->  Remarks); ?></a></h5>
                             </div>
-                            <?php endif; ?>
-                            <?php if( $data -> Created_By ==""): ?>
-                            <div>
-                                <h5 class="font-size-14 mb-1"><a href="#" class="text-dark">Online</a></h5>
-                                <p class="text-muted mb-0">Registration</p>
-                            </div>
-                            <?php endif; ?>
                         </td>
                         <td>
                             <div class="d-flex flex-wrap gap-2">
