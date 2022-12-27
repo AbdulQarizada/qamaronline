@@ -45,7 +45,7 @@ class RepresentativeController extends Controller
       'WhatYouOffer' => 'required',
       'MediaPresence' => 'required',
       // documents
-      'Resume' => 'required',
+      // 'Resume' => 'required',
       'Profile' => 'required',
       'Passport' => 'required',
 

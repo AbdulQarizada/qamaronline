@@ -165,7 +165,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <label for="Resume" class="form-label">Resume <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                <label for="Resume" class="form-label">Resume </label>
                                                 <input type="file" class="my-pond @error('Resume') is-invalid @enderror" value="{{ old('Resume') }}" name="Resume" id="Resume" />
                                                 @error('Resume')
                                                 <span class="invalid-feedback" role="alert">
