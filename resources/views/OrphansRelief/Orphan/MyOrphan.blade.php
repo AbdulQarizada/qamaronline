@@ -144,18 +144,11 @@
                 <div class="card-body">
                     <div class="avatar-sm mx-auto mb-4">
                         <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-16">
-                            @if ($orphan -> Gender_ID == 60)
-                            <!-- if male -->
-                            <img class="rounded-circle avatar-sm" src="{{ URL::asset('/uploads/OrphansRelief/Orphans/Profiles/avatar-male.jpg') }}" alt="">
-                            @endif
-                            @if ($orphan -> Gender_ID == 61)
-                            <!-- if female -->
-                            <img class="rounded-circle avatar-sm" src="{{ URL::asset('/uploads/OrphansRelief/Orphans/Profiles/avatar-female.jpg') }}" alt="">
-                            @endif
+                            <img class="rounded-circle avatar-sm" src="{{ URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$orphan -> Profile) }}" alt="">
                         </span>
                     </div>
                     <h5 class="font-size-15"><a href="#" class="text-dark">{{$orphan -> FirstName}} {{$orphan -> LastName}}</a></h5>
-                    <p class="text-muted">{{$orphan -> IntroducerName}} </p>
+                    <p class="text-muted">{{$orphan -> WhyShouldYouHelpMe}} </p>
                 </div>
                 <div class="card-footer bg-transparent border-top">
                     <div class="contact-links d-flex">

@@ -188,18 +188,11 @@ unset($__errorArgs, $__bag); ?>
                 <div class="card-body">
                     <div class="avatar-sm mx-auto mb-4">
                         <span class="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-16">
-                            <?php if($orphan -> Gender_ID == 60): ?>
-                            <!-- if male -->
-                            <img class="rounded-circle avatar-sm" src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/avatar-male.jpg')); ?>" alt="">
-                            <?php endif; ?>
-                            <?php if($orphan -> Gender_ID == 61): ?>
-                            <!-- if female -->
-                            <img class="rounded-circle avatar-sm" src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/avatar-female.jpg')); ?>" alt="">
-                            <?php endif; ?>
+                            <img class="rounded-circle avatar-sm" src="<?php echo e(URL::asset('/uploads/OrphansRelief/Orphans/Profiles/'.$orphan -> Profile)); ?>" alt="">
                         </span>
                     </div>
                     <h5 class="font-size-15"><a href="#" class="text-dark"><?php echo e($orphan -> FirstName); ?> <?php echo e($orphan -> LastName); ?></a></h5>
-                    <p class="text-muted"><?php echo e($orphan -> IntroducerName); ?> </p>
+                    <p class="text-muted"><?php echo e($orphan -> WhyShouldYouHelpMe); ?> </p>
                 </div>
                 <div class="card-footer bg-transparent border-top">
                     <div class="contact-links d-flex">
