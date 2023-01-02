@@ -24,10 +24,15 @@ class Representative extends Controller
     {
         if ($request->hasFile('Passport')) {
             $Passport = $request->file('Passport');
+            $Extenstion = $Passport->getClientOriginalExtension();
+            if($Extenstion == 'pdf' || $Extenstion == 'jpeg' || $Extenstion == 'jpg' || $Extenstion == 'png')
+            {
             $Passportname = $Passport->getClientOriginalName();
             $Passportnameuniquename = uniqid() . '_' . $Passportname;
             $Passport->storeAs('Passports', $Passportnameuniquename, 'Representative');
             return $Passportnameuniquename;
+            }
+            return '';
         }
         return '';
     }
@@ -36,10 +41,15 @@ class Representative extends Controller
     {
         if ($request->hasFile('Profile')) {
             $Profile = $request->file('Profile');
+            $Extenstion = $Profile->getClientOriginalExtension();
+            if($Extenstion == 'pdf' || $Extenstion == 'jpeg' || $Extenstion == 'jpg' || $Extenstion == 'png')
+            {
             $Profilename = $Profile->getClientOriginalName();
             $Profilenameuniquename = uniqid() . '_' . $Profilename;
             $Profile->storeAs('Profiles', $Profilenameuniquename, 'Representative');
             return $Profilenameuniquename;
+            }
+            return '';
         }
         return '';
     }
@@ -48,10 +58,15 @@ class Representative extends Controller
     {
         if ($request->hasFile('Resume')) {
             $Resume = $request->file('Resume');
+            $Extenstion = $Resume->getClientOriginalExtension();
+            if($Extenstion == 'pdf' || $Extenstion == 'jpeg' || $Extenstion == 'jpg' || $Extenstion == 'png')
+            {
             $Resumename = $Resume->getClientOriginalName();
             $Resumenameuniquename = uniqid() . '_' . $Resumename;
             $Resume->storeAs('Resumes', $Resumenameuniquename, 'Representative');
             return $Resumenameuniquename;
+            }
+        return '';
         }
         return '';
     }

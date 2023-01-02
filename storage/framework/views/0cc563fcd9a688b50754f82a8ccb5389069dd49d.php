@@ -12,7 +12,7 @@
         <span class="my-0   card-title fw-medium font-size-24 text-wrap text-uppercase"><i class="bx bx-caret-right text-secondary font-size-20 "></i>Add REPRESENTATIVE</span>
     </div>
     <?php else: ?>
-    <span class="my-0 mb-3 text-center card-title fw-medium font-size-24 text-wrap text-uppercase"></i>REPRESENTATIVE Form</span>
+    <span class="my-0 mb-3 display-5 text-wrap text-uppercase "></i>REPRESENTATIVE Form</span>
     <?php endif; ?>
 </div>
 <form class="needs-validation" action="<?php echo e(route('CreateRepresentative')); ?>" method="POST" enctype="multipart/form-data" novalidate>
@@ -374,7 +374,7 @@ endif;
 unset($__errorArgs, $__bag); ?>
                                             </div>
                                             <div class="col-md-4">
-                                                <label for="Resume" class="form-label">Resume <i class="mdi mdi-asterisk text-danger"></i></label>
+                                                <label for="Resume" class="form-label">Resume </i></label>
                                                 <input type="file" class="my-pond <?php $__errorArgs = ['Resume'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -444,7 +444,6 @@ unset($__errorArgs, $__bag); ?>
             }
 
         }
-        , acceptedFileTypes: ['image/png', 'image/jpeg']
         , allowFileTypeValidation: true
         , instantUpload: true
         , imagePreviewHeight: 100
@@ -463,7 +462,6 @@ unset($__errorArgs, $__bag); ?>
     const inputResume = document.querySelector('input[name="Resume"]');
     const Resume = FilePond.create(inputResume, {
         labelIdle: 'Drag & Drop your Resume or <span class="filepond--label-action"> Browse </span>'
-        , acceptedFileTypes: ['application/pdf', 'image/jpeg']
         , allowFileTypeValidation: true
         , server: {
 
@@ -479,7 +477,6 @@ unset($__errorArgs, $__bag); ?>
     const inputPassport = document.querySelector('input[name="Passport"]');
     const Passport = FilePond.create(inputPassport, {
         labelIdle: 'Drag & Drop your Passport or <span class="filepond--label-action"> Browse </span>'
-        , acceptedFileTypes: ['application/pdf', 'image/jpeg']
         , allowFileTypeValidation: true
         , server: {
 

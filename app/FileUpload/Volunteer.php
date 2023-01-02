@@ -22,12 +22,18 @@ class Volunteer extends Controller
 
     public function Volunteer_Resume(Request $request)
     {
+
         if ($request->hasFile('Resume')) {
             $Resume = $request->file('Resume');
-            $Resumename = $Resume->getClientOriginalName();
-            $Resumenameuniquename = uniqid() . '_' . $Resumename;
-            $Resume->storeAs('Resumes', $Resumenameuniquename, 'Volunteer');
-            return $Resumenameuniquename;
+            $Extenstion = $Resume->getClientOriginalExtension();
+            if($Extenstion == 'pdf' || $Extenstion == 'jpeg' || $Extenstion == 'jpg' || $Extenstion == 'png')
+            {
+                $Resumename = $Resume->getClientOriginalName();
+                $Resumenameuniquename = uniqid() . '_' . $Resumename;
+                $Resume->storeAs('Resumes', $Resumenameuniquename, 'Volunteer');
+                return $Resumenameuniquename;
+            }
+            return '';
         }
         return '';
     }
